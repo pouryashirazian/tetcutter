@@ -13,13 +13,16 @@
 #include "graphics/Gizmo.h"
 #include "graphics/AppScreen.h"
 #include "graphics/selectgl.h"
-
+#include "graphics/TetSubdivider.h"
 
 using namespace PS;
 using namespace PS::SG;
+using namespace PS::FEM;
 using namespace PS::FILESTRINGUTILS;
 
 using namespace std;
+
+TetSubdivider* g_lpTetSub = NULL;
 
 void draw() {
 	TheSceneGraph::Instance().draw();
@@ -174,7 +177,7 @@ void SpecialKey(int key, int x, int y)
 
 
 void closeApp() {
-
+	SAFE_DELETE(g_lpTetSub);
 }
 
 
@@ -245,6 +248,12 @@ int main(int argc, char* argv[]) {
 	TheSceneGraph::Instance().addFloor(32, 32, 0.5f);
 	TheSceneGraph::Instance().addSceneBox(AABB(vec3f(-10, -10, -16), vec3f(10, 10, 16)));
 
+	//Create mesh
+	g_lpTetSub = TetSubdivider::CreateOneTet();
+	TheSceneGraph::Instance().add(g_lpTetSub);
+
+	//subdivide tet
+	g_lpTetSub->subdivide(0, 11, 0);
 
 	glutMainLoop();
 
