@@ -358,8 +358,216 @@ int HalfEdgeTetMesh::insert_element(const ELEM& e) {
 	return (int)(m_vElements.size() - 1);
 }
 
-int HalfEdgeTetMesh::insert_element(const U32 nodes[4]) {
+int HalfEdgeTetMesh::insert_element(U32 nodes[4]) {
 	//Inserts a tetrahedra element to the halfedged mesh structure
+	for(int i=0; i<4; i++) {
+		if(!isNodeIndex(nodes[i])) {
+			LogErrorArg1("Invalid node index passed in. %u", nodes[i]);
+			return -1;
+		}
+	}
+
+	//face mask
+	const int faceMaskPos[4][3] = { {1, 2, 3}, {2, 0, 3}, {3, 0, 1}, {1, 0, 2} };
+	const int faceMaskNeg[4][3] = { {3, 2, 1}, {3, 0, 2}, {1, 0, 3}, {2, 0, 1} };
+
+	//edge mask
+	const int edgeMaskPos[6][2] = { {1, 2}, {2, 3}, {3, 1}, {2, 0}, {0, 3}, {0, 1} };
+	const int edgeMaskNeg[6][2] = { {3, 2}, {2, 1}, {1, 3}, {3, 0}, {0, 2}, {1, 0} };
+
+	//maps for half edges
+	std::map< pair<U32, U32>, HEDGE > mapHalfEdges;
+	typedef std::map< pair<U32, U32>, HEDGE >::iterator HEITER;
+
+	std::map< pair<U32, U32>, U32 > mapHalfEdgesIndex;
+	typedef std::map< pair<U32, U32>, U32 >::iterator HEINDEXITER;
+
+
+	//determinant
+	double det = computeDeterminant(nodes);
+
+	//Add element nodes set only for now
+	HalfEdgeTetMesh::ELEM elem;
+	elem.posDet = (det >= 0);
+	for(int i=0; i<4; i++)
+		elem.nodes[i] = nodes[i];
+	for(int i=0; i<4; i++)
+		elem.faces[i] = INVALID_INDEX;
+	for(int i=0; i<6; i++)
+		elem.halfedge[i] = INVALID_INDEX;
+
+	//Loop over faces. Per each tet 6 edges or 12 half-edges added
+	for (int f = 0; f < 4; f++) {
+		U32 fv[3];
+
+		if (det >= 0) {
+			fv[0] = nodes[faceMaskPos[f][0]];
+			fv[1] = nodes[faceMaskPos[f][1]];
+			fv[2] = nodes[faceMaskPos[f][2]];
+		} else {
+			fv[0] = nodes[faceMaskNeg[f][0]];
+			fv[1] = nodes[faceMaskNeg[f][1]];
+			fv[2] = nodes[faceMaskNeg[f][2]];
+		}
+
+		//Add all halfedges for this face
+		for (int e = 0; e < 3; e++) {
+			HalfEdgeTetMesh::HEDGE he;
+			he.from = fv[e];
+			he.to = fv[(e + 1) % 3];
+			mapHalfEdges.insert(make_pair(std::make_pair(he.from, he.to), he));
+		}
+	}
+
+	//add final half edges in the order of (u, v) and (v, u)
+	vector<HEDGE> arrAppendingHEdges;
+	//m_vHalfEdges.reserve(mapHalfEdges.size());
+
+	U32 from, to = -1;
+	U32 idxForward, idxBackward = -1;
+
+	while(mapHalfEdges.size() > 0) {
+		//add forward
+		HEITER forward = mapHalfEdges.begin();
+		from = forward->second.from;
+		to = forward->second.to;
+
+		m_vHalfEdges.push_back(forward->second);
+		idxForward = m_vHalfEdges.size() - 1;
+		mapHalfEdgesIndex.insert( make_pair( std::make_pair(from, to), idxForward));
+
+
+		//Remove from map
+		mapHalfEdges.erase(forward);
+
+		//add backward
+		HEITER backward = mapHalfEdges.find(std::make_pair(to, from));
+		if(backward != mapHalfEdges.end()) {
+			m_vHalfEdges.push_back(backward->second);
+			idxBackward = idxForward + 1;
+			mapHalfEdgesIndex.insert( make_pair( std::make_pair(to, from), idxBackward));
+
+			//Remove from map
+			mapHalfEdges.erase(backward);
+
+			//Set opposite indices
+			m_vHalfEdges[idxForward].opposite = idxBackward;
+			m_vHalfEdges[idxBackward].opposite = idxForward;
+
+
+		}
+		else {
+			LogErrorArg2("Opposite edge not found for: <%d. %d>", from, to);
+			return false;
+		}
+	}
+
+	//add all faces now and finish setting information for all
+	std::map< FaceKey, U32 > mapFaces;
+	typedef std::map< FaceKey, U32 >::iterator FITER;
+
+	/*
+
+	m_vFaces.reserve(ctElements * 4);
+	for(U32 i=0; i<ctElements; i++) {
+		vec4u32 n = vec4u32(&elements[i * 4]);
+
+		//Loop over faces. Per each tet 6 edges or 12 half-edges added
+		for(int f = 0; f < 4; f++) {
+			U32 fv[3];
+
+			if(vDeterminants[i] >= 0) {
+				fv[0] = n[ faceMaskPos[f][0] ];
+				fv[1] = n[ faceMaskPos[f][1] ];
+				fv[2] = n[ faceMaskPos[f][2] ];
+			}
+			else {
+				fv[0] = n[ faceMaskNeg[f][0] ];
+				fv[1] = n[ faceMaskNeg[f][1] ];
+				fv[2] = n[ faceMaskNeg[f][2] ];
+			}
+
+			//add faces
+			HalfEdgeTetMesh::FACE face;
+
+			//Add all halfedges for this face
+			for(int e=0; e<3; e++) {
+				from = fv[e];
+				to = fv[ (e + 1) % 3 ];
+
+				HEINDEXITER it = mapHalfEdgesIndex.find(std::make_pair(from, to));
+				if(it != mapHalfEdgesIndex.end())
+					face.halfedge[e] = it->second;
+				else {
+					LogErrorArg2("Setting face edges failed! Unable to find edge <%d, %d>", from, to);
+					return false;
+				}
+			}
+
+			//Resolve unique faces
+			//printf("Face order before: %d, %d, %d\n", fv[0], fv[1], fv[2]);
+			FaceKey::order_lo2hi(fv[0], fv[1], fv[2]);
+			//printf("Face order after: %d, %d, %d\n", fv[0], fv[1], fv[2]);
+			FaceKey key(fv, m_vHalfEdges.size());
+			FITER fit = mapFaces.find(key);
+
+			//if face not found then add it
+			U32 idxFace = INVALID_INDEX;
+			if(fit == mapFaces.end()) {
+				m_vFaces.push_back(face);
+				idxFace = m_vFaces.size() - 1;
+				mapFaces.insert( std::make_pair(key, idxFace));
+
+				//set prev, next, face for half edges
+				for(int e=0; e<3; e++) {
+					if(e == 0)
+						m_vHalfEdges[ face.halfedge[e] ].prev = face.halfedge[2];
+					else
+						m_vHalfEdges[ face.halfedge[e] ].prev = face.halfedge[e - 1];
+					m_vHalfEdges[ face.halfedge[e] ].next = face.halfedge[(e + 1) % 3];
+					m_vHalfEdges[ face.halfedge[e] ].face = idxFace;
+				}
+			}
+			else
+				idxFace = fit->second;
+
+			//Set element face index and halfedges
+			m_vElements[i].faces[f] = idxFace;
+
+			U32 from, to = INVALID_INDEX;
+			for(int e=0; e < 6; e++) {
+				if(m_vElements[i].posDet) {
+					from = m_vElements[i].nodes[ edgeMaskPos[e][0] ];
+					to = m_vElements[i].nodes[ edgeMaskPos[e][1] ];
+				}
+				else {
+					from = m_vElements[i].nodes[ edgeMaskNeg[e][0] ];
+					to = m_vElements[i].nodes[ edgeMaskNeg[e][1] ];
+				}
+
+				HEINDEXITER it = mapHalfEdgesIndex.find(std::make_pair(from, to));
+				if(it != mapHalfEdgesIndex.end())
+					m_vElements[i].halfedge[e] = it->second;
+				else {
+					LogErrorArg2("Setting element halfedges failed! Unable to find edge <%d, %d>", from, to);
+					return false;
+				}
+			}
+
+		}
+	}
+
+	//Set outgoing edges for nodes
+	for(U32 i=0; i < m_vHalfEdges.size(); i++) {
+		HalfEdgeTetMesh::HEDGE e = m_vHalfEdges[i];
+
+		//set the outHalfEdge for all nodes in this edge
+		if(m_vNodes[e.from].outHE == INVALID_INDEX)
+			m_vNodes[e.from].outHE = i;
+		if(m_vNodes[e.to].outHE == INVALID_INDEX)
+			m_vNodes[e.to].outHE = i;
+	}
+*/
 
 	return -1;
 }

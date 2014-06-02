@@ -191,7 +191,7 @@ public:
 
 	//add/remove
 	int insert_element(const ELEM& e);
-	int insert_element(const U32 nodes[4]);
+	int insert_element(U32 nodes[4]);
 	void remove_element(U32 i);
 
 	//access

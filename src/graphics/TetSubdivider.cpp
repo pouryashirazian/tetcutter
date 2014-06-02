@@ -61,7 +61,7 @@ int TetSubdivider::subdivide(int element, U8 cutEdgeCode, U8 cutNodeCode) {
 
 				U32 idxNP0, idxNP1;
 				U32 idxEdgeToCut = m_lpHEMesh->edge_from_halfedge(one.halfedge[i]);
-				if(!m_lpHEMesh->cut_edge(idxEdgeToCut, 0.5, &idxNP0, &idxNP1)) {
+				if(!m_lpHEMesh->cut_edge(idxEdgeToCut, 0.3, &idxNP0, &idxNP1)) {
 					LogErrorArg2("Unable to cut edge %d of element %d", i, element);
 				}
 
@@ -83,12 +83,14 @@ int TetSubdivider::subdivide(int element, U8 cutEdgeCode, U8 cutNodeCode) {
 
 	//using the lookup table generate new tet elements and add them to the mesh
 	//if 3 cut edges: cases 11, 22, 37, 56
-	if(cutEdgeCode == 1) {
-		const U32 maskGenTetsNodes[4][4] = {{2, 5, 6, 11}, {3, 7, 10, 4}, {3, 1, 4, 7}, {0, 1, 3, 10}};
+	if(cutEdgeCode == 11) {
+		const U32 lut_gentets[4][4] = {{2, 5, 6, 11}, {3, 7, 10, 4}, {3, 1, 4, 7}, {0, 1, 3, 10}};
+
+		//generate new tets
 		for(int e = 0; e < 4; e++) {
 			U32 n[4];
 			for(int i = 0; i < 4; i++)
-				n[i] = vnodes[ maskGenTetsNodes[e][i] ];
+				n[i] = vnodes[ lut_gentets[e][i] ];
 
 			m_lpHEMesh->insert_element(n);
 		}
