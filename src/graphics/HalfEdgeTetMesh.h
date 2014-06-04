@@ -24,7 +24,6 @@ using namespace PS::SG;
 namespace PS {
 namespace FEM {
 
-
 //template <typename T>
 class HalfEdgeTetMesh : public SGNode {
 public:
@@ -189,11 +188,6 @@ public:
 	double computeDeterminant(U32 idxNodes[4]) const;
 	static double computeElementDeterminant(const vec3d v[4]);
 
-	//add/remove
-	int insert_element(const ELEM& e);
-	int insert_element(U32 nodes[4]);
-	void remove_element(U32 i);
-
 	//access
 	ELEM& elemAt(U32 i);
 	FACE& faceAt(U32 i);
@@ -227,6 +221,12 @@ public:
 	//splits an edge e at parametric point t
 	void displace(double * u);
 
+
+	//topology modifiers
+	int insert_element(const ELEM& e);
+	int insert_element(U32 nodes[4]);
+	void remove_element(U32 i);
+
 	/*!
 	 * splits the edge in the middle. Adds one new node along the edge and re-connects all half-edges along that.
 	 */
@@ -236,10 +236,14 @@ public:
 	 * cuts an edge completely. Two new nodes are created at the point of cut with no hedges between them.
 	 */
 	bool cut_edge(int idxEdge, double t, U32* poutIndexNP0 = NULL, U32* poutIndexNP1 = NULL);
+
+
+	//algorithmic functions useful for many computational geometry projects
 	int getFirstRing(int idxNode, vector<U32>& ringNodes) const;
 	int getIncomingHalfEdges(int idxNode, vector<U32>& incomingHE) const;
 	int getOutgoingHalfEdges(int idxNode, vector<U32>& outgoingHE) const;
 
+	//checking
 	bool checkMeshConnectivity() const;
 	bool checkMeshFaceDirections() const;
 
@@ -250,11 +254,31 @@ public:
 
 	//draw
 	void draw();
+
+private:
+	inline int insertHEdgeIndexToMap(U32 from, U32 to, U32 idxHE);
+	inline int removeHEdgeIndexFromMap(U32 from, U32 to);
+	inline bool halfedge_exists(U32 from, U32 to) const;
+	U32 halfedge_handle(U32 from, U32 to);
+
 protected:
 	vector<ELEM> m_vElements;
 	vector<FACE> m_vFaces;
 	vector<HEDGE> m_vHalfEdges;
 	vector<NODE> m_vNodes;
+
+	//maps a facekey to the corresponding face handle
+	std::map< FaceKey, U32 > m_mapFaces;
+
+	//maps a half-edge from-to pair to the corresponding hedge handle
+	std::map< pair<U32, U32>, U32 > m_mapHalfEdgesIndex;
+
+	//iterator for half-edge index iter
+	typedef std::map< pair<U32, U32>, U32 >::iterator MAPHEDGEINDEXITER;
+	typedef std::map< pair<U32, U32>, U32 >::iterator MAPHEDGEINDEXCONSTITER;
+
+	//iterator for face index iter
+	typedef std::map< FaceKey, U32 >::iterator MAPFACEITER;
 
 	//Index control
 	inline bool isElemIndex(U32 i) const { return (i < m_vElements.size());}
