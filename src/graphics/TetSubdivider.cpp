@@ -61,7 +61,7 @@ int TetSubdivider::subdivide(int element, U8 cutEdgeCode, U8 cutNodeCode) {
 
 				U32 idxNP0, idxNP1;
 				U32 idxEdgeToCut = m_lpHEMesh->edge_from_halfedge(one.halfedge[i]);
-				if(!m_lpHEMesh->cut_edge(idxEdgeToCut, 0.3, &idxNP0, &idxNP1)) {
+				if(!m_lpHEMesh->cut_edge(idxEdgeToCut, 0.5, &idxNP0, &idxNP1)) {
 					LogErrorArg2("Unable to cut edge %d of element %d", i, element);
 				}
 

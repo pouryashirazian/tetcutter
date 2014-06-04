@@ -186,7 +186,7 @@ public:
 	void printInfo() const;
 
 	double computeDeterminant(U32 idxNodes[4]) const;
-	static double computeElementDeterminant(const vec3d v[4]);
+	static double ComputeElementDeterminant(const vec3d v[4]);
 
 	//access
 	ELEM& elemAt(U32 i);

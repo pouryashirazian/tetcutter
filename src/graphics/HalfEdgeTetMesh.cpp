@@ -86,7 +86,7 @@ bool HalfEdgeTetMesh::setup(U32 ctVertices, const double* vertices, U32 ctElemen
 			v[j] = vec3d(&vertices[ 3 * n[j] ]);
 
 		//compute determinant
-		vDeterminants[i] = vec3d::dot(v[1] - v[0], vec3d::cross(v[2] - v[0], v[3] - v[0]));
+		vDeterminants[i] = ComputeElementDeterminant(v);
 
 		//Add element nodes set only for now
 		HalfEdgeTetMesh::ELEM elem;
@@ -321,10 +321,10 @@ double HalfEdgeTetMesh::computeDeterminant(U32 idxNodes[4]) const {
 
 	for(int i=0; i<4; i++)
 		v[i] = const_nodeAt(i).pos;
-	return computeElementDeterminant(v);
+	return ComputeElementDeterminant(v);
 }
 
-double HalfEdgeTetMesh::computeElementDeterminant(const vec3d v[4]) {
+double HalfEdgeTetMesh::ComputeElementDeterminant(const vec3d v[4]) {
 	return	vec3d::dot(v[1] - v[0], vec3d::cross(v[2] - v[0], v[3] - v[0]));
 }
 
@@ -1086,29 +1086,39 @@ bool HalfEdgeTetMesh::writeVegaFormat(const AnsiStr& strFP) const {
 void HalfEdgeTetMesh::draw() {
 	vec3d p0;
 	HalfEdgeTetMesh::HEDGE hedge;
-	int count = 0;
 
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	glDisable(GL_LIGHTING);
 
+	vec3d colors[4] = {vec3d(1, 0, 0), vec3d(0, 1, 0), vec3d(0, 0, 1), vec3d(1, 1, 0)};
+
 	//Draw filled faces
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	glColor3f(0.0f, 0.0f, 1.0f);
-	glBegin(GL_TRIANGLES);
-		for(U32 i=0; i<m_vFaces.size(); i++) {
-			HalfEdgeTetMesh::FACE face = const_faceAt(i);
-			HalfEdgeTetMesh::HEDGE he0 = const_halfedgeAt(face.halfedge[0]);
-			HalfEdgeTetMesh::HEDGE he1 = const_halfedgeAt(face.halfedge[1]);
-			HalfEdgeTetMesh::HEDGE he2 = const_halfedgeAt(face.halfedge[2]);
-			vec3d p0 = const_nodeAt(he0.from).pos;
-			vec3d p1 = const_nodeAt(he1.from).pos;
-			vec3d p2 = const_nodeAt(he2.from).pos;
 
-			glVertex3d(p0.x, p0.y, p0.z);
-			glVertex3d(p1.x, p1.y, p1.z);
-			glVertex3d(p2.x, p2.y, p2.z);
-		}
-	glEnd();
+	//for(U32 i=0; i< countElements(); i++)
+	U32 i = 3;
+	{
+		ELEM elem = const_elemAt(i);
+
+		glColor3dv(colors[i % 4].cptr());
+
+		glBegin(GL_TRIANGLES);
+			for(U32 f=0; f<4; f++)
+			{
+				HalfEdgeTetMesh::FACE face = const_faceAt(elem.faces[f]);
+				HalfEdgeTetMesh::HEDGE he0 = const_halfedgeAt(face.halfedge[0]);
+				HalfEdgeTetMesh::HEDGE he1 = const_halfedgeAt(face.halfedge[1]);
+				HalfEdgeTetMesh::HEDGE he2 = const_halfedgeAt(face.halfedge[2]);
+				vec3d p0 = const_nodeAt(he0.from).pos;
+				vec3d p1 = const_nodeAt(he1.from).pos;
+				vec3d p2 = const_nodeAt(he2.from).pos;
+
+				glVertex3dv(p0.cptr());
+				glVertex3dv(p1.cptr());
+				glVertex3dv(p2.cptr());
+			}
+		glEnd();
+	}
 
 	/*
 	glBegin(GL_POLYGON);
@@ -1145,9 +1155,9 @@ void HalfEdgeTetMesh::draw() {
 			vec3d p1 = const_nodeAt(he1.from).pos;
 			vec3d p2 = const_nodeAt(he2.from).pos;
 
-			glVertex3d(p0.x, p0.y, p0.z);
-			glVertex3d(p1.x, p1.y, p1.z);
-			glVertex3d(p2.x, p2.y, p2.z);
+			glVertex3dv(p0.cptr());
+			glVertex3dv(p1.cptr());
+			glVertex3dv(p2.cptr());
 		}
 	glEnd();
 
