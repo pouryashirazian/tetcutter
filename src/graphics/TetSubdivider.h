@@ -15,14 +15,14 @@ namespace FEM {
 
 class TetSubdivider : public SGNode {
 public:
-	TetSubdivider();
-	TetSubdivider(const vector<double>& vertices, const vector<U32>& elements);
+	TetSubdivider(HalfEdgeTetMesh* pMesh);
 	virtual ~TetSubdivider();
 
 	void draw();
-	int subdivide(int element, U8 cutEdgeCode, U8 cutNodeCode);
+	int subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double tEdges[6]);
 
-	static TetSubdivider* CreateOneTet();
+	int cutEdgesToSplitNode(U32 element, U8 node, double targetDist,
+							U8& cutEdgeCode, U8& cutNodeCode, double (&tEdges)[6]);
 private:
 	HalfEdgeTetMesh* m_lpHEMesh;
 };

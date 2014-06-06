@@ -7,6 +7,7 @@
 //============================================================================
 
 #include <iostream>
+#include <functional>
 #include "base/FileDirectory.h"
 #include "base/Logger.h"
 #include "graphics/SceneGraph.h"
@@ -22,7 +23,9 @@ using namespace PS::FILESTRINGUTILS;
 
 using namespace std;
 
-TetSubdivider* g_lpTetSub = NULL;
+
+HalfEdgeTetMesh* g_lpTetMesh = NULL;
+TetSubdivider* g_lpSubdivider = NULL;
 
 void draw() {
 	TheSceneGraph::Instance().draw();
@@ -177,9 +180,17 @@ void SpecialKey(int key, int x, int y)
 
 
 void closeApp() {
-	SAFE_DELETE(g_lpTetSub);
+	SAFE_DELETE(g_lpSubdivider);
+	SAFE_DELETE(g_lpTetMesh);
 }
 
+void handleElementEvent(HalfEdgeTetMesh::ELEM element, U32 handle, HalfEdgeTetMesh::TopologyEvent event) {
+
+	if(event == HalfEdgeTetMesh::teAdded)
+		LogInfoArg1("A new element added at index: %d", handle);
+	else if(event == HalfEdgeTetMesh::teRemoved)
+		LogInfoArg1("A new element added at index: %d", handle);
+}
 
 int main(int argc, char* argv[]) {
 	cout << "Cutting tets" << endl; // prints !!!Hello World!!!
@@ -249,11 +260,18 @@ int main(int argc, char* argv[]) {
 	TheSceneGraph::Instance().addSceneBox(AABB(vec3f(-10, -10, -16), vec3f(10, 10, 16)));
 
 	//Create mesh
-	g_lpTetSub = TetSubdivider::CreateOneTet();
-	TheSceneGraph::Instance().add(g_lpTetSub);
+	g_lpTetMesh = HalfEdgeTetMesh::CreateOneTet();
+	g_lpTetMesh->setOnElemEventCallback(handleElementEvent);
+
+	g_lpSubdivider = new TetSubdivider(g_lpTetMesh);
+	TheSceneGraph::Instance().add(g_lpSubdivider);
 
 	//subdivide tet
-	g_lpTetSub->subdivide(0, 11, 0);
+	double tEdges[6];
+	U8 cutEdgeCode, cutNodeCode;
+
+	g_lpSubdivider->cutEdgesToSplitNode(0, 2, 0.3, cutEdgeCode, cutNodeCode, tEdges);
+	g_lpSubdivider->subdivide(0, cutEdgeCode, cutNodeCode, tEdges);
 
 	glutMainLoop();
 

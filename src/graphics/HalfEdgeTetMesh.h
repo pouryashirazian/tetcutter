@@ -9,6 +9,7 @@
 #define WINGEDEDGETETMESH_H_
 
 #include "graphics/SGNode.h"
+#include <functional>
 
 /*!Stories:
  * 1. Iterate over edges
@@ -20,9 +21,16 @@
 */
 using namespace PS;
 using namespace PS::SG;
+using namespace std;
 
 namespace PS {
 namespace FEM {
+
+//To track changes made to the topology of the mesh the following events are generated:
+// 1. Node added/Removed
+// 2. Edge added/Removed
+// 3. Face added/Removed
+// 4. Element added/Removed
 
 //template <typename T>
 class HalfEdgeTetMesh : public SGNode {
@@ -70,7 +78,10 @@ public:
 	//Key to access faces in a unique order
 	struct FaceKey
 	{
-	    FaceKey(U32 f[3], U32 count) { key = (f[0] * count + f[1]) * count + f[2];}
+		FaceKey(U64 k) { this->key = k; }
+	    FaceKey(U32 node_handles[3], U32 count) {
+	    	key = (node_handles[0] * count + node_handles[1]) * count + node_handles[2];
+	    }
 
 	    static void order_lo2hi(U32& a, U32& b, U32& c) {
 	    	if(a > b)
@@ -173,11 +184,25 @@ public:
 	};
 
 
+	enum TopologyEvent {teAdded, teRemoved};
+	typedef std::function<void(HalfEdgeTetMesh::NODE, U32 handle, TopologyEvent event)> OnNodeEvent;
+	typedef std::function<void(HalfEdgeTetMesh::EDGE, U32 handle, TopologyEvent event)> OnEdgeEvent;
+	typedef std::function<void(HalfEdgeTetMesh::FACE, U32 handle, TopologyEvent event)> OnFaceEvent;
+	typedef std::function<void(HalfEdgeTetMesh::ELEM, U32 handle, TopologyEvent event)> OnElementEvent;
 public:
 	HalfEdgeTetMesh();
 	HalfEdgeTetMesh(U32 ctVertices, double* vertices, U32 ctElements, U32* elements);
 	HalfEdgeTetMesh(const vector<double>& vertices, const vector<U32>& elements);
 	virtual ~HalfEdgeTetMesh();
+
+	//Create one tet
+	static HalfEdgeTetMesh* CreateOneTet();
+
+	//Topology events
+	void setOnNodeEventCallback(OnNodeEvent f);
+	void setOnEdgeEventCallback(OnEdgeEvent f);
+	void setOnFaceEventCallback(OnFaceEvent f);
+	void setOnElemEventCallback(OnElementEvent f);
 
 	//Build
 	bool setup(const vector<double>& vertices, const vector<U32>& elements);
@@ -256,12 +281,20 @@ public:
 	void draw();
 
 private:
+	void init();
 	inline int insertHEdgeIndexToMap(U32 from, U32 to, U32 idxHE);
 	inline int removeHEdgeIndexFromMap(U32 from, U32 to);
 	inline bool halfedge_exists(U32 from, U32 to) const;
 	U32 halfedge_handle(U32 from, U32 to);
 
 protected:
+	//topology events
+	OnNodeEvent m_fOnNodeEvent;
+	OnEdgeEvent m_fOnEdgeEvent;
+	OnFaceEvent m_fOnFaceEvent;
+	OnElementEvent m_fOnElementEvent;
+
+	//containers
 	vector<ELEM> m_vElements;
 	vector<FACE> m_vFaces;
 	vector<HEDGE> m_vHalfEdges;

@@ -13,6 +13,7 @@
 #include <map>
 #include <utility>
 #include <algorithm>
+#include <cstddef>
 #include "graphics/selectgl.h"
 
 using namespace std;
@@ -22,17 +23,17 @@ using namespace PS::FILESTRINGUTILS;
 namespace PS {
 namespace FEM {
 
-
-
 HalfEdgeTetMesh::HalfEdgeTetMesh() {
-
+	init();
 }
 
 HalfEdgeTetMesh::HalfEdgeTetMesh(U32 ctVertices, double* vertices, U32 ctElements, U32* elements) {
+	init();
 	setup(ctVertices, vertices, ctElements, elements);
 }
 
 HalfEdgeTetMesh::HalfEdgeTetMesh(const vector<double>& vertices, const vector<U32>& elements) {
+	init();
 	setup(vertices, elements);
 }
 
@@ -40,6 +41,56 @@ HalfEdgeTetMesh::HalfEdgeTetMesh(const vector<double>& vertices, const vector<U3
 HalfEdgeTetMesh::~HalfEdgeTetMesh() {
 	cleanup();
 }
+
+
+HalfEdgeTetMesh* HalfEdgeTetMesh::CreateOneTet() {
+	vector<double> vertices;
+	vector<U32> elements;
+
+	vec3d points[4];
+	points[0] = vec3d(-1, 0, 0);
+	points[1] = vec3d(0, 0, -2);
+	points[2] = vec3d(1, 0, 0);
+	points[3] = vec3d(0, 2, -1);
+
+	vertices.resize(4 * 3);
+	for (int i = 0; i < 4; i++) {
+		points[i].store(&vertices[i * 3]);
+	}
+
+	elements.resize(4);
+	elements[0] = 0;
+	elements[1] = 1;
+	elements[2] = 2;
+	elements[3] = 3;
+
+	HalfEdgeTetMesh* tet = new HalfEdgeTetMesh(vertices, elements);
+	return tet;
+}
+
+void HalfEdgeTetMesh::init() {
+	m_fOnNodeEvent = NULL;
+	m_fOnEdgeEvent = NULL;
+	m_fOnFaceEvent = NULL;
+	m_fOnElementEvent = NULL;
+}
+
+void HalfEdgeTetMesh::setOnNodeEventCallback(OnNodeEvent f) {
+	m_fOnNodeEvent = f;
+}
+
+void HalfEdgeTetMesh::setOnEdgeEventCallback(OnEdgeEvent f) {
+	m_fOnEdgeEvent = f;
+}
+
+void HalfEdgeTetMesh::setOnFaceEventCallback(OnFaceEvent f) {
+	m_fOnFaceEvent = f;
+}
+
+void HalfEdgeTetMesh::setOnElemEventCallback(OnElementEvent f) {
+	m_fOnElementEvent = f;
+}
+
 
 bool HalfEdgeTetMesh::setup(const vector<double>& vertices, const vector<U32>& elements) {
 	U32 ctVertices = vertices.size() / 3;
@@ -67,8 +118,7 @@ bool HalfEdgeTetMesh::setup(U32 ctVertices, const double* vertices, U32 ctElemen
 
 	//edgemask
 	const int edgeMaskPos[6][2] = { {1, 2}, {2, 3}, {3, 1}, {2, 0}, {0, 3}, {0, 1} };
-	const int edgeMaskNeg[6][2] = { {3, 2}, {2, 1}, {1, 3}, {3, 0}, {0, 2}, {1, 0} };
-
+	//const int edgeMaskNeg[6][2] = { {2, 1}, {3, 2}, {1, 3}, {0, 2}, {3, 0}, {1, 0} };
 
 	//add all edges and elements
 	std::map< pair<U32, U32>, HEDGE > mapHalfEdges;
@@ -235,14 +285,8 @@ bool HalfEdgeTetMesh::setup(U32 ctVertices, const double* vertices, U32 ctElemen
 
 			U32 from, to = INVALID_INDEX;
 			for(int e=0; e < 6; e++) {
-				if(m_vElements[i].posDet) {
-					from = m_vElements[i].nodes[ edgeMaskPos[e][0] ];
-					to = m_vElements[i].nodes[ edgeMaskPos[e][1] ];
-				}
-				else {
-					from = m_vElements[i].nodes[ edgeMaskNeg[e][0] ];
-					to = m_vElements[i].nodes[ edgeMaskNeg[e][1] ];
-				}
+				from = m_vElements[i].nodes[edgeMaskPos[e][0]];
+				to = m_vElements[i].nodes[edgeMaskPos[e][1]];
 
 				MAPHEDGEINDEXITER it = m_mapHalfEdgesIndex.find(std::make_pair(from, to));
 				if(it != m_mapHalfEdgesIndex.end())
@@ -303,15 +347,31 @@ void HalfEdgeTetMesh::printInfo() const {
 	printf("FACES #%u\n", (U32)m_vFaces.size());
 	for(U32 i=0; i < m_vFaces.size(); i++) {
 		HalfEdgeTetMesh::FACE face = m_vFaces[i];
-		printf("FACE %d, [%d, %d, %d]\n", i, face.halfedge[0], face.halfedge[1], face.halfedge[2]);
+
+		U32 vhandles[3];
+		vhandles[0] = vertex_from_hedge(face.halfedge[0]);
+		vhandles[1] = vertex_from_hedge(face.halfedge[1]);
+		vhandles[2] = vertex_from_hedge(face.halfedge[2]);
+
+		printf("FACE %d, Nodes [%d, %d, %d], HalfEdges [%d, %d, %d]\n", i,
+				vhandles[0], vhandles[1], vhandles[2],
+				face.halfedge[0], face.halfedge[1], face.halfedge[2]);
 	}
 
 	//print all elements
 	printf("ELEMS #%u\n", (U32)m_vElements.size());
 	for(U32 i=0; i < m_vElements.size(); i++) {
 		HalfEdgeTetMesh::ELEM elem = m_vElements[i];
-		printf("ELEM %d, NODE: [%u, %u, %u, %u]", i ,elem.nodes[0], elem.nodes[1], elem.nodes[2], elem.nodes[3]);
-		printf(" FACE: [%u, %u, %u, %u]\n", elem.faces[0], elem.faces[1], elem.faces[2], elem.faces[3]);
+		printf("ELEM %d, NODE: [%u, %u, %u, %u], ", i ,elem.nodes[0], elem.nodes[1], elem.nodes[2], elem.nodes[3]);
+		printf("FACE: [%u, %u, %u, %u], ", elem.faces[0], elem.faces[1], elem.faces[2], elem.faces[3]);
+
+		//print edges
+		for(int e=0; e<6; e++) {
+			printf("EDGE: %d, [%u, %u] ", e,
+					vertex_from_hedge(elem.halfedge[e]),
+					vertex_to_hedge(elem.halfedge[e]));
+		}
+		printf("\n");
 	}
 
 }
@@ -354,6 +414,9 @@ int HalfEdgeTetMesh::insert_element(const ELEM& e) {
 	}
 
 	m_vElements.push_back(e);
+	if(m_fOnElementEvent)
+		m_fOnElementEvent(e, m_vElements.size() - 1, teAdded);
+
 	return (int)(m_vElements.size() - 1);
 }
 
@@ -1090,18 +1153,17 @@ void HalfEdgeTetMesh::draw() {
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	glDisable(GL_LIGHTING);
 
-	vec3d colors[4] = {vec3d(1, 0, 0), vec3d(0, 1, 0), vec3d(0, 0, 1), vec3d(1, 1, 0)};
+	vec3d colors[4] = {vec3d(1, 0.3, 0), vec3d(0.3, 1, 0), vec3d(0, 0.3, 1), vec3d(1, 1, 0)};
 
 	//Draw filled faces
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-	//for(U32 i=0; i< countElements(); i++)
-	U32 i = 3;
+	for(U32 i=0; i< countElements(); i++)
+	//U32 i = countElements() >= 4 ? 3 : 0;
 	{
 		ELEM elem = const_elemAt(i);
-
+		glDisable(GL_CULL_FACE);
 		glColor3dv(colors[i % 4].cptr());
-
 		glBegin(GL_TRIANGLES);
 			for(U32 f=0; f<4; f++)
 			{
@@ -1118,67 +1180,33 @@ void HalfEdgeTetMesh::draw() {
 				glVertex3dv(p2.cptr());
 			}
 		glEnd();
+		glEnable(GL_CULL_FACE);
 	}
-
-	/*
-	glBegin(GL_POLYGON);
-	for(U32 i=0; i<m_vFaces.size(); i++) {
-		HalfEdgeTetMesh::FACE face = const_faceAt(i);
-		U32 he0 = face.halfedge[0];
-		U32 he1 = he0;
-		count = 0;
-
-		do {
-			hedge = halfedgeAt(he1);
-			p0 = const_nodeAt(hedge.from).pos;
-			glVertex3d(p0.x, p0.y, p0.z);
-
-			he1 = hedge.next;
-			count ++;
-		}
-		while(he0 != he1);
-	}
-	glEnd();
-	*/
 
 	//Draw outlined faces
-	glLineWidth(3.0f);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	glColor3f(0.0f, 0.0f, 0.0f);
-	glBegin(GL_TRIANGLES);
-		for(U32 i=0; i<m_vFaces.size(); i++) {
-			HalfEdgeTetMesh::FACE face = const_faceAt(i);
-			HalfEdgeTetMesh::HEDGE he0 = const_halfedgeAt(face.halfedge[0]);
-			HalfEdgeTetMesh::HEDGE he1 = const_halfedgeAt(face.halfedge[1]);
-			HalfEdgeTetMesh::HEDGE he2 = const_halfedgeAt(face.halfedge[2]);
-			vec3d p0 = const_nodeAt(he0.from).pos;
-			vec3d p1 = const_nodeAt(he1.from).pos;
-			vec3d p2 = const_nodeAt(he2.from).pos;
+	for(U32 i=0; i< countElements(); i++) {
+		ELEM elem = const_elemAt(i);
+		glLineWidth(3.0f);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		glColor3f(0.0f, 0.0f, 0.0f);
+		glBegin(GL_TRIANGLES);
+			for(U32 f=0; f<4; f++)
+			{
+				HalfEdgeTetMesh::FACE face = const_faceAt(elem.faces[f]);
+				HalfEdgeTetMesh::HEDGE he0 = const_halfedgeAt(face.halfedge[0]);
+				HalfEdgeTetMesh::HEDGE he1 = const_halfedgeAt(face.halfedge[1]);
+				HalfEdgeTetMesh::HEDGE he2 = const_halfedgeAt(face.halfedge[2]);
+				vec3d p0 = const_nodeAt(he0.from).pos;
+				vec3d p1 = const_nodeAt(he1.from).pos;
+				vec3d p2 = const_nodeAt(he2.from).pos;
 
-			glVertex3dv(p0.cptr());
-			glVertex3dv(p1.cptr());
-			glVertex3dv(p2.cptr());
-		}
-	glEnd();
-
-	/*
-	glBegin(GL_POLYGON);
-	for(U32 i=0; i<m_vFaces.size(); i++) {
-		HalfEdgeTetMesh::FACE face = const_faceAt(i);
-		U32 he0 = face.halfedge[0];
-		U32 he1 = he0;
-
-		do {
-			hedge = halfedgeAt(he1);
-			p0 = const_nodeAt(hedge.from).pos;
-			glVertex3d(p0.x, p0.y, p0.z);
-
-			he1 = hedge.next;
-		}
-		while(he0 != he1);
+				glVertex3dv(p0.cptr());
+				glVertex3dv(p1.cptr());
+				glVertex3dv(p2.cptr());
+			}
+		glEnd();
+		glEnable(GL_CULL_FACE);
 	}
-	glEnd();
-	*/
 
 	//Draw vertices
 	glPointSize(5.0f);
