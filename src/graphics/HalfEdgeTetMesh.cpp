@@ -1157,12 +1157,12 @@ void HalfEdgeTetMesh::draw() {
 
 	//Draw filled faces
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	glDisable(GL_CULL_FACE);
 
 	for(U32 i=0; i< countElements(); i++)
-	//U32 i = countElements() >= 4 ? 3 : 0;
+	//U32 i = countElements() >= 4 ? 2 : 0;
 	{
 		ELEM elem = const_elemAt(i);
-		glDisable(GL_CULL_FACE);
 		glColor3dv(colors[i % 4].cptr());
 		glBegin(GL_TRIANGLES);
 			for(U32 f=0; f<4; f++)
@@ -1180,12 +1180,16 @@ void HalfEdgeTetMesh::draw() {
 				glVertex3dv(p2.cptr());
 			}
 		glEnd();
-		glEnable(GL_CULL_FACE);
 	}
+	glEnable(GL_CULL_FACE);
+
 
 	//Draw outlined faces
+	glDisable(GL_CULL_FACE);
+
 	for(U32 i=0; i< countElements(); i++) {
 		ELEM elem = const_elemAt(i);
+
 		glLineWidth(3.0f);
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		glColor3f(0.0f, 0.0f, 0.0f);
@@ -1205,8 +1209,8 @@ void HalfEdgeTetMesh::draw() {
 				glVertex3dv(p2.cptr());
 			}
 		glEnd();
-		glEnable(GL_CULL_FACE);
 	}
+	glEnable(GL_CULL_FACE);
 
 	//Draw vertices
 	glPointSize(5.0f);

@@ -113,7 +113,7 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 	//using the lookup table generate new tet elements and add them to the mesh
 	//if 3 cut edges: cases 11, 22, 37, 56
 	if(cutEdgeCode == 11) {
-		const U32 lut_gentets[4][4] = {{2, 5, 6, 11}, {3, 7, 10, 4}, {3, 1, 4, 7}, {0, 1, 3, 10}};
+		const U32 lut_gentets[4][4] = {{2, 5, 6, 11}, {3, 7, 10, 4}, {3, 1, 4, 11}, {0, 1, 3, 10}};
 
 		//Remove the original element
 		m_lpHEMesh->remove_element(element);
