@@ -26,6 +26,11 @@ using namespace std;
 
 HalfEdgeTetMesh* g_lpTetMesh = NULL;
 TetSubdivider* g_lpSubdivider = NULL;
+U32 g_node = 3;
+
+//funcs
+void subdivide(int node);
+void handleElementEvent(HalfEdgeTetMesh::ELEM element, U32 handle, HalfEdgeTetMesh::TopologyEvent event);
 
 void draw() {
 	TheSceneGraph::Instance().draw();
@@ -151,10 +156,48 @@ void NormalKey(unsigned char key, int x, int y)
 	glutPostRedisplay();
 }
 
+void subdivide(int node) {
+
+	//remove it from scenegraph
+	TheSceneGraph::Instance().remove("tets");
+	SAFE_DELETE(g_lpSubdivider);
+	SAFE_DELETE(g_lpTetMesh);
+
+	//create
+	g_lpTetMesh = HalfEdgeTetMesh::CreateOneTet();
+	g_lpTetMesh->setOnElemEventCallback(handleElementEvent);
+	g_lpTetMesh->setName("tets");
+	TheSceneGraph::Instance().add(g_lpTetMesh);
+
+	g_lpSubdivider = new TetSubdivider(g_lpTetMesh);
+
+	//subdivide tet
+	double tEdges[6];
+	U8 cutEdgeCode, cutNodeCode;
+
+	g_lpSubdivider->generateCaseA(0, node, 0.4, cutEdgeCode, cutNodeCode, tEdges);
+	g_lpSubdivider->subdivide(0, cutEdgeCode, cutNodeCode, tEdges);
+}
+
 void SpecialKey(int key, int x, int y)
 {
 	switch(key)
 	{
+		case(GLUT_KEY_F1):
+		{
+			if(g_node > 0)
+				g_node --;
+			subdivide(g_node);
+			break;
+		}
+		case(GLUT_KEY_F2):
+		{
+			if(g_node < 3)
+				g_node ++;
+			subdivide(g_node);
+			break;
+		}
+
 		case(GLUT_KEY_F4):
 		{
 			//Set UIAxis
@@ -281,21 +324,9 @@ int main(int argc, char* argv[]) {
 	TheSceneGraph::Instance().addFloor(32, 32, 0.5f);
 	TheSceneGraph::Instance().addSceneBox(AABB(vec3f(-10, -10, -16), vec3f(10, 10, 16)));
 
-	//Create mesh
-	g_lpTetMesh = HalfEdgeTetMesh::CreateOneTet();
-	g_lpTetMesh->setOnElemEventCallback(handleElementEvent);
-	TheSceneGraph::Instance().add(g_lpTetMesh);
 
-
-	//subdivider
-	g_lpSubdivider = new TetSubdivider(g_lpTetMesh);
-
-	//subdivide tet
-	double tEdges[6];
-	U8 cutEdgeCode, cutNodeCode;
-
-	g_lpSubdivider->cutEdgesToSplitNode(0, 2, 0.4, cutEdgeCode, cutNodeCode, tEdges);
-	g_lpSubdivider->subdivide(0, cutEdgeCode, cutNodeCode, tEdges);
+	//call subdivide
+	subdivide(g_node);
 
 	glutMainLoop();
 

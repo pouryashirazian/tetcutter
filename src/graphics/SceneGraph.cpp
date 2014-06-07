@@ -49,6 +49,21 @@ void SceneGraph::add(SGNode *aNode) {
 		m_vSceneNodes.push_back(aNode);
 }
 
+void SceneGraph::remove(U32 index) {
+	m_vSceneNodes.erase(m_vSceneNodes.begin() + index);
+}
+
+bool SceneGraph::remove(const char* name) {
+	for (U32 i = 0; i < m_vSceneNodes.size(); i++) {
+		if (m_vSceneNodes[i]->name() == string(name)) {
+			m_vSceneNodes.erase(m_vSceneNodes.begin() + i);
+			return true;
+		}
+	}
+
+	return false;
+}
+
 void SceneGraph::addSceneBox(const AABB& box) {
 	SGBox* lpBox = new SGBox(box.lower(), box.upper());
 	lpBox->setName("scenebox");

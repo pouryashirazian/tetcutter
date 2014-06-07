@@ -12,15 +12,36 @@ using namespace PS;
 namespace PS {
 namespace FEM {
 
+//elements to be generated for case A
+U32 g_elementTableCaseA[4][16] = {
+		//Node 0: cutEdgeCode = 56, edges cut = 3, 4, 5
+		{0, 12, 10, 14, 3, 13, 11, 15, 3, 1, 15, 11, 1, 2, 3, 11},
+
+		//Node 1: cutEdgeCode = 37, edges cut = 0, 2, 5
+		{1, 4, 8, 15, 3, 9, 5, 14, 0, 3, 14, 5, 0, 2, 3, 5},
+
+		//Node 2: cutEdgeCode = 11, edges cut = 0, 1, 3
+		{2, 5, 6, 11, 3, 7, 10, 4, 3, 1, 4, 10, 0, 1, 3, 10},
+
+		//Node 3: cutEdgeCode = 22, edges cut = 1, 2, 4
+		{3, 13, 9, 7, 1, 8, 12, 6, 1, 2, 12, 6, 0, 1, 2, 12},
+};
+
+
 
 TetSubdivider::TetSubdivider(HalfEdgeTetMesh* pMesh) {
 	m_lpHEMesh = pMesh;
+
+	m_mapCutEdgeCodeToTableEntry[56] = 0;
+	m_mapCutEdgeCodeToTableEntry[37] = 1;
+	m_mapCutEdgeCodeToTableEntry[11] = 2;
+	m_mapCutEdgeCodeToTableEntry[22] = 3;
 }
 
 TetSubdivider::~TetSubdivider() {
 }
 
-int TetSubdivider::cutEdgesToSplitNode(U32 element, U8 node, double targetDist,
+int TetSubdivider::generateCaseA(U32 element, U8 node, double targetDist,
 									   U8& cutEdgeCode, U8& cutNodeCode, double (&tEdges)[6]) {
 
 	if(node >= 4)
@@ -80,7 +101,7 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 		vnodes[i] = one.nodes[i];
 
 	//Mask to map edges indices to new generated node indices
-	int mapEdgeToMiddleNodes[12] = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+	const int mapEdgeToMiddleNodes[12] = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 
 	if(ctCutEdges > 0) {
 
@@ -104,34 +125,33 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 	}
 
 
-
-	//int edgeMaskPos[6][2] = { {1, 2}, {2, 3}, {3, 1}, {2, 0}, {0, 3}, {0, 1} };
-	//int edgeMaskNeg[6][2] = { {3, 2}, {2, 1}, {1, 3}, {3, 0}, {0, 2}, {1, 0} };
-	//int faceMaskPos[4][3] = { {1, 2, 3}, {2, 0, 3}, {3, 0, 1}, {1, 0, 2} };
-	//int faceMaskNeg[4][3] = { {3, 2, 1}, {3, 0, 2}, {1, 0, 3}, {2, 0, 1} };
-
-	//using the lookup table generate new tet elements and add them to the mesh
-	//if 3 cut edges: cases 11, 22, 37, 56
-	if(cutEdgeCode == 11) {
-		const U32 lut_gentets[4][4] = {{2, 5, 6, 11}, {3, 7, 10, 4}, {3, 1, 4, 11}, {0, 1, 3, 10}};
-
+	//Case A: 3 cut edges. cutEdgeCodes = { 11, 22, 37, 56 }
+	if(ctCutEdges == 3) {
 		//Remove the original element
 		m_lpHEMesh->remove_element(element);
+
+		//find the local table entry to handle this case A
+		int entry = m_mapCutEdgeCodeToTableEntry[cutEdgeCode];
+
+		//report
+		LogInfoArg3("Detected case is type A: cutEdgeCode: %u, cutNodeCode: %u, entry: %u", cutEdgeCode, cutNodeCode, entry);
 
 		//generate new tets
 		for(int e = 0; e < 4; e++) {
 			U32 n[4];
 			for(int i = 0; i < 4; i++)
-				n[i] = vnodes[ lut_gentets[e][i] ];
+				n[i] = vnodes[ g_elementTableCaseA[entry][e * 4 + i] ];
 
 			m_lpHEMesh->insert_element(n);
 		}
 	}
+	else {
+		LogErrorArg3("This case is not handled yet! cutEdgeCode = %u, cutNodeCode = %u, ctCutEdges = %u",
+					 cutEdgeCode, cutNodeCode, ctCutEdges);
+	}
 
 
-	//if 4 cut edges
-
-	return 0;
+	return cutEdgeCode;
 }
 
 
