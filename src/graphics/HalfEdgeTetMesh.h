@@ -213,6 +213,13 @@ public:
 	double computeDeterminant(U32 idxNodes[4]) const;
 	static double ComputeElementDeterminant(const vec3d v[4]);
 
+	//Index control
+	inline bool isElemIndex(U32 i) const { return (i < m_vElements.size());}
+	inline bool isFaceIndex(U32 i) const { return (i < m_vFaces.size());}
+	inline bool isHalfEdgeIndex(U32 i) const { return (i < m_vHalfEdges.size());}
+	inline bool isEdgeIndex(U32 i) const { return (i < countEdges());}
+	inline bool isNodeIndex(U32 i) const { return (i < m_vNodes.size());}
+
 	//access
 	ELEM& elemAt(U32 i);
 	FACE& faceAt(U32 i);
@@ -269,6 +276,8 @@ public:
 	int getOutgoingHalfEdges(int idxNode, vector<U32>& outgoingHE) const;
 
 	//checking
+	void setElemToShow(U32 elem = INVALID_INDEX);
+	U32 getElemToShow() const {return m_elemToShow;}
 	bool checkMeshConnectivity() const;
 	bool checkMeshFaceDirections() const;
 
@@ -279,6 +288,7 @@ public:
 
 	//draw
 	void draw();
+	void drawElement(U32 i) const;
 
 private:
 	void init();
@@ -288,6 +298,8 @@ private:
 	U32 halfedge_handle(U32 from, U32 to);
 
 protected:
+	U32 m_elemToShow;
+
 	//topology events
 	OnNodeEvent m_fOnNodeEvent;
 	OnEdgeEvent m_fOnEdgeEvent;
@@ -313,13 +325,7 @@ protected:
 	//iterator for face index iter
 	typedef std::map< FaceKey, U32 >::iterator MAPFACEITER;
 
-	//Index control
-	inline bool isElemIndex(U32 i) const { return (i < m_vElements.size());}
-	inline bool isFaceIndex(U32 i) const { return (i < m_vFaces.size());}
-	inline bool isHalfEdgeIndex(U32 i) const { return (i < m_vHalfEdges.size());}
-	inline bool isEdgeIndex(U32 i) const { return (i < countEdges());}
-	inline bool isNodeIndex(U32 i) const { return (i < m_vNodes.size());}
-
+	//aabb
 	AABB computeAABB();
 };
 

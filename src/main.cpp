@@ -71,6 +71,28 @@ void NormalKey(unsigned char key, int x, int y)
 {
 	switch(key)
 	{
+	case('a'): {
+		if(!g_lpTetMesh) return;
+
+		U32 i = g_lpTetMesh->getElemToShow();
+		if(g_lpTetMesh->isElemIndex(i))
+			g_lpTetMesh->setElemToShow(--i);
+		else
+			g_lpTetMesh->setElemToShow(0);
+	}
+	break;
+
+	case('d'): {
+		if(!g_lpTetMesh) return;
+
+		U32 i = g_lpTetMesh->getElemToShow();
+		if(g_lpTetMesh->isElemIndex(i))
+			g_lpTetMesh->setElemToShow(++i);
+		else
+			g_lpTetMesh->setElemToShow(0);
+	}
+	break;
+
 	case('g'):{
 		TheGizmoManager::Instance().setType(gtTranslate);
 	}
@@ -262,15 +284,17 @@ int main(int argc, char* argv[]) {
 	//Create mesh
 	g_lpTetMesh = HalfEdgeTetMesh::CreateOneTet();
 	g_lpTetMesh->setOnElemEventCallback(handleElementEvent);
+	TheSceneGraph::Instance().add(g_lpTetMesh);
 
+
+	//subdivider
 	g_lpSubdivider = new TetSubdivider(g_lpTetMesh);
-	TheSceneGraph::Instance().add(g_lpSubdivider);
 
 	//subdivide tet
 	double tEdges[6];
 	U8 cutEdgeCode, cutNodeCode;
 
-	g_lpSubdivider->cutEdgesToSplitNode(0, 2, 0.3, cutEdgeCode, cutNodeCode, tEdges);
+	g_lpSubdivider->cutEdgesToSplitNode(0, 2, 0.4, cutEdgeCode, cutNodeCode, tEdges);
 	g_lpSubdivider->subdivide(0, cutEdgeCode, cutNodeCode, tEdges);
 
 	glutMainLoop();
