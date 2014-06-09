@@ -658,7 +658,7 @@ HalfEdgeTetMesh::EDGE HalfEdgeTetMesh::edgeAt(U32 i) const {
 }
 
 HalfEdgeTetMesh::NODE& HalfEdgeTetMesh::nodeAt(U32 i) {
-	assert(isElemIndex(i));
+	assert(isNodeIndex(i));
 	return m_vNodes[i];
 }
 

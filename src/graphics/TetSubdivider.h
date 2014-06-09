@@ -26,7 +26,7 @@ public:
 	void draw();
 
 	void setMesh(HalfEdgeTetMesh* pMesh) { m_lpHEMesh = pMesh;}
-	int subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double tEdges[6]);
+	int subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double tEdges[6], bool dosplit = true);
 
 	/*!
 	 * generates case A where a node in separated from the rest of the element. 3 edges are cut.
@@ -37,6 +37,18 @@ public:
 	 */
 	int generateCaseA(U32 element, U8 node, double targetDist,
 					  U8& cutEdgeCode, U8& cutNodeCode, double (&tEdges)[6]);
+
+	/*!
+	 * generates case B where an element is sliced into two sections by cutting its 4 edges.
+	 * There 3 different case that can produce this state
+	 * @element: tetrahedral element to be considered
+	 * @face: start face which can be 0, 1 or 2 (end face is 3)
+	 * @cutEdgeCode: output cutedge code
+	 * @cutNodeCode: output cutnode code
+	 * @tEdges: the distance over the edges where the cuts are happening
+	 */
+	int generateCaseB(U32 element, U8 enteringface, U8& cutEdgeCode,
+					  U8& cutNodeCode, double (&tEdges)[6]);
 
 
 	bool writeLookUpTable();

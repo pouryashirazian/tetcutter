@@ -46,6 +46,8 @@ int TetSubdivider::generateCaseA(U32 element, U8 node, double targetDist,
 
 	if(node >= 4)
 		return -1;
+	if(!m_lpHEMesh->isElemIndex(element))
+		return -1;
 
 	cutEdgeCode = 0;
 	cutNodeCode = 0;
@@ -73,7 +75,55 @@ int TetSubdivider::generateCaseA(U32 element, U8 node, double targetDist,
 
 }
 
-int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double tEdges[6]) {
+int TetSubdivider::generateCaseB(U32 element, U8 enteringface, U8& cutEdgeCode,
+					  U8& cutNodeCode, double (&tEdges)[6]) {
+
+	if(!m_lpHEMesh->isElemIndex(element))
+		return -1;
+	if(enteringface < 0 || enteringface > 2)
+		return -1;
+
+	cutEdgeCode = cutNodeCode = 0;
+	for(int i=0; i<6; i++)
+		tEdges[i] = 0.0;
+
+	U8 edges[4];
+	//face: entering edges --> exiting edges
+	//0: 1, 2 --> 3, 5
+	//1: 1, 4 --> 0, 5
+	//2: 2, 4 --> 0, 3
+	if(enteringface == 0) {
+		edges[0] = 1;
+		edges[1] = 2;
+		edges[2] = 3;
+		edges[3] = 5;
+	}
+	else if(enteringface == 1) {
+		//edges = {1, 4, 0, 5};
+		edges[0] = 1;
+		edges[1] = 4;
+		edges[2] = 0;
+		edges[3] = 5;
+	}
+	else if(enteringface == 2) {
+		//edges = {2, 4, 0, 3};
+		edges[0] = 2;
+		edges[1] = 4;
+		edges[2] = 0;
+		edges[3] = 3;
+	}
+
+
+	for(int i=0; i<4; i++) {
+		cutEdgeCode |= (1 << edges[i]);
+
+		tEdges[ edges[i] ] = 0.5;
+	}
+
+	return 1;
+}
+
+int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double tEdges[6], bool dosplit) {
 	//Here an element is subdivided to 4 sub elements depending on the codes
 	U8 ctCutEdges = 0;
 
@@ -110,8 +160,8 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 			bool isCut = ((cutEdgeCode & (1 << i)) != 0);
 
 			if(isCut) {
-
 				U32 idxNP0, idxNP1;
+
 				U32 idxEdgeToCut = m_lpHEMesh->edge_from_halfedge(one.halfedge[i]);
 				if(!m_lpHEMesh->cut_edge(idxEdgeToCut, tEdges[i], &idxNP0, &idxNP1)) {
 					LogErrorArg2("Unable to cut edge %d of element %d", i, element);
@@ -139,8 +189,25 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 		//generate new tets
 		for(int e = 0; e < 4; e++) {
 			U32 n[4];
+
 			for(int i = 0; i < 4; i++)
 				n[i] = vnodes[ g_elementTableCaseA[entry][e * 4 + i] ];
+
+
+			if(dosplit && e == 0) {
+				vec3d pos[4];
+				pos[0] = m_lpHEMesh->nodeAt(n[0]).pos;
+				pos[1] = m_lpHEMesh->nodeAt(n[1]).pos;
+				pos[2] = m_lpHEMesh->nodeAt(n[2]).pos;
+				pos[3] = m_lpHEMesh->nodeAt(n[3]).pos;
+
+				vec3d norm = (pos[0] - pos[1]).normalized();
+				double dist = (pos[0] - pos[1]).length() * 0.4;
+
+				for(int k = 0; k<4; k++)
+					m_lpHEMesh->nodeAt( n[ k ]).pos = pos[k] + norm * dist;
+
+			}
 
 			m_lpHEMesh->insert_element(n);
 		}
