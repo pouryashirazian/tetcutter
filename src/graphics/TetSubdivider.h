@@ -13,8 +13,11 @@
 namespace PS {
 namespace FEM {
 
+//case A
 extern U32 g_elementTableCaseA[4][16];
 
+//case B
+extern U32 g_elementTableCaseB[3][6][4];
 
 
 

@@ -26,10 +26,11 @@ using namespace std;
 
 HalfEdgeTetMesh* g_lpTetMesh = NULL;
 TetSubdivider* g_lpSubdivider = NULL;
-U32 g_node = 3;
+U32 g_current = 3;
+U32 g_cutMode = 0;
 
 //funcs
-void subdivide(int node);
+void subdivide(int current);
 void handleElementEvent(HalfEdgeTetMesh::ELEM element, U32 handle, HalfEdgeTetMesh::TopologyEvent event);
 
 void draw() {
@@ -156,7 +157,7 @@ void NormalKey(unsigned char key, int x, int y)
 	glutPostRedisplay();
 }
 
-void subdivide(int node) {
+void subdivide(int current) {
 
 	//remove it from scenegraph
 	TheSceneGraph::Instance().remove("tets");
@@ -173,9 +174,12 @@ void subdivide(int node) {
 
 	//subdivide tet
 	double tEdges[6];
-	U8 cutEdgeCode, cutNodeCode;
+	U8 cutEdgeCode, cutNodeCode = 0;
 
-	g_lpSubdivider->generateCaseA(0, node, 0.4, cutEdgeCode, cutNodeCode, tEdges);
+	if(g_cutMode == 0)
+		g_lpSubdivider->generateCaseA(0, current, 0.4, cutEdgeCode, cutNodeCode, tEdges);
+	else if(g_cutMode == 1)
+		g_lpSubdivider->generateCaseB(0, current, cutEdgeCode, cutNodeCode, tEdges);
 	g_lpSubdivider->subdivide(0, cutEdgeCode, cutNodeCode, tEdges);
 }
 
@@ -185,16 +189,16 @@ void SpecialKey(int key, int x, int y)
 	{
 		case(GLUT_KEY_F1):
 		{
-			if(g_node > 0)
-				g_node --;
-			subdivide(g_node);
+			if(g_current > 0)
+				g_current --;
+			subdivide(g_current);
 			break;
 		}
 		case(GLUT_KEY_F2):
 		{
-			if(g_node < 3)
-				g_node ++;
-			subdivide(g_node);
+			if(g_current < 3)
+				g_current ++;
+			subdivide(g_current);
 			break;
 		}
 
@@ -235,6 +239,14 @@ void SpecialKey(int key, int x, int y)
 			break;
 		}
 
+		case(GLUT_KEY_F7): {
+			g_cutMode = (g_cutMode + 1) % 2;
+			g_current = 0;
+
+			LogInfoArg2("cut mode = %d, current selection = %d", g_cutMode, g_current);
+			subdivide(g_current);
+			break;
+		}
 	}
 
 	//Modifier
@@ -326,7 +338,7 @@ int main(int argc, char* argv[]) {
 
 
 	//call subdivide
-	subdivide(g_node);
+	subdivide(g_current);
 
 	glutMainLoop();
 

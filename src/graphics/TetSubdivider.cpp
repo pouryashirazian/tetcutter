@@ -6,8 +6,10 @@
  */
 #include "TetSubdivider.h"
 #include "base/Logger.h"
+#include <set>
 
 using namespace PS;
+using namespace std;
 
 namespace PS {
 namespace FEM {
@@ -27,15 +29,34 @@ U32 g_elementTableCaseA[4][16] = {
 		{3, 13, 9, 7, 1, 8, 12, 6, 1, 2, 12, 6, 0, 1, 2, 12},
 };
 
+//elements to be generated for case A
+U32 g_elementTableCaseB[3][6][4] = {
+		//case 0,
+		{ {2, 6, 11, 1}, {8, 11, 15, 1}, {6, 11, 8, 1}, {3, 7, 9, 10}, {3, 10, 0, 9}, {0, 14, 10, 9}},
+
+		//case 1,
+		{ {3, 7, 13, 15}, {15, 1, 4, 7}, {15, 1, 3, 7}, {0, 12, 14, 6}, {2, 5, 6, 14}, {0, 14, 6, 2}},
+
+		//case 2,
+		{ {4, 10, 12, 0}, {0, 8, 12, 4}, {0, 8, 1, 4}, {3, 9, 13, 5}, {2, 5, 11, 3}, {3, 9, 5, 11}}
+};
+
 
 
 TetSubdivider::TetSubdivider(HalfEdgeTetMesh* pMesh) {
 	m_lpHEMesh = pMesh;
 
+
+	//case A
 	m_mapCutEdgeCodeToTableEntry[56] = 0;
 	m_mapCutEdgeCodeToTableEntry[37] = 1;
 	m_mapCutEdgeCodeToTableEntry[11] = 2;
 	m_mapCutEdgeCodeToTableEntry[22] = 3;
+
+	//case B
+	m_mapCutEdgeCodeToTableEntry[46] = 0;
+	m_mapCutEdgeCodeToTableEntry[51] = 1;
+	m_mapCutEdgeCodeToTableEntry[29] = 2;
 }
 
 TetSubdivider::~TetSubdivider() {
@@ -186,7 +207,7 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 		//report
 		LogInfoArg3("Detected case is type A: cutEdgeCode: %u, cutNodeCode: %u, entry: %u", cutEdgeCode, cutNodeCode, entry);
 
-		//generate new tets
+		//generate 4 new tets
 		for(int e = 0; e < 4; e++) {
 			U32 n[4];
 
@@ -196,13 +217,17 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 
 			if(dosplit && e == 0) {
 				vec3d pos[4];
-				pos[0] = m_lpHEMesh->nodeAt(n[0]).pos;
-				pos[1] = m_lpHEMesh->nodeAt(n[1]).pos;
-				pos[2] = m_lpHEMesh->nodeAt(n[2]).pos;
-				pos[3] = m_lpHEMesh->nodeAt(n[3]).pos;
 
-				vec3d norm = (pos[0] - pos[1]).normalized();
-				double dist = (pos[0] - pos[1]).length() * 0.4;
+				for(int k=0; k < 4; k++)
+					pos[k] = m_lpHEMesh->nodeAt(n[k]).pos;
+
+				vec3d centroid = pos[0];
+				for(int k=1; k < 4; k++)
+					centroid = centroid + pos[k];
+				centroid = centroid * 0.25;
+
+				vec3d norm = (pos[0] - centroid).normalized();
+				double dist = (pos[0] - centroid).length() * 0.3;
 
 				for(int k = 0; k<4; k++)
 					m_lpHEMesh->nodeAt( n[ k ]).pos = pos[k] + norm * dist;
@@ -210,6 +235,88 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 			}
 
 			m_lpHEMesh->insert_element(n);
+		}
+	}
+	//Case B: 4 cut edges. cutEdgeCodes = { 46, 51, 29 }
+	else if(ctCutEdges == 4) {
+		//Remove the original element
+		m_lpHEMesh->remove_element(element);
+
+		//find the local table entry to handle this case B
+		int entry = m_mapCutEdgeCodeToTableEntry[cutEdgeCode];
+
+		//report
+		LogInfoArg3("Detected case is type B: cutEdgeCode: %u, cutNodeCode: %u, entry: %u", cutEdgeCode, cutNodeCode, entry);
+
+		//generate 6 new tets
+		for(int e = 0; e < 6; e++) {
+
+			U32 n[4];
+			for(int i = 0; i < 4; i++)
+				n[i] = vnodes[ g_elementTableCaseB[entry][e][i] ];
+
+			m_lpHEMesh->insert_element(n);
+		}
+
+		if(dosplit) {
+			set<U32> splittedNodes1;
+			set<U32> splittedNodes2;
+			vec3d cent1, cent2;
+
+			//insert nodes for the first 3 tets
+			for(int e=0; e<3; e++) {
+				for(int i = 0; i < 4; i++) {
+					splittedNodes1.insert( vnodes[ g_elementTableCaseB[entry][e][i] ]);
+				}
+			}
+
+			//insert nodes for the last 3 tets
+			for(int e=3; e<6; e++) {
+				for(int i = 0; i < 4; i++) {
+					splittedNodes2.insert( vnodes[ g_elementTableCaseB[entry][e][i] ]);
+				}
+			}
+
+			if(splittedNodes1.size() != 6 || splittedNodes2.size() != 6) {
+				LogError("Splitted nodes are not sets of 6!");
+				return -1;
+			}
+
+			vec3d arrP1[6];
+			int i = 0;
+			for(set<U32>::const_iterator it = splittedNodes1.begin(); it != splittedNodes1.end(); it++) {
+				arrP1[i] = m_lpHEMesh->nodeAt( *it ).pos;
+				if(i == 0)
+					cent1 = arrP1[i];
+				else
+					cent1 = cent1 + arrP1[i];
+				i++;
+			}
+			cent1 = cent1 * (1.0 / 6.0);
+
+			//second set
+			vec3d arrP2[6];
+			i = 0;
+			for(set<U32>::const_iterator it = splittedNodes2.begin(); it != splittedNodes2.end(); it++) {
+				arrP2[i] = m_lpHEMesh->nodeAt( *it ).pos;
+				if(i == 0)
+					cent2 = arrP2[i];
+				else
+					cent2 = cent2 + arrP2[i];
+				i++;
+			}
+			cent2 = cent2 * (1.0 / 6.0);
+
+			//compute norm and dist
+			vec3d norm = (cent1 - cent2).normalized();
+			double dist = (cent1 - cent2).length() * 0.3;
+
+			//splitted nodes
+			i = 0;
+			for(set<U32>::const_iterator it = splittedNodes1.begin(); it != splittedNodes1.end(); it++) {
+				m_lpHEMesh->nodeAt( *it ).pos = arrP1[i] + norm * dist;
+				i++;
+			}
 		}
 	}
 	else {
