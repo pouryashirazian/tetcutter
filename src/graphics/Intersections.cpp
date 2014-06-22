@@ -39,7 +39,7 @@ int IntersectRayTriangleF(const vec3f& ro, const vec3f& rd, const vec3f p[3], ve
 	return 1;
 }
 
-int IntersectSegmentTriangleF(const vec3f& s0, const vec3f& s1, const vec3f p[3], vec3f& uvw, vec3f& xyz) {
+int IntersectSegmentTriangleF(const vec3f& s0, const vec3f& s1, const vec3f p[3], float& t, vec3f& uvw, vec3f& xyz) {
 
 	vec3f delta = s1 - s0;
 	vec3f rd = delta.normalized();
@@ -53,6 +53,9 @@ int IntersectSegmentTriangleF(const vec3f& s0, const vec3f& s1, const vec3f p[3]
 
 			//Cartesian Coordinate
 			xyz = s0 + rd * uvt.z;
+
+			t = uvt.z;
+
 			return res;
 		}
 	}
@@ -62,7 +65,7 @@ int IntersectSegmentTriangleF(const vec3f& s0, const vec3f& s1, const vec3f p[3]
 
 
 
-int IntersectSegmentTriangle(const vec3d& s0, const vec3d& s1, const vec3d p[3], vec3d& uvw, vec3d& xyz) {
+int IntersectSegmentTriangle(const vec3d& s0, const vec3d& s1, const vec3d p[3], double& t, vec3d& uvw, vec3d& xyz) {
 
 	vec3d delta = s1 - s0;
 	vec3d rd = delta.normalized();
@@ -76,6 +79,9 @@ int IntersectSegmentTriangle(const vec3d& s0, const vec3d& s1, const vec3d p[3],
 
 			//Cartesian Coordinate
 			xyz = s0 + rd * uvt.z;
+
+			t = uvt.z;
+
 			return res;
 		}
 	}

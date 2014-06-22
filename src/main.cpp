@@ -14,7 +14,7 @@
 #include "graphics/Gizmo.h"
 #include "graphics/AppScreen.h"
 #include "graphics/selectgl.h"
-#include "graphics/TetSubdivider.h"
+#include "deformable/TetSubdivider.h"
 
 using namespace PS;
 using namespace PS::SG;
