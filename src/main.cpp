@@ -258,6 +258,8 @@ void SpecialKey(int key, int x, int y)
 
 
 void closeApp() {
+
+
 	SAFE_DELETE(g_lpScalpel);
 	SAFE_DELETE(g_lpSubdivider);
 	SAFE_DELETE(g_lpTetMesh);
@@ -343,11 +345,14 @@ int main(int argc, char* argv[]) {
 	g_lpTetMesh->setName("tets");
 	TheSceneGraph::Instance().add(g_lpTetMesh);
 
+
+
+	//TheGizmoManager::Instance().transform()->translate(vec3f(0,3,0));
+
 	//g_lpSubdivider = new TetSubdivider(g_lpTetMesh);
 	g_lpScalpel = new AvatarScalpel(g_lpTetMesh);
 	TheGizmoManager::Instance().setNode(g_lpScalpel);
 	TheSceneGraph::Instance().add(g_lpScalpel);
-
 
 	//call subdivide
 	//subdivide(g_current);

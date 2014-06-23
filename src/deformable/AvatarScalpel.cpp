@@ -138,14 +138,14 @@ void AvatarScalpel::mousePress(int button, int state, int x, int y) {
 	if(state == 0) {
 		if(m_lpTissue) {
 			m_isToolActive = true;
-			TheSceneGraph::Instance().headers()->updateHeaderLine("avatar", "avatar: start cutting");
+			TheSceneGraph::Instance().headers()->updateHeaderLine("scalpel", "scalpel: start cutting");
 		}
 	}
 	else {
 		//Up = Stop
 		if (m_lpTissue) {
 			m_isToolActive = false;
-			TheSceneGraph::Instance().headers()->updateHeaderLine("avatar", "avatar: end cutting");
+			TheSceneGraph::Instance().headers()->updateHeaderLine("scalpel", "scalpel: end cutting");
 		}
 	}
 }
