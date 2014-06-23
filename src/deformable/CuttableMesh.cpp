@@ -18,6 +18,21 @@ using namespace PS::INTERSECTIONS;
 namespace PS {
 
 ///////////////////////////////////////////////////////////////////////////
+CuttableMesh::CuttableMesh(const HalfEdgeTetMesh& hemesh) {
+	resetTransform();
+	if(TheShaderManager::Instance().has("phong")) {
+        m_spEffect = SmartPtrSGEffect(new SGEffect(TheShaderManager::Instance().get("phong")));
+    }
+
+	//HEMesh
+	m_lpHEMesh = new HalfEdgeTetMesh(hemesh);
+	m_lpSubD = new TetSubdivider(m_lpHEMesh);
+
+	m_aabb = m_lpHEMesh->aabb();
+	m_ctCompletedCuts = 0;
+
+}
+
 CuttableMesh::CuttableMesh(const vector<double>& vertices, const vector<U32>& elements)
  /* : TetMesh(vertices.size() / 3, const_cast<double *>(&vertices[0]), elements.size() / 4, (int*) &elements[0]) */ {
 
@@ -426,13 +441,13 @@ CuttableMesh* CuttableMesh::CreateOneTetra() {
 
 	vec3d points[4];
 	points[0] = vec3d(-1, 0, 0);
-	points[1] = vec3d(1, 0, 0);
-	points[2] = vec3d(0, 0, -1);
-	points[3] = vec3d(0, 1, 0);
+	points[1] = vec3d(0, 0, -2);
+	points[2] = vec3d(1, 0, 0);
+	points[3] = vec3d(0, 2, -1);
 
-	vertices.resize(4*3);
-	for(int i=0; i<4 ; i++) {
-		points[i].store(&vertices[i*3]);
+	vertices.resize(4 * 3);
+	for (int i = 0; i < 4; i++) {
+		points[i].store(&vertices[i * 3]);
 	}
 
 	elements.resize(4);

@@ -59,6 +59,7 @@ public:
 	};
 
 public:
+	CuttableMesh(const HalfEdgeTetMesh& hemesh);
 	CuttableMesh(const vector<double>& vertices, const vector<U32>& elements);
 	CuttableMesh(int ctVertices, double* vertices, int ctElements, int* elements);
 	virtual ~CuttableMesh();

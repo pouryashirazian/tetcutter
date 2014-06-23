@@ -32,6 +32,37 @@ HalfEdgeTetMesh::HalfEdgeTetMesh(U32 ctVertices, double* vertices, U32 ctElement
 	setup(ctVertices, vertices, ctElements, elements);
 }
 
+HalfEdgeTetMesh::HalfEdgeTetMesh(const HalfEdgeTetMesh& other) {
+	init();
+
+	vector<double> vertices;
+	vector<U32> elements;
+
+	U32 ctNodes = other.countNodes();
+	U32 ctElements = other.countElements();
+	vertices.resize(ctNodes * 3);
+	elements.resize(ctElements * 4);
+
+	//nodes
+	for(U32 i=0; i<ctNodes; i++) {
+		HalfEdgeTetMesh::NODE node = other.const_nodeAt(i);
+		vertices[i * 3 + 0] = node.pos.x;
+		vertices[i * 3 + 1] = node.pos.y;
+		vertices[i * 3 + 2] = node.pos.z;
+	}
+
+	//elements
+	for(U32 i=0; i<ctElements; i++) {
+		HalfEdgeTetMesh::ELEM elem = other.const_elemAt(i);
+		elements[i * 4 + 0] = elem.nodes[0];
+		elements[i * 4 + 1] = elem.nodes[1];
+		elements[i * 4 + 2] = elem.nodes[2];
+		elements[i * 4 + 3] = elem.nodes[3];
+	}
+
+	setup(vertices, elements);
+}
+
 HalfEdgeTetMesh::HalfEdgeTetMesh(const vector<double>& vertices, const vector<U32>& elements) {
 	init();
 	setup(vertices, elements);

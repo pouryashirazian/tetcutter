@@ -14,6 +14,7 @@
 #include "graphics/Gizmo.h"
 #include "graphics/AppScreen.h"
 #include "graphics/selectgl.h"
+#include "deformable/AvatarScalpel.h"
 #include "deformable/TetSubdivider.h"
 
 using namespace PS;
@@ -23,8 +24,8 @@ using namespace PS::FILESTRINGUTILS;
 
 using namespace std;
 
-
-HalfEdgeTetMesh* g_lpTetMesh = NULL;
+AvatarScalpel* g_lpScalpel = NULL;
+CuttableMesh* g_lpTetMesh = NULL;
 TetSubdivider* g_lpSubdivider = NULL;
 U32 g_current = 3;
 U32 g_cutMode = 0;
@@ -80,22 +81,22 @@ void NormalKey(unsigned char key, int x, int y)
 	case('a'): {
 		if(!g_lpTetMesh) return;
 
-		U32 i = g_lpTetMesh->getElemToShow();
-		if(g_lpTetMesh->isElemIndex(i))
-			g_lpTetMesh->setElemToShow(--i);
-		else
-			g_lpTetMesh->setElemToShow(0);
+//		U32 i = g_lpTetMesh->getElemToShow();
+//		if(g_lpTetMesh->isElemIndex(i))
+//			g_lpTetMesh->setElemToShow(--i);
+//		else
+//			g_lpTetMesh->setElemToShow(0);
 	}
 	break;
 
 	case('d'): {
 		if(!g_lpTetMesh) return;
 
-		U32 i = g_lpTetMesh->getElemToShow();
-		if(g_lpTetMesh->isElemIndex(i))
-			g_lpTetMesh->setElemToShow(++i);
-		else
-			g_lpTetMesh->setElemToShow(0);
+//		U32 i = g_lpTetMesh->getElemToShow();
+//		if(g_lpTetMesh->isElemIndex(i))
+//			g_lpTetMesh->setElemToShow(++i);
+//		else
+//			g_lpTetMesh->setElemToShow(0);
 	}
 	break;
 
@@ -165,12 +166,12 @@ void subdivide(int current) {
 	SAFE_DELETE(g_lpTetMesh);
 
 	//create
-	g_lpTetMesh = HalfEdgeTetMesh::CreateOneTet();
-	g_lpTetMesh->setOnElemEventCallback(handleElementEvent);
-	g_lpTetMesh->setName("tets");
-	TheSceneGraph::Instance().add(g_lpTetMesh);
-
-	g_lpSubdivider = new TetSubdivider(g_lpTetMesh);
+//	g_lpTetMesh = HalfEdgeTetMesh::CreateOneTet();
+//	g_lpTetMesh->setOnElemEventCallback(handleElementEvent);
+//	g_lpTetMesh->setName("tets");
+//	TheSceneGraph::Instance().add(g_lpTetMesh);
+//
+//	g_lpSubdivider = new TetSubdivider(g_lpTetMesh);
 
 	//subdivide tet
 	double tEdges[6];
@@ -257,6 +258,7 @@ void SpecialKey(int key, int x, int y)
 
 
 void closeApp() {
+	SAFE_DELETE(g_lpScalpel);
 	SAFE_DELETE(g_lpSubdivider);
 	SAFE_DELETE(g_lpTetMesh);
 }
@@ -336,9 +338,19 @@ int main(int argc, char* argv[]) {
 	TheSceneGraph::Instance().addFloor(32, 32, 0.5f);
 	TheSceneGraph::Instance().addSceneBox(AABB(vec3f(-10, -10, -16), vec3f(10, 10, 16)));
 
+	//create a scalpel
+	g_lpTetMesh = CuttableMesh::CreateOneTetra();
+	g_lpTetMesh->setName("tets");
+	TheSceneGraph::Instance().add(g_lpTetMesh);
+
+	//g_lpSubdivider = new TetSubdivider(g_lpTetMesh);
+	g_lpScalpel = new AvatarScalpel(g_lpTetMesh);
+	TheGizmoManager::Instance().setNode(g_lpScalpel);
+	TheSceneGraph::Instance().add(g_lpScalpel);
+
 
 	//call subdivide
-	subdivide(g_current);
+	//subdivide(g_current);
 
 	glutMainLoop();
 
