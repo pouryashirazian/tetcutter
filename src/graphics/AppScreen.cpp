@@ -84,7 +84,7 @@ void def_resize(int w, int h) {
 }
 
 
-void def_initGL() {
+void def_initgl() {
 	//Setup Shading Environment
 	static const GLfloat lightColor[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
 	static const GLfloat lightPos[4] = { 0.0f, 9.0f, 0.0f, 1.0f };
