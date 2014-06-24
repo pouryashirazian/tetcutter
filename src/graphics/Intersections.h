@@ -238,8 +238,8 @@ int IntersectBoxTriangle(T boxcenter[3], T boxhalfsize[3], T triverts[3][3]) {
 /*!
  * Segment triangle intersection
  */
-int IntersectSegmentTriangle(const vec3d& s0, const vec3d& s1, const vec3d p[3], vec3d& uvw, vec3d& xyz);
-int IntersectSegmentTriangleF(const vec3f& s0, const vec3f& s1, const vec3f p[3], vec3f& uvw, vec3f& xyz);
+int IntersectSegmentTriangle(const vec3d& s0, const vec3d& s1, const vec3d p[3], double& t, vec3d& uvw, vec3d& xyz);
+int IntersectSegmentTriangleF(const vec3f& s0, const vec3f& s1, const vec3f p[3], float& t, vec3f& uvw, vec3f& xyz);
 
 /*!
  * Ray triangle intersection

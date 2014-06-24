@@ -191,6 +191,7 @@ public:
 	typedef std::function<void(HalfEdgeTetMesh::ELEM, U32 handle, TopologyEvent event)> OnElementEvent;
 public:
 	HalfEdgeTetMesh();
+	HalfEdgeTetMesh(const HalfEdgeTetMesh& other);
 	HalfEdgeTetMesh(U32 ctVertices, double* vertices, U32 ctElements, U32* elements);
 	HalfEdgeTetMesh(const vector<double>& vertices, const vector<U32>& elements);
 	virtual ~HalfEdgeTetMesh();

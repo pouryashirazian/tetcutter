@@ -252,8 +252,8 @@ namespace PS {
         
         void GizmoRotate::setup() {
             Geometry x, y, z;
-            x.init(3, 4, 2, ftLineStrip);
-            x.addCircle2D(64, DEFAULT_AXIS_LENGTH);
+            x.init(3, 4, 2, ftTriangles);
+            x.addCircle3D(64, DEFAULT_AXIS_LENGTH);
             
             y = x;
             quat q1;
@@ -274,10 +274,14 @@ namespace PS {
             m_x.setup(x);
             m_y.setup(y);
             m_z.setup(z);
+//            m_x.setWireFrameMode(true);
+//            m_y.setWireFrameMode(true);
+//            m_z.setWireFrameMode(true);
             
             Geometry total = x + y + z;
             GLMeshBuffer::setup(total);
-            
+//            GLMeshBuffer::setWireFrameMode(true);
+
             if(TheShaderManager::Instance().has("gizmo")) {
                 m_spEffect = SmartPtrSGEffect(new GizmoEffect(TheShaderManager::Instance().get("gizmo")));
             }
@@ -287,8 +291,9 @@ namespace PS {
         
         void GizmoRotate::draw() {
             glClear(GL_DEPTH_BUFFER_BIT);
+            glDisable(GL_CULL_FACE);
 
-           // m_spTransform->bind();
+            m_spTransform->bind();
             GizmoEffect* peff = dynamic_cast<GizmoEffect*>(m_spEffect.get());
             peff->bind();
             
@@ -305,7 +310,9 @@ namespace PS {
             m_z.drawNoEffect();
             
             m_spEffect->unbind();
-            //m_spTransform->unbind();
+            m_spTransform->unbind();
+
+            glEnable(GL_CULL_FACE);
         }
         
         int GizmoRotate::intersect(const PS::MATH::Ray &r) {
