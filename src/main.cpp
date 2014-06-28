@@ -26,12 +26,13 @@ using namespace std;
 
 AvatarScalpel* g_lpScalpel = NULL;
 CuttableMesh* g_lpTetMesh = NULL;
-TetSubdivider* g_lpSubdivider = NULL;
+
 U32 g_current = 3;
-U32 g_cutMode = 0;
+U32 g_cutCase = 0;
 
 //funcs
-void subdivide(int current);
+void resetMesh();
+void runTestSubDivide(int current);
 void handleElementEvent(HalfEdgeTetMesh::ELEM element, U32 handle, HalfEdgeTetMesh::TopologyEvent event);
 
 void draw() {
@@ -158,31 +159,6 @@ void NormalKey(unsigned char key, int x, int y)
 	glutPostRedisplay();
 }
 
-void subdivide(int current) {
-
-	//remove it from scenegraph
-	TheSceneGraph::Instance().remove("tets");
-	SAFE_DELETE(g_lpSubdivider);
-	SAFE_DELETE(g_lpTetMesh);
-
-	//create
-//	g_lpTetMesh = HalfEdgeTetMesh::CreateOneTet();
-//	g_lpTetMesh->setOnElemEventCallback(handleElementEvent);
-//	g_lpTetMesh->setName("tets");
-//	TheSceneGraph::Instance().add(g_lpTetMesh);
-//
-//	g_lpSubdivider = new TetSubdivider(g_lpTetMesh);
-
-	//subdivide tet
-	double tEdges[6];
-	U8 cutEdgeCode, cutNodeCode = 0;
-
-	if(g_cutMode == 0)
-		g_lpSubdivider->generateCaseA(0, current, 0.4, cutEdgeCode, cutNodeCode, tEdges);
-	else if(g_cutMode == 1)
-		g_lpSubdivider->generateCaseB(0, current, cutEdgeCode, cutNodeCode, tEdges);
-	g_lpSubdivider->subdivide(0, cutEdgeCode, cutNodeCode, tEdges);
-}
 
 void SpecialKey(int key, int x, int y)
 {
@@ -192,16 +168,27 @@ void SpecialKey(int key, int x, int y)
 		{
 			if(g_current > 0)
 				g_current --;
-			subdivide(g_current);
+			runTestSubDivide(g_current);
 			break;
 		}
 		case(GLUT_KEY_F2):
 		{
 			if(g_current < 3)
 				g_current ++;
-			subdivide(g_current);
+			runTestSubDivide(g_current);
 			break;
 		}
+
+		case(GLUT_KEY_F3): {
+			g_cutCase = (g_cutCase + 1) % 2;
+			g_current = 0;
+			char cutcase[6] = {'A', 'B', 'C', 'D', 'E'};
+
+			LogInfoArg2("cut case = %c, current mesh node/face = %c", cutcase[g_cutCase], g_current);
+			runTestSubDivide(g_current);
+			break;
+		}
+
 
 		case(GLUT_KEY_F4):
 		{
@@ -240,14 +227,28 @@ void SpecialKey(int key, int x, int y)
 			break;
 		}
 
-		case(GLUT_KEY_F7): {
-			g_cutMode = (g_cutMode + 1) % 2;
-			g_current = 0;
-
-			LogInfoArg2("cut mode = %d, current selection = %d", g_cutMode, g_current);
-			subdivide(g_current);
+		case(GLUT_KEY_F8): {
+			bool flag = !TheSceneGraph::Instance().get("floor")->isVisible();
+			TheSceneGraph::Instance().get("floor")->setVisible(flag);
+			LogInfoArg1("Set floor to %s", flag ? "show" : "hide");
 			break;
 		}
+
+		case(GLUT_KEY_F9): {
+			bool flag = !TheGizmoManager::Instance().isVisible();
+			TheGizmoManager::Instance().setVisible(flag);
+			LogInfoArg1("Set gizmos to %s", flag ? "show" : "hide");
+
+			break;
+		}
+
+		case(GLUT_KEY_F10): {
+			resetMesh();
+			LogInfo("reset mesh");
+
+			break;
+		}
+
 	}
 
 	//Modifier
@@ -258,10 +259,7 @@ void SpecialKey(int key, int x, int y)
 
 
 void closeApp() {
-
-
 	SAFE_DELETE(g_lpScalpel);
-	SAFE_DELETE(g_lpSubdivider);
 	SAFE_DELETE(g_lpTetMesh);
 }
 
@@ -273,8 +271,36 @@ void handleElementEvent(HalfEdgeTetMesh::ELEM element, U32 handle, HalfEdgeTetMe
 		LogInfoArg1("A new element added at index: %d", handle);
 }
 
+void resetMesh() {
+	//remove it from scenegraph
+	TheSceneGraph::Instance().remove("tets");
+	SAFE_DELETE(g_lpTetMesh);
+
+	//create a scalpel
+	g_lpTetMesh = CuttableMesh::CreateOneTetra();
+	g_lpTetMesh->setName("tets");
+	TheSceneGraph::Instance().add(g_lpTetMesh);
+
+	g_lpScalpel->setTissue(g_lpTetMesh);
+}
+
+void runTestSubDivide(int current) {
+	resetMesh();
+
+	//subdivide tet
+	double tEdges[6];
+	U8 cutEdgeCode, cutNodeCode = 0;
+
+	if(g_cutCase == 0)
+		g_lpTetMesh->getSubD()->generateCaseA(0, current, 0.4, cutEdgeCode, cutNodeCode, tEdges);
+	else if(g_cutCase == 1)
+		g_lpTetMesh->getSubD()->generateCaseB(0, current, cutEdgeCode, cutNodeCode, tEdges);
+
+	g_lpTetMesh->getSubD()->subdivide(0, cutEdgeCode, cutNodeCode, tEdges);
+}
+
 int main(int argc, char* argv[]) {
-	cout << "Cutting tets" << endl; // prints !!!Hello World!!!
+	cout << "Cutting tets" << endl;
 
 	//Initialize app
 	glutInit(&argc, argv);
@@ -306,22 +332,16 @@ int main(int argc, char* argv[]) {
 	TheSceneGraph::Instance().addFloor(32, 32, 0.5f);
 	TheSceneGraph::Instance().addSceneBox(AABB(vec3f(-10, -10, -16), vec3f(10, 10, 16)));
 
-	//create a scalpel
-	g_lpTetMesh = CuttableMesh::CreateOneTetra();
-	g_lpTetMesh->setName("tets");
-	TheSceneGraph::Instance().add(g_lpTetMesh);
-
-
-
-	//TheGizmoManager::Instance().transform()->translate(vec3f(0,3,0));
-
-	//g_lpSubdivider = new TetSubdivider(g_lpTetMesh);
-	g_lpScalpel = new AvatarScalpel(g_lpTetMesh);
-	TheGizmoManager::Instance().setNode(g_lpScalpel);
+	//Create Scalpel
+	g_lpScalpel = new AvatarScalpel();
 	TheSceneGraph::Instance().add(g_lpScalpel);
 
-	//call subdivide
-	//subdivide(g_current);
+	//Focus gizmo manager on the scalpel
+	TheGizmoManager::Instance().setNode(g_lpScalpel);
+	TheGizmoManager::Instance().setPos(vec3f(0,3,0));
+
+	//reset cuttable mesh
+	resetMesh();
 
 	glutMainLoop();
 

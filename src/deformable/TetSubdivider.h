@@ -38,7 +38,7 @@ public:
 	 * @targetDist: distance to the node [0-1]
 	 * @cutEdgeCode: output cutedge code
 	 */
-	int generateCaseA(U32 element, U8 node, double targetDist,
+	int generateCaseA(U32 element, U8 node, double targetDistPercentage,
 					  U8& cutEdgeCode, U8& cutNodeCode, double (&tEdges)[6]);
 
 	/*!

@@ -20,15 +20,18 @@ using namespace PS::SG;
  */
 class AvatarScalpel : public SGMesh, public IGizmoListener {
 public:
+	AvatarScalpel();
 	AvatarScalpel(CuttableMesh* tissue);
 	virtual ~AvatarScalpel();
 
+	void init();
 	void draw();
 
 
 	//Tool
 	bool isActive() const {return m_isToolActive;}
 	void clearCutContext();
+	void setTissue(CuttableMesh* tissue);
 
 
 	//From Gizmo Manager

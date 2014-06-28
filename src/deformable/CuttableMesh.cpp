@@ -151,7 +151,7 @@ void CuttableMesh::draw() {
 
 			//Draw nodes
 			glPointSize(7.0f);
-			glColor3f(0, 1, 0);
+			glColor3f(0.0, 0.0, 1.0);
 			glBegin(GL_POINTS);
 			//Draw cutedges crossing
 			for(CUTEDGEITER it = m_mapCutEdges.begin(); it != m_mapCutEdges.end(); ++it) {
@@ -213,6 +213,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 		U32 hei = m_lpHEMesh->halfedge_from_edge(i, 0);
 		HalfEdgeTetMesh::HEDGE he = m_lpHEMesh->const_halfedgeAt(hei);
 
+
 		ss0 = m_lpHEMesh->const_nodeAt(he.from).pos;
 		ss1 = m_lpHEMesh->const_nodeAt(he.to).pos;
 
@@ -229,6 +230,10 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 			ce.idxE0 = he.from;
 			ce.idxE1 = he.to;
 			ce.idxEdge = i;
+
+			//test
+			vec3d temp = ce.e0 + (ce.e1 - ce.e0).normalized() * ce.t;
+			assert( (ce.pos - temp).length() < EPSILON);
 
 			m_mapCutEdges[ce.idxEdge] = ce;
 		}

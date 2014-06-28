@@ -823,11 +823,8 @@ bool HalfEdgeTetMesh::split_edge(int idxEdge, double t) {
 
 
 
-bool HalfEdgeTetMesh::cut_edge(int idxEdge, double t, U32* poutIndexNP0, U32* poutIndexNP1) {
+bool HalfEdgeTetMesh::cut_edge(int idxEdge, double distance, U32* poutIndexNP0, U32* poutIndexNP1) {
 	if(!isEdgeIndex(idxEdge))
-		return false;
-
-	if(t < 0.0 || t > 1.0)
 		return false;
 
 	//Find halfedge indices from edge index
@@ -845,8 +842,8 @@ bool HalfEdgeTetMesh::cut_edge(int idxEdge, double t, U32* poutIndexNP0, U32* po
 
 	//add two new point
 	NODE np0;
-	np0.pos = n0.pos + (n1.pos - n0.pos) * t;
-	np0.restpos = n0.restpos + (n1.restpos - n0.restpos) * t;
+	np0.pos = n0.pos + (n1.pos - n0.pos).normalized() * distance;
+	np0.restpos = n0.restpos + (n1.restpos - n0.restpos).normalized() * distance;
 	np0.outHE = idxHE1;
 	m_vNodes.push_back(np0);
 	U32 idxNP0 = m_vNodes.size() - 1;

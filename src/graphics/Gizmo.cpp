@@ -429,6 +429,10 @@ namespace PS {
             glutPostRedisplay();
         }
         
+        void GizmoManager::setPos(const vec3f& pos) {
+        	m_pos = pos;
+        }
+
         void GizmoManager::mousePress(int button, int state, int x, int y) {
             ArcBallCamera::MouseButton b = (ArcBallCamera::MouseButton)button;
             m_buttonState = (ArcBallCamera::ButtonState)state;

@@ -88,6 +88,9 @@ public:
 	int findClosestVertex(const vec3d& query, double& dist, vec3d& outP) const;
 	int countCompletedCuts() const {return m_ctCompletedCuts;}
 
+	//Access to subdivider
+	TetSubdivider* getSubD() const { return m_lpSubD;}
+
 	//create a tetrahedra
 	static CuttableMesh* CreateOneTetra();
 

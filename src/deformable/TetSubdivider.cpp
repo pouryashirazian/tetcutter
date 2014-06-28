@@ -62,11 +62,14 @@ TetSubdivider::TetSubdivider(HalfEdgeTetMesh* pMesh) {
 TetSubdivider::~TetSubdivider() {
 }
 
-int TetSubdivider::generateCaseA(U32 element, U8 node, double targetDist,
+int TetSubdivider::generateCaseA(U32 element, U8 node, double targetDistPercentage,
 									   U8& cutEdgeCode, U8& cutNodeCode, double (&tEdges)[6]) {
 
 	if(node >= 4)
 		return -1;
+	if(targetDistPercentage < 0.0 || targetDistPercentage > 1.0)
+		return -1;
+
 	if(!m_lpHEMesh->isElemIndex(element))
 		return -1;
 
@@ -83,10 +86,12 @@ int TetSubdivider::generateCaseA(U32 element, U8 node, double targetDist,
 		if(edge.from == node || edge.to == node) {
 			cutEdgeCode |= (1 << i);
 
+			double dist = vec3d::distance(m_lpHEMesh->nodeAt(edge.from).pos, m_lpHEMesh->nodeAt(edge.to).pos);
+
 			if(edge.from == node)
-				tEdges[i] = targetDist;
+				tEdges[i] = targetDistPercentage * dist;
 			else
-				tEdges[i] = 1.0 - targetDist;
+				tEdges[i] = (1.0 - targetDistPercentage) * dist;
 
 			res ++;
 		}
@@ -138,7 +143,7 @@ int TetSubdivider::generateCaseB(U32 element, U8 enteringface, U8& cutEdgeCode,
 	for(int i=0; i<4; i++) {
 		cutEdgeCode |= (1 << edges[i]);
 
-		tEdges[ edges[i] ] = 0.5;
+		tEdges[ edges[i] ] = 0.8;
 	}
 
 	return 1;
@@ -185,7 +190,8 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 
 				U32 idxEdgeToCut = m_lpHEMesh->edge_from_halfedge(one.halfedge[i]);
 				if(!m_lpHEMesh->cut_edge(idxEdgeToCut, tEdges[i], &idxNP0, &idxNP1)) {
-					LogErrorArg2("Unable to cut edge %d of element %d", i, element);
+					LogErrorArg3("Unable to cut edge %d of element %d, edgecutpoint t = %.3f.", i, element, tEdges[i]);
+					return -1;
 				}
 
 				//generated nodes

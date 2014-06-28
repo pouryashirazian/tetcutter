@@ -140,6 +140,7 @@ public:
     void setAxis(const Ray& r);
     void setAxis(GizmoAxis axis);
 	void setType(GizmoType gtype);
+	void setPos(const vec3f& pos);
     
 	//Return current Gizmo Type
 	GizmoInterface* current() const {return m_lpGizmoCurrent;}

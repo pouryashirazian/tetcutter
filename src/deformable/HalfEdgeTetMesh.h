@@ -268,7 +268,7 @@ public:
 	/*!
 	 * cuts an edge completely. Two new nodes are created at the point of cut with no hedges between them.
 	 */
-	bool cut_edge(int idxEdge, double t, U32* poutIndexNP0 = NULL, U32* poutIndexNP1 = NULL);
+	bool cut_edge(int idxEdge, double distance, U32* poutIndexNP0 = NULL, U32* poutIndexNP1 = NULL);
 
 
 	//algorithmic functions useful for many computational geometry projects
