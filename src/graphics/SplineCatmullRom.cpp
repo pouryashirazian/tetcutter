@@ -273,7 +273,7 @@ bool SplineCatmullRom::getLocalSpline(float t, float& local_t, int indices[4]) c
 }
 
 
-vec3f SplineCatmullRom::tangent(float t)
+vec3f SplineCatmullRom::tangent(float t) const
 {
 	vec3f v;
 	int indices[4];
@@ -288,7 +288,7 @@ vec3f SplineCatmullRom::tangent(float t)
 	return tangent(local, m_vCtrlPoints[indices[0]], m_vCtrlPoints[indices[1]], m_vCtrlPoints[indices[2]], m_vCtrlPoints[indices[3]]);
 }
 
-vec3f SplineCatmullRom::tangent(float t, vec3f& p0, vec3f& p1, vec3f& p2, vec3f& p3)
+vec3f SplineCatmullRom::tangent(float t, const vec3f& p0, const vec3f& p1, const vec3f& p2, const vec3f& p3) const
 {
 	//p(u) = U^T * M * B
 	//U^ = [3u^2 2u 1 0]
@@ -308,7 +308,7 @@ vec3f SplineCatmullRom::tangent(float t, vec3f& p0, vec3f& p1, vec3f& p2, vec3f&
 	return (p0 * b0 + p1 * b1 + p2 * b2 + p3 * b3);
 }
 
-vec3f SplineCatmullRom::acceleration(float t)
+vec3f SplineCatmullRom::acceleration(float t) const
 {
 	vec3f v;
 	int indices[4];
@@ -323,7 +323,7 @@ vec3f SplineCatmullRom::acceleration(float t)
 	return acceleration(local, m_vCtrlPoints[indices[0]], m_vCtrlPoints[indices[1]], m_vCtrlPoints[indices[2]], m_vCtrlPoints[indices[3]]);
 }
 
-vec3f SplineCatmullRom::acceleration(float t, vec3f& p0, vec3f& p1, vec3f& p2, vec3f& p3)
+vec3f SplineCatmullRom::acceleration(float t, const vec3f& p0, const vec3f& p1, const vec3f& p2, const vec3f& p3) const
 {
 	//p(u) = U^T * M * B
 	//U^^ = [6^u 2 0 0]
@@ -358,8 +358,11 @@ vec3f SplineCatmullRom::position(float t)
 	return position(local, m_vCtrlPoints[indices[0]], m_vCtrlPoints[indices[1]], m_vCtrlPoints[indices[2]], m_vCtrlPoints[indices[3]]);
 }
 
+float SplineCatmullRom::length(float t) {
+	return arcLengthByParam(t);
+}
 
-vec3f SplineCatmullRom::position(float t, vec3f& p0, vec3f& p1, vec3f& p2, vec3f& p3)
+vec3f SplineCatmullRom::position(float t, const vec3f& p0, const vec3f& p1, const vec3f& p2, const vec3f& p3) const
 {
 	//p(u) = U^T * M * B
 	//U = [u^3 u^2 u^1 1]

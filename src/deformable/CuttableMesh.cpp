@@ -8,11 +8,10 @@
 #include "CuttableMesh.h"
 #include "graphics/selectgl.h"
 #include "graphics/Intersections.h"
-//#include "vegafem/include/vec3d.h"
+#include "deformable/test_HalfEdgeTetMesh.h"
 #include <map>
 
 using namespace std;
-//using namespace OpenMesh;
 using namespace PS::INTERSECTIONS;
 
 namespace PS {
@@ -327,6 +326,8 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 		}
 	}
 
+	//Perform all tests
+	TestHalfEdgeTestMesh::tst_all(m_lpHEMesh);
 
 	//recompute AABB
 	m_aabb = m_lpHEMesh->computeAABB();

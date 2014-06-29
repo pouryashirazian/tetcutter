@@ -5,14 +5,16 @@
 #include <istream>
 #include "base/Vec.h"
 #include "graphics/SGMesh.h"
+#include "graphics/ProfileCurve.h"
 
 #define MIN_CTRL_POINTS_COUNT 4
 
 using namespace std;
 using namespace PS::MATH;
+using namespace PS::MODEL;
 
 
-class SplineCatmullRom : public SGNode
+class SplineCatmullRom : public IProfileCurve, public SGNode
 {
 
 public:
@@ -61,12 +63,14 @@ public:
 
 
 	//Get Position Tangent and Acceleration
-	vec3f position(float t);
-	vec3f position(float t, vec3f& p0, vec3f& p1, vec3f& p2, vec3f& p3);
-	vec3f tangent(float t);
-	vec3f tangent(float t, vec3f& p0, vec3f& p1, vec3f& p2, vec3f& p3);
-	vec3f acceleration(float t);
-	vec3f acceleration(float t, vec3f& p0, vec3f& p1, vec3f& p2, vec3f& p3);
+	vec3f position(float t) override;
+	float length(float t) override;
+
+	vec3f position(float t, const vec3f& p0, const vec3f& p1, const vec3f& p2, const vec3f& p3) const;
+	vec3f tangent(float t) const;
+	vec3f tangent(float t, const vec3f& p0, const vec3f& p1, const vec3f& p2, const vec3f& p3) const;
+	vec3f acceleration(float t) const;
+	vec3f acceleration(float t, const vec3f& p0, const vec3f& p1, const vec3f& p2, const vec3f& p3) const;
 	float arcLength() const;
 
 
