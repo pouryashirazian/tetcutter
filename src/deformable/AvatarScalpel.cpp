@@ -184,10 +184,6 @@ void AvatarScalpel::onTranslate(const vec3f& delta, const vec3f& pos) {
 		return;
 	}
 
-	//consts
-	const double minSweptLength = 0.4;
-	const U32 maxNodes = 1024;
-
 	//edges
 	vec3f e0 = m_spTransform->forward().map(m_edgeref0);
 	vec3f e1 = m_spTransform->forward().map(m_edgeref1);
@@ -213,7 +209,7 @@ void AvatarScalpel::onTranslate(const vec3f& delta, const vec3f& pos) {
 			prevDir = dir;
 		}
 
-		if(maxAngle > 60) {
+		if(maxAngle > MAX_SCALPEL_TRAJECTORY_ANGLE) {
 			m_vCuttingPathEdge0.resize(0);
 			m_vCuttingPathEdge1.resize(0);
 			m_isSweptQuadValid = false;
@@ -241,9 +237,9 @@ void AvatarScalpel::onTranslate(const vec3f& delta, const vec3f& pos) {
 
 
 	//delete last if overflow buffer
-	if (m_vCuttingPathEdge0.size() > maxNodes)
+	if (m_vCuttingPathEdge0.size() > MAX_SCALPEL_TRAJECTORY_NODES)
 		m_vCuttingPathEdge0.erase(m_vCuttingPathEdge0.begin());
-	if (m_vCuttingPathEdge1.size() > maxNodes)
+	if (m_vCuttingPathEdge1.size() > MAX_SCALPEL_TRAJECTORY_NODES)
 		m_vCuttingPathEdge1.erase(m_vCuttingPathEdge1.begin());
 
 	//int res = m_lpTissue->cut(m_vCuttingPathEdge0, m_vCuttingPathEdge1, m_sweptQuad, false);

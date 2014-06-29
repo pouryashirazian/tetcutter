@@ -163,9 +163,6 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 	for(int i=0; i < 4; i++)
 		ctCutNodes += ((cutNodeCode & (1 << i)) != 0);
 
-	printf("Number of cutEdges: %d, cutNodes: %d \n", ctCutEdges, ctCutNodes);
-
-
 	//fill the array of virtual nodes
 	U32 vnodes[16];
 	for(int i=0; i<16; i++)
@@ -325,9 +322,23 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 			}
 		}
 	}
+
+	//Case X: 2 cut edges and 1 cut node
+//	else if(ctCutEdges == 2 && ctCutNodes == 1) {
+//
+//	}
+//	case Y
+//	else if(ctCutEdges == 1 && ctCutNodes == 2) {
+//
+//	}
+//	case Z
+//	else if(ctCutEdges == 0 && ctCutNodes == 3) {
+//
+//	}
+
 	else {
-		LogErrorArg3("This case is not handled yet! cutEdgeCode = %u, cutNodeCode = %u, ctCutEdges = %u",
-					 cutEdgeCode, cutNodeCode, ctCutEdges);
+		LogErrorArg3("This case is not handled yet! cutEdgeCode = %u, ctCutEdges = %u, ctCutNodes = %u",
+					 cutEdgeCode, ctCutEdges, ctCutNodes);
 	}
 
 

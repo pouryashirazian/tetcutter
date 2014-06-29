@@ -291,6 +291,9 @@ public:
 	void draw();
 	void drawElement(U32 i) const;
 
+	//aabb
+	AABB computeAABB();
+
 private:
 	void init();
 	inline int insertHEdgeIndexToMap(U32 from, U32 to, U32 idxHE);
@@ -326,8 +329,6 @@ protected:
 	//iterator for face index iter
 	typedef std::map< FaceKey, U32 >::iterator MAPFACEITER;
 
-	//aabb
-	AABB computeAABB();
 };
 
 }

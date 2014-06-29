@@ -1187,21 +1187,22 @@ void HalfEdgeTetMesh::draw() {
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	glDisable(GL_LIGHTING);
 
-	vec3d colors[6] = {vec3d(1, 0.3, 0), vec3d(0.3, 1, 0), vec3d(0, 0.3, 1),
-					   vec3d(1, 1, 0), vec3d(0.5, 0.5, 0.5), vec3d(0, 1, 1)};
+	const U8 ctColors = 7;
+	vec3d colors[ctColors] = {vec3d(0.5, 0.5, 0.5), vec3d(1, 0.3, 0), vec3d(0.3, 1, 0), vec3d(0, 0.3, 1),
+					   	   	   vec3d(1, 1, 0), vec3d(0.5, 0.5, 0.5), vec3d(0, 1, 1)};
 
 	//Draw filled faces
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glDisable(GL_CULL_FACE);
 	if(isElemIndex(m_elemToShow))
 	{
-		glColor3dv(colors[m_elemToShow % 6].cptr());
+		glColor3dv(colors[m_elemToShow % ctColors].cptr());
 		drawElement(m_elemToShow);
 	}
 	else {
 		for(U32 i=0; i< countElements(); i++)
 		{
-			glColor3dv(colors[i % 6].cptr());
+			glColor3dv(colors[i % ctColors].cptr());
 			drawElement(i);
 		}
 	}

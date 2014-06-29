@@ -15,6 +15,9 @@
 using namespace PS;
 using namespace PS::SG;
 
+#define MAX_SCALPEL_TRAJECTORY_ANGLE  60.0
+#define MAX_SCALPEL_TRAJECTORY_NODES 1024
+
 /*!
  * Synopsis: Haptics Avatar guide
  */
@@ -37,6 +40,8 @@ public:
 	//From Gizmo Manager
 	void mousePress(int button, int state, int x, int y);
 	void onTranslate(const vec3f& delta, const vec3f& pos);
+
+public:
 
 protected:
 	AABB m_aabbCurrent;
