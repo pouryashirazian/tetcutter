@@ -9,6 +9,7 @@
 #include "graphics/selectgl.h"
 #include "graphics/Intersections.h"
 #include "deformable/test_HalfEdgeTetMesh.h"
+#include "base/Logger.h"
 #include <map>
 
 using namespace std;
@@ -58,6 +59,13 @@ void CuttableMesh::setup(int ctVertices, double* vertices, int ctElements, int* 
 
 	//HEMesh
 	m_lpHEMesh = new HalfEdgeTetMesh(ctVertices, vertices, ctElements, (U32*)elements);
+
+	//Perform all tests
+	LogInfo("Begin testing the halfedge mesh");
+	TestHalfEdgeTestMesh::tst_all(m_lpHEMesh);
+	LogInfo("Test completed");
+
+	//
 	m_lpSubD = new TetSubdivider(m_lpHEMesh);
 
 	m_aabb = m_lpHEMesh->aabb();
@@ -317,6 +325,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	//	int faceMaskPos[4][3] = { {1, 2, 3}, {2, 0, 3}, {3, 0, 1}, {1, 0, 2} };
 	//	int faceMaskNeg[4][3] = { {3, 2, 1}, {3, 0, 2}, {1, 0, 3}, {2, 0, 1} };
 
+	//Now that cutedgecodes and cutnodecodes are computed then subdivide the element
 	for(U32 i=0; i < vCutElements.size(); i++) {
 		if(vCutEdgeCodes[i] != 0 || vCutNodeCodes[i] != 0) {
 			printf("elem %d, CutEdgeCode: %d, CutNodeCode: %d\n", i, vCutEdgeCodes[i], vCutNodeCodes[i]);

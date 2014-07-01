@@ -106,6 +106,12 @@ void NormalKey(unsigned char key, int x, int y)
 	}
 	break;
 
+	case('h'):{
+		LogInfo("Home scalpel");
+		TheGizmoManager::Instance().setPos(vec3f(0, 3, 0));
+	}
+	break;
+
 	case('s'):{
 		TheGizmoManager::Instance().setType(gtScale);
 		break;

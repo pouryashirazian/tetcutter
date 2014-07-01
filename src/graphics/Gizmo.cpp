@@ -68,6 +68,8 @@ namespace PS {
         	int res = this->intersect(r);
             if(res > 0)
                 this->setAxis((GizmoAxis)(res-1));
+            else
+            	this->setAxis(axisFree);
 
             //Set selected
             this->setSelected(res > 0);

@@ -364,16 +364,18 @@ void HalfEdgeTetMesh::printInfo() const {
 	for(U32 i=0; i < m_vNodes.size(); i++) {
 		HalfEdgeTetMesh::NODE n = m_vNodes[i];
 
-		printf("NODE outgoing edge: %d, pos: [%.3f, %.3f, %.3f]\n", n.outHE, n.pos.x, n.pos.y, n.pos.z);
+		printf("NODE %u, outgoing edge: %d, pos: [%.3f, %.3f, %.3f]\n", i, n.outHE, n.pos.x, n.pos.y, n.pos.z);
 	}
+	printf("\n");
 
 	//print all edges
 	printf("HALFEDGES #%u\n", (U32)m_vHalfEdges.size());
 	for(U32 i=0; i < m_vHalfEdges.size(); i++) {
 		HalfEdgeTetMesh::HEDGE e = m_vHalfEdges[i];
 
-		printf("HEDGE %d, from: %d, to %d, next: %d, prev: %d, opposite: %d, face: %d\n", i, e.from, e.to, e.next, e.prev, e.opposite, e.face);
+		printf("HEDGE %u, from: %d, to %d, next: %d, prev: %d, opposite: %d, face: %d\n", i, e.from, e.to, e.next, e.prev, e.opposite, e.face);
 	}
+	printf("\n");
 
 	//print all face
 	printf("FACES #%u\n", (U32)m_vFaces.size());
@@ -385,10 +387,11 @@ void HalfEdgeTetMesh::printInfo() const {
 		vhandles[1] = vertex_from_hedge(face.halfedge[1]);
 		vhandles[2] = vertex_from_hedge(face.halfedge[2]);
 
-		printf("FACE %d, Nodes [%d, %d, %d], HalfEdges [%d, %d, %d]\n", i,
+		printf("FACE %u, Nodes [%d, %d, %d], HalfEdges [%d, %d, %d]\n", i,
 				vhandles[0], vhandles[1], vhandles[2],
 				face.halfedge[0], face.halfedge[1], face.halfedge[2]);
 	}
+	printf("\n");
 
 	//print all elements
 	printf("ELEMS #%u\n", (U32)m_vElements.size());
@@ -398,13 +401,15 @@ void HalfEdgeTetMesh::printInfo() const {
 		printf("FACE: [%u, %u, %u, %u], ", elem.faces[0], elem.faces[1], elem.faces[2], elem.faces[3]);
 
 		//print edges
+		printf("HalfEdges: [");
 		for(int e=0; e<6; e++) {
-			printf("EDGE: %d, [%u, %u] ", e,
-					vertex_from_hedge(elem.halfedge[e]),
-					vertex_to_hedge(elem.halfedge[e]));
+			if(e < 5)
+				printf("%u, ", elem.halfedge[e]);
+			else
+				printf("%u]\n", elem.halfedge[e]);
 		}
-		printf("\n");
 	}
+	printf("\n");
 
 }
 
