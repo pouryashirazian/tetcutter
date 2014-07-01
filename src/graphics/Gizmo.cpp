@@ -456,6 +456,12 @@ namespace PS {
         	if(m_buttonState != ArcBallCamera::bsDown)
         		return;
 
+        	//handle the case where the gizmo is not visible and we try to move
+        	if(!isVisible() && m_gizmoType != gtTranslate) {
+        		LogInfo("Reset the gizmo to translate mode since it became invisible");
+        		setType(gtTranslate);
+        	}
+
         	string strAxis;
         	vec3f gizmoAxis[4] = {vec3f(1,0,0), vec3f(0,1,0), vec3f(0,0,1), vec3f(1,1,1)};
         	Ray r1 = TheSceneGraph::Instance().screenToWorldRay(m_pressedPos.x, m_pressedPos.y);
