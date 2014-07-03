@@ -202,6 +202,22 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 		return -1;
 	}
 
+	//map cutcase to alphabet
+	map<TetSubdivider::CUTCASE, char> mapCutCases;
+	mapCutCases[cutA] = 'A';
+	mapCutCases[cutB] = 'B';
+	mapCutCases[cutC] = 'C';
+	mapCutCases[cutD] = 'D';
+	mapCutCases[cutE] = 'E';
+	mapCutCases[cutX] = 'X';
+	mapCutCases[cutY] = 'Y';
+	mapCutCases[cutZ] = 'Z';
+	mapCutCases[cutUnknown] = 'U';
+
+	//report
+	LogInfoArg3("Begin cutting. Cut type %c: cutEdgeCode: %u, cutNodeCode: %u", mapCutCases[cutcase], cutEdgeCode, cutNodeCode);
+
+
 	//fill the array of virtual nodes
 	U32 vnodes[16];
 	for(int i=0; i<16; i++)
@@ -246,8 +262,6 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 		//find the local table entry to handle this case A
 		int entry = m_mapCutEdgeCodeToTableEntry[cutEdgeCode];
 
-		//report
-		LogInfoArg3("Detected case is type A: cutEdgeCode: %u, cutNodeCode: %u, entry: %u", cutEdgeCode, cutNodeCode, entry);
 
 		//generate 4 new tets
 		for(int e = 0; e < 4; e++) {
@@ -286,9 +300,6 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 
 		//find the local table entry to handle this case B
 		int entry = m_mapCutEdgeCodeToTableEntry[cutEdgeCode];
-
-		//report
-		LogInfoArg3("Detected case is type B: cutEdgeCode: %u, cutNodeCode: %u, entry: %u", cutEdgeCode, cutNodeCode, entry);
 
 		//generate 6 new tets
 		for(int e = 0; e < 6; e++) {
@@ -375,13 +386,8 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 //
 //	}
 
-	else {
-		LogErrorArg3("This case is not handled yet! cutEdgeCode = %u, ctCutEdges = %u, ctCutNodes = %u",
-					 cutEdgeCode, ctCutEdges, ctCutNodes);
-	}
 
-
-	return cutEdgeCode;
+	return 1;
 }
 
 

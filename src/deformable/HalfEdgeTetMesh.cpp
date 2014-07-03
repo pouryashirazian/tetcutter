@@ -286,10 +286,7 @@ bool HalfEdgeTetMesh::setup(U32 ctVertices, const double* vertices, U32 ctElemen
 			}
 
 			//Resolve unique faces
-			//printf("Face order before: %d, %d, %d\n", fv[0], fv[1], fv[2]);
-			FaceKey::order_lo2hi(fv[0], fv[1], fv[2]);
-			//printf("Face order after: %d, %d, %d\n", fv[0], fv[1], fv[2]);
-			FaceKey key(fv, m_vHalfEdges.size());
+			FaceKey key(fv[0], fv[1], fv[2]);
 			MAPFACEITER fit = m_mapFaces.find(key);
 
 			//if face not found then add it
@@ -472,7 +469,7 @@ int HalfEdgeTetMesh::insert_element(U32 nodes[4]) {
 
 	//edge mask
 	const int edgeMaskPos[6][2] = { {1, 2}, {2, 3}, {3, 1}, {2, 0}, {0, 3}, {0, 1} };
-	const int edgeMaskNeg[6][2] = { {3, 2}, {2, 1}, {1, 3}, {3, 0}, {0, 2}, {1, 0} };
+	//const int edgeMaskNeg[6][2] = { {3, 2}, {2, 1}, {1, 3}, {3, 0}, {0, 2}, {1, 0} };
 
 	//maps for half edges
 	std::map< pair<U32, U32>, HEDGE > mapHalfEdges;
@@ -601,10 +598,7 @@ int HalfEdgeTetMesh::insert_element(U32 nodes[4]) {
 		}
 
 		//Resolve unique faces
-		//printf("Face order before: %d, %d, %d\n", fv[0], fv[1], fv[2]);
-		FaceKey::order_lo2hi(fv[0], fv[1], fv[2]);
-		//printf("Face order after: %d, %d, %d\n", fv[0], fv[1], fv[2]);
-		FaceKey key(fv, m_vHalfEdges.size());
+		FaceKey key(fv[0], fv[1], fv[2]);
 		MAPFACEITER fit = m_mapFaces.find(key);
 
 		//if face not found then add it
@@ -632,13 +626,13 @@ int HalfEdgeTetMesh::insert_element(U32 nodes[4]) {
 
 		U32 from, to = INVALID_INDEX;
 		for (int e = 0; e < 6; e++) {
-			if (elem.posDet) {
+			//if (elem.posDet) {
 				from = elem.nodes[edgeMaskPos[e][0]];
 				to = elem.nodes[edgeMaskPos[e][1]];
-			} else {
-				from = elem.nodes[edgeMaskNeg[e][0]];
-				to = elem.nodes[edgeMaskNeg[e][1]];
-			}
+//			} else {
+//				from = elem.nodes[edgeMaskNeg[e][0]];
+//				to = elem.nodes[edgeMaskNeg[e][1]];
+//			}
 
 			MAPHEDGEINDEXITER it = m_mapHalfEdgesIndex.find(std::make_pair(from, to));
 			if (it != m_mapHalfEdgesIndex.end())
@@ -662,14 +656,15 @@ int HalfEdgeTetMesh::insert_element(U32 nodes[4]) {
 
 
 	int res = insert_element(elem);
-
-	printInfo();
-
 	return res;
 }
 
 void HalfEdgeTetMesh::remove_element(U32 i) {
+
+	//remove the element itself
 	m_vElements.erase(m_vElements.begin() + i);
+
+	//if the faces of the element are not being used they should be removed as well
 }
 
 HalfEdgeTetMesh::ELEM& HalfEdgeTetMesh::elemAt(U32 i) {
@@ -1216,13 +1211,11 @@ void HalfEdgeTetMesh::draw() {
 
 	//Draw outlined faces
 	glDisable(GL_CULL_FACE);
+	glLineWidth(3.0f);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glColor3f(0.0f, 0.0f, 0.0f);
 
 	for(U32 i=0; i< countElements(); i++) {
-		ELEM elem = const_elemAt(i);
-
-		glLineWidth(3.0f);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		glColor3f(0.0f, 0.0f, 0.0f);
 		drawElement(i);
 	}
 	glEnable(GL_CULL_FACE);

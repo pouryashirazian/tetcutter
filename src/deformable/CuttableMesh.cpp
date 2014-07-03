@@ -326,14 +326,21 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	//	int faceMaskNeg[4][3] = { {3, 2, 1}, {3, 0, 2}, {1, 0, 3}, {2, 0, 1} };
 
 	//Now that cutedgecodes and cutnodecodes are computed then subdivide the element
+	LogInfoArg1("BEGIN CUTTING# %u", m_ctCompletedCuts+1);
+
 	for(U32 i=0; i < vCutElements.size(); i++) {
 		if(vCutEdgeCodes[i] != 0 || vCutNodeCodes[i] != 0) {
 			printf("elem %d, CutEdgeCode: %d, CutNodeCode: %d\n", i, vCutEdgeCodes[i], vCutNodeCodes[i]);
 
 			//subdivide the element
-			m_lpSubD->subdivide(i, vCutEdgeCodes[i], vCutNodeCodes[i], &vCutParams[i * 6], true);
+			int res = m_lpSubD->subdivide(i, vCutEdgeCodes[i], vCutNodeCodes[i], &vCutParams[i * 6], true);
+			if(res > 0)
+				m_ctCompletedCuts++;
 		}
 	}
+
+	//clear cut context
+	clearCutContext();
 
 	//Perform all tests
 	TestHalfEdgeTestMesh::tst_all(m_lpHEMesh);

@@ -23,6 +23,16 @@ using namespace PS;
 using namespace PS::SG;
 using namespace std;
 
+#define FACE_SHIFT_A 0
+#define FACE_SHIFT_B 21
+#define FACE_SHIFT_C 42
+
+//can keep up to 2097151 nodes
+#define FACE_BITMASK 0x001FFFFF
+
+#define FACEID_HASHSIZE (U64)(1<<(3*FACE_SHIFT_B))
+#define FACEID_FROM_IDX(a,b,c) (((U64) ((c) & FACE_BITMASK) << FACE_SHIFT_C) | ((U64) ((b) & FACE_BITMASK) << FACE_SHIFT_B) | ((a) & FACE_BITMASK))
+
 namespace PS {
 namespace FEM {
 
@@ -31,6 +41,8 @@ namespace FEM {
 // 2. Edge added/Removed
 // 3. Face added/Removed
 // 4. Element added/Removed
+
+
 
 //template <typename T>
 class HalfEdgeTetMesh : public SGNode {
@@ -79,8 +91,9 @@ public:
 	struct FaceKey
 	{
 		FaceKey(U64 k) { this->key = k; }
-	    FaceKey(U32 node_handles[3], U32 count) {
-	    	key = (node_handles[0] * count + node_handles[1]) * count + node_handles[2];
+	    FaceKey(U32 a, U32 b, U32 c) {
+	    	order_lo2hi(a, b, c);
+	    	key = FACEID_FROM_IDX(a, b, c);
 	    }
 
 	    static void order_lo2hi(U32& a, U32& b, U32& c) {
@@ -322,13 +335,10 @@ protected:
 	//maps a half-edge from-to pair to the corresponding hedge handle
 	std::map< pair<U32, U32>, U32 > m_mapHalfEdgesIndex;
 
-	//iterator for half-edge index iter
+	//iterators
 	typedef std::map< pair<U32, U32>, U32 >::iterator MAPHEDGEINDEXITER;
 	typedef std::map< pair<U32, U32>, U32 >::iterator MAPHEDGEINDEXCONSTITER;
-
-	//iterator for face index iter
 	typedef std::map< FaceKey, U32 >::iterator MAPFACEITER;
-
 };
 
 }
