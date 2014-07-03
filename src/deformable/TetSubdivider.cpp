@@ -149,19 +149,58 @@ int TetSubdivider::generateCaseB(U32 element, U8 enteringface, U8& cutEdgeCode,
 	return 1;
 }
 
-int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double tEdges[6], bool dosplit) {
-	//Here an element is subdivided to 4 sub elements depending on the codes
-	U8 ctCutEdges = 0;
+TetSubdivider::CUTCASE TetSubdivider::identifyCutCase(bool isCutComplete, U8 cutEdgeCode,
+													  U8 cutNodeCode, U8& countCutEdges, U8& countCutNodes) {
+	countCutEdges = 0;
 
 	//6 edges per tet
 	for(int i=0; i < 6; i++)
-		ctCutEdges += ((cutEdgeCode & (1 << i)) != 0);
+		countCutEdges += ((cutEdgeCode & (1 << i)) != 0);
 
-	U8 ctCutNodes = 0;
-
+	countCutNodes = 0;
 	//4 nodes per tet
 	for(int i=0; i < 4; i++)
-		ctCutNodes += ((cutNodeCode & (1 << i)) != 0);
+		countCutNodes += ((cutNodeCode & (1 << i)) != 0);
+
+	if(countCutNodes == 0) {
+
+		if(countCutEdges == 3)
+			return cutA;
+		else if(countCutEdges == 4)
+			return cutB;
+
+		if(isCutComplete == false) {
+			if(countCutEdges == 1)
+				return cutC;
+			else if(countCutEdges == 2)
+				return cutD;
+			else if(countCutEdges == 3)
+				return cutE;
+		}
+	}
+	else {
+		if(countCutEdges == 2 && countCutNodes == 1)
+			return cutX;
+		else if(countCutEdges == 1 && countCutNodes == 2)
+			return cutY;
+		else if(countCutEdges == 0 && countCutNodes == 3)
+			return cutZ;
+	}
+
+	return cutUnknown;
+}
+
+int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double tEdges[6], bool dosplit) {
+	//Here an element is subdivided to 4 sub elements depending on the codes
+	U8 ctCutEdges = 0;
+	U8 ctCutNodes = 0;
+
+	TetSubdivider::CUTCASE cutcase = identifyCutCase(true, cutEdgeCode, cutNodeCode, ctCutEdges, ctCutNodes);
+	if(cutcase > cutB) {
+		LogErrorArg3("This case is not handled yet! cutEdgeCode = %u, ctCutEdges = %u, ctCutNodes = %u",
+					 cutEdgeCode, ctCutEdges, ctCutNodes);
+		return -1;
+	}
 
 	//fill the array of virtual nodes
 	U32 vnodes[16];
@@ -200,7 +239,7 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 
 
 	//Case A: 3 cut edges. cutEdgeCodes = { 11, 22, 37, 56 }
-	if(ctCutEdges == 3) {
+	if(cutcase == cutA) {
 		//Remove the original element
 		m_lpHEMesh->remove_element(element);
 
@@ -241,7 +280,7 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 		}
 	}
 	//Case B: 4 cut edges. cutEdgeCodes = { 46, 51, 29 }
-	else if(ctCutEdges == 4) {
+	else if(cutcase == cutB) {
 		//Remove the original element
 		m_lpHEMesh->remove_element(element);
 

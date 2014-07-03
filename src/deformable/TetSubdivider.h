@@ -23,13 +23,21 @@ extern U32 g_elementTableCaseB[3][6][4];
 
 class TetSubdivider : public SGNode {
 public:
+	enum CUTCASE {cutA, cutB, cutC, cutD, cutE, cutX, cutY, cutZ, cutUnknown};
+
+
+public:
 	TetSubdivider(HalfEdgeTetMesh* pMesh);
 	virtual ~TetSubdivider();
 
 	void draw();
 
 	void setMesh(HalfEdgeTetMesh* pMesh) { m_lpHEMesh = pMesh;}
+	CUTCASE identifyCutCase(bool isCutComplete, U8 cutEdgeCode, U8 cutNodeCode, U8& countCutEdges, U8& countCutNodes);
+
 	int subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double tEdges[6], bool dosplit = true);
+
+
 
 	/*!
 	 * generates case A where a node in separated from the rest of the element. 3 edges are cut.
