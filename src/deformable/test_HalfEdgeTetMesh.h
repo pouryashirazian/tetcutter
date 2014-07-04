@@ -26,6 +26,8 @@ public:
 
 	static bool tst_connectivity(HalfEdgeTetMesh* pmesh);
 
+	static bool tst_meshFacesAndOrder(HalfEdgeTetMesh* pmesh);
+
 	static bool tst_all(HalfEdgeTetMesh* pmesh);
 };
 

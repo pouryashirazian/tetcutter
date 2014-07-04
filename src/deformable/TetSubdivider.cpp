@@ -199,7 +199,7 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 	if(cutcase > cutB) {
 		LogErrorArg3("This case is not handled yet! cutEdgeCode = %u, ctCutEdges = %u, ctCutNodes = %u",
 					 cutEdgeCode, ctCutEdges, ctCutNodes);
-		return -1;
+		return 0;
 	}
 
 	//map cutcase to alphabet
@@ -215,18 +215,18 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 	mapCutCases[cutUnknown] = 'U';
 
 	//report
-	LogInfoArg3("Begin cutting. Cut type %c: cutEdgeCode: %u, cutNodeCode: %u", mapCutCases[cutcase], cutEdgeCode, cutNodeCode);
+	printf("Element: %u, Cut type %c: cutEdgeCode: %u, cutNodeCode: %u\n", element, mapCutCases[cutcase], cutEdgeCode, cutNodeCode);
 
 
 	//fill the array of virtual nodes
 	U32 vnodes[16];
 	for(int i=0; i<16; i++)
 		vnodes[i] = HalfEdgeTetMesh::INVALID_INDEX;
-	const HalfEdgeTetMesh::ELEM& one = m_lpHEMesh->elemAt(element);
+	const HalfEdgeTetMesh::ELEM& tet = m_lpHEMesh->elemAt(element);
 
 	//1st 4 nodes come from the original element
 	for(int i=0; i<4; i++)
-		vnodes[i] = one.nodes[i];
+		vnodes[i] = tet.nodes[i];
 
 	//Mask to map edges indices to new generated node indices
 	const int mapEdgeToMiddleNodes[12] = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
@@ -240,10 +240,10 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 			if(isCut) {
 				U32 idxNP0, idxNP1;
 
-				U32 idxEdgeToCut = m_lpHEMesh->edge_from_halfedge(one.halfedge[i]);
+				U32 idxEdgeToCut = m_lpHEMesh->edge_from_halfedge(tet.halfedge[i]);
 				if(!m_lpHEMesh->cut_edge(idxEdgeToCut, tEdges[i], &idxNP0, &idxNP1)) {
 					LogErrorArg3("Unable to cut edge %d of element %d, edgecutpoint t = %.3f.", i, element, tEdges[i]);
-					return -1;
+					return 0;
 				}
 
 				//generated nodes
@@ -332,7 +332,7 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 
 			if(splittedNodes1.size() != 6 || splittedNodes2.size() != 6) {
 				LogError("Splitted nodes are not sets of 6!");
-				return -1;
+				return 0;
 			}
 
 			vec3d arrP1[6];

@@ -93,6 +93,7 @@ public:
 
 	//create a tetrahedra
 	static CuttableMesh* CreateOneTetra();
+	static CuttableMesh* CreateTwoTetra();
 
 protected:
 	void setup(int ctVertices, double* vertices, int ctElements, int* elements);

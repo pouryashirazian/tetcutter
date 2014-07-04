@@ -99,13 +99,15 @@ public:
     //print structure
     void print(const char* switches = "-a") const;
 
+    //Save and Load view settings
+
+
     //Timing and Profiling services
 
     //Object Selection
 
     //Surfaces
 
-    //Save and Load view settings
     
 protected:
     void cleanup();

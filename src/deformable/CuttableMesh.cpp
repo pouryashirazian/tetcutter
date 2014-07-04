@@ -270,7 +270,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 		return -1;
 
 	//Find the list of all tets impacted
-	vector<HalfEdgeTetMesh::ELEM> vCutElements;
+	vector<U32> vCutElements;
 	vector<U8> vCutEdgeCodes;
 	vector<U8> vCutNodeCodes;
 	vector<double> vCutParams;
@@ -310,7 +310,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 			ctCutTet++;
 
 		//push back all computed values
-		vCutElements.push_back(tet);
+		vCutElements.push_back(i);
 		vCutEdgeCodes.push_back(cutEdgeCode);
 		vCutNodeCodes.push_back(cutNodeCode);
 
@@ -318,7 +318,6 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 		for(int e=0; e < 6; e++)
 			vCutParams.push_back(tedges[e]);
 	}
-
 
 	//	int edgeMaskPos[6][2] = { {1, 2}, {2, 3}, {3, 1}, {2, 0}, {0, 3}, {0, 1} };
 	//	int edgeMaskNeg[6][2] = { {3, 2}, {2, 1}, {1, 3}, {3, 0}, {0, 2}, {1, 0} };
@@ -328,22 +327,33 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	//Now that cutedgecodes and cutnodecodes are computed then subdivide the element
 	LogInfoArg1("BEGIN CUTTING# %u", m_ctCompletedCuts+1);
 
+	U32 ctElementsCut = 0;
 	for(U32 i=0; i < vCutElements.size(); i++) {
 		if(vCutEdgeCodes[i] != 0 || vCutNodeCodes[i] != 0) {
-			printf("elem %d, CutEdgeCode: %d, CutNodeCode: %d\n", i, vCutEdgeCodes[i], vCutNodeCodes[i]);
 
 			//subdivide the element
-			int res = m_lpSubD->subdivide(i, vCutEdgeCodes[i], vCutNodeCodes[i], &vCutParams[i * 6], true);
-			if(res > 0)
-				m_ctCompletedCuts++;
+			ctElementsCut += m_lpSubD->subdivide(vCutElements[i], vCutEdgeCodes[i], vCutNodeCodes[i], &vCutParams[i * 6], true);
 		}
 	}
+
+	//increment completed cuts
+	if(ctElementsCut > 0) {
+		LogInfoArg2("END CUTTING# %u: subdivided elements count: %u.", m_ctCompletedCuts + 1, ctElementsCut);
+		m_ctCompletedCuts ++;
+	}
+	else {
+		LogWarningArg1("END CUTTING# %u: No elements are subdivided.", m_ctCompletedCuts + 1);
+	}
+
 
 	//clear cut context
 	clearCutContext();
 
+	//remove unref
+	//m_lpHEMesh->remove_unreferenced();
+
 	//Perform all tests
-	TestHalfEdgeTestMesh::tst_all(m_lpHEMesh);
+	//TestHalfEdgeTestMesh::tst_all(m_lpHEMesh);
 
 	//recompute AABB
 	m_aabb = m_lpHEMesh->computeAABB();
@@ -435,6 +445,37 @@ CuttableMesh* CuttableMesh::CreateOneTetra() {
 	elements[1] = 1;
 	elements[2] = 2;
 	elements[3] = 3;
+
+	CuttableMesh* tet = new CuttableMesh(vertices, elements);
+	return tet;
+}
+
+CuttableMesh* CuttableMesh::CreateTwoTetra() {
+	vector<double> vertices;
+	vector<U32> elements;
+
+	vector<vec3d> vPoints;
+	vPoints.push_back(vec3d(-1, 0, 0));
+	vPoints.push_back(vec3d(0, 0, -2));
+	vPoints.push_back(vec3d(1, 0, 0));
+	vPoints.push_back(vec3d(0, 2, -1));
+	vPoints.push_back(vec3d(0, 0, 2));
+
+	vertices.resize(vPoints.size() * 3);
+	for (U32 i = 0; i < vPoints.size(); i++) {
+		vPoints[i].store(&vertices[i * 3]);
+	}
+
+	elements.resize(8);
+	elements[0] = 0;
+	elements[1] = 1;
+	elements[2] = 2;
+	elements[3] = 3;
+
+	elements[4] = 0;
+	elements[5] = 2;
+	elements[6] = 3;
+	elements[7] = 4;
 
 	CuttableMesh* tet = new CuttableMesh(vertices, elements);
 	return tet;

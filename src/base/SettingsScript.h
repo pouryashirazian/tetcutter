@@ -28,7 +28,7 @@ namespace PS{
 
 	public:
 		//const int MAX_LINE_SIZE;
-		SettingsScript():m_strFileName(""){};
+		SettingsScript():m_strFileName(""), m_fmode(fmRead) {};
 		SettingsScript(const AnsiStr& strFileName, FileMode mode = fmReadWrite);
 		virtual ~SettingsScript();
 

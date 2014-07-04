@@ -57,61 +57,6 @@ public:
 		err_node_not_found = -5,
 	};
 
-	//elements
-	struct ELEM {
-		U32 faces[4];
-		U32 nodes[4];
-		U32 halfedge[6];
-		bool posDet;
-
-		ELEM& operator = (const ELEM& A) {
-			for(int i=0; i<4; i++) {
-				faces[i] = A.faces[i];
-				nodes[i] = A.nodes[i];
-			}
-			for(int i=0; i<6; i++)
-				halfedge[i] = A.halfedge[i];
-			posDet = A.posDet;
-			return (*this);
-		}
-	};
-
-	//faces
-	struct FACE {
-		U32 halfedge[3];
-
-		FACE& operator = (const FACE& A) {
-			for(int i=0; i<3; i++)
-				halfedge[i] = A.halfedge[i];
-			return (*this);
-		}
-	};
-
-	//Key to access faces in a unique order
-	struct FaceKey
-	{
-		FaceKey(U64 k) { this->key = k; }
-	    FaceKey(U32 a, U32 b, U32 c) {
-	    	order_lo2hi(a, b, c);
-	    	key = FACEID_FROM_IDX(a, b, c);
-	    }
-
-	    static void order_lo2hi(U32& a, U32& b, U32& c) {
-	    	if(a > b)
-	    		swap(a, b);
-	    	if(b > c)
-	    		swap(b, c);
-	    	if(a > b)
-	    		swap(a, b);
-	    }
-
-	    bool operator<(const FaceKey& k) const { return key < k.key; }
-
-	    bool operator>(const FaceKey& k) const { return key > k.key; }
-
-	    U64 key;
-	};
-
 	//vertices
 	struct NODE {
 		vec3d pos;
@@ -126,7 +71,7 @@ public:
 		}
 	};
 
-	//edges
+	//half-edge
 	class HEDGE{
 	public:
 		//Vertex
@@ -137,6 +82,9 @@ public:
 
 		//HEDGES
 		U32 prev, next, opposite;
+
+		//number of references
+		U8 refs;
 
 
 		HEDGE() { init();}
@@ -149,6 +97,7 @@ public:
 		void init() {
 			from = to = face =  INVALID_INDEX;
 			prev = next = opposite = INVALID_INDEX;
+			refs = 0;
 		}
 
 		HEDGE& operator = (const HEDGE& A) {
@@ -159,11 +108,13 @@ public:
 			prev = A.prev;
 			next = A.next;
 			opposite = A.opposite;
+			refs = A.refs;
 
 			return(*this);
 		};
 	};
 
+	//edge
 	class EDGE {
 	public:
 		U32 from, to;
@@ -195,6 +146,72 @@ public:
 			return (*this);
 		}
 	};
+
+	//face
+	class FACE {
+	public:
+		U32 halfedge[3];
+		U8 refs;
+
+		FACE() {
+			for(int i=0; i<3; i++)
+				halfedge[i] = INVALID_INDEX;
+			refs = 0;
+		}
+
+		FACE& operator = (const FACE& A) {
+			for(int i=0; i<3; i++)
+				halfedge[i] = A.halfedge[i];
+			refs = A.refs;
+			return (*this);
+		}
+	};
+
+	//Key to access faces in a unique order
+	struct FaceKey
+	{
+		FaceKey(U64 k) { this->key = k; }
+	    FaceKey(U32 a, U32 b, U32 c) {
+	    	order_lo2hi(a, b, c);
+	    	key = FACEID_FROM_IDX(a, b, c);
+	    }
+
+	    static void order_lo2hi(U32& a, U32& b, U32& c) {
+	    	if(a > b)
+	    		swap(a, b);
+	    	if(b > c)
+	    		swap(b, c);
+	    	if(a > b)
+	    		swap(a, b);
+	    }
+
+	    bool operator<(const FaceKey& k) const { return key < k.key; }
+
+	    bool operator>(const FaceKey& k) const { return key > k.key; }
+
+	    U64 key;
+	};
+
+
+	//elements
+	struct ELEM {
+		U32 faces[4];
+		U32 nodes[4];
+		U32 halfedge[6];
+		bool posDet;
+
+		ELEM& operator = (const ELEM& A) {
+			for(int i=0; i<4; i++) {
+				faces[i] = A.faces[i];
+				nodes[i] = A.nodes[i];
+			}
+			for(int i=0; i<6; i++)
+				halfedge[i] = A.halfedge[i];
+			posDet = A.posDet;
+			return (*this);
+		}
+	};
+
 
 
 	enum TopologyEvent {teAdded, teRemoved};
@@ -269,9 +286,17 @@ public:
 
 
 	//topology modifiers
-	int insert_element(const ELEM& e);
-	int insert_element(U32 nodes[4]);
+	U32 insert_element(const ELEM& e);
+	U32 insert_element(U32 nodes[4]);
 	void remove_element(U32 i);
+
+	//inserting a face will bump the refs on its halfedges
+	U32 insert_face(U32 nodes[3]);
+	void remove_face(U32 i);
+
+	//U32 remove_unreferenced();
+
+
 
 	/*!
 	 * splits the edge in the middle. Adds one new node along the edge and re-connects all half-edges along that.
@@ -292,8 +317,6 @@ public:
 	//checking
 	void setElemToShow(U32 elem = INVALID_INDEX);
 	U32 getElemToShow() const {return m_elemToShow;}
-	bool checkMeshConnectivity() const;
-	bool checkMeshFaceDirections() const;
 
 	//serialize
 	bool readVegaFormat(const AnsiStr& strFP);
