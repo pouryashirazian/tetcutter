@@ -144,6 +144,12 @@ bool HalfEdgeTetMesh::setup(U32 ctVertices, const double* vertices, U32 ctElemen
 		m_vNodes.push_back(node);
 	}
 
+
+	//insert element
+	for(U32 i=0; i<ctElements; i++)
+		insert_element(const_cast<U32 *>(&elements[i * 4]));
+
+	/*
 	//Face Mask
 	const int faceMaskPos[4][3] = { {1, 2, 3}, {2, 0, 3}, {3, 0, 1}, {1, 0, 2} };
 	const int faceMaskNeg[4][3] = { {3, 2, 1}, {3, 0, 2}, {1, 0, 3}, {2, 0, 1} };
@@ -337,6 +343,7 @@ bool HalfEdgeTetMesh::setup(U32 ctVertices, const double* vertices, U32 ctElemen
 		if(m_vNodes[e.from].outHE == INVALID_INDEX)
 			m_vNodes[e.from].outHE = i;
 	}
+	*/
 
 	//Compute AABB
 	computeAABB();
