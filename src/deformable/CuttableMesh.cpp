@@ -342,18 +342,24 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	//
 	U32 ctElementsCut = 0;
 	U32 middlePoints[12];
-	for(int i=0; i < 12; i++)
-		middlePoints[i] = HalfEdgeTetMesh::INVALID_INDEX;
 
 	for(U32 i=0; i < vCutElements.size(); i++) {
-		if(vCutEdgeCodes[i] != 0 || vCutNodeCodes[i] != 0) {
+
+		U8 cutEdgeCode = vCutEdgeCodes[i];
+		U8 cutNodeCode = vCutNodeCodes[i];
+		if(cutEdgeCode != 0 || cutNodeCode != 0) {
 
 			const HalfEdgeTetMesh::ELEM tet = m_lpHEMesh->const_elemAt(vCutElements[i]);
+
 
 			for(int e=0; e < 6; e++) {
 
 				U32 edge = m_lpHEMesh->edge_from_halfedge(tet.halfedge[e]);
 				CUTEDGEITER it = m_mapCutEdges.find(edge);
+
+				//mid points
+				middlePoints[e * 2 + 0] = HalfEdgeTetMesh::INVALID_INDEX;
+				middlePoints[e * 2 + 1] = HalfEdgeTetMesh::INVALID_INDEX;
 
 				if(it != m_mapCutEdges.end()) {
 
@@ -362,7 +368,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 				}
 			}
 			//subdivide the element
-			ctElementsCut += m_lpSubD->subdivide(vCutElements[i], vCutEdgeCodes[i], vCutNodeCodes[i], middlePoints, true);
+			ctElementsCut += m_lpSubD->subdivide(vCutElements[i], cutEdgeCode, cutNodeCode, middlePoints, false);
 		}
 	}
 
@@ -379,8 +385,8 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	//clear cut context
 	clearCutContext();
 
-	//remove unref
-	//m_lpHEMesh->remove_unreferenced();
+	//collect all garbage
+	m_lpHEMesh->garbage_collection();
 
 	//Perform all tests
 	//TestHalfEdgeTestMesh::tst_all(m_lpHEMesh);

@@ -152,17 +152,24 @@ public:
 	public:
 		U32 halfedge[3];
 		U8 refs;
+		bool removed;
 
 		FACE() {
+			init();
+		}
+
+		void init() {
 			for(int i=0; i<3; i++)
 				halfedge[i] = INVALID_INDEX;
 			refs = 0;
+			removed = false;
 		}
 
 		FACE& operator = (const FACE& A) {
 			for(int i=0; i<3; i++)
 				halfedge[i] = A.halfedge[i];
 			refs = A.refs;
+			removed = A.removed;
 			return (*this);
 		}
 	};
@@ -194,11 +201,28 @@ public:
 
 
 	//elements
-	struct ELEM {
+	class ELEM {
+	public:
 		U32 faces[4];
 		U32 nodes[4];
 		U32 halfedge[6];
 		bool posDet;
+		bool removed;
+
+		ELEM() {
+			init();
+		}
+
+		void init() {
+			for(int i=0; i<4; i++) {
+				faces[i] = INVALID_INDEX;
+				nodes[i] = INVALID_INDEX;
+			}
+			for(int i=0; i<6; i++)
+				halfedge[i] = INVALID_INDEX;
+			posDet = false;
+			removed = false;
+		}
 
 		ELEM& operator = (const ELEM& A) {
 			for(int i=0; i<4; i++) {
@@ -208,6 +232,7 @@ public:
 			for(int i=0; i<6; i++)
 				halfedge[i] = A.halfedge[i];
 			posDet = A.posDet;
+			removed = A.removed;
 			return (*this);
 		}
 	};
@@ -294,7 +319,8 @@ public:
 	U32 insert_face(U32 nodes[3]);
 	void remove_face(U32 i);
 
-	//U32 remove_unreferenced();
+	//erases all objects marked removed
+	void garbage_collection();
 
 
 

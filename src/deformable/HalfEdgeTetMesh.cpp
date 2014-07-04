@@ -446,8 +446,8 @@ void HalfEdgeTetMesh::remove_element(U32 i) {
 		m_vFaces[ tet.faces[j] ].refs --;
 	}
 
-	//remove element
-	m_vElements.erase(m_vElements.begin() + i);
+	//mark element as removed then garbage collection will handle indices
+	m_vElements[i].removed = true;
 }
 
 //inserting a face uniquely
@@ -510,27 +510,17 @@ void HalfEdgeTetMesh::remove_face(U32 i) {
 		m_vHalfEdges[ face.halfedge[j] ].refs --;
 	}
 
-	m_vFaces.erase(m_vFaces.begin() + i);
+	//mark face as removed
+	m_vFaces[i].removed = true;
 }
 
-/*
-U32 HalfEdgeTetMesh::remove_unreferenced() {
+
+void HalfEdgeTetMesh::garbage_collection() {
 
 	//remove unreferenced faces first
-	U32 i = 0;
-	U32 ctRemoved = 0;
-	while(i < countFaces()) {
-		if(const_faceAt(i).refs == 0) {
-			remove_face(i);
-			ctRemoved++;
-		}
-		else
-			i++;
-	}
 
-	return ctRemoved;
 }
-*/
+
 
 HalfEdgeTetMesh::ELEM& HalfEdgeTetMesh::elemAt(U32 i) {
 	assert(isElemIndex(i));
@@ -1062,6 +1052,9 @@ void HalfEdgeTetMesh::draw() {
 
 void HalfEdgeTetMesh::drawElement(U32 i) const {
 	ELEM elem = const_elemAt(i);
+	if(elem.removed)
+		return;
+
 	glBegin(GL_TRIANGLES);
 		for(U32 f=0; f<4; f++)
 		{
