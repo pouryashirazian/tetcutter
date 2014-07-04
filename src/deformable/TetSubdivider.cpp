@@ -190,7 +190,7 @@ TetSubdivider::CUTCASE TetSubdivider::identifyCutCase(bool isCutComplete, U8 cut
 	return cutUnknown;
 }
 
-int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double tEdges[6], bool dosplit) {
+int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, U32 middlePoints[12], bool dosplit) {
 	//Here an element is subdivided to 4 sub elements depending on the codes
 	U8 ctCutEdges = 0;
 	U8 ctCutNodes = 0;
@@ -236,19 +236,10 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double
 		//loop over edges
 		for(int i=0; i < 6; i++) {
 			bool isCut = ((cutEdgeCode & (1 << i)) != 0);
-
 			if(isCut) {
-				U32 idxNP0, idxNP1;
-
-				U32 idxEdgeToCut = m_lpHEMesh->edge_from_halfedge(tet.halfedge[i]);
-				if(!m_lpHEMesh->cut_edge(idxEdgeToCut, tEdges[i], &idxNP0, &idxNP1)) {
-					LogErrorArg3("Unable to cut edge %d of element %d, edgecutpoint t = %.3f.", i, element, tEdges[i]);
-					return 0;
-				}
-
 				//generated nodes
-				vnodes[ mapEdgeToMiddleNodes[i*2 + 0] ] = idxNP0;
-				vnodes[ mapEdgeToMiddleNodes[i*2 + 1] ] = idxNP1;
+				vnodes[ mapEdgeToMiddleNodes[i*2 + 0] ] = middlePoints[i * 2 + 0];
+				vnodes[ mapEdgeToMiddleNodes[i*2 + 1] ] = middlePoints[i * 2 + 1];
 			}
 		}
 	}

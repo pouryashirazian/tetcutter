@@ -181,15 +181,14 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 			ce.e0 = ss0;
 			ce.e1 = ss1;
 			ce.t = t;
-			ce.idxE0 = he.from;
-			ce.idxE1 = he.to;
-			ce.idxEdge = i;
+			ce.from = he.from;
+			ce.to = he.to;
 
 			//test
 			vec3d temp = ce.e0 + (ce.e1 - ce.e0).normalized() * ce.t;
 			assert( (ce.pos - temp).length() < EPSILON);
 
-			m_mapCutEdges[ce.idxEdge] = ce;
+			m_mapCutEdges[i] = ce;
 		}
 	}
 
@@ -226,7 +225,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 		//If the start of edge is close to the swept surface remove all incident edges from Ec
 		if(d0 < d1 && t < roi) {
 			CutNode cn;
-			cn.idxNode = it->second.idxE0;
+			cn.idxNode = it->second.from;
 			cn.pos = it->second.e0;
 			m_mapCutNodes.insert( std::pair<U32, CutNode>(cn.idxNode, cn) );
 
@@ -242,7 +241,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 		//If the end of edge close to the swept surface remove all incident edges from Ec
 		else if(d0 > d1 && t < roi) {
 			CutNode cn;
-			cn.idxNode = it->second.idxE1;
+			cn.idxNode = it->second.to;
 			cn.pos = it->second.e1;
 			m_mapCutNodes.insert( std::pair<U32, CutNode>(cn.idxNode, cn) );
 
@@ -327,12 +326,43 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	//Now that cutedgecodes and cutnodecodes are computed then subdivide the element
 	LogInfoArg1("BEGIN CUTTING# %u", m_ctCompletedCuts+1);
 
+	//cut all affected edges
+	for(CUTEDGEITER it = m_mapCutEdges.begin(); it != m_mapCutEdges.end(); it++) {
+		U32 idxNP0, idxNP1;
+
+		if(!m_lpHEMesh->cut_edge(it->first, it->second.t, &idxNP0, &idxNP1)) {
+			LogErrorArg2("Unable to cut edge %d, edgecutpoint t = %.3f.", it->first, it->second.t);
+			return -1;
+		}
+
+		it->second.idxNP0 = idxNP0;
+		it->second.idxNP1 = idxNP1;
+	}
+
+	//
 	U32 ctElementsCut = 0;
+	U32 middlePoints[12];
+	for(int i=0; i < 12; i++)
+		middlePoints[i] = HalfEdgeTetMesh::INVALID_INDEX;
+
 	for(U32 i=0; i < vCutElements.size(); i++) {
 		if(vCutEdgeCodes[i] != 0 || vCutNodeCodes[i] != 0) {
 
+			const HalfEdgeTetMesh::ELEM tet = m_lpHEMesh->const_elemAt(vCutElements[i]);
+
+			for(int e=0; e < 6; e++) {
+
+				U32 edge = m_lpHEMesh->edge_from_halfedge(tet.halfedge[e]);
+				CUTEDGEITER it = m_mapCutEdges.find(edge);
+
+				if(it != m_mapCutEdges.end()) {
+
+					middlePoints[e * 2 + 0] = it->second.idxNP0;
+					middlePoints[e * 2 + 1] = it->second.idxNP1;
+				}
+			}
 			//subdivide the element
-			ctElementsCut += m_lpSubD->subdivide(vCutElements[i], vCutEdgeCodes[i], vCutNodeCodes[i], &vCutParams[i * 6], true);
+			ctElementsCut += m_lpSubD->subdivide(vCutElements[i], vCutEdgeCodes[i], vCutNodeCodes[i], middlePoints, true);
 		}
 	}
 

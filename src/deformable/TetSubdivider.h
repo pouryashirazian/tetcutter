@@ -35,7 +35,7 @@ public:
 	void setMesh(HalfEdgeTetMesh* pMesh) { m_lpHEMesh = pMesh;}
 	CUTCASE identifyCutCase(bool isCutComplete, U8 cutEdgeCode, U8 cutNodeCode, U8& countCutEdges, U8& countCutNodes);
 
-	int subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, double tEdges[6], bool dosplit = true);
+	int subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, U32 middlePoints[12], bool dosplit = true);
 
 
 

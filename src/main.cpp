@@ -302,7 +302,7 @@ void runTestSubDivide(int current) {
 	else if(g_cutCase == 1)
 		g_lpTetMesh->getSubD()->generateCaseB(0, current, cutEdgeCode, cutNodeCode, tEdges);
 
-	g_lpTetMesh->getSubD()->subdivide(0, cutEdgeCode, cutNodeCode, tEdges);
+	//g_lpTetMesh->getSubD()->subdivide(0, cutEdgeCode, cutNodeCode, tEdges);
 }
 
 int main(int argc, char* argv[]) {

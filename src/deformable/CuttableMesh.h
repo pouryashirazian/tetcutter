@@ -23,15 +23,22 @@ namespace PS {
 class CuttableMesh : public SGNode /*, public TetMesh */ {
 public:
 	//CutEdge
-	struct CutEdge {
+	class CutEdge {
+	public:
 		vec3d pos;
 		vec3d uvw;
 		vec3d e0;
 		vec3d e1;
 		double t;
-		U32 idxE0;
-		U32 idxE1;
-		U32 idxEdge;
+		U32 from;
+		U32 to;
+		U32 idxNP0;
+		U32 idxNP1;
+
+		CutEdge() {
+			t = 0;
+			from = to = idxNP0 = idxNP1 = HalfEdgeTetMesh::INVALID_INDEX;
+		}
 
 		CutEdge& operator = (const CutEdge& A) {
 			pos = A.pos;
@@ -39,9 +46,10 @@ public:
 			e0 	= A.e0;
 			e1 	= A.e1;
 			t	= A.t;
-			idxE0 = A.idxE0;
-			idxE1 = A.idxE1;
-			idxEdge = A.idxEdge;
+			from = A.from;
+			to = A.to;
+			idxNP0 = A.idxNP0;
+			idxNP1 = A.idxNP1;
 			return (*this);
 		}
 	};
