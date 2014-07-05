@@ -10,6 +10,7 @@
 #include "graphics/Intersections.h"
 #include "deformable/test_HalfEdgeTetMesh.h"
 #include "base/Logger.h"
+#include "base/FlatArray.h"
 #include <map>
 
 using namespace std;
@@ -487,34 +488,32 @@ CuttableMesh* CuttableMesh::CreateOneTetra() {
 }
 
 CuttableMesh* CuttableMesh::CreateTwoTetra() {
-	vector<double> vertices;
-	vector<U32> elements;
+	vector<double> vFlatVertices;
+	vector<U32> vFlatElements;
 
-	vector<vec3d> vPoints;
-	vPoints.push_back(vec3d(-1, 0, 0));
-	vPoints.push_back(vec3d(0, 0, -2));
-	vPoints.push_back(vec3d(1, 0, 0));
-	vPoints.push_back(vec3d(0, 2, -1));
-	vPoints.push_back(vec3d(0, 0, 2));
-
-	vertices.resize(vPoints.size() * 3);
-	for (U32 i = 0; i < vPoints.size(); i++) {
-		vPoints[i].store(&vertices[i * 3]);
+	{
+		vector<vec3d> vertices;
+		vertices.push_back(vec3d(-1, 0, 0));
+		vertices.push_back(vec3d(0, 0, -2));
+		vertices.push_back(vec3d(1, 0, 0));
+		vertices.push_back(vec3d(0, 2, -1));
+		vertices.push_back(vec3d(0, 0, 2));
+		FlattenVec3<double>(vertices, vFlatVertices);
 	}
 
-	elements.resize(8);
-	elements[0] = 0;
-	elements[1] = 1;
-	elements[2] = 2;
-	elements[3] = 3;
+	{
+		vector< Vec4<U32> > elements;
+		elements.push_back( Vec4<U32>(0, 1, 2, 3) );
+		elements.push_back( Vec4<U32>(0, 2, 3, 4) );
+		FlattenVec4<U32>(elements, vFlatElements);
+	}
 
-	elements[4] = 0;
-	elements[5] = 2;
-	elements[6] = 3;
-	elements[7] = 4;
-
-	CuttableMesh* tet = new CuttableMesh(vertices, elements);
+	CuttableMesh* tet = new CuttableMesh(vFlatVertices, vFlatElements);
 	return tet;
+}
+
+CuttableMesh* CuttableMesh::CreateTruthCube(int nx, int ny, int nz, float cellsize) {
+
 }
 
 }

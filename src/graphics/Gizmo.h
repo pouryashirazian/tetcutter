@@ -124,6 +124,7 @@ public:
 	virtual ~GizmoManager();
 
 	void draw();
+	void timestep();
     int intersect(const Ray& r);
 
     //Get
@@ -163,6 +164,7 @@ private:
 
     //Mouse State
     vec2i m_pressedPos;
+    PS::ArcBallCamera::MouseButton m_button;
     PS::ArcBallCamera::ButtonState m_buttonState;
 
     //Register SGNode

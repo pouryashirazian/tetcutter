@@ -64,6 +64,8 @@ void SGTransform::updateBackward() {
 
 void SGTransform::reset() {
 	m_mtxForward.identity();
+	if(m_autoUpdate)
+		updateBackward();
 }
 
 void SGTransform::bind() {

@@ -380,6 +380,10 @@ namespace PS {
             }
         }
         
+        void GizmoManager::timestep() {
+
+        }
+
         int GizmoManager::intersect(const Ray& r) {
             if(m_lpGizmoCurrent)
                 return m_lpGizmoCurrent->intersect(r);
@@ -432,9 +436,9 @@ namespace PS {
         }
         
         void GizmoManager::mousePress(int button, int state, int x, int y) {
-            ArcBallCamera::MouseButton b = (ArcBallCamera::MouseButton)button;
+            m_button = (ArcBallCamera::MouseButton)button;
             m_buttonState = (ArcBallCamera::ButtonState)state;
-            if(b == ArcBallCamera::mbLeft && m_buttonState == ArcBallCamera::bsDown && isVisible()) {
+            if(m_button == ArcBallCamera::mbLeft && m_buttonState == ArcBallCamera::bsDown && isVisible()) {
             	LogInfoArg2("Select gizmo axis using mouse coords: [%d, %d]", x, y);
                 Ray r = TheSceneGraph::Instance().screenToWorldRay(x, y);
                 r.setStart(r.getStart() - this->transform()->getTranslate());
@@ -451,6 +455,9 @@ namespace PS {
         }
 
         void GizmoManager::mouseMove(int x, int y) {
+
+        	if(m_button != ArcBallCamera::mbLeft)
+        		return;
         	if(m_buttonState != ArcBallCamera::bsDown)
         		return;
 

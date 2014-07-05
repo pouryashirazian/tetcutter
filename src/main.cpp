@@ -45,15 +45,14 @@ void draw() {
 
 void timestep() {
 	TheSceneGraph::Instance().timestep();
+	TheGizmoManager::Instance().timestep();
 }
 
 void MousePress(int button, int state, int x, int y)
 {
-
-    TheGizmoManager::Instance().mousePress(button, state, x, y);
     TheSceneGraph::Instance().mousePress(button, state, x, y);
+    TheGizmoManager::Instance().mousePress(button, state, x, y);
 
-    //Update selection
 	glutPostRedisplay();
 }
 
@@ -64,9 +63,8 @@ void MousePassiveMove(int x, int y)
 
 void MouseMove(int x, int y)
 {
-
-	TheGizmoManager::Instance().mouseMove(x, y);
 	TheSceneGraph::Instance().mouseMove(x, y);
+	TheGizmoManager::Instance().mouseMove(x, y);
 
 	glutPostRedisplay();
 }
@@ -346,7 +344,7 @@ int main(int argc, char* argv[]) {
 
 	//Focus gizmo manager on the scalpel
 	TheGizmoManager::Instance().setFocusedNode(g_lpScalpel);
-	//TheGizmoManager::Instance().setPos(vec3f(0,3,0));
+	TheGizmoManager::Instance().transform()->translate(vec3f(0, 3, 0));
 
 	//reset cuttable mesh
 	resetMesh();
