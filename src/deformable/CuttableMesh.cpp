@@ -70,6 +70,7 @@ void CuttableMesh::setup(int ctVertices, double* vertices, int ctElements, int* 
 	m_lpSubD = new TetSubdivider(m_lpHEMesh);
 
 	m_aabb = m_lpHEMesh->aabb();
+	m_aabb.expand(1.0);
 	m_ctCompletedCuts = 0;
 }
 
@@ -392,8 +393,9 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	//Perform all tests
 	//TestHalfEdgeTestMesh::tst_all(m_lpHEMesh);
 
-	//recompute AABB
+	//recompute AABB and expand it to detect cuts
 	m_aabb = m_lpHEMesh->computeAABB();
+	m_aabb.expand(1.0);
 
 	//Return number of tets cut
 	return ctCutTet;
@@ -512,8 +514,66 @@ CuttableMesh* CuttableMesh::CreateTwoTetra() {
 	return tet;
 }
 
-CuttableMesh* CuttableMesh::CreateTruthCube(int nx, int ny, int nz, float cellsize) {
+CuttableMesh* CuttableMesh::CreateTruthCube(int nx, int ny, int nz, double cellsize) {
+	if(nx < 2 || ny < 2 || nz < 2) {
+		LogError("Invalid input param to create a truth cube");
+		return NULL;
+	}
 
+	vector< vec3d > vertices;
+	vector< vec4u32 > elements;
+
+	vec3d start = vec3d(- (double)(nx)/2.0, 0, - (double)(nz)/2.0) * (cellsize);
+
+	//add all nodes
+	for(int i=0; i < nx; i++) {
+		for(int j=0; j < ny; j++) {
+			for(int k=0; k < nz; k++) {
+				vec3d v = start + vec3d(i, j, k) * cellsize;
+				vertices.push_back(v);
+			}
+		}
+	}
+
+	//corner defs
+	enum CellCorners {LBN = 0, LBF = 1, LTN = 2, LTF = 3, RBN = 4, RBF = 5, RTN = 6, RTF = 7};
+	U32 cn[8];
+	//add all elements
+	for(int i=0; i < nx-1; i++) {
+		for(int j=0; j < ny-1; j++) {
+			for(int k=0; k < nz-1; k++) {
+				//collect cell nodes
+				cn[LBN] = i * ny * nz + j * nz + k;
+				cn[LBF] = i * ny * nz + j * nz + k + 1;
+
+				cn[LTN] = i * ny * nz + (j+1) * nz + k;
+				cn[LTF] = i * ny * nz + (j+1) * nz + k + 1;
+
+				cn[RBN] = (i+1) * ny * nz + j * nz + k;
+				cn[RBF] = (i+1) * ny * nz + j * nz + k + 1;
+
+				cn[RTN] = (i+1) * ny * nz + (j+1) * nz + k;
+				cn[RTF] = (i+1) * ny * nz + (j+1) * nz + k + 1;
+
+				//add elements
+				elements.push_back(vec4u32(cn[LBN], cn[LTN], cn[RBN], cn[LBF]));
+				elements.push_back(vec4u32(cn[RTN], cn[LTN], cn[LBF], cn[RBN]));
+				elements.push_back(vec4u32(cn[RTN], cn[LTN], cn[LTF], cn[LBF]));
+				elements.push_back(vec4u32(cn[RTN], cn[RBN], cn[LBF], cn[RBF]));
+				elements.push_back(vec4u32(cn[RTN], cn[LBF], cn[LTF], cn[RBF]));
+				elements.push_back(vec4u32(cn[RTN], cn[LTF], cn[RTF], cn[RBF]));
+			}
+		}
+	}
+
+	//build the final mesh
+	vector<double> vFlatVertices;
+	vector<U32> vFlatElements;
+	FlattenVec3<double>(vertices, vFlatVertices);
+	FlattenVec4<U32>(elements, vFlatElements);
+
+	CuttableMesh* cube = new CuttableMesh(vFlatVertices, vFlatElements);
+	return cube;
 }
 
 }

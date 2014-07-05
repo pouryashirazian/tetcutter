@@ -111,6 +111,12 @@ void AABB::print() const {
 	printf("SIDES: [%.3f, %.3f, %.3f]\n", side.x, side.y, side.z);
 }
 
+void AABB::expand(float d) {
+	vec3f dh(d * 0.5);
+	m_lower = m_lower - dh;
+	m_upper = m_upper + dh;
+}
+
 
 
 

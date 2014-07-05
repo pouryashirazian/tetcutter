@@ -283,7 +283,7 @@ void resetMesh() {
 	SAFE_DELETE(g_lpTetMesh);
 
 	//create a scalpel
-	g_lpTetMesh = CuttableMesh::CreateTwoTetra();
+	g_lpTetMesh = CuttableMesh::CreateTruthCube(8, 4, 4, 0.5);
 	g_lpTetMesh->setName("tets");
 	TheSceneGraph::Instance().add(g_lpTetMesh);
 

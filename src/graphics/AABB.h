@@ -62,6 +62,8 @@ public:
     //dimensions
     vec3f lower() const {return this->m_lower;}
     vec3f upper() const {return this->m_upper;}
+
+    void expand(float d);
     vec3f extent() const { return (m_upper - m_lower);}
     vec3f center() const { return (m_upper + m_lower) * 0.5f;}
     void getVertices(vector<vec3f>& vertices) const;
