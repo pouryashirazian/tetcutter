@@ -95,7 +95,6 @@ public:
     //Last position
     vec2i getLastPos() const {return m_lastPos;}
     void setLastPos(const vec2i& lastPos) { m_lastPos = lastPos;}
-    void setKeyModifier(int mod) { m_keyModifier = mod;}
 
     //vec3f convertToWorld(const vec3f& pos);
     void computeLocalCoordinateSystem();

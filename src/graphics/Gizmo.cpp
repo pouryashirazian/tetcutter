@@ -353,7 +353,7 @@ namespace PS {
             m_lpGizmoCurrent = m_lpGizmoTranslate;
             TheSceneGraph::Instance().headers()->addHeaderLine("gizmo", "");
 
-            setNode(NULL);
+            setFocusedNode(NULL);
 
             this->resetTransform();
         }
@@ -364,13 +364,15 @@ namespace PS {
             SAFE_DELETE(m_lpGizmoRotate);
             SAFE_DELETE(m_lpGizmoAvatar);
             m_clients.resize(0);
-            m_lpSGNode = NULL;
+            m_lpFocusedNode = NULL;
         }
         
         void GizmoManager::draw() {
             if(m_lpGizmoCurrent && isVisible()) {
             	glPushMatrix();
-            	glTranslatef(m_pos.x, m_pos.y, m_pos.z);
+            	vec3f t = this->transform()->getTranslate();
+            	glTranslatef(t.x, t.y, t.z);
+            	//glTranslatef(m_pos.x, m_pos.y, m_pos.z);
 
                 m_lpGizmoCurrent->draw();
 
@@ -400,7 +402,6 @@ namespace PS {
         void GizmoManager::setAxis(GizmoAxis axis) {
         	m_gizmoAxis = axis;
             if(m_lpGizmoCurrent) {
-            	m_lpGizmoCurrent->setTransform(this->transform());
             	m_lpGizmoCurrent->setAxis(axis);
             }
         }
@@ -427,21 +428,18 @@ namespace PS {
             
             //Apply the selected axis to this Gizmo
             m_lpGizmoCurrent->setAxis(m_gizmoAxis);
-            m_lpGizmoCurrent->setTransform(this->transform());
             glutPostRedisplay();
         }
         
-        void GizmoManager::setPos(const vec3f& pos) {
-        	m_pos = pos;
-        }
-
         void GizmoManager::mousePress(int button, int state, int x, int y) {
             ArcBallCamera::MouseButton b = (ArcBallCamera::MouseButton)button;
             m_buttonState = (ArcBallCamera::ButtonState)state;
             if(b == ArcBallCamera::mbLeft && m_buttonState == ArcBallCamera::bsDown && isVisible()) {
             	LogInfoArg2("Select gizmo axis using mouse coords: [%d, %d]", x, y);
                 Ray r = TheSceneGraph::Instance().screenToWorldRay(x, y);
-                r.setStart(r.getStart() - m_pos);
+                r.setStart(r.getStart() - this->transform()->getTranslate());
+
+                //set axis using ray shooting
                 setAxis(r);
             }
 
@@ -496,36 +494,30 @@ namespace PS {
         	//apply to gizmo type
             switch (m_gizmoType) {
                 case gtTranslate: {
-                	m_pos = m_pos + delta;
-
-                	if(m_lpSGNode) {
-                		vec3f t = m_lpSGNode->transform()->getTranslate();
-                		m_lpSGNode->transform()->translate(m_pos - t);
-                	}
-
+                	this->transform()->translate(delta);
+                	vec3f t = transform()->getTranslate();
 
                 	//Post Messages
                 	for(U32 i=0; i<m_clients.size(); i++)
-                		m_clients[i]->onTranslate(delta, m_pos);
+                		m_clients[i]->onTranslate(delta, t);
 
                 	sprintf(buffer,
                 			"translate del=(%.3f, %.3f, %.3f), cur=(%.3f, %0.3f, %.3f), axis=%s",
-                			delta.x, delta.y, delta.z, m_pos.x, m_pos.y, m_pos.z, strAxis.c_str());
+                			delta.x, delta.y, delta.z, t.x, t.y, t.z, strAxis.c_str());
                 }
                 break;
                 case gtScale: {
-                	m_scale = vec3f(1,1,1) + delta;
-
-                	if(m_lpSGNode)
-                		m_lpSGNode->transform()->scale(m_scale);
+                	vec3f s = vec3f(1, 1, 1) + delta;
+                	this->transform()->scale(s);
+                	s = transform()->getScale();
 
                 	//Post Messages
                 	for(U32 i=0; i<m_clients.size(); i++)
-                		m_clients[i]->onScale(delta, m_scale);
+                		m_clients[i]->onScale(delta, s);
 
                 	sprintf(buffer,
                 			"scale del=(%.3f, %.3f, %.3f), cur=(%.3f, %0.3f, %.3f), axis=%s",
-                			delta.x, delta.y, delta.z, m_scale.x, m_scale.y, m_scale.z, strAxis.c_str());
+                			delta.x, delta.y, delta.z, s.x, s.y, s.z, strAxis.c_str());
 
                 }
                 break;
@@ -533,14 +525,11 @@ namespace PS {
                 	quatf q;
                 	vec3f axis = gizmoAxis[m_gizmoAxis];
                 	q.fromAxisAngle(axis, delta[m_gizmoAxis]);
-                	m_rotate = m_rotate.mul(q);
-
-                	if(m_lpSGNode)
-                		m_lpSGNode->transform()->rotate(q);
+                	this->transform()->rotate(q);
 
                 	//Post Messages
                 	for(U32 i=0; i<m_clients.size(); i++)
-                		m_clients[i]->onRotate(q, m_rotate);
+                		m_clients[i]->onRotate(q);
 
                 	sprintf(buffer,
                 			"rotate axis=(%.3f, %.3f, %.3f), angle=(%.3f), axis=%s",
@@ -560,6 +549,11 @@ namespace PS {
                 break;
             };
 
+            //apply all transformations to the focused node
+            if(m_lpFocusedNode)
+            	m_lpFocusedNode->transform()->copyFrom(*this->transform().get());
+
+            //update header
         	TheSceneGraph::Instance().headers()->updateHeaderLine("gizmo", buffer);
 
         	for(U32 i=0; i<m_clients.size(); i++)
@@ -572,18 +566,14 @@ namespace PS {
         		m_clients[i]->mouseWheel(button, dir, x, y);
         }
 
-        void GizmoManager::setNode(SGNode* node) {
-        	m_lpSGNode = node;
-        	if(m_lpSGNode) {
-        		m_pos = m_lpSGNode->aabb().center() + m_lpSGNode->transform()->getTranslate();
-        		m_scale = m_lpSGNode->transform()->getScale();
-        		m_rotate.identity();
+        void GizmoManager::setFocusedNode(SGNode* node) {
+        	if(node == NULL) {
+        		this->transform()->reset();
+        		return;
         	}
-        	else {
-        		m_pos = vec3f(0,0,0);
-        		m_scale = vec3f(1,1,1);
-        		m_rotate.identity();
-        	}
+
+        	m_lpFocusedNode = node;
+        	this->transform()->copyFrom(*m_lpFocusedNode->transform().get());
 
         	glutPostRedisplay();
         }

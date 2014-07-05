@@ -15,30 +15,33 @@ namespace SG {
 SGTransform::SGTransform(bool bAutoUpdateBackward) {
 	m_mtxForward.identity();
 	m_mtxBackward.identity();
-	m_bAutoUpdate = bAutoUpdateBackward;
+	m_autoUpdate = bAutoUpdateBackward;
 }
 
-SGTransform::SGTransform(const SGTransform* other) {
-	m_mtxForward = other->m_mtxForward;
-	m_mtxBackward = other->m_mtxBackward;
-	m_bAutoUpdate = other->m_bAutoUpdate;
+SGTransform::SGTransform(const SGTransform& other):m_autoUpdate(false) {
+	this->copyFrom(other);
 }
 
 SGTransform::~SGTransform() {
 
 }
 
+void SGTransform::copyFrom(const SGTransform& other) {
+	m_mtxForward = other.m_mtxForward;
+	m_mtxBackward = other.m_mtxBackward;
+	m_autoUpdate = other.m_autoUpdate;
+}
 
 void SGTransform::scale(const vec3f& s) {
 	m_mtxForward.scale(s);
-	if(m_bAutoUpdate)
+	if(m_autoUpdate)
 		updateBackward();
 }
 
 void SGTransform::rotate(const quat& q) {
 	mat44f work = mat44f::quatToMatrix(q);
 	m_mtxForward = m_mtxForward * work;
-	if(m_bAutoUpdate)
+	if(m_autoUpdate)
 		updateBackward();
 
 }
@@ -51,7 +54,7 @@ void SGTransform::rotate(const vec3f& axis, float deg) {
 
 void SGTransform::translate(const vec3f& t) {
 	m_mtxForward.translate(t);
-	if(m_bAutoUpdate)
+	if(m_autoUpdate)
 		updateBackward();
 }
 

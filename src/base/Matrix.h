@@ -77,7 +77,10 @@ public:
     void rotate(const Quaternion<T>& q);
     void rotate(const Vec3<T>& axis, T deg);
     void translate(const Vec3<T>& t);
-    vec3f getTranslate() const;
+
+    //affine getters
+    Vec3<T> getTranslate() const;
+    Vec3<T> getScale() const;
 
 
 
@@ -453,12 +456,16 @@ void Matrix<T>::translate(const Vec3<T>& t)
 }
 
 template <typename T>
-vec3f Matrix<T>::getTranslate() const {
+Vec3<T> Matrix<T>::getTranslate() const {
 	vec4f t = getCol(3);
 	float invW = 1.0f / t.w;
 	return vec3f(t.x, t.y, t.z) * invW;
 }
 
+template <typename T>
+Vec3<T> Matrix<T>::getScale() const {
+	return getDiag().xyz();
+}
 
 //Conditionals
 template <typename T>

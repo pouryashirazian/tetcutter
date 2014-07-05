@@ -68,8 +68,9 @@ public:
 
     //Transformation
     SmartPtrSGTransform transform() const { return m_spTransform;}
-    void setTransform(const SmartPtrSGTransform& spTransform) {
-    	m_spTransform = spTransform;
+    void setTransform(const SmartPtrSGTransform& rhs) {
+    	m_spTransform.reset();
+    	m_spTransform->copyFrom(*rhs.get());
     }
     void resetTransform();
 

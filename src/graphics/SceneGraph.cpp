@@ -157,7 +157,6 @@ mat44f SceneGraph::modelviewprojection() const {
 }
 
 void SceneGraph::mouseMove(int x, int y) {
-	m_camera.setKeyModifier(m_keyModifier);
 	m_camera.mouseMove(x, y);
 	updateCameraHeader();
 }
@@ -169,8 +168,7 @@ void SceneGraph::mouseWheel(int button, int dir, int x, int y) {
 
 void SceneGraph::mousePress(int button, int state, int x, int y) {
 	// Wheel reports as button 3(scroll up) and button 4(scroll down)
-	if ((button == 3) || (button == 4)) // It's a wheel event
-			{
+	if ((button == 3) || (button == 4)) {
 		// Each wheel event reports like a button click, GLUT_DOWN then GLUT_UP
 		if (state == GLUT_UP)
 			return; // Disregard redundant GLUT_UP events

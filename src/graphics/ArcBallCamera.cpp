@@ -1,5 +1,8 @@
 #include "ArcBallCamera.h"
 #include "selectgl.h"
+#include <iostream>
+
+
 
 namespace PS
 {
@@ -122,6 +125,8 @@ void ArcBallCamera::goHome()
 void ArcBallCamera::mousePress(int button, int state, int x, int y)
 {
     PS_UNUSED(state);
+    m_keyModifier = glutGetModifiers();
+
     m_mouseButton = (MouseButton)button;
     m_lastPos = vec2i(x, y);
 }
@@ -135,14 +140,18 @@ void ArcBallCamera::mouseMove(int x, int y)
     //Spherical movement on the left button
     if(m_mouseButton == mbMiddle)
     {
-        setRoll(this->getRoll() + dx);
-        setTilt(this->getTilt() + dy);
 
         if (m_keyModifier == GLUT_ACTIVE_CTRL) {
         	m_pan.x += 0.01f * dx;
         	m_pan.y += 0.01f * dy;
         }
+        else {
+			setRoll(this->getRoll() + dx);
+			setTilt(this->getTilt() + dy);
+        }
     }
+
+
 }
 
 void ArcBallCamera::mouseWheel(int button, int dir, int x, int y)

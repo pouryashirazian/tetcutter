@@ -19,8 +19,10 @@ namespace SG {
 class SGTransform {
 public:
     SGTransform(bool bAutoUpdateBackward = false);
-    SGTransform(const SGTransform* other);
+    SGTransform(const SGTransform& other);
     virtual ~SGTransform();
+
+    void copyFrom(const SGTransform& other);
 
     //Transform
     void scale(const vec3f& s);
@@ -52,7 +54,7 @@ public:
 protected:
     mat44f m_mtxForward;
     mat44f m_mtxBackward;
-    bool m_bAutoUpdate;
+    bool m_autoUpdate;
 };
 
 typedef std::shared_ptr<SGTransform> SmartPtrSGTransform;

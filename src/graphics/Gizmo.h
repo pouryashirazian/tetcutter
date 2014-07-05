@@ -33,7 +33,7 @@ public:
 	virtual ~IGizmoListener();
 	virtual void onTranslate(const vec3f& delta, const vec3f& pos) {}
 	virtual void onScale(const vec3f& delta, const vec3f& current) {}
-	virtual void onRotate(const quatf& delta, const quatf& current) {}
+	virtual void onRotate(const quatf& delta) {}
 
 	bool registerListener();
 	void unregisterListener();
@@ -140,13 +140,12 @@ public:
     void setAxis(const Ray& r);
     void setAxis(GizmoAxis axis);
 	void setType(GizmoType gtype);
-	void setPos(const vec3f& pos);
     
 	//Return current Gizmo Type
 	GizmoInterface* current() const {return m_lpGizmoCurrent;}
 
 	//Set Node
-	void setNode(SGNode* node);
+	void setFocusedNode(SGNode* node);
 
 	//Clients
 	int registerClient(IGizmoListener* client);
@@ -161,18 +160,13 @@ private:
 	GizmoType m_gizmoType;
     GizmoAxis m_gizmoAxis;
 
-    //transform
-    vec3f m_pos;
-    vec3f m_scale;
-    quatf m_rotate;
-
 
     //Mouse State
     vec2i m_pressedPos;
     PS::ArcBallCamera::ButtonState m_buttonState;
 
     //Register SGNode
-    SGNode* m_lpSGNode;
+    SGNode* m_lpFocusedNode;
 
     //Registered clients
     vector<IGizmoListener*> m_clients;
