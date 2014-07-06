@@ -517,8 +517,84 @@ void HalfEdgeTetMesh::remove_face(U32 i) {
 
 void HalfEdgeTetMesh::garbage_collection() {
 
-	//remove unreferenced faces first
+	//acquire lock to mesh
 
+
+	//elements
+	U32 i = 0;
+	U32 ctRemovedElements = 0;
+	while(i < countElements()) {
+		ELEM tet = elemAt(i);
+		if(tet.removed) {
+			m_vElements.erase(m_vElements.begin() + i);
+			ctRemovedElements++;
+		}
+		else
+			i++;
+	}
+
+	//faces
+
+	//scan faces and extract correct indices to apply after delete
+	vector<U32> vFaceIndexAfter;
+	vFaceIndexAfter.resize(countFaces());
+	U32 ctCorrectFaces = 0;
+	for(i = 0; i < countFaces(); i++) {
+
+		vFaceIndexAfter[i] = ctCorrectFaces;
+		FACE face = const_faceAt(i);
+
+		if(face.refs == 0)
+		{
+			//remove face from the keys
+			U32 nodes[3];
+			nodes[0] = vertex_from_hedge(face.halfedge[0]);
+			nodes[1] = vertex_from_hedge(face.halfedge[1]);
+			nodes[2] = vertex_from_hedge(face.halfedge[2]);
+			FaceKey key(nodes[0], nodes[1], nodes[2]);
+			if(m_mapFaces[key] == i)
+				m_mapFaces.erase(key);
+		}
+		else
+			ctCorrectFaces++;
+	}
+
+	//apply correct face indices to Half Edges
+	for(i = 0; i < countHalfEdges(); i++) {
+		U32 temp = m_vHalfEdges[i].face;
+		m_vHalfEdges[i].face = vFaceIndexAfter[temp];
+	}
+
+	//apply correct face indices to elements
+	for(i = 0; i < countElements(); i++) {
+		for(U32 j = 0; j < 4; j++) {
+			U32 temp = m_vElements[i].faces[j];
+			m_vElements[i].faces[j] = vFaceIndexAfter[temp];
+		}
+	}
+
+
+	//remove redundant faces now
+	U32 ctRemovedFaces = 0;
+	i = 0;
+	while(i < countFaces()) {
+		FACE face = const_faceAt(i);
+		if(face.refs == 0) {
+			m_vFaces.erase(m_vFaces.begin() + i);
+			ctRemovedFaces++;
+		}
+		else
+			i++;
+	}
+
+
+	//Remove redundant half-edges now
+	U32 ctRemovedHalfEdges = 0;
+
+	LogInfoArg3("garbage collection removed: Elements# %u, Faces# %u, HalfEdges# %u",
+				ctRemovedElements, ctRemovedFaces, ctRemovedHalfEdges);
+
+	//release lock
 }
 
 

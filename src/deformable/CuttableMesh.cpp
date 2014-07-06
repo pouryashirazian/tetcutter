@@ -391,7 +391,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	m_lpHEMesh->garbage_collection();
 
 	//Perform all tests
-	//TestHalfEdgeTestMesh::tst_all(m_lpHEMesh);
+	TestHalfEdgeTestMesh::tst_all(m_lpHEMesh);
 
 	//recompute AABB and expand it to detect cuts
 	m_aabb = m_lpHEMesh->computeAABB();
