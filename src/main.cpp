@@ -1,11 +1,7 @@
-//============================================================================
-// Name        : tetcutter.cpp
-// Author      : Pourya Shirazian
-// Version     :
-// Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
-//============================================================================
-
+/*!
+ * \brief tetcutter - fast tetrahedral mesh cutting
+ * \author Pourya Shirazian
+ */
 #include <iostream>
 #include <functional>
 #include "base/FileDirectory.h"
