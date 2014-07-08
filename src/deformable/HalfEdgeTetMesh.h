@@ -311,12 +311,14 @@ public:
 
 
 	//topology modifiers
-	U32 insert_element(const ELEM& e);
-	U32 insert_element(U32 nodes[4]);
-	void remove_element(U32 i);
+	bool insert_element(const ELEM& e);
+	bool insert_element(U32 nodes[4]);
 
 	//inserting a face will bump the refs on its halfedges
 	U32 insert_face(U32 nodes[3]);
+
+	//remove
+	void remove_element(U32 i);
 	void remove_face(U32 i);
 
 	//erases all objects marked removed

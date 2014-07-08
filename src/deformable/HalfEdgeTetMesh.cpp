@@ -196,6 +196,7 @@ void HalfEdgeTetMesh::printInfo() const {
 	}
 	printf("\n");
 
+
 	//print all face
 	printf("FACES #%u\n", (U32)m_vFaces.size());
 	for(U32 i=0; i < m_vFaces.size(); i++) {
@@ -245,27 +246,27 @@ double HalfEdgeTetMesh::ComputeElementDeterminant(const vec3d v[4]) {
 }
 
 //add/remove
-U32 HalfEdgeTetMesh::insert_element(const ELEM& e) {
+bool HalfEdgeTetMesh::insert_element(const ELEM& e) {
 
 	//check the structure before adding it
 	for(int i=0; i<4; i++) {
 		if(!isFaceIndex(e.faces[i])) {
 			LogErrorArg2("Unable to add element. Invalid face index found at: f[%d] = %d", i, e.faces[i]);
-			return INVALID_INDEX;
+			return false;
 		}
 	}
 
 	for(int i=0; i<4; i++) {
 		if(!isNodeIndex(e.nodes[i])) {
 			LogErrorArg2("Unable to add element. Invalid node index found at: n[%d] = %d", i, e.nodes[i]);
-			return INVALID_INDEX;
+			return false;
 		}
 	}
 
 	for(int i=0; i<6; i++) {
 		if(!isHalfEdgeIndex(e.halfedge[i])) {
 			LogErrorArg2("Unable to add element. Invalid halfedge index found at: he[%d] = %d", i, e.halfedge[i]);
-			return INVALID_INDEX;
+			return false;
 		}
 	}
 
@@ -278,15 +279,15 @@ U32 HalfEdgeTetMesh::insert_element(const ELEM& e) {
 	if(m_fOnElementEvent)
 		m_fOnElementEvent(e, m_vElements.size() - 1, teAdded);
 
-	return (m_vElements.size() - 1);
+	return true;
 }
 
-U32 HalfEdgeTetMesh::insert_element(U32 nodes[4]) {
+bool HalfEdgeTetMesh::insert_element(U32 nodes[4]) {
 	//Inserts a tetrahedra element to the halfedged mesh structure
 	for(int i=0; i<4; i++) {
 		if(!isNodeIndex(nodes[i])) {
 			LogErrorArg1("Invalid node index passed in. %u", nodes[i]);
-			return INVALID_INDEX;
+			return false;
 		}
 	}
 
@@ -386,7 +387,7 @@ U32 HalfEdgeTetMesh::insert_element(U32 nodes[4]) {
 		}
 		else {
 			LogErrorArg2("Opposite edge not found for: <%d. %d>", from, to);
-			return INVALID_INDEX;
+			return false;
 		}
 	}
 
@@ -420,7 +421,7 @@ U32 HalfEdgeTetMesh::insert_element(U32 nodes[4]) {
 		else {
 			LogErrorArg2("Setting element halfedges failed! Unable to find edge <%d, %d>",
 						from, to);
-			return INVALID_INDEX;
+			return false;
 		}
 	}
 
@@ -444,6 +445,9 @@ void HalfEdgeTetMesh::remove_element(U32 i) {
 	const HalfEdgeTetMesh::ELEM tet = const_elemAt(i);
 	for(int j=0; j<4; j++) {
 		m_vFaces[ tet.faces[j] ].refs --;
+
+		//call face remove to decrement its refs
+		remove_face( tet.faces[j] );
 	}
 
 	//mark element as removed then garbage collection will handle indices
@@ -544,7 +548,7 @@ void HalfEdgeTetMesh::garbage_collection() {
 		vFaceIndexAfter[i] = ctCorrectFaces;
 		FACE face = const_faceAt(i);
 
-		if(face.refs == 0)
+		if(face.removed && (face.refs == 0))
 		{
 			//remove face from the keys
 			U32 nodes[3];
@@ -552,8 +556,20 @@ void HalfEdgeTetMesh::garbage_collection() {
 			nodes[1] = vertex_from_hedge(face.halfedge[1]);
 			nodes[2] = vertex_from_hedge(face.halfedge[2]);
 			FaceKey key(nodes[0], nodes[1], nodes[2]);
-			if(m_mapFaces[key] == i)
-				m_mapFaces.erase(key);
+			MAPFACEITER it = m_mapFaces.find(key);
+			if(it == m_mapFaces.end()) {
+				printf("No key recorded for face with nodes [%u, %u, %u]\n", nodes[0], nodes[1], nodes[2]);
+			}
+			else {
+				if(it->second == i) {
+					printf("Found! Erasing the key for face with nodes [%u, %u, %u]\n", nodes[0], nodes[1], nodes[2]);
+					m_mapFaces.erase(key);
+				}
+				else {
+					printf("KEYERROR: the key for face with nodes [%u, %u, %u] does not match its index: %u, found: %u\n",
+							nodes[0], nodes[1], nodes[2], i, it->second);
+				}
+			}
 		}
 		else
 			ctCorrectFaces++;
@@ -579,7 +595,9 @@ void HalfEdgeTetMesh::garbage_collection() {
 	i = 0;
 	while(i < countFaces()) {
 		FACE face = const_faceAt(i);
-		if(face.refs == 0) {
+		if(face.removed && (face.refs == 0)) {
+//			printf("Erasing face with nodes [%u, %u, %u]\n", nodes[0], nodes[1], nodes[2]);
+
 			m_vFaces.erase(m_vFaces.begin() + i);
 			ctRemovedFaces++;
 		}
@@ -857,7 +875,7 @@ int HalfEdgeTetMesh::getIncomingHalfEdges(int idxNode, vector<U32>& incomingHE) 
 
 	U32 inHE_orig = opposite_hedge(n.outHE);
 	U32 inHE = inHE_orig;
-
+	U32 count = 0;
 	do {
 		if(isHalfEdgeIndex(inHE))
 			incomingHE.push_back(inHE);
@@ -866,6 +884,12 @@ int HalfEdgeTetMesh::getIncomingHalfEdges(int idxNode, vector<U32>& incomingHE) 
 			break;
 		}
 		inHE = opposite_hedge(next_hedge(inHE));
+
+		count++;
+		if(count > 10) {
+			LogWarningArg3("More than 10 incoming halfedges detected! Node: %u, original hedge: %u, current hedge: %u",
+						   idxNode, inHE_orig, inHE);
+		}
 	} while(inHE != inHE_orig);
 
 	return (int)incomingHE.size();
@@ -877,6 +901,7 @@ int HalfEdgeTetMesh::getOutgoingHalfEdges(int idxNode, vector<U32>& outgoingHE) 
 	HalfEdgeTetMesh::NODE n = const_nodeAt(idxNode);
 	U32 outHE_orig = n.outHE;
 	U32 outHE = outHE_orig;
+	U32 count = 0;
 
 	do {
 		if(isHalfEdgeIndex(outHE))
@@ -887,6 +912,13 @@ int HalfEdgeTetMesh::getOutgoingHalfEdges(int idxNode, vector<U32>& outgoingHE) 
 		}
 
 		outHE = next_hedge(opposite_hedge(outHE));
+
+		count++;
+		if(count > 10) {
+			LogWarningArg3("More than 10 outgoing halfedges detected! Node: %u, original hedge: %u, current hedge: %u",
+						   idxNode, outHE_orig, outHE);
+		}
+
 	} while(outHE != outHE_orig);
 
 	return (int)outgoingHE.size();

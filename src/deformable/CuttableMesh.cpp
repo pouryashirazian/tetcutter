@@ -307,17 +307,29 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 			}
 		}
 
-		if(cutEdgeCode != 0 || cutNodeCode != 0)
+		//if there is a cut in this tet
+		if(cutEdgeCode != 0 || cutNodeCode != 0) {
+
+			//increment cut tets
 			ctCutTet++;
 
-		//push back all computed values
-		vCutElements.push_back(i);
-		vCutEdgeCodes.push_back(cutEdgeCode);
-		vCutNodeCodes.push_back(cutNodeCode);
+			//push back all computed values
+			vCutElements.push_back(i);
+			vCutEdgeCodes.push_back(cutEdgeCode);
+			vCutNodeCodes.push_back(cutNodeCode);
+			//push back param t
+			for(int e=0; e < 6; e++)
+				vCutParams.push_back(tedges[e]);
 
-		//push back param t
-		for(int e=0; e < 6; e++)
-			vCutParams.push_back(tedges[e]);
+			//check if the codes are implemented already
+			TetSubdivider::CUTCASE cc = m_lpSubD->IdentifyCutCase(true, cutEdgeCode, cutNodeCode);
+			char chrCutCase = m_lpSubD->toAlpha(cc);
+			if(chrCutCase != 'A' && chrCutCase != 'B') {
+				LogErrorArg3("This cut contains a cut case which is not handled yet. case: %c, cutEdgeCode: %x, cutNodeCode: %x",
+							 chrCutCase, cutEdgeCode, cutNodeCode);
+				return -1;
+			}
+		}
 	}
 
 	//	int edgeMaskPos[6][2] = { {1, 2}, {2, 3}, {3, 1}, {2, 0}, {0, 3}, {0, 1} };

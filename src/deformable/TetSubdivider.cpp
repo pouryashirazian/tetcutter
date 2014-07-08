@@ -291,7 +291,9 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 
 			}
 
-			m_lpHEMesh->insert_element(n);
+			if(!m_lpHEMesh->insert_element(n)) {
+				LogErrorArg1("Failed to add element# %d", e);
+			}
 		}
 	}
 	//Case B: 4 cut edges. cutEdgeCodes = { 46, 51, 29 }
@@ -309,7 +311,9 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 			for(int i = 0; i < 4; i++)
 				n[i] = vnodes[ g_elementTableCaseB[entry][e][i] ];
 
-			m_lpHEMesh->insert_element(n);
+			if(!m_lpHEMesh->insert_element(n)) {
+				LogErrorArg1("Failed to add element# %d", e);
+			}
 		}
 
 		if(dosplit) {
