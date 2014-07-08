@@ -57,6 +57,18 @@ TetSubdivider::TetSubdivider(HalfEdgeTetMesh* pMesh) {
 	m_mapCutEdgeCodeToTableEntry[46] = 0;
 	m_mapCutEdgeCodeToTableEntry[51] = 1;
 	m_mapCutEdgeCodeToTableEntry[29] = 2;
+
+	//map cutcase to alphabet
+	m_mapCutCaseToAlpha[cutA] = 'A';
+	m_mapCutCaseToAlpha[cutB] = 'B';
+	m_mapCutCaseToAlpha[cutC] = 'C';
+	m_mapCutCaseToAlpha[cutD] = 'D';
+	m_mapCutCaseToAlpha[cutE] = 'E';
+	m_mapCutCaseToAlpha[cutX] = 'X';
+	m_mapCutCaseToAlpha[cutY] = 'Y';
+	m_mapCutCaseToAlpha[cutZ] = 'Z';
+	m_mapCutCaseToAlpha[cutUnknown] = 'U';
+
 }
 
 TetSubdivider::~TetSubdivider() {
@@ -149,7 +161,17 @@ int TetSubdivider::generateCaseB(U32 element, U8 enteringface, U8& cutEdgeCode,
 	return 1;
 }
 
-TetSubdivider::CUTCASE TetSubdivider::identifyCutCase(bool isCutComplete, U8 cutEdgeCode,
+char TetSubdivider::toAlpha(CUTCASE c) {
+	return m_mapCutCaseToAlpha[c];
+}
+
+TetSubdivider::CUTCASE TetSubdivider::IdentifyCutCase(bool isCutComplete, U8 cutEdgeCode, U8 cutNodeCode) {
+	U8 countCutEdges = 0;
+	U8 countCutNodes = 0;
+	return IdentifyCutCase(isCutComplete, cutEdgeCode, cutNodeCode, countCutEdges, countCutNodes);
+}
+
+TetSubdivider::CUTCASE TetSubdivider::IdentifyCutCase(bool isCutComplete, U8 cutEdgeCode,
 													  U8 cutNodeCode, U8& countCutEdges, U8& countCutNodes) {
 	countCutEdges = 0;
 
@@ -163,13 +185,13 @@ TetSubdivider::CUTCASE TetSubdivider::identifyCutCase(bool isCutComplete, U8 cut
 		countCutNodes += ((cutNodeCode & (1 << i)) != 0);
 
 	if(countCutNodes == 0) {
-
-		if(countCutEdges == 3)
-			return cutA;
-		else if(countCutEdges == 4)
-			return cutB;
-
-		if(isCutComplete == false) {
+		if(isCutComplete) {
+			if(countCutEdges == 3)
+				return cutA;
+			else if(countCutEdges == 4)
+				return cutB;
+		}
+		else {
 			if(countCutEdges == 1)
 				return cutC;
 			else if(countCutEdges == 2)
@@ -195,27 +217,15 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 	U8 ctCutEdges = 0;
 	U8 ctCutNodes = 0;
 
-	TetSubdivider::CUTCASE cutcase = identifyCutCase(true, cutEdgeCode, cutNodeCode, ctCutEdges, ctCutNodes);
+	TetSubdivider::CUTCASE cutcase = IdentifyCutCase(true, cutEdgeCode, cutNodeCode, ctCutEdges, ctCutNodes);
 	if(cutcase > cutB) {
 		LogErrorArg3("This case is not handled yet! cutEdgeCode = %u, ctCutEdges = %u, ctCutNodes = %u",
 					 cutEdgeCode, ctCutEdges, ctCutNodes);
 		return 0;
 	}
 
-	//map cutcase to alphabet
-	map<TetSubdivider::CUTCASE, char> mapCutCases;
-	mapCutCases[cutA] = 'A';
-	mapCutCases[cutB] = 'B';
-	mapCutCases[cutC] = 'C';
-	mapCutCases[cutD] = 'D';
-	mapCutCases[cutE] = 'E';
-	mapCutCases[cutX] = 'X';
-	mapCutCases[cutY] = 'Y';
-	mapCutCases[cutZ] = 'Z';
-	mapCutCases[cutUnknown] = 'U';
-
 	//report
-	printf("Element: %u, Cut type %c: cutEdgeCode: %u, cutNodeCode: %u\n", element, mapCutCases[cutcase], cutEdgeCode, cutNodeCode);
+	printf("Element: %u, Cut type %c: cutEdgeCode: %u, cutNodeCode: %u\n", element, m_mapCutCaseToAlpha[cutcase], cutEdgeCode, cutNodeCode);
 
 
 	//fill the array of virtual nodes

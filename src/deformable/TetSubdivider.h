@@ -33,14 +33,17 @@ public:
 	void draw();
 
 	void setMesh(HalfEdgeTetMesh* pMesh) { m_lpHEMesh = pMesh;}
-	CUTCASE identifyCutCase(bool isCutComplete, U8 cutEdgeCode, U8 cutNodeCode, U8& countCutEdges, U8& countCutNodes);
+
+	char toAlpha(CUTCASE c);
+	static CUTCASE IdentifyCutCase(bool isCutComplete, U8 cutEdgeCode, U8 cutNodeCode);
+	static CUTCASE IdentifyCutCase(bool isCutComplete, U8 cutEdgeCode, U8 cutNodeCode, U8& countCutEdges, U8& countCutNodes);
 
 	int subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, U32 middlePoints[12], bool dosplit = true);
 
 
 
 	/*!
-	 * generates case A where a node in separated from the rest of the element. 3 edges are cut.
+	 * \brief generates case A where a node in separated from the rest of the element. 3 edges are cut.
 	 * @element: element to be considered
 	 * @node: the node to be separated
 	 * @targetDist: distance to the node [0-1]
@@ -50,7 +53,7 @@ public:
 					  U8& cutEdgeCode, U8& cutNodeCode, double (&tEdges)[6]);
 
 	/*!
-	 * generates case B where an element is sliced into two sections by cutting its 4 edges.
+	 * \brief generates case B where an element is sliced into two sections by cutting its 4 edges.
 	 * There 3 different case that can produce this state
 	 * @element: tetrahedral element to be considered
 	 * @face: start face which can be 0, 1 or 2 (end face is 3)
@@ -65,9 +68,15 @@ public:
 	bool writeLookUpTable();
 protected:
 
+	//half edge mesh
 	HalfEdgeTetMesh* m_lpHEMesh;
 
+	//cut edge code
 	std::map<U8, int> m_mapCutEdgeCodeToTableEntry;
+
+	//cut cases
+	std::map<TetSubdivider::CUTCASE, char> m_mapCutCaseToAlpha;
+
 };
 
 }
