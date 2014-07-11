@@ -18,6 +18,8 @@
 #include "base/MovingAverage.h"
 
 #include "ShaderManager.h"
+#include "TexManager.h"
+
 #include "ArcBallCamera.h"
 #include "SGNode.h"
 #include "SGHeaders.h"

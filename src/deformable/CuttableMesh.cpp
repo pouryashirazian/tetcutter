@@ -382,7 +382,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 				}
 			}
 			//subdivide the element
-			ctElementsCut += m_lpSubD->subdivide(vCutElements[i], cutEdgeCode, cutNodeCode, middlePoints, false);
+			ctElementsCut += m_lpSubD->subdivide(vCutElements[i], cutEdgeCode, cutNodeCode, middlePoints, true);
 		}
 	}
 

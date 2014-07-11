@@ -10,6 +10,7 @@
 #include "graphics/Gizmo.h"
 #include "graphics/AppScreen.h"
 #include "graphics/selectgl.h"
+#include "graphics/SGQuad.h"
 #include "deformable/AvatarScalpel.h"
 #include "deformable/TetSubdivider.h"
 
@@ -280,7 +281,8 @@ void resetMesh() {
 
 	//create a scalpel
 	//g_lpTetMesh = CuttableMesh::CreateTruthCube(8, 4, 4, 0.5);
-	g_lpTetMesh = CuttableMesh::CreateTwoTetra();
+	//g_lpTetMesh = CuttableMesh::CreateTwoTetra();
+	g_lpTetMesh = CuttableMesh::CreateOneTetra();
 	g_lpTetMesh->setName("tets");
 	TheSceneGraph::Instance().add(g_lpTetMesh);
 
@@ -327,12 +329,22 @@ int main(int argc, char* argv[]) {
 	//Build Shaders for drawing the mesh
 	AnsiStr strRoot = ExtractOneLevelUp(ExtractFilePath(GetExePath()));
 	AnsiStr strShaderRoot = strRoot + "data/shaders/";
+	AnsiStr strTextureRoot = strRoot + "data/textures/";
 
 	//Load Shaders
 	TheShaderManager::Instance().addFromFolder(strShaderRoot.cptr());
 
+	//Load Textures
+	TheTexManager::Instance().add(strTextureRoot + "wood.png");
+
 	//Ground and Room
-	TheSceneGraph::Instance().addFloor(32, 32, 0.5f);
+	SGQuad* woodenFloor = new SGQuad(16.0f, 16.0f, TheTexManager::Instance().get("wood"));
+	woodenFloor->setName("floor");
+	woodenFloor->transform()->translate(vec3f(0, -0.1f, 0));
+	woodenFloor->transform()->rotate(vec3f(1.0f, 0.0f, 0.0f), 90.0f);
+	TheSceneGraph::Instance().add(woodenFloor);
+
+	//TheSceneGraph::Instance().addFloor(32, 32, 0.5f);
 	TheSceneGraph::Instance().addSceneBox(AABB(vec3f(-10, -10, -16), vec3f(10, 10, 16)));
 
 	//Create Scalpel
