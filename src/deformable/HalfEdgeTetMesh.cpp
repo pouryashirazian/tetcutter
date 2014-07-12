@@ -415,7 +415,8 @@ bool HalfEdgeTetMesh::insert_element(U32 nodes[4]) {
 		from = elem.nodes[edgeMaskPos[e][0]];
 		to = elem.nodes[edgeMaskPos[e][1]];
 
-		MAPHEDGEINDEXITER it = m_mapHalfEdgesIndex.find(std::make_pair(from, to));
+		HEdgeKey key(from, to);
+		MAPHEDGEINDEXITER it = m_mapHalfEdgesIndex.find(key);
 		if (it != m_mapHalfEdgesIndex.end())
 			elem.halfedge[e] = it->second;
 		else {
@@ -473,7 +474,8 @@ U32 HalfEdgeTetMesh::insert_face(U32 nodes[3]) {
 		from = nodes[e];
 		to = nodes[(e + 1) % 3];
 
-		MAPHEDGEINDEXITER it = m_mapHalfEdgesIndex.find(std::make_pair(from, to));
+		HEdgeKey key(from, to);
+		MAPHEDGEINDEXITER it = m_mapHalfEdgesIndex.find(key);
 		if (it != m_mapHalfEdgesIndex.end()) {
 			m_vHalfEdges[it->second].refs ++;
 			face.halfedge[e] = it->second;
@@ -676,12 +678,14 @@ void HalfEdgeTetMesh::displace(double * u) {
 }
 
 int HalfEdgeTetMesh::insertHEdgeIndexToMap(U32 from, U32 to, U32 idxHE) {
-	m_mapHalfEdgesIndex.insert( std::make_pair( std::make_pair(from, to), idxHE) );
+	HEdgeKey key(from, to);
+	m_mapHalfEdgesIndex.insert( std::make_pair( key, idxHE) );
 	return 1;
 }
 
 int HalfEdgeTetMesh::removeHEdgeIndexFromMap(U32 from, U32 to) {
-	MAPHEDGEINDEXITER it = m_mapHalfEdgesIndex.find(std::make_pair(from, to));
+	HEdgeKey key(from, to);
+	MAPHEDGEINDEXITER it = m_mapHalfEdgesIndex.find(key);
 	if(it == m_mapHalfEdgesIndex.end())
 		return -1;
 	else {
@@ -691,11 +695,13 @@ int HalfEdgeTetMesh::removeHEdgeIndexFromMap(U32 from, U32 to) {
 }
 
 bool HalfEdgeTetMesh::halfedge_exists(U32 from, U32 to) const {
-	return (m_mapHalfEdgesIndex.find( std::make_pair(from, to) ) != m_mapHalfEdgesIndex.end());
+	HEdgeKey key(from, to);
+	return (m_mapHalfEdgesIndex.find( key ) != m_mapHalfEdgesIndex.end());
 }
 
 U32 HalfEdgeTetMesh::halfedge_handle(U32 from, U32 to) {
-	MAPHEDGEINDEXITER it = m_mapHalfEdgesIndex.find(std::make_pair(from, to));
+	HEdgeKey key(from, to);
+	MAPHEDGEINDEXITER it = m_mapHalfEdgesIndex.find(key);
 	if(it != m_mapHalfEdgesIndex.end())
 		return it->second;
 	else

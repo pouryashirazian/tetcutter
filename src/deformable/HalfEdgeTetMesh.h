@@ -27,11 +27,19 @@ using namespace std;
 #define FACE_SHIFT_B 21
 #define FACE_SHIFT_C 42
 
+#define HEDGE_SHIFT_A 0
+#define HEDGE_SHIFT_B 32
+
+
 //can keep up to 2097151 nodes
 #define FACE_BITMASK 0x001FFFFF
+#define HEDGE_BITMASK 0xFFFFFFFF
 
 #define FACEID_HASHSIZE (U64)(1<<(3*FACE_SHIFT_B))
 #define FACEID_FROM_IDX(a,b,c) (((U64) ((c) & FACE_BITMASK) << FACE_SHIFT_C) | ((U64) ((b) & FACE_BITMASK) << FACE_SHIFT_B) | ((a) & FACE_BITMASK))
+
+#define HEDGEID_HASHSIZE	(U64)(1<<(HEDGE_SHIFT_B))
+#define HEDGEID_FROM_IDX(a,b)	(((U64)((b) & HEDGE_BITMASK) << HEDGE_SHIFT_B) | ((a) & HEDGE_BITMASK))
 
 namespace PS {
 namespace FEM {
@@ -114,6 +122,26 @@ public:
 		};
 	};
 
+	//Key to access half-edges in a unique order
+	struct HEdgeKey
+	{
+		HEdgeKey(U64 k) { this->key = k; }
+		HEdgeKey(U32 a, U32 b) {
+	    	key = HEDGEID_FROM_IDX(a, b);
+	    }
+
+	    bool operator<(const HEdgeKey& k) const { return key < k.key; }
+
+	    bool operator>(const HEdgeKey& k) const { return key > k.key; }
+
+	    void operator=(const HEdgeKey& other) {
+	    	this->key = other.key;
+	    }
+
+	    U64 key;
+	};
+
+
 	//edge
 	class EDGE {
 	public:
@@ -195,6 +223,11 @@ public:
 	    bool operator<(const FaceKey& k) const { return key < k.key; }
 
 	    bool operator>(const FaceKey& k) const { return key > k.key; }
+
+	    void operator=(const FaceKey& other) {
+	    	this->key = other.key;
+	    }
+
 
 	    U64 key;
 	};
@@ -384,11 +417,11 @@ protected:
 	std::map< FaceKey, U32 > m_mapFaces;
 
 	//maps a half-edge from-to pair to the corresponding hedge handle
-	std::map< pair<U32, U32>, U32 > m_mapHalfEdgesIndex;
+	std::map< HEdgeKey, U32 > m_mapHalfEdgesIndex;
 
 	//iterators
-	typedef std::map< pair<U32, U32>, U32 >::iterator MAPHEDGEINDEXITER;
-	typedef std::map< pair<U32, U32>, U32 >::iterator MAPHEDGEINDEXCONSTITER;
+	typedef std::map< HEdgeKey, U32 >::iterator MAPHEDGEINDEXITER;
+	typedef std::map< HEdgeKey, U32 >::iterator MAPHEDGEINDEXCONSTITER;
 	typedef std::map< FaceKey, U32 >::iterator MAPFACEITER;
 };
 
