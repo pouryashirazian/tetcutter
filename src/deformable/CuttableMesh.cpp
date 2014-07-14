@@ -149,7 +149,8 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	//4.duplicate cut nodes and incident edges
 
 	// iterate over all edges
-
+	m_mapCutEdges.clear();
+	std::map< U32, CutEdge > mapTempCutEdges;
 	vec3d uvw, xyz, ss0, ss1;
 	double t;
 
@@ -190,7 +191,8 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 			vec3d temp = ce.e0 + (ce.e1 - ce.e0).normalized() * ce.t;
 			assert( (ce.pos - temp).length() < EPSILON);
 
-			m_mapCutEdges[i] = ce;
+			//add to cut edges map
+			mapTempCutEdges.insert( std::make_pair(i, ce));
 		}
 	}
 
@@ -200,15 +202,11 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	vec3d blade1 = bladePath1[bladePath1.size() - 1];
 	const double edgelen2 = (blade1 - blade0).length2();
 
-	std::map< U32, CutEdge > finalCutEdges;
-	finalCutEdges.insert(m_mapCutEdges.begin(), m_mapCutEdges.end());
-
 	int ctRemovedCutEdges = 0;
 	m_mapCutNodes.clear();
 
 	//detect all cut-nodes and remove the cut-edges that emanate from a cut-node
-	CUTEDGEITER it = m_mapCutEdges.begin();
-	for(it = m_mapCutEdges.begin(); it != m_mapCutEdges.end(); ++it ) {
+	for(CUTEDGEITER it = mapTempCutEdges.begin(); it != mapTempCutEdges.end(); ++it ) {
 
 		ss0 = it->second.e0;
 		ss1 = it->second.e1;
@@ -236,7 +234,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 			m_lpHEMesh->getIncomingHalfEdges(cn.idxNode, incomingHE);
 
 			for(U32 i=0; i < incomingHE.size(); i++) {
-				finalCutEdges.erase(m_lpHEMesh->edge_from_halfedge(incomingHE[i]));
+				mapTempCutEdges.erase(m_lpHEMesh->edge_from_halfedge(incomingHE[i]));
 				ctRemovedCutEdges++;
 			}
 		}
@@ -252,7 +250,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 			m_lpHEMesh->getIncomingHalfEdges(cn.idxNode, incomingHE);
 
 			for(U32 i=0; i < incomingHE.size(); i++) {
-				finalCutEdges.erase(m_lpHEMesh->edge_from_halfedge(incomingHE[i]));
+				mapTempCutEdges.erase(m_lpHEMesh->edge_from_halfedge(incomingHE[i]));
 				ctRemovedCutEdges++;
 			}
 		}
@@ -260,7 +258,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 
 	//Copy
 	m_mapCutEdges.clear();
-	m_mapCutEdges.insert(finalCutEdges.begin(), finalCutEdges.end());
+	m_mapCutEdges.insert(mapTempCutEdges.begin(), mapTempCutEdges.end());
 	if(m_mapCutNodes.size() > 0)
 		printf("Cut nodes count %d.\n", (int)m_mapCutNodes.size());
 	if(m_mapCutEdges.size() > 0)

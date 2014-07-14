@@ -163,8 +163,8 @@ bool HalfEdgeTetMesh::setup(U32 ctVertices, const double* vertices, U32 ctElemen
 	//Compute AABB
 	computeAABB();
 	//checkMeshFaceDirections();
-
 	this->printInfo();
+
 	return true;
 }
 
@@ -273,6 +273,7 @@ bool HalfEdgeTetMesh::insert_element(const ELEM& e) {
 	//bump up refs for faces
 	for(int i=0; i<4; i++) {
 		m_vFaces[ e.faces[i] ].refs ++;
+		m_vFaces[ e.faces[i] ].removed = false;
 	}
 
 	m_vElements.push_back(e);
@@ -300,8 +301,8 @@ bool HalfEdgeTetMesh::insert_element(U32 nodes[4]) {
 	//const int edgeMaskNeg[6][2] = { {3, 2}, {2, 1}, {1, 3}, {3, 0}, {0, 2}, {1, 0} };
 
 	//maps for half edges
-	std::map< pair<U32, U32>, HEDGE > mapHalfEdges;
-	typedef std::map< pair<U32, U32>, HEDGE >::iterator HEITER;
+	std::map< HEdgeKey, HEDGE > mapHalfEdges;
+	typedef std::map< HEdgeKey, HEDGE >::iterator HEITER;
 
 
 	//determinant
@@ -337,10 +338,11 @@ bool HalfEdgeTetMesh::insert_element(U32 nodes[4]) {
 			U32 to = fv[(e + 1) % 3];
 
 			if(halfedge_exists(from, to) == false) {
+				HalfEdgeTetMesh::HEdgeKey key(from, to);
 				HalfEdgeTetMesh::HEDGE he;
 				he.from = from;
 				he.to = to;
-				mapHalfEdges.insert(make_pair(std::make_pair(he.from, he.to), he));
+				mapHalfEdges.insert(make_pair(key, he));
 			}
 			else {
 				if(!halfedge_exists(to, from)) {
@@ -370,7 +372,8 @@ bool HalfEdgeTetMesh::insert_element(U32 nodes[4]) {
 		mapHalfEdges.erase(forward);
 
 		//add backward
-		HEITER backward = mapHalfEdges.find(std::make_pair(to, from));
+		HalfEdgeTetMesh::HEdgeKey keyBackward(to, from);
+		HEITER backward = mapHalfEdges.find(keyBackward);
 		if(backward != mapHalfEdges.end()) {
 			m_vHalfEdges.push_back(backward->second);
 			idxBackward = idxForward + 1;
@@ -408,6 +411,14 @@ bool HalfEdgeTetMesh::insert_element(U32 nodes[4]) {
 
 		//Set element face index
 		elem.faces[f] = insert_face(facenodes);
+
+		//test if the face key maps to index
+		FaceKey key(facenodes[0], facenodes[1], facenodes[2]);
+		MAPFACEITER it = m_mapFaces.find(key);
+		if(it == m_mapFaces.end()) {
+			LogError("unable to find the face via its indices!");
+		}
+		assert(it->second == elem.faces[f]);
 	}
 
 	//Set element half-edges
@@ -524,7 +535,7 @@ void HalfEdgeTetMesh::remove_face(U32 i) {
 void HalfEdgeTetMesh::garbage_collection() {
 
 	//acquire lock to mesh
-
+	tst_keys();
 
 	//elements
 	U32 i = 0;
@@ -548,7 +559,7 @@ void HalfEdgeTetMesh::garbage_collection() {
 	for(i = 0; i < countFaces(); i++) {
 
 		vFaceIndexAfter[i] = ctCorrectFaces;
-		FACE face = const_faceAt(i);
+		const FACE face = const_faceAt(i);
 
 		if(face.removed && (face.refs == 0))
 		{
@@ -617,6 +628,16 @@ void HalfEdgeTetMesh::garbage_collection() {
 	//release lock
 }
 
+bool HalfEdgeTetMesh::getFaceNodes(U32 i, U32* nodes[3]) const {
+	if(!isFaceIndex(i))
+		return false;
+
+	FACE face = const_faceAt(i);
+	for(int i=0; i < 3; i++)
+		*nodes[i] = vertex_from_hedge(face.halfedge[i]);
+
+	return true;
+}
 
 HalfEdgeTetMesh::ELEM& HalfEdgeTetMesh::elemAt(U32 i) {
 	assert(isElemIndex(i));
@@ -933,6 +954,7 @@ int HalfEdgeTetMesh::getOutgoingHalfEdges(int idxNode, vector<U32>& outgoingHE) 
 void HalfEdgeTetMesh::setElemToShow(U32 elem) {
 	if(elem == m_elemToShow)
 		return;
+	LogInfoArg1("Requested element to shows: %u\n", elem);
 	m_elemToShow = elem;
 }
 
@@ -1214,6 +1236,52 @@ AABB HalfEdgeTetMesh::computeAABB() {
 	m_aabb.set(vec3f((float)vMin[0], (float)vMin[1], (float)vMin[2]),
 			   vec3f((float)vMax[0], (float)vMax[1], (float)vMax[2]));
 	return m_aabb;
+}
+
+bool HalfEdgeTetMesh::tst_keys() {
+	int ctErrors = 0;
+	for(U32 i = 0; i < m_vFaces.size(); i++) {
+		const FACE face = const_faceAt(i);
+
+		U32 nodes[3];
+		for(U32 j=0; j < 3; j++)
+			nodes[j] = vertex_from_hedge(face.halfedge[j]);
+
+		FaceKey key(nodes[0], nodes[1], nodes[2]);
+		MAPFACEITER it = m_mapFaces.find(key);
+		if(it == m_mapFaces.end()) {
+			ctErrors ++;
+			printf("ERROR: No key entry in the map for face %u, nodes: [%u, %u, %u]\n", i, nodes[0], nodes[1], nodes[2]);
+		}
+		else if(it->second != i) {
+			ctErrors ++;
+			U32 wrongnodes[3];
+
+			for(U32 j=0; j < 3; j++)
+				wrongnodes[j] = INVALID_INDEX;
+			if(isFaceIndex(it->second)) {
+				const FACE wrongface = const_faceAt(it->second);
+				for(U32 j=0; j < 3; j++)
+					wrongnodes[j] = vertex_from_hedge(wrongface.halfedge[j]);
+			}
+
+
+			printf("ERROR: Map key entry is wrong for face %u, nodes: [%u, %u, %u], points to face instead: %u nodes: [%u, %u, %u]\n",
+					i, nodes[0], nodes[1], nodes[2], it->second, wrongnodes[0], wrongnodes[1], wrongnodes[2]);
+
+			FaceKey wrongKey(wrongnodes[0], wrongnodes[1], wrongnodes[2]);
+			if(wrongKey.key == key.key) {
+				printf("ERROR: Hashing had a collision here!\n");
+			}
+
+		}
+	}
+
+	if(ctErrors == 0)
+		LogInfoArg1("PASS: %s", __FUNCTION__);
+	else
+		LogInfoArg1("FAILED!: %s", __FUNCTION__);
+	return (ctErrors == 0);
 }
 
 

@@ -310,6 +310,8 @@ public:
 	inline bool isNodeIndex(U32 i) const { return (i < m_vNodes.size());}
 
 	//access
+	bool getFaceNodes(U32 i, U32* nodes[3]) const;
+
 	ELEM& elemAt(U32 i);
 	FACE& faceAt(U32 i);
 	HEDGE& halfedgeAt(U32 i);
@@ -391,6 +393,8 @@ public:
 	//aabb
 	AABB computeAABB();
 
+	//test that all faces are mapped to a correct key
+	bool tst_keys();
 private:
 	void init();
 	inline int insertHEdgeIndexToMap(U32 from, U32 to, U32 idxHE);

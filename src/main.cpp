@@ -22,7 +22,7 @@ using namespace PS::FILESTRINGUTILS;
 using namespace std;
 
 AvatarScalpel* g_lpScalpel = NULL;
-CuttableMesh* g_lpTetMesh = NULL;
+CuttableMesh* g_lpTissue = NULL;
 
 U32 g_current = 3;
 U32 g_cutCase = 0;
@@ -77,24 +77,38 @@ void NormalKey(unsigned char key, int x, int y)
 	switch(key)
 	{
 	case('a'): {
-		if(!g_lpTetMesh) return;
+		if(!g_lpTissue) return;
 
-//		U32 i = g_lpTetMesh->getElemToShow();
-//		if(g_lpTetMesh->isElemIndex(i))
-//			g_lpTetMesh->setElemToShow(--i);
-//		else
-//			g_lpTetMesh->setElemToShow(0);
+		U32 i = g_lpTissue->getMesh()->getElemToShow();
+		if(g_lpTissue->getMesh()->isElemIndex(i))
+			g_lpTissue->getMesh()->setElemToShow(--i);
+		else
+			g_lpTissue->getMesh()->setElemToShow(0);
 	}
 	break;
 
 	case('d'): {
-		if(!g_lpTetMesh) return;
+		if(!g_lpTissue) return;
 
-//		U32 i = g_lpTetMesh->getElemToShow();
-//		if(g_lpTetMesh->isElemIndex(i))
-//			g_lpTetMesh->setElemToShow(++i);
-//		else
-//			g_lpTetMesh->setElemToShow(0);
+		U32 i = g_lpTissue->getMesh()->getElemToShow();
+		if(g_lpTissue->getMesh()->isElemIndex(i))
+			g_lpTissue->getMesh()->setElemToShow(++i);
+		else
+			g_lpTissue->getMesh()->setElemToShow(0);
+	}
+	break;
+
+	case('e'): {
+		if(!g_lpTissue) return;
+
+		U32 ctElems = g_lpTissue->getMesh()->countElements();
+		U32 idxElem = -1;
+		printf("Insert element index to show: [0:%u]\n", ctElems-1);
+		scanf("%u", &idxElem);
+		if(g_lpTissue->getMesh()->isElemIndex(idxElem))
+			g_lpTissue->getMesh()->setElemToShow(idxElem);
+		else
+			g_lpTissue->getMesh()->setElemToShow();
 	}
 	break;
 
@@ -263,7 +277,7 @@ void SpecialKey(int key, int x, int y)
 
 void closeApp() {
 	SAFE_DELETE(g_lpScalpel);
-	SAFE_DELETE(g_lpTetMesh);
+	SAFE_DELETE(g_lpTissue);
 }
 
 void handleElementEvent(HalfEdgeTetMesh::ELEM element, U32 handle, HalfEdgeTetMesh::TopologyEvent event) {
@@ -277,16 +291,16 @@ void handleElementEvent(HalfEdgeTetMesh::ELEM element, U32 handle, HalfEdgeTetMe
 void resetMesh() {
 	//remove it from scenegraph
 	TheSceneGraph::Instance().remove("tets");
-	SAFE_DELETE(g_lpTetMesh);
+	SAFE_DELETE(g_lpTissue);
 
 	//create a scalpel
 	//g_lpTetMesh = CuttableMesh::CreateTruthCube(8, 4, 4, 0.5);
 	//g_lpTetMesh = CuttableMesh::CreateTwoTetra();
-	g_lpTetMesh = CuttableMesh::CreateOneTetra();
-	g_lpTetMesh->setName("tets");
-	TheSceneGraph::Instance().add(g_lpTetMesh);
+	g_lpTissue = CuttableMesh::CreateOneTetra();
+	g_lpTissue->setName("tets");
+	TheSceneGraph::Instance().add(g_lpTissue);
 
-	g_lpScalpel->setTissue(g_lpTetMesh);
+	g_lpScalpel->setTissue(g_lpTissue);
 }
 
 void runTestSubDivide(int current) {
@@ -297,9 +311,9 @@ void runTestSubDivide(int current) {
 	U8 cutEdgeCode, cutNodeCode = 0;
 
 	if(g_cutCase == 0)
-		g_lpTetMesh->getSubD()->generateCaseA(0, current, 0.4, cutEdgeCode, cutNodeCode, tEdges);
+		g_lpTissue->getSubD()->generateCaseA(0, current, 0.4, cutEdgeCode, cutNodeCode, tEdges);
 	else if(g_cutCase == 1)
-		g_lpTetMesh->getSubD()->generateCaseB(0, current, cutEdgeCode, cutNodeCode, tEdges);
+		g_lpTissue->getSubD()->generateCaseB(0, current, cutEdgeCode, cutNodeCode, tEdges);
 
 	//g_lpTetMesh->getSubD()->subdivide(0, cutEdgeCode, cutNodeCode, tEdges);
 }
@@ -357,6 +371,8 @@ int main(int argc, char* argv[]) {
 
 	//reset cuttable mesh
 	resetMesh();
+
+
 
 	glutMainLoop();
 

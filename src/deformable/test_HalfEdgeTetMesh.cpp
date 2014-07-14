@@ -333,10 +333,13 @@ bool TestHalfEdgeTestMesh::tst_meshFacesAndOrder(HalfEdgeTetMesh* pmesh)  {
 bool TestHalfEdgeTestMesh::tst_all(HalfEdgeTetMesh* pmesh) {
 
 	U32 idxTest = 0;
-	const U32 maxTest = 4;
+	const U32 maxTest = 5;
 	printf("============================begin mesh tests===========================\n");
 	printf("Test %u of %u\n", ++idxTest, maxTest);
-	//tst_report_mesh_info(pmesh);
+	pmesh->tst_keys();
+
+	printf("Test %u of %u\n", ++idxTest, maxTest);
+	tst_report_mesh_info(pmesh);
 
 	printf("Test %u of %u\n", ++idxTest, maxTest);
 	tst_correct_elements(pmesh);

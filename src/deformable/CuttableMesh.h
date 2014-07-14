@@ -98,6 +98,7 @@ public:
 
 	//Access to subdivider
 	TetSubdivider* getSubD() const { return m_lpSubD;}
+	HalfEdgeTetMesh* getMesh() const { return m_lpHEMesh;}
 
 	//create a tetrahedra
 	static CuttableMesh* CreateOneTetra();
