@@ -206,6 +206,12 @@ public:
 	struct FaceKey
 	{
 		FaceKey(U64 k) { this->key = k; }
+
+		FaceKey(U32 n[3]) {
+	    	order_lo2hi(n[0], n[1], n[2]);
+	    	key = FACEID_FROM_IDX(n[0], n[1], n[2]);
+		}
+
 	    FaceKey(U32 a, U32 b, U32 c) {
 	    	order_lo2hi(a, b, c);
 	    	key = FACEID_FROM_IDX(a, b, c);
@@ -310,7 +316,7 @@ public:
 	inline bool isNodeIndex(U32 i) const { return (i < m_vNodes.size());}
 
 	//access
-	bool getFaceNodes(U32 i, U32* nodes[3]) const;
+	bool getFaceNodes(U32 idxFace, U32 (&nodes)[3]) const;
 
 	ELEM& elemAt(U32 i);
 	FACE& faceAt(U32 i);
@@ -346,11 +352,13 @@ public:
 
 
 	//topology modifiers
+
+	//insertions
 	bool insert_element(const ELEM& e);
 	bool insert_element(U32 nodes[4]);
-
-	//inserting a face will bump the refs on its halfedges
 	U32 insert_face(U32 nodes[3]);
+	U32 insert_node(const NODE& n);
+
 
 	//remove
 	void remove_element(U32 i);
@@ -359,12 +367,6 @@ public:
 	//erases all objects marked removed
 	void garbage_collection();
 
-
-
-	/*!
-	 * splits the edge in the middle. Adds one new node along the edge and re-connects all half-edges along that.
-	 */
-	bool split_edge(int idxEdge, double t);
 
 	/*!
 	 * cuts an edge completely. Two new nodes are created at the point of cut with no hedges between them.
@@ -397,8 +399,16 @@ public:
 	bool tst_keys();
 private:
 	void init();
-	inline int insertHEdgeIndexToMap(U32 from, U32 to, U32 idxHE);
-	inline int removeHEdgeIndexFromMap(U32 from, U32 to);
+	inline bool insertHEdgeIndexToMap(U32 from, U32 to, U32 idxHE);
+	inline bool removeHEdgeIndexFromMap(U32 from, U32 to);
+
+	inline bool insertFaceIndexToMap(U32 nodes[3], U32 idxFace);
+	inline bool removeFaceIndexFromMap(U32 nodes[3]);
+
+	inline HEdgeKey computeHEdgeKey(U32 idxHEdge) const;
+	inline FaceKey computeFaceKey(U32 idxFace) const;
+
+
 	inline bool halfedge_exists(U32 from, U32 to) const;
 	U32 halfedge_handle(U32 from, U32 to);
 
