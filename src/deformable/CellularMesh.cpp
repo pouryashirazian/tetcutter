@@ -11,7 +11,7 @@
 #include <base/String.h>
 #include <base/StringBase.h>
 #include <base/Vec.h>
-#include <deformable/HalfEdgeTetMesh.h>
+#include <deformable/CellularMesh.h>
 #include <graphics/AABB.h>
 #include <GL/glew.h>
 //#include "graphics/selectgl.h"
@@ -30,19 +30,19 @@ using namespace std;
 using namespace PS;
 using namespace PS::FILESTRINGUTILS;
 
-namespace PS {
-namespace FEM {
+using namespace PS;
+using namespace PS::MESH;
 
-HalfEdgeTetMesh::HalfEdgeTetMesh() {
+CellMesh::CellMesh() {
 	init();
 }
 
-HalfEdgeTetMesh::HalfEdgeTetMesh(U32 ctVertices, double* vertices, U32 ctElements, U32* elements) {
+CellMesh::CellMesh(U32 ctVertices, double* vertices, U32 ctElements, U32* elements) {
 	init();
 	setup(ctVertices, vertices, ctElements, elements);
 }
 
-HalfEdgeTetMesh::HalfEdgeTetMesh(const HalfEdgeTetMesh& other) {
+CellMesh::CellMesh(const CellMesh& other) {
 	init();
 
 	vector<double> vertices;
@@ -55,7 +55,7 @@ HalfEdgeTetMesh::HalfEdgeTetMesh(const HalfEdgeTetMesh& other) {
 
 	//nodes
 	for(U32 i=0; i<ctNodes; i++) {
-		HalfEdgeTetMesh::NODE node = other.const_nodeAt(i);
+		NODE node = other.const_nodeAt(i);
 		vertices[i * 3 + 0] = node.pos.x;
 		vertices[i * 3 + 1] = node.pos.y;
 		vertices[i * 3 + 2] = node.pos.z;
@@ -63,7 +63,7 @@ HalfEdgeTetMesh::HalfEdgeTetMesh(const HalfEdgeTetMesh& other) {
 
 	//elements
 	for(U32 i=0; i<ctElements; i++) {
-		HalfEdgeTetMesh::ELEM elem = other.const_elemAt(i);
+		CELL elem = other.const_elemAt(i);
 		elements[i * 4 + 0] = elem.nodes[0];
 		elements[i * 4 + 1] = elem.nodes[1];
 		elements[i * 4 + 2] = elem.nodes[2];
@@ -73,18 +73,18 @@ HalfEdgeTetMesh::HalfEdgeTetMesh(const HalfEdgeTetMesh& other) {
 	setup(vertices, elements);
 }
 
-HalfEdgeTetMesh::HalfEdgeTetMesh(const vector<double>& vertices, const vector<U32>& elements) {
+CellMesh::CellMesh(const vector<double>& vertices, const vector<U32>& elements) {
 	init();
 	setup(vertices, elements);
 }
 
 
-HalfEdgeTetMesh::~HalfEdgeTetMesh() {
+CellMesh::~CellMesh() {
 	cleanup();
 }
 
 
-HalfEdgeTetMesh* HalfEdgeTetMesh::CreateOneTet() {
+CellMesh* CellMesh::CreateOneTet() {
 	vector<double> vertices;
 	vector<U32> elements;
 
@@ -105,11 +105,11 @@ HalfEdgeTetMesh* HalfEdgeTetMesh::CreateOneTet() {
 	elements[2] = 2;
 	elements[3] = 3;
 
-	HalfEdgeTetMesh* tet = new HalfEdgeTetMesh(vertices, elements);
+	CellMesh* tet = new CellMesh(vertices, elements);
 	return tet;
 }
 
-void HalfEdgeTetMesh::init() {
+void CellMesh::init() {
 	m_elemToShow = INVALID_INDEX;
 	m_fOnNodeEvent = NULL;
 	m_fOnEdgeEvent = NULL;
@@ -117,40 +117,40 @@ void HalfEdgeTetMesh::init() {
 	m_fOnElementEvent = NULL;
 }
 
-void HalfEdgeTetMesh::setOnNodeEventCallback(OnNodeEvent f) {
+void CellMesh::setOnNodeEventCallback(OnNodeEvent f) {
 	m_fOnNodeEvent = f;
 }
 
-void HalfEdgeTetMesh::setOnEdgeEventCallback(OnEdgeEvent f) {
+void CellMesh::setOnEdgeEventCallback(OnEdgeEvent f) {
 	m_fOnEdgeEvent = f;
 }
 
-void HalfEdgeTetMesh::setOnFaceEventCallback(OnFaceEvent f) {
+void CellMesh::setOnFaceEventCallback(OnFaceEvent f) {
 	m_fOnFaceEvent = f;
 }
 
-void HalfEdgeTetMesh::setOnElemEventCallback(OnElementEvent f) {
+void CellMesh::setOnElemEventCallback(OnElementEvent f) {
 	m_fOnElementEvent = f;
 }
 
 
-bool HalfEdgeTetMesh::setup(const vector<double>& vertices, const vector<U32>& elements) {
+bool CellMesh::setup(const vector<double>& vertices, const vector<U32>& elements) {
 	U32 ctVertices = vertices.size() / 3;
 	U32 ctElements = elements.size() / 4;
 
 	return setup(ctVertices, &vertices[0], ctElements, &elements[0]);
 }
 
-bool HalfEdgeTetMesh::setup(U32 ctVertices, const double* vertices, U32 ctElements, const U32* elements) {
+bool CellMesh::setup(U32 ctVertices, const double* vertices, U32 ctElements, const U32* elements) {
 
 	//cleanup to setup the mesh
 	cleanup();
 
 	//add all vertices first
 	for(U32 i=0; i<ctVertices; i++) {
-		HalfEdgeTetMesh::NODE node;
+		NODE node;
 		node.pos = node.restpos = vec3d(&vertices[i*3]);
-		node.outHE = INVALID_INDEX;
+		node.outHE = BaseHandle::INVALID;
 		m_vNodes.push_back(node);
 	}
 
@@ -168,7 +168,7 @@ bool HalfEdgeTetMesh::setup(U32 ctVertices, const double* vertices, U32 ctElemen
 	return true;
 }
 
-void HalfEdgeTetMesh::cleanup() {
+void CellMesh::cleanup() {
 	m_vElements.resize(0);
 	m_vFaces.resize(0);
 	m_vHalfEdges.resize(0);
@@ -177,11 +177,11 @@ void HalfEdgeTetMesh::cleanup() {
 	m_mapHalfEdgesIndex.clear();
 }
 
-void HalfEdgeTetMesh::printInfo() const {
+void CellMesh::printInfo() const {
 	//print all nodes
 	printf("NODES #%u\n", (U32)m_vNodes.size());
 	for(U32 i=0; i < m_vNodes.size(); i++) {
-		HalfEdgeTetMesh::NODE n = m_vNodes[i];
+		NODE n = m_vNodes[i];
 
 		printf("NODE %u, outgoing edge: %d, pos: [%.3f, %.3f, %.3f]\n", i, n.outHE, n.pos.x, n.pos.y, n.pos.z);
 	}
@@ -190,7 +190,7 @@ void HalfEdgeTetMesh::printInfo() const {
 	//print all edges
 	printf("HALFEDGES #%u\n", (U32)m_vHalfEdges.size());
 	for(U32 i=0; i < m_vHalfEdges.size(); i++) {
-		HalfEdgeTetMesh::HEDGE e = m_vHalfEdges[i];
+		HEDGE e = m_vHalfEdges[i];
 
 		printf("HEDGE %u, from: %d, to %d, next: %d, prev: %d, opposite: %d, face: %d\n", i, e.from, e.to, e.next, e.prev, e.opposite, e.face);
 	}
@@ -200,7 +200,7 @@ void HalfEdgeTetMesh::printInfo() const {
 	//print all face
 	printf("FACES #%u\n", (U32)m_vFaces.size());
 	for(U32 i=0; i < m_vFaces.size(); i++) {
-		HalfEdgeTetMesh::FACE face = m_vFaces[i];
+		FACE face = m_vFaces[i];
 
 		U32 vhandles[3];
 		vhandles[0] = vertex_from_hedge(face.halfedge[0]);
@@ -216,7 +216,7 @@ void HalfEdgeTetMesh::printInfo() const {
 	//print all elements
 	printf("ELEMS #%u\n", (U32)m_vElements.size());
 	for(U32 i=0; i < m_vElements.size(); i++) {
-		HalfEdgeTetMesh::ELEM elem = m_vElements[i];
+		CELL elem = m_vElements[i];
 		printf("ELEM %d, NODE: [%u, %u, %u, %u], ", i ,elem.nodes[0], elem.nodes[1], elem.nodes[2], elem.nodes[3]);
 		printf("FACE: [%u, %u, %u, %u], ", elem.faces[0], elem.faces[1], elem.faces[2], elem.faces[3]);
 
@@ -233,7 +233,7 @@ void HalfEdgeTetMesh::printInfo() const {
 
 }
 
-double HalfEdgeTetMesh::computeDeterminant(U32 idxNodes[4]) const {
+double CellMesh::computeDeterminant(U32 idxNodes[4]) const {
 	vec3d v[4];
 
 	for(int i=0; i<4; i++)
@@ -241,12 +241,12 @@ double HalfEdgeTetMesh::computeDeterminant(U32 idxNodes[4]) const {
 	return ComputeElementDeterminant(v);
 }
 
-double HalfEdgeTetMesh::ComputeElementDeterminant(const vec3d v[4]) {
+double CellMesh::ComputeElementDeterminant(const vec3d v[4]) {
 	return	vec3d::dot(v[1] - v[0], vec3d::cross(v[2] - v[0], v[3] - v[0]));
 }
 
 //add/remove
-bool HalfEdgeTetMesh::insert_element(const ELEM& e) {
+bool CellMesh::insert_element(const CELL& e) {
 
 	//check the structure before adding it
 	for(int i=0; i<4; i++) {
@@ -283,7 +283,7 @@ bool HalfEdgeTetMesh::insert_element(const ELEM& e) {
 	return true;
 }
 
-bool HalfEdgeTetMesh::insert_element(U32 nodes[4]) {
+bool CellMesh::insert_element(U32 nodes[4]) {
 	//Inserts a tetrahedra element to the halfedged mesh structure
 	for(int i=0; i<4; i++) {
 		if(!isNodeIndex(nodes[i])) {
@@ -309,7 +309,7 @@ bool HalfEdgeTetMesh::insert_element(U32 nodes[4]) {
 	double det = computeDeterminant(nodes);
 
 	//Add element nodes set only for now
-	HalfEdgeTetMesh::ELEM elem;
+	CELL elem;
 	elem.posDet = (det >= 0);
 	for(int i=0; i<4; i++)
 		elem.nodes[i] = nodes[i];
@@ -338,8 +338,8 @@ bool HalfEdgeTetMesh::insert_element(U32 nodes[4]) {
 			U32 to = fv[(e + 1) % 3];
 
 			if(halfedge_exists(from, to) == false) {
-				HalfEdgeTetMesh::HEdgeKey key(from, to);
-				HalfEdgeTetMesh::HEDGE he;
+				HEdgeKey key(from, to);
+				HEDGE he;
 				he.from = from;
 				he.to = to;
 				mapHalfEdges.insert(make_pair(key, he));
@@ -372,7 +372,7 @@ bool HalfEdgeTetMesh::insert_element(U32 nodes[4]) {
 		mapHalfEdges.erase(forward);
 
 		//add backward
-		HalfEdgeTetMesh::HEdgeKey keyBackward(to, from);
+		HEdgeKey keyBackward(to, from);
 		HEITER backward = mapHalfEdges.find(keyBackward);
 		if(backward != mapHalfEdges.end()) {
 			m_vHalfEdges.push_back(backward->second);
@@ -439,10 +439,10 @@ bool HalfEdgeTetMesh::insert_element(U32 nodes[4]) {
 
 	//Set outgoing edges for nodes
 	for(U32 i=0; i < m_vHalfEdges.size(); i++) {
-		HalfEdgeTetMesh::HEDGE e = m_vHalfEdges[i];
+		HEDGE e = m_vHalfEdges[i];
 
 		//set the outHalfEdge for all nodes in this edge
-		if(m_vNodes[e.from].outHE == INVALID_INDEX)
+		if(m_vNodes[e.from].outHE == BaseHandle::INVALID)
 			m_vNodes[e.from].outHE = i;
 	}
 
@@ -450,11 +450,11 @@ bool HalfEdgeTetMesh::insert_element(U32 nodes[4]) {
 	return insert_element(elem);
 }
 
-void HalfEdgeTetMesh::remove_element(U32 i) {
+void CellMesh::remove_element(U32 i) {
 	assert(isElemIndex(i));
 
 	//bump down refs for faces
-	const HalfEdgeTetMesh::ELEM tet = const_elemAt(i);
+	const CELL tet = const_elemAt(i);
 	for(int j=0; j<4; j++) {
 		m_vFaces[ tet.faces[j] ].refs --;
 
@@ -467,7 +467,7 @@ void HalfEdgeTetMesh::remove_element(U32 i) {
 }
 
 //inserting a face uniquely
-U32 HalfEdgeTetMesh::insert_face(U32 nodes[3]) {
+U32 CellMesh::insert_face(U32 nodes[3]) {
 
 	//first check if the face is already available
 	FaceKey key(nodes[0], nodes[1], nodes[2]);
@@ -477,8 +477,8 @@ U32 HalfEdgeTetMesh::insert_face(U32 nodes[3]) {
 	}
 
 	//since we do not have that face we will add it
-	HalfEdgeTetMesh::FACE face;
-	U32 from, to = INVALID_INDEX;
+	FACE face;
+	U32 from, to = BaseHandle::INVALID;
 
 	//Add all half-edges for this face and increment half-edge refs
 	for (int e = 0; e < 3; e++) {
@@ -495,7 +495,7 @@ U32 HalfEdgeTetMesh::insert_face(U32 nodes[3]) {
 			LogErrorArg2("Setting face edges failed! Unable to find edge <%d, %d>",
 						 from, to);
 
-			return INVALID_INDEX;
+			return BaseHandle::INVALID;
 		}
 	}
 
@@ -518,16 +518,16 @@ U32 HalfEdgeTetMesh::insert_face(U32 nodes[3]) {
 	return idxFace;
 }
 
-U32 HalfEdgeTetMesh::insert_node(const NODE& n) {
+U32 CellMesh::insert_node(const NODE& n) {
 	m_vNodes.push_back(n);
 	return m_vNodes.size() - 1;
 }
 
-void HalfEdgeTetMesh::remove_face(U32 i) {
+void CellMesh::remove_face(U32 i) {
 	assert(isFaceIndex(i));
 
 	//bump down refs for half-edges
-	const HalfEdgeTetMesh::FACE face = const_faceAt(i);
+	const FACE face = const_faceAt(i);
 	for(int j=0; j < 3; j++) {
 		m_vHalfEdges[ face.halfedge[j] ].refs --;
 	}
@@ -537,7 +537,7 @@ void HalfEdgeTetMesh::remove_face(U32 i) {
 }
 
 
-void HalfEdgeTetMesh::garbage_collection() {
+void CellMesh::garbage_collection() {
 
 	//acquire lock to mesh
 	tst_keys();
@@ -546,7 +546,7 @@ void HalfEdgeTetMesh::garbage_collection() {
 	U32 i = 0;
 	U32 ctRemovedElements = 0;
 	while(i < countElements()) {
-		ELEM tet = elemAt(i);
+		CELL tet = elemAt(i);
 		if(tet.removed) {
 			m_vElements.erase(m_vElements.begin() + i);
 			ctRemovedElements++;
@@ -633,7 +633,7 @@ void HalfEdgeTetMesh::garbage_collection() {
 	//release lock
 }
 
-bool HalfEdgeTetMesh::getFaceNodes(U32 idxFace, U32 (&nodes)[3]) const {
+bool CellMesh::getFaceNodes(U32 idxFace, U32 (&nodes)[3]) const {
 	if(!isFaceIndex(idxFace))
 		return false;
 
@@ -644,55 +644,55 @@ bool HalfEdgeTetMesh::getFaceNodes(U32 idxFace, U32 (&nodes)[3]) const {
 	return true;
 }
 
-HalfEdgeTetMesh::ELEM& HalfEdgeTetMesh::elemAt(U32 i) {
+CELL& CellMesh::elemAt(U32 i) {
 	assert(isElemIndex(i));
 	return m_vElements[i];
 }
 
-HalfEdgeTetMesh::FACE& HalfEdgeTetMesh::faceAt(U32 i) {
+FACE& CellMesh::faceAt(U32 i) {
 	assert(isFaceIndex(i));
 	return m_vFaces[i];
 }
 
-HalfEdgeTetMesh::HEDGE& HalfEdgeTetMesh::halfedgeAt(U32 i) {
+HEDGE& CellMesh::halfedgeAt(U32 i) {
 	assert(isHalfEdgeIndex(i));
 	return m_vHalfEdges[i];
 }
 
-HalfEdgeTetMesh::EDGE HalfEdgeTetMesh::edgeAt(U32 i) const {
+EDGE CellMesh::edgeAt(U32 i) const {
 	assert(isEdgeIndex(i));
 	EDGE e(const_halfedgeAt(i * 2), const_halfedgeAt(i * 2 + 1));
 	return e;
 }
 
-HalfEdgeTetMesh::NODE& HalfEdgeTetMesh::nodeAt(U32 i) {
+NODE& CellMesh::nodeAt(U32 i) {
 	assert(isNodeIndex(i));
 	return m_vNodes[i];
 }
 
 
 //access
-const HalfEdgeTetMesh::ELEM& HalfEdgeTetMesh::const_elemAt(U32 i) const {
+const CELL& CellMesh::const_elemAt(U32 i) const {
 	assert(isElemIndex(i));
 	return m_vElements[i];
 }
 
-const HalfEdgeTetMesh::FACE& HalfEdgeTetMesh::const_faceAt(U32 i) const {
+const FACE& CellMesh::const_faceAt(U32 i) const {
 	assert(isFaceIndex(i));
 	return m_vFaces[i];
 }
 
-const HalfEdgeTetMesh::HEDGE& HalfEdgeTetMesh::const_halfedgeAt(U32 i) const {
+const HEDGE& CellMesh::const_halfedgeAt(U32 i) const {
 	assert(isHalfEdgeIndex(i));
 	return m_vHalfEdges[i];
 }
 
-const HalfEdgeTetMesh::NODE& HalfEdgeTetMesh::const_nodeAt(U32 i) const {
+const NODE& CellMesh::const_nodeAt(U32 i) const {
 	assert(isNodeIndex(i));
 	return m_vNodes[i];
 }
 
-void HalfEdgeTetMesh::displace(double * u) {
+void CellMesh::displace(double * u) {
 	if(u == NULL)
 		return;
 
@@ -703,7 +703,7 @@ void HalfEdgeTetMesh::displace(double * u) {
 	computeAABB();
 }
 
-bool HalfEdgeTetMesh::insertHEdgeIndexToMap(U32 from, U32 to, U32 idxHE) {
+bool CellMesh::insertHEdgeIndexToMap(U32 from, U32 to, U32 idxHE) {
 	if(from == to) {
 		LogErrorArg2("Can not register a half-edge with the same from and to nodes! [%u, %u]", from, to);
 		return false;
@@ -719,7 +719,7 @@ bool HalfEdgeTetMesh::insertHEdgeIndexToMap(U32 from, U32 to, U32 idxHE) {
 	return true;
 }
 
-bool HalfEdgeTetMesh::removeHEdgeIndexFromMap(U32 from, U32 to) {
+bool CellMesh::removeHEdgeIndexFromMap(U32 from, U32 to) {
 	HEdgeKey key(from, to);
 	MAPHEDGEINDEXITER it = m_mapHalfEdgesIndex.find(key);
 	if(it == m_mapHalfEdgesIndex.end())
@@ -730,7 +730,7 @@ bool HalfEdgeTetMesh::removeHEdgeIndexFromMap(U32 from, U32 to) {
 	}
 }
 
-bool HalfEdgeTetMesh::insertFaceIndexToMap(U32 nodes[3], U32 idxFace) {
+bool CellMesh::insertFaceIndexToMap(U32 nodes[3], U32 idxFace) {
 
 	if(!isFaceIndex(idxFace)) {
 		LogErrorArg1("Can not register an invalid face index: %u", idxFace);
@@ -742,7 +742,7 @@ bool HalfEdgeTetMesh::insertFaceIndexToMap(U32 nodes[3], U32 idxFace) {
 	return true;
 }
 
-bool HalfEdgeTetMesh::removeFaceIndexFromMap(U32 nodes[3]) {
+bool CellMesh::removeFaceIndexFromMap(U32 nodes[3]) {
 	FaceKey key(nodes[0],  nodes[1], nodes[2]);
 	MAPFACEITER it = m_mapFaces.find(key);
 	if(it == m_mapFaces.end())
@@ -753,7 +753,7 @@ bool HalfEdgeTetMesh::removeFaceIndexFromMap(U32 nodes[3]) {
 	}
 }
 
-HalfEdgeTetMesh::HEdgeKey HalfEdgeTetMesh::computeHEdgeKey(U32 idxHEdge) const {
+HEdgeKey CellMesh::computeHEdgeKey(U32 idxHEdge) const {
 	assert(isHalfEdgeIndex(idxHEdge));
 
 	const HEDGE& he = const_halfedgeAt(idxHEdge);
@@ -761,7 +761,7 @@ HalfEdgeTetMesh::HEdgeKey HalfEdgeTetMesh::computeHEdgeKey(U32 idxHEdge) const {
 	return key;
 }
 
-HalfEdgeTetMesh::FaceKey HalfEdgeTetMesh::computeFaceKey(U32 idxFace) const {
+FaceKey CellMesh::computeFaceKey(U32 idxFace) const {
 	assert(isFaceIndex(idxFace));
 
 	U32 nodes[3];
@@ -771,12 +771,12 @@ HalfEdgeTetMesh::FaceKey HalfEdgeTetMesh::computeFaceKey(U32 idxFace) const {
 }
 
 
-bool HalfEdgeTetMesh::halfedge_exists(U32 from, U32 to) const {
+bool CellMesh::halfedge_exists(U32 from, U32 to) const {
 	HEdgeKey key(from, to);
 	return (m_mapHalfEdgesIndex.find( key ) != m_mapHalfEdgesIndex.end());
 }
 
-U32 HalfEdgeTetMesh::halfedge_handle(U32 from, U32 to) {
+U32 CellMesh::halfedge_handle(U32 from, U32 to) {
 	HEdgeKey key(from, to);
 	MAPHEDGEINDEXITER it = m_mapHalfEdgesIndex.find(key);
 	if(it != m_mapHalfEdgesIndex.end())
@@ -786,7 +786,7 @@ U32 HalfEdgeTetMesh::halfedge_handle(U32 from, U32 to) {
 }
 
 
-bool HalfEdgeTetMesh::cut_edge(int idxEdge, double distance, U32* poutIndexNP0, U32* poutIndexNP1) {
+bool CellMesh::cut_edge(int idxEdge, double distance, U32* poutIndexNP0, U32* poutIndexNP1) {
 	if(!isEdgeIndex(idxEdge))
 		return false;
 
@@ -870,11 +870,11 @@ bool HalfEdgeTetMesh::cut_edge(int idxEdge, double distance, U32* poutIndexNP0, 
 	insertHEdgeIndexToMap(he1.from, he1.to, idxHE1);
 
 	//update faces adjacent to half-edges 0 and 1
-//	getFaceNodes(he0.face, nodes);
-//	insertFaceIndexToMap(nodes, he0.face);
-//
-//	getFaceNodes(he1.face, nodes);
-//	insertFaceIndexToMap(nodes, he1.face);
+	getFaceNodes(he0.face, nodes);
+	insertFaceIndexToMap(nodes, he0.face);
+
+	getFaceNodes(he1.face, nodes);
+	insertFaceIndexToMap(nodes, he1.face);
 
 
 	//Write output vertices
@@ -887,7 +887,7 @@ bool HalfEdgeTetMesh::cut_edge(int idxEdge, double distance, U32* poutIndexNP0, 
 	return true;
 }
 
-int HalfEdgeTetMesh::getFirstRing(int idxNode, vector<U32>& ringNodes) const {
+int CellMesh::getFirstRing(int idxNode, vector<U32>& ringNodes) const {
 	U32 he = m_vNodes[idxNode].outHE;
 	ringNodes.resize(0);
 
@@ -902,11 +902,10 @@ int HalfEdgeTetMesh::getFirstRing(int idxNode, vector<U32>& ringNodes) const {
 	return (int)ringNodes.size();
 }
 
-int HalfEdgeTetMesh::getIncomingHalfEdges(int idxNode, vector<U32>& incomingHE) const {
+int CellMesh::getIncomingHalfEdges(int idxNode, vector<U32>& incomingHE) const {
 	assert(isNodeIndex(idxNode));
 
-	HalfEdgeTetMesh::NODE n = const_nodeAt(idxNode);
-
+	NODE n = const_nodeAt(idxNode);
 	U32 inHE_orig = opposite_hedge(n.outHE);
 	U32 inHE = inHE_orig;
 	U32 count = 0;
@@ -929,10 +928,10 @@ int HalfEdgeTetMesh::getIncomingHalfEdges(int idxNode, vector<U32>& incomingHE) 
 	return (int)incomingHE.size();
 }
 
-int HalfEdgeTetMesh::getOutgoingHalfEdges(int idxNode, vector<U32>& outgoingHE) const {
+int CellMesh::getOutgoingHalfEdges(int idxNode, vector<U32>& outgoingHE) const {
 	assert(isNodeIndex(idxNode));
 
-	HalfEdgeTetMesh::NODE n = const_nodeAt(idxNode);
+	NODE n = const_nodeAt(idxNode);
 	U32 outHE_orig = n.outHE;
 	U32 outHE = outHE_orig;
 	U32 count = 0;
@@ -958,7 +957,7 @@ int HalfEdgeTetMesh::getOutgoingHalfEdges(int idxNode, vector<U32>& outgoingHE) 
 	return (int)outgoingHE.size();
 }
 
-void HalfEdgeTetMesh::setElemToShow(U32 elem) {
+void CellMesh::setElemToShow(U32 elem) {
 	if(elem == m_elemToShow)
 		return;
 	LogInfoArg1("Requested element to shows: %u\n", elem);
@@ -966,7 +965,7 @@ void HalfEdgeTetMesh::setElemToShow(U32 elem) {
 }
 
 
-bool HalfEdgeTetMesh::readVegaFormat(const AnsiStr& strFP) {
+bool CellMesh::readVegaFormat(const AnsiStr& strFP) {
 	if(!FileExists(strFP))
 		return false;
 	char chrLine[1024];
@@ -1085,7 +1084,7 @@ bool HalfEdgeTetMesh::readVegaFormat(const AnsiStr& strFP) {
 	return setup(vertices, elements);
 }
 
-bool HalfEdgeTetMesh::writeVegaFormat(const AnsiStr& strFP) const {
+bool CellMesh::writeVegaFormat(const AnsiStr& strFP) const {
 	if(countNodes() == 0 || countElements() == 0)
 		return false;
 
@@ -1116,7 +1115,7 @@ bool HalfEdgeTetMesh::writeVegaFormat(const AnsiStr& strFP) const {
 
 	for(U32 i=0; i < countElements(); i++)
 	{
-		ELEM elem = const_elemAt(i);
+		CELL elem = const_elemAt(i);
 		vec4u32 n = vec4u32(&elem.nodes[0]);
 
 		//VEGA expects one based index for everything
@@ -1139,9 +1138,9 @@ bool HalfEdgeTetMesh::writeVegaFormat(const AnsiStr& strFP) const {
 }
 
 
-void HalfEdgeTetMesh::draw() {
+void CellMesh::draw() {
 	vec3d p0;
-	HalfEdgeTetMesh::HEDGE hedge;
+	HEDGE hedge;
 
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	glDisable(GL_LIGHTING);
@@ -1184,7 +1183,7 @@ void HalfEdgeTetMesh::draw() {
 	glColor3f(1.0f, 0.0f, 0.0f);
 	glBegin(GL_POINTS);
 	for(U32 i=0; i < m_vNodes.size(); i++) {
-		HalfEdgeTetMesh::NODE n = const_nodeAt(i);
+		NODE n = const_nodeAt(i);
 		glVertex3dv(n.pos.cptr());
 	}
 	glEnd();
@@ -1193,18 +1192,18 @@ void HalfEdgeTetMesh::draw() {
 	glPopAttrib();
 }
 
-void HalfEdgeTetMesh::drawElement(U32 i) const {
-	ELEM elem = const_elemAt(i);
+void CellMesh::drawElement(U32 i) const {
+	CELL elem = const_elemAt(i);
 	if(elem.removed)
 		return;
 
 	glBegin(GL_TRIANGLES);
 		for(U32 f=0; f<4; f++)
 		{
-			HalfEdgeTetMesh::FACE face = const_faceAt(elem.faces[f]);
-			HalfEdgeTetMesh::HEDGE he0 = const_halfedgeAt(face.halfedge[0]);
-			HalfEdgeTetMesh::HEDGE he1 = const_halfedgeAt(face.halfedge[1]);
-			HalfEdgeTetMesh::HEDGE he2 = const_halfedgeAt(face.halfedge[2]);
+			FACE face = const_faceAt(elem.faces[f]);
+			HEDGE he0 = const_halfedgeAt(face.halfedge[0]);
+			HEDGE he1 = const_halfedgeAt(face.halfedge[1]);
+			HEDGE he2 = const_halfedgeAt(face.halfedge[2]);
 			vec3d p0 = const_nodeAt(he0.from).pos;
 			vec3d p1 = const_nodeAt(he1.from).pos;
 			vec3d p2 = const_nodeAt(he2.from).pos;
@@ -1217,10 +1216,10 @@ void HalfEdgeTetMesh::drawElement(U32 i) const {
 }
 
 
-AABB HalfEdgeTetMesh::computeAABB() {
+AABB CellMesh::computeAABB() {
 	double vMin[3], vMax[3];
 	for(U32 i=0; i < countNodes(); i++) {
-		HalfEdgeTetMesh::NODE n = const_nodeAt(i);
+		NODE n = const_nodeAt(i);
 		vec3d p = n.pos;
 
 		if(i == 0) {
@@ -1245,7 +1244,7 @@ AABB HalfEdgeTetMesh::computeAABB() {
 	return m_aabb;
 }
 
-bool HalfEdgeTetMesh::tst_keys() {
+bool CellMesh::tst_keys() {
 	int ctErrors = 0;
 	for(U32 i = 0; i < m_vFaces.size(); i++) {
 		const FACE face = const_faceAt(i);
@@ -1292,5 +1291,3 @@ bool HalfEdgeTetMesh::tst_keys() {
 }
 
 
-}
-}

@@ -16,7 +16,7 @@
 
 using namespace PS;
 using namespace PS::SG;
-using namespace PS::FEM;
+using namespace PS::MESH;
 using namespace PS::FILESTRINGUTILS;
 
 using namespace std;
@@ -30,7 +30,7 @@ U32 g_cutCase = 0;
 //funcs
 void resetMesh();
 void runTestSubDivide(int current);
-void handleElementEvent(HalfEdgeTetMesh::ELEM element, U32 handle, HalfEdgeTetMesh::TopologyEvent event);
+void handleElementEvent(CELL element, U32 handle, CellMesh::TopologyEvent event);
 
 void draw() {
 	TheSceneGraph::Instance().draw();
@@ -280,11 +280,11 @@ void closeApp() {
 	SAFE_DELETE(g_lpTissue);
 }
 
-void handleElementEvent(HalfEdgeTetMesh::ELEM element, U32 handle, HalfEdgeTetMesh::TopologyEvent event) {
+void handleElementEvent(CELL element, U32 handle, CellMesh::TopologyEvent event) {
 
-	if(event == HalfEdgeTetMesh::teAdded)
+	if(event == CellMesh::teAdded)
 		LogInfoArg1("A new element added at index: %d", handle);
-	else if(event == HalfEdgeTetMesh::teRemoved)
+	else if(event == CellMesh::teRemoved)
 		LogInfoArg1("A new element added at index: %d", handle);
 }
 

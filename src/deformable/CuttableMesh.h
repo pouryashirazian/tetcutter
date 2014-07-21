@@ -10,13 +10,13 @@
 
 //#include "vegafem/include/tetMesh.h"
 #include "graphics/SGMesh.h"
-#include "HalfEdgeTetMesh.h"
+#include "CellularMesh.h"
 #include "TetSubdivider.h"
 #include "base/Vec.h"
 
 
 using namespace PS::MATH;
-using namespace PS::FEM;
+using namespace PS::MESH;
 
 namespace PS {
 
@@ -37,7 +37,7 @@ public:
 
 		CutEdge() {
 			t = 0;
-			from = to = idxNP0 = idxNP1 = HalfEdgeTetMesh::INVALID_INDEX;
+			from = to = idxNP0 = idxNP1 = CellMesh::INVALID_INDEX;
 		}
 
 		CutEdge& operator = (const CutEdge& A) {
@@ -67,7 +67,7 @@ public:
 	};
 
 public:
-	CuttableMesh(const HalfEdgeTetMesh& hemesh);
+	CuttableMesh(const CellMesh& hemesh);
 	CuttableMesh(const vector<double>& vertices, const vector<U32>& elements);
 	CuttableMesh(int ctVertices, double* vertices, int ctElements, int* elements);
 	virtual ~CuttableMesh();
@@ -98,7 +98,7 @@ public:
 
 	//Access to subdivider
 	TetSubdivider* getSubD() const { return m_lpSubD;}
-	HalfEdgeTetMesh* getMesh() const { return m_lpHEMesh;}
+	CellMesh* getMesh() const { return m_lpHEMesh;}
 
 	//create a tetrahedra
 	static CuttableMesh* CreateOneTetra();
@@ -112,7 +112,7 @@ protected:
 
 	//TODO: Sync vbo after synced physics mesh
 private:
-	HalfEdgeTetMesh* m_lpHEMesh;
+	CellMesh* m_lpHEMesh;
 	TetSubdivider* m_lpSubD;
 	int m_ctCompletedCuts;
 

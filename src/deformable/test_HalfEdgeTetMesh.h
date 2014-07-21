@@ -8,9 +8,9 @@
 #ifndef TEST_HALFEDGETETMESH_H_
 #define TEST_HALFEDGETETMESH_H_
 
-#include "HalfEdgeTetMesh.h"
+#include "CellularMesh.h"
 
-using namespace PS::FEM;
+using namespace PS::MESH;
 
 /*!
  * east test returns true if successful and false otherwise
@@ -18,17 +18,17 @@ using namespace PS::FEM;
 class TestHalfEdgeTestMesh {
 public:
 
-	static bool tst_report_mesh_info(HalfEdgeTetMesh* pmesh);
+	static bool tst_report_mesh_info(CellMesh* pmesh);
 
-	static bool tst_correct_elements(HalfEdgeTetMesh* pmesh);
+	static bool tst_correct_elements(CellMesh* pmesh);
 
-	static bool tst_unused_mesh_fields(HalfEdgeTetMesh* pmesh);
+	static bool tst_unused_mesh_fields(CellMesh* pmesh);
 
-	static bool tst_connectivity(HalfEdgeTetMesh* pmesh);
+	static bool tst_connectivity(CellMesh* pmesh);
 
-	static bool tst_meshFacesAndOrder(HalfEdgeTetMesh* pmesh);
+	static bool tst_meshFacesAndOrder(CellMesh* pmesh);
 
-	static bool tst_all(HalfEdgeTetMesh* pmesh);
+	static bool tst_all(CellMesh* pmesh);
 };
 
 

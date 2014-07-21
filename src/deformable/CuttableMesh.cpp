@@ -19,14 +19,14 @@ using namespace PS::INTERSECTIONS;
 namespace PS {
 
 ///////////////////////////////////////////////////////////////////////////
-CuttableMesh::CuttableMesh(const HalfEdgeTetMesh& hemesh) {
+CuttableMesh::CuttableMesh(const CellMesh& hemesh) {
 	resetTransform();
 	if(TheShaderManager::Instance().has("phong")) {
         m_spEffect = SmartPtrSGEffect(new SGEffect(TheShaderManager::Instance().get("phong")));
     }
 
 	//HEMesh
-	m_lpHEMesh = new HalfEdgeTetMesh(hemesh);
+	m_lpHEMesh = new CellMesh(hemesh);
 	m_lpSubD = new TetSubdivider(m_lpHEMesh);
 
 	m_aabb = m_lpHEMesh->aabb();
@@ -59,7 +59,7 @@ void CuttableMesh::setup(int ctVertices, double* vertices, int ctElements, int* 
     }
 
 	//HEMesh
-	m_lpHEMesh = new HalfEdgeTetMesh(ctVertices, vertices, ctElements, (U32*)elements);
+	m_lpHEMesh = new CellMesh(ctVertices, vertices, ctElements, (U32*)elements);
 
 	//Perform all tests
 	LogInfo("Begin testing the halfedge mesh");
@@ -168,7 +168,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	for (U32 i=0; i < m_lpHEMesh->countEdges(); i++) {
 
 		U32 hei = m_lpHEMesh->halfedge_from_edge(i, 0);
-		HalfEdgeTetMesh::HEDGE he = m_lpHEMesh->const_halfedgeAt(hei);
+		HEDGE he = m_lpHEMesh->const_halfedgeAt(hei);
 
 
 		ss0 = m_lpHEMesh->const_nodeAt(he.from).pos;
@@ -282,7 +282,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	int ctCutTet = 0;
 
 	for(U32 i=0; i < m_lpHEMesh->countElements(); i++) {
-		const HalfEdgeTetMesh::ELEM& tet = m_lpHEMesh->const_elemAt(i);
+		const CELL& tet = m_lpHEMesh->const_elemAt(i);
 		U8 cutEdgeCode = 0;
 		U8 cutNodeCode = 0;
 		double tedges[6];
@@ -361,7 +361,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 		U8 cutNodeCode = vCutNodeCodes[i];
 		if(cutEdgeCode != 0 || cutNodeCode != 0) {
 
-			const HalfEdgeTetMesh::ELEM tet = m_lpHEMesh->const_elemAt(vCutElements[i]);
+			const CELL tet = m_lpHEMesh->const_elemAt(vCutElements[i]);
 
 
 			for(int e=0; e < 6; e++) {
@@ -370,8 +370,8 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 				CUTEDGEITER it = m_mapCutEdges.find(edge);
 
 				//mid points
-				middlePoints[e * 2 + 0] = HalfEdgeTetMesh::INVALID_INDEX;
-				middlePoints[e * 2 + 1] = HalfEdgeTetMesh::INVALID_INDEX;
+				middlePoints[e * 2 + 0] = CellMesh::INVALID_INDEX;
+				middlePoints[e * 2 + 1] = CellMesh::INVALID_INDEX;
 
 				if(it != m_mapCutEdges.end()) {
 

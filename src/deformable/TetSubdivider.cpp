@@ -11,8 +11,11 @@
 using namespace PS;
 using namespace std;
 
+using namespace PS;
+using namespace PS::MESH;
+
 namespace PS {
-namespace FEM {
+namespace MESH {
 
 //elements to be generated for case A
 U32 g_elementTableCaseA[4][16] = {
@@ -41,9 +44,10 @@ U32 g_elementTableCaseB[3][6][4] = {
 
 };
 
+}
+}
 
-
-TetSubdivider::TetSubdivider(HalfEdgeTetMesh* pMesh) {
+TetSubdivider::TetSubdivider(CellMesh* pMesh) {
 	m_lpHEMesh = pMesh;
 
 
@@ -89,11 +93,11 @@ int TetSubdivider::generateCaseA(U32 element, U8 node, double targetDistPercenta
 	cutNodeCode = 0;
 
 	int res = 0;
-	HalfEdgeTetMesh::ELEM elem = m_lpHEMesh->elemAt(element);
+	CELL elem = m_lpHEMesh->elemAt(element);
 	for(int i=0; i<6; i++) {
 		tEdges[i] = 0.0;
 
-		HalfEdgeTetMesh::EDGE edge = m_lpHEMesh->edgeAt( m_lpHEMesh->edge_from_halfedge(elem.halfedge[i]) );
+		EDGE edge = m_lpHEMesh->edgeAt( m_lpHEMesh->edge_from_halfedge(elem.halfedge[i]) );
 
 		if(edge.from == node || edge.to == node) {
 			cutEdgeCode |= (1 << i);
@@ -231,8 +235,8 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 	//fill the array of virtual nodes
 	U32 vnodes[16];
 	for(int i=0; i<16; i++)
-		vnodes[i] = HalfEdgeTetMesh::INVALID_INDEX;
-	const HalfEdgeTetMesh::ELEM& tet = m_lpHEMesh->elemAt(element);
+		vnodes[i] = BaseHandle::INVALID;
+	const CELL& tet = m_lpHEMesh->elemAt(element);
 
 	//1st 4 nodes come from the original element
 	for(int i=0; i<4; i++)
@@ -400,8 +404,5 @@ void TetSubdivider::draw() {
 
 	if(m_lpHEMesh)
 		m_lpHEMesh->draw();
-}
-
-}
 }
 

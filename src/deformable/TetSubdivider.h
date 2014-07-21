@@ -8,10 +8,10 @@
 #ifndef TETSUBDIVIDER_H_
 #define TETSUBDIVIDER_H_
 
-#include "HalfEdgeTetMesh.h"
+#include "CellularMesh.h"
 
 namespace PS {
-namespace FEM {
+namespace MESH {
 
 //case A
 extern U32 g_elementTableCaseA[4][16];
@@ -27,12 +27,12 @@ public:
 
 
 public:
-	TetSubdivider(HalfEdgeTetMesh* pMesh);
+	TetSubdivider(CellMesh* pMesh);
 	virtual ~TetSubdivider();
 
 	void draw();
 
-	void setMesh(HalfEdgeTetMesh* pMesh) { m_lpHEMesh = pMesh;}
+	void setMesh(CellMesh* pMesh) { m_lpHEMesh = pMesh;}
 
 	char toAlpha(CUTCASE c);
 	static CUTCASE IdentifyCutCase(bool isCutComplete, U8 cutEdgeCode, U8 cutNodeCode);
@@ -69,7 +69,7 @@ public:
 protected:
 
 	//half edge mesh
-	HalfEdgeTetMesh* m_lpHEMesh;
+	CellMesh* m_lpHEMesh;
 
 	//cut edge code
 	std::map<U8, int> m_mapCutEdgeCodeToTableEntry;

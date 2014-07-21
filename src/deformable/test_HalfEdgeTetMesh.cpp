@@ -13,7 +13,7 @@
 using namespace std;
 using namespace PS;
 
-bool TestHalfEdgeTestMesh::tst_report_mesh_info(HalfEdgeTetMesh* pmesh) {
+bool TestHalfEdgeTestMesh::tst_report_mesh_info(CellMesh* pmesh) {
 	if(pmesh == NULL)
 		return false;
 
@@ -27,13 +27,13 @@ bool TestHalfEdgeTestMesh::tst_report_mesh_info(HalfEdgeTetMesh* pmesh) {
 	return true;
 }
 
-bool TestHalfEdgeTestMesh::tst_correct_elements(HalfEdgeTetMesh* pmesh) {
+bool TestHalfEdgeTestMesh::tst_correct_elements(CellMesh* pmesh) {
 	if(pmesh == NULL)
 		return false;
 
 	U32 ctErrors = 0;
 	for(U32 i = 0; i < pmesh->countElements(); i++) {
-		const HalfEdgeTetMesh::ELEM tet = pmesh->const_elemAt(i);
+		const CELL tet = pmesh->const_elemAt(i);
 
 		map<U32, U32> mapElementNodes;
 		map<U32, U32> mapElementEdges;
@@ -73,8 +73,8 @@ bool TestHalfEdgeTestMesh::tst_correct_elements(HalfEdgeTetMesh* pmesh) {
 				U32 idxEdge = pmesh->edge_from_halfedge(tet.halfedge[j]);
 				U32 idxHE0 = pmesh->halfedge_from_edge(idxEdge, 0);
 				U32 idxHE1 = pmesh->halfedge_from_edge(idxEdge, 1);
-				HalfEdgeTetMesh::HEDGE he0 = pmesh->const_halfedgeAt(idxHE0);
-				HalfEdgeTetMesh::HEDGE he1 = pmesh->const_halfedgeAt(idxHE1);
+				HEDGE he0 = pmesh->const_halfedgeAt(idxHE0);
+				HEDGE he1 = pmesh->const_halfedgeAt(idxHE1);
 
 				//map edges to element
 				mapElementEdges[ idxEdge ] = i;
@@ -93,7 +93,7 @@ bool TestHalfEdgeTestMesh::tst_correct_elements(HalfEdgeTetMesh* pmesh) {
 			}
 
 			U32 idxHE = tet.halfedge[j];
-			const HalfEdgeTetMesh::HEDGE he = pmesh->const_halfedgeAt(tet.halfedge[j]);
+			const HEDGE he = pmesh->const_halfedgeAt(tet.halfedge[j]);
 
 			//check that half edge from and to nodes are in this element
 			if(mapElementNodes.find(he.from) == mapElementNodes.end() ) {
@@ -116,7 +116,7 @@ bool TestHalfEdgeTestMesh::tst_correct_elements(HalfEdgeTetMesh* pmesh) {
 			}
 
 			//check half-edges of this face for inclusion
-			const HalfEdgeTetMesh::FACE face = pmesh->const_faceAt(tet.faces[j]);
+			const FACE face = pmesh->const_faceAt(tet.faces[j]);
 			for(U32 k=0; k < 3; k++) {
 				if(mapElementEdges.find( pmesh->edge_from_halfedge(face.halfedge[k]) ) == mapElementEdges.end()) {
 
@@ -143,7 +143,7 @@ bool TestHalfEdgeTestMesh::tst_correct_elements(HalfEdgeTetMesh* pmesh) {
 	return (ctErrors == 0);
 }
 
-bool TestHalfEdgeTestMesh::tst_unused_mesh_fields(HalfEdgeTetMesh* pmesh) {
+bool TestHalfEdgeTestMesh::tst_unused_mesh_fields(CellMesh* pmesh) {
 
 	if(pmesh == NULL)
 		return false;
@@ -162,14 +162,14 @@ bool TestHalfEdgeTestMesh::tst_unused_mesh_fields(HalfEdgeTetMesh* pmesh) {
 
 	U32 ctErrors = 0;
 	for(U32 i = 0; i < pmesh->countElements(); i++) {
-		const HalfEdgeTetMesh::ELEM tet = pmesh->const_elemAt(i);
+		const CELL tet = pmesh->const_elemAt(i);
 
 		//faces
 		for(U32 j=0; j<4; j++) {
 			assert( pmesh->isFaceIndex(tet.faces[j]) );
 			vUsedFaces[ tet.faces[j] ] ++;
 
-			const HalfEdgeTetMesh::FACE face = pmesh->const_faceAt(tet.faces[j]);
+			const FACE face = pmesh->const_faceAt(tet.faces[j]);
 
 			for(U32 k=0; k < 3; k++)
 				vUsedHalfEdges[ face.halfedge[k] ] ++;
@@ -252,7 +252,7 @@ bool TestHalfEdgeTestMesh::tst_unused_mesh_fields(HalfEdgeTetMesh* pmesh) {
 		printf(">>list of %u unused faces will follow:\n", countUnusedFaces);
 		for(U32 i=0; i < vUsedFaces.size(); i++) {
 			if(vUsedFaces[i] == 0) {
-				HalfEdgeTetMesh::FACE face = pmesh->const_faceAt(i);
+				FACE face = pmesh->const_faceAt(i);
 
 				U32 he[3];
 				he[0] = face.halfedge[0];
@@ -280,19 +280,19 @@ bool TestHalfEdgeTestMesh::tst_unused_mesh_fields(HalfEdgeTetMesh* pmesh) {
 	return (ctErrors == 0);
 }
 
-bool TestHalfEdgeTestMesh::tst_connectivity(HalfEdgeTetMesh* pmesh) {
+bool TestHalfEdgeTestMesh::tst_connectivity(CellMesh* pmesh) {
 	return true;
 }
 
-bool TestHalfEdgeTestMesh::tst_meshFacesAndOrder(HalfEdgeTetMesh* pmesh)  {
+bool TestHalfEdgeTestMesh::tst_meshFacesAndOrder(CellMesh* pmesh)  {
 
 	U32 ctNonTriangle = 0;
 	U32 ctNotSet = 0;
 	vec3d p[3];
-	HalfEdgeTetMesh::HEDGE hedge;
+	HEDGE hedge;
 
 	for(U32 i = 0; i < pmesh->countFaces(); i++) {
-		HalfEdgeTetMesh::FACE face = pmesh->const_faceAt(i);
+		FACE face = pmesh->const_faceAt(i);
 		U32 he0 = face.halfedge[0];
 		U32 he1 = he0;
 		U32 ctEdges = 0;
@@ -330,7 +330,7 @@ bool TestHalfEdgeTestMesh::tst_meshFacesAndOrder(HalfEdgeTetMesh* pmesh)  {
 }
 
 
-bool TestHalfEdgeTestMesh::tst_all(HalfEdgeTetMesh* pmesh) {
+bool TestHalfEdgeTestMesh::tst_all(CellMesh* pmesh) {
 
 	U32 idxTest = 0;
 	const U32 maxTest = 5;
