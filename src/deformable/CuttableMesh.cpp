@@ -19,14 +19,14 @@ using namespace PS::INTERSECTIONS;
 namespace PS {
 
 ///////////////////////////////////////////////////////////////////////////
-CuttableMesh::CuttableMesh(const CellMesh& hemesh) {
+CuttableMesh::CuttableMesh(const VolMesh& hemesh) {
 	resetTransform();
 	if(TheShaderManager::Instance().has("phong")) {
         m_spEffect = SmartPtrSGEffect(new SGEffect(TheShaderManager::Instance().get("phong")));
     }
 
 	//HEMesh
-	m_lpHEMesh = new CellMesh(hemesh);
+	m_lpHEMesh = new VolMesh(hemesh);
 	m_lpSubD = new TetSubdivider(m_lpHEMesh);
 
 	m_aabb = m_lpHEMesh->aabb();
@@ -59,7 +59,7 @@ void CuttableMesh::setup(int ctVertices, double* vertices, int ctElements, int* 
     }
 
 	//HEMesh
-	m_lpHEMesh = new CellMesh(ctVertices, vertices, ctElements, (U32*)elements);
+	m_lpHEMesh = new VolMesh(ctVertices, vertices, ctElements, (U32*)elements);
 
 	//Perform all tests
 	LogInfo("Begin testing the halfedge mesh");
@@ -370,8 +370,8 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 				CUTEDGEITER it = m_mapCutEdges.find(edge);
 
 				//mid points
-				middlePoints[e * 2 + 0] = CellMesh::INVALID_INDEX;
-				middlePoints[e * 2 + 1] = CellMesh::INVALID_INDEX;
+				middlePoints[e * 2 + 0] = VolMesh::INVALID_INDEX;
+				middlePoints[e * 2 + 1] = VolMesh::INVALID_INDEX;
 
 				if(it != m_mapCutEdges.end()) {
 

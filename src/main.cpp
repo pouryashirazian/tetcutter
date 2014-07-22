@@ -30,7 +30,7 @@ U32 g_cutCase = 0;
 //funcs
 void resetMesh();
 void runTestSubDivide(int current);
-void handleElementEvent(CELL element, U32 handle, CellMesh::TopologyEvent event);
+void handleElementEvent(CELL element, U32 handle, VolMesh::TopologyEvent event);
 
 void draw() {
 	TheSceneGraph::Instance().draw();
@@ -280,11 +280,11 @@ void closeApp() {
 	SAFE_DELETE(g_lpTissue);
 }
 
-void handleElementEvent(CELL element, U32 handle, CellMesh::TopologyEvent event) {
+void handleElementEvent(CELL element, U32 handle, VolMesh::TopologyEvent event) {
 
-	if(event == CellMesh::teAdded)
+	if(event == VolMesh::teAdded)
 		LogInfoArg1("A new element added at index: %d", handle);
-	else if(event == CellMesh::teRemoved)
+	else if(event == VolMesh::teRemoved)
 		LogInfoArg1("A new element added at index: %d", handle);
 }
 

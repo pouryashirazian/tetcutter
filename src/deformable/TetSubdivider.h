@@ -8,7 +8,7 @@
 #ifndef TETSUBDIVIDER_H_
 #define TETSUBDIVIDER_H_
 
-#include "CellularMesh.h"
+#include "VolMesh.h"
 
 namespace PS {
 namespace MESH {
@@ -27,12 +27,12 @@ public:
 
 
 public:
-	TetSubdivider(CellMesh* pMesh);
+	TetSubdivider(VolMesh* pMesh);
 	virtual ~TetSubdivider();
 
 	void draw();
 
-	void setMesh(CellMesh* pMesh) { m_lpHEMesh = pMesh;}
+	void setMesh(VolMesh* pMesh) { m_lpHEMesh = pMesh;}
 
 	char toAlpha(CUTCASE c);
 	static CUTCASE IdentifyCutCase(bool isCutComplete, U8 cutEdgeCode, U8 cutNodeCode);
@@ -69,7 +69,7 @@ public:
 protected:
 
 	//half edge mesh
-	CellMesh* m_lpHEMesh;
+	VolMesh* m_lpHEMesh;
 
 	//cut edge code
 	std::map<U8, int> m_mapCutEdgeCodeToTableEntry;

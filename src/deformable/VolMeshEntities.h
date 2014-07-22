@@ -19,7 +19,7 @@ using namespace PS::MATH;
 
 #define HEDGE_SHIFT_A 0
 #define HEDGE_SHIFT_B 32
-#define DEFAULT_FACE_VALENCE 3
+#define DEFAULT_FACE_SIDES 3
 
 
 //can keep up to 2097151 nodes
@@ -160,7 +160,6 @@ namespace MESH {
 	class EDGE {
 	public:
 		U32 from, to;
-		U32 lface, rface;
 
 		EDGE() { init();}
 		EDGE(const HEDGE& e1, const HEDGE& e2) {
@@ -168,23 +167,18 @@ namespace MESH {
 		}
 
 		void init() {
-			from = to = lface = rface = BaseHandle::INVALID;
+			from = to = BaseHandle::INVALID;
 		}
 
 		void setup(const HEDGE& e1, const HEDGE& e2) {
 			assert(e1.from == e2.to && e1.to == e2.from);
 			from = e1.from;
 			to = e1.to;
-			lface = e1.face;
-			rface = e2.face;
 		}
 
 		EDGE& operator =(const EDGE& A) {
 			from = A.from;
 			to = A.to;
-			lface = A.lface;
-			rface = A.rface;
-
 			return (*this);
 		}
 	};
@@ -192,7 +186,7 @@ namespace MESH {
 	//face
 	class FACE {
 	public:
-		U32 halfedge[DEFAULT_FACE_VALENCE];
+		U32 halfedge[DEFAULT_FACE_SIDES];
 		U8 refs;
 		bool removed;
 
@@ -201,14 +195,14 @@ namespace MESH {
 		}
 
 		void init() {
-			for(int i=0; i<DEFAULT_FACE_VALENCE; i++)
+			for(int i=0; i<DEFAULT_FACE_SIDES; i++)
 				halfedge[i] = BaseHandle::INVALID;
 			refs = 0;
 			removed = false;
 		}
 
 		FACE& operator = (const FACE& A) {
-			for(int i=0; i<DEFAULT_FACE_VALENCE; i++)
+			for(int i=0; i<DEFAULT_FACE_SIDES; i++)
 				halfedge[i] = A.halfedge[i];
 			refs = A.refs;
 			removed = A.removed;

@@ -5,11 +5,11 @@
  *      Author: pourya
  */
 
-#ifndef CELLULARMESH_H
-#define CELLULARMESH_H
+#ifndef VOLMESH_H
+#define VOLMESH_H
 
 #include "graphics/SGNode.h"
-#include "CellularMeshTypes.h"
+#include "VolMeshEntities.h"
 #include <functional>
 
 /*!Stories:
@@ -37,7 +37,7 @@ namespace MESH {
 
 
 //template <typename T>
-class CellMesh : public SGNode {
+class VolMesh : public SGNode {
 public:
 	static const U32 INVALID_INDEX = -1;
 	enum TopologyEvent {teAdded, teRemoved};
@@ -56,14 +56,14 @@ public:
 	typedef std::function<void(FACE, U32 handle, TopologyEvent event)> OnFaceEvent;
 	typedef std::function<void(CELL, U32 handle, TopologyEvent event)> OnElementEvent;
 public:
-	CellMesh();
-	CellMesh(const CellMesh& other);
-	CellMesh(U32 ctVertices, double* vertices, U32 ctElements, U32* elements);
-	CellMesh(const vector<double>& vertices, const vector<U32>& elements);
-	virtual ~CellMesh();
+	VolMesh();
+	VolMesh(const VolMesh& other);
+	VolMesh(U32 ctVertices, double* vertices, U32 ctElements, U32* elements);
+	VolMesh(const vector<double>& vertices, const vector<U32>& elements);
+	virtual ~VolMesh();
 
 	//Create one tet
-	static CellMesh* CreateOneTet();
+	static VolMesh* CreateOneTet();
 
 	//Topology events
 	void setOnNodeEventCallback(OnNodeEvent f);

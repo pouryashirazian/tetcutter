@@ -8,7 +8,7 @@
 #ifndef TEST_HALFEDGETETMESH_H_
 #define TEST_HALFEDGETETMESH_H_
 
-#include "CellularMesh.h"
+#include "VolMesh.h"
 
 using namespace PS::MESH;
 
@@ -18,17 +18,17 @@ using namespace PS::MESH;
 class TestHalfEdgeTestMesh {
 public:
 
-	static bool tst_report_mesh_info(CellMesh* pmesh);
+	static bool tst_report_mesh_info(VolMesh* pmesh);
 
-	static bool tst_correct_elements(CellMesh* pmesh);
+	static bool tst_correct_elements(VolMesh* pmesh);
 
-	static bool tst_unused_mesh_fields(CellMesh* pmesh);
+	static bool tst_unused_mesh_fields(VolMesh* pmesh);
 
-	static bool tst_connectivity(CellMesh* pmesh);
+	static bool tst_connectivity(VolMesh* pmesh);
 
-	static bool tst_meshFacesAndOrder(CellMesh* pmesh);
+	static bool tst_meshFacesAndOrder(VolMesh* pmesh);
 
-	static bool tst_all(CellMesh* pmesh);
+	static bool tst_all(VolMesh* pmesh);
 };
 
 

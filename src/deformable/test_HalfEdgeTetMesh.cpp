@@ -13,7 +13,7 @@
 using namespace std;
 using namespace PS;
 
-bool TestHalfEdgeTestMesh::tst_report_mesh_info(CellMesh* pmesh) {
+bool TestHalfEdgeTestMesh::tst_report_mesh_info(VolMesh* pmesh) {
 	if(pmesh == NULL)
 		return false;
 
@@ -27,7 +27,7 @@ bool TestHalfEdgeTestMesh::tst_report_mesh_info(CellMesh* pmesh) {
 	return true;
 }
 
-bool TestHalfEdgeTestMesh::tst_correct_elements(CellMesh* pmesh) {
+bool TestHalfEdgeTestMesh::tst_correct_elements(VolMesh* pmesh) {
 	if(pmesh == NULL)
 		return false;
 
@@ -143,7 +143,7 @@ bool TestHalfEdgeTestMesh::tst_correct_elements(CellMesh* pmesh) {
 	return (ctErrors == 0);
 }
 
-bool TestHalfEdgeTestMesh::tst_unused_mesh_fields(CellMesh* pmesh) {
+bool TestHalfEdgeTestMesh::tst_unused_mesh_fields(VolMesh* pmesh) {
 
 	if(pmesh == NULL)
 		return false;
@@ -280,11 +280,11 @@ bool TestHalfEdgeTestMesh::tst_unused_mesh_fields(CellMesh* pmesh) {
 	return (ctErrors == 0);
 }
 
-bool TestHalfEdgeTestMesh::tst_connectivity(CellMesh* pmesh) {
+bool TestHalfEdgeTestMesh::tst_connectivity(VolMesh* pmesh) {
 	return true;
 }
 
-bool TestHalfEdgeTestMesh::tst_meshFacesAndOrder(CellMesh* pmesh)  {
+bool TestHalfEdgeTestMesh::tst_meshFacesAndOrder(VolMesh* pmesh)  {
 
 	U32 ctNonTriangle = 0;
 	U32 ctNotSet = 0;
@@ -330,7 +330,7 @@ bool TestHalfEdgeTestMesh::tst_meshFacesAndOrder(CellMesh* pmesh)  {
 }
 
 
-bool TestHalfEdgeTestMesh::tst_all(CellMesh* pmesh) {
+bool TestHalfEdgeTestMesh::tst_all(VolMesh* pmesh) {
 
 	U32 idxTest = 0;
 	const U32 maxTest = 5;

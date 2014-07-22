@@ -47,7 +47,7 @@ U32 g_elementTableCaseB[3][6][4] = {
 }
 }
 
-TetSubdivider::TetSubdivider(CellMesh* pMesh) {
+TetSubdivider::TetSubdivider(VolMesh* pMesh) {
 	m_lpHEMesh = pMesh;
 
 

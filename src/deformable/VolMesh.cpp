@@ -11,13 +11,11 @@
 #include <base/String.h>
 #include <base/StringBase.h>
 #include <base/Vec.h>
-#include <deformable/CellularMesh.h>
+#include <deformable/VolMesh.h>
 #include <graphics/AABB.h>
-#include <GL/glew.h>
-//#include "graphics/selectgl.h"
-//#include <algorithm>
-#include <cassert>
-//#include <cstddef>
+
+#include "graphics/selectgl.h"
+#include <algorithm>
 #include <cstdio>
 #include <cstdlib>
 #include <fstream>
@@ -33,16 +31,16 @@ using namespace PS::FILESTRINGUTILS;
 using namespace PS;
 using namespace PS::MESH;
 
-CellMesh::CellMesh() {
+VolMesh::VolMesh() {
 	init();
 }
 
-CellMesh::CellMesh(U32 ctVertices, double* vertices, U32 ctElements, U32* elements) {
+VolMesh::VolMesh(U32 ctVertices, double* vertices, U32 ctElements, U32* elements) {
 	init();
 	setup(ctVertices, vertices, ctElements, elements);
 }
 
-CellMesh::CellMesh(const CellMesh& other) {
+VolMesh::VolMesh(const VolMesh& other) {
 	init();
 
 	vector<double> vertices;
@@ -73,18 +71,18 @@ CellMesh::CellMesh(const CellMesh& other) {
 	setup(vertices, elements);
 }
 
-CellMesh::CellMesh(const vector<double>& vertices, const vector<U32>& elements) {
+VolMesh::VolMesh(const vector<double>& vertices, const vector<U32>& elements) {
 	init();
 	setup(vertices, elements);
 }
 
 
-CellMesh::~CellMesh() {
+VolMesh::~VolMesh() {
 	cleanup();
 }
 
 
-CellMesh* CellMesh::CreateOneTet() {
+VolMesh* VolMesh::CreateOneTet() {
 	vector<double> vertices;
 	vector<U32> elements;
 
@@ -105,11 +103,11 @@ CellMesh* CellMesh::CreateOneTet() {
 	elements[2] = 2;
 	elements[3] = 3;
 
-	CellMesh* tet = new CellMesh(vertices, elements);
+	VolMesh* tet = new VolMesh(vertices, elements);
 	return tet;
 }
 
-void CellMesh::init() {
+void VolMesh::init() {
 	m_elemToShow = INVALID_INDEX;
 	m_fOnNodeEvent = NULL;
 	m_fOnEdgeEvent = NULL;
@@ -117,31 +115,31 @@ void CellMesh::init() {
 	m_fOnElementEvent = NULL;
 }
 
-void CellMesh::setOnNodeEventCallback(OnNodeEvent f) {
+void VolMesh::setOnNodeEventCallback(OnNodeEvent f) {
 	m_fOnNodeEvent = f;
 }
 
-void CellMesh::setOnEdgeEventCallback(OnEdgeEvent f) {
+void VolMesh::setOnEdgeEventCallback(OnEdgeEvent f) {
 	m_fOnEdgeEvent = f;
 }
 
-void CellMesh::setOnFaceEventCallback(OnFaceEvent f) {
+void VolMesh::setOnFaceEventCallback(OnFaceEvent f) {
 	m_fOnFaceEvent = f;
 }
 
-void CellMesh::setOnElemEventCallback(OnElementEvent f) {
+void VolMesh::setOnElemEventCallback(OnElementEvent f) {
 	m_fOnElementEvent = f;
 }
 
 
-bool CellMesh::setup(const vector<double>& vertices, const vector<U32>& elements) {
+bool VolMesh::setup(const vector<double>& vertices, const vector<U32>& elements) {
 	U32 ctVertices = vertices.size() / 3;
 	U32 ctElements = elements.size() / 4;
 
 	return setup(ctVertices, &vertices[0], ctElements, &elements[0]);
 }
 
-bool CellMesh::setup(U32 ctVertices, const double* vertices, U32 ctElements, const U32* elements) {
+bool VolMesh::setup(U32 ctVertices, const double* vertices, U32 ctElements, const U32* elements) {
 
 	//cleanup to setup the mesh
 	cleanup();
@@ -168,7 +166,7 @@ bool CellMesh::setup(U32 ctVertices, const double* vertices, U32 ctElements, con
 	return true;
 }
 
-void CellMesh::cleanup() {
+void VolMesh::cleanup() {
 	m_vElements.resize(0);
 	m_vFaces.resize(0);
 	m_vHalfEdges.resize(0);
@@ -177,7 +175,7 @@ void CellMesh::cleanup() {
 	m_mapHalfEdgesIndex.clear();
 }
 
-void CellMesh::printInfo() const {
+void VolMesh::printInfo() const {
 	//print all nodes
 	printf("NODES #%u\n", (U32)m_vNodes.size());
 	for(U32 i=0; i < m_vNodes.size(); i++) {
@@ -233,7 +231,7 @@ void CellMesh::printInfo() const {
 
 }
 
-double CellMesh::computeDeterminant(U32 idxNodes[4]) const {
+double VolMesh::computeDeterminant(U32 idxNodes[4]) const {
 	vec3d v[4];
 
 	for(int i=0; i<4; i++)
@@ -241,12 +239,12 @@ double CellMesh::computeDeterminant(U32 idxNodes[4]) const {
 	return ComputeElementDeterminant(v);
 }
 
-double CellMesh::ComputeElementDeterminant(const vec3d v[4]) {
+double VolMesh::ComputeElementDeterminant(const vec3d v[4]) {
 	return	vec3d::dot(v[1] - v[0], vec3d::cross(v[2] - v[0], v[3] - v[0]));
 }
 
 //add/remove
-bool CellMesh::insert_element(const CELL& e) {
+bool VolMesh::insert_element(const CELL& e) {
 
 	//check the structure before adding it
 	for(int i=0; i<4; i++) {
@@ -283,7 +281,7 @@ bool CellMesh::insert_element(const CELL& e) {
 	return true;
 }
 
-bool CellMesh::insert_element(U32 nodes[4]) {
+bool VolMesh::insert_element(U32 nodes[4]) {
 	//Inserts a tetrahedra element to the halfedged mesh structure
 	for(int i=0; i<4; i++) {
 		if(!isNodeIndex(nodes[i])) {
@@ -450,7 +448,7 @@ bool CellMesh::insert_element(U32 nodes[4]) {
 	return insert_element(elem);
 }
 
-void CellMesh::remove_element(U32 i) {
+void VolMesh::remove_element(U32 i) {
 	assert(isElemIndex(i));
 
 	//bump down refs for faces
@@ -467,7 +465,7 @@ void CellMesh::remove_element(U32 i) {
 }
 
 //inserting a face uniquely
-U32 CellMesh::insert_face(U32 nodes[3]) {
+U32 VolMesh::insert_face(U32 nodes[3]) {
 
 	//first check if the face is already available
 	FaceKey key(nodes[0], nodes[1], nodes[2]);
@@ -518,12 +516,12 @@ U32 CellMesh::insert_face(U32 nodes[3]) {
 	return idxFace;
 }
 
-U32 CellMesh::insert_node(const NODE& n) {
+U32 VolMesh::insert_node(const NODE& n) {
 	m_vNodes.push_back(n);
 	return m_vNodes.size() - 1;
 }
 
-void CellMesh::remove_face(U32 i) {
+void VolMesh::remove_face(U32 i) {
 	assert(isFaceIndex(i));
 
 	//bump down refs for half-edges
@@ -537,7 +535,7 @@ void CellMesh::remove_face(U32 i) {
 }
 
 
-void CellMesh::garbage_collection() {
+void VolMesh::garbage_collection() {
 
 	//acquire lock to mesh
 	tst_keys();
@@ -633,7 +631,7 @@ void CellMesh::garbage_collection() {
 	//release lock
 }
 
-bool CellMesh::getFaceNodes(U32 idxFace, U32 (&nodes)[3]) const {
+bool VolMesh::getFaceNodes(U32 idxFace, U32 (&nodes)[3]) const {
 	if(!isFaceIndex(idxFace))
 		return false;
 
@@ -644,55 +642,55 @@ bool CellMesh::getFaceNodes(U32 idxFace, U32 (&nodes)[3]) const {
 	return true;
 }
 
-CELL& CellMesh::elemAt(U32 i) {
+CELL& VolMesh::elemAt(U32 i) {
 	assert(isElemIndex(i));
 	return m_vElements[i];
 }
 
-FACE& CellMesh::faceAt(U32 i) {
+FACE& VolMesh::faceAt(U32 i) {
 	assert(isFaceIndex(i));
 	return m_vFaces[i];
 }
 
-HEDGE& CellMesh::halfedgeAt(U32 i) {
+HEDGE& VolMesh::halfedgeAt(U32 i) {
 	assert(isHalfEdgeIndex(i));
 	return m_vHalfEdges[i];
 }
 
-EDGE CellMesh::edgeAt(U32 i) const {
+EDGE VolMesh::edgeAt(U32 i) const {
 	assert(isEdgeIndex(i));
 	EDGE e(const_halfedgeAt(i * 2), const_halfedgeAt(i * 2 + 1));
 	return e;
 }
 
-NODE& CellMesh::nodeAt(U32 i) {
+NODE& VolMesh::nodeAt(U32 i) {
 	assert(isNodeIndex(i));
 	return m_vNodes[i];
 }
 
 
 //access
-const CELL& CellMesh::const_elemAt(U32 i) const {
+const CELL& VolMesh::const_elemAt(U32 i) const {
 	assert(isElemIndex(i));
 	return m_vElements[i];
 }
 
-const FACE& CellMesh::const_faceAt(U32 i) const {
+const FACE& VolMesh::const_faceAt(U32 i) const {
 	assert(isFaceIndex(i));
 	return m_vFaces[i];
 }
 
-const HEDGE& CellMesh::const_halfedgeAt(U32 i) const {
+const HEDGE& VolMesh::const_halfedgeAt(U32 i) const {
 	assert(isHalfEdgeIndex(i));
 	return m_vHalfEdges[i];
 }
 
-const NODE& CellMesh::const_nodeAt(U32 i) const {
+const NODE& VolMesh::const_nodeAt(U32 i) const {
 	assert(isNodeIndex(i));
 	return m_vNodes[i];
 }
 
-void CellMesh::displace(double * u) {
+void VolMesh::displace(double * u) {
 	if(u == NULL)
 		return;
 
@@ -703,7 +701,7 @@ void CellMesh::displace(double * u) {
 	computeAABB();
 }
 
-bool CellMesh::insertHEdgeIndexToMap(U32 from, U32 to, U32 idxHE) {
+bool VolMesh::insertHEdgeIndexToMap(U32 from, U32 to, U32 idxHE) {
 	if(from == to) {
 		LogErrorArg2("Can not register a half-edge with the same from and to nodes! [%u, %u]", from, to);
 		return false;
@@ -719,7 +717,7 @@ bool CellMesh::insertHEdgeIndexToMap(U32 from, U32 to, U32 idxHE) {
 	return true;
 }
 
-bool CellMesh::removeHEdgeIndexFromMap(U32 from, U32 to) {
+bool VolMesh::removeHEdgeIndexFromMap(U32 from, U32 to) {
 	HEdgeKey key(from, to);
 	MAPHEDGEINDEXITER it = m_mapHalfEdgesIndex.find(key);
 	if(it == m_mapHalfEdgesIndex.end())
@@ -730,7 +728,7 @@ bool CellMesh::removeHEdgeIndexFromMap(U32 from, U32 to) {
 	}
 }
 
-bool CellMesh::insertFaceIndexToMap(U32 nodes[3], U32 idxFace) {
+bool VolMesh::insertFaceIndexToMap(U32 nodes[3], U32 idxFace) {
 
 	if(!isFaceIndex(idxFace)) {
 		LogErrorArg1("Can not register an invalid face index: %u", idxFace);
@@ -742,7 +740,7 @@ bool CellMesh::insertFaceIndexToMap(U32 nodes[3], U32 idxFace) {
 	return true;
 }
 
-bool CellMesh::removeFaceIndexFromMap(U32 nodes[3]) {
+bool VolMesh::removeFaceIndexFromMap(U32 nodes[3]) {
 	FaceKey key(nodes[0],  nodes[1], nodes[2]);
 	MAPFACEITER it = m_mapFaces.find(key);
 	if(it == m_mapFaces.end())
@@ -753,7 +751,7 @@ bool CellMesh::removeFaceIndexFromMap(U32 nodes[3]) {
 	}
 }
 
-HEdgeKey CellMesh::computeHEdgeKey(U32 idxHEdge) const {
+HEdgeKey VolMesh::computeHEdgeKey(U32 idxHEdge) const {
 	assert(isHalfEdgeIndex(idxHEdge));
 
 	const HEDGE& he = const_halfedgeAt(idxHEdge);
@@ -761,7 +759,7 @@ HEdgeKey CellMesh::computeHEdgeKey(U32 idxHEdge) const {
 	return key;
 }
 
-FaceKey CellMesh::computeFaceKey(U32 idxFace) const {
+FaceKey VolMesh::computeFaceKey(U32 idxFace) const {
 	assert(isFaceIndex(idxFace));
 
 	U32 nodes[3];
@@ -771,12 +769,12 @@ FaceKey CellMesh::computeFaceKey(U32 idxFace) const {
 }
 
 
-bool CellMesh::halfedge_exists(U32 from, U32 to) const {
+bool VolMesh::halfedge_exists(U32 from, U32 to) const {
 	HEdgeKey key(from, to);
 	return (m_mapHalfEdgesIndex.find( key ) != m_mapHalfEdgesIndex.end());
 }
 
-U32 CellMesh::halfedge_handle(U32 from, U32 to) {
+U32 VolMesh::halfedge_handle(U32 from, U32 to) {
 	HEdgeKey key(from, to);
 	MAPHEDGEINDEXITER it = m_mapHalfEdgesIndex.find(key);
 	if(it != m_mapHalfEdgesIndex.end())
@@ -786,7 +784,7 @@ U32 CellMesh::halfedge_handle(U32 from, U32 to) {
 }
 
 
-bool CellMesh::cut_edge(int idxEdge, double distance, U32* poutIndexNP0, U32* poutIndexNP1) {
+bool VolMesh::cut_edge(int idxEdge, double distance, U32* poutIndexNP0, U32* poutIndexNP1) {
 	if(!isEdgeIndex(idxEdge))
 		return false;
 
@@ -887,7 +885,7 @@ bool CellMesh::cut_edge(int idxEdge, double distance, U32* poutIndexNP0, U32* po
 	return true;
 }
 
-int CellMesh::getFirstRing(int idxNode, vector<U32>& ringNodes) const {
+int VolMesh::getFirstRing(int idxNode, vector<U32>& ringNodes) const {
 	U32 he = m_vNodes[idxNode].outHE;
 	ringNodes.resize(0);
 
@@ -902,7 +900,7 @@ int CellMesh::getFirstRing(int idxNode, vector<U32>& ringNodes) const {
 	return (int)ringNodes.size();
 }
 
-int CellMesh::getIncomingHalfEdges(int idxNode, vector<U32>& incomingHE) const {
+int VolMesh::getIncomingHalfEdges(int idxNode, vector<U32>& incomingHE) const {
 	assert(isNodeIndex(idxNode));
 
 	NODE n = const_nodeAt(idxNode);
@@ -928,7 +926,7 @@ int CellMesh::getIncomingHalfEdges(int idxNode, vector<U32>& incomingHE) const {
 	return (int)incomingHE.size();
 }
 
-int CellMesh::getOutgoingHalfEdges(int idxNode, vector<U32>& outgoingHE) const {
+int VolMesh::getOutgoingHalfEdges(int idxNode, vector<U32>& outgoingHE) const {
 	assert(isNodeIndex(idxNode));
 
 	NODE n = const_nodeAt(idxNode);
@@ -957,7 +955,7 @@ int CellMesh::getOutgoingHalfEdges(int idxNode, vector<U32>& outgoingHE) const {
 	return (int)outgoingHE.size();
 }
 
-void CellMesh::setElemToShow(U32 elem) {
+void VolMesh::setElemToShow(U32 elem) {
 	if(elem == m_elemToShow)
 		return;
 	LogInfoArg1("Requested element to shows: %u\n", elem);
@@ -965,7 +963,7 @@ void CellMesh::setElemToShow(U32 elem) {
 }
 
 
-bool CellMesh::readVegaFormat(const AnsiStr& strFP) {
+bool VolMesh::readVegaFormat(const AnsiStr& strFP) {
 	if(!FileExists(strFP))
 		return false;
 	char chrLine[1024];
@@ -1084,7 +1082,7 @@ bool CellMesh::readVegaFormat(const AnsiStr& strFP) {
 	return setup(vertices, elements);
 }
 
-bool CellMesh::writeVegaFormat(const AnsiStr& strFP) const {
+bool VolMesh::writeVegaFormat(const AnsiStr& strFP) const {
 	if(countNodes() == 0 || countElements() == 0)
 		return false;
 
@@ -1138,7 +1136,7 @@ bool CellMesh::writeVegaFormat(const AnsiStr& strFP) const {
 }
 
 
-void CellMesh::draw() {
+void VolMesh::draw() {
 	vec3d p0;
 	HEDGE hedge;
 
@@ -1192,7 +1190,7 @@ void CellMesh::draw() {
 	glPopAttrib();
 }
 
-void CellMesh::drawElement(U32 i) const {
+void VolMesh::drawElement(U32 i) const {
 	CELL elem = const_elemAt(i);
 	if(elem.removed)
 		return;
@@ -1216,7 +1214,7 @@ void CellMesh::drawElement(U32 i) const {
 }
 
 
-AABB CellMesh::computeAABB() {
+AABB VolMesh::computeAABB() {
 	double vMin[3], vMax[3];
 	for(U32 i=0; i < countNodes(); i++) {
 		NODE n = const_nodeAt(i);
@@ -1244,7 +1242,7 @@ AABB CellMesh::computeAABB() {
 	return m_aabb;
 }
 
-bool CellMesh::tst_keys() {
+bool VolMesh::tst_keys() {
 	int ctErrors = 0;
 	for(U32 i = 0; i < m_vFaces.size(); i++) {
 		const FACE face = const_faceAt(i);
