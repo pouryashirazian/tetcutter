@@ -40,7 +40,7 @@ namespace MESH {
 class VolMesh : public SGNode {
 public:
 	static const U32 INVALID_INDEX = -1;
-	enum TopologyEvent {teAdded, teRemoved};
+	enum TopologyEvent {teAdded, teRemoved, teUpdated};
 
 	enum ErrorCodes {
 		err_op_failed = -1,
@@ -123,6 +123,11 @@ public:
 	bool insert_cell(const CELL& cell);
 	bool insert_cell(U32 nodes[4]);
 
+	//setters
+	void set_edge(U32 idxEdge, U32 from, U32 to);
+	void set_face(U32 idxFace, U32 edges[3]);
+	void set_cell(U32 idxCell, U32 from, U32 to);
+
 
 	//remove
 	void remove_cell(U32 i);
@@ -140,8 +145,8 @@ public:
 
 	//algorithmic functions
 	bool getNodeIncidentEdges(U32 idxNode, vector<U32>& incidentEdges) const;
-	bool getCellFacesFromMapHighCost(U32 idxCell, U32 (&faces)[4]);
-	bool getCellEdgesFromMapHighCost(U32 idxCell, U32 (&edges)[6]);
+	bool getCellFacesExpensive(U32 idxCell, U32 (&faces)[4]);
+	bool getCellEdgesExpensive(U32 idxCell, U32 (&edges)[6]);
 
 	//checking
 	void setElemToShow(U32 elem = INVALID_INDEX);
@@ -159,22 +164,22 @@ public:
 	//aabb
 	AABB computeAABB();
 
-	//test that all faces are mapped to a correct key
-	bool tst_keys();
 private:
 	void init();
 	inline bool insertEdgeIndexToMap(U32 from, U32 to, U32 idxEdge);
 	inline bool removeEdgeIndexFromMap(U32 from, U32 to);
 
-	inline bool insertFaceIndexToMap(U32 nodes[3], U32 idxFace);
-	inline bool removeFaceIndexFromMap(U32 nodes[3]);
 
 	inline EdgeKey computeEdgeKey(U32 idxEdge) const;
-	inline FaceKey computeFaceKey(U32 idxFace) const;
 
-
-	inline bool edge_exists(U32 from, U32 to) const;
+	inline bool edge_exists(U32 from, U32 to);
 	U32 edge_handle(U32 from, U32 to);
+
+	inline bool face_exists_by_edges(U32 edges[3]) const;
+	inline bool face_exists_by_nodes(U32 nodes[3]);
+
+	U32 face_handle_by_edges(U32 edges[3]) const;
+	U32 face_handle_by_nodes(U32 nodes[3]);
 
 protected:
 	U32 m_elemToShow;
@@ -196,16 +201,12 @@ protected:
 	vector< vector<U32> > m_incident_faces_per_edge;
 	vector< vector<U32> > m_incident_cells_per_face;
 
-	//maps a facekey to the corresponding face handle
-	std::map< FaceKey, U32 > m_mapFaces;
-
 	//maps a half-edge from-to pair to the corresponding hedge handle
 	std::map< EdgeKey, U32 > m_mapEdgesIndex;
 
 	//iterators
 	typedef std::map< EdgeKey, U32 >::iterator MAPHEDGEINDEXITER;
 	typedef std::map< EdgeKey, U32 >::iterator MAPHEDGEINDEXCONSTITER;
-	typedef std::map< FaceKey, U32 >::iterator MAPFACEITER;
 };
 
 }

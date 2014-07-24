@@ -165,6 +165,7 @@ namespace MESH {
 	};
 
 	//Key to access faces in a unique order
+	/*
 	class FaceKey
 	{
 	public:
@@ -202,7 +203,7 @@ namespace MESH {
 
 	    U64 key;
 	};
-
+	*/
 
 	//elements
 	class CELL {
