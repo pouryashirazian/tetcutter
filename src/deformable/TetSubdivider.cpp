@@ -78,7 +78,7 @@ TetSubdivider::TetSubdivider(VolMesh* pMesh) {
 TetSubdivider::~TetSubdivider() {
 }
 
-int TetSubdivider::generateCaseA(U32 element, U8 node, double targetDistPercentage,
+int TetSubdivider::generateCaseA(U32 idxCell, U8 node, double targetDistPercentage,
 									   U8& cutEdgeCode, U8& cutNodeCode, double (&tEdges)[6]) {
 
 	if(node >= 4)
@@ -86,18 +86,18 @@ int TetSubdivider::generateCaseA(U32 element, U8 node, double targetDistPercenta
 	if(targetDistPercentage < 0.0 || targetDistPercentage > 1.0)
 		return -1;
 
-	if(!m_lpHEMesh->isElemIndex(element))
+	if(!m_lpHEMesh->isCellIndex(idxCell))
 		return -1;
 
 	cutEdgeCode = 0;
 	cutNodeCode = 0;
 
 	int res = 0;
-	CELL elem = m_lpHEMesh->elemAt(element);
+	CELL cell = m_lpHEMesh->elemAt(idxCell);
 	for(int i=0; i<6; i++) {
 		tEdges[i] = 0.0;
 
-		EDGE edge = m_lpHEMesh->edgeAt( m_lpHEMesh->edge_from_halfedge(elem.halfedge[i]) );
+		EDGE edge = m_lpHEMesh->edgeAt( cell.edges[i] );
 
 		if(edge.from == node || edge.to == node) {
 			cutEdgeCode |= (1 << i);
@@ -117,10 +117,10 @@ int TetSubdivider::generateCaseA(U32 element, U8 node, double targetDistPercenta
 
 }
 
-int TetSubdivider::generateCaseB(U32 element, U8 enteringface, U8& cutEdgeCode,
+int TetSubdivider::generateCaseB(U32 idxCell, U8 enteringface, U8& cutEdgeCode,
 					  U8& cutNodeCode, double (&tEdges)[6]) {
 
-	if(!m_lpHEMesh->isElemIndex(element))
+	if(!m_lpHEMesh->isCellIndex(idxCell))
 		return -1;
 	if(enteringface < 0 || enteringface > 2)
 		return -1;
@@ -262,7 +262,7 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 	//Case A: 3 cut edges. cutEdgeCodes = { 11, 22, 37, 56 }
 	if(cutcase == cutA) {
 		//Remove the original element
-		m_lpHEMesh->remove_element(element);
+		m_lpHEMesh->remove_cell(element);
 
 		//find the local table entry to handle this case A
 		int entry = m_mapCutEdgeCodeToTableEntry[cutEdgeCode];
@@ -295,7 +295,7 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 
 			}
 
-			if(!m_lpHEMesh->insert_element(n)) {
+			if(!m_lpHEMesh->insert_cell(n)) {
 				LogErrorArg1("Failed to add element# %d", e);
 			}
 		}
@@ -303,7 +303,7 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 	//Case B: 4 cut edges. cutEdgeCodes = { 46, 51, 29 }
 	else if(cutcase == cutB) {
 		//Remove the original element
-		m_lpHEMesh->remove_element(element);
+		m_lpHEMesh->remove_cell(element);
 
 		//find the local table entry to handle this case B
 		int entry = m_mapCutEdgeCodeToTableEntry[cutEdgeCode];
@@ -315,7 +315,7 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 			for(int i = 0; i < 4; i++)
 				n[i] = vnodes[ g_elementTableCaseB[entry][e][i] ];
 
-			if(!m_lpHEMesh->insert_element(n)) {
+			if(!m_lpHEMesh->insert_cell(n)) {
 				LogErrorArg1("Failed to add element# %d", e);
 			}
 		}

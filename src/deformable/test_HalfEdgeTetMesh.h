@@ -26,8 +26,6 @@ public:
 
 	static bool tst_connectivity(VolMesh* pmesh);
 
-	static bool tst_meshFacesAndOrder(VolMesh* pmesh);
-
 	static bool tst_all(VolMesh* pmesh);
 };
 

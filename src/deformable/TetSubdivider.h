@@ -49,7 +49,7 @@ public:
 	 * @targetDist: distance to the node [0-1]
 	 * @cutEdgeCode: output cutedge code
 	 */
-	int generateCaseA(U32 element, U8 node, double targetDistPercentage,
+	int generateCaseA(U32 idxCell, U8 node, double targetDistPercentage,
 					  U8& cutEdgeCode, U8& cutNodeCode, double (&tEdges)[6]);
 
 	/*!
@@ -61,7 +61,7 @@ public:
 	 * @cutNodeCode: output cutnode code
 	 * @tEdges: the distance over the edges where the cuts are happening
 	 */
-	int generateCaseB(U32 element, U8 enteringface, U8& cutEdgeCode,
+	int generateCaseB(U32 idxCell, U8 enteringface, U8& cutEdgeCode,
 					  U8& cutNodeCode, double (&tEdges)[6]);
 
 

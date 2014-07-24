@@ -19,7 +19,7 @@ using namespace PS::MATH;
 
 #define HEDGE_SHIFT_A 0
 #define HEDGE_SHIFT_B 32
-#define DEFAULT_FACE_SIDES 3
+#define FACE_SIDES 3
 
 
 //can keep up to 2097151 nodes
@@ -70,85 +70,45 @@ namespace MESH {
 	};
 
 	//handles for all entities
-	class NodeHandle : public BaseHandle { NodeHandle(U32 idx = INVALID): BaseHandle(idx){} };
-	class HEDGEHandle : public BaseHandle { HEDGEHandle(U32 idx = INVALID): BaseHandle(idx){} };
-	class EDGEHandle : public BaseHandle { EDGEHandle(U32 idx = INVALID): BaseHandle(idx){} };
-	class FACEHandle : public BaseHandle { FACEHandle(U32 idx = INVALID): BaseHandle(idx){} };
-	class HFACEHandle : public BaseHandle { HFACEHandle(U32 idx = INVALID): BaseHandle(idx){} };
-	class CELLHandle : public BaseHandle { CELLHandle(U32 idx = INVALID): BaseHandle(idx){} };
+//	class U32 : public BaseHandle { U32(U32 idx = INVALID): BaseHandle(idx){} };
+//	class EdgeHandle : public BaseHandle { EdgeHandle(U32 idx = INVALID): BaseHandle(idx){} };
+//	class FaceHandle : public BaseHandle { FaceHandle(U32 idx = INVALID): BaseHandle(idx){} };
+//	class CellHandle : public BaseHandle { CellHandle(U32 idx = INVALID): BaseHandle(idx){} };
 
 	//vertices
 	class NODE {
 	public:
 		vec3d pos;
 		vec3d restpos;
-		U32 outHE;
 
 		NODE& operator = (const NODE& A) {
 			pos = A.pos;
 			restpos = A.restpos;
-			outHE = A.outHE;
 			return (*this);
 		}
 	};
 
-	//half-edge
-	class HEDGE{
-	public:
-		//Vertex
-		U32 from, to;
-
-		//Face
-		U32 face;
-
-		//HEDGES
-		U32 prev, next, opposite;
-
-		//number of references
-		U8 refs;
-
-
-		HEDGE() { init();}
-		HEDGE(U32 from_, U32 to_) {
-			init();
-			from = from_;
-			to = to_;
-		};
-
-		void init() {
-			from = to = face =  BaseHandle::INVALID;
-			prev = next = opposite = BaseHandle::INVALID;
-			refs = 0;
-		}
-
-		HEDGE& operator = (const HEDGE& A) {
-
-			from = A.from;
-			to = A.to;
-			face = A.face;
-			prev = A.prev;
-			next = A.next;
-			opposite = A.opposite;
-			refs = A.refs;
-
-			return(*this);
-		};
-	};
-
-	//Key to access half-edges in a unique order
-	class HEdgeKey
+	//Key to access edges in a unique order
+	class EdgeKey
 	{
 	public:
-		HEdgeKey(U64 k) { this->key = k; }
-		HEdgeKey(U32 a, U32 b) {
+		EdgeKey(): key(0) {}
+		explicit EdgeKey(U64 k) { this->key = k; }
+		explicit EdgeKey(U32 a, U32 b) {
+			setup(a, b);
+	    }
+
+		void setup(U32 a, U32 b) {
+			if(a > b)
+				std::swap(a, b);
 	    	key = HEDGEID_FROM_IDX(a, b);
 	    }
 
-	    bool operator<(const HEdgeKey& k) const { return key < k.key; }
+	    bool operator<(const EdgeKey& k) const { return key < k.key; }
 
-	    bool operator>(const HEdgeKey& k) const { return key > k.key; }
+	    bool operator>(const EdgeKey& k) const { return key > k.key; }
 
-	    void operator=(const HEdgeKey& other) {
+	    void operator=(const EdgeKey& other) {
 	    	this->key = other.key;
 	    }
 
@@ -162,18 +122,18 @@ namespace MESH {
 		U32 from, to;
 
 		EDGE() { init();}
-		EDGE(const HEDGE& e1, const HEDGE& e2) {
-			setup(e1, e2);
+		EDGE(U32 from_, U32 to_) {
+			setup(from_, to_);
 		}
 
 		void init() {
 			from = to = BaseHandle::INVALID;
 		}
 
-		void setup(const HEDGE& e1, const HEDGE& e2) {
-			assert(e1.from == e2.to && e1.to == e2.from);
-			from = e1.from;
-			to = e1.to;
+		void setup(U32 from_, U32 to_) {
+
+			from = from_;
+			to = to_;
 		}
 
 		EDGE& operator =(const EDGE& A) {
@@ -186,26 +146,20 @@ namespace MESH {
 	//face
 	class FACE {
 	public:
-		U32 halfedge[DEFAULT_FACE_SIDES];
-		U8 refs;
-		bool removed;
+		U32 edges[FACE_SIDES];
 
 		FACE() {
 			init();
 		}
 
 		void init() {
-			for(int i=0; i<DEFAULT_FACE_SIDES; i++)
-				halfedge[i] = BaseHandle::INVALID;
-			refs = 0;
-			removed = false;
+			for(int i=0; i<FACE_SIDES; i++)
+				edges[i] = BaseHandle::INVALID;
 		}
 
 		FACE& operator = (const FACE& A) {
-			for(int i=0; i<DEFAULT_FACE_SIDES; i++)
-				halfedge[i] = A.halfedge[i];
-			refs = A.refs;
-			removed = A.removed;
+			for(int i=0; i<FACE_SIDES; i++)
+				edges[i] = A.edges[i];
 			return (*this);
 		}
 	};
@@ -214,14 +168,17 @@ namespace MESH {
 	class FaceKey
 	{
 	public:
-		FaceKey(U64 k) { this->key = k; }
-
-		FaceKey(U32 n[3]) {
-	    	order_lo2hi(n[0], n[1], n[2]);
-	    	key = FACEID_FROM_IDX(n[0], n[1], n[2]);
+		FaceKey():key(0) {}
+		explicit FaceKey(U64 k) { this->key = k; }
+		explicit FaceKey(U32 n[3]) {
+			setup(n[0], n[1], n[2]);
 		}
 
-	    FaceKey(U32 a, U32 b, U32 c) {
+	    explicit FaceKey(U32 a, U32 b, U32 c) {
+	    	setup(a, b, c);
+	    }
+
+	    void setup(U32 a, U32 b, U32 c) {
 	    	order_lo2hi(a, b, c);
 	    	key = FACEID_FROM_IDX(a, b, c);
 	    }
@@ -243,7 +200,6 @@ namespace MESH {
 	    	this->key = other.key;
 	    }
 
-
 	    U64 key;
 	};
 
@@ -251,11 +207,9 @@ namespace MESH {
 	//elements
 	class CELL {
 	public:
-		U32 faces[4];
 		U32 nodes[4];
-		U32 halfedge[6];
-		bool posDet;
-		bool removed;
+		U32 faces[4];
+		U32 edges[6];
 
 		CELL() {
 			init();
@@ -263,24 +217,23 @@ namespace MESH {
 
 		void init() {
 			for(int i=0; i<4; i++) {
-				faces[i] = BaseHandle::INVALID;
 				nodes[i] = BaseHandle::INVALID;
+				faces[i] = BaseHandle::INVALID;
 			}
+
 			for(int i=0; i<6; i++)
-				halfedge[i] = BaseHandle::INVALID;
-			posDet = false;
-			removed = false;
+				edges[i] = BaseHandle::INVALID;
 		}
 
 		CELL& operator = (const CELL& A) {
 			for(int i=0; i<4; i++) {
-				faces[i] = A.faces[i];
 				nodes[i] = A.nodes[i];
+				faces[i] = A.faces[i];
 			}
+
 			for(int i=0; i<6; i++)
-				halfedge[i] = A.halfedge[i];
-			posDet = A.posDet;
-			removed = A.removed;
+				edges[i] = A.edges[i];
+
 			return (*this);
 		}
 	};

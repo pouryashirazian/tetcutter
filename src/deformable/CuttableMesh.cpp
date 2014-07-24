@@ -167,12 +167,11 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	//Cut-Edges
 	for (U32 i=0; i < m_lpHEMesh->countEdges(); i++) {
 
-		U32 hei = m_lpHEMesh->halfedge_from_edge(i, 0);
-		HEDGE he = m_lpHEMesh->const_halfedgeAt(hei);
+		EDGE e = m_lpHEMesh->const_edgeAt(i);
 
 
-		ss0 = m_lpHEMesh->const_nodeAt(he.from).pos;
-		ss1 = m_lpHEMesh->const_nodeAt(he.to).pos;
+		ss0 = m_lpHEMesh->const_nodeAt(e.from).pos;
+		ss1 = m_lpHEMesh->const_nodeAt(e.to).pos;
 
 		int res = IntersectSegmentTriangle(ss0, ss1, tri1, t, uvw, xyz);
 		if(res == 0)
@@ -184,8 +183,8 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 			ce.e0 = ss0;
 			ce.e1 = ss1;
 			ce.t = t;
-			ce.from = he.from;
-			ce.to = he.to;
+			ce.from = e.from;
+			ce.to = e.to;
 
 			//test
 			vec3d temp = ce.e0 + (ce.e1 - ce.e0).normalized() * ce.t;
@@ -229,12 +228,12 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 			cn.pos = it->second.e0;
 			m_mapCutNodes.insert( std::pair<U32, CutNode>(cn.idxNode, cn) );
 
-			//iterate over all incoming half-edges
-			vector<U32> incomingHE;
-			m_lpHEMesh->getIncomingHalfEdges(cn.idxNode, incomingHE);
+			//iterate over all incident edges
+			vector<U32> incidentEdges;
+			m_lpHEMesh->getNodeIncidentEdges(cn.idxNode, incidentEdges);
 
-			for(U32 i=0; i < incomingHE.size(); i++) {
-				mapTempCutEdges.erase(m_lpHEMesh->edge_from_halfedge(incomingHE[i]));
+			for(U32 i=0; i < incidentEdges.size(); i++) {
+				mapTempCutEdges.erase(incidentEdges[i]);
 				ctRemovedCutEdges++;
 			}
 		}
@@ -245,12 +244,12 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 			cn.pos = it->second.e1;
 			m_mapCutNodes.insert( std::pair<U32, CutNode>(cn.idxNode, cn) );
 
-			//iterate over all incoming half-edges
-			vector<U32> incomingHE;
-			m_lpHEMesh->getIncomingHalfEdges(cn.idxNode, incomingHE);
+			//iterate over all incident edges
+			vector<U32> incidentEdges;
+			m_lpHEMesh->getNodeIncidentEdges(cn.idxNode, incidentEdges);
 
-			for(U32 i=0; i < incomingHE.size(); i++) {
-				mapTempCutEdges.erase(m_lpHEMesh->edge_from_halfedge(incomingHE[i]));
+			for(U32 i=0; i < incidentEdges.size(); i++) {
+				mapTempCutEdges.erase(incidentEdges[i]);
 				ctRemovedCutEdges++;
 			}
 		}
@@ -281,16 +280,17 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	//count of tets cut
 	int ctCutTet = 0;
 
-	for(U32 i=0; i < m_lpHEMesh->countElements(); i++) {
-		const CELL& tet = m_lpHEMesh->const_elemAt(i);
+	for(U32 i=0; i < m_lpHEMesh->countCells(); i++) {
+		const CELL& cell = m_lpHEMesh->const_cellAt(i);
 		U8 cutEdgeCode = 0;
 		U8 cutNodeCode = 0;
+
 		double tedges[6];
 
 		//compute cutedge code
 		for(int e=0; e < 6; e++) {
 			tedges[e] = 0.0;
-			U32 edge = m_lpHEMesh->edge_from_halfedge(tet.halfedge[e]);
+			U32 edge = cell.edges[e];
 			if(m_mapCutEdges.find(edge) != m_mapCutEdges.end()) {
 				cutEdgeCode |= (1 << e);
 				tedges[e] = m_mapCutEdges[edge].t;
@@ -299,13 +299,13 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 
 		//compute cut node code
 		for(int e=0; e < 4; e++) {
-			U32 node = tet.nodes[e];
+			U32 node = cell.nodes[e];
 			if(m_mapCutNodes.find(node) != m_mapCutNodes.end()) {
 				cutNodeCode |= (1 << e);
 			}
 		}
 
-		//if there is a cut in this tet
+		//if there is a cut in this cell
 		if(cutEdgeCode != 0 || cutNodeCode != 0) {
 
 			//increment cut tets
@@ -361,13 +361,12 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 		U8 cutNodeCode = vCutNodeCodes[i];
 		if(cutEdgeCode != 0 || cutNodeCode != 0) {
 
-			const CELL tet = m_lpHEMesh->const_elemAt(vCutElements[i]);
+			const CELL& cell = m_lpHEMesh->const_cellAt(vCutElements[i]);
 
 
 			for(int e=0; e < 6; e++) {
 
-				U32 edge = m_lpHEMesh->edge_from_halfedge(tet.halfedge[e]);
-				CUTEDGEITER it = m_mapCutEdges.find(edge);
+				CUTEDGEITER it = m_mapCutEdges.find(cell.edges[e]);
 
 				//mid points
 				middlePoints[e * 2 + 0] = VolMesh::INVALID_INDEX;

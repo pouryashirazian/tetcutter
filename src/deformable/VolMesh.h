@@ -54,7 +54,7 @@ public:
 	typedef std::function<void(NODE, U32 handle, TopologyEvent event)> OnNodeEvent;
 	typedef std::function<void(EDGE, U32 handle, TopologyEvent event)> OnEdgeEvent;
 	typedef std::function<void(FACE, U32 handle, TopologyEvent event)> OnFaceEvent;
-	typedef std::function<void(CELL, U32 handle, TopologyEvent event)> OnElementEvent;
+	typedef std::function<void(CELL, U32 handle, TopologyEvent event)> OnCellEvent;
 public:
 	VolMesh();
 	VolMesh(const VolMesh& other);
@@ -69,7 +69,7 @@ public:
 	void setOnNodeEventCallback(OnNodeEvent f);
 	void setOnEdgeEventCallback(OnEdgeEvent f);
 	void setOnFaceEventCallback(OnFaceEvent f);
-	void setOnElemEventCallback(OnElementEvent f);
+	void setOnElemEventCallback(OnCellEvent f);
 
 	//Build
 	bool setup(const vector<double>& vertices, const vector<U32>& elements);
@@ -81,10 +81,9 @@ public:
 	static double ComputeElementDeterminant(const vec3d v[4]);
 
 	//Index control
-	inline bool isElemIndex(U32 i) const { return (i < m_vElements.size());}
+	inline bool isCellIndex(U32 i) const { return (i < m_vCells.size());}
 	inline bool isFaceIndex(U32 i) const { return (i < m_vFaces.size());}
-	inline bool isHalfEdgeIndex(U32 i) const { return (i < m_vHalfEdges.size());}
-	inline bool isEdgeIndex(U32 i) const { return (i < countEdges());}
+	inline bool isEdgeIndex(U32 i) const { return (i < m_vEdges.size());}
 	inline bool isNodeIndex(U32 i) const { return (i < m_vNodes.size());}
 
 	//access
@@ -92,30 +91,22 @@ public:
 
 	CELL& elemAt(U32 i);
 	FACE& faceAt(U32 i);
-	HEDGE& halfedgeAt(U32 i);
 	NODE& nodeAt(U32 i);
-	EDGE edgeAt(U32 i) const;
+	EDGE& edgeAt(U32 i);
 
-	const CELL& const_elemAt(U32 i) const;
+	const CELL& const_cellAt(U32 i) const;
 	const FACE& const_faceAt(U32 i) const;
-	const HEDGE& const_halfedgeAt(U32 i) const;
 	const NODE& const_nodeAt(U32 i) const;
+	const EDGE& const_edgeAt(U32 i) const;
 
-	inline U32 countElements() const { return m_vElements.size();}
+	inline U32 countCells() const { return m_vCells.size();}
 	inline U32 countFaces() const {return m_vFaces.size();}
-	inline U32 countHalfEdges() const {return m_vHalfEdges.size();}
-	inline U32 countEdges() const {return m_vHalfEdges.size() / 2;}
+	inline U32 countEdges() const {return m_vEdges.size();}
 	inline U32 countNodes() const {return m_vNodes.size();}
 
 	//functions
-	inline U32 next_hedge(U32 he) const { return m_vHalfEdges[he].next;}
-	inline U32 prev_hedge(U32 he) const { return m_vHalfEdges[he].prev;}
-	inline U32 opposite_hedge(U32 he) const { return m_vHalfEdges[he].opposite;}
-
-	inline U32 vertex_from_hedge(U32 he) const { return m_vHalfEdges[he].from;}
-	inline U32 vertex_to_hedge(U32 he) const {return m_vHalfEdges[he].to;}
-	inline U32 halfedge_from_edge(U32 edge, U8 which) const { return edge * 2 + which;}
-	inline U32 edge_from_halfedge(U32 he) const { return he / 2;}
+	inline U32 from_node(U32 eh) const { return m_vEdges[eh].from;}
+	inline U32 to_node(U32 eh) const {return m_vEdges[eh].to;}
 
 
 	//algorithm
@@ -126,14 +117,15 @@ public:
 	//topology modifiers
 
 	//insertions
-	bool insert_element(const CELL& e);
-	bool insert_element(U32 nodes[4]);
-	U32 insert_face(U32 nodes[3]);
 	U32 insert_node(const NODE& n);
+	U32 insert_edge(const EDGE& e);
+	U32 insert_face(U32 nodes[3]);
+	bool insert_cell(const CELL& cell);
+	bool insert_cell(U32 nodes[4]);
 
 
 	//remove
-	void remove_element(U32 i);
+	void remove_cell(U32 i);
 	void remove_face(U32 i);
 
 	//erases all objects marked removed
@@ -146,10 +138,10 @@ public:
 	bool cut_edge(int idxEdge, double distance, U32* poutIndexNP0 = NULL, U32* poutIndexNP1 = NULL);
 
 
-	//algorithmic functions useful for many computational geometry projects
-	int getFirstRing(int idxNode, vector<U32>& ringNodes) const;
-	int getIncomingHalfEdges(int idxNode, vector<U32>& incomingHE) const;
-	int getOutgoingHalfEdges(int idxNode, vector<U32>& outgoingHE) const;
+	//algorithmic functions
+	bool getNodeIncidentEdges(U32 idxNode, vector<U32>& incidentEdges) const;
+	bool getCellFacesFromMapHighCost(U32 idxCell, U32 (&faces)[4]);
+	bool getCellEdgesFromMapHighCost(U32 idxCell, U32 (&edges)[6]);
 
 	//checking
 	void setElemToShow(U32 elem = INVALID_INDEX);
@@ -171,18 +163,18 @@ public:
 	bool tst_keys();
 private:
 	void init();
-	inline bool insertHEdgeIndexToMap(U32 from, U32 to, U32 idxHE);
-	inline bool removeHEdgeIndexFromMap(U32 from, U32 to);
+	inline bool insertEdgeIndexToMap(U32 from, U32 to, U32 idxEdge);
+	inline bool removeEdgeIndexFromMap(U32 from, U32 to);
 
 	inline bool insertFaceIndexToMap(U32 nodes[3], U32 idxFace);
 	inline bool removeFaceIndexFromMap(U32 nodes[3]);
 
-	inline HEdgeKey computeHEdgeKey(U32 idxHEdge) const;
+	inline EdgeKey computeEdgeKey(U32 idxEdge) const;
 	inline FaceKey computeFaceKey(U32 idxFace) const;
 
 
-	inline bool halfedge_exists(U32 from, U32 to) const;
-	U32 halfedge_handle(U32 from, U32 to);
+	inline bool edge_exists(U32 from, U32 to) const;
+	U32 edge_handle(U32 from, U32 to);
 
 protected:
 	U32 m_elemToShow;
@@ -191,23 +183,28 @@ protected:
 	OnNodeEvent m_fOnNodeEvent;
 	OnEdgeEvent m_fOnEdgeEvent;
 	OnFaceEvent m_fOnFaceEvent;
-	OnElementEvent m_fOnElementEvent;
+	OnCellEvent m_fOnElementEvent;
 
 	//containers
-	vector<CELL> m_vElements;
+	vector<CELL> m_vCells;
 	vector<FACE> m_vFaces;
-	vector<HEDGE> m_vHalfEdges;
+	vector<EDGE> m_vEdges;
 	vector<NODE> m_vNodes;
+
+	//top-down access
+	vector< vector<U32> > m_incident_edges_per_node;
+	vector< vector<U32> > m_incident_faces_per_edge;
+	vector< vector<U32> > m_incident_cells_per_face;
 
 	//maps a facekey to the corresponding face handle
 	std::map< FaceKey, U32 > m_mapFaces;
 
 	//maps a half-edge from-to pair to the corresponding hedge handle
-	std::map< HEdgeKey, U32 > m_mapHalfEdgesIndex;
+	std::map< EdgeKey, U32 > m_mapEdgesIndex;
 
 	//iterators
-	typedef std::map< HEdgeKey, U32 >::iterator MAPHEDGEINDEXITER;
-	typedef std::map< HEdgeKey, U32 >::iterator MAPHEDGEINDEXCONSTITER;
+	typedef std::map< EdgeKey, U32 >::iterator MAPHEDGEINDEXITER;
+	typedef std::map< EdgeKey, U32 >::iterator MAPHEDGEINDEXCONSTITER;
 	typedef std::map< FaceKey, U32 >::iterator MAPFACEITER;
 };
 
