@@ -180,51 +180,55 @@ void VolMesh::cleanup() {
 
 void VolMesh::printInfo() const {
 	//print all nodes
-	printf("NODES #%u\n", (U32)m_vNodes.size());
-	for(U32 i=0; i < m_vNodes.size(); i++) {
-		NODE n = m_vNodes[i];
+	printf("NODES #%u\n", countNodes());
+	for(U32 i=0; i < countNodes(); i++) {
+		const NODE& n = const_nodeAt(i);
 
-		printf("NODE %u, incident edges#: NA, pos: [%.3f, %.3f, %.3f]\n", i, n.pos.x, n.pos.y, n.pos.z);
+		vector<U32> vIncidentEdges;
+		getNodeIncidentEdges(i, vIncidentEdges);
+
+		printf("NODE %u, incident edges#: %u, pos: [%.3f, %.3f, %.3f]\n", i, (U32)vIncidentEdges.size(), n.pos.x, n.pos.y, n.pos.z);
 	}
 	printf("\n");
 
 	//print all edges
-	printf("HALFEDGES #%u\n", (U32)m_vEdges.size());
-	for(U32 i=0; i < m_vEdges.size(); i++) {
-		EDGE e = m_vEdges[i];
+	printf("EDGES #%u\n", countEdges());
+	for(U32 i=0; i < countEdges(); i++) {
+		const EDGE& e = const_edgeAt(i);
 
-		printf("HEDGE %u, from: %d, to %d\n", i, e.from, e.to);
+		printf("EDGE %u, from: %d, to %d\n", i, e.from, e.to);
 	}
 	printf("\n");
 
 
 	//print all face
-	printf("FACES #%u\n", (U32)m_vFaces.size());
+	printf("FACES #%u\n", countFaces());
 	U32 vhandles[3];
-	for(U32 i=0; i < m_vFaces.size(); i++) {
-		FACE face = m_vFaces[i];
+	for(U32 i=0; i < countFaces(); i++) {
+		const FACE& face = const_faceAt(i);
 		getFaceNodes(i, vhandles);
 
-		printf("FACE %u, Nodes [%d, %d, %d], HalfEdges [%d, %d, %d]\n", i,
+		printf("FACE %u, Nodes [%u, %u, %u], Edges [%u, %u, %u]\n", i,
 				vhandles[0], vhandles[1], vhandles[2],
 				face.edges[0], face.edges[1], face.edges[2]);
 	}
 	printf("\n");
 
 	//print all elements
-	printf("ELEMS #%u\n", (U32)m_vCells.size());
-	for(U32 i=0; i < m_vCells.size(); i++) {
-		CELL elem = m_vCells[i];
-		printf("ELEM %d, NODE: [%u, %u, %u, %u], ", i ,elem.nodes[0], elem.nodes[1], elem.nodes[2], elem.nodes[3]);
-		printf("FACE: [%u, %u, %u, %u], ", elem.faces[0], elem.faces[1], elem.faces[2], elem.faces[3]);
+	printf("ELEMS #%u\n", countCells());
+	for(U32 i=0; i < countCells(); i++) {
+
+		const CELL& cell = const_cellAt(i);
+		printf("ELEM %d, NODE: [%u, %u, %u, %u], ", i ,cell.nodes[0], cell.nodes[1], cell.nodes[2], cell.nodes[3]);
+		printf("FACE: [%u, %u, %u, %u], ", cell.faces[0], cell.faces[1], cell.faces[2], cell.faces[3]);
 
 		//print edges
-		printf("HalfEdges: [");
+		printf("EDGES: [");
 		for(int e=0; e<6; e++) {
 			if(e < 5)
-				printf("%u, ", elem.edges[e]);
+				printf("%u, ", cell.edges[e]);
 			else
-				printf("%u]\n", elem.edges[e]);
+				printf("%u]\n", cell.edges[e]);
 		}
 	}
 	printf("\n");
@@ -249,21 +253,21 @@ bool VolMesh::insert_cell(const CELL& cell) {
 	//check the structure before adding it
 	for(int i=0; i<4; i++) {
 		if(!isFaceIndex(cell.faces[i])) {
-			LogErrorArg2("Unable to add element. Invalid face index found at: f[%d] = %d", i, cell.faces[i]);
+			LogErrorArg2("Unable to add element. Invalid face index found at: f[%d] = %u", i, cell.faces[i]);
 			return false;
 		}
 	}
 
 	for(int i=0; i<4; i++) {
 		if(!isNodeIndex(cell.nodes[i])) {
-			LogErrorArg2("Unable to add element. Invalid node index found at: n[%d] = %d", i, cell.nodes[i]);
+			LogErrorArg2("Unable to add element. Invalid node index found at: n[%d] = %u", i, cell.nodes[i]);
 			return false;
 		}
 	}
 
 	for(int i=0; i<6; i++) {
 		if(!isEdgeIndex(cell.edges[i])) {
-			LogErrorArg2("Unable to add element. Invalid halfedge index found at: he[%d] = %d", i, cell.edges[i]);
+			LogErrorArg2("Unable to add element. Invalid edge index found at: edge[%d] = %u", i, cell.edges[i]);
 			return false;
 		}
 	}
@@ -384,43 +388,102 @@ bool VolMesh::insert_cell(U32 nodes[4]) {
 }
 
 void VolMesh::set_edge(U32 idxEdge, U32 from, U32 to) {
-	if(!isEdgeIndex(idxEdge))
-		return;
+	assert(isEdgeIndex(idxEdge));
 
+	//edge e
 	EDGE& e = edgeAt(idxEdge);
 
-	//remove from incident nodes
-	std::remove(m_incident_edges_per_node[e.from].begin(), m_incident_edges_per_node[e.to].end(), idxEdge);
+	//remove incident edge idxEdge from the list of incident edges of the from node
+	std::remove(m_incident_edges_per_node[e.from].begin(), m_incident_edges_per_node[e.from].end(), idxEdge);
+
+	//remove incident edge idxEdge from the list of incident edges of the to node
+	std::remove(m_incident_edges_per_node[e.to].begin(), m_incident_edges_per_node[e.to].end(), idxEdge);
 
 	//update
 	e.from = from;
 	e.to = to;
 	m_vEdges[idxEdge] = e;
 
-	//add to incident nodes
+	//add to incident edges per node
 	m_incident_edges_per_node[e.from].push_back(idxEdge);
 	m_incident_edges_per_node[e.to].push_back(idxEdge);
 }
 
 void VolMesh::set_face(U32 idxFace, U32 edges[3]) {
 
+	assert(isFaceIndex(idxFace));
+
+	FACE& face = faceAt(idxFace);
+
+	//remove idxFace from the list of incident faces of faceedge0
+	for(int i=0; i<FACE_SIDES; i++)
+		std::remove(m_incident_faces_per_edge[ face.edges[i] ].begin(), m_incident_faces_per_edge[ face.edges[i] ].end(), idxFace);
+
+	//UPDATE
+	face.edges[0] = edges[0];
+	face.edges[1] = edges[1];
+	face.edges[2] = edges[2];
+	m_vFaces[idxFace] = face;
+
+	//add to incident faces per edge
+	for(int i=0; i<FACE_SIDES; i++)
+		m_incident_faces_per_edge[edges[i]].push_back(idxFace);
 }
 
-void VolMesh::set_cell(U32 idxCell, U32 from, U32 to) {
 
-}
+void VolMesh::remove_cell(U32 idxCell) {
+	assert(isCellIndex(idxCell));
 
-
-void VolMesh::remove_cell(U32 i) {
-	assert(isCellIndex(i));
-
-	//bump down refs for faces
-	const CELL tet = const_cellAt(i);
-	for(int j=0; j<4; j++) {
-		//call face remove to decrement its refs
-		remove_face( tet.faces[j] );
+	//1. remove cell from the list of incident cell per face
+	const CELL& cell = const_cellAt(idxCell);
+	for(int i=0; i<4; i++) {
+		std::remove(m_incident_cells_per_face[ cell.faces[i] ].begin(), m_incident_cells_per_face[ cell.faces[i] ].end(), idxCell);
 	}
+
+	//2. correct all referenced cell indices
+    CellHandleCorrection corrector(idxCell);
+    std::for_each(m_incident_cells_per_face.begin(),
+                  m_incident_cells_per_face.end(),
+                  std::bind(&CellHandleCorrection::correctVecValue, &corrector, std::placeholders::_1));
+
+
+	//remove the cell from list
+	m_vCells.erase(m_vCells.begin() + idxCell);
 }
+
+void VolMesh::remove_face(U32 idxFace) {
+	assert(isFaceIndex(idxFace));
+
+	//1. remove from incident faces per edge
+	//2. Decrease all face handles > idxFace in incident cells
+	//3. Delete entry in bottom-up list: cells per face
+	//4. Decrease all face handles > idxFace in edge bottom up list: incident faces per edge
+	//5. Delete face itself
+
+
+
+}
+
+void VolMesh::remove_edge(U32 idxEdge) {
+	assert(isEdgeIndex(idxEdge));
+
+	//1. Delete bottom-up links from incident edges per node
+	//2. Decrease all edge handles > idxEdge in incident faces per edge
+	//3. Delete entry in bottom-up list: incident faces per edge
+	//4. Decrease all edge handles > idxEdge in incident edges per node
+	//5. Delete edge itself
+}
+
+void VolMesh::remove_node(U32 idxNode) {
+	assert(isNodeIndex(idxNode));
+
+	//1. Decrease all vertex handles > idxNode in incident edges per node
+	//2. Delete entry in bottom-up list: incident edges per node
+	//3. Delete vertex itself (not necessary here since a vertex is only represented by a number)
+	//4. Delete property entry
+
+}
+
 
 U32 VolMesh::insert_node(const NODE& n) {
 	m_vNodes.push_back(n);
@@ -451,11 +514,9 @@ U32 VolMesh::insert_edge(const EDGE& e) {
 //inserting a face uniquely
 U32 VolMesh::insert_face(U32 nodes[3]) {
 
-	//first check if the face is already available
-	FaceKey key(nodes[0], nodes[1], nodes[2]);
-	MAPFACEITER fit = m_mapFaces.find(key);
-	if(fit != m_mapFaces.end()) {
-		return fit->second;
+	U32 idxFace = face_handle_by_nodes(nodes);
+	if(isFaceIndex(idxFace)) {
+		return idxFace;
 	}
 
 	//since we do not have that face we will add it
@@ -482,9 +543,7 @@ U32 VolMesh::insert_face(U32 nodes[3]) {
 
 	//add the face now
 	m_vFaces.push_back(face);
-	U32 idxFace = countFaces() - 1;
-	insertFaceIndexToMap(nodes, idxFace);
-
+	idxFace = countFaces() - 1;
 	m_incident_cells_per_face.resize(countFaces());
 
 	//update
@@ -495,100 +554,16 @@ U32 VolMesh::insert_face(U32 nodes[3]) {
 }
 
 
-void VolMesh::remove_face(U32 i) {
-	assert(isFaceIndex(i));
-
-	//mark face as removed
-	//m_vFaces[i].removed = true;
-}
-
-
 void VolMesh::garbage_collection() {
 
 	//acquire lock to mesh
-
-	//elements
-	U32 i = 0;
-	U32 ctRemovedElements = 0;
-	while(i < countCells()) {
-		CELL tet = elemAt(i);
-		if(tet.removed) {
-			m_vCells.erase(m_vCells.begin() + i);
-			ctRemovedElements++;
-		}
-		else
-			i++;
-	}
-
-	//faces
-
-	//scan faces and extract correct indices to apply after delete
-	vector<U32> vFaceIndexAfter;
-	vFaceIndexAfter.resize(countFaces());
-	U32 ctCorrectFaces = 0;
-	for(i = 0; i < countFaces(); i++) {
-
-		vFaceIndexAfter[i] = ctCorrectFaces;
-		const FACE face = const_faceAt(i);
-
-		if(face.removed && (face.refs == 0))
-		{
-			//remove face from the keys
-			U32 nodes[3];
-			nodes[0] = vertex_from_edge(face.edges[0]);
-			nodes[1] = vertex_from_edge(face.edges[1]);
-			nodes[2] = vertex_from_edge(face.edges[2]);
-			FaceKey key(nodes[0], nodes[1], nodes[2]);
-			MAPFACEITER it = m_mapFaces.find(key);
-			if(it == m_mapFaces.end()) {
-				printf("No key recorded for face with nodes [%u, %u, %u]\n", nodes[0], nodes[1], nodes[2]);
-			}
-			else {
-				if(it->second == i) {
-					printf("Found! Erasing the key for face with nodes [%u, %u, %u]\n", nodes[0], nodes[1], nodes[2]);
-					m_mapFaces.erase(key);
-				}
-				else {
-					printf("KEYERROR: the key for face with nodes [%u, %u, %u] does not match its index: %u, found: %u\n",
-							nodes[0], nodes[1], nodes[2], i, it->second);
-				}
-			}
-		}
-		else
-			ctCorrectFaces++;
-	}
-
-
-	//apply correct face indices to elements
-	for(i = 0; i < countCells(); i++) {
-		for(U32 j = 0; j < 4; j++) {
-			U32 temp = m_vCells[i].faces[j];
-			m_vCells[i].faces[j] = vFaceIndexAfter[temp];
-		}
-	}
-
-
-	//remove redundant faces now
-	U32 ctRemovedFaces = 0;
-	i = 0;
-	while(i < countFaces()) {
-		FACE face = const_faceAt(i);
-		if(face.removed && (face.refs == 0)) {
-//			printf("Erasing face with nodes [%u, %u, %u]\n", nodes[0], nodes[1], nodes[2]);
-
-			m_vFaces.erase(m_vFaces.begin() + i);
-			ctRemovedFaces++;
-		}
-		else
-			i++;
-	}
 
 
 	//Remove redundant half-edges now
 	U32 ctRemovedHalfEdges = 0;
 
-	LogInfoArg3("garbage collection removed: Elements# %u, Faces# %u, HalfEdges# %u",
-				ctRemovedElements, ctRemovedFaces, ctRemovedHalfEdges);
+//	LogInfoArg3("garbage collection removed: Elements# %u, Faces# %u, HalfEdges# %u",
+//				ctRemovedElements, ctRemovedFaces, ctRemovedHalfEdges);
 
 	//release lock
 }
@@ -597,7 +572,7 @@ bool VolMesh::getFaceNodes(U32 idxFace, U32 (&nodes)[3]) const {
 	if(!isFaceIndex(idxFace))
 		return false;
 
-	FACE face = const_faceAt(idxFace);
+	const FACE& face = const_faceAt(idxFace);
 
 	std::set<U32> setFaceNodes;
 	for(int i=0; i < 3; i++) {
@@ -755,8 +730,30 @@ U32 VolMesh::face_handle_by_nodes(U32 nodes[3])  {
 	edges[1] = edge_handle(nodes[1], nodes[2]);
 	edges[2] = edge_handle(nodes[2], nodes[0]);
 
-	return face_exists_by_edges(edges);
+	return face_handle_by_edges(edges);
 }
+
+int VolMesh::get_incident_cells(U32 idxFace, vector<U32>& cells) {
+	assert(isFaceIndex(idxFace));
+
+	cells.assign(m_incident_cells_per_face[idxFace].begin(), m_incident_cells_per_face[idxFace].end());
+	return (int)cells.size();
+}
+
+int VolMesh::get_incident_faces(U32 idxEdge, vector<U32>& faces) {
+	assert(isEdgeIndex(idxEdge));
+
+	faces.assign(m_incident_faces_per_edge[idxEdge].begin(), m_incident_faces_per_edge[idxEdge].end());
+	return (int)faces.size();
+}
+
+int VolMesh::get_incident_edges(U32 idxNode, vector<U32>& edges) {
+	assert(isNodeIndex(idxNode));
+
+	edges.assign(m_incident_edges_per_node[idxNode].begin(), m_incident_edges_per_node[idxNode].end());
+	return (int)edges.size();
+}
+
 
 
 bool VolMesh::cut_edge(int idxEdge, double distance, U32* poutIndexNP0, U32* poutIndexNP1) {
@@ -766,8 +763,8 @@ bool VolMesh::cut_edge(int idxEdge, double distance, U32* poutIndexNP0, U32* pou
 	U32 from = from_node(idxEdge);
 	U32 to = to_node(idxEdge);
 
-	NODE p0 = const_nodeAt(from);
-	NODE p1 = const_nodeAt(to);
+	const NODE& p0 = const_nodeAt(from);
+	const NODE& p1 = const_nodeAt(to);
 
 	//add two new points np0 and np1
 	NODE np0;
@@ -779,9 +776,7 @@ bool VolMesh::cut_edge(int idxEdge, double distance, U32* poutIndexNP0, U32* pou
 	U32 idxNP1 = insert_node(np1);
 
 	//update the old edge
-	EDGE e0 = edgeAt(idxEdge);
-	e0.from = from;
-	e0.to = idxNP0;
+	set_edge(idxEdge, from, idxNP0);
 
 
 	//add the new edge
@@ -841,6 +836,7 @@ bool VolMesh::getCellEdgesExpensive(U32 idxCell, U32 (&edges)[6])  {
 
 	return true;
 }
+
 
 
 void VolMesh::setElemToShow(U32 elem) {
@@ -1076,14 +1072,16 @@ void VolMesh::draw() {
 }
 
 void VolMesh::drawElement(U32 i) const {
-	CELL elem = const_cellAt(i);
+	if(!isCellIndex(i))
+		return;
+
+	const CELL& cell = const_cellAt(i);
 
 	glBegin(GL_TRIANGLES);
 		for(U32 f=0; f<4; f++)
 		{
 			U32 nodes[3];
-			FACE face = const_faceAt(elem.faces[f]);
-			getFaceNodes(elem.faces[f], nodes);
+			getFaceNodes(cell.faces[f], nodes);
 
 			vec3d p0 = const_nodeAt(nodes[0]).pos;
 			vec3d p1 = const_nodeAt(nodes[1]).pos;

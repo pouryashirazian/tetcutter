@@ -8,6 +8,8 @@
 #ifndef CELLULARMESHTYPES_H_
 #define CELLULARMESHTYPES_H_
 
+#include <algorithm>
+#include <functional>
 #include "base/Vec.h"
 
 using namespace PS;
@@ -70,10 +72,68 @@ namespace MESH {
 	};
 
 	//handles for all entities
-//	class U32 : public BaseHandle { U32(U32 idx = INVALID): BaseHandle(idx){} };
+//	class NodeHandle : public BaseHandle { NodeHandle(U32 idx = INVALID): BaseHandle(idx){} };
 //	class EdgeHandle : public BaseHandle { EdgeHandle(U32 idx = INVALID): BaseHandle(idx){} };
 //	class FaceHandle : public BaseHandle { FaceHandle(U32 idx = INVALID): BaseHandle(idx){} };
 //	class CellHandle : public BaseHandle { CellHandle(U32 idx = INVALID): BaseHandle(idx){} };
+
+
+	// Helper class that is used to decrease all handles
+	// exceeding a certain threshold
+
+	/*
+	class VHandleCorrection {
+	public:
+	    VHandleCorrection(VertexHandle _thld) : thld_(_thld) {}
+	    void correctValue(VertexHandle& _h) {
+	        if(_h > thld_) _h.idx(_h.idx() - 1);
+	    }
+	private:
+	    VertexHandle thld_;
+	};
+
+	class HEHandleCorrection {
+	public:
+	    HEHandleCorrection(HalfEdgeHandle _thld) : thld_(_thld) {}
+	    void correctVecValue(std::vector<HalfEdgeHandle>& _vec) {
+	        std::for_each(_vec.begin(), _vec.end(), fun::bind(&HEHandleCorrection::correctValue, this, fun::placeholders::_1));
+	    }
+	    void correctValue(HalfEdgeHandle& _h) {
+	        if(_h > thld_) _h.idx(_h.idx() - 2);
+	    }
+	private:
+	    HalfEdgeHandle thld_;
+	};
+
+	class HFHandleCorrection {
+	public:
+	    HFHandleCorrection(HalfFaceHandle _thld) : thld_(_thld) {}
+	    void correctVecValue(std::vector<HalfFaceHandle>& _vec) {
+	        std::for_each(_vec.begin(), _vec.end(), fun::bind(&HFHandleCorrection::correctValue, this, fun::placeholders::_1));
+	    }
+	    void correctValue(HalfFaceHandle& _h) {
+	        if(_h > thld_) _h.idx(_h.idx() - 2);
+	    }
+	private:
+	    HalfFaceHandle thld_;
+	};
+	*/
+	class CellHandleCorrection {
+	public:
+		CellHandleCorrection(U32 idxCell) : m_handle(idxCell) {}
+
+		void correctVecValue(std::vector<U32>& _vec) {
+	        std::for_each(_vec.begin(), _vec.end(), std::bind(&CellHandleCorrection::correctValue, this, std::placeholders::_1));
+	    }
+
+		void correctValue(U32& rhs) {
+	        if(rhs > m_handle)
+	        	rhs = rhs - 1;
+	    }
+	private:
+	    U32 m_handle;
+	};
+
 
 	//vertices
 	class NODE {

@@ -105,8 +105,8 @@ public:
 	inline U32 countNodes() const {return m_vNodes.size();}
 
 	//functions
-	inline U32 from_node(U32 eh) const { return m_vEdges[eh].from;}
-	inline U32 to_node(U32 eh) const {return m_vEdges[eh].to;}
+	inline U32 from_node(U32 idxEdge) const { return m_vEdges[idxEdge].from;}
+	inline U32 to_node(U32 idxEdge) const {return m_vEdges[idxEdge].to;}
 
 
 	//algorithm
@@ -126,12 +126,13 @@ public:
 	//setters
 	void set_edge(U32 idxEdge, U32 from, U32 to);
 	void set_face(U32 idxFace, U32 edges[3]);
-	void set_cell(U32 idxCell, U32 from, U32 to);
 
 
 	//remove
-	void remove_cell(U32 i);
-	void remove_face(U32 i);
+	void remove_cell(U32 idxCell);
+	void remove_face(U32 idxFace);
+	void remove_edge(U32 idxEdge);
+	void remove_node(U32 idxNode);
 
 	//erases all objects marked removed
 	void garbage_collection();
@@ -171,7 +172,6 @@ private:
 
 
 	inline EdgeKey computeEdgeKey(U32 idxEdge) const;
-
 	inline bool edge_exists(U32 from, U32 to);
 	U32 edge_handle(U32 from, U32 to);
 
@@ -181,6 +181,10 @@ private:
 	U32 face_handle_by_edges(U32 edges[3]) const;
 	U32 face_handle_by_nodes(U32 nodes[3]);
 
+	//incident entities
+	int get_incident_cells(U32 idxFace, vector<U32>& cells);
+	int get_incident_faces(U32 idxEdge, vector<U32>& faces);
+	int get_incident_edges(U32 idxNode, vector<U32>& edges);
 protected:
 	U32 m_elemToShow;
 

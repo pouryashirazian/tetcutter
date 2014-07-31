@@ -80,7 +80,7 @@ void NormalKey(unsigned char key, int x, int y)
 		if(!g_lpTissue) return;
 
 		U32 i = g_lpTissue->getMesh()->getElemToShow();
-		if(g_lpTissue->getMesh()->isValidCellHandle(i))
+		if(g_lpTissue->getMesh()->isCellIndex(i))
 			g_lpTissue->getMesh()->setElemToShow(--i);
 		else
 			g_lpTissue->getMesh()->setElemToShow(0);
@@ -91,7 +91,7 @@ void NormalKey(unsigned char key, int x, int y)
 		if(!g_lpTissue) return;
 
 		U32 i = g_lpTissue->getMesh()->getElemToShow();
-		if(g_lpTissue->getMesh()->isValidCellHandle(i))
+		if(g_lpTissue->getMesh()->isCellIndex(i))
 			g_lpTissue->getMesh()->setElemToShow(++i);
 		else
 			g_lpTissue->getMesh()->setElemToShow(0);
@@ -105,7 +105,7 @@ void NormalKey(unsigned char key, int x, int y)
 		U32 idxElem = -1;
 		printf("Insert element index to show: [0:%u]\n", ctElems-1);
 		scanf("%u", &idxElem);
-		if(g_lpTissue->getMesh()->isValidCellHandle(idxElem))
+		if(g_lpTissue->getMesh()->isCellIndex(idxElem))
 			g_lpTissue->getMesh()->setElemToShow(idxElem);
 		else
 			g_lpTissue->getMesh()->setElemToShow();

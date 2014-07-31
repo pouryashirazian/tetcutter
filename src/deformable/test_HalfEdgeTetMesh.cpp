@@ -18,8 +18,8 @@ bool TestHalfEdgeTestMesh::tst_report_mesh_info(VolMesh* pmesh) {
 		return false;
 
 	printf("============================mesh stats begin===========================\n");
-	printf("elements# %u, face# %u, halfedges# %u, edges# %u, nodes# %u\n",
-			pmesh->countCells(), pmesh->countFaces(), pmesh->countHalfEdges(),
+	printf("elements# %u, face# %u, edges# %u, nodes# %u\n",
+			pmesh->countCells(), pmesh->countFaces(),
 			pmesh->countEdges(), pmesh->countNodes());
 	pmesh->printInfo();
 	printf("============================mesh stats end=============================\n");
@@ -59,23 +59,20 @@ bool TestHalfEdgeTestMesh::tst_correct_elements(VolMesh* pmesh) {
 			}
 		}
 
-		//check halfedges
+		//check edges
 		mapUniqueTest.clear();
 		for(U32 j = 0; j < 6; j++) {
 
-			if(!pmesh->isHalfEdgeIndex(!tet.edges[j])) {
-				LogErrorArg2("Invalid halfedge index found for element %u, hedge %u", i, j);
+			if(!pmesh->isEdgeIndex(!tet.edges[j])) {
+				LogErrorArg2("Invalid edge index found for element %u, edge %u", i, j);
 				ctErrors++;
 			}
 
-			//halfedge
-			{
-				U32 idxEdge = pmesh->edge_from_halfedge(tet.edges[j]);
-				U32 idxHE0 = pmesh->halfedge_from_edge(idxEdge, 0);
-				U32 idxHE1 = pmesh->halfedge_from_edge(idxEdge, 1);
-				HEDGE he0 = pmesh->const_halfedgeAt(idxHE0);
-				HEDGE he1 = pmesh->const_halfedgeAt(idxHE1);
+			U32 idxEdge = tet.edges[j];
+			const EDGE& edge = pmesh->const_edgeAt(idxEdge);
 
+			//edge
+			{
 				//map edges to element
 				mapElementEdges[ idxEdge ] = i;
 
@@ -85,24 +82,16 @@ bool TestHalfEdgeTestMesh::tst_correct_elements(VolMesh* pmesh) {
 					LogErrorArg2("Duplicate edge found for element %u, at edge %u", i, idxEdge);
 					ctErrors++;
 				}
-
-				if(he0.from != he1.to || he0.to != he1.from) {
-					LogErrorArg3("Invalid halfedge pair found for element %u, hedge0 %u, hedge1 %u", i, idxHE0, idxHE1);
-					ctErrors++;
-				}
 			}
 
-			U32 idxHE = tet.edges[j];
-			const HEDGE he = pmesh->const_halfedgeAt(tet.edges[j]);
-
-			//check that half edge from and to nodes are in this element
-			if(mapElementNodes.find(he.from) == mapElementNodes.end() ) {
-				LogErrorArg3("Invalid from node in element %u, halfedge %u, from %u", i, idxHE, he.from);
+			//check that edge from and to nodes are in this element
+			if(mapElementNodes.find(edge.from) == mapElementNodes.end() ) {
+				LogErrorArg3("Invalid from node in element %u, edge %u, from %u", i, idxEdge, edge.from);
 				ctErrors++;
 			}
 
-			if(mapElementNodes.find(he.to) == mapElementNodes.end()) {
-				LogErrorArg3("Invalid to node in element %u, halfedge %u, to %u", i, idxHE, he.to);
+			if(mapElementNodes.find(edge.to) == mapElementNodes.end()) {
+				LogErrorArg3("Invalid to node in element %u, halfedge %u, to %u", i, idxEdge, edge.to);
 				ctErrors++;
 			}
 		}
@@ -110,17 +99,17 @@ bool TestHalfEdgeTestMesh::tst_correct_elements(VolMesh* pmesh) {
 		//check faces
 		mapUniqueTest.clear();
 		for(U32 j=0; j < 4; j++) {
-			if(!pmesh->isValidFaceHandle(!tet.faces[j])) {
+			if(!pmesh->isFaceIndex(!tet.faces[j])) {
 				LogErrorArg2("Invalid face index found for element %u, face %u", i, tet.faces[j]);
 				ctErrors++;
 			}
 
-			//check half-edges of this face for inclusion
-			const FACE face = pmesh->const_faceAt(tet.faces[j]);
+			//check edges of this face for inclusion
+			const FACE& face = pmesh->const_faceAt(tet.faces[j]);
 			for(U32 k=0; k < 3; k++) {
-				if(mapElementEdges.find( pmesh->edge_from_halfedge(face.edges[k]) ) == mapElementEdges.end()) {
+				if(mapElementEdges.find( face.edges[k] ) == mapElementEdges.end()) {
 
-					LogErrorArg3("Invalid edge of a face found in: element %u, face %u, halfedge %u", i, tet.faces[j], face.edges[k]);
+					LogErrorArg3("Invalid edge of a face found in: element %u, face %u, edge %u", i, tet.faces[j], face.edges[k]);
 					ctErrors++;
 				}
 			}
@@ -150,15 +139,15 @@ bool TestHalfEdgeTestMesh::tst_unused_mesh_fields(VolMesh* pmesh) {
 
 	vector<U32> vUsedNodes;
 	vector<U32> vUsedFaces;
-	vector<U32> vUsedHalfEdges;
+	vector<U32> vUsedEdges;
 	vUsedNodes.resize(pmesh->countNodes());
 	vUsedFaces.resize(pmesh->countFaces());
-	vUsedHalfEdges.resize(pmesh->countHalfEdges());
+	vUsedEdges.resize(pmesh->countEdges());
 
 	//Fill arrays
 	std::fill(vUsedNodes.begin(), vUsedNodes.end(), 0);
 	std::fill(vUsedFaces.begin(), vUsedFaces.end(), 0);
-	std::fill(vUsedHalfEdges.begin(), vUsedHalfEdges.end(), 0);
+	std::fill(vUsedEdges.begin(), vUsedEdges.end(), 0);
 
 	U32 ctErrors = 0;
 	for(U32 i = 0; i < pmesh->countCells(); i++) {
@@ -166,13 +155,13 @@ bool TestHalfEdgeTestMesh::tst_unused_mesh_fields(VolMesh* pmesh) {
 
 		//faces
 		for(U32 j=0; j<4; j++) {
-			assert( pmesh->isValidFaceHandle(tet.faces[j]) );
+			assert( pmesh->isFaceIndex(tet.faces[j]) );
 			vUsedFaces[ tet.faces[j] ] ++;
 
-			const FACE face = pmesh->const_faceAt(tet.faces[j]);
+			const FACE& face = pmesh->const_faceAt(tet.faces[j]);
 
 			for(U32 k=0; k < 3; k++)
-				vUsedHalfEdges[ face.edges[k] ] ++;
+				vUsedEdges[ face.edges[k] ] ++;
 		}
 
 		//nodes
@@ -200,12 +189,12 @@ bool TestHalfEdgeTestMesh::tst_unused_mesh_fields(VolMesh* pmesh) {
 	U32 minHEdgeUsage = GetMaxLimit<U32>();
 	U32 maxHEdgeUsage = 0;
 	U32 countUnusedHedges = 0;
-	for(U32 i=0; i < vUsedHalfEdges.size(); i++) {
+	for(U32 i=0; i < vUsedEdges.size(); i++) {
 
-		minHEdgeUsage = MATHMIN(minHEdgeUsage, vUsedHalfEdges[i]);
-		maxHEdgeUsage = MATHMAX(maxHEdgeUsage, vUsedHalfEdges[i]);
+		minHEdgeUsage = MATHMIN(minHEdgeUsage, vUsedEdges[i]);
+		maxHEdgeUsage = MATHMAX(maxHEdgeUsage, vUsedEdges[i]);
 
-		if(vUsedHalfEdges[i] == 0)
+		if(vUsedEdges[i] == 0)
 			countUnusedHedges++;
 	}
 
@@ -243,19 +232,19 @@ bool TestHalfEdgeTestMesh::tst_unused_mesh_fields(VolMesh* pmesh) {
 			if(vUsedFaces[i] == 0) {
 				FACE face = pmesh->const_faceAt(i);
 
-				U32 he[3];
-				he[0] = face.edges[0];
-				he[1] = face.edges[1];
-				he[2] = face.edges[2];
+				U32 idxEdges[3];
+				idxEdges[0] = face.edges[0];
+				idxEdges[1] = face.edges[1];
+				idxEdges[2] = face.edges[2];
 
 				U32 n[3];
-				n[0] = pmesh->vertex_from_edge(he[0]);
-				n[1] = pmesh->vertex_from_edge(he[1]);
-				n[2] = pmesh->vertex_from_edge(he[2]);
+				n[0] = pmesh->from_node(idxEdges[0]);
+				n[1] = pmesh->from_node(idxEdges[1]);
+				n[2] = pmesh->from_node(idxEdges[2]);
 
 
-				printf(">>FACE %u = Nodes [%u, %u, %u], HalfEdges [%u, %u, %u], ref count %u.\n",
-						i, n[0], n[1], n[2], he[0], he[1], he[2], face.refs);
+				printf(">>FACE %u = Nodes [%u, %u, %u], HalfEdges [%u, %u, %u].\n",
+						i, n[0], n[1], n[2], idxEdges[0], idxEdges[1], idxEdges[2]);
 			}
 		}
 	}
@@ -278,11 +267,8 @@ bool TestHalfEdgeTestMesh::tst_connectivity(VolMesh* pmesh) {
 bool TestHalfEdgeTestMesh::tst_all(VolMesh* pmesh) {
 
 	U32 idxTest = 0;
-	const U32 maxTest = 5;
+	const U32 maxTest = 4;
 	printf("============================begin mesh tests===========================\n");
-	printf("Test %u of %u\n", ++idxTest, maxTest);
-	pmesh->tst_keys();
-
 	printf("Test %u of %u\n", ++idxTest, maxTest);
 	tst_report_mesh_info(pmesh);
 
