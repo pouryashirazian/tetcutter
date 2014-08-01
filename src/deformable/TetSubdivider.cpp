@@ -262,7 +262,7 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 	//Case A: 3 cut edges. cutEdgeCodes = { 11, 22, 37, 56 }
 	if(cutcase == cutA) {
 		//Remove the original element
-		m_lpHEMesh->remove_cell(element);
+		m_lpHEMesh->remove_cell_core(element);
 
 		//find the local table entry to handle this case A
 		int entry = m_mapCutEdgeCodeToTableEntry[cutEdgeCode];
@@ -303,7 +303,7 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 	//Case B: 4 cut edges. cutEdgeCodes = { 46, 51, 29 }
 	else if(cutcase == cutB) {
 		//Remove the original element
-		m_lpHEMesh->remove_cell(element);
+		m_lpHEMesh->remove_cell_core(element);
 
 		//find the local table entry to handle this case B
 		int entry = m_mapCutEdgeCodeToTableEntry[cutEdgeCode];

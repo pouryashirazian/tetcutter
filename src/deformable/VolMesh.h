@@ -11,6 +11,7 @@
 #include "graphics/SGNode.h"
 #include "VolMeshEntities.h"
 #include <functional>
+#include <set>
 
 /*!Stories:
  * 1. Iterate over edges
@@ -129,10 +130,16 @@ public:
 
 
 	//remove
+	void remove_cell_core(U32 idxCell);
+	void remove_face_core(U32 idxFace);
+	void remove_edge_core(U32 idxEdge);
+	void remove_node_core(U32 idxNode);
+
 	void remove_cell(U32 idxCell);
 	void remove_face(U32 idxFace);
 	void remove_edge(U32 idxEdge);
 	void remove_node(U32 idxNode);
+
 
 	//erases all objects marked removed
 	void garbage_collection();
@@ -182,9 +189,14 @@ private:
 	U32 face_handle_by_nodes(U32 nodes[3]);
 
 	//incident entities
-	int get_incident_cells(U32 idxFace, vector<U32>& cells);
-	int get_incident_faces(U32 idxEdge, vector<U32>& faces);
-	int get_incident_edges(U32 idxNode, vector<U32>& edges);
+	template <class ContainerT>
+	int get_incident_cells(const ContainerT& in_faces, set<U32>& out_cells);
+
+	template <class ContainerT>
+	int get_incident_faces(const ContainerT& in_edges, set<U32>& out_faces);
+
+	template <class ContainerT>
+	int get_incident_edges(const ContainerT& in_nodes, set<U32>& out_edges);
 protected:
 	U32 m_elemToShow;
 

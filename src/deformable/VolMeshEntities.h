@@ -72,10 +72,10 @@ namespace MESH {
 	};
 
 	//handles for all entities
-//	class NodeHandle : public BaseHandle { NodeHandle(U32 idx = INVALID): BaseHandle(idx){} };
-//	class EdgeHandle : public BaseHandle { EdgeHandle(U32 idx = INVALID): BaseHandle(idx){} };
-//	class FaceHandle : public BaseHandle { FaceHandle(U32 idx = INVALID): BaseHandle(idx){} };
-//	class CellHandle : public BaseHandle { CellHandle(U32 idx = INVALID): BaseHandle(idx){} };
+	class NodeHandle : public BaseHandle { NodeHandle(U32 idx = INVALID): BaseHandle(idx){} };
+	class EdgeHandle : public BaseHandle { EdgeHandle(U32 idx = INVALID): BaseHandle(idx){} };
+	class FaceHandle : public BaseHandle { FaceHandle(U32 idx = INVALID): BaseHandle(idx){} };
+	class CellHandle : public BaseHandle { CellHandle(U32 idx = INVALID): BaseHandle(idx){} };
 
 
 	// Helper class that is used to decrease all handles

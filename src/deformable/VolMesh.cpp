@@ -431,13 +431,16 @@ void VolMesh::set_face(U32 idxFace, U32 edges[3]) {
 }
 
 
-void VolMesh::remove_cell(U32 idxCell) {
+void VolMesh::remove_cell_core(U32 idxCell) {
 	assert(isCellIndex(idxCell));
 
 	//1. remove cell from the list of incident cell per face
 	const CELL& cell = const_cellAt(idxCell);
 	for(int i=0; i<4; i++) {
-		std::remove(m_incident_cells_per_face[ cell.faces[i] ].begin(), m_incident_cells_per_face[ cell.faces[i] ].end(), idxCell);
+		m_incident_cells_per_face[ cell.faces[i] ].erase(
+				std::remove(m_incident_cells_per_face[ cell.faces[i] ].begin(),
+				m_incident_cells_per_face[ cell.faces[i] ].end(), idxCell),
+				m_incident_cells_per_face[ cell.faces[i] ].end());
 	}
 
 	//2. correct all referenced cell indices
@@ -451,7 +454,7 @@ void VolMesh::remove_cell(U32 idxCell) {
 	m_vCells.erase(m_vCells.begin() + idxCell);
 }
 
-void VolMesh::remove_face(U32 idxFace) {
+void VolMesh::remove_face_core(U32 idxFace) {
 	assert(isFaceIndex(idxFace));
 
 	//1. remove from incident faces per edge
@@ -460,11 +463,47 @@ void VolMesh::remove_face(U32 idxFace) {
 	//4. Decrease all face handles > idxFace in edge bottom up list: incident faces per edge
 	//5. Delete face itself
 
+	//1. remove from incident faces
+	const FACE& face = const_faceAt(idxFace);
+	for(U32 i=0; i < FACE_SIDES; i++) {
+		U32 idxEdge = face.edges[i];
 
+		m_incident_faces_per_edge[idxEdge].erase(
+				std::remove( m_incident_faces_per_edge[idxEdge].begin(),
+							 m_incident_faces_per_edge[idxEdge].end(), idxFace),
+				m_incident_faces_per_edge[idxEdge].end());
+	}
+
+	//2. decrease all face handles > idxFace in incident cells
+    // Decrease all half-face handles > _h in all cells
+    // and delete all half-face handles == _h
+	/*
+    std::set<U32> update_cells;
+    for(std::vector<U32>::const_iterator c_it = (m_incident_cells_per_face.begin() + idxFace),
+            c_end = m_incident_cells_per_face.end(); c_it != c_end; ++c_it) {
+
+    	if(isCellIndex(*c_it))
+    		update_cells.insert(*c_it);
+    }
+    for(std::set<CellHandle>::const_iterator c_it = update_cells.begin(),
+            c_end = update_cells.end(); c_it != c_end; ++c_it) {
+
+        std::vector<HalfFaceHandle> hfs = cell(*c_it).halffaces();
+
+        // Delete current half-faces from cell's half-face list
+        hfs.erase(std::remove(hfs.begin(), hfs.end(), halfface_handle(_h, 0)), hfs.end());
+        hfs.erase(std::remove(hfs.begin(), hfs.end(), halfface_handle(_h, 1)), hfs.end());
+
+        HFHandleCorrection cor(halfface_handle(_h, 1));
+        std::for_each(hfs.begin(), hfs.end(),
+                      fun::bind(&HFHandleCorrection::correctValue, &cor, fun::placeholders::_1));
+        cell(*c_it).set_halffaces(hfs);
+    }
+    */
 
 }
 
-void VolMesh::remove_edge(U32 idxEdge) {
+void VolMesh::remove_edge_core(U32 idxEdge) {
 	assert(isEdgeIndex(idxEdge));
 
 	//1. Delete bottom-up links from incident edges per node
@@ -474,7 +513,7 @@ void VolMesh::remove_edge(U32 idxEdge) {
 	//5. Delete edge itself
 }
 
-void VolMesh::remove_node(U32 idxNode) {
+void VolMesh::remove_node_core(U32 idxNode) {
 	assert(isNodeIndex(idxNode));
 
 	//1. Decrease all vertex handles > idxNode in incident edges per node
@@ -483,6 +522,103 @@ void VolMesh::remove_node(U32 idxNode) {
 	//4. Delete property entry
 
 }
+
+void VolMesh::remove_cell(U32 idxCell) {
+	remove_cell_core(idxCell);
+}
+
+void VolMesh::remove_face(U32 idxFace) {
+
+	vector<U32> vfaces;
+	vfaces.push_back(idxFace);
+
+	//get incident cells to the input face
+	set<U32> outsetCells;
+	get_incident_cells(vfaces, outsetCells);
+
+	//remove all incident cells
+	for(set<U32>::const_iterator it = outsetCells.begin(); it != outsetCells.end(); it++)
+		remove_cell_core(*it);
+
+	//remove the face itself
+	remove_face_core(idxFace);
+}
+
+void VolMesh::remove_edge(U32 idxEdge) {
+	vector<U32> vedges;
+	vedges.push_back(idxEdge);
+
+	//get incident faces to the input edge
+	set<U32> outsetFaces;
+	get_incident_faces(vedges, outsetFaces);
+
+	//get incident cells to the outset faces
+	set<U32> outsetCells;
+	get_incident_cells(outsetFaces, outsetCells);
+
+	//delete cells
+	for(std::set<U32>::const_reverse_iterator c_it = outsetCells.rbegin(),
+	    c_end = outsetCells.rend(); c_it != c_end; ++c_it ) {
+
+		//remove cell
+		remove_cell_core(*c_it);
+	}
+
+	//delete faces
+	for(std::set<U32>::const_reverse_iterator f_it = outsetFaces.rbegin(),
+	    c_end = outsetFaces.rend(); f_it != c_end; ++f_it ) {
+
+		//remove face
+		remove_face_core(*f_it);
+	}
+
+	remove_edge_core(idxEdge);
+}
+
+void VolMesh::remove_node(U32 idxNode) {
+	vector<U32> vnodes;
+	vnodes.push_back(idxNode);
+
+	//get incident edges
+	set<U32> outsetEdges;
+	get_incident_edges(vnodes, outsetEdges);
+
+	//get incident faces
+	set<U32> outsetFaces;
+	get_incident_faces(outsetEdges, outsetFaces);
+
+	//get incident cells
+	set<U32> outsetCells;
+	get_incident_cells(outsetFaces, outsetCells);
+
+	//delete cells
+	for(std::set<U32>::const_reverse_iterator c_it = outsetCells.rbegin(),
+	    c_end = outsetCells.rend(); c_it != c_end; ++c_it ) {
+
+		//remove cell
+		remove_cell_core(*c_it);
+	}
+
+	//delete faces
+	for(std::set<U32>::const_reverse_iterator f_it = outsetFaces.rbegin(),
+	    c_end = outsetFaces.rend(); f_it != c_end; ++f_it ) {
+
+		//remove face
+		remove_face_core(*f_it);
+	}
+
+	//delete edges
+	for(std::set<U32>::const_reverse_iterator e_it = outsetEdges.rbegin(),
+	    e_end = outsetEdges.rend(); e_it != e_end; ++e_it ) {
+
+		//remove edge
+		remove_edge_core(*e_it);
+	}
+
+
+	remove_node_core(idxNode);
+}
+
 
 
 U32 VolMesh::insert_node(const NODE& n) {
@@ -733,25 +869,58 @@ U32 VolMesh::face_handle_by_nodes(U32 nodes[3])  {
 	return face_handle_by_edges(edges);
 }
 
-int VolMesh::get_incident_cells(U32 idxFace, vector<U32>& cells) {
-	assert(isFaceIndex(idxFace));
+template <class ContainerT>
+int VolMesh::get_incident_cells(const ContainerT& in_faces, set<U32>& out_cells) {
 
-	cells.assign(m_incident_cells_per_face[idxFace].begin(), m_incident_cells_per_face[idxFace].end());
-	return (int)cells.size();
+	vector<U32> vTempCells;
+	for(typename ContainerT::const_iterator f_it = in_faces.begin(),
+            f_end = in_faces.end(); f_it != f_end; ++f_it) {
+
+		vTempCells.assign(m_incident_cells_per_face[*f_it].begin(), m_incident_cells_per_face[*f_it].end());
+
+		for(U32 j=0; j < vTempCells.size(); j++) {
+			U32 idxCell = vTempCells[j];
+			if(isCellIndex(idxCell))
+				out_cells.insert(idxCell);
+		}
+	}
+
+	return (int)out_cells.size();
 }
 
-int VolMesh::get_incident_faces(U32 idxEdge, vector<U32>& faces) {
-	assert(isEdgeIndex(idxEdge));
+template <class ContainerT>
+int VolMesh::get_incident_faces(const ContainerT& in_edges, set<U32>& out_faces) {
+	vector<U32> vTempFaces;
 
-	faces.assign(m_incident_faces_per_edge[idxEdge].begin(), m_incident_faces_per_edge[idxEdge].end());
-	return (int)faces.size();
+	for(typename ContainerT::const_iterator e_it = in_edges.begin(),
+            e_end = in_edges.end(); e_it != e_end; ++e_it) {
+
+		vTempFaces.assign(m_incident_faces_per_edge[*e_it].begin(), m_incident_faces_per_edge[*e_it].end());
+		for(U32 j=0; j < vTempFaces.size(); j++) {
+			U32 idxFace = vTempFaces[j];
+			if(isFaceIndex(idxFace))
+				out_faces.insert(idxFace);
+		}
+	}
+
+	return (int)out_faces.size();
 }
 
-int VolMesh::get_incident_edges(U32 idxNode, vector<U32>& edges) {
-	assert(isNodeIndex(idxNode));
+template <class ContainerT>
+int VolMesh::get_incident_edges(const ContainerT& in_nodes, set<U32>& out_edges) {
+	vector<U32> vTempEdges;
+	for(typename ContainerT::const_iterator n_it = in_nodes.begin(),
+	            n_end = in_nodes.end(); n_it != n_end; ++n_it) {
 
-	edges.assign(m_incident_edges_per_node[idxNode].begin(), m_incident_edges_per_node[idxNode].end());
-	return (int)edges.size();
+		vTempEdges.assign(m_incident_edges_per_node[*n_it].begin(), m_incident_faces_per_edge[*n_it].end());
+		for(U32 j=0; j < vTempEdges.size(); j++) {
+			U32 idxEdge = vTempEdges[j];
+			if(isNodeIndex(idxEdge))
+				out_edges.insert(idxEdge);
+		}
+	}
+
+	return (int)out_edges.size();
 }
 
 
