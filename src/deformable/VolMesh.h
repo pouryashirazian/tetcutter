@@ -90,7 +90,7 @@ public:
 	//access
 	bool getFaceNodes(U32 idxFace, U32 (&nodes)[3]) const;
 
-	CELL& elemAt(U32 i);
+	CELL& cellAt(U32 i);
 	FACE& faceAt(U32 i);
 	NODE& nodeAt(U32 i);
 	EDGE& edgeAt(U32 i);
@@ -127,6 +127,7 @@ public:
 	//setters
 	void set_edge(U32 idxEdge, U32 from, U32 to);
 	void set_face(U32 idxFace, U32 edges[3]);
+	void set_cell_faces(U32 idxCell, U32 faces[4]);
 
 
 	//remove

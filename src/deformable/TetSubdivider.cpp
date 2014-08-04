@@ -93,7 +93,7 @@ int TetSubdivider::generateCaseA(U32 idxCell, U8 node, double targetDistPercenta
 	cutNodeCode = 0;
 
 	int res = 0;
-	CELL cell = m_lpHEMesh->elemAt(idxCell);
+	CELL cell = m_lpHEMesh->cellAt(idxCell);
 	for(int i=0; i<6; i++) {
 		tEdges[i] = 0.0;
 
@@ -236,7 +236,7 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 	U32 vnodes[16];
 	for(int i=0; i<16; i++)
 		vnodes[i] = BaseHandle::INVALID;
-	const CELL& tet = m_lpHEMesh->elemAt(element);
+	const CELL& tet = m_lpHEMesh->cellAt(element);
 
 	//1st 4 nodes come from the original element
 	for(int i=0; i<4; i++)

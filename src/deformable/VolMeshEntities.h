@@ -118,12 +118,14 @@ namespace MESH {
 	    HalfFaceHandle thld_;
 	};
 	*/
-	class CellHandleCorrection {
+
+	//correct handles
+	class HandleCorrection {
 	public:
-		CellHandleCorrection(U32 idxCell) : m_handle(idxCell) {}
+		HandleCorrection(U32 handle) : m_handle(handle) {}
 
 		void correctVecValue(std::vector<U32>& _vec) {
-	        std::for_each(_vec.begin(), _vec.end(), std::bind(&CellHandleCorrection::correctValue, this, std::placeholders::_1));
+	        std::for_each(_vec.begin(), _vec.end(), std::bind(&HandleCorrection::correctValue, this, std::placeholders::_1));
 	    }
 
 		void correctValue(U32& rhs) {
