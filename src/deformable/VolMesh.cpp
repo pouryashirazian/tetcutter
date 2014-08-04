@@ -836,7 +836,6 @@ void VolMesh::garbage_collection() {
 		}
 	}
 
-	//remove all faces
 	for(std::set<U32>::const_iterator f_it = setToBeRemoved.begin();
 		f_it != setToBeRemoved.end(); f_it++) {
 		remove_face(*f_it);
