@@ -98,7 +98,7 @@ public:
 
 	//Access to subdivider
 	TetSubdivider* getSubD() const { return m_lpSubD;}
-	VolMesh* getMesh() const { return m_lpHEMesh;}
+	VolMesh* getMesh() const { return m_lpVolMesh;}
 
 	//create a tetrahedra
 	static CuttableMesh* CreateOneTetra();
@@ -112,7 +112,7 @@ protected:
 
 	//TODO: Sync vbo after synced physics mesh
 private:
-	VolMesh* m_lpHEMesh;
+	VolMesh* m_lpVolMesh;
 	TetSubdivider* m_lpSubD;
 	int m_ctCompletedCuts;
 

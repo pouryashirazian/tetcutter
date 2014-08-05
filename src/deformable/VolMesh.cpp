@@ -178,7 +178,7 @@ void VolMesh::cleanup() {
 	m_incident_faces_per_edge.clear();
 }
 
-void VolMesh::printInfo() const {
+void VolMesh::printNodeInfo() const {
 	//print all nodes
 	printf("NODES #%u\n", countNodes());
 	for(U32 i=0; i < countNodes(); i++) {
@@ -190,7 +190,9 @@ void VolMesh::printInfo() const {
 		printf("NODE %u, incident edges count: %u, pos: [%.3f, %.3f, %.3f]\n", i, (U32)vIncidentEdges.size(), n.pos.x, n.pos.y, n.pos.z);
 	}
 	printf("\n");
+}
 
+void VolMesh::printEdgeInfo() const {
 	//print all edges
 	printf("EDGES #%u\n", countEdges());
 	for(U32 i=0; i < countEdges(); i++) {
@@ -199,8 +201,9 @@ void VolMesh::printInfo() const {
 		printf("EDGE %u, from: %d, to %d\n", i, e.from, e.to);
 	}
 	printf("\n");
+}
 
-
+void VolMesh::printFaceInfo() const {
 	//print all face
 	printf("FACES #%u\n", countFaces());
 	U32 vhandles[3];
@@ -213,13 +216,15 @@ void VolMesh::printInfo() const {
 				face.edges[0], face.edges[1], face.edges[2]);
 	}
 	printf("\n");
+}
 
+void VolMesh::printCellInfo() const {
 	//print all elements
-	printf("ELEMS #%u\n", countCells());
+	printf("CELLS #%u\n", countCells());
 	for(U32 i=0; i < countCells(); i++) {
 
 		const CELL& cell = const_cellAt(i);
-		printf("ELEM %d, NODE: [%u, %u, %u, %u], ", i ,cell.nodes[0], cell.nodes[1], cell.nodes[2], cell.nodes[3]);
+		printf("CELL %d, NODE: [%u, %u, %u, %u], ", i ,cell.nodes[0], cell.nodes[1], cell.nodes[2], cell.nodes[3]);
 		printf("FACE: [%u, %u, %u, %u], ", cell.faces[0], cell.faces[1], cell.faces[2], cell.faces[3]);
 
 		//print edges
@@ -232,7 +237,13 @@ void VolMesh::printInfo() const {
 		}
 	}
 	printf("\n");
+}
 
+void VolMesh::printInfo() const {
+	printNodeInfo();
+	printEdgeInfo();
+	printFaceInfo();
+	printCellInfo();
 }
 
 double VolMesh::computeDeterminant(U32 idxNodes[4]) const {
@@ -792,7 +803,7 @@ U32 VolMesh::insert_face(U32 nodes[3]) {
 	FACE face;
 	U32 from, to = BaseHandle::INVALID;
 
-	//Add all half-edges for this face and increment half-edge refs
+	//Add all edges
 	for (int e = 0; e < 3; e++) {
 		from = nodes[e];
 		to = nodes[(e + 1) % 3];
@@ -872,14 +883,16 @@ bool VolMesh::getFaceNodes(U32 idxFace, U32 (&nodes)[3]) const {
 		setFaceNodes.insert(to_node(face.edges[i]));
 	}
 
-	assert(setFaceNodes.size() == 3);
 	int i = 0;
 	for(std::set<U32>::const_iterator it = setFaceNodes.begin(); it != setFaceNodes.end(); ++it) {
 		nodes[i] = *it;
 		i++;
+
+		if(i == FACE_SIDES)
+			break;
 	}
 
-	return true;
+	return (setFaceNodes.size() == FACE_SIDES);
 }
 
 CELL& VolMesh::cellAt(U32 i) {
@@ -994,8 +1007,9 @@ bool VolMesh::face_exists_by_nodes(U32 nodes[3]) {
 
 U32 VolMesh::face_handle_by_edges(U32 edges[3]) const {
 
-	//edges 0 and 1 are used
-	assert(isEdgeIndex(edges[0]) && isEdgeIndex(edges[1]));
+	//edges 0 - 2 are used
+	assert(isEdgeIndex(edges[0]) && isEdgeIndex(edges[1]) && isEdgeIndex(edges[2]));
+	FaceKey query(&edges[0]);
 
 	vector<U32> facesIncidentToEdge0;
 	facesIncidentToEdge0.assign(m_incident_faces_per_edge[ edges[0] ].begin(), m_incident_faces_per_edge[ edges[0] ].end());
@@ -1003,11 +1017,10 @@ U32 VolMesh::face_handle_by_edges(U32 edges[3]) const {
 	for(U32 i = 0; i < facesIncidentToEdge0.size(); i++) {
 
 		const FACE& face = const_faceAt(facesIncidentToEdge0[i]);
+		FaceKey faceKey(const_cast<U32 *>(&face.edges[0]));
 
-		for(U32 j = 0; j < FACE_SIDES; j++) {
-			if(face.edges[j] == edges[1])
-				return facesIncidentToEdge0[i];
-		}
+		if (query.key == faceKey.key)
+			return facesIncidentToEdge0[i];
 	}
 
 	return INVALID_INDEX;

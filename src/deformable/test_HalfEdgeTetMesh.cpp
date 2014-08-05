@@ -13,7 +13,7 @@
 using namespace std;
 using namespace PS;
 
-bool TestHalfEdgeTestMesh::tst_report_mesh_info(VolMesh* pmesh) {
+bool TestVolMesh::tst_report_mesh_info(VolMesh* pmesh) {
 	if(pmesh == NULL)
 		return false;
 
@@ -27,13 +27,13 @@ bool TestHalfEdgeTestMesh::tst_report_mesh_info(VolMesh* pmesh) {
 	return true;
 }
 
-bool TestHalfEdgeTestMesh::tst_correct_elements(VolMesh* pmesh) {
+bool TestVolMesh::tst_correct_elements(VolMesh* pmesh) {
 	if(pmesh == NULL)
 		return false;
 
 	U32 ctErrors = 0;
 	for(U32 i = 0; i < pmesh->countCells(); i++) {
-		const CELL tet = pmesh->const_cellAt(i);
+		const CELL& cell = pmesh->const_cellAt(i);
 
 		map<U32, U32> mapElementNodes;
 		map<U32, U32> mapElementEdges;
@@ -43,16 +43,16 @@ bool TestHalfEdgeTestMesh::tst_correct_elements(VolMesh* pmesh) {
 		//check nodes
 		mapUniqueTest.clear();
 		for(U32 j=0; j < 4; j++) {
-			if(!pmesh->isNodeIndex(!tet.nodes[j])) {
+			if(!pmesh->isNodeIndex(!cell.nodes[j])) {
 				LogErrorArg2("Invalid node index found for element %u, node %u", i, j);
 				ctErrors++;
 			}
 
 			//map node to element
-			mapElementNodes[tet.nodes[j]] = i;
+			mapElementNodes[cell.nodes[j]] = i;
 
-			if(mapUniqueTest.find(tet.nodes[j]) == mapUniqueTest.end())
-				mapUniqueTest[ tet.nodes[j] ] = j;
+			if(mapUniqueTest.find(cell.nodes[j]) == mapUniqueTest.end())
+				mapUniqueTest[ cell.nodes[j] ] = j;
 			else {
 				LogErrorArg2("Duplicate node found for element %u, at node %u", i, j);
 				ctErrors++;
@@ -63,12 +63,12 @@ bool TestHalfEdgeTestMesh::tst_correct_elements(VolMesh* pmesh) {
 		mapUniqueTest.clear();
 		for(U32 j = 0; j < 6; j++) {
 
-			if(!pmesh->isEdgeIndex(!tet.edges[j])) {
+			if(!pmesh->isEdgeIndex(!cell.edges[j])) {
 				LogErrorArg2("Invalid edge index found for element %u, edge %u", i, j);
 				ctErrors++;
 			}
 
-			U32 idxEdge = tet.edges[j];
+			U32 idxEdge = cell.edges[j];
 			const EDGE& edge = pmesh->const_edgeAt(idxEdge);
 
 			//edge
@@ -91,7 +91,7 @@ bool TestHalfEdgeTestMesh::tst_correct_elements(VolMesh* pmesh) {
 			}
 
 			if(mapElementNodes.find(edge.to) == mapElementNodes.end()) {
-				LogErrorArg3("Invalid to node in element %u, halfedge %u, to %u", i, idxEdge, edge.to);
+				LogErrorArg3("Invalid to node in element %u, edge %u, to %u", i, idxEdge, edge.to);
 				ctErrors++;
 			}
 		}
@@ -99,26 +99,26 @@ bool TestHalfEdgeTestMesh::tst_correct_elements(VolMesh* pmesh) {
 		//check faces
 		mapUniqueTest.clear();
 		for(U32 j=0; j < 4; j++) {
-			if(!pmesh->isFaceIndex(!tet.faces[j])) {
-				LogErrorArg2("Invalid face index found for element %u, face %u", i, tet.faces[j]);
+			if(!pmesh->isFaceIndex(!cell.faces[j])) {
+				LogErrorArg2("Invalid face index found for element %u, face %u", i, cell.faces[j]);
 				ctErrors++;
 			}
 
 			//check edges of this face for inclusion
-			const FACE& face = pmesh->const_faceAt(tet.faces[j]);
+			const FACE& face = pmesh->const_faceAt(cell.faces[j]);
 			for(U32 k=0; k < 3; k++) {
 				if(mapElementEdges.find( face.edges[k] ) == mapElementEdges.end()) {
 
-					LogErrorArg3("Invalid edge of a face found in: element %u, face %u, edge %u", i, tet.faces[j], face.edges[k]);
+					LogErrorArg3("Invalid edge of a face found in: element %u, face %u, edge %u", i, cell.faces[j], face.edges[k]);
 					ctErrors++;
 				}
 			}
 
 
-			if(mapUniqueTest.find(tet.faces[j]) == mapUniqueTest.end())
-				mapUniqueTest[ tet.faces[j] ] = j;
+			if(mapUniqueTest.find(cell.faces[j]) == mapUniqueTest.end())
+				mapUniqueTest[ cell.faces[j] ] = j;
 			else {
-				LogErrorArg2("Duplicate face found for element %u, at face %u", i, tet.faces[j]);
+				LogErrorArg2("Duplicate face found for element %u, at face %u", i, cell.faces[j]);
 				ctErrors++;
 			}
 		}
@@ -132,7 +132,7 @@ bool TestHalfEdgeTestMesh::tst_correct_elements(VolMesh* pmesh) {
 	return (ctErrors == 0);
 }
 
-bool TestHalfEdgeTestMesh::tst_unused_mesh_fields(VolMesh* pmesh) {
+bool TestVolMesh::tst_unused_mesh_fields(VolMesh* pmesh) {
 
 	if(pmesh == NULL)
 		return false;
@@ -258,13 +258,13 @@ bool TestHalfEdgeTestMesh::tst_unused_mesh_fields(VolMesh* pmesh) {
 	return (ctErrors == 0);
 }
 
-bool TestHalfEdgeTestMesh::tst_connectivity(VolMesh* pmesh) {
+bool TestVolMesh::tst_connectivity(VolMesh* pmesh) {
 	return true;
 }
 
 
 
-bool TestHalfEdgeTestMesh::tst_all(VolMesh* pmesh) {
+bool TestVolMesh::tst_all(VolMesh* pmesh) {
 
 	U32 idxTest = 0;
 	const U32 maxTest = 4;

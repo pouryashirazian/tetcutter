@@ -15,7 +15,7 @@ using namespace PS::MESH;
 /*!
  * east test returns true if successful and false otherwise
  */
-class TestHalfEdgeTestMesh {
+class TestVolMesh {
 public:
 
 	static bool tst_report_mesh_info(VolMesh* pmesh);

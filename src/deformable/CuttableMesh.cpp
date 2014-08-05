@@ -26,10 +26,10 @@ CuttableMesh::CuttableMesh(const VolMesh& hemesh) {
     }
 
 	//HEMesh
-	m_lpHEMesh = new VolMesh(hemesh);
-	m_lpSubD = new TetSubdivider(m_lpHEMesh);
+	m_lpVolMesh = new VolMesh(hemesh);
+	m_lpSubD = new TetSubdivider(m_lpVolMesh);
 
-	m_aabb = m_lpHEMesh->aabb();
+	m_aabb = m_lpVolMesh->aabb();
 	m_ctCompletedCuts = 0;
 
 }
@@ -48,7 +48,7 @@ CuttableMesh::CuttableMesh(int ctVertices, double* vertices, int ctElements, int
 
 CuttableMesh::~CuttableMesh() {
 	SAFE_DELETE(m_lpSubD);
-	SAFE_DELETE(m_lpHEMesh);
+	SAFE_DELETE(m_lpVolMesh);
 }
 
 void CuttableMesh::setup(int ctVertices, double* vertices, int ctElements, int* elements) {
@@ -59,17 +59,17 @@ void CuttableMesh::setup(int ctVertices, double* vertices, int ctElements, int* 
     }
 
 	//HEMesh
-	m_lpHEMesh = new VolMesh(ctVertices, vertices, ctElements, (U32*)elements);
+	m_lpVolMesh = new VolMesh(ctVertices, vertices, ctElements, (U32*)elements);
 
 	//Perform all tests
 	LogInfo("Begin testing the halfedge mesh");
-	TestHalfEdgeTestMesh::tst_all(m_lpHEMesh);
+	TestVolMesh::tst_all(m_lpVolMesh);
 	LogInfo("Test completed");
 
 	//
-	m_lpSubD = new TetSubdivider(m_lpHEMesh);
+	m_lpSubD = new TetSubdivider(m_lpVolMesh);
 
-	m_aabb = m_lpHEMesh->aabb();
+	m_aabb = m_lpVolMesh->aabb();
 	m_aabb.expand(1.0);
 	m_ctCompletedCuts = 0;
 }
@@ -84,8 +84,8 @@ void CuttableMesh::draw() {
 	drawBBox();
 
 	//draw tetmesh
-	if(m_lpHEMesh)
-		m_lpHEMesh->draw();
+	if(m_lpVolMesh)
+		m_lpVolMesh->draw();
 
 	//draw cut context
 	int ctCutEdges = m_mapCutEdges.size();
@@ -165,13 +165,13 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	printf("SWEPT SURF[2]: %.3f, %.3f, %.3f\n", sweptSurface[2].x, sweptSurface[2].y, sweptSurface[2].z);
 
 	//Cut-Edges
-	for (U32 i=0; i < m_lpHEMesh->countEdges(); i++) {
+	for (U32 i=0; i < m_lpVolMesh->countEdges(); i++) {
 
-		EDGE e = m_lpHEMesh->const_edgeAt(i);
+		EDGE e = m_lpVolMesh->const_edgeAt(i);
 
 
-		ss0 = m_lpHEMesh->const_nodeAt(e.from).pos;
-		ss1 = m_lpHEMesh->const_nodeAt(e.to).pos;
+		ss0 = m_lpVolMesh->const_nodeAt(e.from).pos;
+		ss1 = m_lpVolMesh->const_nodeAt(e.to).pos;
 
 		int res = IntersectSegmentTriangle(ss0, ss1, tri1, t, uvw, xyz);
 		if(res == 0)
@@ -230,7 +230,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 
 			//iterate over all incident edges
 			vector<U32> incidentEdges;
-			m_lpHEMesh->getNodeIncidentEdges(cn.idxNode, incidentEdges);
+			m_lpVolMesh->getNodeIncidentEdges(cn.idxNode, incidentEdges);
 
 			for(U32 i=0; i < incidentEdges.size(); i++) {
 				mapTempCutEdges.erase(incidentEdges[i]);
@@ -246,7 +246,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 
 			//iterate over all incident edges
 			vector<U32> incidentEdges;
-			m_lpHEMesh->getNodeIncidentEdges(cn.idxNode, incidentEdges);
+			m_lpVolMesh->getNodeIncidentEdges(cn.idxNode, incidentEdges);
 
 			for(U32 i=0; i < incidentEdges.size(); i++) {
 				mapTempCutEdges.erase(incidentEdges[i]);
@@ -280,8 +280,8 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	//count of tets cut
 	int ctCutTet = 0;
 
-	for(U32 i=0; i < m_lpHEMesh->countCells(); i++) {
-		const CELL& cell = m_lpHEMesh->const_cellAt(i);
+	for(U32 i=0; i < m_lpVolMesh->countCells(); i++) {
+		const CELL& cell = m_lpVolMesh->const_cellAt(i);
 		U8 cutEdgeCode = 0;
 		U8 cutNodeCode = 0;
 
@@ -342,7 +342,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	for(CUTEDGEITER it = m_mapCutEdges.begin(); it != m_mapCutEdges.end(); it++) {
 		U32 idxNP0, idxNP1;
 
-		if(!m_lpHEMesh->cut_edge(it->first, it->second.t, &idxNP0, &idxNP1)) {
+		if(!m_lpVolMesh->cut_edge(it->first, it->second.t, &idxNP0, &idxNP1)) {
 			LogErrorArg2("Unable to cut edge %d, edgecutpoint t = %.3f.", it->first, it->second.t);
 			return -1;
 		}
@@ -361,7 +361,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 		U8 cutNodeCode = vCutNodeCodes[i];
 		if(cutEdgeCode != 0 || cutNodeCode != 0) {
 
-			const CELL& cell = m_lpHEMesh->const_cellAt(vCutElements[i]);
+			const CELL& cell = m_lpVolMesh->const_cellAt(vCutElements[i]);
 
 
 			for(int e=0; e < 6; e++) {
@@ -392,18 +392,18 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 		LogWarningArg1("END CUTTING# %u: No elements are subdivided.", m_ctCompletedCuts + 1);
 	}
 
-
 	//clear cut context
 	clearCutContext();
 
 	//collect all garbage
-	m_lpHEMesh->garbage_collection();
+	//m_lpVolMesh->garbage_collection();
 
 	//Perform all tests
-	TestHalfEdgeTestMesh::tst_all(m_lpHEMesh);
+	TestVolMesh::tst_all(m_lpVolMesh);
+
 
 	//recompute AABB and expand it to detect cuts
-	m_aabb = m_lpHEMesh->computeAABB();
+	m_aabb = m_lpVolMesh->computeAABB();
 	m_aabb.expand(1.0);
 
 	//Return number of tets cut
@@ -411,17 +411,17 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 }
 
 void CuttableMesh::displace(double * u) {
-	m_lpHEMesh->displace(u);
-	m_aabb = m_lpHEMesh->aabb();
+	m_lpVolMesh->displace(u);
+	m_aabb = m_lpVolMesh->aabb();
 }
 
 
 U32 CuttableMesh::countVertices() const {
-	return m_lpHEMesh->countNodes();
+	return m_lpVolMesh->countNodes();
 }
 
 vec3d CuttableMesh::vertexRestPosAt(U32 i) const {
-	return m_lpHEMesh->const_nodeAt(i).restpos;
+	return m_lpVolMesh->const_nodeAt(i).restpos;
 }
 
 vec3d CuttableMesh::vertexAt(U32 i) const {
@@ -433,8 +433,8 @@ vec3d CuttableMesh::vertexAt(U32 i) const {
 int CuttableMesh::findClosestVertex(const vec3d& query, double& dist, vec3d& outP) const {
 	double minDist = GetMaxLimit<double>();
 	int idxFound = -1;
-	for(U32 i=0; i < m_lpHEMesh->countNodes(); i++) {
-		vec3d p = m_lpHEMesh->const_nodeAt(i).pos;
+	for(U32 i=0; i < m_lpVolMesh->countNodes(); i++) {
+		vec3d p = m_lpVolMesh->const_nodeAt(i).pos;
 		double dist2 = (query - p).length2();
 		if (dist2 < minDist) {
 			minDist = dist2;

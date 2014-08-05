@@ -76,6 +76,11 @@ public:
 	bool setup(const vector<double>& vertices, const vector<U32>& elements);
 	bool setup(U32 ctVertices, const double* vertices, U32 ctElements, const U32* elements);
 	void cleanup();
+
+	void printNodeInfo() const;
+	void printEdgeInfo() const;
+	void printFaceInfo() const;
+	void printCellInfo() const;
 	void printInfo() const;
 
 	double computeDeterminant(U32 idxNodes[4]) const;
