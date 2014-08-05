@@ -232,19 +232,19 @@ bool TestVolMesh::tst_unused_mesh_fields(VolMesh* pmesh) {
 			if(vUsedFaces[i] == 0) {
 				FACE face = pmesh->const_faceAt(i);
 
-				U32 idxEdges[3];
-				idxEdges[0] = face.edges[0];
-				idxEdges[1] = face.edges[1];
-				idxEdges[2] = face.edges[2];
+				U32 edges[3];
+				edges[0] = face.edges[0];
+				edges[1] = face.edges[1];
+				edges[2] = face.edges[2];
 
 				U32 n[3];
-				n[0] = pmesh->from_node(idxEdges[0]);
-				n[1] = pmesh->from_node(idxEdges[1]);
-				n[2] = pmesh->from_node(idxEdges[2]);
+				n[0] = pmesh->from_node(edges[0]);
+				n[1] = pmesh->from_node(edges[1]);
+				n[2] = pmesh->from_node(edges[2]);
 
 
-				printf(">>FACE %u = Nodes [%u, %u, %u], HalfEdges [%u, %u, %u].\n",
-						i, n[0], n[1], n[2], idxEdges[0], idxEdges[1], idxEdges[2]);
+				printf(">>FACE %u = Nodes [%u, %u, %u], Edges [%u, %u, %u].\n",
+						i, n[0], n[1], n[2], edges[0], edges[1], edges[2]);
 			}
 		}
 	}

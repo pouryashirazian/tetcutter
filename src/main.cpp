@@ -321,7 +321,7 @@ void runTestSubDivide(int current) {
 int main(int argc, char* argv[]) {
 	cout << "Cutting tets" << endl;
 
-	//Initialize app
+	//Initialize appidxEdges
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_STENCIL);
 	glutInitWindowSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);

@@ -396,7 +396,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	clearCutContext();
 
 	//collect all garbage
-	//m_lpVolMesh->garbage_collection();
+	m_lpVolMesh->garbage_collection();
 
 	//Perform all tests
 	TestVolMesh::tst_all(m_lpVolMesh);
