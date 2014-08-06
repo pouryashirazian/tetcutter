@@ -6,7 +6,7 @@
  */
 
 
-#include "test_HalfEdgeTetMesh.h"
+#include "test_VolMesh.h"
 #include "base/Logger.h"
 #include <map>
 
@@ -185,14 +185,14 @@ bool TestVolMesh::tst_unused_mesh_fields(VolMesh* pmesh) {
 			countUnusedNodes++;
 	}
 
-	//hedges
-	U32 minHEdgeUsage = GetMaxLimit<U32>();
-	U32 maxHEdgeUsage = 0;
+	//edges
+	U32 minEdgeUsage = GetMaxLimit<U32>();
+	U32 maxEdgeUsage = 0;
 	U32 countUnusedHedges = 0;
 	for(U32 i=0; i < vUsedEdges.size(); i++) {
 
-		minHEdgeUsage = MATHMIN(minHEdgeUsage, vUsedEdges[i]);
-		maxHEdgeUsage = MATHMAX(maxHEdgeUsage, vUsedEdges[i]);
+		minEdgeUsage = MATHMIN(minEdgeUsage, vUsedEdges[i]);
+		maxEdgeUsage = MATHMAX(maxEdgeUsage, vUsedEdges[i]);
 
 		if(vUsedEdges[i] == 0)
 			countUnusedHedges++;
@@ -230,21 +230,18 @@ bool TestVolMesh::tst_unused_mesh_fields(VolMesh* pmesh) {
 		printf(">>list of %u unused faces will follow:\n", countUnusedFaces);
 		for(U32 i=0; i < vUsedFaces.size(); i++) {
 			if(vUsedFaces[i] == 0) {
-				FACE face = pmesh->const_faceAt(i);
+				const FACE& face = pmesh->const_faceAt(i);
 
 				U32 edges[3];
 				edges[0] = face.edges[0];
 				edges[1] = face.edges[1];
 				edges[2] = face.edges[2];
 
-				U32 n[3];
-				n[0] = pmesh->from_node(edges[0]);
-				n[1] = pmesh->from_node(edges[1]);
-				n[2] = pmesh->from_node(edges[2]);
-
+				U32 nodes[3];
+				pmesh->getFaceNodes(i, nodes);
 
 				printf(">>FACE %u = Nodes [%u, %u, %u], Edges [%u, %u, %u].\n",
-						i, n[0], n[1], n[2], edges[0], edges[1], edges[2]);
+						i, nodes[0], nodes[1], nodes[2], edges[0], edges[1], edges[2]);
 			}
 		}
 	}

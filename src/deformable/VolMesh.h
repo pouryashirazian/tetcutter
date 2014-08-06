@@ -141,10 +141,25 @@ public:
 	void remove_edge_core(U32 idxEdge);
 	void remove_node_core(U32 idxNode);
 
+	//remove single cell, face, edge, node
 	void remove_cell(U32 idxCell);
 	void remove_face(U32 idxFace);
 	void remove_edge(U32 idxEdge);
 	void remove_node(U32 idxNode);
+
+	//remove batch of cells, faces, edges and nodes
+	template <class ContainerT>
+	void remove_cells(const ContainerT& cells);
+
+	template <class ContainerT>
+	void remove_faces(const ContainerT& faces);
+
+	template <class ContainerT>
+	void remove_edges(const ContainerT& edges);
+
+	template <class ContainerT>
+	void remove_nodes(const ContainerT& nodes);
+
 
 
 	//erases all objects marked removed
@@ -203,6 +218,9 @@ private:
 
 	template <class ContainerT>
 	int get_incident_edges(const ContainerT& in_nodes, set<U32>& out_edges);
+
+
+
 protected:
 	U32 m_elemToShow;
 

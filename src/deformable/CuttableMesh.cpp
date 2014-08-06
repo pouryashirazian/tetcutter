@@ -8,7 +8,7 @@
 #include "CuttableMesh.h"
 #include "graphics/selectgl.h"
 #include "graphics/Intersections.h"
-#include "deformable/test_HalfEdgeTetMesh.h"
+#include "deformable/test_VolMesh.h"
 #include "base/Logger.h"
 #include "base/FlatArray.h"
 #include <map>
@@ -167,7 +167,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	//Cut-Edges
 	for (U32 i=0; i < m_lpVolMesh->countEdges(); i++) {
 
-		EDGE e = m_lpVolMesh->const_edgeAt(i);
+		const EDGE& e = m_lpVolMesh->const_edgeAt(i);
 
 
 		ss0 = m_lpVolMesh->const_nodeAt(e.from).pos;
@@ -394,6 +394,9 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 
 	//clear cut context
 	clearCutContext();
+
+	//Perform all tests
+	TestVolMesh::tst_all(m_lpVolMesh);
 
 	//collect all garbage
 	m_lpVolMesh->garbage_collection();

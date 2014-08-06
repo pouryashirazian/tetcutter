@@ -21,8 +21,11 @@ using namespace PS::MATH;
 
 #define HEDGE_SHIFT_A 0
 #define HEDGE_SHIFT_B 32
-#define FACE_SIDES 3
 
+#define COUNT_FACE_EDGES 3
+#define COUNT_CELL_EDGES 6
+#define COUNT_CELL_FACES 4
+#define COUNT_CELL_NODES 4
 
 //can keep up to 2097151 nodes
 #define FACE_BITMASK 0x001FFFFF
@@ -208,19 +211,19 @@ namespace MESH {
 	//face
 	class FACE {
 	public:
-		U32 edges[FACE_SIDES];
+		U32 edges[COUNT_FACE_EDGES];
 
 		FACE() {
 			init();
 		}
 
 		void init() {
-			for(int i=0; i<FACE_SIDES; i++)
+			for(int i=0; i<COUNT_FACE_EDGES; i++)
 				edges[i] = BaseHandle::INVALID;
 		}
 
 		FACE& operator = (const FACE& A) {
-			for(int i=0; i<FACE_SIDES; i++)
+			for(int i=0; i<COUNT_FACE_EDGES; i++)
 				edges[i] = A.edges[i];
 			return (*this);
 		}
@@ -269,9 +272,9 @@ namespace MESH {
 	//elements
 	class CELL {
 	public:
-		U32 nodes[4];
-		U32 faces[4];
-		U32 edges[6];
+		U32 nodes[COUNT_CELL_NODES];
+		U32 faces[COUNT_CELL_FACES];
+		U32 edges[COUNT_CELL_EDGES];
 
 		CELL() {
 			init();
