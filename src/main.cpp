@@ -244,6 +244,13 @@ void SpecialKey(int key, int x, int y)
 			break;
 		}
 
+		case(GLUT_KEY_F7):
+		{
+			g_lpTissue->setDoSplit(!g_lpTissue->doSplit());
+			LogInfoArg1("Tissue splitting is set to: %d", g_lpTissue->doSplit());
+			break;
+		}
+
 		case(GLUT_KEY_F8): {
 			bool flag = !TheSceneGraph::Instance().get("floor")->isVisible();
 			TheSceneGraph::Instance().get("floor")->setVisible(flag);
@@ -294,9 +301,9 @@ void resetMesh() {
 	SAFE_DELETE(g_lpTissue);
 
 	//create a scalpel
-	//g_lpTetMesh = CuttableMesh::CreateTruthCube(8, 4, 4, 0.5);
-	//g_lpTetMesh = CuttableMesh::CreateTwoTetra();
-	g_lpTissue = CuttableMesh::CreateOneTetra();
+	//g_lpTissue = CuttableMesh::CreateTruthCube(8, 4, 4, 0.5);
+	g_lpTissue = CuttableMesh::CreateTwoTetra();
+	//g_lpTissue = CuttableMesh::CreateOneTetra();
 	g_lpTissue->setName("tets");
 	TheSceneGraph::Instance().add(g_lpTissue);
 

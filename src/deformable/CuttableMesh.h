@@ -100,6 +100,10 @@ public:
 	TetSubdivider* getSubD() const { return m_lpSubD;}
 	VolMesh* getMesh() const { return m_lpVolMesh;}
 
+	//splitting
+	bool doSplit() const {return m_doSplit;}
+	void setDoSplit(bool doSplit) { m_doSplit = doSplit;}
+
 	//create a tetrahedra
 	static CuttableMesh* CreateOneTetra();
 	static CuttableMesh* CreateTwoTetra();
@@ -115,6 +119,7 @@ private:
 	VolMesh* m_lpVolMesh;
 	TetSubdivider* m_lpSubD;
 	int m_ctCompletedCuts;
+	bool m_doSplit;
 
 	//Cut Nodes
 	std::map<U32, CutNode > m_mapCutNodes;

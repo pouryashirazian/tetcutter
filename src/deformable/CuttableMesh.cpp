@@ -31,7 +31,7 @@ CuttableMesh::CuttableMesh(const VolMesh& hemesh) {
 
 	m_aabb = m_lpVolMesh->aabb();
 	m_ctCompletedCuts = 0;
-
+	m_doSplit = false;
 }
 
 CuttableMesh::CuttableMesh(const vector<double>& vertices, const vector<U32>& elements)
@@ -72,6 +72,7 @@ void CuttableMesh::setup(int ctVertices, double* vertices, int ctElements, int* 
 	m_aabb = m_lpVolMesh->aabb();
 	m_aabb.expand(1.0);
 	m_ctCompletedCuts = 0;
+	m_doSplit = false;
 }
 
 void CuttableMesh::clearCutContext() {
@@ -379,7 +380,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 				}
 			}
 			//subdivide the element
-			ctElementsCut += m_lpSubD->subdivide(vCutElements[i], cutEdgeCode, cutNodeCode, middlePoints, true);
+			ctElementsCut += m_lpSubD->subdivide(vCutElements[i], cutEdgeCode, cutNodeCode, middlePoints, m_doSplit);
 		}
 	}
 
