@@ -40,15 +40,15 @@ U32 g_elementTableCaseB[3][6][4] = {
 		//case 1,
 		{ {3, 7, 13, 15}, {15, 1, 4, 7}, {15, 1, 3, 7}, {0, 12, 14, 6}, {2, 5, 6, 14}, {0, 14, 6, 2}},
 
+		//case 2
 		{ {4, 10, 12, 0}, {0, 8, 12, 4}, {0, 8, 1, 4}, {3, 9, 13, 5}, {2, 5, 11, 3}, {3, 13, 5, 11}}
-
 };
 
 }
 }
 
 TetSubdivider::TetSubdivider(VolMesh* pMesh) {
-	m_lpHEMesh = pMesh;
+	m_lpExtVolMesh = pMesh;
 
 
 	//case A
@@ -86,23 +86,23 @@ int TetSubdivider::generateCaseA(U32 idxCell, U8 node, double targetDistPercenta
 	if(targetDistPercentage < 0.0 || targetDistPercentage > 1.0)
 		return -1;
 
-	if(!m_lpHEMesh->isCellIndex(idxCell))
+	if(!m_lpExtVolMesh->isCellIndex(idxCell))
 		return -1;
 
 	cutEdgeCode = 0;
 	cutNodeCode = 0;
 
 	int res = 0;
-	CELL cell = m_lpHEMesh->cellAt(idxCell);
+	CELL cell = m_lpExtVolMesh->cellAt(idxCell);
 	for(int i=0; i<6; i++) {
 		tEdges[i] = 0.0;
 
-		EDGE edge = m_lpHEMesh->edgeAt( cell.edges[i] );
+		EDGE edge = m_lpExtVolMesh->edgeAt( cell.edges[i] );
 
 		if(edge.from == node || edge.to == node) {
 			cutEdgeCode |= (1 << i);
 
-			double dist = vec3d::distance(m_lpHEMesh->nodeAt(edge.from).pos, m_lpHEMesh->nodeAt(edge.to).pos);
+			double dist = vec3d::distance(m_lpExtVolMesh->nodeAt(edge.from).pos, m_lpExtVolMesh->nodeAt(edge.to).pos);
 
 			if(edge.from == node)
 				tEdges[i] = targetDistPercentage * dist;
@@ -120,7 +120,7 @@ int TetSubdivider::generateCaseA(U32 idxCell, U8 node, double targetDistPercenta
 int TetSubdivider::generateCaseB(U32 idxCell, U8 enteringface, U8& cutEdgeCode,
 					  U8& cutNodeCode, double (&tEdges)[6]) {
 
-	if(!m_lpHEMesh->isCellIndex(idxCell))
+	if(!m_lpExtVolMesh->isCellIndex(idxCell))
 		return -1;
 	if(enteringface < 0 || enteringface > 2)
 		return -1;
@@ -236,7 +236,7 @@ int TetSubdivider::subdivide(U32 idxCell, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 	U32 vnodes[16];
 	for(int i=0; i<16; i++)
 		vnodes[i] = BaseHandle::INVALID;
-	const CELL& tet = m_lpHEMesh->cellAt(idxCell);
+	const CELL& tet = m_lpExtVolMesh->cellAt(idxCell);
 
 	//1st 4 nodes come from the original element
 	for(int i=0; i<4; i++)
@@ -262,7 +262,7 @@ int TetSubdivider::subdivide(U32 idxCell, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 	//Case A: 3 cut edges. cutEdgeCodes = { 11, 22, 37, 56 }
 	if(cutcase == cutA) {
 		//Remove the original element
-		m_lpHEMesh->schedule_remove_cell(idxCell);
+		m_lpExtVolMesh->schedule_remove_cell(idxCell);
 
 		//find the local table entry to handle this case A
 		int entry = m_mapCutEdgeCodeToTableEntry[cutEdgeCode];
@@ -280,7 +280,7 @@ int TetSubdivider::subdivide(U32 idxCell, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 				vec3d pos[4];
 
 				for(int k=0; k < 4; k++)
-					pos[k] = m_lpHEMesh->nodeAt(n[k]).pos;
+					pos[k] = m_lpExtVolMesh->nodeAt(n[k]).pos;
 
 				vec3d centroid = pos[0];
 				for(int k=1; k < 4; k++)
@@ -291,11 +291,11 @@ int TetSubdivider::subdivide(U32 idxCell, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 				double dist = (pos[0] - centroid).length() * 0.3;
 
 				for(int k = 0; k<4; k++)
-					m_lpHEMesh->nodeAt( n[ k ]).pos = pos[k] + norm * dist;
+					m_lpExtVolMesh->nodeAt( n[ k ]).pos = pos[k] + norm * dist;
 
 			}
 
-			if(!m_lpHEMesh->insert_cell(n)) {
+			if(!m_lpExtVolMesh->insert_cell(n)) {
 				LogErrorArg1("Failed to add element# %d", e);
 			}
 		}
@@ -303,7 +303,7 @@ int TetSubdivider::subdivide(U32 idxCell, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 	//Case B: 4 cut edges. cutEdgeCodes = { 46, 51, 29 }
 	else if(cutcase == cutB) {
 		//Remove the original element
-		m_lpHEMesh->schedule_remove_cell(idxCell);
+		m_lpExtVolMesh->schedule_remove_cell(idxCell);
 
 		//find the local table entry to handle this case B
 		int entry = m_mapCutEdgeCodeToTableEntry[cutEdgeCode];
@@ -315,7 +315,7 @@ int TetSubdivider::subdivide(U32 idxCell, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 			for(int i = 0; i < 4; i++)
 				n[i] = vnodes[ g_elementTableCaseB[entry][e][i] ];
 
-			if(!m_lpHEMesh->insert_cell(n)) {
+			if(!m_lpExtVolMesh->insert_cell(n)) {
 				LogErrorArg1("Failed to add element# %d", e);
 			}
 		}
@@ -347,7 +347,7 @@ int TetSubdivider::subdivide(U32 idxCell, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 			vec3d arrP1[6];
 			int i = 0;
 			for(set<U32>::const_iterator it = splittedNodes1.begin(); it != splittedNodes1.end(); it++) {
-				arrP1[i] = m_lpHEMesh->nodeAt( *it ).pos;
+				arrP1[i] = m_lpExtVolMesh->nodeAt( *it ).pos;
 				if(i == 0)
 					cent1 = arrP1[i];
 				else
@@ -360,7 +360,7 @@ int TetSubdivider::subdivide(U32 idxCell, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 			vec3d arrP2[6];
 			i = 0;
 			for(set<U32>::const_iterator it = splittedNodes2.begin(); it != splittedNodes2.end(); it++) {
-				arrP2[i] = m_lpHEMesh->nodeAt( *it ).pos;
+				arrP2[i] = m_lpExtVolMesh->nodeAt( *it ).pos;
 				if(i == 0)
 					cent2 = arrP2[i];
 				else
@@ -376,7 +376,7 @@ int TetSubdivider::subdivide(U32 idxCell, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 			//splitted nodes
 			i = 0;
 			for(set<U32>::const_iterator it = splittedNodes1.begin(); it != splittedNodes1.end(); it++) {
-				m_lpHEMesh->nodeAt( *it ).pos = arrP1[i] + norm * dist;
+				m_lpExtVolMesh->nodeAt( *it ).pos = arrP1[i] + norm * dist;
 				i++;
 			}
 		}
@@ -402,7 +402,7 @@ int TetSubdivider::subdivide(U32 idxCell, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 
 void TetSubdivider::draw() {
 
-	if(m_lpHEMesh)
-		m_lpHEMesh->draw();
+	if(m_lpExtVolMesh)
+		m_lpExtVolMesh->draw();
 }
 

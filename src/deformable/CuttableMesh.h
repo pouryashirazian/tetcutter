@@ -20,7 +20,7 @@ using namespace PS::MESH;
 
 namespace PS {
 
-class CuttableMesh : public SGNode /*, public TetMesh */ {
+class CuttableMesh : public VolMesh {
 public:
 	//CutEdge
 	class CutEdge {
@@ -67,7 +67,7 @@ public:
 	};
 
 public:
-	CuttableMesh(const VolMesh& hemesh);
+	CuttableMesh(const VolMesh& volmesh);
 	CuttableMesh(const vector<double>& vertices, const vector<U32>& elements);
 	CuttableMesh(int ctVertices, double* vertices, int ctElements, int* elements);
 	virtual ~CuttableMesh();
@@ -98,25 +98,19 @@ public:
 
 	//Access to subdivider
 	TetSubdivider* getSubD() const { return m_lpSubD;}
-	VolMesh* getMesh() const { return m_lpVolMesh;}
 
 	//splitting
 	bool doSplit() const {return m_doSplit;}
 	void setDoSplit(bool doSplit) { m_doSplit = doSplit;}
 
-	//create a tetrahedra
-	static CuttableMesh* CreateOneTetra();
-	static CuttableMesh* CreateTwoTetra();
-	static CuttableMesh* CreateTruthCube(int nx, int ny, int nz, double cellsize);
 
 protected:
-	void setup(int ctVertices, double* vertices, int ctElements, int* elements);
+	void setup();
 
 	//TODO: Sync physics mesh after cut
 
 	//TODO: Sync vbo after synced physics mesh
 private:
-	VolMesh* m_lpVolMesh;
 	TetSubdivider* m_lpSubD;
 	int m_ctCompletedCuts;
 	bool m_doSplit;

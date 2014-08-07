@@ -41,7 +41,8 @@ public:
 	void mousePress(int button, int state, int x, int y);
 	void onTranslate(const vec3f& delta, const vec3f& pos);
 
-public:
+protected:
+	void updateVolMeshInfoHeader() const;
 
 protected:
 	AABB m_aabbCurrent;

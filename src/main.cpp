@@ -13,6 +13,7 @@
 #include "graphics/SGQuad.h"
 #include "deformable/AvatarScalpel.h"
 #include "deformable/TetSubdivider.h"
+#include "deformable/VolMeshSamples.h"
 
 using namespace PS;
 using namespace PS::SG;
@@ -79,36 +80,36 @@ void NormalKey(unsigned char key, int x, int y)
 	case('a'): {
 		if(!g_lpTissue) return;
 
-		U32 i = g_lpTissue->getMesh()->getElemToShow();
-		if(g_lpTissue->getMesh()->isCellIndex(i))
-			g_lpTissue->getMesh()->setElemToShow(--i);
+		U32 i = g_lpTissue->getElemToShow();
+		if(g_lpTissue->isCellIndex(i))
+			g_lpTissue->setElemToShow(--i);
 		else
-			g_lpTissue->getMesh()->setElemToShow(0);
+			g_lpTissue->setElemToShow(0);
 	}
 	break;
 
 	case('d'): {
 		if(!g_lpTissue) return;
 
-		U32 i = g_lpTissue->getMesh()->getElemToShow();
-		if(g_lpTissue->getMesh()->isCellIndex(i))
-			g_lpTissue->getMesh()->setElemToShow(++i);
+		U32 i = g_lpTissue->getElemToShow();
+		if(g_lpTissue->isCellIndex(i))
+			g_lpTissue->setElemToShow(++i);
 		else
-			g_lpTissue->getMesh()->setElemToShow(0);
+			g_lpTissue->setElemToShow(0);
 	}
 	break;
 
 	case('e'): {
 		if(!g_lpTissue) return;
 
-		U32 ctElems = g_lpTissue->getMesh()->countCells();
+		U32 ctElems = g_lpTissue->countCells();
 		U32 idxElem = -1;
 		printf("Insert element index to show: [0:%u]\n", ctElems-1);
 		scanf("%u", &idxElem);
-		if(g_lpTissue->getMesh()->isCellIndex(idxElem))
-			g_lpTissue->getMesh()->setElemToShow(idxElem);
+		if(g_lpTissue->isCellIndex(idxElem))
+			g_lpTissue->setElemToShow(idxElem);
 		else
-			g_lpTissue->getMesh()->setElemToShow();
+			g_lpTissue->setElemToShow();
 	}
 	break;
 
@@ -300,13 +301,15 @@ void resetMesh() {
 	TheSceneGraph::Instance().remove("tets");
 	SAFE_DELETE(g_lpTissue);
 
+	VolMesh* temp = PS::MESH::VolMeshSamples::CreateTwoTetra();
 	//create a scalpel
 	//g_lpTissue = CuttableMesh::CreateTruthCube(8, 4, 4, 0.5);
-	g_lpTissue = CuttableMesh::CreateTwoTetra();
 	//g_lpTissue = CuttableMesh::CreateOneTetra();
+	g_lpTissue = new CuttableMesh(*temp);
+	SAFE_DELETE(temp);
+
 	g_lpTissue->setName("tets");
 	TheSceneGraph::Instance().add(g_lpTissue);
-
 	g_lpScalpel->setTissue(g_lpTissue);
 }
 

@@ -82,32 +82,6 @@ VolMesh::~VolMesh() {
 	cleanup();
 }
 
-
-VolMesh* VolMesh::CreateOneTet() {
-	vector<double> vertices;
-	vector<U32> elements;
-
-	vec3d points[4];
-	points[0] = vec3d(-1, 0, 0);
-	points[1] = vec3d(0, 0, -2);
-	points[2] = vec3d(1, 0, 0);
-	points[3] = vec3d(0, 2, -1);
-
-	vertices.resize(4 * 3);
-	for (int i = 0; i < 4; i++) {
-		points[i].store(&vertices[i * 3]);
-	}
-
-	elements.resize(4);
-	elements[0] = 0;
-	elements[1] = 1;
-	elements[2] = 2;
-	elements[3] = 3;
-
-	VolMesh* tet = new VolMesh(vertices, elements);
-	return tet;
-}
-
 void VolMesh::init() {
 	m_elemToShow = INVALID_INDEX;
 	m_fOnNodeEvent = NULL;
@@ -251,10 +225,10 @@ double VolMesh::computeDeterminant(U32 idxNodes[4]) const {
 
 	for(int i=0; i<4; i++)
 		v[i] = const_nodeAt(i).pos;
-	return ComputeElementDeterminant(v);
+	return ComputeCellDeterminant(v);
 }
 
-double VolMesh::ComputeElementDeterminant(const vec3d v[4]) {
+double VolMesh::ComputeCellDeterminant(const vec3d v[4]) {
 	return	vec3d::dot(v[1] - v[0], vec3d::cross(v[2] - v[0], v[3] - v[0]));
 }
 
@@ -1047,9 +1021,15 @@ const NODE& VolMesh::const_nodeAt(U32 i) const {
 	return m_vNodes[i];
 }
 
-void VolMesh::displace(double * u) {
+void VolMesh::displace(U32 countDegreesOfFreedom, const double * u) {
 	if(u == NULL)
 		return;
+
+	U32 dof = countNodes() * 3;
+	if(countDegreesOfFreedom != dof) {
+		LogErrorArg2("Invalid displacement array supplied. Expected DoF: %u, GOT: %u", dof, countDegreesOfFreedom);
+		return;
+	}
 
 	for(U32 i=0; i < countNodes(); i++) {
 		m_vNodes[i].pos = m_vNodes[i].pos + vec3d(&u[i * 3]);
@@ -1665,7 +1645,7 @@ void VolMesh::drawElement(U32 i) const {
 AABB VolMesh::computeAABB() {
 	double vMin[3], vMax[3];
 	for(U32 i=0; i < countNodes(); i++) {
-		NODE n = const_nodeAt(i);
+		const NODE& n = const_nodeAt(i);
 		vec3d p = n.pos;
 
 		if(i == 0) {

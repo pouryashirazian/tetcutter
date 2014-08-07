@@ -19,57 +19,41 @@ using namespace PS::INTERSECTIONS;
 namespace PS {
 
 ///////////////////////////////////////////////////////////////////////////
-CuttableMesh::CuttableMesh(const VolMesh& hemesh) {
-	resetTransform();
-	if(TheShaderManager::Instance().has("phong")) {
-        m_spEffect = SmartPtrSGEffect(new SGEffect(TheShaderManager::Instance().get("phong")));
-    }
-
-	//HEMesh
-	m_lpVolMesh = new VolMesh(hemesh);
-	m_lpSubD = new TetSubdivider(m_lpVolMesh);
-
-	m_aabb = m_lpVolMesh->aabb();
-	m_ctCompletedCuts = 0;
-	m_doSplit = false;
+CuttableMesh::CuttableMesh(const VolMesh& volmesh): VolMesh(volmesh) {
+	setup();
 }
 
-CuttableMesh::CuttableMesh(const vector<double>& vertices, const vector<U32>& elements)
- /* : TetMesh(vertices.size() / 3, const_cast<double *>(&vertices[0]), elements.size() / 4, (int*) &elements[0]) */ {
+CuttableMesh::CuttableMesh(const vector<double>& vertices, const vector<U32>& elements): VolMesh(vertices, elements) {
 
-	setup(vertices.size() / 3, const_cast<double*>(&vertices[0]), elements.size() / 4, (int*) &elements[0]);
+	setup();
 }
 
-CuttableMesh::CuttableMesh(int ctVertices, double* vertices, int ctElements, int* elements)
-/*	: TetMesh(ctVertices, vertices, ctElements, elements) */ {
+CuttableMesh::CuttableMesh(int ctVertices, double* vertices, int ctElements, int* elements) :
+	VolMesh((U32)ctVertices, vertices, (U32)ctElements, reinterpret_cast<U32*>(elements)) {
 
-	setup(ctVertices, vertices, ctElements, elements);
+	setup();
 }
 
 CuttableMesh::~CuttableMesh() {
 	SAFE_DELETE(m_lpSubD);
-	SAFE_DELETE(m_lpVolMesh);
 }
 
-void CuttableMesh::setup(int ctVertices, double* vertices, int ctElements, int* elements) {
+void CuttableMesh::setup() {
 
 	resetTransform();
 	if(TheShaderManager::Instance().has("phong")) {
         m_spEffect = SmartPtrSGEffect(new SGEffect(TheShaderManager::Instance().get("phong")));
     }
 
-	//HEMesh
-	m_lpVolMesh = new VolMesh(ctVertices, vertices, ctElements, (U32*)elements);
-
 	//Perform all tests
-	LogInfo("Begin testing the halfedge mesh");
-	TestVolMesh::tst_all(m_lpVolMesh);
+	LogInfo("Begin testing the volumetric mesh");
+	TestVolMesh::tst_all(this);
 	LogInfo("Test completed");
 
-	//
-	m_lpSubD = new TetSubdivider(m_lpVolMesh);
+	//Create subdivider
+	m_lpSubD = new TetSubdivider(this);
 
-	m_aabb = m_lpVolMesh->aabb();
+	m_aabb = VolMesh::aabb();
 	m_aabb.expand(1.0);
 	m_ctCompletedCuts = 0;
 	m_doSplit = false;
@@ -85,8 +69,7 @@ void CuttableMesh::draw() {
 	drawBBox();
 
 	//draw tetmesh
-	if(m_lpVolMesh)
-		m_lpVolMesh->draw();
+	VolMesh::draw();
 
 	//draw cut context
 	int ctCutEdges = m_mapCutEdges.size();
@@ -166,13 +149,13 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	printf("SWEPT SURF[2]: %.3f, %.3f, %.3f\n", sweptSurface[2].x, sweptSurface[2].y, sweptSurface[2].z);
 
 	//Cut-Edges
-	for (U32 i=0; i < m_lpVolMesh->countEdges(); i++) {
+	for (U32 i=0; i < this->countEdges(); i++) {
 
-		const EDGE& e = m_lpVolMesh->const_edgeAt(i);
+		const EDGE& e = this->const_edgeAt(i);
 
 
-		ss0 = m_lpVolMesh->const_nodeAt(e.from).pos;
-		ss1 = m_lpVolMesh->const_nodeAt(e.to).pos;
+		ss0 = this->const_nodeAt(e.from).pos;
+		ss1 = this->const_nodeAt(e.to).pos;
 
 		int res = IntersectSegmentTriangle(ss0, ss1, tri1, t, uvw, xyz);
 		if(res == 0)
@@ -231,7 +214,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 
 			//iterate over all incident edges
 			vector<U32> incidentEdges;
-			m_lpVolMesh->getNodeIncidentEdges(cn.idxNode, incidentEdges);
+			this->getNodeIncidentEdges(cn.idxNode, incidentEdges);
 
 			for(U32 i=0; i < incidentEdges.size(); i++) {
 				mapTempCutEdges.erase(incidentEdges[i]);
@@ -247,7 +230,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 
 			//iterate over all incident edges
 			vector<U32> incidentEdges;
-			m_lpVolMesh->getNodeIncidentEdges(cn.idxNode, incidentEdges);
+			this->getNodeIncidentEdges(cn.idxNode, incidentEdges);
 
 			for(U32 i=0; i < incidentEdges.size(); i++) {
 				mapTempCutEdges.erase(incidentEdges[i]);
@@ -281,8 +264,8 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	//count of tets cut
 	int ctCutTet = 0;
 
-	for(U32 i=0; i < m_lpVolMesh->countCells(); i++) {
-		const CELL& cell = m_lpVolMesh->const_cellAt(i);
+	for(U32 i=0; i < this->countCells(); i++) {
+		const CELL& cell = this->const_cellAt(i);
 		U8 cutEdgeCode = 0;
 		U8 cutNodeCode = 0;
 
@@ -343,7 +326,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	for(CUTEDGEITER it = m_mapCutEdges.begin(); it != m_mapCutEdges.end(); it++) {
 		U32 idxNP0, idxNP1;
 
-		if(!m_lpVolMesh->cut_edge(it->first, it->second.t, &idxNP0, &idxNP1)) {
+		if(!this->cut_edge(it->first, it->second.t, &idxNP0, &idxNP1)) {
 			LogErrorArg2("Unable to cut edge %d, edgecutpoint t = %.3f.", it->first, it->second.t);
 			return -1;
 		}
@@ -362,7 +345,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 		U8 cutNodeCode = vCutNodeCodes[i];
 		if(cutEdgeCode != 0 || cutNodeCode != 0) {
 
-			const CELL& cell = m_lpVolMesh->const_cellAt(vCutElements[i]);
+			const CELL& cell = this->const_cellAt(vCutElements[i]);
 
 
 			for(int e=0; e < 6; e++) {
@@ -397,14 +380,14 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	clearCutContext();
 
 	//collect all garbage
-	m_lpVolMesh->garbage_collection();
+	this->garbage_collection();
 
 	//Perform all tests
-	TestVolMesh::tst_all(m_lpVolMesh);
+	TestVolMesh::tst_all(this);
 
 
 	//recompute AABB and expand it to detect cuts
-	m_aabb = m_lpVolMesh->computeAABB();
+	m_aabb = this->computeAABB();
 	m_aabb.expand(1.0);
 
 	//Return number of tets cut
@@ -412,30 +395,20 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 }
 
 void CuttableMesh::displace(double * u) {
-	m_lpVolMesh->displace(u);
-	m_aabb = m_lpVolMesh->aabb();
+	this->displace(u);
+	m_aabb = this->aabb();
 }
 
-
-U32 CuttableMesh::countVertices() const {
-	return m_lpVolMesh->countNodes();
-}
 
 vec3d CuttableMesh::vertexRestPosAt(U32 i) const {
-	return m_lpVolMesh->const_nodeAt(i).restpos;
-}
-
-vec3d CuttableMesh::vertexAt(U32 i) const {
-	double v[3];
-//	TetMesh::getVertex(i)->convertToArray(v);
-	return vec3d(v);
+	return this->const_nodeAt(i).restpos;
 }
 
 int CuttableMesh::findClosestVertex(const vec3d& query, double& dist, vec3d& outP) const {
 	double minDist = GetMaxLimit<double>();
 	int idxFound = -1;
-	for(U32 i=0; i < m_lpVolMesh->countNodes(); i++) {
-		vec3d p = m_lpVolMesh->const_nodeAt(i).pos;
+	for(U32 i=0; i < this->countNodes(); i++) {
+		vec3d p = this->const_nodeAt(i).pos;
 		double dist2 = (query - p).length2();
 		if (dist2 < minDist) {
 			minDist = dist2;
@@ -473,118 +446,6 @@ double CuttableMesh::pointLineDistance(const vec3d& v1, const vec3d& v2,
 	return vec3d::distance(p, projection);
 }
 
-
-CuttableMesh* CuttableMesh::CreateOneTetra() {
-	vector<double> vertices;
-	vector<U32> elements;
-
-	vec3d points[4];
-	points[0] = vec3d(-1, 0, 0);
-	points[1] = vec3d(0, 0, -2);
-	points[2] = vec3d(1, 0, 0);
-	points[3] = vec3d(0, 2, -1);
-
-	vertices.resize(4 * 3);
-	for (int i = 0; i < 4; i++) {
-		points[i].store(&vertices[i * 3]);
-	}
-
-	elements.resize(4);
-	elements[0] = 0;
-	elements[1] = 1;
-	elements[2] = 2;
-	elements[3] = 3;
-
-	CuttableMesh* tet = new CuttableMesh(vertices, elements);
-	return tet;
-}
-
-CuttableMesh* CuttableMesh::CreateTwoTetra() {
-	vector<double> vFlatVertices;
-	vector<U32> vFlatElements;
-
-	{
-		vector<vec3d> vertices;
-		vertices.push_back(vec3d(-1, 0, 0));
-		vertices.push_back(vec3d(0, 0, -2));
-		vertices.push_back(vec3d(1, 0, 0));
-		vertices.push_back(vec3d(0, 2, -1));
-		vertices.push_back(vec3d(0, 0, 2));
-		FlattenVec3<double>(vertices, vFlatVertices);
-	}
-
-	{
-		vector< Vec4<U32> > elements;
-		elements.push_back( Vec4<U32>(0, 1, 2, 3) );
-		elements.push_back( Vec4<U32>(0, 2, 3, 4) );
-		FlattenVec4<U32>(elements, vFlatElements);
-	}
-
-	CuttableMesh* tet = new CuttableMesh(vFlatVertices, vFlatElements);
-	return tet;
-}
-
-CuttableMesh* CuttableMesh::CreateTruthCube(int nx, int ny, int nz, double cellsize) {
-	if(nx < 2 || ny < 2 || nz < 2) {
-		LogError("Invalid input param to create a truth cube");
-		return NULL;
-	}
-
-	vector< vec3d > vertices;
-	vector< vec4u32 > elements;
-
-	vec3d start = vec3d(- (double)(nx)/2.0, 0, - (double)(nz)/2.0) * (cellsize);
-
-	//add all nodes
-	for(int i=0; i < nx; i++) {
-		for(int j=0; j < ny; j++) {
-			for(int k=0; k < nz; k++) {
-				vec3d v = start + vec3d(i, j, k) * cellsize;
-				vertices.push_back(v);
-			}
-		}
-	}
-
-	//corner defs
-	enum CellCorners {LBN = 0, LBF = 1, LTN = 2, LTF = 3, RBN = 4, RBF = 5, RTN = 6, RTF = 7};
-	U32 cn[8];
-	//add all elements
-	for(int i=0; i < nx-1; i++) {
-		for(int j=0; j < ny-1; j++) {
-			for(int k=0; k < nz-1; k++) {
-				//collect cell nodes
-				cn[LBN] = i * ny * nz + j * nz + k;
-				cn[LBF] = i * ny * nz + j * nz + k + 1;
-
-				cn[LTN] = i * ny * nz + (j+1) * nz + k;
-				cn[LTF] = i * ny * nz + (j+1) * nz + k + 1;
-
-				cn[RBN] = (i+1) * ny * nz + j * nz + k;
-				cn[RBF] = (i+1) * ny * nz + j * nz + k + 1;
-
-				cn[RTN] = (i+1) * ny * nz + (j+1) * nz + k;
-				cn[RTF] = (i+1) * ny * nz + (j+1) * nz + k + 1;
-
-				//add elements
-				elements.push_back(vec4u32(cn[LBN], cn[LTN], cn[RBN], cn[LBF]));
-				elements.push_back(vec4u32(cn[RTN], cn[LTN], cn[LBF], cn[RBN]));
-				elements.push_back(vec4u32(cn[RTN], cn[LTN], cn[LTF], cn[LBF]));
-				elements.push_back(vec4u32(cn[RTN], cn[RBN], cn[LBF], cn[RBF]));
-				elements.push_back(vec4u32(cn[RTN], cn[LBF], cn[LTF], cn[RBF]));
-				elements.push_back(vec4u32(cn[RTN], cn[LTF], cn[RTF], cn[RBF]));
-			}
-		}
-	}
-
-	//build the final mesh
-	vector<double> vFlatVertices;
-	vector<U32> vFlatElements;
-	FlattenVec3<double>(vertices, vFlatVertices);
-	FlattenVec4<U32>(elements, vFlatElements);
-
-	CuttableMesh* cube = new CuttableMesh(vFlatVertices, vFlatElements);
-	return cube;
-}
 
 }
 

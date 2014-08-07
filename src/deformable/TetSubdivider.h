@@ -32,7 +32,7 @@ public:
 
 	void draw();
 
-	void setMesh(VolMesh* pMesh) { m_lpHEMesh = pMesh;}
+	void setMesh(VolMesh* pMesh) { m_lpExtVolMesh = pMesh;}
 
 	char toAlpha(CUTCASE c);
 	static CUTCASE IdentifyCutCase(bool isCutComplete, U8 cutEdgeCode, U8 cutNodeCode);
@@ -68,8 +68,8 @@ public:
 	bool writeLookUpTable();
 protected:
 
-	//half edge mesh
-	VolMesh* m_lpHEMesh;
+	//Not owned volume mesh
+	VolMesh* m_lpExtVolMesh;
 
 	//cut edge code
 	std::map<U8, int> m_mapCutEdgeCodeToTableEntry;

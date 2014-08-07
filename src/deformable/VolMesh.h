@@ -63,9 +63,6 @@ public:
 	VolMesh(const vector<double>& vertices, const vector<U32>& elements);
 	virtual ~VolMesh();
 
-	//Create one tet
-	static VolMesh* CreateOneTet();
-
 	//Topology events
 	void setOnNodeEventCallback(OnNodeEvent f);
 	void setOnEdgeEventCallback(OnEdgeEvent f);
@@ -77,14 +74,16 @@ public:
 	bool setup(U32 ctVertices, const double* vertices, U32 ctElements, const U32* elements);
 	void cleanup();
 
+	//Stats
 	void printNodeInfo() const;
 	void printEdgeInfo() const;
 	void printFaceInfo() const;
 	void printCellInfo() const;
 	void printInfo() const;
 
+	//Determinant
 	double computeDeterminant(U32 idxNodes[4]) const;
-	static double ComputeElementDeterminant(const vec3d v[4]);
+	static double ComputeCellDeterminant(const vec3d v[4]);
 
 	//Index control
 	inline bool isCellIndex(U32 i) const { return (i < m_vCells.size());}
@@ -110,16 +109,15 @@ public:
 	inline U32 countEdges() const {return m_vEdges.size();}
 	inline U32 countNodes() const {return m_vNodes.size();}
 
-	//functions
+	//edge-wise funcs
 	inline U32 edge_from_node(U32 idxEdge) const;
 	inline U32 edge_to_node(U32 idxEdge) const;
 
 	U32 get_node_neighbors(U32 idxNode, vector<U32>& nbors) const;
 
 
-	//algorithm
-	//splits an edge e at parametric point t
-	void displace(double * u);
+	//displace all nodes by a displacement array
+	void displace(U32 countDegreesOfFreedom, const double * u);
 
 
 	//topology modifiers

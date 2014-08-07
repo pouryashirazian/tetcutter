@@ -18,6 +18,7 @@ AvatarScalpel::AvatarScalpel():SGMesh(), IGizmoListener() {
 AvatarScalpel::AvatarScalpel(CuttableMesh* tissue):SGMesh(), IGizmoListener() {
 	m_lpTissue = tissue;
 	init();
+	updateVolMeshInfoHeader();
 }
 
 AvatarScalpel::~AvatarScalpel() {
@@ -57,6 +58,7 @@ void AvatarScalpel::init() {
 
 	//Add a header
 	TheSceneGraph::Instance().headers()->addHeaderLine("scalpel", "scalpel");
+	TheSceneGraph::Instance().headers()->addHeaderLine("volmesh", "volmesh");
 }
 
 void AvatarScalpel::draw() {
@@ -163,6 +165,21 @@ void AvatarScalpel::mousePress(int button, int state, int x, int y) {
 	}
 }
 
+void AvatarScalpel::updateVolMeshInfoHeader() const {
+
+	if(m_lpTissue == NULL)
+		return;
+
+	char chrMsg[1024];
+	sprintf(chrMsg, "VolMesh [Nodes# %u, Edges# %u, Faces# %u, Cells# %u]",
+				m_lpTissue->countNodes(),
+				m_lpTissue->countEdges(),
+				m_lpTissue->countFaces(),
+				m_lpTissue->countCells());
+
+	TheSceneGraph::Instance().headers()->updateHeaderLine("volmesh", AnsiStr(chrMsg));
+}
+
 void AvatarScalpel::onTranslate(const vec3f& delta, const vec3f& pos) {
 	if(m_lpTissue == NULL || !m_isToolActive)
 		return;
@@ -177,8 +194,10 @@ void AvatarScalpel::onTranslate(const vec3f& delta, const vec3f& pos) {
 		if(m_isSweptQuadValid) {
 			//call the cut method if the tool has passed through the tissue
 			int res = m_lpTissue->cut(m_vCuttingPathEdge0, m_vCuttingPathEdge1, m_sweptQuad, true);
-			clearCutContext();
 			LogInfoArg1("Tissue cut. res = %d", res);
+
+			clearCutContext();
+			updateVolMeshInfoHeader();
 		}
 
 		return;
