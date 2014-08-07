@@ -233,8 +233,8 @@ namespace MESH {
 	class FaceKey
 	{
 	public:
-		FaceKey():key(0) {}
-		explicit FaceKey(U64 k) { this->key = k; }
+		FaceKey():m_key(0) {}
+		explicit FaceKey(U64 k) { this->m_key = k; }
 		explicit FaceKey(U32 n[3]) {
 			setup(n[0], n[1], n[2]);
 		}
@@ -245,7 +245,7 @@ namespace MESH {
 
 	    void setup(U32 a, U32 b, U32 c) {
 	    	order_lo2hi(a, b, c);
-	    	key = FACEID_FROM_IDX(a, b, c);
+	    	m_key = FACEID_FROM_IDX(a, b, c);
 	    }
 
 	    static void order_lo2hi(U32& a, U32& b, U32& c) {
@@ -257,15 +257,22 @@ namespace MESH {
 	    		swap(a, b);
 	    }
 
-	    bool operator<(const FaceKey& k) const { return key < k.key; }
+	    U64 key() const {return m_key;}
 
-	    bool operator>(const FaceKey& k) const { return key > k.key; }
+	    bool operator<(const FaceKey& k) const { return m_key < k.m_key; }
+
+	    bool operator>(const FaceKey& k) const { return m_key > k.m_key; }
 
 	    void operator=(const FaceKey& other) {
-	    	this->key = other.key;
+	    	this->m_key = other.m_key;
 	    }
 
-	    U64 key;
+	    bool operator==(const FaceKey& other) {
+	    	return (this->m_key == other.m_key);
+	    }
+
+	private:
+	    U64 m_key;
 	};
 
 

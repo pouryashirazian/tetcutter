@@ -134,12 +134,8 @@ public:
 	void set_face(U32 idxFace, U32 edges[3]);
 	void set_cell_faces(U32 idxCell, U32 faces[4]);
 
-
-	//remove
-	void remove_cell_core(U32 idxCell);
-	void remove_face_core(U32 idxFace);
-	void remove_edge_core(U32 idxEdge);
-	void remove_node_core(U32 idxNode);
+	//schedule a cell removal at the next GC
+	void schedule_remove_cell(U32 idxCell);
 
 	//remove single cell, face, edge, node
 	void remove_cell(U32 idxCell);
@@ -221,6 +217,14 @@ private:
 
 
 	bool test_cell_topology(U32 idxCell);
+
+protected:
+	//remove core functions
+	void remove_cell_core(U32 idxCell);
+	void remove_face_core(U32 idxFace);
+	void remove_edge_core(U32 idxEdge);
+	void remove_node_core(U32 idxNode);
+
 protected:
 	U32 m_elemToShow;
 
@@ -235,6 +239,9 @@ protected:
 	vector<FACE> m_vFaces;
 	vector<EDGE> m_vEdges;
 	vector<NODE> m_vNodes;
+
+	//marked cells to be deleted at the next GC
+	vector<U32> m_pendingToDeleteCells;
 
 	//top-down access
 	vector< vector<U32> > m_incident_edges_per_node;

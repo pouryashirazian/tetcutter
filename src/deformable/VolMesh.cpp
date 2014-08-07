@@ -633,10 +633,6 @@ void VolMesh::remove_edge_core(U32 idxEdge) {
 		}
 
 		m_vCells[idxCell] = cell;
-
-		if(!test_cell_topology(idxCell)) {
-			printf("CELL TOPOLOGY is broken as part of the edge removal! CELL: %u\n", idxCell);
-		}
 	}
 
 
@@ -712,6 +708,12 @@ void VolMesh::remove_node_core(U32 idxNode) {
 	//3. delete vertex
 	m_vNodes.erase(m_vNodes.begin() + idxNode);
 
+}
+
+void VolMesh::schedule_remove_cell(U32 idxCell) {
+	if(!isCellIndex(idxCell))
+		return;
+	m_pendingToDeleteCells.push_back(idxCell);
 }
 
 void VolMesh::remove_cell(U32 idxCell) {
@@ -883,33 +885,37 @@ U32 VolMesh::insert_face(U32 nodes[3]) {
 
 void VolMesh::garbage_collection() {
 
-
 	printCellInfo();
 
 	//acquire lock to mesh
 
-	std::set<U32> setToBeRemoved;
-
-	//******************************************************
-	//1. identify unused faces and remove them
-	for(U32 i = 0; i < countFaces(); i++) {
-		if(m_incident_cells_per_face[i].size() == 0) {
-			setToBeRemoved.insert(i);
-			printf("GC: face %u should be removed.\n", i);
-		}
+	//delete all pending cells
+	if(m_pendingToDeleteCells.size() > 0) {
+		remove_cells(m_pendingToDeleteCells);
+		m_pendingToDeleteCells.resize(0);
 	}
 
-	//remove batch of faces in increasing index order
-	remove_faces(setToBeRemoved);
-	U32 ctRemovedFaces = setToBeRemoved.size();
+	//identify unused faces and remove them
+	U32 ctRemovedFaces = 0;
+	{
+		std::set<U32> setToBeRemoved;
+		for(U32 i = 0; i < countFaces(); i++) {
+			if(m_incident_cells_per_face[i].size() == 0) {
+				setToBeRemoved.insert(i);
+				printf("GC: face %u should be removed.\n", i);
+			}
+		}
 
-	//******************************************************
-	//2. identify unused edges and remove them
-	setToBeRemoved.clear();
+		//remove batch of faces in increasing index order
+		remove_faces(setToBeRemoved);
+		ctRemovedFaces = setToBeRemoved.size();
+	}
 
+	//identify unused edges and remove them
 	for(U32 i = 0; i < countCells(); i++)
 		assert(test_cell_topology(i));
 
+	/*
 	for(U32 i = 0; i < countEdges(); i++) {
 		if(m_incident_faces_per_edge[i].size() == 0) {
 			setToBeRemoved.insert(i);
@@ -919,12 +925,11 @@ void VolMesh::garbage_collection() {
 
 	//remove batch of edges in increasing index order
 	remove_edges(setToBeRemoved);
-	U32 ctRemovedEdges = setToBeRemoved.size();
+	*/
+	U32 ctRemovedEdges = 0;
 
 
-	//******************************************************
 	//3. identify unused nodes and remove them
-	setToBeRemoved.clear();
 
 	/*
 	for(U32 i = 0; i < countNodes(); i++) {
@@ -938,8 +943,7 @@ void VolMesh::garbage_collection() {
 	remove_nodes(setToBeRemoved);
 
 	*/
-	U32 ctRemovedNodes = setToBeRemoved.size();
-	setToBeRemoved.clear();
+	U32 ctRemovedNodes = 0;
 
 	LogInfoArg3("garbage collection removed: Faces# %u, Edges# %u, Nodes# %u",
 				ctRemovedFaces, ctRemovedEdges, ctRemovedNodes);
@@ -1096,7 +1100,7 @@ U32 VolMesh::face_handle_by_edges(U32 edges[3]) const {
 		const FACE& face = const_faceAt(facesIncidentToEdge0[i]);
 		FaceKey faceKey(const_cast<U32 *>(&face.edges[0]));
 
-		if (query.key == faceKey.key)
+		if (query == faceKey)
 			return facesIncidentToEdge0[i];
 	}
 

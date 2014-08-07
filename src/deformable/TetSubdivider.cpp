@@ -216,7 +216,7 @@ TetSubdivider::CUTCASE TetSubdivider::IdentifyCutCase(bool isCutComplete, U8 cut
 	return cutUnknown;
 }
 
-int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, U32 middlePoints[12], bool dosplit) {
+int TetSubdivider::subdivide(U32 idxCell, U8 cutEdgeCode, U8 cutNodeCode, U32 middlePoints[12], bool dosplit) {
 	//Here an element is subdivided to 4 sub elements depending on the codes
 	U8 ctCutEdges = 0;
 	U8 ctCutNodes = 0;
@@ -229,14 +229,14 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 	}
 
 	//report
-	printf("Element: %u, Cut type %c: cutEdgeCode: %u, cutNodeCode: %u\n", element, m_mapCutCaseToAlpha[cutcase], cutEdgeCode, cutNodeCode);
+	printf("Cell: %u, Cut type %c: cutEdgeCode: %u, cutNodeCode: %u\n", idxCell, m_mapCutCaseToAlpha[cutcase], cutEdgeCode, cutNodeCode);
 
 
 	//fill the array of virtual nodes
 	U32 vnodes[16];
 	for(int i=0; i<16; i++)
 		vnodes[i] = BaseHandle::INVALID;
-	const CELL& tet = m_lpHEMesh->cellAt(element);
+	const CELL& tet = m_lpHEMesh->cellAt(idxCell);
 
 	//1st 4 nodes come from the original element
 	for(int i=0; i<4; i++)
@@ -262,7 +262,7 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 	//Case A: 3 cut edges. cutEdgeCodes = { 11, 22, 37, 56 }
 	if(cutcase == cutA) {
 		//Remove the original element
-		m_lpHEMesh->remove_cell_core(element);
+		m_lpHEMesh->schedule_remove_cell(idxCell);
 
 		//find the local table entry to handle this case A
 		int entry = m_mapCutEdgeCodeToTableEntry[cutEdgeCode];
@@ -303,7 +303,7 @@ int TetSubdivider::subdivide(U32 element, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 	//Case B: 4 cut edges. cutEdgeCodes = { 46, 51, 29 }
 	else if(cutcase == cutB) {
 		//Remove the original element
-		m_lpHEMesh->remove_cell_core(element);
+		m_lpHEMesh->schedule_remove_cell(idxCell);
 
 		//find the local table entry to handle this case B
 		int entry = m_mapCutEdgeCodeToTableEntry[cutEdgeCode];
