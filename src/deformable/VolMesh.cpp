@@ -617,10 +617,12 @@ void VolMesh::remove_edge_core(U32 idxEdge) {
 	set<U32> update_cells;
 	get_incident_cells(update_faces, update_cells);
 
-	for (std::set<U32>::iterator c_it = update_cells.begin(), c_end =
-			update_cells.end(); c_it != c_end; ++c_it) {
+//	for (std::set<U32>::iterator c_it = update_cells.begin(), c_end =
+//			update_cells.end(); c_it != c_end; ++c_it) {
 
-		CELL& cell = cellAt(*c_it);
+	for(U32 idxCell = 0; idxCell < countCells(); idxCell++)
+	{
+		CELL& cell = cellAt(idxCell);
 
 		//decrement edge handles greater than idxEdge
 		for (U32 i = 0; i < COUNT_CELL_EDGES; i++) {
@@ -630,9 +632,12 @@ void VolMesh::remove_edge_core(U32 idxEdge) {
 				cell.edges[i] --;
 		}
 
-		m_vCells[*c_it] = cell;
-	}
+		m_vCells[idxCell] = cell;
 
+		if(!test_cell_topology(idxCell)) {
+			printf("CELL TOPOLOGY is broken as part of the edge removal! CELL: %u\n", idxCell);
+		}
+	}
 
 
 
@@ -878,6 +883,9 @@ U32 VolMesh::insert_face(U32 nodes[3]) {
 
 void VolMesh::garbage_collection() {
 
+
+	printCellInfo();
+
 	//acquire lock to mesh
 
 	std::set<U32> setToBeRemoved;
@@ -899,7 +907,9 @@ void VolMesh::garbage_collection() {
 	//2. identify unused edges and remove them
 	setToBeRemoved.clear();
 
-/*
+	for(U32 i = 0; i < countCells(); i++)
+		assert(test_cell_topology(i));
+
 	for(U32 i = 0; i < countEdges(); i++) {
 		if(m_incident_faces_per_edge[i].size() == 0) {
 			setToBeRemoved.insert(i);
@@ -909,7 +919,6 @@ void VolMesh::garbage_collection() {
 
 	//remove batch of edges in increasing index order
 	remove_edges(setToBeRemoved);
-	*/
 	U32 ctRemovedEdges = setToBeRemoved.size();
 
 
@@ -936,6 +945,7 @@ void VolMesh::garbage_collection() {
 				ctRemovedFaces, ctRemovedEdges, ctRemovedNodes);
 
 	//release lock
+	printCellInfo();
 }
 
 bool VolMesh::getFaceNodes(U32 idxFace, U32 (&nodes)[3]) const {
@@ -1267,6 +1277,54 @@ bool VolMesh::cut_edge(int idxEdge, double distance, U32* poutIndexNP0, U32* pou
 
 	if(poutIndexNP1)
 		*poutIndexNP1 = idxNP1;
+
+	return true;
+}
+
+bool VolMesh::test_cell_topology(U32 idxCell) {
+	if(!isCellIndex(idxCell))
+		return false;
+
+	const CELL& cell = const_cellAt(idxCell);
+
+	set<U32> setNodes;
+	for(U32 i=0; i < COUNT_CELL_NODES; i++) {
+		if(!isNodeIndex(cell.nodes[i]))
+			return false;
+
+		setNodes.insert(cell.nodes[i]);
+	}
+
+	//check edges
+	set<U32> setEdges;
+	for(U32 i=0; i < COUNT_CELL_EDGES; i++) {
+		setEdges.insert(cell.edges[i]);
+
+		U32 idxFrom = from_node(cell.edges[i]);
+		U32 idxTo = to_node(cell.edges[i]);
+
+		if(setNodes.find(idxFrom) == setNodes.end()) {
+			printf("TEST: Edge from node is not part of cell. Cell: %u, Edge: %u, From: %u\n", idxCell, cell.edges[i], idxFrom);
+			return false;
+		}
+
+		if(setNodes.find(idxTo) == setNodes.end()) {
+			printf("TEST: Edge to node is not part of cell. Cell: %u, Edge: %u, To: %u\n", idxCell, cell.edges[i], idxTo);
+			return false;
+		}
+	}
+
+	//check faces
+	for(U32 i=0; i < COUNT_CELL_FACES; i++) {
+		const FACE& face = const_faceAt(cell.faces[i]);
+
+		for(U32 j = 0; j < COUNT_FACE_EDGES; j++) {
+			if(setEdges.find(face.edges[j]) == setEdges.end()) {
+				printf("TEST: The edge of the face is not part of the cell. Cell: %u, Face: %u, Edge: %u\n", idxCell, cell.faces[i], face.edges[j]);
+				return false;
+			}
+		}
+	}
 
 	return true;
 }

@@ -220,7 +220,7 @@ private:
 	int get_incident_edges(const ContainerT& in_nodes, set<U32>& out_edges);
 
 
-
+	bool test_cell_topology(U32 idxCell);
 protected:
 	U32 m_elemToShow;
 
