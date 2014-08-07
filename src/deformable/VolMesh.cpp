@@ -960,8 +960,8 @@ bool VolMesh::getFaceNodes(U32 idxFace, U32 (&nodes)[3]) const {
 
 	std::set<U32> setFaceNodes;
 	for(int i=0; i < 3; i++) {
-		setFaceNodes.insert(from_node(face.edges[i]));
-		setFaceNodes.insert(to_node(face.edges[i]));
+		setFaceNodes.insert(edge_from_node(face.edges[i]));
+		setFaceNodes.insert(edge_to_node(face.edges[i]));
 	}
 
 	int i = 0;
@@ -1011,6 +1011,35 @@ const FACE& VolMesh::const_faceAt(U32 i) const {
 const EDGE& VolMesh::const_edgeAt(U32 i) const {
 	assert(isEdgeIndex(i));
 	return m_vEdges[i];
+}
+
+U32 VolMesh::edge_from_node(U32 idxEdge) const {
+	assert(isEdgeIndex(idxEdge));
+	return m_vEdges[idxEdge].from;
+}
+
+U32 VolMesh::edge_to_node(U32 idxEdge) const {
+	assert(isEdgeIndex(idxEdge));
+	return m_vEdges[idxEdge].to;
+}
+
+U32 VolMesh::get_node_neighbors(U32 idxNode, vector<U32>& nbors) const {
+	assert(isNodeIndex(idxNode));
+
+	vector<U32> edges;
+	edges.assign(m_incident_edges_per_node[idxNode].begin(), m_incident_edges_per_node[idxNode].end());
+
+	nbors.reserve(edges.size());
+	for(U32 i=0; i < edges.size(); i++) {
+
+		const EDGE& e = const_edgeAt(i);
+		if(e.from == idxNode)
+			nbors.push_back(e.to);
+		else if(e.to == idxNode)
+			nbors.push_back(e.from);
+	}
+
+	return nbors.size();
 }
 
 const NODE& VolMesh::const_nodeAt(U32 i) const {
@@ -1250,8 +1279,8 @@ bool VolMesh::cut_edge(int idxEdge, double distance, U32* poutIndexNP0, U32* pou
 	if(!isEdgeIndex(idxEdge))
 		return false;
 
-	U32 from = from_node(idxEdge);
-	U32 to = to_node(idxEdge);
+	U32 from = edge_from_node(idxEdge);
+	U32 to = edge_to_node(idxEdge);
 
 	const NODE& p0 = const_nodeAt(from);
 	const NODE& p1 = const_nodeAt(to);
@@ -1304,8 +1333,8 @@ bool VolMesh::test_cell_topology(U32 idxCell) {
 	for(U32 i=0; i < COUNT_CELL_EDGES; i++) {
 		setEdges.insert(cell.edges[i]);
 
-		U32 idxFrom = from_node(cell.edges[i]);
-		U32 idxTo = to_node(cell.edges[i]);
+		U32 idxFrom = edge_from_node(cell.edges[i]);
+		U32 idxTo = edge_to_node(cell.edges[i]);
 
 		if(setNodes.find(idxFrom) == setNodes.end()) {
 			printf("TEST: Edge from node is not part of cell. Cell: %u, Edge: %u, From: %u\n", idxCell, cell.edges[i], idxFrom);
