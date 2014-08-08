@@ -68,7 +68,7 @@ void CuttableMesh::draw() {
 
 	drawBBox();
 
-	//draw tetmesh
+	//draw volmesh
 	VolMesh::draw();
 
 	//draw cut context
@@ -83,8 +83,11 @@ void CuttableMesh::draw() {
 			glLineWidth(6.0f);
 			glBegin(GL_LINES);
 				for(CUTEDGEITER it = m_mapCutEdges.begin(); it != m_mapCutEdges.end(); ++it) {
-					glVertex3dv(it->second.e0.cptr());
-					glVertex3dv(it->second.e1.cptr());
+					U32 from = edge_from_node(it->first);
+					U32 to = edge_to_node(it->first);
+
+					glVertex3dv(const_nodeAt(from).pos.cptr());
+					glVertex3dv(const_nodeAt(to).pos.cptr());
 				}
 			glEnd();
 
@@ -164,15 +167,11 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 			CutEdge ce;
 			ce.pos = xyz;
 			ce.uvw = uvw;
-			ce.e0 = ss0;
-			ce.e1 = ss1;
 			ce.t = t;
-			ce.from = e.from;
-			ce.to = e.to;
 
 			//test
-			vec3d temp = ce.e0 + (ce.e1 - ce.e0).normalized() * ce.t;
-			assert( (ce.pos - temp).length() < EPSILON);
+			vec3d temp = ss0 + (ss1 - ss0).normalized() * t;
+			assert( (xyz - temp).length() < EPSILON);
 
 			//add to cut edges map
 			mapTempCutEdges.insert( std::make_pair(i, ce));
@@ -191,8 +190,9 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	//detect all cut-nodes and remove the cut-edges that emanate from a cut-node
 	for(CUTEDGEITER it = mapTempCutEdges.begin(); it != mapTempCutEdges.end(); ++it ) {
 
-		ss0 = it->second.e0;
-		ss1 = it->second.e1;
+		const EDGE& cutedge = const_edgeAt(it->first);
+		ss0 = const_nodeAt(cutedge.from).pos;
+		ss1 = const_nodeAt(cutedge.to).pos;
 		double d0 = pointLineDistance(blade0, blade1, edgelen2, ss0);
 		double d1 = pointLineDistance(blade0, blade1, edgelen2, ss1);
 		double denom = (ss1 - ss0).length();
@@ -208,8 +208,8 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 		//If the start of edge is close to the swept surface remove all incident edges from Ec
 		if(d0 < d1 && t < roi) {
 			CutNode cn;
-			cn.idxNode = it->second.from;
-			cn.pos = it->second.e0;
+			cn.idxNode = cutedge.from;
+			cn.pos = ss0;
 			m_mapCutNodes.insert( std::pair<U32, CutNode>(cn.idxNode, cn) );
 
 			//iterate over all incident edges
@@ -224,8 +224,8 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 		//If the end of edge close to the swept surface remove all incident edges from Ec
 		else if(d0 > d1 && t < roi) {
 			CutNode cn;
-			cn.idxNode = it->second.to;
-			cn.pos = it->second.e1;
+			cn.idxNode = cutedge.to;
+			cn.pos = ss1;
 			m_mapCutNodes.insert( std::pair<U32, CutNode>(cn.idxNode, cn) );
 
 			//iterate over all incident edges
@@ -393,12 +393,6 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	//Return number of tets cut
 	return ctCutTet;
 }
-
-void CuttableMesh::displace(double * u) {
-	this->displace(u);
-	m_aabb = this->aabb();
-}
-
 
 vec3d CuttableMesh::vertexRestPosAt(U32 i) const {
 	return this->const_nodeAt(i).restpos;
