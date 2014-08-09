@@ -110,8 +110,8 @@ public:
 	inline U32 countNodes() const {return m_vNodes.size();}
 
 	//edge-wise funcs
-	inline U32 edge_from_node(U32 idxEdge) const;
-	inline U32 edge_to_node(U32 idxEdge) const;
+	U32 edge_from_node(U32 idxEdge) const;
+	U32 edge_to_node(U32 idxEdge) const;
 
 	U32 get_node_neighbors(U32 idxNode, vector<U32>& nbors) const;
 

@@ -83,8 +83,8 @@ void CuttableMesh::draw() {
 			glLineWidth(6.0f);
 			glBegin(GL_LINES);
 				for(CUTEDGEITER it = m_mapCutEdges.begin(); it != m_mapCutEdges.end(); ++it) {
-					U32 from = edge_from_node(it->first);
-					U32 to = edge_to_node(it->first);
+					U32 from = VolMesh::edge_from_node(it->first);
+					U32 to = VolMesh::edge_to_node(it->first);
 
 					glVertex3dv(const_nodeAt(from).pos.cptr());
 					glVertex3dv(const_nodeAt(to).pos.cptr());
