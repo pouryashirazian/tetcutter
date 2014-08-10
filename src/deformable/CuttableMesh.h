@@ -14,6 +14,7 @@
 #include "TetSubdivider.h"
 #include "base/Vec.h"
 
+#define CUTNODE_MAX_DIST_PERCENTAGE 0.2
 
 using namespace PS::MATH;
 using namespace PS::MESH;
