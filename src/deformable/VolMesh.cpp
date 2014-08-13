@@ -69,6 +69,9 @@ VolMesh::VolMesh(const VolMesh& other) {
 		elements[i * 4 + 3] = elem.nodes[3];
 	}
 
+	//setname
+	this->setName(other.name());
+
 	setup(vertices, elements);
 }
 
@@ -220,16 +223,30 @@ void VolMesh::printInfo() const {
 	printCellInfo();
 }
 
-double VolMesh::computeDeterminant(U32 idxNodes[4]) const {
+double VolMesh::computeCellDeterminant(U32 idxCell) const {
 	vec3d v[4];
-
+	const CELL& cell = const_cellAt(idxCell);
 	for(int i=0; i<4; i++)
-		v[i] = const_nodeAt(i).pos;
+		v[i] = const_nodeAt(cell.nodes[i]).pos;
 	return ComputeCellDeterminant(v);
 }
 
+double VolMesh::computeCellVolume(U32 idxCell) const {
+	vec3d v[4];
+	const CELL& cell = const_cellAt(idxCell);
+	for(int i=0; i<4; i++)
+		v[i] = const_nodeAt(cell.nodes[i]).pos;
+	return ComputeCellVolume(v);
+}
+
+
 double VolMesh::ComputeCellDeterminant(const vec3d v[4]) {
 	return	vec3d::dot(v[1] - v[0], vec3d::cross(v[2] - v[0], v[3] - v[0]));
+}
+
+double VolMesh::ComputeCellVolume(const vec3d v[4]) {
+	// volume = 1/6 * | (a-d) . ((b-d) x (c-d)) |
+	return (1.0 / 6.0) * fabs ( vec3d::dot(v[0] - v[3], vec3d::cross(v[1] - v[3], v[2] - v[3])));
 }
 
 //add/remove
@@ -1032,7 +1049,7 @@ void VolMesh::displace(U32 countDegreesOfFreedom, const double * u) {
 	}
 
 	for(U32 i=0; i < countNodes(); i++) {
-		m_vNodes[i].pos = m_vNodes[i].pos + vec3d(&u[i * 3]);
+		m_vNodes[i].pos = m_vNodes[i].restpos + vec3d(&u[i * 3]);
 	}
 
 	computeAABB();
@@ -1644,6 +1661,9 @@ void VolMesh::drawElement(U32 i) const {
 
 AABB VolMesh::computeAABB() {
 	double vMin[3], vMax[3];
+	vMin[0] = vMin[1] = vMin[2] = GetMaxLimit<double>();
+	vMax[0] = vMax[1] = vMax[2] = GetMinLimit<double>();
+
 	for(U32 i=0; i < countNodes(); i++) {
 		const NODE& n = const_nodeAt(i);
 		vec3d p = n.pos;

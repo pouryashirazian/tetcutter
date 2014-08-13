@@ -82,8 +82,10 @@ public:
 	void printInfo() const;
 
 	//Determinant
-	double computeDeterminant(U32 idxNodes[4]) const;
+	double computeCellDeterminant(U32 idxCell) const;
+	double computeCellVolume(U32 idxCell) const;
 	static double ComputeCellDeterminant(const vec3d v[4]);
+	static double ComputeCellVolume(const vec3d v[4]);
 
 	//Index control
 	inline bool isCellIndex(U32 i) const { return (i < m_vCells.size());}

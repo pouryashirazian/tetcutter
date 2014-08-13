@@ -34,6 +34,7 @@ VolMesh* VolMeshSamples::CreateOneTetra() {
 	elements[3] = 3;
 
 	VolMesh* tet = new VolMesh(vertices, elements);
+	tet->setName("onetet");
 	return tet;
 }
 
@@ -59,6 +60,7 @@ VolMesh* VolMeshSamples::CreateTwoTetra() {
 	}
 
 	VolMesh* tet = new VolMesh(vFlatVertices, vFlatElements);
+	tet->setName("twotets");
 	return tet;
 }
 
@@ -121,5 +123,6 @@ VolMesh* VolMeshSamples::CreateTruthCube(int nx, int ny, int nz, double cellsize
 	FlattenVec4<U32>(elements, vFlatElements);
 
 	VolMesh* cube = new VolMesh(vFlatVertices, vFlatElements);
+	cube->setName("truthcube");
 	return cube;
 }

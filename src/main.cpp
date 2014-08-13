@@ -73,6 +73,10 @@ void MouseWheel(int button, int dir, int x, int y)
 	glutPostRedisplay();
 }
 
+void SaveAsObj() {
+
+}
+
 void NormalKey(unsigned char key, int x, int y)
 {
 	switch(key)
@@ -160,6 +164,14 @@ void NormalKey(unsigned char key, int x, int y)
 		TheSceneGraph::Instance().camera().incrZoom(-0.5f);
 	}
 	break;
+	case('w'):{
+
+		AnsiStr strPath = printToAStr("%s.veg", g_lpTissue->name().c_str());
+		if(g_lpTissue->writeVegaFormat(strPath))
+			LogInfoArg1("Stored the mesh at: %s", strPath.cptr());
+	}
+	break;
+
 
 	case(27):
 	{
@@ -301,7 +313,9 @@ void resetMesh() {
 	TheSceneGraph::Instance().remove("tets");
 	SAFE_DELETE(g_lpTissue);
 
-	VolMesh* temp = PS::MESH::VolMeshSamples::CreateTwoTetra();
+	//VolMesh* temp = PS::MESH::VolMeshSamples::CreateTwoTetra();
+	VolMesh* temp = PS::MESH::VolMeshSamples::CreateTruthCube(4, 4, 4, 0.5);
+
 	//create a scalpel
 	//g_lpTissue = CuttableMesh::CreateTruthCube(8, 4, 4, 0.5);
 	//g_lpTissue = CuttableMesh::CreateOneTetra();
