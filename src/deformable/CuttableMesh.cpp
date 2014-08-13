@@ -144,9 +144,6 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	vec3d tri1[3] = {sweptSurface[0], sweptSurface[1], sweptSurface[2]};
 	vec3d tri2[3] = {sweptSurface[0], sweptSurface[2], sweptSurface[3]};
 
-	//Radios of Influence in percent
-	const double roi = 0.2;
-
 	//Swept Surf
 	printf("SWEPT SURF[0]: %.3f, %.3f, %.3f\n", sweptSurface[0].x, sweptSurface[0].y, sweptSurface[0].z);
 	printf("SWEPT SURF[2]: %.3f, %.3f, %.3f\n", sweptSurface[2].x, sweptSurface[2].y, sweptSurface[2].z);
@@ -183,8 +180,8 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	vec3d blade0 = bladePath0[bladePath0.size() - 1];
 	vec3d blade1 = bladePath1[bladePath1.size() - 1];
 	const double edgelen2 = (blade1 - blade0).length2();
+	U32 ctRemovedCutEdges = 0;
 
-	int ctRemovedCutEdges = 0;
 	m_mapCutNodes.clear();
 
 	//detect all cut-nodes and remove the cut-edges that emanate from a cut-node
@@ -206,7 +203,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 			t = (it->second.pos - ss1).length() / denom;
 
 		//If the start of edge is close to the swept surface remove all incident edges from Ec
-		if(d0 < d1 && t < roi) {
+		if(d0 < d1 && t < CUTNODE_MAX_DIST_PERCENTAGE) {
 			CutNode cn;
 			cn.idxNode = cutedge.from;
 			cn.pos = ss0;
@@ -222,7 +219,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 			}
 		}
 		//If the end of edge close to the swept surface remove all incident edges from Ec
-		else if(d0 > d1 && t < roi) {
+		else if(d0 > d1 && t < CUTNODE_MAX_DIST_PERCENTAGE) {
 			CutNode cn;
 			cn.idxNode = cutedge.to;
 			cn.pos = ss1;
@@ -243,9 +240,9 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	m_mapCutEdges.clear();
 	m_mapCutEdges.insert(mapTempCutEdges.begin(), mapTempCutEdges.end());
 	if(m_mapCutNodes.size() > 0)
-		printf("Cut nodes count %d.\n", (int)m_mapCutNodes.size());
+		printf("Cut nodes count %u.\n", (U32)m_mapCutNodes.size());
 	if(m_mapCutEdges.size() > 0)
-		printf("Cut edges count %d. removed %d\n", (int)m_mapCutEdges.size(), ctRemovedCutEdges);
+		printf("Cut edges count %u. removed %u\n", (U32)m_mapCutEdges.size(), ctRemovedCutEdges);
 
 	//Return if the tool has not left the body
 	if(!modifyMesh)
