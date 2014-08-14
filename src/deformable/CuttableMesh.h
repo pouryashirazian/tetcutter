@@ -14,7 +14,6 @@
 #include "TetSubdivider.h"
 #include "base/Vec.h"
 
-#define CUTNODE_MAX_DIST_PERCENTAGE 0.2
 
 using namespace PS::MATH;
 using namespace PS::MESH;
@@ -89,10 +88,11 @@ public:
 	TetSubdivider* getSubD() const { return m_lpSubD;}
 
 	//splitting
-	bool doSplit() const {return m_doSplit;}
-	void setDoSplit(bool doSplit) { m_doSplit = doSplit;}
+	bool getFlagSplitMeshAfterCut() const {return m_flagSplitMeshAfterCut;}
+	void setFlagSplitMeshAfterCut(bool flag) { m_flagSplitMeshAfterCut = flag;}
 
-
+	bool getFlagDetectCutNodes() const {return m_flagDetectCutNodes;}
+	void setFlagDetectCutNodes(bool flag) { m_flagDetectCutNodes = flag;}
 protected:
 	void setup();
 
@@ -102,7 +102,8 @@ protected:
 private:
 	TetSubdivider* m_lpSubD;
 	int m_ctCompletedCuts;
-	bool m_doSplit;
+	bool m_flagSplitMeshAfterCut;
+	bool m_flagDetectCutNodes;
 
 	//Cut Nodes
 	std::map<U32, CutNode > m_mapCutNodes;

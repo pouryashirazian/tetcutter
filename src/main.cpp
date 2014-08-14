@@ -259,8 +259,8 @@ void SpecialKey(int key, int x, int y)
 
 		case(GLUT_KEY_F7):
 		{
-			g_lpTissue->setDoSplit(!g_lpTissue->doSplit());
-			LogInfoArg1("Tissue splitting is set to: %d", g_lpTissue->doSplit());
+			g_lpTissue->setFlagSplitMeshAfterCut(!g_lpTissue->getFlagSplitMeshAfterCut());
+			LogInfoArg1("Tissue splitting is set to: %d", g_lpTissue->getFlagSplitMeshAfterCut());
 			break;
 		}
 
@@ -314,7 +314,10 @@ void resetMesh() {
 	SAFE_DELETE(g_lpTissue);
 
 	//VolMesh* temp = PS::MESH::VolMeshSamples::CreateTwoTetra();
-	VolMesh* temp = PS::MESH::VolMeshSamples::CreateTruthCube(4, 4, 4, 0.5);
+	//VolMesh* temp = PS::MESH::VolMeshSamples::CreateTruthCube(4, 4, 4, 0.5);
+	//VolMesh* temp = PS::MESH::VolMeshSamples::CreateTruthCube(2, 2, 2, 2.0);
+	VolMesh* temp = PS::MESH::VolMeshSamples::CreateOneTetra();
+	//VolMesh* temp = PS::MESH::VolMeshSamples::CreateTwoTetra();
 
 	//create a scalpel
 	//g_lpTissue = CuttableMesh::CreateTruthCube(8, 4, 4, 0.5);
@@ -331,15 +334,13 @@ void runTestSubDivide(int current) {
 	resetMesh();
 
 	//subdivide tet
-	double tEdges[6];
 	U8 cutEdgeCode, cutNodeCode = 0;
 
 	if(g_cutCase == 0)
-		g_lpTissue->getSubD()->generateCaseA(0, current, 0.4, cutEdgeCode, cutNodeCode, tEdges);
+		g_lpTissue->getSubD()->generateCaseA(0, current, 0.4, cutEdgeCode, cutNodeCode);
 	else if(g_cutCase == 1)
-		g_lpTissue->getSubD()->generateCaseB(0, current, cutEdgeCode, cutNodeCode, tEdges);
-
-	//g_lpTetMesh->getSubD()->subdivide(0, cutEdgeCode, cutNodeCode, tEdges);
+		g_lpTissue->getSubD()->generateCaseB(0, current, cutEdgeCode, cutNodeCode);
+	g_lpTissue->garbage_collection();
 }
 
 int main(int argc, char* argv[]) {

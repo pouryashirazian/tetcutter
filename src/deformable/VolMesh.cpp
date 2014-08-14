@@ -22,6 +22,7 @@
 #include <iterator>
 #include <map>
 #include <set>
+#include <stack>
 #include <utility>
 #include <vector>
 
@@ -68,9 +69,6 @@ VolMesh::VolMesh(const VolMesh& other) {
 		elements[i * 4 + 2] = elem.nodes[2];
 		elements[i * 4 + 3] = elem.nodes[3];
 	}
-
-	//setname
-	this->setName(other.name());
 
 	setup(vertices, elements);
 }
@@ -699,6 +697,67 @@ void VolMesh::remove_node_core(U32 idxNode) {
 	//3. delete vertex
 	m_vNodes.erase(m_vNodes.begin() + idxNode);
 
+}
+
+int VolMesh::get_disjoint_parts(vector<vector<U32>>& parts) {
+
+	std::set<U32> setCells;
+
+	for(U32 i=0; i < m_vCells.size(); i++)
+		setCells.insert(i);
+
+	while(setCells.size() > 0) {
+
+		set<U32> curPart;
+
+		std::stack<U32> stkCurrentCells;
+		stkCurrentCells.push(* setCells.begin());
+
+		while(stkCurrentCells.size() > 0) {
+			U32 idxCell = stkCurrentCells.top();
+
+			//remove from local stack
+			stkCurrentCells.pop();
+
+			//remove from global set of cells
+			setCells.erase(idxCell);
+
+			//add to mesh parts
+			curPart.insert(idxCell);
+
+			//current cell
+			const CELL& cell = const_cellAt(idxCell);
+
+			set<U32> setCurFaces;
+			for(U32 i=0; i < 4; i++)
+				setCurFaces.insert(cell.faces[i]);
+
+			set<U32> incidentCells;
+			if(get_incident_cells(setCurFaces, incidentCells) > 0) {
+				for(set<U32>::const_iterator it = incidentCells.begin(); it != incidentCells.end(); it++) {
+					if((*it != idxCell) && curPart.find(*it) == curPart.end()) {
+
+						//check of *it has shared faces with idxCell
+						const CELL& cellB = const_cellAt(*it);
+						int ctSharedFaces = 0;
+						for(U32 i=0; i < 4; i++) {
+							if(setCurFaces.find( cellB.faces[i] ) != setCurFaces.end())
+								ctSharedFaces++;
+						}
+
+						if(ctSharedFaces > 0)
+							stkCurrentCells.push(*it);
+					}
+				}
+			}
+		}
+
+		//push back part to cells
+		vector<U32> vCurPart(curPart.begin(), curPart.end());
+		parts.push_back(vCurPart);
+	}
+
+	return parts.size();
 }
 
 void VolMesh::schedule_remove_cell(U32 idxCell) {
@@ -1687,6 +1746,7 @@ AABB VolMesh::computeAABB() {
 	//set AABB
 	m_aabb.set(vec3f((float)vMin[0], (float)vMin[1], (float)vMin[2]),
 			   vec3f((float)vMax[0], (float)vMax[1], (float)vMax[2]));
+	m_aabb.expand(1.0);
 	return m_aabb;
 }
 

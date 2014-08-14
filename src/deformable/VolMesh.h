@@ -136,6 +136,9 @@ public:
 	void set_face(U32 idxFace, U32 edges[3]);
 	void set_cell_faces(U32 idxCell, U32 faces[4]);
 
+	//mesh disjoint parts
+	int get_disjoint_parts(vector<vector<U32>>& parts);
+
 	//schedule a cell removal at the next GC
 	void schedule_remove_cell(U32 idxCell);
 

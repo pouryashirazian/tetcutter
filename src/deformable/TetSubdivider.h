@@ -38,7 +38,8 @@ public:
 	static CUTCASE IdentifyCutCase(bool isCutComplete, U8 cutEdgeCode, U8 cutNodeCode);
 	static CUTCASE IdentifyCutCase(bool isCutComplete, U8 cutEdgeCode, U8 cutNodeCode, U8& countCutEdges, U8& countCutNodes);
 
-	int subdivide(U32 idxCell, U8 cutEdgeCode, U8 cutNodeCode, U32 middlePoints[12], bool dosplit = true);
+	int subdivide(U32 idxCell, U8 cutEdgeCode, U8 cutNodeCode,
+				  U32 middlePoints[12], vec3d sweptSurf[4], bool dosplit = true);
 
 
 
@@ -50,7 +51,7 @@ public:
 	 * @cutEdgeCode: output cutedge code
 	 */
 	int generateCaseA(U32 idxCell, U8 node, double targetDistPercentage,
-					  U8& cutEdgeCode, U8& cutNodeCode, double (&tEdges)[6]);
+					  U8& cutEdgeCode, U8& cutNodeCode);
 
 	/*!
 	 * \brief generates case B where an element is sliced into two sections by cutting its 4 edges.
@@ -62,7 +63,7 @@ public:
 	 * @tEdges: the distance over the edges where the cuts are happening
 	 */
 	int generateCaseB(U32 idxCell, U8 enteringface, U8& cutEdgeCode,
-					  U8& cutNodeCode, double (&tEdges)[6]);
+					  U8& cutNodeCode);
 
 
 	bool writeLookUpTable();
