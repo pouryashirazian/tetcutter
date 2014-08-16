@@ -315,8 +315,8 @@ void resetMesh() {
 
 	//VolMesh* temp = PS::MESH::VolMeshSamples::CreateTwoTetra();
 	//VolMesh* temp = PS::MESH::VolMeshSamples::CreateTruthCube(4, 4, 4, 0.5);
-	//VolMesh* temp = PS::MESH::VolMeshSamples::CreateTruthCube(2, 2, 2, 2.0);
-	VolMesh* temp = PS::MESH::VolMeshSamples::CreateOneTetra();
+	VolMesh* temp = PS::MESH::VolMeshSamples::CreateTruthCube(2, 2, 2, 2.0);
+	//VolMesh* temp = PS::MESH::VolMeshSamples::CreateOneTetra();
 	//VolMesh* temp = PS::MESH::VolMeshSamples::CreateTwoTetra();
 
 	//create a scalpel
@@ -332,6 +332,9 @@ void resetMesh() {
 
 void runTestSubDivide(int current) {
 	resetMesh();
+
+	if(g_lpTissue->countCells() > 1)
+		return;
 
 	//subdivide tet
 	U8 cutEdgeCode, cutNodeCode = 0;
