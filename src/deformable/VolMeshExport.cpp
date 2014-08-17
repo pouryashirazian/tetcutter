@@ -133,10 +133,10 @@ bool VolMeshIO::readVega(VolMesh* vm, const AnsiStr& strPath) {
 				U32 row = atoi(arrWords[0].cptr()) - 1;
 				assert(row == idxElement);
 
-				e.x = atoi(arrWords[1].cptr());
-				e.y = atoi(arrWords[2].cptr());
-				e.z = atoi(arrWords[3].cptr());
-				e.w = atoi(arrWords[4].cptr());
+				e.x = atoi(arrWords[1].cptr()) - 1;
+				e.y = atoi(arrWords[2].cptr()) - 1;
+				e.z = atoi(arrWords[3].cptr()) - 1;
+				e.w = atoi(arrWords[4].cptr()) - 1;
 			}
 
 			//add element to the array
