@@ -98,11 +98,13 @@ public:
      */
     Resource get(const char* name) const {
         CONST_ITER it = m_hash.find(string(name));
-        if(it != m_hash.end())
-            return it->second;
+        if(it != m_hash.end()) {
+        	return it->second;
+        }
         else {
             PolicyErrorLogging::LogArg1("Requested resource not found! name = %s", name);
-            return (0);
+            Resource empty;
+            return empty;
         }
     }
 
@@ -111,7 +113,7 @@ public:
     }
 
 
-    bool set(const char* name, Resource element) {
+    bool set(const char* name, const Resource& element) {
         ITER it = m_hash.find(string(name));
         if(it != m_hash.end())
             it->second = element;
@@ -125,7 +127,7 @@ public:
      * \param element
      * \param name
      */
-    bool add(Resource element, const char* name) {
+    bool add(const Resource& element, const char* name) {
         
         if(has(name)) {
             PolicyErrorLogging::LogArg1("Another resource with the same name is stored! Policy: %s", allowDuplicates? "ALLOWED" : "NOT ALLOWED");
@@ -163,6 +165,11 @@ public:
     ITER begin() {return m_hash.begin();}
     ITER end()  {return m_hash.end();}
 
+
+    //Operator to access hash content
+    Resource operator[](const char* name) {
+    	return this->get(name);
+    }
 protected:
      std::unordered_map<string, Resource > m_hash;
 };

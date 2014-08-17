@@ -81,8 +81,36 @@ namespace PS {
             
             value_type held;
         };
-        
-       
+
+		//Partial Specialization for vec2f
+		template<>
+		class holder<AnsiStr> : public placeholder {
+		public:
+			holder(const AnsiStr& str) :
+					held(str) {
+			}
+
+			std::string toString() const {
+				char buffer[1024];
+				sprintf(buffer, "%s", held.cptr());
+				return string(buffer);
+			}
+
+			void fromString(const string& s) {
+				held = AnsiStr(s.c_str());
+			}
+
+			const std::type_info& type_info() const {
+				return typeid(AnsiStr);
+			}
+
+			placeholder* clone() const {
+				return new holder(held);
+			}
+
+			AnsiStr held;
+		};
+
         //Partial Specialization for vec2f
         template <>
         class holder<vec2f> : public placeholder {

@@ -89,6 +89,9 @@ public:
 	int addNormal(const vec3f& n);
 	int addTexCoord2(const vec2f& t);
 	int addTexCoord3(const vec3f& t);
+
+	void addTriangle(U32 tri[3]);
+	void addQuad(U32 quad[4]);
 	void addFaceIndex(U32 index);
 	void setFaceIndices(const vector<U32>& arrFaces, int unitFace);
 

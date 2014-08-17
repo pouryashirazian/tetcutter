@@ -393,6 +393,16 @@ int MeshNode::addTexCoord3(const vec3f& t)
 	return (int)countTexCoords() - 1;
 }
 
+void MeshNode::addTriangle(U32 tri[3]) {
+	for(int i=0; i < 3; i++)
+		m_arrIndices.push_back(tri[i]);
+}
+
+void MeshNode::addQuad(U32 quad[4]) {
+	for(int i=0; i < 4; i++)
+		m_arrIndices.push_back(quad[i]);
+}
+
 void MeshNode::addFaceIndex(U32 index)
 {
 	m_arrIndices.push_back(index);
@@ -764,7 +774,7 @@ bool Mesh::store(const char* chrFilePath) {
 		}
 
 		//Normals
-		for(U32 i=0; i < lpNode->countVertices(); i++) {
+		for(U32 i=0; i < lpNode->countNormals(); i++) {
 
 			vec3f n = lpNode->getNormal(i);
 			fp << "vn " << n.x << " " << n.y << " " << n.z << endl;

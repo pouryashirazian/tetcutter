@@ -6,6 +6,8 @@
 #include <functional>
 #include "base/FileDirectory.h"
 #include "base/Logger.h"
+#include "base/CmdLineParser.h"
+
 #include "graphics/SceneGraph.h"
 #include "graphics/Gizmo.h"
 #include "graphics/AppScreen.h"
@@ -14,6 +16,7 @@
 #include "deformable/AvatarScalpel.h"
 #include "deformable/TetSubdivider.h"
 #include "deformable/VolMeshSamples.h"
+#include "deformable/VolMeshExport.h"
 
 using namespace PS;
 using namespace PS::SG;
@@ -24,7 +27,7 @@ using namespace std;
 
 AvatarScalpel* g_lpScalpel = NULL;
 CuttableMesh* g_lpTissue = NULL;
-
+AnsiStr g_strFilePath;
 U32 g_current = 3;
 U32 g_cutCase = 0;
 
@@ -165,10 +168,23 @@ void NormalKey(unsigned char key, int x, int y)
 	}
 	break;
 	case('w'):{
+		AnsiStr strRoot = ExtractOneLevelUp(ExtractFilePath(GetExePath()));
+		AnsiStr strOutput = strRoot + "data/output/";
+		AnsiStr strVegOutput = strOutput + printToAStr("%s_cuts%d.veg",
+									  g_lpTissue->name().c_str(),
+									  g_lpTissue->countCompletedCuts());
 
-		AnsiStr strPath = printToAStr("%s.veg", g_lpTissue->name().c_str());
-		if(g_lpTissue->writeVegaFormat(strPath))
-			LogInfoArg1("Stored the mesh at: %s", strPath.cptr());
+		AnsiStr strObjOutput = strOutput + printToAStr("%s_cuts%d.obj",
+									  g_lpTissue->name().c_str(),
+									  g_lpTissue->countCompletedCuts());
+
+		LogInfoArg1("Attempt to store at %s. Make sure all the required directories are present!", strVegOutput.cptr());
+		if(VolMeshIO::writeVega(g_lpTissue, strVegOutput))
+			LogInfoArg1("Stored the mesh at: %s", strVegOutput.cptr());
+
+		LogInfoArg1("Attempt to store at %s. Make sure all the required directories are present!", strObjOutput.cptr());
+		if(VolMeshIO::writeObj(g_lpTissue, strObjOutput))
+			LogInfoArg1("Stored the mesh at: %s", strObjOutput.cptr());
 	}
 	break;
 
@@ -313,15 +329,22 @@ void resetMesh() {
 	TheSceneGraph::Instance().remove("tets");
 	SAFE_DELETE(g_lpTissue);
 
-	//VolMesh* temp = PS::MESH::VolMeshSamples::CreateTwoTetra();
-	//VolMesh* temp = PS::MESH::VolMeshSamples::CreateTruthCube(4, 4, 4, 0.5);
-	VolMesh* temp = PS::MESH::VolMeshSamples::CreateTruthCube(2, 2, 2, 2.0);
-	//VolMesh* temp = PS::MESH::VolMeshSamples::CreateOneTetra();
-	//VolMesh* temp = PS::MESH::VolMeshSamples::CreateTwoTetra();
+	VolMesh* temp = NULL;
+	if(FileExists(g_strFilePath)) {
+		temp = new PS::MESH::VolMesh();
+		bool res = PS::MESH::VolMeshIO::readVega(temp, g_strFilePath);
+		if(!res)
+			LogErrorArg1("Unable to load mesh from: %s", g_strFilePath.cptr());
+	}
+	else {
+		//VolMesh* temp = PS::MESH::VolMeshSamples::CreateTwoTetra();
+		//VolMesh* temp = PS::MESH::VolMeshSamples::CreateTruthCube(4, 4, 4, 0.5);
+		temp = PS::MESH::VolMeshSamples::CreateTruthCube(2, 2, 2, 2.0);
+		//VolMesh* temp = PS::MESH::VolMeshSamples::CreateOneTetra();
+		//VolMesh* temp = PS::MESH::VolMeshSamples::CreateTwoTetra();
+	}
 
-	//create a scalpel
-	//g_lpTissue = CuttableMesh::CreateTruthCube(8, 4, 4, 0.5);
-	//g_lpTissue = CuttableMesh::CreateOneTetra();
+
 	g_lpTissue = new CuttableMesh(*temp);
 	SAFE_DELETE(temp);
 
@@ -348,6 +371,18 @@ void runTestSubDivide(int current) {
 
 int main(int argc, char* argv[]) {
 	cout << "Cutting tets" << endl;
+
+	CmdLineParser parser;
+	parser.add_option("input", "[filepath] input file in vega format", Value(AnsiStr("internal")));
+	if(parser.parse(argc, argv) < 0)
+		exit(0);
+
+	//file path
+	g_strFilePath = ExtractFilePath(GetExePath()) + parser.value<AnsiStr>("input");
+	if(FileExists(g_strFilePath))
+		LogInfoArg1("input file: %s.", g_strFilePath.cptr());
+	else
+		g_strFilePath = "";
 
 	//Initialize appidxEdges
 	glutInit(&argc, argv);

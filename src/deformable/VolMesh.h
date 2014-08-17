@@ -182,11 +182,6 @@ public:
 	void setElemToShow(U32 elem = INVALID_INDEX);
 	U32 getElemToShow() const {return m_elemToShow;}
 
-	//serialize
-	bool readVegaFormat(const AnsiStr& strFP);
-	bool writeVegaFormat(const AnsiStr& strFP) const;
-
-
 	//draw
 	void draw();
 	void drawElement(U32 i) const;
