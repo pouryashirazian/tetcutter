@@ -54,6 +54,19 @@ void MousePress(int button, int state, int x, int y)
     TheSceneGraph::Instance().mousePress(button, state, x, y);
     TheGizmoManager::Instance().mousePress(button, state, x, y);
 
+    //left key
+    if(button == GLUT_LEFT_BUTTON && state == 0) {
+		vec3f expand(0.2);
+		Ray ray = TheSceneGraph::Instance().screenToWorldRay(x, y);
+		int idxVertex = g_lpTissue->selectNode(ray);
+
+		//select vertex
+		if (idxVertex >= 0) {
+			LogInfoArg1("Selected Vertex Index = %d ", idxVertex);
+		}
+    }
+
+
 	glutPostRedisplay();
 }
 
@@ -92,6 +105,13 @@ void NormalKey(unsigned char key, int x, int y)
 			g_lpTissue->setElemToShow(--i);
 		else
 			g_lpTissue->setElemToShow(0);
+
+		if(g_lpTissue->isCellIndex(i)) {
+			const CELL& cell = g_lpTissue->const_cellAt(i);
+			AnsiStr strInfo = printToAStr("cell [%u], nodes [%u, %u, %u, %u]",
+										  i, cell.nodes[0], cell.nodes[1], cell.nodes[2], cell.nodes[3]);
+			TheSceneGraph::Instance().headers()->updateHeaderLine("cell", strInfo);
+		}
 	}
 	break;
 
@@ -103,6 +123,13 @@ void NormalKey(unsigned char key, int x, int y)
 			g_lpTissue->setElemToShow(++i);
 		else
 			g_lpTissue->setElemToShow(0);
+
+		if(g_lpTissue->isCellIndex(i)) {
+			const CELL& cell = g_lpTissue->const_cellAt(i);
+			AnsiStr strInfo = printToAStr("cell [%u], nodes [%u, %u, %u, %u]",
+										  i, cell.nodes[0], cell.nodes[1], cell.nodes[2], cell.nodes[3]);
+			TheSceneGraph::Instance().headers()->updateHeaderLine("cell", strInfo);
+		}
 	}
 	break;
 
@@ -337,11 +364,11 @@ void resetMesh() {
 			LogErrorArg1("Unable to load mesh from: %s", g_strFilePath.cptr());
 	}
 	else {
-		//VolMesh* temp = PS::MESH::VolMeshSamples::CreateTwoTetra();
-		//VolMesh* temp = PS::MESH::VolMeshSamples::CreateTruthCube(4, 4, 4, 0.5);
-		temp = PS::MESH::VolMeshSamples::CreateTruthCube(2, 2, 2, 2.0);
-		//VolMesh* temp = PS::MESH::VolMeshSamples::CreateOneTetra();
-		//VolMesh* temp = PS::MESH::VolMeshSamples::CreateTwoTetra();
+		temp = PS::MESH::VolMeshSamples::CreateTwoTetra();
+		//temp = PS::MESH::VolMeshSamples::CreateTruthCube(4, 4, 4, 0.5);
+		//temp = PS::MESH::VolMeshSamples::CreateTruthCube(2, 2, 2, 2.0);
+		//temp = PS::MESH::VolMeshSamples::CreateOneTetra();
+		//temp = PS::MESH::VolMeshSamples::CreateTwoTetra();
 	}
 
 
@@ -434,6 +461,7 @@ int main(int argc, char* argv[]) {
 	//reset cuttable mesh
 	resetMesh();
 
+	TheSceneGraph::Instance().headers()->addHeaderLine("cell", "info");
 	TheSceneGraph::Instance().print();
 
 

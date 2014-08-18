@@ -393,17 +393,8 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	//Perform all tests
 	TestVolMesh::tst_all(this);
 
-	vector<vector<U32>> parts;
-	int ctParts = this->get_disjoint_parts(parts);
-	LogInfoArg1("Mesh cut into %d parts.", ctParts);
-	for(U32 i=0; i < parts.size(); i++) {
-
-		vector<U32> part = parts[i];
-		printf("part [%u] = ", i);
-		for(U32 j=0; j < part.size(); j++ )
-			printf("%u, ", part[j]);
-		printf("\n");
-	}
+	//print mesh parts
+	this->printParts();
 
 	//recompute AABB and expand it to detect cuts
 	m_aabb = this->computeAABB();

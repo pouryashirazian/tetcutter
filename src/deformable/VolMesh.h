@@ -138,6 +138,7 @@ public:
 
 	//mesh disjoint parts
 	int get_disjoint_parts(vector<vector<U32>>& parts);
+	void printParts();
 
 	//schedule a cell removal at the next GC
 	void schedule_remove_cell(U32 idxCell);
@@ -189,6 +190,9 @@ public:
 	//aabb
 	AABB computeAABB();
 
+
+	//selects a node using a ray intersection test
+	int selectNode(const Ray& ray) const;
 private:
 	void init();
 	inline bool insertEdgeIndexToMap(U32 from, U32 to, U32 idxEdge);
@@ -207,16 +211,22 @@ private:
 
 	//incident entities
 	template <class ContainerT>
-	int get_incident_cells(const ContainerT& in_faces, set<U32>& out_cells);
+	int get_incident_cells(const ContainerT& in_faces, set<U32>& out_cells) const;
 
 	template <class ContainerT>
-	int get_incident_faces(const ContainerT& in_edges, set<U32>& out_faces);
+	int get_incident_faces(const ContainerT& in_edges, set<U32>& out_faces) const;
 
 	template <class ContainerT>
-	int get_incident_edges(const ContainerT& in_nodes, set<U32>& out_edges);
+	int get_incident_edges(const ContainerT& in_nodes, set<U32>& out_edges) const;
 
 
 	bool test_cell_topology(U32 idxCell);
+	bool test_cells_topology();
+	bool test_incident_edges();
+	bool test_incident_faces() const;
+	bool test_incident_cells() const;
+
+	bool test_incidents();
 
 protected:
 	//remove core functions

@@ -267,7 +267,7 @@ bool TestVolMesh::tst_all(VolMesh* pmesh) {
 	const U32 maxTest = 4;
 	printf("============================begin mesh tests===========================\n");
 	printf("Test %u of %u\n", ++idxTest, maxTest);
-	tst_report_mesh_info(pmesh);
+	//tst_report_mesh_info(pmesh);
 
 	printf("Test %u of %u\n", ++idxTest, maxTest);
 	tst_correct_elements(pmesh);
