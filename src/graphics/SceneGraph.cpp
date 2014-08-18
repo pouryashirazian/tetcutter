@@ -44,18 +44,25 @@ void SceneGraph::cleanup() {
 	m_vSceneNodes.resize(0);
 }
 
-void SceneGraph::add(SGNode *aNode) {
-	if (aNode != NULL)
-		m_vSceneNodes.push_back(aNode);
+U32 SceneGraph::add(SGNode *aNode) {
+	if(aNode == NULL)
+		return -1;
+
+	m_vSceneNodes.push_back(aNode);
+	return (m_vSceneNodes.size() - 1);
 }
 
-void SceneGraph::remove(U32 index) {
+bool SceneGraph::remove(U32 index) {
+	if(index >= m_vSceneNodes.size())
+		return false;
+
 	m_vSceneNodes.erase(m_vSceneNodes.begin() + index);
+	return true;
 }
 
-bool SceneGraph::remove(const char* name) {
+bool SceneGraph::remove(const string& name) {
 	for (U32 i = 0; i < m_vSceneNodes.size(); i++) {
-		if (m_vSceneNodes[i]->name() == string(name)) {
+		if (m_vSceneNodes[i]->name() == name) {
 			m_vSceneNodes.erase(m_vSceneNodes.begin() + i);
 			return true;
 		}
@@ -64,16 +71,27 @@ bool SceneGraph::remove(const char* name) {
 	return false;
 }
 
-void SceneGraph::addSceneBox(const AABB& box) {
-	SGBox* lpBox = new SGBox(box.lower(), box.upper());
-	lpBox->setName("scenebox");
-	this->add(lpBox);
+bool SceneGraph::remove(const SGNode* pnode) {
+	for (U32 i = 0; i < m_vSceneNodes.size(); i++) {
+		if (m_vSceneNodes[i] == pnode) {
+			m_vSceneNodes.erase(m_vSceneNodes.begin() + i);
+			return true;
+		}
+	}
+
+	return false;
 }
 
-void SceneGraph::addFloor(int rows, int cols, float step) {
+U32 SceneGraph::addSceneBox(const AABB& box) {
+	SGBox* lpBox = new SGBox(box.lower(), box.upper());
+	lpBox->setName("scenebox");
+	return this->add(lpBox);
+}
+
+U32 SceneGraph::addFloor(int rows, int cols, float step) {
 	SGFloor* pFloor = new SGFloor(rows, cols, step);
 	pFloor->setName("floor");
-	this->add(pFloor);
+	return this->add(pFloor);
 }
 
 SGNode* SceneGraph::get(const char* name) const {

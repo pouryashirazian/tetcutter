@@ -71,6 +71,9 @@ VolMesh::VolMesh(const VolMesh& other) {
 	}
 
 	setup(vertices, elements);
+
+	//set the name
+	setName(other.name());
 }
 
 VolMesh::VolMesh(const vector<double>& vertices, const vector<U32>& elements) {

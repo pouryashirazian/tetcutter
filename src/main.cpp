@@ -326,7 +326,7 @@ void handleElementEvent(CELL element, U32 handle, VolMesh::TopologyEvent event) 
 
 void resetMesh() {
 	//remove it from scenegraph
-	TheSceneGraph::Instance().remove("tets");
+	TheSceneGraph::Instance().remove(g_lpTissue);
 	SAFE_DELETE(g_lpTissue);
 
 	VolMesh* temp = NULL;
@@ -348,7 +348,6 @@ void resetMesh() {
 	g_lpTissue = new CuttableMesh(*temp);
 	SAFE_DELETE(temp);
 
-	g_lpTissue->setName("tets");
 	TheSceneGraph::Instance().add(g_lpTissue);
 	g_lpScalpel->setTissue(g_lpTissue);
 }
@@ -370,7 +369,7 @@ void runTestSubDivide(int current) {
 }
 
 int main(int argc, char* argv[]) {
-	cout << "Cutting tets" << endl;
+	cout << "startup" << endl;
 
 	CmdLineParser parser;
 	parser.add_option("input", "[filepath] input file in vega format", Value(AnsiStr("internal")));
@@ -435,6 +434,7 @@ int main(int argc, char* argv[]) {
 	//reset cuttable mesh
 	resetMesh();
 
+	TheSceneGraph::Instance().print();
 
 
 	glutMainLoop();

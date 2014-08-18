@@ -56,11 +56,12 @@ public:
     void timestep();
 
     //Nodes
-    void add(SGNode* aNode);
-    void addSceneBox(const AABB& box);
-    void addFloor(int rows, int cols, float step = 1.0f);
-    void remove(U32 index);
-    bool remove(const char* name);
+    U32 add(SGNode* aNode);
+    U32 addSceneBox(const AABB& box);
+    U32 addFloor(int rows, int cols, float step = 1.0f);
+    bool remove(U32 index);
+    bool remove(const string& name);
+    bool remove(const SGNode* pnode);
 
     U32 count() const {return (U32)m_vSceneNodes.size();}
     SGNode* get(U32 index) const {return m_vSceneNodes[index];}

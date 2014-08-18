@@ -162,6 +162,7 @@ bool VolMeshIO::readVega(VolMesh* vm, const AnsiStr& strPath) {
 
 	//setup mesh
 	vm->cleanup();
+	vm->setName(ExtractFileTitleOnly(strPath).cptr());
 	return vm->setup(vertices, elements);
 }
 
