@@ -452,7 +452,7 @@ void VolMesh::set_cell_faces(U32 idxCell, U32 faces[4]) {
 	assert(isCellIndex(idxCell));
 
 	CELL& cell = cellAt(idxCell);
-	for(int i=0; i<4; i++) {
+	for(int i=0; i<COUNT_CELL_FACES; i++) {
 		m_incident_cells_per_face[ cell.faces[i] ].erase(
 			std::remove(m_incident_cells_per_face[ cell.faces[i] ].begin(),
 						m_incident_cells_per_face[ cell.faces[i] ].end(), idxCell),
@@ -460,12 +460,12 @@ void VolMesh::set_cell_faces(U32 idxCell, U32 faces[4]) {
 	}
 
 	//UPDATE
-	for(int i=0; i<4; i++)
+	for(int i=0; i<COUNT_CELL_FACES; i++)
 		cell.faces[i] = faces[i];
 	m_vCells[idxCell] = cell;
 
 	//add to incident cells per face
-	for(int i=0; i<4; i++)
+	for(int i=0; i<COUNT_CELL_FACES; i++)
 		m_incident_cells_per_face[faces[i]].push_back(idxCell);
 }
 
@@ -529,18 +529,21 @@ void VolMesh::remove_face_core(U32 idxFace) {
     for(std::set<U32>::const_iterator c_it = update_cells.begin(),
             c_end = update_cells.end(); c_it != c_end; ++c_it) {
 
-    	CELL& cell = cellAt(*c_it);
+    	const CELL& cell = const_cellAt(*c_it);
+    	U32 idxNewFaces[COUNT_CELL_FACES];
 
     	//decrement face handles greater than idxFace
     	for(U32 i = 0; i < COUNT_CELL_FACES; i++) {
+
+    		idxNewFaces[i] = cell.faces[i];
     		if(cell.faces[i] == idxFace)
-    			cell.faces[i] = INVALID_INDEX;
+    			idxNewFaces[i] = INVALID_INDEX;
     		else if(cell.faces[i] > idxFace)
-    			cell.faces[i] --;
+    			idxNewFaces[i] = cell.faces[i] - 1;
     	}
 
     	//cell faces
-    	set_cell_faces(*c_it, cell.faces);
+    	set_cell_faces(*c_it, idxNewFaces);
     }
 
     //3.delete entry
