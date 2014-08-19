@@ -134,7 +134,6 @@ public:
 	//setters
 	void set_edge(U32 idxEdge, U32 from, U32 to);
 	void set_face(U32 idxFace, U32 edges[3]);
-	void set_cell_faces(U32 idxCell, U32 faces[4]);
 
 	//mesh disjoint parts
 	int get_disjoint_parts(vector<vector<U32>>& parts);

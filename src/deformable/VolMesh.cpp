@@ -448,27 +448,6 @@ void VolMesh::set_face(U32 idxFace, U32 edges[3]) {
 		m_incident_faces_per_edge[edges[i]].push_back(idxFace);
 }
 
-void VolMesh::set_cell_faces(U32 idxCell, U32 faces[4]) {
-	assert(isCellIndex(idxCell));
-
-	CELL& cell = cellAt(idxCell);
-	for(int i=0; i<COUNT_CELL_FACES; i++) {
-		m_incident_cells_per_face[ cell.faces[i] ].erase(
-			std::remove(m_incident_cells_per_face[ cell.faces[i] ].begin(),
-						m_incident_cells_per_face[ cell.faces[i] ].end(), idxCell),
-			m_incident_cells_per_face[ cell.faces[i] ].end());
-	}
-
-	//UPDATE
-	for(int i=0; i<COUNT_CELL_FACES; i++)
-		cell.faces[i] = faces[i];
-	m_vCells[idxCell] = cell;
-
-	//add to incident cells per face
-	for(int i=0; i<COUNT_CELL_FACES; i++)
-		m_incident_cells_per_face[faces[i]].push_back(idxCell);
-}
-
 void VolMesh::remove_cell_core(U32 idxCell) {
 	assert(isCellIndex(idxCell));
 
@@ -525,38 +504,40 @@ void VolMesh::remove_face_core(U32 idxFace) {
     			update_cells.insert(*c_it);
     }
 
-    //loop over update_cells
+    //from set of update_cells unregister cell faces
     for(std::set<U32>::const_iterator c_it = update_cells.begin(),
             c_end = update_cells.end(); c_it != c_end; ++c_it) {
 
     	const CELL& cell = const_cellAt(*c_it);
-    	U32 idxNewFaces[COUNT_CELL_FACES];
-
-    	//decrement face handles greater than idxFace
-    	for(U32 i = 0; i < COUNT_CELL_FACES; i++) {
-
-    		idxNewFaces[i] = cell.faces[i];
-    		if(cell.faces[i] == idxFace)
-    			idxNewFaces[i] = INVALID_INDEX;
-    		else if(cell.faces[i] > idxFace)
-    			idxNewFaces[i] = cell.faces[i] - 1;
+    	for(int i=0; i<COUNT_CELL_FACES; i++) {
+    		m_incident_cells_per_face[ cell.faces[i] ].erase(
+    			std::remove(m_incident_cells_per_face[ cell.faces[i] ].begin(),
+    						m_incident_cells_per_face[ cell.faces[i] ].end(), *c_it),
+    			m_incident_cells_per_face[ cell.faces[i] ].end());
     	}
-
-    	//cell faces
-    	set_cell_faces(*c_it, idxNewFaces);
     }
 
-    //3.delete entry
-//    vector<U32> vIncidentCellsTemp = m_incident_cells_per_face[idxFace + 1];
-//    PS::DEBUGTOOLS::PrintArray(&vIncidentCellsTemp[0], vIncidentCellsTemp.size());
-//
-//    vIncidentCellsTemp = m_incident_cells_per_face[idxFace];
-//    PS::DEBUGTOOLS::PrintArray(&vIncidentCellsTemp[0], vIncidentCellsTemp.size());
-
+    //3.remove the entry from incident cells per face list
     m_incident_cells_per_face.erase(m_incident_cells_per_face.begin() + idxFace);
 
-//    vIncidentCellsTemp = m_incident_cells_per_face[idxFace];
-//    PS::DEBUGTOOLS::PrintArray(&vIncidentCellsTemp[0], vIncidentCellsTemp.size());
+
+    //update faces
+    for(std::set<U32>::const_iterator c_it = update_cells.begin(),
+            c_end = update_cells.end(); c_it != c_end; ++c_it) {
+
+    	CELL& cell = cellAt(*c_it);
+
+    	//decrement face handles greater than idxFace
+    	for(int i=0; i<COUNT_CELL_FACES; i++) {
+    		if(cell.faces[i] == idxFace)
+    			cell.faces[i] = INVALID_INDEX;
+    		else if(cell.faces[i] > idxFace)
+    			cell.faces[i]--;
+
+    		//add to list of incident
+    		m_incident_cells_per_face[cell.faces[i]].push_back(*c_it);
+    	}
+    }
 
 
     //4.decrease all face handles per edge
@@ -979,8 +960,10 @@ void VolMesh::garbage_collection() {
 	test_incidents();
 
 	//1.delete all pending cells
+	U32 ctRemovedCells = 0;
 	if(m_pendingToDeleteCells.size() > 0) {
 		remove_cells(m_pendingToDeleteCells);
+		ctRemovedCells = m_pendingToDeleteCells.size();
 		m_pendingToDeleteCells.resize(0);
 	}
 
@@ -1001,6 +984,7 @@ void VolMesh::garbage_collection() {
 		remove_faces(setToBeRemoved);
 		ctRemovedFaces = setToBeRemoved.size();
 	}
+
 
 	//3.edges
 	U32 ctRemovedEdges = 0;
@@ -1037,8 +1021,8 @@ void VolMesh::garbage_collection() {
 	*/
 	U32 ctRemovedNodes = 0;
 
-	LogInfoArg3("garbage collection removed: Faces# %u, Edges# %u, Nodes# %u",
-				ctRemovedFaces, ctRemovedEdges, ctRemovedNodes);
+	printf("garbage collection removed: Cells# %u, Faces# %u, Edges# %u, Nodes# %u\n",
+			ctRemovedCells, ctRemovedFaces, ctRemovedEdges, ctRemovedNodes);
 
 	//release lock
 	printCellInfo();
