@@ -27,6 +27,7 @@ using namespace std;
 
 AvatarScalpel* g_lpScalpel = NULL;
 CuttableMesh* g_lpTissue = NULL;
+CmdLineParser g_parser;
 AnsiStr g_strFilePath;
 U32 g_current = 3;
 U32 g_cutCase = 0;
@@ -364,7 +365,20 @@ void resetMesh() {
 			LogErrorArg1("Unable to load mesh from: %s", g_strFilePath.cptr());
 	}
 	else {
-		temp = PS::MESH::VolMeshSamples::CreateTwoTetra();
+		AnsiStr strExample = g_parser.value<AnsiStr>("example");
+		int pos = -1;
+		if(strExample == "one")
+			temp = PS::MESH::VolMeshSamples::CreateOneTetra();
+		else if(strExample == "two")
+			temp = PS::MESH::VolMeshSamples::CreateTwoTetra();
+		else if(strExample.lfindstr(AnsiStr("cube"), pos)) {
+
+			U32 nx, ny, nz = 0;
+			sscanf(strExample.cptr(), "cube_%u_%u_%u", &nx, &ny, &nz);
+			temp = PS::MESH::VolMeshSamples::CreateTruthCube(nx, ny, nz, 0.5);
+		}
+		else
+			temp = PS::MESH::VolMeshSamples::CreateOneTetra();
 		//temp = PS::MESH::VolMeshSamples::CreateTruthCube(4, 4, 4, 0.5);
 		//temp = PS::MESH::VolMeshSamples::CreateTruthCube(2, 2, 2, 2.0);
 		//temp = PS::MESH::VolMeshSamples::CreateOneTetra();
@@ -398,13 +412,14 @@ void runTestSubDivide(int current) {
 int main(int argc, char* argv[]) {
 	cout << "startup" << endl;
 
-	CmdLineParser parser;
-	parser.add_option("input", "[filepath] input file in vega format", Value(AnsiStr("internal")));
-	if(parser.parse(argc, argv) < 0)
+	//parser
+	g_parser.add_option("input", "[filepath] set input file in vega format", Value(AnsiStr("internal")));
+	g_parser.add_option("example", "[one, two, cube_nx_ny_nz] set an internal example", Value(AnsiStr("two")));
+	if(g_parser.parse(argc, argv) < 0)
 		exit(0);
 
 	//file path
-	g_strFilePath = ExtractFilePath(GetExePath()) + parser.value<AnsiStr>("input");
+	g_strFilePath = ExtractFilePath(GetExePath()) + g_parser.value<AnsiStr>("input");
 	if(FileExists(g_strFilePath))
 		LogInfoArg1("input file: %s.", g_strFilePath.cptr());
 	else

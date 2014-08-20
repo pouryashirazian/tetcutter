@@ -74,12 +74,19 @@ void SGBox::setup(const vec3f& lo, const vec3f& hi) {
 	vec4f white(0.89, 0.88, 0.85, 1);
 	vec4f gray(0.5, 0.5, 0.5, 1);
 	vec4f colorSet[6];
-	colorSet[0] = white;
-	colorSet[1] = gray;
-	colorSet[2] = gray;
-	colorSet[3] = white;
-	colorSet[4] = green;
-	colorSet[5] = red;
+
+	for(int i=0; i < 6; i++) {
+		if(i % 2 == 0)
+			colorSet[i] = vec4f(0.7, 0.7, 0.7, 1.0);
+		else
+			colorSet[i] = white;
+	}
+//	colorSet[0] = white;
+//	colorSet[1] = gray;
+//	colorSet[2] = gray;
+//	colorSet[3] = white;
+//	colorSet[4] = green;
+//	colorSet[5] = red;
 
 	//Setup colors buffer
 	vector<float> arrColors;

@@ -192,6 +192,9 @@ public:
 
 	//selects a node using a ray intersection test
 	int selectNode(const Ray& ray) const;
+
+	bool verbose() const { return m_verbose;}
+	void setVerbose(bool b) { m_verbose = b;}
 private:
 	void init();
 	inline bool insertEdgeIndexToMap(U32 from, U32 to, U32 idxEdge);
@@ -236,6 +239,7 @@ protected:
 
 protected:
 	U32 m_elemToShow;
+	bool m_verbose;
 
 	//topology events
 	OnNodeEvent m_fOnNodeEvent;

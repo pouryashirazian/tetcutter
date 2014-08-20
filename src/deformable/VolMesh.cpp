@@ -88,6 +88,7 @@ VolMesh::~VolMesh() {
 }
 
 void VolMesh::init() {
+	m_verbose = false;
 	m_elemToShow = INVALID_INDEX;
 	m_fOnNodeEvent = NULL;
 	m_fOnEdgeEvent = NULL;
@@ -993,7 +994,8 @@ U32 VolMesh::insert_face(U32 nodes[3]) {
 
 void VolMesh::garbage_collection() {
 	//acquire lock to mesh
-	printf("GC BEGIN\n");
+	if(m_verbose)
+		printf("GC BEGIN\n");
 
 	//1.delete all pending cells
 	U32 ctRemovedCells = 0;
@@ -1011,7 +1013,9 @@ void VolMesh::garbage_collection() {
 		for(U32 i = 0; i < countFaces(); i++) {
 			if(m_incident_cells_per_face[i].size() == 0) {
 				setToBeRemoved.insert(i);
-				printf("GC: face %u should be removed.\n", i);
+
+				if(m_verbose)
+					printf("GC: face %u should be removed.\n", i);
 			}
 		}
 
@@ -1028,7 +1032,9 @@ void VolMesh::garbage_collection() {
 		for(U32 i = 0; i < countEdges(); i++) {
 			if(m_incident_faces_per_edge[i].size() == 0) {
 				setToBeRemoved.insert(i);
-				printf("GC: edge %u should be removed.\n", i);
+
+				if(m_verbose)
+					printf("GC: edge %u should be removed.\n", i);
 			}
 		}
 
@@ -1045,7 +1051,9 @@ void VolMesh::garbage_collection() {
 		for(U32 i = 0; i < countNodes(); i++) {
 			if(m_incident_edges_per_node[i].size() == 0) {
 				setToBeRemoved.insert(i);
-				printf("GC: node %u should be removed.\n", i);
+
+				if(m_verbose)
+					printf("GC: node %u should be removed.\n", i);
 			}
 		}
 
@@ -1062,7 +1070,8 @@ void VolMesh::garbage_collection() {
 	test_cells_topology();
 	test_incidents();
 
-	printf("GC END\n");
+	if(m_verbose)
+		printf("GC END\n");
 }
 
 bool VolMesh::getFaceNodes(U32 idxFace, U32 (&nodes)[3]) const {

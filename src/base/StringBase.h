@@ -55,7 +55,10 @@ namespace PS{
 
         virtual int getInputLength(const Type src[]) const
 		{
-			return static_cast<int>(src[0]) + 1;
+    		wchar_t nc = nullChar();
+            int i = 0;
+    		while(src[i] != nc)	i++;
+    		return i;
 		}
 
         void resize(int n);
