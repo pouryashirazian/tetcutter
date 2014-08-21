@@ -58,7 +58,7 @@ protected:
 	//cut info
 	vector<vec3d> m_vCuttingPathEdge0;
 	vector<vec3d> m_vCuttingPathEdge1;
-	vec3d m_sweptQuad[4];
+	vector<vec3d> m_vSweptQuad;
 	bool m_isSweptQuadValid;
 	bool m_isToolActive;
 };

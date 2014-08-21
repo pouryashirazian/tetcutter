@@ -89,7 +89,7 @@ VolMesh::~VolMesh() {
 
 void VolMesh::init() {
 	m_verbose = false;
-	m_elemToShow = INVALID_INDEX;
+	m_elemToShow = m_nodeToShow = INVALID_INDEX;
 	m_fOnNodeEvent = NULL;
 	m_fOnEdgeEvent = NULL;
 	m_fOnFaceEvent = NULL;
@@ -1454,13 +1454,32 @@ bool VolMesh::cut_edge(int idxEdge, double distance, U32* poutIndexNP0, U32* pou
 	return true;
 }
 
-bool VolMesh::getNodeIncidentEdges(U32 idxNode, vector<U32>& incidentEdges) const {
+int VolMesh::getNodeIncidentEdges(U32 idxNode, vector<U32>& incidentEdges) const {
 
 	if(!isNodeIndex(idxNode))
-		return false;
+		return 0;
 
 	incidentEdges.assign(m_incident_edges_per_node[idxNode].begin(), m_incident_edges_per_node[idxNode].end());
-	return true;
+	return (int)incidentEdges.size();
+}
+
+int VolMesh::getNodeIncidentNodes(U32 idxNode, vector<U32>& incidentNodes) const {
+	vector<U32> edges;
+	getNodeIncidentEdges(idxNode, edges);
+	incidentNodes.reserve(edges.size());
+
+	for(U32 i=0; i < edges.size(); i++) {
+		const EDGE& e = const_edgeAt(edges[i]);
+		if(e.from == idxNode)
+			incidentNodes.push_back(e.to);
+		else if(e.to == idxNode)
+			incidentNodes.push_back(e.from);
+		else {
+			LogErrorArg2("Invalid incident edge (%u) for node: %u", edges[i], idxNode);
+		}
+	}
+
+	return (int)incidentNodes.size();
 }
 
 bool VolMesh::getCellFacesExpensive(U32 idxCell, U32 (&faces)[4]) {
@@ -1504,6 +1523,12 @@ void VolMesh::setElemToShow(U32 elem) {
 	m_elemToShow = elem;
 }
 
+void VolMesh::setNodeToShow(U32 idxNode) {
+	if(idxNode == m_nodeToShow)
+		return;
+	m_nodeToShow = idxNode;
+}
+
 
 void VolMesh::draw() {
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -1533,13 +1558,18 @@ void VolMesh::draw() {
 
 	//Draw outlined faces
 	glDisable(GL_CULL_FACE);
-	glLineWidth(3.0f);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
+
+	glLineWidth(2.0f);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	glColor3f(0.0f, 0.0f, 0.0f);
+	glColor4f(0.0f, 0.0f, 0.0f, 0.6f);
 
 	for(U32 i=0; i< countCells(); i++) {
 		drawElement(i);
 	}
+
+	glDisable(GL_BLEND);
 	glEnable(GL_CULL_FACE);
 
 	//Draw vertices
@@ -1551,6 +1581,29 @@ void VolMesh::draw() {
 		glVertex3dv(n.pos.cptr());
 	}
 	glEnd();
+
+	//selected node
+	if(isNodeIndex(m_nodeToShow)) {
+		vector<U32> incidentNodes;
+		getNodeIncidentNodes(m_nodeToShow, incidentNodes);
+		vec3d pos = const_nodeAt(m_nodeToShow).pos;
+		glPointSize(7.0f);
+		glColor3f(0.0, 1.0, 0.0);
+		glBegin(GL_POINTS);
+		glVertex3dv(pos.cptr());
+		glEnd();
+
+		//orange lines
+		glLineWidth(3.0f);
+		glColor3f(0.0, 0.0, 1.0);
+		glBegin(GL_LINES);
+		for(U32 i=0; i < incidentNodes.size(); i++) {
+			glVertex3dv(pos.cptr());
+			glVertex3dv(const_nodeAt(incidentNodes[i]).pos.cptr());
+		}
+		glEnd();
+
+	}
 
 	glEnable(GL_LIGHTING);
 	glPopAttrib();
@@ -1614,17 +1667,25 @@ AABB VolMesh::computeAABB() {
 
 int VolMesh::selectNode(const Ray& ray) const {
 
-	vec3f expand(0.2);
+	vec3f expand(0.05);
 	int idxVertex = -1;
+	double tMin = FLT_MAX;
 	for (int i = 0; i < (int)countNodes(); i++) {
 		AABB aabb;
 
 		vec3d pos = const_nodeAt(i).pos;
 		vec3f posF = vec3f((float) pos.x, (float) pos.y, (float) pos.z);
 		aabb.set(posF - expand, posF + expand);
-		if (aabb.intersect(ray, 0.0, FLT_MAX)) {
-			idxVertex = i;
-			break;
+
+
+		Range valid(0.0, FLT_MAX);
+		Range hit;
+		if (aabb.intersect(ray, valid, hit)) {
+
+			if(hit.lower() < tMin) {
+				tMin = hit.lower();
+				idxVertex = i;
+			}
 		}
 	}
 

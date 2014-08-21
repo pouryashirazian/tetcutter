@@ -86,7 +86,7 @@ bool AABB::intersect(const Ray& ray, const Range& t, Range& hit) const {
 		tmax = tzmax;
 
 	hit.set(tmin, tmax);
-	return ((tmin < t.right) && (tmax > t.left));
+	return ((tmin < t.upper()) && (tmax > t.lower()));
 }
 
 bool AABB::intersect(const Ray& ray, float t0, float t1) const

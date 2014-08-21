@@ -58,6 +58,7 @@ void CuttableMesh::setup() {
 	m_ctCompletedCuts = 0;
 	m_flagSplitMeshAfterCut = false;
 	m_flagDetectCutNodes = false;
+	m_flagDrawSweepSurf = false;
 }
 
 void CuttableMesh::clearCutContext() {
@@ -113,13 +114,40 @@ void CuttableMesh::draw() {
 
 		glPopAttrib();
 		glEnable(GL_LIGHTING);
+	}
 
+	if(m_flagDrawSweepSurf) {
+		U32 ctCutSurf = m_vSweepSurfaces.size() / 12;
+
+		glDisable(GL_CULL_FACE);
+		glDisable(GL_LIGHTING);
+		glPushAttrib(GL_ALL_ATTRIB_BITS);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_BLEND);
+
+		glColor4f(1.0, 0.0, 0.0, 0.3);
+		glBegin(GL_QUADS);
+
+		//vec3d p[4];
+		//draw cut surfaces
+		for(U32 i=0; i < ctCutSurf; i++) {
+			for(U32 j=0; j < 4; j++) {
+				glVertex3dv(&m_vSweepSurfaces[i * 12 + j * 3]);
+			}
+		}
+		glEnd();
+
+		glDisable(GL_BLEND);
+		glPopAttrib();
+		glEnable(GL_LIGHTING);
+		glEnable(GL_CULL_FACE);
 	}
 }
 
 int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 					  const vector<vec3d>& bladePath1,
-					  vec3d sweptSurface[4], bool modifyMesh) {
+					  const vector<vec3d>& sweptSurface,
+					  bool modifyMesh) {
 
 	//if the swept surface is degenerate then return
 	double area = (sweptSurface[1] - sweptSurface[0]).length2() * (sweptSurface[2] - sweptSurface[1]).length2();
@@ -268,9 +296,6 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	vCutNodeCodes.reserve(128);
 	vCutParams.reserve(128 * 6);
 
-	//count of tets cut
-	int ctCutTet = 0;
-
 	for(U32 i=0; i < this->countCells(); i++) {
 		const CELL& cell = this->const_cellAt(i);
 		U8 cutEdgeCode = 0;
@@ -298,10 +323,6 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 
 		//if there is a cut in this cell
 		if(cutEdgeCode != 0 || cutNodeCode != 0) {
-
-			//increment cut tets
-			ctCutTet++;
-
 			//push back all computed values
 			vCutElements.push_back(i);
 			vCutEdgeCodes.push_back(cutEdgeCode);
@@ -343,7 +364,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	}
 
 	//
-	U32 ctElementsCut = 0;
+	U32 ctSubdividedTets = 0;
 	U32 middlePoints[12];
 
 	for(U32 i=0; i < vCutElements.size(); i++) {
@@ -370,15 +391,20 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 				}
 			}
 			//subdivide the element
-			ctElementsCut += m_lpSubD->subdivide(vCutElements[i], cutEdgeCode, cutNodeCode,
+			ctSubdividedTets += m_lpSubD->subdivide(vCutElements[i], cutEdgeCode, cutNodeCode,
 												 middlePoints, sweptSurface, m_flagSplitMeshAfterCut);
 		}
 	}
 
 	//increment completed cuts
-	if(ctElementsCut > 0) {
-		LogInfoArg2("END CUTTING# %u: subdivided elements count: %u.", m_ctCompletedCuts + 1, ctElementsCut);
+	if(ctSubdividedTets > 0) {
+		LogInfoArg2("END CUTTING# %u: subdivided elements count: %u.", m_ctCompletedCuts + 1, ctSubdividedTets);
 		m_ctCompletedCuts ++;
+
+		//store sweep surf
+		vector<double> vFlatSurf;
+		FlattenVec3<double>(sweptSurface, vFlatSurf);
+		m_vSweepSurfaces.insert(m_vSweepSurfaces.end(), vFlatSurf.begin(), vFlatSurf.end());
 	}
 	else {
 		LogWarningArg1("END CUTTING# %u: No elements are subdivided.", m_ctCompletedCuts + 1);
@@ -401,7 +427,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	m_aabb.expand(1.0);
 
 	//Return number of tets cut
-	return ctCutTet;
+	return ctSubdividedTets;
 }
 
 vec3d CuttableMesh::vertexRestPosAt(U32 i) const {

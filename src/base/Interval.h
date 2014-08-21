@@ -13,67 +13,67 @@ class Interval
 {
 
 public:
-	Interval():left(INTERVAL_EPSILON), right(FLT_MAX) {};
+	Interval():m_lower(INTERVAL_EPSILON), m_upper(FLT_MAX) {};
 
-	Interval(T min, T max)
-	{
-		if(min > max)
-		{
-			left = max;
-			right = min;
-		}
-		else
-		{
-			left = min;
-			right = max;
+	Interval(T lower, T upper) {
+		if (lower > upper) {
+			m_lower = upper;
+			m_upper = lower;
+		} else {
+			m_lower = lower;
+			m_upper = upper;
 		}
 	}
 
-	void setMin(const T min)
+	void setLower(const T lower)
 	{
-		left = min;
+		m_lower = lower;
 	}
 
-	void setMax(const T max)
+	void setUpper(const T max)
 	{
-		right = max;
+		m_upper = max;
 	}
 
-	void set(const T l, const T r)
+	void set(const T lower, const T upper)
 	{
-		left = l;
-		right = r;
+		m_lower = lower;
+		m_upper = upper;
 	}
 
-	T length() { return (right - left);}
+	T length() { return (m_upper - m_lower);}
 
-	bool isInside(const T f) const { return ((f >= left)&&(f <= right));}
+	bool isInside(const T f) const { return ((f >= m_lower)&&(f <= m_upper));}
 
 
 	bool hasOverlap(const Interval &A)
 	{
-		return (isInside(A.left))||(isInside(A.right));
+		return (isInside(A.m_lower))||(isInside(A.m_upper));
 	}
+
+	T lower() const { return m_lower;}
+	T upper() const {return m_upper;}
 
 	Interval& operator=(const Interval& y)
 	{
-		this->left = y.left;
-		this->right = y.right;
+		this->m_lower = y.m_lower;
+		this->m_upper = y.m_upper;
 		return(*this);
 	}
 
 	bool operator==(const Interval& y) const
 	{
-		return ((this->left == y.left)&&(this->right == y.right));
+		return ((this->m_lower == y.m_lower)&&(this->m_upper == y.m_upper));
 	}
 
 	bool operator!=(const Interval& y) const
 	{
-		return ((this->left != y.left)||(this->right != y.right));
+		return ((this->m_lower != y.m_lower)||(this->m_upper != y.m_upper));
 	}
-public:
-	T left;
-	T right;
+
+private:
+	T m_lower;
+	T m_upper;
 };
 
 typedef Interval<double> RangeD;

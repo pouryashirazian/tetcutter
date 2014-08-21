@@ -94,7 +94,8 @@ int TetSubdivider::generateCaseA(U32 idxCell, U8 node, double targetDistPercenta
 
 	//
 	double tEdges[6];
-	vec3d sweptSurf[4];
+	vector<vec3d> sweptSurf;
+	sweptSurf.resize(4);
 	U32 middlePoints[12];
 	for(int i = 0; i < 12; i++)
 		middlePoints[i] = VolMesh::INVALID_INDEX;
@@ -181,7 +182,8 @@ int TetSubdivider::generateCaseB(U32 idxCell, U8 enteringface, U8& cutEdgeCode,
 	for(int i = 0; i < 12; i++)
 		middlePoints[i] = VolMesh::INVALID_INDEX;
 
-	vec3d sweptSurf[4];
+	vector<vec3d> sweptSurf;
+	sweptSurf.resize(4);
 
 	for(int i=0; i<4; i++) {
 		cutEdgeCode |= (1 << edges[i]);
@@ -254,7 +256,7 @@ TetSubdivider::CUTCASE TetSubdivider::IdentifyCutCase(bool isCutComplete, U8 cut
 }
 
 int TetSubdivider::subdivide(U32 idxCell, U8 cutEdgeCode, U8 cutNodeCode, U32 middlePoints[12],
-							 vec3d sweptSurf[4], bool dosplit) {
+							 const vector<vec3d>& sweptSurf, bool dosplit) {
 	//Here an element is subdivided to 4 sub elements depending on the codes
 	U8 ctCutEdges = 0;
 	U8 ctCutNodes = 0;

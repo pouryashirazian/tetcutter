@@ -64,6 +64,7 @@ void MousePress(int button, int state, int x, int y)
 		//select vertex
 		if (idxVertex >= 0) {
 			LogInfoArg1("Selected Vertex Index = %d ", idxVertex);
+			g_lpTissue->setNodeToShow(idxVertex);
 		}
     }
 
@@ -98,6 +99,12 @@ void NormalKey(unsigned char key, int x, int y)
 {
 	switch(key)
 	{
+
+	case('/'): {
+		g_lpTissue->setFlagDrawSweepSurf(!g_lpTissue->getFlagDrawSweepSurf());
+		LogInfoArg1("Draw sweep surf set to: %d", g_lpTissue->getFlagDrawSweepSurf());
+	}
+	break;
 	case('a'): {
 		if(!g_lpTissue) return;
 

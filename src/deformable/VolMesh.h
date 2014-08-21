@@ -174,13 +174,16 @@ public:
 
 
 	//algorithmic functions
-	bool getNodeIncidentEdges(U32 idxNode, vector<U32>& incidentEdges) const;
+	int getNodeIncidentEdges(U32 idxNode, vector<U32>& incidentEdges) const;
+	int getNodeIncidentNodes(U32 idxNode, vector<U32>& incidentNodes) const;
 	bool getCellFacesExpensive(U32 idxCell, U32 (&faces)[4]);
 	bool getCellEdgesExpensive(U32 idxCell, U32 (&edges)[6]);
 
-	//checking
+	//show individual entities
 	void setElemToShow(U32 elem = INVALID_INDEX);
 	U32 getElemToShow() const {return m_elemToShow;}
+	void setNodeToShow(U32 idxNode = INVALID_INDEX);
+	U32 getNodeToShow() const {return m_nodeToShow;}
 
 	//draw
 	void draw();
@@ -239,6 +242,7 @@ protected:
 
 protected:
 	U32 m_elemToShow;
+	U32 m_nodeToShow;
 	bool m_verbose;
 
 	//topology events

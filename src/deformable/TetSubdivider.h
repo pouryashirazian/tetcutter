@@ -39,7 +39,9 @@ public:
 	static CUTCASE IdentifyCutCase(bool isCutComplete, U8 cutEdgeCode, U8 cutNodeCode, U8& countCutEdges, U8& countCutNodes);
 
 	int subdivide(U32 idxCell, U8 cutEdgeCode, U8 cutNodeCode,
-				  U32 middlePoints[12], vec3d sweptSurf[4], bool dosplit = true);
+				  U32 middlePoints[12],
+				  const vector<vec3d>& sweptSurf,
+				  bool dosplit = true);
 
 
 

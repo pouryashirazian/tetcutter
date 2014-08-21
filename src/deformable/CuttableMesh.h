@@ -76,8 +76,10 @@ public:
 
 	//cutting
 	void clearCutContext();
-	int cut(const vector<vec3d>& bladePath0, const vector<vec3d>& bladePath1,
-			vec3d sweptSurface[4], bool modifyMesh);
+	int cut(const vector<vec3d>& bladePath0,
+			const vector<vec3d>& bladePath1,
+			const vector<vec3d>& sweptSurface,
+			bool modifyMesh);
 
 	//Access vertex neibors
 	vec3d vertexRestPosAt(U32 i) const;
@@ -93,6 +95,9 @@ public:
 
 	bool getFlagDetectCutNodes() const {return m_flagDetectCutNodes;}
 	void setFlagDetectCutNodes(bool flag) { m_flagDetectCutNodes = flag;}
+
+	bool getFlagDrawSweepSurf() const { return m_flagDrawSweepSurf;}
+	void setFlagDrawSweepSurf(bool flag) { m_flagDrawSweepSurf = flag;}
 protected:
 	void setup();
 
@@ -104,6 +109,10 @@ private:
 	int m_ctCompletedCuts;
 	bool m_flagSplitMeshAfterCut;
 	bool m_flagDetectCutNodes;
+
+	//sweep surfaces
+	bool m_flagDrawSweepSurf;
+	vector<double> m_vSweepSurfaces;
 
 	//Cut Nodes
 	std::map<U32, CutNode > m_mapCutNodes;
