@@ -63,8 +63,8 @@ void CuttableMesh::setup() {
 }
 
 void CuttableMesh::clearCutContext() {
-	m_mapCutEdges.clear();
-	m_mapCutNodes.clear();
+//	m_mapCutEdges.clear();
+//	m_mapCutNodes.clear();
 }
 
 void CuttableMesh::draw() {
@@ -82,8 +82,8 @@ void CuttableMesh::draw() {
 		glPushAttrib(GL_ALL_ATTRIB_BITS);
 
 			//Draw cut edges
-			glColor3f(0.7, 0.7, 0.7);
-			glLineWidth(6.0f);
+			glColor3f(1.0, 0.0, 0.0);
+			glLineWidth(8.0f);
 			glBegin(GL_LINES);
 				for(CUTEDGEITER it = m_mapCutEdges.begin(); it != m_mapCutEdges.end(); ++it) {
 					U32 from = VolMesh::edge_from_node(it->first);
@@ -97,11 +97,17 @@ void CuttableMesh::draw() {
 
 			//Draw nodes
 			glPointSize(7.0f);
-			glColor3f(0.0, 0.0, 1.0);
 			glBegin(GL_POINTS);
 			//Draw cutedges crossing
 			for(CUTEDGEITER it = m_mapCutEdges.begin(); it != m_mapCutEdges.end(); ++it) {
+				glColor3f(0.0, 0.0, 0.0);
+				glVertex3dv(const_nodeAt(it->second.idxNP0).pos.cptr());
+
+				glColor3f(0.0, 0.0, 1.0);
 				glVertex3dv(it->second.pos.cptr());
+
+				glColor3f(0.0, 0.0, 0.0);
+				glVertex3dv(const_nodeAt(it->second.idxNP1).pos.cptr());
 			}
 			glEnd();
 
@@ -413,7 +419,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 
 
 	//clear cut context
-	clearCutContext();
+	///clearCutContext();
 
 	//collect all garbage
 	this->garbage_collection();
