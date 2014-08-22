@@ -36,6 +36,7 @@ CuttableMesh::CuttableMesh(int ctVertices, double* vertices, int ctElements, int
 
 CuttableMesh::~CuttableMesh() {
 	SAFE_DELETE(m_lpSubD);
+	m_vSweepSurfaces.resize(0);
 }
 
 void CuttableMesh::setup() {
@@ -392,7 +393,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 			}
 			//subdivide the element
 			ctSubdividedTets += m_lpSubD->subdivide(vCutElements[i], cutEdgeCode, cutNodeCode,
-												 middlePoints, sweptSurface, m_flagSplitMeshAfterCut);
+												 middlePoints, sweptSurface, false);
 		}
 	}
 
@@ -410,6 +411,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 		LogWarningArg1("END CUTTING# %u: No elements are subdivided.", m_ctCompletedCuts + 1);
 	}
 
+
 	//clear cut context
 	clearCutContext();
 
@@ -418,6 +420,11 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 
 	//Perform all tests
 	TestVolMesh::tst_all(this);
+
+	//split mesh parts
+	if(m_flagSplitMeshAfterCut && (ctSubdividedTets > 0)) {
+		splitParts(sweptSurface, 0.2);
+	}
 
 	//print mesh parts
 	this->printParts();
@@ -476,6 +483,75 @@ double CuttableMesh::pointLineDistance(const vec3d& v1, const vec3d& v2,
 	return vec3d::distance(p, projection);
 }
 
+bool CuttableMesh::splitParts(const vector<vec3d>& vSweeptSurf, double dist) {
+	vec3d sweptSurfNormal = vec3d::cross(vSweeptSurf[1] - vSweeptSurf[0], vSweeptSurf[3] - vSweeptSurf[0]);
+	sweptSurfNormal.normalize();
+
+	vec3d dfront = sweptSurfNormal * dist;
+
+	//compute centroid
+	vec3d sweptSurfCentroid = vSweeptSurf[0];
+	for(int i = 1; i < 4; i++)
+		sweptSurfCentroid = sweptSurfCentroid + vSweeptSurf[i];
+	sweptSurfCentroid = sweptSurfCentroid * 0.25;
+
+
+	vector< vector<U32> > cellgroups;
+	get_disjoint_parts(cellgroups);
+
+
+	//set of nodes
+	set<U32> setFrontNodes;
+	set<U32> setBackNodes;
+
+	for(U32 i = 0; i < cellgroups.size(); i++) {
+
+		vector<U32> cells = cellgroups[i];
+
+		U32 ctFront = 0;
+		for(vector<U32>::const_iterator it = cells.begin(); it !=cells.end(); ++it) {
+			if(isCellIndex(*it)) {
+				vec3d x = computeCellCentroid(*it);
+
+				x = x - sweptSurfCentroid;
+				if(vec3d::dot(x, sweptSurfNormal) > 0)
+					ctFront++;
+			}
+		}
+
+		//categorize nodes based on front and back count
+		if(ctFront == cells.size()) {
+			for(vector<U32>::const_iterator it = cells.begin(); it !=cells.end(); it++) {
+				const CELL& cell = const_cellAt(*it);
+				for(int j=0; j < COUNT_CELL_NODES; j++)
+					setFrontNodes.insert(cell.nodes[j]);
+			}
+		}
+		else if(ctFront == 0) {
+			//add to back
+			for(vector<U32>::const_iterator it = cells.begin(); it !=cells.end(); it++) {
+				const CELL& cell = const_cellAt(*it);
+				for(int j=0; j < COUNT_CELL_NODES; j++)
+					setBackNodes.insert(cell.nodes[j]);
+			}
+		}
+	}
+
+	vector<U32> frontNodes(setFrontNodes.begin(), setFrontNodes.end());
+	vector<U32> backNodes(setBackNodes.begin(), setBackNodes.end());
+
+	for(vector<U32>::const_iterator it = frontNodes.begin(); it != frontNodes.end(); it++) {
+		NODE& node = nodeAt(*it);
+		node.pos = node.pos + dfront;
+	}
+
+	for(vector<U32>::const_iterator it = backNodes.begin(); it != backNodes.end(); it++) {
+		NODE& node = nodeAt(*it);
+		node.pos = node.pos - dfront;
+	}
+
+	return true;
+}
 
 }
 

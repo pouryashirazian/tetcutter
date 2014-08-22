@@ -89,6 +89,14 @@ public:
 	//Access to subdivider
 	TetSubdivider* getSubD() const { return m_lpSubD;}
 
+	/*!
+	 * splits the mesh parts using the sweep surface.
+	 * @param vSweeptSurf
+	 * @param dist
+	 * @return
+	 */
+	bool splitParts(const vector<vec3d>& vSweeptSurf, double dist);
+
 	//splitting
 	bool getFlagSplitMeshAfterCut() const {return m_flagSplitMeshAfterCut;}
 	void setFlagSplitMeshAfterCut(bool flag) { m_flagSplitMeshAfterCut = flag;}

@@ -84,6 +84,7 @@ public:
 	//Determinant
 	double computeCellDeterminant(U32 idxCell) const;
 	double computeCellVolume(U32 idxCell) const;
+	vec3d  computeCellCentroid(U32 idxCell) const;
 	static double ComputeCellDeterminant(const vec3d v[4]);
 	static double ComputeCellVolume(const vec3d v[4]);
 
@@ -136,7 +137,7 @@ public:
 	void set_face(U32 idxFace, U32 edges[3]);
 
 	//mesh disjoint parts
-	int get_disjoint_parts(vector<vector<U32>>& parts);
+	int get_disjoint_parts(vector<vector<U32>>& cellgroups);
 	void printParts();
 
 	//schedule a cell removal at the next GC

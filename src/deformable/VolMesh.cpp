@@ -242,6 +242,14 @@ double VolMesh::computeCellVolume(U32 idxCell) const {
 	return ComputeCellVolume(v);
 }
 
+vec3d VolMesh::computeCellCentroid(U32 idxCell) const {
+	vec3d v[4];
+	const CELL& cell = const_cellAt(idxCell);
+	for(int i=0; i<4; i++)
+		v[i] = const_nodeAt(cell.nodes[i]).pos;
+
+	return (v[0] + v[1] + v[2] + v[3]) * 0.25;
+}
 
 double VolMesh::ComputeCellDeterminant(const vec3d v[4]) {
 	return	vec3d::dot(v[1] - v[0], vec3d::cross(v[2] - v[0], v[3] - v[0]));
@@ -754,7 +762,7 @@ void VolMesh::remove_node_core(U32 idxNode) {
 
 }
 
-int VolMesh::get_disjoint_parts(vector<vector<U32>>& parts) {
+int VolMesh::get_disjoint_parts(vector<vector<U32>>& cellgroups) {
 
 	std::set<U32> setCells;
 
@@ -798,10 +806,10 @@ int VolMesh::get_disjoint_parts(vector<vector<U32>>& parts) {
 
 		//push back part to cells
 		vector<U32> vCurPart(curPart.begin(), curPart.end());
-		parts.push_back(vCurPart);
+		cellgroups.push_back(vCurPart);
 	}
 
-	return parts.size();
+	return cellgroups.size();
 }
 
 void VolMesh::printParts() {
