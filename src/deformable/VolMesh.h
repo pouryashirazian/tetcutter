@@ -96,6 +96,8 @@ public:
 
 	//access
 	bool getFaceNodes(U32 idxFace, U32 (&nodes)[3]) const;
+	bool isNodeOfCell(U32 idxNode, U32 idxCell) const;
+	bool isEdgeOfCell(U32 idxEdge, U32 idxCell) const;
 
 	CELL& cellAt(U32 i);
 	FACE& faceAt(U32 i);
@@ -271,7 +273,7 @@ protected:
 
 	//iterators
 	typedef std::map< EdgeKey, U32 >::iterator MAPHEDGEINDEXITER;
-	typedef std::map< EdgeKey, U32 >::iterator MAPHEDGEINDEXCONSTITER;
+	typedef std::map< EdgeKey, U32 >::const_iterator MAPHEDGEINDEXCONSTITER;
 };
 
 }

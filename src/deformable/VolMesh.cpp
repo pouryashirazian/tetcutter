@@ -1106,6 +1106,42 @@ bool VolMesh::getFaceNodes(U32 idxFace, U32 (&nodes)[3]) const {
 	return (setFaceNodes.size() == COUNT_FACE_EDGES);
 }
 
+bool VolMesh::isNodeOfCell(U32 idxNode, U32 idxCell) const {
+	const CELL& cell = const_cellAt(idxCell);
+	for(U32 i=0; i < COUNT_CELL_NODES; i++)
+		if(cell.nodes[i] == idxNode)
+			return true;
+	return false;
+}
+
+bool VolMesh::isEdgeOfCell(U32 idxEdge, U32 idxCell) const {
+	const CELL& cell = const_cellAt(idxCell);
+	bool found = false;
+	for(U32 i=0; i < COUNT_CELL_EDGES; i++) {
+		if(cell.edges[i] == idxEdge) {
+			found = true;
+			break;
+		}
+	}
+
+	if(!found)
+		return false;
+
+	const EDGE& edge = const_edgeAt(idxEdge);
+	if(!isNodeOfCell(edge.from, idxCell) ||
+	   !isNodeOfCell(edge.to, idxCell))
+		return false;
+
+	EdgeKey key(edge.from, edge.to);
+	MAPHEDGEINDEXCONSTITER it = m_mapEdgesIndex.find(key);
+	if(it != m_mapEdgesIndex.end())
+		if(it->second != idxEdge)
+			return false;
+
+	return true;
+}
+
+
 CELL& VolMesh::cellAt(U32 i) {
 	assert(isCellIndex(i));
 	return m_vCells[i];

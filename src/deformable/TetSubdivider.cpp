@@ -279,11 +279,11 @@ int TetSubdivider::subdivide(U32 idxCell, U8 cutEdgeCode, U8 cutNodeCode, U32 mi
 	U32 vnodes[16];
 	for(int i=0; i<16; i++)
 		vnodes[i] = BaseHandle::INVALID;
-	const CELL& tet = m_lpExtVolMesh->cellAt(idxCell);
+	const CELL& cell = m_lpExtVolMesh->const_cellAt(idxCell);
 
 	//1st 4 nodes come from the original element
 	for(int i=0; i<4; i++)
-		vnodes[i] = tet.nodes[i];
+		vnodes[i] = cell.nodes[i];
 
 	//Mask to map edges indices to new generated node indices
 	const int mapEdgeToMiddleNodes[12] = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};

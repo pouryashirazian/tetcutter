@@ -309,6 +309,13 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 			tedges[e] = 0.0;
 			U32 edge = cell.edges[e];
 			if(m_mapCutEdges.find(edge) != m_mapCutEdges.end()) {
+
+				//check the edge
+				if(!isEdgeOfCell(edge, i)) {
+					LogErrorArg2("Edge %u does not belong to cell %u", edge, i);
+					return -2;
+				}
+
 				cutEdgeCode |= (1 << e);
 				tedges[e] = m_mapCutEdges[edge].t;
 			}
@@ -324,6 +331,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 
 		//if there is a cut in this cell
 		if(cutEdgeCode != 0 || cutNodeCode != 0) {
+
 			//push back all computed values
 			vCutElements.push_back(i);
 			vCutEdgeCodes.push_back(cutEdgeCode);
@@ -364,10 +372,8 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 		it->second.idxNP1 = idxNP1;
 	}
 
-	//
 	U32 ctSubdividedTets = 0;
 	U32 middlePoints[12];
-
 	for(U32 i=0; i < vCutElements.size(); i++) {
 
 		U8 cutEdgeCode = vCutEdgeCodes[i];
@@ -396,6 +402,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 												 middlePoints, sweptSurface, false);
 		}
 	}
+
 
 	//increment completed cuts
 	if(ctSubdividedTets > 0) {
