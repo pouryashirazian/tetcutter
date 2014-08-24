@@ -45,17 +45,17 @@ VolMesh* VolMeshSamples::CreateTwoTetra() {
 	{
 		vector<vec3d> vertices;
 		vertices.push_back(vec3d(-1, 0, 0));
-		vertices.push_back(vec3d(0, 0, -2));
 		vertices.push_back(vec3d(1, 0, 0));
-		vertices.push_back(vec3d(0, 2, -1));
-		vertices.push_back(vec3d(0, 0, 2));
+		vertices.push_back(vec3d(0, 0, -1));
+		vertices.push_back(vec3d(0, 0, 1));
+		vertices.push_back(vec3d(0, 2, 0));
 		FlattenVec3<double>(vertices, vFlatVertices);
 	}
 
 	{
 		vector< Vec4<U32> > elements;
-		elements.push_back( Vec4<U32>(0, 1, 2, 3) );
 		elements.push_back( Vec4<U32>(0, 2, 3, 4) );
+		elements.push_back( Vec4<U32>(1, 2, 3, 4) );
 		FlattenVec4<U32>(elements, vFlatElements);
 	}
 

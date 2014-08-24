@@ -52,7 +52,7 @@ void CuttableMesh::setup() {
 	LogInfo("Test completed");
 
 	//Create subdivider
-	m_lpSubD = new TetSubdivider(this);
+	m_lpSubD = new TetSubdivider();
 
 	m_aabb = VolMesh::aabb();
 	m_aabb.expand(1.0);
@@ -101,13 +101,15 @@ void CuttableMesh::draw() {
 			//Draw cutedges crossing
 			for(CUTEDGEITER it = m_mapCutEdges.begin(); it != m_mapCutEdges.end(); ++it) {
 				glColor3f(0.0, 0.0, 0.0);
-				glVertex3dv(const_nodeAt(it->second.idxNP0).pos.cptr());
+				if(isNodeIndex(it->second.idxNP0))
+					glVertex3dv(const_nodeAt(it->second.idxNP0).pos.cptr());
 
 				glColor3f(0.0, 0.0, 1.0);
 				glVertex3dv(it->second.pos.cptr());
 
 				glColor3f(0.0, 0.0, 0.0);
-				glVertex3dv(const_nodeAt(it->second.idxNP1).pos.cptr());
+				if(isNodeIndex(it->second.idxNP1))
+					glVertex3dv(const_nodeAt(it->second.idxNP1).pos.cptr());
 			}
 			glEnd();
 
@@ -289,30 +291,21 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	if(m_mapCutEdges.size() > 0)
 		printf("Cut edges count %d. removed %d\n", (int)m_mapCutEdges.size(), ctRemovedCutEdges);
 
-	//Return if the tool has not left the body
-	if(!modifyMesh)
-		return -1;
-
 	//Find the list of all tets impacted
 	vector<U32> vCutElements;
 	vector<U8> vCutEdgeCodes;
 	vector<U8> vCutNodeCodes;
-	vector<double> vCutParams;
 	vCutElements.reserve(128);
 	vCutEdgeCodes.reserve(128);
 	vCutNodeCodes.reserve(128);
-	vCutParams.reserve(128 * 6);
 
 	for(U32 i=0; i < this->countCells(); i++) {
 		const CELL& cell = this->const_cellAt(i);
 		U8 cutEdgeCode = 0;
 		U8 cutNodeCode = 0;
 
-		double tedges[6];
-
 		//compute cutedge code
-		for(int e=0; e < 6; e++) {
-			tedges[e] = 0.0;
+		for(int e=0; e < COUNT_CELL_EDGES; e++) {
 			U32 edge = cell.edges[e];
 			if(m_mapCutEdges.find(edge) != m_mapCutEdges.end()) {
 
@@ -323,12 +316,11 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 				}
 
 				cutEdgeCode |= (1 << e);
-				tedges[e] = m_mapCutEdges[edge].t;
 			}
 		}
 
 		//compute cut node code
-		for(int e=0; e < 4; e++) {
+		for(int e=0; e < COUNT_CELL_NODES; e++) {
 			U32 node = cell.nodes[e];
 			if(m_mapCutNodes.find(node) != m_mapCutNodes.end()) {
 				cutNodeCode |= (1 << e);
@@ -342,9 +334,6 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 			vCutElements.push_back(i);
 			vCutEdgeCodes.push_back(cutEdgeCode);
 			vCutNodeCodes.push_back(cutNodeCode);
-			//push back param t
-			for(int e=0; e < 6; e++)
-				vCutParams.push_back(tedges[e]);
 
 			//check if the codes are implemented already
 			TetSubdivider::CUTCASE cc = m_lpSubD->IdentifyCutCase(true, cutEdgeCode, cutNodeCode);
@@ -361,6 +350,9 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	//	int edgeMaskNeg[6][2] = { {3, 2}, {2, 1}, {1, 3}, {3, 0}, {0, 2}, {1, 0} };
 	//	int faceMaskPos[4][3] = { {1, 2, 3}, {2, 0, 3}, {3, 0, 1}, {1, 0, 2} };
 	//	int faceMaskNeg[4][3] = { {3, 2, 1}, {3, 0, 2}, {1, 0, 3}, {2, 0, 1} };
+	//Return if we won't modify the mesh this time
+//	if(!modifyMesh)
+//		return -1;
 
 	//Now that cutedgecodes and cutnodecodes are computed then subdivide the element
 	LogInfoArg1("BEGIN CUTTING# %u", m_ctCompletedCuts+1);
@@ -389,7 +381,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 			const CELL& cell = this->const_cellAt(vCutElements[i]);
 
 
-			for(int e=0; e < 6; e++) {
+			for(int e=0; e < COUNT_CELL_EDGES; e++) {
 
 				CUTEDGEITER it = m_mapCutEdges.find(cell.edges[e]);
 
@@ -398,14 +390,12 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 				middlePoints[e * 2 + 1] = VolMesh::INVALID_INDEX;
 
 				if(it != m_mapCutEdges.end()) {
-
 					middlePoints[e * 2 + 0] = it->second.idxNP0;
 					middlePoints[e * 2 + 1] = it->second.idxNP1;
 				}
 			}
 			//subdivide the element
-			ctSubdividedTets += m_lpSubD->subdivide(vCutElements[i], cutEdgeCode, cutNodeCode,
-												 middlePoints, sweptSurface, false);
+			ctSubdividedTets += m_lpSubD->subdivide(this, vCutElements[i], cutEdgeCode, cutNodeCode, middlePoints);
 		}
 	}
 
@@ -426,7 +416,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 
 
 	//clear cut context
-	///clearCutContext();
+	//clearCutContext();
 
 	//collect all garbage
 	this->garbage_collection();

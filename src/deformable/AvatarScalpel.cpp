@@ -192,7 +192,7 @@ void AvatarScalpel::onTranslate(const vec3f& delta, const vec3f& pos) {
 
 		if(m_isSweptQuadValid) {
 			//call the cut method if the tool has passed through the tissue
-			int res = m_lpTissue->cut(m_vCuttingPathEdge0, m_vCuttingPathEdge1, m_vSweptQuad, true);
+			int res = m_lpTissue->cut(m_vCuttingPathEdge0, m_vCuttingPathEdge1, m_vSweptQuad, false);
 			LogInfoArg1("Tissue cut. res = %d", res);
 
 			clearCutContext();

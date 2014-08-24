@@ -410,9 +410,9 @@ void runTestSubDivide(int current) {
 	U8 cutEdgeCode, cutNodeCode = 0;
 
 	if(g_cutCase == 0)
-		g_lpTissue->getSubD()->generateCaseA(0, current, 0.4, cutEdgeCode, cutNodeCode);
+		g_lpTissue->getSubD()->generateCaseA(g_lpTissue, 0, current, 0.4, cutEdgeCode, cutNodeCode);
 	else if(g_cutCase == 1)
-		g_lpTissue->getSubD()->generateCaseB(0, current, cutEdgeCode, cutNodeCode);
+		g_lpTissue->getSubD()->generateCaseB(g_lpTissue, 0, current, cutEdgeCode, cutNodeCode);
 	g_lpTissue->garbage_collection();
 }
 

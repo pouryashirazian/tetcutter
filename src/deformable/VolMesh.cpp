@@ -1463,6 +1463,7 @@ bool VolMesh::cut_edge(int idxEdge, double distance, U32* poutIndexNP0, U32* pou
 	if(!isEdgeIndex(idxEdge))
 		return false;
 
+	//performs 2 node insertions, 1 edge update and 1 edge insertion
 	U32 from = edge_from_node(idxEdge);
 	U32 to = edge_to_node(idxEdge);
 
