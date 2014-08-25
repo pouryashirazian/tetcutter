@@ -28,6 +28,7 @@ AvatarScalpel::~AvatarScalpel() {
 void AvatarScalpel::init() {
 	setName("scalpel");
 
+	m_fOnCutEvent = NULL;
 	m_vSweptQuad.resize(4);
 	m_isSweptQuadValid = false;
 	m_isToolActive = false;
@@ -194,6 +195,8 @@ void AvatarScalpel::onTranslate(const vec3f& delta, const vec3f& pos) {
 			//call the cut method if the tool has passed through the tissue
 			int res = m_lpTissue->cut(m_vCuttingPathEdge0, m_vCuttingPathEdge1, m_vSweptQuad, false);
 			LogInfoArg1("Tissue cut. res = %d", res);
+			if((res > 0) && (m_fOnCutEvent != NULL))
+				m_fOnCutEvent();
 
 			clearCutContext();
 			updateVolMeshInfoHeader();

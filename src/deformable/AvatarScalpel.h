@@ -8,6 +8,7 @@
 #ifndef AVATARSCALPEL_H_
 #define AVATARSCALPEL_H_
 
+#include <functional>
 #include "graphics/SGMesh.h"
 #include "graphics/Gizmo.h"
 #include "CuttableMesh.h"
@@ -23,6 +24,8 @@ using namespace PS::SG;
  */
 class AvatarScalpel : public SGMesh, public IGizmoListener {
 public:
+	typedef std::function<void()> OnCutEvent;
+
 	AvatarScalpel();
 	AvatarScalpel(CuttableMesh* tissue);
 	virtual ~AvatarScalpel();
@@ -32,6 +35,7 @@ public:
 
 
 	//Tool
+	void setOnCutEventHandler(OnCutEvent f) {m_fOnCutEvent = f;}
 	bool isActive() const {return m_isToolActive;}
 	void clearCutContext();
 	void setTissue(CuttableMesh* tissue);
@@ -45,6 +49,9 @@ protected:
 	void updateVolMeshInfoHeader() const;
 
 protected:
+	//cut event
+	OnCutEvent m_fOnCutEvent;
+
 	AABB m_aabbCurrent;
 	CuttableMesh* m_lpTissue;
 
