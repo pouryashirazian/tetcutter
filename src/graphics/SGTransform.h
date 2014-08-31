@@ -25,19 +25,21 @@ public:
     void copyFrom(const SGTransform& other);
 
     //Transform
-    void scale(const vec3f& s);
+    void scale(const vec3f& delta);
     void rotate(const quat& q);
     void rotate(const vec3f& axis, float deg);
     void translate(const vec3f& t);
-    void set(const mat44f& mtxForward);
 
     //Get Transform
-    vec3f getScale() const { return m_mtxForward.getDiag().xyz();}
-    vec3f getTranslate() const { return m_mtxForward.getTranslate(); }
+    vec3f getScale() const { return m_scale;}
+    vec3f getTranslate() const { return m_translate; }
+    quatf getRotate() const { return m_rotate;}
 
     void reset();
+    void resetScale();
+    void resetRotate();
     void resetTranslate();
-    void updateBackward();
+    void syncMatrices();
 
     //For opengl usage
     void bind();
@@ -47,9 +49,14 @@ public:
     const mat44f& backward() const {return m_mtxBackward;}
 
 protected:
+    vec3f m_translate;
+    vec3f m_scale;
+    quatf m_rotate;
+
     mat44f m_mtxForward;
     mat44f m_mtxBackward;
     bool m_autoUpdate;
+    int m_changes;
 };
 
 typedef std::shared_ptr<SGTransform> SmartPtrSGTransform;

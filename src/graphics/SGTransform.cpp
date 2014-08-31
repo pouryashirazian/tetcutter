@@ -13,12 +13,12 @@ namespace SG {
 
 
 SGTransform::SGTransform(bool bAutoUpdateBackward) {
-	m_mtxForward.identity();
-	m_mtxBackward.identity();
+	reset();
 	m_autoUpdate = bAutoUpdateBackward;
 }
 
 SGTransform::SGTransform(const SGTransform& other):m_autoUpdate(false) {
+	reset();
 	this->copyFrom(other);
 }
 
@@ -27,28 +27,25 @@ SGTransform::~SGTransform() {
 }
 
 void SGTransform::copyFrom(const SGTransform& other) {
-	m_mtxForward = other.m_mtxForward;
-	m_mtxBackward = other.m_mtxBackward;
+	m_scale = other.m_scale;
+	m_rotate = other.m_rotate;
+	m_translate = other.m_translate;
 	m_autoUpdate = other.m_autoUpdate;
+	syncMatrices();
 }
 
-void SGTransform::set(const mat44f& mtxForward) {
-	m_mtxForward = mtxForward;
+void SGTransform::scale(const vec3f& delta) {
+	m_changes++;
+	m_scale = m_scale + delta;
 	if(m_autoUpdate)
-		updateBackward();
-}
-
-void SGTransform::scale(const vec3f& s) {
-	m_mtxForward.scale(s);
-	if(m_autoUpdate)
-		updateBackward();
+		syncMatrices();
 }
 
 void SGTransform::rotate(const quat& q) {
-	mat44f work = mat44f::quatToMatrix(q);
-	m_mtxForward = m_mtxForward * work;
+	m_changes++;
+	m_rotate = quat::mul(m_rotate, q);
 	if(m_autoUpdate)
-		updateBackward();
+		syncMatrices();
 
 }
 
@@ -59,27 +56,59 @@ void SGTransform::rotate(const vec3f& axis, float deg) {
 }
 
 void SGTransform::translate(const vec3f& t) {
-	m_mtxForward.translate(t);
+	m_changes++;
+	m_translate = m_translate + t;
 	if(m_autoUpdate)
-		updateBackward();
+		syncMatrices();
 }
 
-void SGTransform::updateBackward() {
+void SGTransform::syncMatrices() {
+
+	m_mtxForward.identity();
+
+	//SRT is the right order
+	m_mtxForward.translate(m_translate);
+	m_mtxForward.scale(m_scale);
+	m_mtxForward.rotate(m_rotate);
+
 	m_mtxBackward = m_mtxForward.inverted();
+	m_changes = 0;
 }
 
 void SGTransform::reset() {
-	m_mtxForward.identity();
+	m_changes++;
+	m_scale = vec3f(1,1,1);
+	m_rotate.identity();
+	m_translate = vec3f(0,0,0);
 	if(m_autoUpdate)
-		updateBackward();
+		syncMatrices();
+}
+
+void SGTransform::resetScale() {
+	m_changes++;
+	m_scale = vec3f(1,1,1);
+	if(m_autoUpdate)
+		syncMatrices();
+}
+
+void SGTransform::resetRotate() {
+	m_changes++;
+	m_rotate.identity();
+	if(m_autoUpdate)
+		syncMatrices();
 }
 
 void SGTransform::resetTranslate() {
-	vec4f t = m_mtxForward.getCol(3);
-	translate(t.xyz() * -1.0f);
+	m_changes++;
+	m_translate = vec3f(0,0,0);
+	if(m_autoUpdate)
+		syncMatrices();
 }
 
+
 void SGTransform::bind() {
+	if(m_changes > 0)
+		syncMatrices();
 
 	glMatrixMode(GL_MODELVIEW_MATRIX);
 	glPushMatrix();

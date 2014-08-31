@@ -565,7 +565,7 @@ namespace PS {
                 }
                 break;
                 case gtScale: {
-                	cmdScale(vec3f(1, 1, 1) + delta);
+                	cmdScale(delta);
                 }
                 break;
                 case gtRotate: {
@@ -616,7 +616,7 @@ namespace PS {
         }
 
     	void GizmoManager::cmdTranslate(const vec3f& increment) {
-        	this->transform()->translate(increment);
+        	transform()->translate(increment);
         	vec3f final = transform()->getTranslate();
 
             if(m_lpFocusedNode)
