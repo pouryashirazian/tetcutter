@@ -8,6 +8,7 @@
 #include "AvatarScalpel.h"
 #include "base/Logger.h"
 #include "graphics/selectgl.h"
+#include "graphics/SceneGraph.h"
 
 using namespace PS;
 

@@ -29,19 +29,14 @@ public:
     void rotate(const quat& q);
     void rotate(const vec3f& axis, float deg);
     void translate(const vec3f& t);
+    void set(const mat44f& mtxForward);
 
     //Get Transform
     vec3f getScale() const { return m_mtxForward.getDiag().xyz();}
-    vec3f getTranslate() const {
-    	return m_mtxForward.getTranslate();
-    }
-
-    void resetTranslate() {
-    	vec4f t = m_mtxForward.getCol(3);
-    	translate(t.xyz() * -1.0f);
-    }
+    vec3f getTranslate() const { return m_mtxForward.getTranslate(); }
 
     void reset();
+    void resetTranslate();
     void updateBackward();
 
     //For opengl usage

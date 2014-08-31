@@ -24,6 +24,8 @@ SceneGraph::SceneGraph() {
 	m_vSceneNodes.push_back(m_headers);
 	m_tick = tbb::tick_count::now();
 	m_ctFrames = m_ctSampledFrames = 0;
+	m_lpWorld = new World();
+
 
 	//Headers to show
 	m_idGPUHeader = m_headers->addHeaderLine("gpu", gpuInfo());
@@ -42,6 +44,7 @@ void SceneGraph::cleanup() {
 //	for (U32 i = 0; i < m_vSceneNodes.size(); i++)
 	//	SAFE_DELETE(m_vSceneNodes[i]);
 	m_vSceneNodes.resize(0);
+	SAFE_DELETE(m_lpWorld);
 }
 
 U32 SceneGraph::add(SGNode *aNode) {
@@ -50,6 +53,14 @@ U32 SceneGraph::add(SGNode *aNode) {
 
 	m_vSceneNodes.push_back(aNode);
 	return (m_vSceneNodes.size() - 1);
+}
+
+U32 SceneGraph::addToPhysicsWorld(SGPhysicsMesh* pNode) {
+	if(pNode == NULL)
+		return -1;
+
+	m_lpWorld->addNode(pNode);
+	return add(pNode);
 }
 
 bool SceneGraph::remove(U32 index) {
@@ -163,6 +174,10 @@ void SceneGraph::drawBBoxes() {
 }
 
 void SceneGraph::timestep() {
+	//world
+	m_lpWorld->step();
+
+	//update
 	for (U32 i = 0; i < m_vSceneNodes.size(); i++) {
 		if(m_vSceneNodes[i]->isAnimate())
 			m_vSceneNodes[i]->timestep();

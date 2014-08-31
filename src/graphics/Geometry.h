@@ -99,6 +99,8 @@ public:
 				  float width = 1.0f,
 				  const vec3f& o = vec3f(0,0,0));
 
+	//bool addCircularTape(int sectors, float radius = 1.0f,)
+
     void addCube(const vec3f& lower, const vec3f& upper);
     void addCube(const vec3f& center, float side);
     void addSphere(float radius = 1.0f, int hseg = 8, int vseg = 8);

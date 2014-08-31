@@ -88,6 +88,11 @@ bool GLMemoryBuffer::readBackBuffer(U32 szOutBuffer, void* lpOutBuffer) {
 	return true;
 }
 
+void GLMeshBuffer::setFaceMode(int fmode) {
+	m_faceMode = fmode;
+	m_ctFaceElements = m_ctVertices;
+}
+
 void GLMemoryBuffer::attach() {
 	if(!m_isValid)
 		return;
@@ -231,7 +236,8 @@ void GLMeshBuffer::setup(const Geometry& g) {
 
 	if(g.countFaces() > 0)
 		this->setupIndexBufferObject(g.indices(), g.getFaceMode());
-
+	else
+		this->setFaceMode(g.getFaceMode());
 }
 
 void GLMeshBuffer::setupVertexAttribs(const vector<float>& arrAttribs, int step, MemoryBufferType attribKind)

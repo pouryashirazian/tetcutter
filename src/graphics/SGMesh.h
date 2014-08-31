@@ -1,7 +1,6 @@
 #ifndef SG_MESH_H
 #define SG_MESH_H
 
-#include "SceneGraph.h"
 #include "GLMeshBuffer.h"
 
 using namespace PS;
@@ -28,9 +27,7 @@ public:
 
 	virtual void draw();
 
-    virtual void drawNoEffect() {
-		GLMeshBuffer::draw();
-    }
+    virtual void drawNoEffect();
 };
 
 }

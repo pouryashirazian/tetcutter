@@ -29,7 +29,9 @@
 								<option id="gnu.cpp.compiler.option.include.paths.95198759" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/3rdparty}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/3rdparty/bullet3}&quot;"/>
 									<listOptionValue builtIn="false" value="/opt/AMDAPP/include"/>
+									<listOptionValue builtIn="false" value="/usr/local/cuda/include"/>
 									<listOptionValue builtIn="false" value="${CPP_COMPONENTS}/tbb/include"/>
 									<listOptionValue builtIn="false" value="${CPP_COMPONENTS}/LOKI/include"/>
 								</option>
@@ -50,6 +52,7 @@
 								</option>
 								<option id="gnu.cpp.link.option.libs.1259765226" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="dl"/>
+									<listOptionValue builtIn="false" value="OpenCL"/>
 									<listOptionValue builtIn="false" value="pthread"/>
 									<listOptionValue builtIn="false" value="m"/>
 									<listOptionValue builtIn="false" value="tbb"/>
@@ -107,7 +110,9 @@
 								<option id="gnu.cpp.compiler.option.include.paths.359577561" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/3rdparty}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/3rdparty/bullet3}&quot;"/>
 									<listOptionValue builtIn="false" value="/opt/AMDAPP/include"/>
+									<listOptionValue builtIn="false" value="/usr/local/cuda/include"/>
 									<listOptionValue builtIn="false" value="${CPP_COMPONENTS}/tbb/include"/>
 									<listOptionValue builtIn="false" value="${CPP_COMPONENTS}/LOKI/include"/>
 								</option>
@@ -123,6 +128,7 @@
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.exe.release.884175101" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.release">
 								<option id="gnu.cpp.link.option.libs.430784793" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="dl"/>
+									<listOptionValue builtIn="false" value="OpenCL"/>
 									<listOptionValue builtIn="false" value="pthread"/>
 									<listOptionValue builtIn="false" value="m"/>
 									<listOptionValue builtIn="false" value="tbb"/>
@@ -185,9 +191,11 @@
 								<option id="gnu.cpp.compiler.option.include.paths.1268323390" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/3rdparty}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/3rdparty/bullet3}&quot;"/>
 									<listOptionValue builtIn="false" value="/opt/AMDAPP/include"/>
+									<listOptionValue builtIn="false" value="/usr/local/cuda/include"/>
 									<listOptionValue builtIn="false" value="${CPP_COMPONENTS}/tbb/include"/>
-									<listOptionValue builtIn="false" value="${CPP_COMPONENTS}/loki/include"/>
+									<listOptionValue builtIn="false" value="${CPP_COMPONENTS}/LOKI/include"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.other.other.1148784393" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0 -std=c++11" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.216520569" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
@@ -263,7 +271,9 @@
 								<option id="gnu.cpp.compiler.option.include.paths.1002867421" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/3rdparty}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/3rdparty/bullet3}&quot;"/>
 									<listOptionValue builtIn="false" value="/opt/AMDAPP/include"/>
+									<listOptionValue builtIn="false" value="/usr/local/cuda/include"/>
 									<listOptionValue builtIn="false" value="${CPP_COMPONENTS}/tbb/include"/>
 									<listOptionValue builtIn="false" value="${CPP_COMPONENTS}/LOKI/include"/>
 								</option>

@@ -54,6 +54,7 @@ int IntersectSegmentTriangleF(const vec3f& s0, const vec3f& s1, const vec3f p[3]
 			//Cartesian Coordinate
 			xyz = s0 + rd * uvt.z;
 
+			//return the t distance on the segment
 			t = uvt.z;
 
 			return res;
@@ -80,6 +81,7 @@ int IntersectSegmentTriangle(const vec3d& s0, const vec3d& s1, const vec3d p[3],
 			//Cartesian Coordinate
 			xyz = s0 + rd * uvt.z;
 
+			//return the t distance on the segment
 			t = uvt.z;
 
 			return res;

@@ -32,6 +32,12 @@ void SGTransform::copyFrom(const SGTransform& other) {
 	m_autoUpdate = other.m_autoUpdate;
 }
 
+void SGTransform::set(const mat44f& mtxForward) {
+	m_mtxForward = mtxForward;
+	if(m_autoUpdate)
+		updateBackward();
+}
+
 void SGTransform::scale(const vec3f& s) {
 	m_mtxForward.scale(s);
 	if(m_autoUpdate)
@@ -66,6 +72,11 @@ void SGTransform::reset() {
 	m_mtxForward.identity();
 	if(m_autoUpdate)
 		updateBackward();
+}
+
+void SGTransform::resetTranslate() {
+	vec4f t = m_mtxForward.getCol(3);
+	translate(t.xyz() * -1.0f);
 }
 
 void SGTransform::bind() {

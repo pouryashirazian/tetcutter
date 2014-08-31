@@ -50,7 +50,7 @@ public:
     //Axis
     GizmoAxis axis() const {return m_axis;}
     void setAxis(GizmoAxis axis) {m_axis = axis;}
-    int setAxis(const Ray& r);
+    virtual int setAxis(const Ray& r);
     
     vec4f axisColor(GizmoAxis a);
 protected:
@@ -96,6 +96,9 @@ public:
 
     void draw();
     int intersect(const Ray& r);
+    int setAxis(const Ray& r);
+
+    void rotate(GizmoAxis axis, float degree);
 protected:
 	void setup();
 
@@ -103,6 +106,10 @@ private:
 	SGMesh m_x;
 	SGMesh m_y;
 	SGMesh m_z;
+	SGMesh m_xs;
+	SGMesh m_ys;
+	SGMesh m_zs;
+
 };
 
 //Avatar
@@ -151,6 +158,15 @@ public:
 	//Clients
 	int registerClient(IGizmoListener* client);
 	void unregisterClient(int id);
+
+	static string AxisToStr(GizmoAxis axis);
+
+	void cmdTranslate(const vec3f& increment);
+	void cmdScale(const vec3f& increment);
+	void cmdRotate(const vec3f& axis, float degreeIncrement);
+
+protected:
+
 private:
 	GizmoTranslate* m_lpGizmoTranslate;
 	GizmoScale* m_lpGizmoScale;

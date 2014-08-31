@@ -28,6 +28,16 @@ void SGMesh::draw() {
 
 }
 
+void SGMesh::drawNoEffect() {
+	if(m_spTransform)
+		m_spTransform->bind();
+
+	GLMeshBuffer::draw();
+
+	if(m_spTransform)
+		m_spTransform->unbind();
+}
+
 }
 }
 

@@ -478,7 +478,7 @@ int main(int argc, char* argv[]) {
 
 	//Focus gizmo manager on the scalpel
 	TheGizmoManager::Instance().setFocusedNode(g_lpScalpel);
-	TheGizmoManager::Instance().transform()->translate(vec3f(0, 3, 0));
+	TheGizmoManager::Instance().cmdTranslate(vec3f(0, 3, 0));
 
 	//reset cuttable mesh
 	resetMesh();

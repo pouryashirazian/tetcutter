@@ -80,11 +80,11 @@ SGFloor::SGFloor(int rows, int cols, float step) {
 	m_aabb.set(vec3f(-0.5f * rows * step, 0.0, -0.5f * cols * step),
 			   vec3f(+0.5f * rows * step, 0.0, +0.5f * cols * step));
 
-	//Setup Mesh Buffers
-	setupVertexAttribs(arrVertices, 3, mbtPosition);
-	setupVertexAttribs(arrColors, 3, mbtColor);
-	m_ctFaceElements = m_ctVertices;
-	m_faceMode = ftLines;
+	Geometry g;
+	g.init(3, 3, 2, ftLines);
+	g.addVertexAttribs(arrVertices, 3, mbtPosition);
+	g.addVertexAttribs(arrColors, 3, mbtColor);
+	setup(g);
 }
 
 SGFloor::~SGFloor() {
