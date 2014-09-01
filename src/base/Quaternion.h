@@ -20,6 +20,7 @@ class Quaternion
 public:
     Quaternion() { identity();}
     Quaternion(const Quaternion& rhs):x(rhs.x),y(rhs.y),z(rhs.z), w(rhs.w) {}
+    Quaternion(float x_, float y_, float z_, float w_):x(x_),y(y_),z(z_), w(w_) {}
     Quaternion(const vec3f& q_, float w_):x(q_.x),y(q_.y),z(q_.z), w(w_) {}
     Quaternion(const vec4f& q_):x(q_.x),y(q_.y),z(q_.z), w(q_.w) {}
 

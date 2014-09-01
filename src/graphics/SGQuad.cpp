@@ -31,9 +31,21 @@ namespace PS {
         
         
         //Quad
+        SGQuad::SGQuad() {
+        	m_lpTex = NULL;
+        	setup(1, 1);
+        }
+
         SGQuad::SGQuad(float w, float h, GLTexture* aTex) {
             m_lpTex = aTex;
-            
+            setup(w, h);
+        }
+
+        SGQuad::~SGQuad() {
+            GLMeshBuffer::cleanup();
+        }
+
+        void SGQuad::setup(float w, float h) {
             float hw = 0.5f * w;
             float hh = 0.5f * h;
             vec3f n = vec3f(0,0,1);
@@ -56,15 +68,11 @@ namespace PS {
             g.addTexCoord(vec2f(0, 1));
             g.addTriangle(vec3u32(0, 1, 2));
             g.addTriangle(vec3u32(2, 3, 0));
-            this->setup(g);
+            SGMesh::setup(g);
             
             if(TheShaderManager::Instance().has("textured")) {
                 m_spEffect = SmartPtrSGEffect(new TexturedEffect(TheShaderManager::Instance().get("textured")));
             }
-        }
-        
-        SGQuad::~SGQuad() {
-            GLMeshBuffer::cleanup();
         }
         
         void SGQuad::draw() {

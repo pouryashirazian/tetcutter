@@ -13,6 +13,7 @@
 #include "graphics/AppScreen.h"
 #include "graphics/selectgl.h"
 #include "graphics/SGQuad.h"
+#include "graphics/SGRenderMask.h"
 #include "deformable/AvatarScalpel.h"
 #include "deformable/TetSubdivider.h"
 #include "deformable/VolMeshSamples.h"
@@ -453,6 +454,9 @@ int main(int argc, char* argv[]) {
 
 	//Build Shaders for drawing the mesh
 	AnsiStr strRoot = ExtractOneLevelUp(ExtractFilePath(GetExePath()));
+	AnsiStr strLeftPial = strRoot + "data/meshes/brain/pial_Full_obj/lh.pial.obj";
+	AnsiStr strRightPial = strRoot + "data/meshes/brain/pial_Full_obj/rh.pial.obj";
+
 	AnsiStr strShaderRoot = strRoot + "data/shaders/";
 	AnsiStr strTextureRoot = strRoot + "data/textures/";
 
@@ -468,6 +472,26 @@ int main(int argc, char* argv[]) {
 	woodenFloor->transform()->translate(vec3f(0, -0.1f, 0));
 	woodenFloor->transform()->rotate(vec3f(1.0f, 0.0f, 0.0f), 90.0f);
 	TheSceneGraph::Instance().add(woodenFloor);
+
+
+	/*
+	//load brain mesh
+	SGMesh* leftpial = new SGMesh(strLeftPial);
+	leftpial->transform()->scale(0.01);
+	leftpial->transform()->rotate(vec3f(1,0,0), -90.0);
+	leftpial->transform()->translate(vec3f(4, 1, 0));
+	TheSceneGraph::Instance().add(leftpial);
+
+	SGMesh* rightpial = new SGMesh(strRightPial);
+	rightpial->transform()->scale(0.01);
+	rightpial->transform()->rotate(vec3f(1,0,0), -90.0);
+	rightpial->transform()->translate(vec3f(4, 1, 0));
+	TheSceneGraph::Instance().add(rightpial);
+	*/
+	SGRenderMask* lpRenderMask = new SGRenderMask();
+	TheSceneGraph::Instance().add(lpRenderMask);
+
+
 
 	//TheSceneGraph::Instance().addFloor(32, 32, 0.5f);
 	TheSceneGraph::Instance().addSceneBox(AABB(vec3f(-10, -10, -16), vec3f(10, 10, 16)));

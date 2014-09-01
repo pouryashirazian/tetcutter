@@ -190,12 +190,12 @@ protected:
 class Mesh : public Asset{
 public:
     Mesh();
-	Mesh(const char* chrFileName);
+	Mesh(const AnsiStr& strFilePath);
 	virtual ~Mesh();
 
 	//IO
-	bool load(const char* chrFilePath);
-	bool store(const char* chrFilePath);
+	bool read(const AnsiStr& strFilePath);
+	bool store(const AnsiStr& strFilePath);
 
 	//Mesh Nodes
 	void addNode(MeshNode* lpMeshNode);
@@ -229,7 +229,7 @@ private:
 	std::vector<MeshNode*> m_nodes;
 	std::vector<MeshMaterial*> m_materials;
     std::map<string, MeshMaterial*> m_mapMaterial;
-    string m_strFilePath;
+    AnsiStr m_strFilePath;
 };
 
 }

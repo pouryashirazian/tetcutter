@@ -12,9 +12,9 @@ namespace SG {
 class SGMesh : public GLMeshBuffer {
 public:
 	SGMesh():GLMeshBuffer() {}
-	SGMesh(const Geometry& g):GLMeshBuffer(g) {
-        this->setAABB(g.aabb());
-    }
+
+	explicit SGMesh(const Geometry& g);
+	explicit SGMesh(const AnsiStr& strFilePath);
 
 	virtual ~SGMesh() {
 		GLMeshBuffer::cleanup();

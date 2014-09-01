@@ -41,6 +41,13 @@ void SGTransform::scale(const vec3f& delta) {
 		syncMatrices();
 }
 
+void SGTransform::scale(float sfactor) {
+	m_changes++;
+	m_scale = m_scale * sfactor;
+	if(m_autoUpdate)
+		syncMatrices();
+}
+
 void SGTransform::rotate(const quat& q) {
 	m_changes++;
 	m_rotate = quat::mul(m_rotate, q);
@@ -55,9 +62,9 @@ void SGTransform::rotate(const vec3f& axis, float deg) {
 	this->rotate(q);
 }
 
-void SGTransform::translate(const vec3f& t) {
+void SGTransform::translate(const vec3f& delta) {
 	m_changes++;
-	m_translate = m_translate + t;
+	m_translate = m_translate + delta;
 	if(m_autoUpdate)
 		syncMatrices();
 }
@@ -75,6 +82,28 @@ void SGTransform::syncMatrices() {
 	m_changes = 0;
 }
 
+void SGTransform::setScale(const vec3f& s) {
+	m_changes++;
+	m_scale = s;
+	if(m_autoUpdate)
+		syncMatrices();
+}
+
+void SGTransform::setRotate(const quat& r) {
+	m_changes++;
+	m_rotate = r;
+	if(m_autoUpdate)
+		syncMatrices();
+}
+
+void SGTransform::setTranslate(const vec3f& t) {
+	m_changes++;
+	m_translate = t;
+	if(m_autoUpdate)
+		syncMatrices();
+}
+
+
 void SGTransform::reset() {
 	m_changes++;
 	m_scale = vec3f(1,1,1);
@@ -85,26 +114,16 @@ void SGTransform::reset() {
 }
 
 void SGTransform::resetScale() {
-	m_changes++;
-	m_scale = vec3f(1,1,1);
-	if(m_autoUpdate)
-		syncMatrices();
+	setScale(vec3f(1,1,1));
 }
 
 void SGTransform::resetRotate() {
-	m_changes++;
-	m_rotate.identity();
-	if(m_autoUpdate)
-		syncMatrices();
+	setRotate(quatf(0, 0, 0, 1));
 }
 
 void SGTransform::resetTranslate() {
-	m_changes++;
-	m_translate = vec3f(0,0,0);
-	if(m_autoUpdate)
-		syncMatrices();
+	setTranslate(vec3f(0,0,0));
 }
-
 
 void SGTransform::bind() {
 	if(m_changes > 0)

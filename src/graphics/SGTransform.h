@@ -26,14 +26,21 @@ public:
 
     //Transform
     void scale(const vec3f& delta);
+    void scale(float sfactor);
     void rotate(const quat& q);
     void rotate(const vec3f& axis, float deg);
-    void translate(const vec3f& t);
+    void translate(const vec3f& delta);
 
     //Get Transform
     vec3f getScale() const { return m_scale;}
     vec3f getTranslate() const { return m_translate; }
     quatf getRotate() const { return m_rotate;}
+
+    //Set Transform
+    void setScale(const vec3f& s);
+    void setRotate(const quat& r);
+    void setTranslate(const vec3f& t);
+
 
     void reset();
     void resetScale();

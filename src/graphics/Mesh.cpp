@@ -644,9 +644,9 @@ Mesh::Mesh():Asset()  {
 
 }
 
-Mesh::Mesh(const char* chrFileName)
+Mesh::Mesh(const AnsiStr& strFilePath)
 {
-    load(chrFileName);
+    read(strFilePath);
 }
 
 Mesh::~Mesh()
@@ -709,10 +709,10 @@ MeshMaterial* Mesh::getMaterial(const string& strName) const
         return NULL;
 }
 
-bool Mesh::load(const char* chrFilePath)
+bool Mesh::read(const AnsiStr& strFilePath)
 {
-    m_strFilePath = string(chrFilePath);
-    AnsiStr strExt = ExtractFileExt(AnsiStr(m_strFilePath.c_str()));
+    m_strFilePath = strFilePath;
+    AnsiStr strExt = ExtractFileExt(AnsiStr(m_strFilePath)).toLower();
     bool bres = false;
     if(strExt == "obj") {
         bres = loadObj(m_strFilePath.c_str());
@@ -723,14 +723,13 @@ bool Mesh::load(const char* chrFilePath)
     return bres;
 }
 
-bool Mesh::store(const char* chrFilePath) {
+bool Mesh::store(const AnsiStr& strFilePath) {
 	ofstream fp;
-	fp.open(chrFilePath);
+	fp.open(strFilePath.cptr());
 
 
 	//Store All Materials
-	AnsiStr strFilePath = ExtractFilePath(AnsiStr(chrFilePath));
-	AnsiStr strMtlPath = strFilePath;
+	AnsiStr strMtlPath = ExtractFilePath(AnsiStr(strFilePath));
 	for(U32 i=0; i<countMaterials(); i++) {
 
 		if(getMaterial(i)->name().length() > 0)
@@ -840,7 +839,7 @@ AABB Mesh::computeBoundingBox() const
 }
 
 void Mesh::computeMissingNormals() {
-    for(int i=0; i<this->countNodes(); i++) {
+    for(U32 i=0; i<this->countNodes(); i++) {
         MeshNode* aNode = this->getNode(i);
         if(aNode->countVertices() > 0 && aNode->countNormals() == 0)
             aNode->computeVertexNormalsFromFaces();

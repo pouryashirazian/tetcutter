@@ -12,6 +12,7 @@
 #include "base/Vec.h"
 #include "base/Matrix.h"
 #include "base/Quaternion.h"
+#include "base/String.h"
 #include "graphics/AABB.h"
 #include "GLTypes.h"
 
@@ -25,11 +26,13 @@ namespace GL {
 class Geometry {
 public:
 	Geometry();
-	Geometry(const Geometry& other);
+    Geometry(const Geometry& other);
+	explicit Geometry(const AnsiStr& strFilePath);
 	virtual ~Geometry();
 
-	void init(int stepVertex = 3, int stepColor = 4,
-			   int stepTexCoords = 2, int faceMode = ftTriangles);
+	void init();
+	void init(int stepVertex, int stepColor,
+			   int stepTexCoords, PS::GL::FaceType faceMode = ftTriangles);
 
 	//stats
 	bool isCompatible(const Geometry& other) const;
@@ -76,7 +79,7 @@ public:
 	//Add Arrays
 	bool addVertexAttribs(const vector<float>& arrAttribs, int step = 3, MemoryBufferType attribKind = mbtPosition);
 	void addPerVertexColor(const vec4f& color, U32 ctVertices = 0);
-	bool addFaceIndices(const vector<U32>& arrIndex, int faceMode = ftTriangles);
+	bool addFaceIndices(const vector<U32>& arrIndex, PS::GL::FaceType faceMode = ftTriangles);
 	bool computeNormalsFromFaces();
 
 	//Clear Buffers
@@ -137,9 +140,16 @@ public:
 	bool copyFrom(const Geometry& other);
 	bool appendFrom(const Geometry& other);
 
+	//IO
+	bool read(const AnsiStr& strFilePath);
+	bool write(const AnsiStr& strFilePath) const;
+	bool readObj(const AnsiStr& strFilePath);
+	bool writeObj(const AnsiStr& strFilePath) const;
 
 	Geometry& operator=(const Geometry& other);
 	Geometry operator+(const Geometry& other) const;
+
+	//friend Geometry operator+(const Geometry& a, const Geometry& b);
 protected:
 	void cleanup();
 
@@ -148,7 +158,7 @@ private:
 	int m_stepColor;
 	int m_stepTexCoord;
 	int m_stepFace;
-	int m_faceMode;
+	FaceType m_faceMode;
 
 
 	vector<float> m_vertices;

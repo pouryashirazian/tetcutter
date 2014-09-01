@@ -21,11 +21,16 @@ namespace PS {
         class SGQuad : public SGMesh {
             
         public:
+        	SGQuad();
             SGQuad(float w, float h, GLTexture* aTex = NULL);
             virtual ~SGQuad();
             
-            void draw();
+            virtual void draw();
             
+            //Set Texture
+            void setTexture(GLTexture* lpTex) {m_lpTex = lpTex;}
+        protected:
+            void setup(float w, float h);
             
         protected:
             GLTexture* m_lpTex;
