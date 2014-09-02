@@ -20,8 +20,12 @@ namespace SG {
 SceneGraph::SceneGraph() {
 	m_stkModelView.top().identity();
 	m_stkProjection.top().identity();
+
+	//add header to opaque list
 	m_headers = new SGHeaders();
 	m_vSceneNodes.push_back(m_headers);
+
+
 	m_tick = tbb::tick_count::now();
 	m_ctFrames = m_ctSampledFrames = 0;
 	m_lpWorld = new World();

@@ -17,7 +17,10 @@ namespace PS {
 
         public:
         	SGRenderMask();
+        	SGRenderMask(GLTexture* lpTex);
             virtual ~SGRenderMask();
+
+            void setup();
 
             void draw();
         };

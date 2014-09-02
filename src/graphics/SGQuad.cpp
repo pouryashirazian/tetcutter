@@ -33,7 +33,6 @@ namespace PS {
         //Quad
         SGQuad::SGQuad() {
         	m_lpTex = NULL;
-        	setup(1, 1);
         }
 
         SGQuad::SGQuad(float w, float h, GLTexture* aTex) {

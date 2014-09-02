@@ -190,10 +190,19 @@ void NormalKey(unsigned char key, int x, int y)
 	}
 	break;
 
+	case('m'): {
+		bool flag = !TheSceneGraph::Instance().get("rendermask")->isVisible();
+		TheSceneGraph::Instance().get("rendermask")->setVisible(flag);
+		LogInfoArg1("Set rendermask to %s", flag ? "show" : "hide");
+		break;
+	}
+	break;
+
 	case('p'): {
 		TheSceneGraph::Instance().print();
 	}
 	break;
+
 
 	case('['):{
 		TheSceneGraph::Instance().camera().incrZoom(0.5f);
@@ -465,6 +474,9 @@ int main(int argc, char* argv[]) {
 
 	//Load Textures
 	TheTexManager::Instance().add(strTextureRoot + "wood.png");
+	TheTexManager::Instance().add(strTextureRoot + "rendermask.png");
+	TheTexManager::Instance().add(strTextureRoot + "maskalpha.png");
+	TheTexManager::Instance().add(strTextureRoot + "maskalphafilled.png");
 
 	//Ground and Room
 	SGQuad* woodenFloor = new SGQuad(16.0f, 16.0f, TheTexManager::Instance().get("wood"));
@@ -488,9 +500,6 @@ int main(int argc, char* argv[]) {
 	rightpial->transform()->translate(vec3f(4, 1, 0));
 	TheSceneGraph::Instance().add(rightpial);
 	*/
-	SGRenderMask* lpRenderMask = new SGRenderMask();
-	TheSceneGraph::Instance().add(lpRenderMask);
-
 
 
 	//TheSceneGraph::Instance().addFloor(32, 32, 0.5f);
@@ -506,6 +515,11 @@ int main(int argc, char* argv[]) {
 
 	//reset cuttable mesh
 	resetMesh();
+
+	SGRenderMask* renderMask = new SGRenderMask(TheTexManager::Instance().get("maskalpha"));
+	renderMask->setName("rendermask");
+	TheSceneGraph::Instance().add(renderMask);
+
 
 	TheSceneGraph::Instance().headers()->addHeaderLine("cell", "info");
 	TheSceneGraph::Instance().print();
