@@ -516,9 +516,9 @@ int main(int argc, char* argv[]) {
 	//reset cuttable mesh
 	resetMesh();
 
-	SGRenderMask* renderMask = new SGRenderMask(TheTexManager::Instance().get("maskalpha"));
-	renderMask->setName("rendermask");
-	TheSceneGraph::Instance().add(renderMask);
+//	SGRenderMask* renderMask = new SGRenderMask(TheTexManager::Instance().get("maskalpha"));
+//	renderMask->setName("rendermask");
+//	TheSceneGraph::Instance().add(renderMask);
 
 
 	TheSceneGraph::Instance().headers()->addHeaderLine("cell", "info");
