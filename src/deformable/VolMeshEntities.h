@@ -40,30 +40,30 @@ using namespace PS::MATH;
 namespace PS {
 namespace MESH {
 
-	//BaseHandle
-	class BaseHandle {
+	//Base link
+	class BaseLink {
 	public:
 		static const U32 INVALID = -1;
-		explicit BaseHandle(U32 idx) { m_idx = idx;}
-		explicit BaseHandle(const BaseHandle& other) { m_idx = other.m_idx;}
+		explicit BaseLink(U32 idx) { m_idx = idx;}
+		explicit BaseLink(const BaseLink& other) { m_idx = other.m_idx;}
 
 
 		bool isValid() const { return (m_idx != INVALID);}
 
 		//ops
-		BaseHandle& operator=(const BaseHandle& other) {
+		BaseLink& operator=(const BaseLink& other) {
 			this->m_idx = other.m_idx;
 			return (*this);
 		}
 
-		BaseHandle& operator=(U32 idx) {
+		BaseLink& operator=(U32 idx) {
 			this->m_idx = idx;
 			return (*this);
 		}
 
-		bool operator<(const BaseHandle& other) const { return this->m_idx < other.m_idx; }
-		bool operator>(const BaseHandle& other) const { return this->m_idx > other.m_idx; }
-		bool operator==(const BaseHandle& other) const { return this->m_idx == other.m_idx; }
+		bool operator<(const BaseLink& other) const { return this->m_idx < other.m_idx; }
+		bool operator>(const BaseLink& other) const { return this->m_idx > other.m_idx; }
+		bool operator==(const BaseLink& other) const { return this->m_idx == other.m_idx; }
 		bool operator<(U32 idx) const { return this->m_idx < idx; }
 		bool operator>(U32 idx) const { return this->m_idx > idx; }
 		bool operator==(U32 idx) const { return this->m_idx == idx; }
@@ -74,11 +74,11 @@ namespace MESH {
 		U32 m_idx;
 	};
 
-	//handles for all entities
-	class NodeHandle : public BaseHandle { NodeHandle(U32 idx = INVALID): BaseHandle(idx){} };
-	class EdgeHandle : public BaseHandle { EdgeHandle(U32 idx = INVALID): BaseHandle(idx){} };
-	class FaceHandle : public BaseHandle { FaceHandle(U32 idx = INVALID): BaseHandle(idx){} };
-	class CellHandle : public BaseHandle { CellHandle(U32 idx = INVALID): BaseHandle(idx){} };
+	//links for all entities
+	class NodeLink : public BaseLink { NodeLink(U32 idx = INVALID): BaseLink(idx){} };
+	class EdgeLink : public BaseLink { EdgeLink(U32 idx = INVALID): BaseLink(idx){} };
+	class FaceLink : public BaseLink { FaceLink(U32 idx = INVALID): BaseLink(idx){} };
+	class CellLink : public BaseLink { CellLink(U32 idx = INVALID): BaseLink(idx){} };
 
 
 	// Helper class that is used to decrease all handles
@@ -192,7 +192,7 @@ namespace MESH {
 		}
 
 		void init() {
-			from = to = BaseHandle::INVALID;
+			from = to = BaseLink::INVALID;
 		}
 
 		void setup(U32 from_, U32 to_) {
@@ -219,7 +219,7 @@ namespace MESH {
 
 		void init() {
 			for(int i=0; i<COUNT_FACE_EDGES; i++)
-				edges[i] = BaseHandle::INVALID;
+				edges[i] = BaseLink::INVALID;
 		}
 
 		FACE& operator = (const FACE& A) {
@@ -290,12 +290,12 @@ namespace MESH {
 
 		void init() {
 			for(int i=0; i<4; i++) {
-				nodes[i] = BaseHandle::INVALID;
-				faces[i] = BaseHandle::INVALID;
+				nodes[i] = BaseLink::INVALID;
+				faces[i] = BaseLink::INVALID;
 			}
 
 			for(int i=0; i<6; i++)
-				edges[i] = BaseHandle::INVALID;
+				edges[i] = BaseLink::INVALID;
 		}
 
 		CELL& operator = (const CELL& A) {

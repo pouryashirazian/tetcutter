@@ -967,7 +967,7 @@ U32 VolMesh::insert_face(U32 nodes[3]) {
 
 	//since we do not have that face we will add it
 	FACE face;
-	U32 from, to = BaseHandle::INVALID;
+	U32 from, to = BaseLink::INVALID;
 
 	//Add all edges
 	for (int e = 0; e < 3; e++) {
@@ -983,7 +983,7 @@ U32 VolMesh::insert_face(U32 nodes[3]) {
 			LogErrorArg2("Setting face edges failed! Unable to find edge <%d, %d>",
 						 from, to);
 
-			return BaseHandle::INVALID;
+			return BaseLink::INVALID;
 		}
 	}
 

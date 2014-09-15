@@ -37,7 +37,7 @@ public:
 
 	int subdivide(VolMesh* pmesh,
 				  U32 idxCell, U8 cutEdgeCode,
-				  U8 cutNodeCode, U32 middlePoints[12]);
+				  U8 cutNodeCode, U32 midNodes[12]);
 
 
 

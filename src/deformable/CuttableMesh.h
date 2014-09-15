@@ -30,11 +30,14 @@ public:
 		vec3d uvw;
 		U32 idxNP0;
 		U32 idxNP1;
+		U32 idxOrgFrom;
+		U32 idxOrgTo;
 
 
 		CutEdge() {
 			t = 0;
 			idxNP0 = idxNP1 = VolMesh::INVALID_INDEX;
+			idxOrgFrom = idxOrgTo = VolMesh::INVALID_INDEX;
 		}
 
 		CutEdge& operator = (const CutEdge& A) {
@@ -43,6 +46,9 @@ public:
 			uvw = A.uvw;
 			idxNP0 = A.idxNP0;
 			idxNP1 = A.idxNP1;
+			idxOrgFrom = A.idxOrgFrom;
+			idxOrgTo = A.idxOrgTo;
+
 			return (*this);
 		}
 	};

@@ -115,6 +115,9 @@ public:
 	inline U32 countNodes() const {return m_vNodes.size();}
 
 	//edge-wise funcs
+	bool edge_exists(U32 from, U32 to);
+	U32 edge_handle(U32 from, U32 to);
+
 	U32 edge_from_node(U32 idxEdge) const;
 	U32 edge_to_node(U32 idxEdge) const;
 
@@ -201,15 +204,14 @@ public:
 
 	bool verbose() const { return m_verbose;}
 	void setVerbose(bool b) { m_verbose = b;}
-private:
+
+protected:
 	void init();
 	inline bool insertEdgeIndexToMap(U32 from, U32 to, U32 idxEdge);
 	inline bool removeEdgeIndexFromMap(U32 from, U32 to);
 
 
 	inline EdgeKey computeEdgeKey(U32 idxEdge) const;
-	inline bool edge_exists(U32 from, U32 to);
-	U32 edge_handle(U32 from, U32 to);
 
 	inline bool face_exists_by_edges(U32 edges[3]) const;
 	inline bool face_exists_by_nodes(U32 nodes[3]);

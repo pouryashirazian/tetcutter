@@ -80,21 +80,6 @@ void CuttableMesh::draw() {
 	if(ctCutNodes > 0 || ctCutEdges > 0) {
 		glDisable(GL_LIGHTING);
 		glPushAttrib(GL_ALL_ATTRIB_BITS);
-
-			//Draw cut edges
-			glColor3f(1.0, 0.0, 0.0);
-			glLineWidth(8.0f);
-			glBegin(GL_LINES);
-				for(CUTEDGEITER it = m_mapCutEdges.begin(); it != m_mapCutEdges.end(); ++it) {
-					U32 from = VolMesh::edge_from_node(it->first);
-					U32 to = VolMesh::edge_to_node(it->first);
-
-					glVertex3dv(const_nodeAt(from).pos.cptr());
-					glVertex3dv(const_nodeAt(to).pos.cptr());
-				}
-			glEnd();
-
-
 			//Draw nodes
 			glPointSize(7.0f);
 			glBegin(GL_POINTS);
@@ -206,6 +191,8 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 			res = IntersectSegmentTriangle(ss0, ss1, tri2, t, uvw, xyz);
 		if(res > 0) {
 			CutEdge ce;
+			ce.idxOrgFrom = e.from;
+			ce.idxOrgTo = e.to;
 			ce.pos = xyz;
 			ce.uvw = uvw;
 			ce.t = t;
@@ -380,18 +367,32 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 
 			const CELL& cell = this->const_cellAt(vCutElements[i]);
 
-
+			//select the middle points for cut edges
 			for(int e=0; e < COUNT_CELL_EDGES; e++) {
-
 				CUTEDGEITER it = m_mapCutEdges.find(cell.edges[e]);
 
 				//mid points
 				middlePoints[e * 2 + 0] = VolMesh::INVALID_INDEX;
 				middlePoints[e * 2 + 1] = VolMesh::INVALID_INDEX;
 
+				//if edge is in the list of cutedges
 				if(it != m_mapCutEdges.end()) {
-					middlePoints[e * 2 + 0] = it->second.idxNP0;
-					middlePoints[e * 2 + 1] = it->second.idxNP1;
+					const EDGE& edge = const_edgeAt(cell.edges[e]);
+
+					U32 idxOrgFrom = it->second.idxOrgFrom;
+					U32 idxOrgTo = it->second.idxOrgTo;
+					U32 idxNP0 = it->second.idxNP0;
+					U32 idxNP1 = it->second.idxNP1;
+
+					bool res1 = edge_exists(idxOrgFrom, idxNP0);
+					bool res2 = edge_exists(idxNP1, idxOrgTo);
+
+					if(!res1 || !res2)
+						cerr << "invalid edge" << endl;
+					assert(res1 && res2);
+
+					middlePoints[e * 2 + 0] = idxNP0;
+					middlePoints[e * 2 + 1] = idxNP1;
 				}
 			}
 			//subdivide the element
@@ -419,7 +420,7 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	//clearCutContext();
 
 	//collect all garbage
-	this->garbage_collection();
+	garbage_collection();
 
 	//Perform all tests
 	TestVolMesh::tst_all(this);
@@ -499,6 +500,7 @@ bool CuttableMesh::splitParts(const vector<vec3d>& vSweeptSurf, double dist) {
 	sweptSurfCentroid = sweptSurfCentroid * 0.25;
 
 
+	//find disjoint mesh-parts
 	vector< vector<U32> > cellgroups;
 	get_disjoint_parts(cellgroups);
 
@@ -507,6 +509,7 @@ bool CuttableMesh::splitParts(const vector<vec3d>& vSweeptSurf, double dist) {
 	set<U32> setFrontNodes;
 	set<U32> setBackNodes;
 
+	//partition nodes to front and back of the sweep surf
 	for(U32 i = 0; i < cellgroups.size(); i++) {
 
 		vector<U32> cells = cellgroups[i];
@@ -543,11 +546,13 @@ bool CuttableMesh::splitParts(const vector<vec3d>& vSweeptSurf, double dist) {
 	vector<U32> frontNodes(setFrontNodes.begin(), setFrontNodes.end());
 	vector<U32> backNodes(setBackNodes.begin(), setBackNodes.end());
 
+	//move nodes to front
 	for(vector<U32>::const_iterator it = frontNodes.begin(); it != frontNodes.end(); it++) {
 		NODE& node = nodeAt(*it);
 		node.pos = node.pos + dfront;
 	}
 
+	//move nodes to back
 	for(vector<U32>::const_iterator it = backNodes.begin(); it != backNodes.end(); it++) {
 		NODE& node = nodeAt(*it);
 		node.pos = node.pos - dfront;

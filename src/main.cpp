@@ -427,7 +427,7 @@ void runTestSubDivide(int current) {
 }
 
 int main(int argc, char* argv[]) {
-	cout << "startup" << endl;
+ 	cout << "startup" << endl;
 
 	//parser
 	g_parser.add_option("input", "[filepath] set input file in vega format", Value(AnsiStr("internal")));

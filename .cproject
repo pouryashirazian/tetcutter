@@ -343,7 +343,20 @@
 		</scannerConfigBuildInfo>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
-	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Release">
+			<resource resourceType="PROJECT" workspacePath="/tetcutter"/>
+		</configuration>
+		<configuration configurationName="DebugMacBookPro">
+			<resource resourceType="PROJECT" workspacePath="/tetcutter"/>
+		</configuration>
+		<configuration configurationName="ReleaseMacBookPro">
+			<resource resourceType="PROJECT" workspacePath="/tetcutter"/>
+		</configuration>
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/tetcutter"/>
+		</configuration>
+	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings">
 		<doc-comment-owner id="org.eclipse.cdt.ui.doxygen">
 			<path value=""/>

@@ -255,7 +255,7 @@ TetSubdivider::CUTCASE TetSubdivider::IdentifyCutCase(bool isCutComplete, U8 cut
 
 int TetSubdivider::subdivide(VolMesh* pmesh, U32 idxCell,
 							 U8 cutEdgeCode, U8 cutNodeCode,
-							 U32 middlePoints[12]) {
+							 U32 midNodes[12]) {
 	//Here an element is subdivided to 4 sub elements depending on the codes
 	U8 ctCutEdges = 0;
 	U8 ctCutNodes = 0;
@@ -277,7 +277,7 @@ int TetSubdivider::subdivide(VolMesh* pmesh, U32 idxCell,
 	//fill the array of virtual nodes
 	U32 vnodes[16];
 	for(int i=0; i<16; i++)
-		vnodes[i] = BaseHandle::INVALID;
+		vnodes[i] = BaseLink::INVALID;
 	const CELL& cell = pmesh->const_cellAt(idxCell);
 
 	//1st 4 nodes come from the original element
@@ -287,16 +287,61 @@ int TetSubdivider::subdivide(VolMesh* pmesh, U32 idxCell,
 	//Mask to map edges indices to new generated node indices
 	const int mapEdgeToMiddleNodes[12] = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 
+	//cell edges
 	if(ctCutEdges > 0) {
-
-		//loop over edges
 		for(int i=0; i < 6; i++) {
 			bool isCut = ((cutEdgeCode & (1 << i)) != 0);
 			if(isCut) {
 				//generated nodes
-				vnodes[ mapEdgeToMiddleNodes[i*2 + 0] ] = middlePoints[i * 2 + 0];
-				vnodes[ mapEdgeToMiddleNodes[i*2 + 1] ] = middlePoints[i * 2 + 1];
+				vnodes[ mapEdgeToMiddleNodes[i*2 + 0] ] = midNodes[i * 2 + 0];
+				vnodes[ mapEdgeToMiddleNodes[i*2 + 1] ] = midNodes[i * 2 + 1];
 			}
+		}
+	}
+
+	//check canonical connection of middle nodes wrt original nodes
+	const int subedges[6][4] = { {1, 4, 5, 2}, {2, 6, 7, 3}, {3, 9, 8, 1},
+								 {2, 11, 10, 0}, {3, 13, 12, 0}, {0, 14, 15, 1} };
+
+	if(ctCutEdges > 0) {
+
+		bool res = true;
+		int revised = 0;
+		for(int i=0; i < 6; i++) {
+			bool isCut = ((cutEdgeCode & (1 << i)) != 0);
+			if(isCut) {
+				vec3d n0 = pmesh->const_nodeAt(vnodes [subedges[i][0]]).pos;
+				vec3d n1 = pmesh->const_nodeAt(vnodes [subedges[i][1]]).pos;
+				vec3d n2 = pmesh->const_nodeAt(vnodes [subedges[i][2]]).pos;
+				vec3d n3 = pmesh->const_nodeAt(vnodes [subedges[i][3]]).pos;
+				assert(vec3d::distance(n1, n2) < EPSILON);
+
+//				float deg = vec3d::angleDeg(n1 - n0, n3 - n1);
+//				assert(deg < EPSILON);
+
+				//edge0
+				bool r1 = pmesh->edge_exists(vnodes[ subedges[i][0] ], vnodes[ subedges[i][1] ]);
+				bool r2 = pmesh->edge_exists(vnodes[ subedges[i][2] ], vnodes[ subedges[i][3] ]);
+				if(!r1 || !r2) {
+					r1 = pmesh->edge_exists(vnodes[ subedges[i][0] ], vnodes[ subedges[i][2] ]);
+					r2 = pmesh->edge_exists(vnodes[ subedges[i][1] ], vnodes[ subedges[i][3] ]);
+
+					std::swap(vnodes[ subedges[i][1] ], vnodes[ subedges[i][2] ]);
+					revised++;
+				}
+
+				res &= r1;
+				res &= r2;
+			}
+		}
+
+		if(res == false) {
+			cerr << "ERROR SUBDIVIDE: some of the subedges do not exist!" << endl;
+			assert(res);
+		}
+
+		if(revised > 0) {
+			cerr << "ERROR SUBDIVIDE: needed to revise# " << revised << endl;
 		}
 	}
 
