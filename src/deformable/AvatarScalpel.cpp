@@ -231,12 +231,14 @@ void AvatarScalpel::onTranslate(const vec3f& delta, const vec3f& pos) {
 			prevDir = dir;
 		}
 
+		/*
 		if(maxAngle > MAX_SCALPEL_TRAJECTORY_ANGLE) {
 			m_vCuttingPathEdge0.resize(0);
 			m_vCuttingPathEdge1.resize(0);
 			m_isSweptQuadValid = false;
 			LogInfoArg1("Cutting trajectory changed %.2f degrees. Resetting path.", maxAngle);
 		}
+		*/
 	}
 
 

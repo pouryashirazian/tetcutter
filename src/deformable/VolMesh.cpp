@@ -1580,7 +1580,7 @@ void VolMesh::draw() {
 	glDisable(GL_LIGHTING);
 
 	const U8 ctColors = 7;
-	vec3d colors[ctColors] = {vec3d(0.5, 0.5, 0.5), vec3d(1, 0.3, 0), vec3d(0.3, 1, 0), vec3d(0, 0.3, 1),
+	vec3d colors[ctColors] = {vec3d(0.7, 0.7, 0.7), vec3d(1, 0.3, 0), vec3d(0.3, 1, 0), vec3d(0, 0.3, 1),
 					   	   	   vec3d(1, 1, 0), vec3d(0.5, 0.5, 0.5), vec3d(0, 1, 1)};
 
 	//Draw filled faces
@@ -1592,9 +1592,10 @@ void VolMesh::draw() {
 		drawElement(m_elemToShow);
 	}
 	else {
+		glColor3dv(colors[3].cptr());
 		for(U32 i=0; i< countCells(); i++)
 		{
-			glColor3dv(colors[i % ctColors].cptr());
+			//glColor3dv(colors[i % ctColors].cptr());
 			drawElement(i);
 		}
 	}

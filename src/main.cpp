@@ -404,6 +404,7 @@ void resetMesh() {
 
 
 	g_lpTissue = new CuttableMesh(*temp);
+	g_lpTissue->setFlagSplitMeshAfterCut(true);
 	SAFE_DELETE(temp);
 
 	TheSceneGraph::Instance().add(g_lpTissue);
