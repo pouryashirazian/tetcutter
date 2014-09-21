@@ -73,7 +73,13 @@ void CuttableMesh::draw() {
 	drawBBox();
 
 	//draw volmesh
+	if(m_spEffect)
+		m_spEffect->bind();
+
 	VolMesh::draw();
+
+	if(m_spEffect)
+		m_spEffect->unbind();
 
 	//draw cut context
 	int ctCutEdges = m_mapCutEdges.size();

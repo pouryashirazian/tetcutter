@@ -14,6 +14,7 @@
 #include "base/DebugUtils.h"
 #include <deformable/VolMesh.h>
 #include <graphics/AABB.h>
+#include <graphics/SceneGraph.h>
 
 #include "graphics/selectgl.h"
 #include <algorithm>
@@ -1682,7 +1683,7 @@ void VolMesh::setNodeToShow(U32 idxNode) {
 
 void VolMesh::draw() {
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
-	glDisable(GL_LIGHTING);
+	//glDisable(GL_LIGHTING);
 
 	const U8 ctColors = 7;
 	vec3d colors[ctColors] = {vec3d(0.7, 0.7, 0.7), vec3d(1, 0.3, 0), vec3d(0.3, 1, 0), vec3d(0, 0.3, 1),
@@ -1756,7 +1757,7 @@ void VolMesh::draw() {
 
 	}
 
-	glEnable(GL_LIGHTING);
+	//glEnable(GL_LIGHTING);
 	glPopAttrib();
 }
 
@@ -1776,6 +1777,20 @@ void VolMesh::drawElement(U32 i) const {
 			vec3d p1 = const_nodeAt(nodes[1]).pos;
 			vec3d p2 = const_nodeAt(nodes[2]).pos;
 
+			vec3d n = vec3d::cross(p1 - p0, p2 - p0).normalized();
+			vec3f cp = TheSceneGraph::Instance().camera().getPos();
+			vec3d cpd = vec3d(cp.x, cp.y, cp.z);
+			vec3d cd = (cpd - p0).normalized();
+
+			if(vec3d::dot(cd, n) < 0) {
+				n = n * -1.0;
+				vec3d temp = p0;
+				p0 = p2;
+				p2 = temp;
+			}
+
+			//to gl
+			glNormal3dv(n.cptr());
 			glVertex3dv(p0.cptr());
 			glVertex3dv(p1.cptr());
 			glVertex3dv(p2.cptr());
