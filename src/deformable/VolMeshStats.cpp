@@ -42,16 +42,51 @@ void VolMeshStats::printAllStats(const VolMesh* pmesh) {
 }
 
 bool VolMeshStats::computeVolMaxMin(const VolMesh* pmesh, double& outVolMax, double& outVolMin) {
-	return false;
+	if(pmesh == NULL)
+		return false;
 
+	outVolMax = GetMinLimit<double>();
+	outVolMin = GetMaxLimit<double>();
+	for(U32 i=0; i < pmesh->countCells(); i++) {
+		double v = pmesh->computeCellVolume(i);
+		outVolMax = MATHMAX(v, outVolMax);
+		outVolMin = MATHMIN(v, outVolMin);
+	}
+
+	return true;
 }
 
 bool VolMeshStats::computeEdgeLenMaxMin(const VolMesh* pmesh, double& outEdgeLenMax, double& outEdgeLenMin) {
-	return false;
+	if(pmesh == NULL)
+		return false;
+
+	outEdgeLenMax = GetMinLimit<double>();
+	outEdgeLenMin = GetMaxLimit<double>();
+	for(U32 i=0; i < pmesh->countEdges(); i++) {
+		const PS::MESH::EDGE& edge = pmesh->const_edgeAt(i);
+		vec3d s0 = pmesh->const_nodeAt(edge.from).pos;
+		vec3d s1 = pmesh->const_nodeAt(edge.to).pos;
+		double d = vec3d::distance(s0, s1);
+
+		outEdgeLenMax = MATHMAX(d, outEdgeLenMax);
+		outEdgeLenMin = MATHMIN(d, outEdgeLenMin);
+	}
+
+	return true;
 }
 
 bool VolMeshStats::computeMinAspectRatio(const VolMesh* pmesh, double& outMinAR) {
-	return false;
+	if(pmesh == NULL)
+		return false;
+
+	outMinAR = GetMaxLimit<double>();
+	for(U32 i=0; i < pmesh->countCells(); i++) {
+		double ar = pmesh->computeAspectRatio(i);
+		outMinAR = MATHMIN(outMinAR, ar);
+	}
+
+	return true;
+
 }
 
 } /* namespace MESH */

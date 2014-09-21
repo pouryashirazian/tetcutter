@@ -9,6 +9,7 @@
 #include "graphics/selectgl.h"
 #include "graphics/Intersections.h"
 #include "deformable/test_VolMesh.h"
+#include "deformable/VolMeshStats.h"
 #include "base/Logger.h"
 #include "base/FlatArray.h"
 #include <map>
@@ -431,7 +432,8 @@ int CuttableMesh::cut(const vector<vec3d>& bladePath0,
 	}
 
 	//print mesh parts
-	this->printParts();
+	printParts();
+	VolMeshStats::printAllStats(this);
 
 	//recompute AABB and expand it to detect cuts
 	m_aabb = this->computeAABB();

@@ -251,6 +251,111 @@ vec3d VolMesh::computeCellCentroid(U32 idxCell) const {
 	return (v[0] + v[1] + v[2] + v[3]) * 0.25;
 }
 
+double VolMesh::computeAspectRatio(U32 idxCell) const {
+	double IR = computeInscribedRadius(idxCell);
+	double CR = computeCircumscribedRadius(idxCell);
+	return CR / (3.0 * IR);
+}
+
+double VolMesh::computeInscribedRadius(U32 idxCell) const {
+
+	U32 n[3];
+	vec3d np[3];
+
+	//fetch cell
+	const CELL& cell = const_cellAt(idxCell);
+
+	double sumsa = 0.0;
+	for(int i=0; i < COUNT_CELL_FACES; i++) {
+		getFaceNodes(cell.faces[i], n);
+
+		//fetch face nodes
+		for(int j=0; j < 3; j++)
+			np[j] = const_nodeAt(n[j]).pos;
+
+		vec3d crs = vec3d::cross(np[1] - np[0], np[2] - np[0]);
+		sumsa += 0.5 * crs.length();
+	}
+
+	return 	(4.0 * computeCellVolume(idxCell)) / (4.0 * sumsa);
+}
+
+double VolMesh::computeCircumscribedRadius(U32 idxCell) const {
+	vec3d v[4];
+	const CELL& cell = const_cellAt(idxCell);
+	for(int i=0; i<4; i++)
+		v[i] = const_nodeAt(cell.nodes[i]).pos;
+	return ComputeCircumscribedRadius(v);
+}
+
+double VolMesh::ComputeCircumscribedRadius(const vec3d v[4]) {
+
+	vec4d one(1.0);
+	vec4d len2;
+	for(int i=0;i < 4; i++)
+		len2[i] = v[i].length2();
+
+	//columns
+	vec4d cx = vec4d(v[0].x, v[1].x, v[2].x, v[3].x);
+	vec4d cy = vec4d(v[0].y, v[1].y, v[2].y, v[3].y);
+	vec4d cz = vec4d(v[0].z, v[1].z, v[2].z, v[3].z);
+
+	double dx, dy, dz, a, c;
+
+	//mdx
+	{
+		mat44d mdx;
+		mdx.setCol(0, len2);
+		mdx.setCol(1, cy);
+		mdx.setCol(2, cz);
+		mdx.setCol(3, one);
+		dx = mdx.determinant();
+	}
+
+	//mdy
+	{
+		mat44d mdy;
+		mdy.setCol(0, len2);
+		mdy.setCol(1, cx);
+		mdy.setCol(2, cz);
+		mdy.setCol(3, one);
+		dy = -1.0 * mdy.determinant();
+	}
+
+	//mdz
+	{
+		mat44d mdz;
+		mdz.setCol(0, len2);
+		mdz.setCol(1, cx);
+		mdz.setCol(2, cy);
+		mdz.setCol(3, one);
+		dz = mdz.determinant();
+	}
+
+	//a
+	{
+		mat44d mda;
+		mda.setCol(0, cx);
+		mda.setCol(1, cy);
+		mda.setCol(2, cz);
+		mda.setCol(3, one);
+		a = mda.determinant();
+	}
+
+	//c
+	{
+		mat44d mdc;
+		mdc.setCol(0, len2);
+		mdc.setCol(1, cx);
+		mdc.setCol(2, cy);
+		mdc.setCol(3, cz);
+		c = mdc.determinant();
+	}
+
+	double CR = sqrt(dx*dx + dy*dy + dz*dz - 4*a*c) / 2.0 * Absoluted(a);
+	return CR;
+}
+
 double VolMesh::ComputeCellDeterminant(const vec3d v[4]) {
 	return	vec3d::dot(v[1] - v[0], vec3d::cross(v[2] - v[0], v[3] - v[0]));
 }

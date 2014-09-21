@@ -23,6 +23,8 @@ public:
 	static bool computeVolMaxMin(const VolMesh* pmesh, double& outVolMax, double& outVolMin);
 	static bool computeEdgeLenMaxMin(const VolMesh* pmesh, double& outEdgeLenMax, double& outEdgeLenMin);
 	static bool computeMinAspectRatio(const VolMesh* pmesh, double& outMinAR);
+
+
 };
 
 } /* namespace MESH */

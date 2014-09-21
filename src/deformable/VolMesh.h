@@ -85,6 +85,13 @@ public:
 	double computeCellDeterminant(U32 idxCell) const;
 	double computeCellVolume(U32 idxCell) const;
 	vec3d  computeCellCentroid(U32 idxCell) const;
+
+
+	double computeAspectRatio(U32 idxCell) const;
+	double computeInscribedRadius(U32 idxCell) const;
+	double computeCircumscribedRadius(U32 idxCell) const ;
+
+	static double ComputeCircumscribedRadius(const vec3d v[4]);
 	static double ComputeCellDeterminant(const vec3d v[4]);
 	static double ComputeCellVolume(const vec3d v[4]);
 
