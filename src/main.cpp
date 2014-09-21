@@ -394,6 +394,13 @@ void resetMesh() {
 			sscanf(strExample.cptr(), "cube_%u_%u_%u", &nx, &ny, &nz);
 			temp = PS::MESH::VolMeshSamples::CreateTruthCube(nx, ny, nz, 0.5);
 		}
+		else if(strExample.lfindstr(AnsiStr("eggshell"), pos)) {
+
+			U32 nx, ny;
+			//float radius, thickness;
+			sscanf(strExample.cptr(), "eggshell_%u_%u", &nx, &ny);
+			temp = PS::MESH::VolMeshSamples::CreateEggShell(nx, ny);
+		}
 		else
 			temp = PS::MESH::VolMeshSamples::CreateOneTetra();
 		//temp = PS::MESH::VolMeshSamples::CreateTruthCube(4, 4, 4, 0.5);
@@ -432,7 +439,7 @@ int main(int argc, char* argv[]) {
 
 	//parser
 	g_parser.add_option("input", "[filepath] set input file in vega format", Value(AnsiStr("internal")));
-	g_parser.add_option("example", "[one, two, cube_nx_ny_nz] set an internal example", Value(AnsiStr("two")));
+	g_parser.add_option("example", "[one, two, cube, eggshell] set an internal example", Value(AnsiStr("two")));
 	if(g_parser.parse(argc, argv) < 0)
 		exit(0);
 
