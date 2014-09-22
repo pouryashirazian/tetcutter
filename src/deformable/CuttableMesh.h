@@ -82,9 +82,21 @@ public:
 
 	//cutting
 	void clearCutContext();
-	int cut(const vector<vec3d>& bladePath0,
-			const vector<vec3d>& bladePath1,
-			const vector<vec3d>& sweptSurface,
+
+	//kernel to compute cut-edges per tool segment
+	int computeCutEdgesKernel(const vec3d sweptquad[4],
+							  std::map<U32, CutEdge>& mapCutEdges);
+
+	//kernel to compute cut nodes per tool segment
+	int computeCutNodesKernel(const vec3d& blade0,
+							  const vec3d& blade1,
+							  const vec3d sweptquad[4],
+							  std::map<U32, CutEdge>& mapCutEdges,
+							  std::map<U32, CutNode>& mapCutNodes);
+
+
+	int cut(const vector<vec3d>& segments,
+			const vector<vec3d>& quadstrips,
 			bool modifyMesh);
 
 	//Access vertex neibors

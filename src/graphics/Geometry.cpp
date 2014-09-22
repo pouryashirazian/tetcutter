@@ -778,19 +778,45 @@ void Geometry::addCube(const vec3f& lower, const vec3f& upper) {
     	}
     }
 
-    bool Geometry::addRing(int sectors,
-                           int xsections,
-                           float innerRadius,
-                           float outerRadius,
-                           const vec3f& o) {
-        if(sectors <= 0 || xsections <= 0 ||
-           innerRadius < EPSILON || outerRadius < EPSILON)
+    bool Geometry::addRingStripAroundXAxis(int sectors,
+    									   float radius,
+										   float thickness,
+										   const vec3f& origin) {
+        if(sectors <= 0 || radius < thickness)
             return false;
 
-        
-        
-        
-        return false;
+        int idxStart = countVertices();
+    	float oneOverSector = 1.0f / static_cast<float>(sectors);
+    	float halfThickness = 0.5 * thickness;
+
+    	for(int i=0; i<sectors; i++) {
+
+    		float vcos = radius * cos(i * (TwoPi * oneOverSector));
+    		float vsin = radius * sin(i * (TwoPi * oneOverSector));
+    		vec3f v1 = origin + vec3f(0.0, vcos, vsin);
+    		vec3f v2 = origin + vec3f(thickness, vcos, vsin);
+
+    		//surface
+    		addVertex(v1);
+    		addVertex(v2);
+
+    		if(i > 0) {
+    			int base = idxStart + (i - 1) * 2;
+    			addTriangle(vec3u32(base + 0, base + 1, base + 2));
+    			addTriangle(vec3u32(base + 2, base + 1, base + 3));
+    		}
+    	}
+
+    	//add triangles
+    	int lastQuad[4];
+    	lastQuad[0] = idxStart + (sectors - 1) * 2;
+    	lastQuad[1] = idxStart + (sectors - 1) * 2 + 1;
+    	lastQuad[2] = idxStart;
+    	lastQuad[3] = idxStart + 1;
+		addTriangle(vec3u32(lastQuad[0], lastQuad[1], lastQuad[2]));
+		addTriangle(vec3u32(lastQuad[2], lastQuad[1], lastQuad[3]));
+
+        return true;
     }
     
     bool Geometry::addDisc(int sectors,

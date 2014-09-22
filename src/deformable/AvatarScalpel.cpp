@@ -12,28 +12,25 @@
 
 using namespace PS;
 
-AvatarScalpel::AvatarScalpel():SGMesh(), IGizmoListener() {
-	init();
+AvatarScalpel::AvatarScalpel():IAvatar(), m_isSweptQuadValid(false) {
+	this->init();
 }
 
-AvatarScalpel::AvatarScalpel(CuttableMesh* tissue):SGMesh(), IGizmoListener() {
+AvatarScalpel::AvatarScalpel(CuttableMesh* tissue):IAvatar(), m_isSweptQuadValid(false) {
+	this->init();
 	m_lpTissue = tissue;
-	init();
+
 	updateVolMeshInfoHeader();
 }
 
 AvatarScalpel::~AvatarScalpel() {
-	SGMesh::cleanup();
+
 }
 
 void AvatarScalpel::init() {
-	setName("scalpel");
 
-	m_fOnCutEvent = NULL;
-	m_vSweptQuad.resize(4);
 	m_isSweptQuadValid = false;
-	m_isToolActive = false;
-
+	m_vSweptQuad.resize(4);
 	m_edgeref0 = vec3f(-2.0, 0, 0);
 	m_edgeref1 = vec3f(2.0, 0, 0);
 	vec3f lo = vec3f(m_edgeref0.x, 0.0f, -0.001f);
@@ -58,17 +55,9 @@ void AvatarScalpel::init() {
 	if(TheShaderManager::Instance().has("phong")) {
         m_spEffect = SmartPtrSGEffect(new SGEffect(TheShaderManager::Instance().get("phong")));
     }
-
-	//Add a header
-	TheSceneGraph::Instance().headers()->addHeaderLine("scalpel", "scalpel");
-	TheSceneGraph::Instance().headers()->addHeaderLine("volmesh", "volmesh");
 }
 
 void AvatarScalpel::draw() {
-
-
-	//SGMesh::draw();
-
     //WireFrame
     m_spTransform->bind();
     glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -129,57 +118,15 @@ void AvatarScalpel::draw() {
 void AvatarScalpel::clearCutContext() {
 	m_vCuttingPathEdge0.resize(0);
 	m_vCuttingPathEdge1.resize(0);
+	m_vBladeSegments.resize(0);
 	m_isSweptQuadValid = false;
 
 	if(m_lpTissue)
 		m_lpTissue->clearCutContext();
 }
 
-void AvatarScalpel::setTissue(CuttableMesh* tissue) {
-	m_lpTissue = tissue;
-}
 
-//From Gizmo Manager
-void AvatarScalpel::mousePress(int button, int state, int x, int y) {
-	if(button == ArcBallCamera::mbRight) {
-		LogInfo("Right clicked cleared cut context!");
-		clearCutContext();
-		return;
-	}
 
-	if(button != ArcBallCamera::mbLeft)
-		return;
-
-	//Down = Start
-	if(state == 0) {
-		if(m_lpTissue) {
-			m_isToolActive = true;
-			TheSceneGraph::Instance().headers()->updateHeaderLine("scalpel", "scalpel: start cutting");
-		}
-	}
-	else {
-		//Up = Stop
-		if (m_lpTissue) {
-			m_isToolActive = false;
-			TheSceneGraph::Instance().headers()->updateHeaderLine("scalpel", "scalpel: end cutting");
-		}
-	}
-}
-
-void AvatarScalpel::updateVolMeshInfoHeader() const {
-
-	if(m_lpTissue == NULL)
-		return;
-
-	char chrMsg[1024];
-	sprintf(chrMsg, "VolMesh [Nodes# %u, Edges# %u, Faces# %u, Cells# %u]",
-				m_lpTissue->countNodes(),
-				m_lpTissue->countEdges(),
-				m_lpTissue->countFaces(),
-				m_lpTissue->countCells());
-
-	TheSceneGraph::Instance().headers()->updateHeaderLine("volmesh", AnsiStr(chrMsg));
-}
 
 void AvatarScalpel::onTranslate(const vec3f& delta, const vec3f& pos) {
 	if(m_lpTissue == NULL || !m_isToolActive)
@@ -194,7 +141,11 @@ void AvatarScalpel::onTranslate(const vec3f& delta, const vec3f& pos) {
 
 		if(m_isSweptQuadValid) {
 			//call the cut method if the tool has passed through the tissue
-			int res = m_lpTissue->cut(m_vCuttingPathEdge0, m_vCuttingPathEdge1, m_vSweptQuad, false);
+			m_vBladeSegments.resize(2);
+			m_vBladeSegments[0] = m_vCuttingPathEdge0.back();
+			m_vBladeSegments[1] = m_vCuttingPathEdge1.back();
+
+			int res = m_lpTissue->cut(m_vBladeSegments, m_vSweptQuad, true);
 			LogInfoArg1("Tissue cut. res = %d", res);
 			if((res > 0) && (m_fOnCutEvent != NULL))
 				m_fOnCutEvent();

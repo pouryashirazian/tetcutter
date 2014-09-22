@@ -1,0 +1,57 @@
+/*
+ * IScalpel.h
+ *
+ *  Created on: Sep 21, 2014
+ *      Author: pourya
+ */
+
+#ifndef ISCALPEL_H_
+#define ISCALPEL_H_
+
+#include <functional>
+#include <graphics/Gizmo.h>
+#include <graphics/SGMesh.h>
+#include "deformable/CuttableMesh.h"
+
+#define MAX_SCALPEL_TRAJECTORY_ANGLE  60.0
+#define MAX_SCALPEL_TRAJECTORY_NODES 1024
+
+namespace PS {
+namespace MESH {
+
+class IAvatar: public SG::SGMesh, public SG::IGizmoListener {
+public:
+	typedef std::function<void()> OnCutEvent;
+
+	IAvatar();
+	IAvatar(CuttableMesh* pmesh);
+	virtual ~IAvatar();
+
+	//cleanup
+	virtual void clearCutContext() {}
+
+	//Tool
+	void setOnCutEventHandler(OnCutEvent f) {m_fOnCutEvent = f;}
+	void setTissue(CuttableMesh* tissue);
+
+	//Set Tool Active flag
+	bool isActive() const {return m_isToolActive;}
+	void updateVolMeshInfoHeader() const;
+
+	//From Gizmo Manager
+	virtual void mousePress(int button, int state, int x, int y);
+
+protected:
+	void init();
+
+protected:
+	OnCutEvent m_fOnCutEvent;
+	bool m_isToolActive;
+
+	CuttableMesh* m_lpTissue;
+};
+
+} /* namespace MESH */
+} /* namespace PS */
+
+#endif /* ISCALPEL_H_ */

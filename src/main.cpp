@@ -15,6 +15,7 @@
 #include "graphics/SGQuad.h"
 #include "graphics/SGRenderMask.h"
 #include "deformable/AvatarScalpel.h"
+#include "deformable/AvatarRing.h"
 #include "deformable/TetSubdivider.h"
 #include "deformable/VolMeshSamples.h"
 #include "deformable/VolMeshExport.h"
@@ -27,6 +28,8 @@ using namespace PS::FILESTRINGUTILS;
 using namespace std;
 
 AvatarScalpel* g_lpScalpel = NULL;
+AvatarRing* g_lpRing = NULL;
+
 CuttableMesh* g_lpTissue = NULL;
 CmdLineParser g_parser;
 AnsiStr g_strFilePath;
@@ -358,6 +361,8 @@ void SpecialKey(int key, int x, int y)
 
 void closeApp() {
 	SAFE_DELETE(g_lpScalpel);
+	SAFE_DELETE(g_lpRing);
+
 	SAFE_DELETE(g_lpTissue);
 }
 
@@ -415,6 +420,7 @@ void resetMesh() {
 	SAFE_DELETE(temp);
 
 	TheSceneGraph::Instance().add(g_lpTissue);
+	//g_lpRing->setTissue(g_lpTissue);
 	g_lpScalpel->setTissue(g_lpTissue);
 }
 
@@ -517,8 +523,13 @@ int main(int argc, char* argv[]) {
 	g_lpScalpel = new AvatarScalpel();
 	TheSceneGraph::Instance().add(g_lpScalpel);
 
+	g_lpRing = new AvatarRing();
+	//TheSceneGraph::Instance().add(g_lpRing);
+
+
 	//Focus gizmo manager on the scalpel
 	TheGizmoManager::Instance().setFocusedNode(g_lpScalpel);
+	//TheGizmoManager::Instance().setFocusedNode(g_lpRing);
 	TheGizmoManager::Instance().cmdTranslate(vec3f(0, 3, 0));
 
 	//reset cuttable mesh

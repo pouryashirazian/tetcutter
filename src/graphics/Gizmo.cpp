@@ -706,7 +706,8 @@ namespace PS {
     	}
 
     	void GizmoManager::unregisterClient(int id) {
-    		m_clients.erase(m_clients.begin() + id);
+    		if(id < (int)m_clients.size())
+    			m_clients.erase(m_clients.begin() + id);
     	}
 
 

@@ -114,13 +114,12 @@ public:
     /*!
      * Add a ring to the geometry
      */
-    bool addRing(int sectors,
-                 int xsections,
-                 float innerRadius,
-                 float outerRadius,
-                 const vec3f& o = vec3f(0,0,0));
- 
-    /*!
+	bool addRingStripAroundXAxis(int sectors,
+								 float radius,
+								 float thickness,
+								 const vec3f& origin);
+
+	/*!
      * Add a disc to the geometry
      */
     bool addDisc(int sectors,
