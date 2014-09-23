@@ -9,13 +9,16 @@
 #define AVATARRING_H_
 
 #include "IScalpel.h"
+#include "graphics/GLTexture.h"
+
+using namespace PS::GL;
 
 namespace PS {
 namespace MESH {
 
 class AvatarRing: public IAvatar {
 public:
-	AvatarRing();
+	AvatarRing(GLTexture* aTex = NULL);
 	virtual ~AvatarRing();
 
 	void init();
@@ -25,6 +28,8 @@ public:
 	void onTranslate(const vec3f& delta, const vec3f& pos);
 	void clearCutContext();
 protected:
+	GLTexture* m_lpTex;
+
 	//flags
 	bool m_isSweptQuadValid;
 	AABB m_aabbCurrent;

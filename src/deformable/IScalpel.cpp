@@ -32,10 +32,15 @@ void IAvatar::init() {
 	m_fOnCutEvent = NULL;
 	m_lpTissue = NULL;
 	m_isToolActive = false;
+	m_applyGripper = false;
 
 	//Add a header
 	TheSceneGraph::Instance().headers()->addHeaderLine("scalpel", "scalpel");
 	TheSceneGraph::Instance().headers()->addHeaderLine("volmesh", "volmesh");
+}
+
+void IAvatar::grip() {
+	m_applyGripper = true;
 }
 
 void IAvatar::setTissue(CuttableMesh* tissue) {

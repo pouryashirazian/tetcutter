@@ -14,10 +14,27 @@ using namespace PS;
 namespace PS {
 namespace MESH {
 
-AvatarRing::AvatarRing():IAvatar(), m_isSweptQuadValid(false) {
-	// TODO Auto-generated constructor stub
+   //Effect
+   class TexturedEffect : public SGEffect {
+   public:
+       TexturedEffect(GLShader* s):SGEffect(s) {
+           m_idSampler = s->getUniformLocation("sampler2d");
+       }
 
+       void bind() {
+           SGEffect::bind();
+           m_lpShader->setUniform1i(m_idSampler, 0);
+
+       }
+   private:
+       int m_idSampler;
+   };
+
+
+AvatarRing::AvatarRing(GLTexture* aTex):IAvatar(), m_isSweptQuadValid(false) {
+	// TODO Auto-generated constructor stub
 	this->init();
+	m_lpTex = aTex;
 }
 
 AvatarRing::~AvatarRing() {
@@ -26,11 +43,12 @@ AvatarRing::~AvatarRing() {
 }
 
 void AvatarRing::init() {
+	m_lpTex = NULL;
 	m_isSweptQuadValid = false;
 
-	double radius = 0.5;
-	int sectors = 3;
-	vec3d origin = vec3d(0.0, 3.0, 0.0);
+	double radius = 0.3;
+	int sectors = 8;
+	vec3d origin = vec3d(0.0, 0.0, 0.0);
 
 	m_vSegmentsRef.reserve(sectors);
 
@@ -41,7 +59,6 @@ void AvatarRing::init() {
 	for(int i=0; i<sectors+1; i++) {
 		double angle = double(i) * TwoPi * oneOverSector;
 		vec3d v = origin + vec3d::mul(radius, vec3d(cos(angle), 0.0, sin(angle)));
-
 		m_vSegmentsRef.push_back(v);
 
 		vertices.push_back(v.x);
@@ -53,40 +70,52 @@ void AvatarRing::init() {
 	m_vSegmentsCur.resize(m_vSegmentsRef.size());
 	m_vSweptQuads.resize(m_vSegmentsRef.size() * 2);
 
-	//Geometry
-	Geometry g;
-	g.init(3, 4, 2, ftLineStrip);
-	g.addVertexAttribs(vertices, 3, mbtPosition);
-	g.addPerVertexColor(vec4f(0, 1, 0, 1), g.countVertices());
-	SGMesh::setup(g);
 
 	//Outline
-	Geometry gWireframe;
-	gWireframe.init(3, 4, 2, ftLineStrip);
-	gWireframe.addVertexAttribs(vertices, 3, mbtPosition);
-	m_outline.setup(gWireframe);
+	Geometry g;
+	g.init(3, 4, 2, ftTriangles);
+	g.addCylinder(radius, 2.0, sectors, false, false);
+	g.addPerVertexColor(vec4f(1.0, 0.0, 0.0, 1.0));
+	m_outline.setup(g);
 	m_outline.setWireFrameMode(true);
+	//m_outline.setupPerVertexColor(vec4f(0, 0, 0, 1));
+
+	//Geometry
+	SGMesh::setup(g);
+
 
 
 	resetTransform();
-	if(TheShaderManager::Instance().has("phong")) {
-        m_spEffect = SmartPtrSGEffect(new SGEffect(TheShaderManager::Instance().get("phong")));
+    if(TheShaderManager::Instance().has("textured")) {
+        m_spEffect = SmartPtrSGEffect(new TexturedEffect(TheShaderManager::Instance().get("textured")));
     }
-
 }
 
 void AvatarRing::draw() {
 
-    //WireFrame
-    m_spTransform->bind();
-    glPushAttrib(GL_ALL_ATTRIB_BITS);
-    glDisable(GL_LIGHTING);
-    glColor3f(0.0f, 0.5f, 1.0f);
-    	m_outline.draw();
-    glEnable(GL_LIGHTING);
-    glPopAttrib();
+	glDisable(GL_CULL_FACE);
 
+	glEnable(GL_LIGHTING);
+	if(m_lpTex)
+		m_lpTex->bind();
+
+	SGMesh::draw();
+
+	if(m_lpTex)
+		m_lpTex->unbind();
+	glDisable(GL_LIGHTING);
+
+    //WireFrame
+	/*
+	m_spTransform->bind();
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
+		glColor3f(0,0,0);
+    	m_outline.drawNoEffect();
+    glPopAttrib();
     m_spTransform->unbind();
+    */
+
+    glEnable(GL_CULL_FACE);
 
 
     //draw markers
@@ -139,7 +168,7 @@ void AvatarRing::onTranslate(const vec3f& delta, const vec3f& pos) {
 	m_aabbCurrent.transform(m_spTransform->forward());
 
 	//1.If boxes donot intersect and sweptquad is invalid then return
-	if (!m_lpTissue->aabb().intersect(m_aabbCurrent)) {
+	if (!m_lpTissue->aabb().intersect(m_aabbCurrent) || isGripActive()) {
 
 		if(m_isSweptQuadValid) {
 			//call the cut method if the tool has passed through the tissue
@@ -156,7 +185,8 @@ void AvatarRing::onTranslate(const vec3f& delta, const vec3f& pos) {
 	}
 
 	//edges
-	//m_vSegmentsCur.resize(m_vSegmentsRef.size());
+	//Set the size of cur segments and quads
+	m_vSegmentsCur.resize(m_vSegmentsRef.size());
 	for(U32 i=0; i < m_vSegmentsRef.size(); i++) {
 		vec3d vd = m_vSegmentsRef[i];
 		vec3f vf = vec3f(vd.x, vd.y, vd.z);
@@ -193,6 +223,9 @@ void AvatarRing::onTranslate(const vec3f& delta, const vec3f& pos) {
 void AvatarRing::clearCutContext() {
 	if(m_lpTissue)
 		m_lpTissue->clearCutContext();
+	m_vCuttingPath.clear();
+	m_isSweptQuadValid = false;
+	m_applyGripper = false;
 }
 
 

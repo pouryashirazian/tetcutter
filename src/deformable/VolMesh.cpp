@@ -926,7 +926,7 @@ void VolMesh::printParts() {
 
 	for(U32 i=0; i < parts.size(); i++) {
 		vector<U32> part = parts[i];
-		printf("part [%u] = ", i);
+		printf("part [%u] #ofcells = %u, cells = ", i, (U32)part.size());
 		for(U32 j=0; j < part.size(); j++ )
 			printf("%u, ", part[j]);
 		printf("\n");

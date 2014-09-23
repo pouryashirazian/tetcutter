@@ -350,6 +350,12 @@ void SpecialKey(int key, int x, int y)
 			break;
 		}
 
+		case(GLUT_KEY_F11): {
+			g_lpRing->grip();
+			LogInfo("Gripped apply on scalpel!");
+			break;
+		}
+
 	}
 
 	//Modifier
@@ -420,8 +426,10 @@ void resetMesh() {
 	SAFE_DELETE(temp);
 
 	TheSceneGraph::Instance().add(g_lpTissue);
-	//g_lpRing->setTissue(g_lpTissue);
-	g_lpScalpel->setTissue(g_lpTissue);
+	if(g_parser.value<int>("ringscalpel") == 1)
+		g_lpRing->setTissue(g_lpTissue);
+	else
+		g_lpScalpel->setTissue(g_lpTissue);
 }
 
 void runTestSubDivide(int current) {
@@ -444,6 +452,7 @@ int main(int argc, char* argv[]) {
  	cout << "startup" << endl;
 
 	//parser
+ 	g_parser.add_option("ringscalpel", "If set the ring scalpel will be used", Value((int)1));
 	g_parser.add_option("input", "[filepath] set input file in vega format", Value(AnsiStr("internal")));
 	g_parser.add_option("example", "[one, two, cube, eggshell] set an internal example", Value(AnsiStr("two")));
 	if(g_parser.parse(argc, argv) < 0)
@@ -487,13 +496,14 @@ int main(int argc, char* argv[]) {
 	TheShaderManager::Instance().addFromFolder(strShaderRoot.cptr());
 
 	//Load Textures
-	TheTexManager::Instance().add(strTextureRoot + "wood.png");
+	//TheTexManager::Instance().add(strTextureRoot + "wood.png");
+	TheTexManager::Instance().add(strTextureRoot + "spin.png");
 	TheTexManager::Instance().add(strTextureRoot + "rendermask.png");
-	TheTexManager::Instance().add(strTextureRoot + "maskalpha.png");
-	TheTexManager::Instance().add(strTextureRoot + "maskalphafilled.png");
+//	TheTexManager::Instance().add(strTextureRoot + "maskalpha.png");
+//	TheTexManager::Instance().add(strTextureRoot + "maskalphafilled.png");
 
 	//Ground and Room
-	SGQuad* woodenFloor = new SGQuad(16.0f, 16.0f, TheTexManager::Instance().get("wood"));
+	SGQuad* woodenFloor = new SGQuad(16.0f, 16.0f, TheTexManager::Instance().get("spin"));
 	woodenFloor->setName("floor");
 	woodenFloor->transform()->translate(vec3f(0, -0.1f, 0));
 	woodenFloor->transform()->rotate(vec3f(1.0f, 0.0f, 0.0f), 90.0f);
@@ -521,15 +531,18 @@ int main(int argc, char* argv[]) {
 
 	//Create Scalpel
 	g_lpScalpel = new AvatarScalpel();
-	TheSceneGraph::Instance().add(g_lpScalpel);
+	g_lpRing = new AvatarRing(TheTexManager::Instance().get("spin"));
 
-	g_lpRing = new AvatarRing();
-	//TheSceneGraph::Instance().add(g_lpRing);
-
+	if(g_parser.value<int>("ringscalpel") == 1) {
+		TheSceneGraph::Instance().add(g_lpRing);
+		TheGizmoManager::Instance().setFocusedNode(g_lpRing);
+	}
+	else {
+		TheSceneGraph::Instance().add(g_lpScalpel);
+		TheGizmoManager::Instance().setFocusedNode(g_lpScalpel);
+	}
 
 	//Focus gizmo manager on the scalpel
-	TheGizmoManager::Instance().setFocusedNode(g_lpScalpel);
-	//TheGizmoManager::Instance().setFocusedNode(g_lpRing);
 	TheGizmoManager::Instance().cmdTranslate(vec3f(0, 3, 0));
 
 	//reset cuttable mesh

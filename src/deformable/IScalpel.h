@@ -33,6 +33,8 @@ public:
 	//Tool
 	void setOnCutEventHandler(OnCutEvent f) {m_fOnCutEvent = f;}
 	void setTissue(CuttableMesh* tissue);
+	virtual void grip();
+	bool isGripActive() const {return m_applyGripper;}
 
 	//Set Tool Active flag
 	bool isActive() const {return m_isToolActive;}
@@ -45,8 +47,10 @@ protected:
 	void init();
 
 protected:
-	OnCutEvent m_fOnCutEvent;
 	bool m_isToolActive;
+	bool m_applyGripper;
+	OnCutEvent m_fOnCutEvent;
+
 
 	CuttableMesh* m_lpTissue;
 };

@@ -37,7 +37,7 @@ CuttableMesh::CuttableMesh(int ctVertices, double* vertices, int ctElements, int
 
 CuttableMesh::~CuttableMesh() {
 	SAFE_DELETE(m_lpSubD);
-	m_vSweepSurfaces.resize(0);
+	m_quadstrips.resize(0);
 }
 
 void CuttableMesh::setup() {
@@ -118,8 +118,6 @@ void CuttableMesh::draw() {
 	}
 
 	if(m_flagDrawSweepSurf) {
-		U32 ctCutSurf = m_vSweepSurfaces.size() / 12;
-
 		glDisable(GL_CULL_FACE);
 		glDisable(GL_LIGHTING);
 		glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -127,14 +125,9 @@ void CuttableMesh::draw() {
 		glEnable(GL_BLEND);
 
 		glColor4f(1.0, 0.0, 0.0, 0.3);
-		glBegin(GL_QUADS);
-
-		//vec3d p[4];
-		//draw cut surfaces
-		for(U32 i=0; i < ctCutSurf; i++) {
-			for(U32 j=0; j < 4; j++) {
-				glVertex3dv(&m_vSweepSurfaces[i * 12 + j * 3]);
-			}
+		glBegin(GL_QUAD_STRIP);
+		for(U32 i=0; i < m_quadstrips.size(); i++) {
+			glVertex3dv(m_quadstrips[i].cptr());
 		}
 		glEnd();
 
@@ -192,13 +185,13 @@ int CuttableMesh::computeCutEdgesKernel(const vec3d sweptquad[4],
 			assert( (xyz - temp).length() < EPSILON);
 
 			//add to cut edges map
-			if(mapCutEdges.find(i) == mapCutEdges.end())
+			if(mapCutEdges.find(i) == mapCutEdges.end()) {
 				mapCutEdges.insert( std::make_pair(i, ce));
+				found++;
+			}
 			else {
 				LogErrorArg1("Edge %d has already been cut!", i);
 			}
-
-			found++;
 		}
 	}
 
@@ -278,6 +271,11 @@ int CuttableMesh::cut(const vector<vec3d>& segments,
 			 	 	  const vector<vec3d>& quadstrips,
 					  bool modifyMesh) {
 
+	if(segments.size() < 2)
+		return CUT_ERR_INVALID_INPUT_ARG;
+	if(quadstrips.size() < 4 || (quadstrips.size() % 2 != 0))
+		return CUT_ERR_INVALID_INPUT_ARG;
+
 	//1.Compute all cut-edges
 	//2.Compute cut nodes and remove all incident edges to cut nodes from cut edges
 	//3.split cut edges and compute the reference position of the split point
@@ -295,14 +293,13 @@ int CuttableMesh::cut(const vector<vec3d>& segments,
 	int ctRemovedCutEdges = 0;
 
 	//scalpel segments
+	vector<int> vPerSegmentCuts;
+	vPerSegmentCuts.resize(ctSegments);
 	for(U32 i = 0; i < ctSegments; i++) {
 
 		vec3d s0 = segments[i];
 		vec3d s1 = segments[i + 1];
-
-		int res = computeCutEdgesKernel(&quadstrips[i * 2], mapTempCutEdges);
-		if(res < 0)
-			continue;
+		vPerSegmentCuts[i] = computeCutEdgesKernel(&quadstrips[i * 2], mapTempCutEdges);
 
 		if (m_flagDetectCutNodes) {
 			ctRemovedCutEdges += computeCutNodesKernel(s0, s1, &quadstrips[i * 2], mapTempCutEdges, mapTempCutNodes);
@@ -371,7 +368,7 @@ int CuttableMesh::cut(const vector<vec3d>& segments,
 			if(chrCutCase != 'A' && chrCutCase != 'B') {
 				LogErrorArg3("This cut contains a cut case which is not handled yet. case: %c, cutEdgeCode: %x, cutNodeCode: %x",
 							 chrCutCase, cutEdgeCode, cutNodeCode);
-				return -1;
+				return CUT_ERR_UNHANDLED_CUT_STATE;
 			}
 		}
 	}
@@ -394,7 +391,7 @@ int CuttableMesh::cut(const vector<vec3d>& segments,
 
 		if(!this->cut_edge(it->first, it->second.t, &idxNP0, &idxNP1)) {
 			LogErrorArg2("Unable to cut edge %d, edgecutpoint t = %.3f.", it->first, it->second.t);
-			return -1;
+			return CUT_ERR_UNABLE_TO_CUT_EDGE;
 		}
 
 		it->second.idxNP0 = idxNP0;
@@ -451,9 +448,8 @@ int CuttableMesh::cut(const vector<vec3d>& segments,
 		m_ctCompletedCuts ++;
 
 		//store sweep surf
-		vector<double> vFlatSurf;
-		FlattenVec3<double>(quadstrips, vFlatSurf);
-		m_vSweepSurfaces.insert(m_vSweepSurfaces.end(), vFlatSurf.begin(), vFlatSurf.end());
+		m_quadstrips.clear();
+		m_quadstrips.insert(m_quadstrips.end(), quadstrips.begin(), quadstrips.end());
 	}
 	else {
 		LogWarningArg1("END CUTTING# %u: No elements are subdivided.", m_ctCompletedCuts + 1);
@@ -471,7 +467,11 @@ int CuttableMesh::cut(const vector<vec3d>& segments,
 
 	//split mesh parts
 	if(m_flagSplitMeshAfterCut && (ctSubdividedTets > 0)) {
-		splitParts(quadstrips, 0.2);
+
+		for(U32 i = 0; i < ctSegments; i++) {
+			if(vPerSegmentCuts[i] > 0)
+				splitParts(&quadstrips[i * 2], 0.2);
+		}
 	}
 
 	//print mesh parts
@@ -532,16 +532,17 @@ double CuttableMesh::pointLineDistance(const vec3d& v1, const vec3d& v2,
 	return vec3d::distance(p, projection);
 }
 
-bool CuttableMesh::splitParts(const vector<vec3d>& vSweeptSurf, double dist) {
-	vec3d sweptSurfNormal = vec3d::cross(vSweeptSurf[1] - vSweeptSurf[0], vSweeptSurf[3] - vSweeptSurf[0]);
+bool CuttableMesh::splitParts(const vec3d sweptquad[4], double dist) {
+
+	vec3d sweptSurfNormal = vec3d::cross(sweptquad[1] - sweptquad[0], sweptquad[2] - sweptquad[0]);
 	sweptSurfNormal.normalize();
 
 	vec3d dfront = sweptSurfNormal * dist;
 
 	//compute centroid
-	vec3d sweptSurfCentroid = vSweeptSurf[0];
+	vec3d sweptSurfCentroid = sweptquad[0];
 	for(int i = 1; i < 4; i++)
-		sweptSurfCentroid = sweptSurfCentroid + vSweeptSurf[i];
+		sweptSurfCentroid = sweptSurfCentroid + sweptquad[i];
 	sweptSurfCentroid = sweptSurfCentroid * 0.25;
 
 

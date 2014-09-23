@@ -20,6 +20,11 @@ using namespace PS::MESH;
 
 namespace PS {
 
+#define CUT_ERR_INVALID_INPUT_ARG -1
+#define CUT_ERR_NO_INTERSECTION -2
+#define CUT_ERR_UNHANDLED_CUT_STATE -3
+#define CUT_ERR_UNABLE_TO_CUT_EDGE -4
+
 class CuttableMesh : public VolMesh {
 public:
 	//CutEdge
@@ -66,6 +71,7 @@ public:
 	};
 
 public:
+
 	CuttableMesh(const VolMesh& volmesh);
 	CuttableMesh(const vector<double>& vertices, const vector<U32>& elements);
 	CuttableMesh(int ctVertices, double* vertices, int ctElements, int* elements);
@@ -113,7 +119,7 @@ public:
 	 * @param dist
 	 * @return
 	 */
-	bool splitParts(const vector<vec3d>& vSweeptSurf, double dist);
+	bool splitParts(const vec3d sweptquad[4], double dist);
 
 	//splitting
 	bool getFlagSplitMeshAfterCut() const {return m_flagSplitMeshAfterCut;}
@@ -138,7 +144,7 @@ private:
 
 	//sweep surfaces
 	bool m_flagDrawSweepSurf;
-	vector<double> m_vSweepSurfaces;
+	vector<vec3d> m_quadstrips;
 
 	//Cut Nodes
 	std::map<U32, CutNode > m_mapCutNodes;

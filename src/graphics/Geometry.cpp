@@ -725,6 +725,60 @@ void Geometry::addCube(const vec3f& lower, const vec3f& upper) {
     	}
     }
 
+    void Geometry::addCylinder(float radius, float height, int sectors, bool base, bool roof) {
+    	U32 idxStartBase = countVertices();
+    	double oneOverSector = 1.0 / static_cast<double>(sectors);
+
+    	vec3f origin(0.0f);
+
+
+    	addVertex(origin);
+    	addTexCoord(vec2f(0.0, 0.0));
+    	U32 count = 1;
+    	for(int i=0; i<sectors+1; i++) {
+    		double angle = double(i) * TwoPi * oneOverSector;
+    		vec3f v = vec3f::mul(radius, vec3f(cos(angle), 0.0, sin(angle)));
+
+    		addVertex(v);
+    		addTexCoord(vec2f( double(i) * oneOverSector, 0.0f));
+    		count++;
+    	}
+
+    	U32 idxStartRoof = countVertices();
+    	for(U32 i=idxStartBase; i < idxStartRoof; i++) {
+    		addVertex(vertexAt(i) + vec3f(0, height, 0));
+    		addTexCoord(texcoordAt(i) + vec2f(0.0f, 1.0f));
+    	}
+
+    	//triangulate base
+    	if(base) {
+    		for(U32 i = 1; i < count; i++) {
+    			if(i == (count - 1))
+    				addTriangle(vec3u32(idxStartBase, idxStartBase + i, idxStartBase + 1));
+    			else
+    				addTriangle(vec3u32(idxStartBase, idxStartBase + i, idxStartBase + i + 1));
+    		}
+    	}
+
+    	if(roof) {
+    		for(U32 i = 1; i < count; i++) {
+    			if(i == (count - 1))
+    				addTriangle(vec3u32(idxStartRoof, idxStartRoof + i, idxStartRoof + 1));
+    			else
+    				addTriangle(vec3u32(idxStartRoof, idxStartRoof + i, idxStartRoof + i + 1));
+    		}
+    	}
+
+
+    	//add walls
+    	for(U32 i = 1; i < count - 1; i++) {
+			addTriangle(vec3u32(idxStartRoof + i, idxStartRoof + i + 1, idxStartBase + i));
+			addTriangle(vec3u32(idxStartRoof + i + 1, idxStartBase + i + 1, idxStartBase + i));
+    	}
+
+    	computeNormalsFromFaces();
+    }
+
     void Geometry::addTetrahedra(vec3f v[4]) {
     	int idxStart = countVertices();
 

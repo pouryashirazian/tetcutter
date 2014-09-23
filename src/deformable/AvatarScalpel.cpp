@@ -100,7 +100,7 @@ void AvatarScalpel::draw() {
 
 				glColor4d(1.0, 0.0, 1.0, 0.5);
 				glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-				glBegin(GL_QUADS);
+				glBegin(GL_QUAD_STRIP);
 					for(U32 i = 0; i < m_vSweptQuad.size(); i++)
 						glVertex3dv(m_vSweptQuad[i].cptr());
 				glEnd();
@@ -164,6 +164,7 @@ void AvatarScalpel::onTranslate(const vec3f& delta, const vec3f& pos) {
 	vec3d edge1 = vec3d(e1.x, e1.y, e1.z);
 
 	//delete path if direction changed
+	/*
 	if(m_vCuttingPathEdge0.size() > 8) {
 
 		//U32 len = m_vCuttingPathEdge0.size();
@@ -175,22 +176,21 @@ void AvatarScalpel::onTranslate(const vec3f& delta, const vec3f& pos) {
 
 		for(U32 i=4; i < m_vCuttingPathEdge0.size(); i+=4) {
 			dir = (m_vCuttingPathEdge0[i] - o).normalized();
-			angle = RADTODEG(abs(acos(vec3d::dot(dir, prevDir))));
+			angle = vec3d::angleDeg(dir, prevDir);
 			maxAngle = MATHMAX(maxAngle, angle);
 
 			o = m_vCuttingPathEdge0[i];
 			prevDir = dir;
 		}
 
-		/*
 		if(maxAngle > MAX_SCALPEL_TRAJECTORY_ANGLE) {
 			m_vCuttingPathEdge0.resize(0);
 			m_vCuttingPathEdge1.resize(0);
 			m_isSweptQuadValid = false;
 			LogInfoArg1("Cutting trajectory changed %.2f degrees. Resetting path.", maxAngle);
 		}
-		*/
 	}
+	 */
 
 
 	//Swept quad: starts when blade crosses the tissue first and ends where the blade leaves the body
@@ -198,11 +198,11 @@ void AvatarScalpel::onTranslate(const vec3f& delta, const vec3f& pos) {
 	m_vSweptQuad.resize(4);
 	if(m_vCuttingPathEdge0.size() == 0) {
 		m_vSweptQuad[0] = edge0;
-		m_vSweptQuad[1] = edge1;
+		m_vSweptQuad[2] = edge1;
 	}
 	else {
-		m_vSweptQuad[2] = edge1;
-		m_vSweptQuad[3] = edge0;
+		m_vSweptQuad[1] = edge0;
+		m_vSweptQuad[3] = edge1;
 		m_isSweptQuadValid = true;
 	}
 
