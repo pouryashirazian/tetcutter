@@ -21,7 +21,7 @@ namespace MESH {
 
 class IAvatar: public SG::SGMesh, public SG::IGizmoListener {
 public:
-	typedef std::function<void()> OnCutEvent;
+	typedef std::function<void()> OnCutFinished;
 
 	IAvatar();
 	IAvatar(CuttableMesh* pmesh);
@@ -31,7 +31,7 @@ public:
 	virtual void clearCutContext() {}
 
 	//Tool
-	void setOnCutEventHandler(OnCutEvent f) {m_fOnCutEvent = f;}
+	void setOnCutFinishedEventHandler(OnCutFinished f) {m_fOnCutFinished = f;}
 	void setTissue(CuttableMesh* tissue);
 	virtual void grip();
 	bool isGripActive() const {return m_applyGripper;}
@@ -49,7 +49,7 @@ protected:
 protected:
 	bool m_isToolActive;
 	bool m_applyGripper;
-	OnCutEvent m_fOnCutEvent;
+	OnCutFinished m_fOnCutFinished;
 
 
 	CuttableMesh* m_lpTissue;

@@ -29,7 +29,7 @@ IAvatar::~IAvatar() {
 
 void IAvatar::init() {
 	setName("scalpel");
-	m_fOnCutEvent = NULL;
+	m_fOnCutFinished = NULL;
 	m_lpTissue = NULL;
 	m_isToolActive = false;
 	m_applyGripper = false;

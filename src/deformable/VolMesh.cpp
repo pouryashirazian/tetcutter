@@ -11,6 +11,7 @@
 #include <base/String.h>
 #include <base/StringBase.h>
 #include <base/Vec.h>
+#include <base/Color.h>
 #include "base/DebugUtils.h"
 #include <deformable/VolMesh.h>
 #include <graphics/AABB.h>
@@ -1469,7 +1470,7 @@ int VolMesh::get_incident_edges(const ContainerT& in_nodes, set<U32>& out_edges)
 	for(typename ContainerT::const_iterator n_it = in_nodes.begin(),
 	            n_end = in_nodes.end(); n_it != n_end; ++n_it) {
 
-		vTempEdges.assign(m_incident_edges_per_node[*n_it].begin(), m_incident_faces_per_edge[*n_it].end());
+		vTempEdges.assign(m_incident_edges_per_node[*n_it].begin(), m_incident_edges_per_node[*n_it].end());
 		for(U32 j=0; j < vTempEdges.size(); j++) {
 			U32 idxEdge = vTempEdges[j];
 			if(isNodeIndex(idxEdge))
@@ -1698,7 +1699,7 @@ void VolMesh::draw() {
 		drawElement(m_elemToShow);
 	}
 	else {
-		glColor3dv(colors[3].cptr());
+		glColor3fv(Color::skin().toVec4f().cptr());
 		for(U32 i=0; i< countCells(); i++)
 		{
 			//glColor3dv(colors[i % ctColors].cptr());

@@ -607,6 +607,79 @@ bool CuttableMesh::splitParts(const vec3d sweptquad[4], double dist) {
 	return true;
 }
 
+int CuttableMesh::convertDisjointPartsToMeshes(vector<CuttableMesh*>& vOutNewMeshes) {
+
+	vOutNewMeshes.clear();
+	vector< vector<U32> > parts;
+	int count = get_disjoint_parts(parts);
+	if(count < 2)
+		return vOutNewMeshes.size();
+
+	//
+	vOutNewMeshes.reserve(parts.size());
+
+	//
+	vector<U32> vAllSplittedCells;
+
+
+	//loop over parts
+	for(U32 i=0; i < parts.size(); i++) {
+		vector<U32> curpart = parts[i];
+
+		if(curpart.size() == 0) {
+			LogErrorArg1("splitted part %d is empty.", i);
+			continue;
+		}
+
+
+		//maps old nodes to new nodes
+		map<U32, U32> mapNodes;
+		vector<vec3d> vNewNodes;
+		vector<U32> vNewCells;
+
+		for(vector<U32>::const_iterator c_it = curpart.begin(); c_it != curpart.end(); ++c_it) {
+			vAllSplittedCells.push_back(*c_it);
+			const CELL& cell = const_cellAt(*c_it);
+
+			//add all new vertices
+			for(U32 k=0; k < COUNT_CELL_NODES; k++) {
+
+				//if the new nodes are not cached
+				if(mapNodes.find(cell.nodes[k]) == mapNodes.end()) {
+					vec3d v = const_nodeAt(cell.nodes[k]).pos;
+					vNewNodes.push_back(v);
+					U32 idxNew = vNewNodes.size() - 1;
+					mapNodes.insert(std::make_pair(cell.nodes[k], idxNew));
+				}
+
+				//add all 4 element indices
+				vNewCells.push_back(mapNodes[cell.nodes[k]]);
+			}
+		}
+
+		//create the mesh
+		vector<double> vFlatNodes;
+		FlattenVec3<double>(vNewNodes, vFlatNodes);
+		CuttableMesh* amesh = new CuttableMesh(vFlatNodes, vNewCells);
+
+		AnsiStr strName = printToAStr("%s_cut%d_part%d", this->name().c_str(), countCompletedCuts(), i);
+		amesh->setName(string(strName.cptr()));
+		vOutNewMeshes.push_back(amesh);
+
+		//clean for this part
+		mapNodes.clear();
+	}
+
+
+	//schedule all cells for deletion
+	for(vector<U32>::const_iterator c_it = vAllSplittedCells.begin(); c_it != vAllSplittedCells.end(); ++c_it)
+		this->schedule_remove_cell(*c_it);
+	this->garbage_collection();
+
+	return vOutNewMeshes.size();
+}
+
+
 }
 
 

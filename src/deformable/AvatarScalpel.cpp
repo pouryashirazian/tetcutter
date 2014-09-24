@@ -147,8 +147,8 @@ void AvatarScalpel::onTranslate(const vec3f& delta, const vec3f& pos) {
 
 			int res = m_lpTissue->cut(m_vBladeSegments, m_vSweptQuad, true);
 			LogInfoArg1("Tissue cut. res = %d", res);
-			if((res > 0) && (m_fOnCutEvent != NULL))
-				m_fOnCutEvent();
+			if((res > 0) && (m_fOnCutFinished != NULL))
+				m_fOnCutFinished();
 
 			clearCutContext();
 			updateVolMeshInfoHeader();

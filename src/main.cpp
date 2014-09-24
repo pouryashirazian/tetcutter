@@ -448,6 +448,21 @@ void runTestSubDivide(int current) {
 	g_lpTissue->garbage_collection();
 }
 
+void cutFinished() {
+
+	vector<CuttableMesh*> vMeshes;
+	g_lpTissue->convertDisjointPartsToMeshes(vMeshes);
+
+	if(vMeshes.size() == 0)
+		return;
+
+	for(U32 i=0; i < vMeshes.size(); i++) {
+		vMeshes[i]->computeAABB();
+		vMeshes[i]->setElemToShow(0);
+		TheSceneGraph::Instance().add(vMeshes[i]);
+	}
+}
+
 int main(int argc, char* argv[]) {
  	cout << "startup" << endl;
 
@@ -532,6 +547,8 @@ int main(int argc, char* argv[]) {
 	//Create Scalpel
 	g_lpScalpel = new AvatarScalpel();
 	g_lpRing = new AvatarRing(TheTexManager::Instance().get("spin"));
+	g_lpScalpel->setOnCutFinishedEventHandler(cutFinished);
+	g_lpRing->setOnCutFinishedEventHandler(cutFinished);
 
 	if(g_parser.value<int>("ringscalpel") == 1) {
 		TheSceneGraph::Instance().add(g_lpRing);

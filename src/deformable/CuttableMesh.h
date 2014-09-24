@@ -121,6 +121,8 @@ public:
 	 */
 	bool splitParts(const vec3d sweptquad[4], double dist);
 
+	int convertDisjointPartsToMeshes(vector<CuttableMesh*>& vOutNewMeshes);
+
 	//splitting
 	bool getFlagSplitMeshAfterCut() const {return m_flagSplitMeshAfterCut;}
 	void setFlagSplitMeshAfterCut(bool flag) { m_flagSplitMeshAfterCut = flag;}
