@@ -56,6 +56,33 @@ bool CmdLineParser::add_option(const AnsiStr& name, const AnsiStr& desc, const V
 	return this->add(cmdOp, name.cptr());
 }
 
+bool CmdLineParser::add_toggle(const AnsiStr& name, const AnsiStr& desc) {
+	if(name.length() == 0)
+		return false;
+
+	CmdOption cmdOp;
+	cmdOp.toggle = true;
+	cmdOp.desc = desc;
+	cmdOp.value = (int)0;
+	cmdOp.shortcut = "";
+
+	//register shortcut if not present
+	for(int i=0; i < name.length() - 1; i++) {
+		AnsiStr shortcut = name.substr(i, 1);
+		if(m_shortcuts.find(shortcut.cptr()) == m_shortcuts.end()) {
+			cmdOp.shortcut = shortcut;
+			m_shortcuts.insert( std::make_pair(shortcut.cptr(), name.cptr()));
+			break;
+		}
+	}
+
+	//if there is no shortcut
+	if(cmdOp.shortcut.length() == 0)
+		LogWarningArg1("No shortcut registered for option: %s", name.cptr());
+
+	return this->add(cmdOp, name.cptr());
+}
+
 int CmdLineParser::parse(int argc, char* argv[]) {
 
 	int i = 0;
@@ -79,11 +106,19 @@ int CmdLineParser::parse(int argc, char* argv[]) {
 
 			//get the option
 			CmdOption cmdOp = this->get(strName.cptr());
-			i++;
 
 			//toggle does not require value
-			if (!cmdOp.toggle) {
+			if (cmdOp.toggle) {
+				cmdOp.value = (int)1;
 
+				//set variable
+				printf("Set toggle variable: %s\n", strName.cptr());
+
+				//update
+				this->set(strName.cptr(), cmdOp);
+			}
+			else{
+				i++;
 				if (i >= argc) {
 					printHelp();
 					return -2;

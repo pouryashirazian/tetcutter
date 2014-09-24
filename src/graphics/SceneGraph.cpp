@@ -232,7 +232,8 @@ void SceneGraph::updateCameraHeader() {
 	sprintf(chrMsg, "Camera [Roll=%.1f, Tilt=%.1f, PanX=%.2f, PanY=%.2f]",
 			m_camera.getRoll(), m_camera.getTilt(), m_camera.getPan().x,
 			m_camera.getPan().y);
-	m_headers->updateHeaderLine(m_idCamHeader, AnsiStr(chrMsg));
+	AnsiStr strInfo = AnsiStr(chrMsg);
+	m_headers->updateHeaderLine(m_idCamHeader, strInfo);
 }
 
 bool SceneGraph::screenToWorld(const vec3f &s, vec3f &w) {

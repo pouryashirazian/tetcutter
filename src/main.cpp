@@ -29,6 +29,7 @@ using namespace std;
 
 AvatarScalpel* g_lpScalpel = NULL;
 AvatarRing* g_lpRing = NULL;
+IAvatar* g_lpAvatar = NULL;
 
 CuttableMesh* g_lpTissue = NULL;
 CmdLineParser g_parser;
@@ -449,6 +450,9 @@ void runTestSubDivide(int current) {
 }
 
 void cutFinished() {
+	if(!g_parser.value<int>("disjoint"))
+		return;
+
 
 	vector<CuttableMesh*> vMeshes;
 	g_lpTissue->convertDisjointPartsToMeshes(vMeshes);
@@ -456,18 +460,32 @@ void cutFinished() {
 	if(vMeshes.size() == 0)
 		return;
 
+	U32 ctMaxCells = 0;
+	U32 idxMaxCell = 0;
 	for(U32 i=0; i < vMeshes.size(); i++) {
 		vMeshes[i]->computeAABB();
 		vMeshes[i]->setElemToShow(0);
 		TheSceneGraph::Instance().add(vMeshes[i]);
+
+		if(vMeshes[i]->countCells() > ctMaxCells) {
+			ctMaxCells = vMeshes[i]->countCells();
+			idxMaxCell = i;
+		}
 	}
+
+	g_lpTissue = vMeshes[idxMaxCell];
+
+	g_lpTissue->setElemToShow();
+	if(g_lpAvatar)
+		g_lpAvatar->setTissue(g_lpTissue);
 }
 
 int main(int argc, char* argv[]) {
  	cout << "startup" << endl;
 
 	//parser
- 	g_parser.add_option("ringscalpel", "If set the ring scalpel will be used", Value((int)1));
+ 	g_parser.add_toggle("disjoint", "converts splitted part to disjoint meshes");
+ 	g_parser.add_toggle("ringscalpel", "If the switch presents then the ring scalpel will be used");
 	g_parser.add_option("input", "[filepath] set input file in vega format", Value(AnsiStr("internal")));
 	g_parser.add_option("example", "[one, two, cube, eggshell] set an internal example", Value(AnsiStr("two")));
 	if(g_parser.parse(argc, argv) < 0)
@@ -550,11 +568,13 @@ int main(int argc, char* argv[]) {
 	g_lpScalpel->setOnCutFinishedEventHandler(cutFinished);
 	g_lpRing->setOnCutFinishedEventHandler(cutFinished);
 
-	if(g_parser.value<int>("ringscalpel") == 1) {
+	if(g_parser.value<int>("ringscalpel")) {
+		g_lpAvatar = g_lpRing;
 		TheSceneGraph::Instance().add(g_lpRing);
 		TheGizmoManager::Instance().setFocusedNode(g_lpRing);
 	}
 	else {
+		g_lpAvatar = g_lpScalpel;
 		TheSceneGraph::Instance().add(g_lpScalpel);
 		TheGizmoManager::Instance().setFocusedNode(g_lpScalpel);
 	}

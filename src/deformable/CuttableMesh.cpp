@@ -48,9 +48,7 @@ void CuttableMesh::setup() {
     }
 
 	//Perform all tests
-	LogInfo("Begin testing the volumetric mesh");
 	TestVolMesh::tst_all(this);
-	LogInfo("Test completed");
 
 	//Create subdivider
 	m_lpSubD = new TetSubdivider();
@@ -64,8 +62,8 @@ void CuttableMesh::setup() {
 }
 
 void CuttableMesh::clearCutContext() {
-//	m_mapCutEdges.clear();
-//	m_mapCutNodes.clear();
+	m_mapCutEdges.clear();
+	m_mapCutNodes.clear();
 }
 
 void CuttableMesh::draw() {
@@ -475,7 +473,7 @@ int CuttableMesh::cut(const vector<vec3d>& segments,
 	}
 
 	//print mesh parts
-	printParts();
+	//printParts();
 	VolMeshStats::printAllStats(this);
 
 	//recompute AABB and expand it to detect cuts

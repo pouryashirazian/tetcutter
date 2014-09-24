@@ -123,6 +123,13 @@ vec4u32 Geometry::quadAt(int index) const {
 	return vec4u32(&m_indices[index * m_stepFace]);
 }
 
+void Geometry::setVertex(int index, const vec3f& v) {
+
+	m_vertices[index * m_stepVertex] = v.x;
+	m_vertices[index * m_stepVertex + 1] = v.y;
+	m_vertices[index * m_stepVertex + 2] = v.z;
+}
+
 //Add Attributes
 bool Geometry::addVertex(const vec3f& v) {
 	if(m_stepVertex != 3 && m_stepVertex != 4)

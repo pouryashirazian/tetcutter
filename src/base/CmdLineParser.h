@@ -47,6 +47,7 @@ public:
 
 	void printHelp() const;
 	bool add_option(const AnsiStr& name, const AnsiStr& desc, const Value& defval);
+	bool add_toggle(const AnsiStr& name, const AnsiStr& desc);
 	int parse(int argc, char* argv[]);
 
 	template <typename value_type>

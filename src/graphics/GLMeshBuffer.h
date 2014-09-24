@@ -87,6 +87,9 @@ public:
 	void setupPerVertexColor(const vec4f& color, U32 ctVertices, int step = 4);
 	void setupIndexBufferObject(const vector<U32>& arrIndex, int faceMode = ftTriangles);
 
+	//update
+	bool updateVertexBuffer(U32 offset, U32 szTotal, const void* lpData);
+
     //Wireframe
 	bool getWireFrameMode() const {return m_bWireFrame;}
 	virtual void setWireFrameMode(bool bSet) { m_bWireFrame = bSet;}

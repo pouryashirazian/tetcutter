@@ -55,11 +55,20 @@ public:
 	vec3f normalAt(int index) const;
 	vec3u32 triangleAt(int index) const;
 	vec4u32 quadAt(int index) const;
+
+	void setVertex(int index, const vec3f& v);
+
 	const vector<float>& vertices() const {return m_vertices;}
 	const vector<float>& colors() const {return m_colors;}
 	const vector<float>& texcoords() const {return m_texCoords;}
 	const vector<float>& normals() const {return m_normals;}
 	const vector<U32>& indices() const {return m_indices;}
+
+	vector<float>& vertices() {return m_vertices;}
+	vector<float>& colors()  {return m_colors;}
+	vector<float>& texcoords()  {return m_texCoords;}
+	vector<float>& normals()  {return m_normals;}
+	vector<U32>& indices()  {return m_indices;}
 
 
 	//Add Attributes

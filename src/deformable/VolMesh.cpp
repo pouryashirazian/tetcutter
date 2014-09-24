@@ -143,7 +143,7 @@ bool VolMesh::setup(U32 ctVertices, const double* vertices, U32 ctElements, cons
 	//Compute AABB
 	computeAABB();
 	//checkMeshFaceDirections();
-	this->printInfo();
+	//this->printInfo();
 
 	return true;
 }
@@ -1492,10 +1492,12 @@ void VolMesh::remove_cells(const ContainerT& cells) {
 	std::sort(vToBeRemoved.begin(), vToBeRemoved.end(), std::greater<U32>());
 
 	//print order
+	/*
 	printf("cells remove order: ");
 	for(std::vector<U32>::const_iterator it = vToBeRemoved.begin(); it != vToBeRemoved.end(); it++)
 		printf("%u, ", *it);
 	printf("\n");
+	*/
 
 	for(std::vector<U32>::const_iterator it = vToBeRemoved.begin(); it != vToBeRemoved.end(); it++) {
 		remove_cell(*it);
@@ -1513,10 +1515,12 @@ void VolMesh::remove_faces(const ContainerT& faces) {
 	std::sort(vToBeRemoved.begin(), vToBeRemoved.end(), std::greater<U32>());
 
 	//print order
+	/*
 	printf("faces remove order: ");
 	for (std::vector<U32>::const_iterator it = vToBeRemoved.begin(); it != vToBeRemoved.end(); it++)
 		printf("%u, ", *it);
 	printf("\n");
+	*/
 
 	for (std::vector<U32>::const_iterator it = vToBeRemoved.begin(); it != vToBeRemoved.end(); it++) {
 		remove_face(*it);
@@ -1535,10 +1539,12 @@ void VolMesh::remove_edges(const ContainerT& edges) {
 	std::sort(vToBeRemoved.begin(), vToBeRemoved.end(), std::greater<U32>());
 
 	//print order
+	/*
 	printf("edges remove order: ");
 	for (std::vector<U32>::const_iterator it = vToBeRemoved.begin(); it != vToBeRemoved.end(); it++)
 		printf("%u, ", *it);
 	printf("\n");
+	*/
 
 	for (std::vector<U32>::const_iterator it = vToBeRemoved.begin(); it != vToBeRemoved.end(); it++) {
 		remove_edge(*it);
@@ -1556,10 +1562,12 @@ void VolMesh::remove_nodes(const ContainerT& nodes) {
 	std::sort(vToBeRemoved.begin(), vToBeRemoved.end(), std::greater<U32>());
 
 	//print order
+	/*
 	printf("nodes remove order: ");
 	for (std::vector<U32>::const_iterator it = vToBeRemoved.begin(); it != vToBeRemoved.end(); it++)
 		printf("%u, ", *it);
 	printf("\n");
+	*/
 
 	for (std::vector<U32>::const_iterator it = vToBeRemoved.begin(); it != vToBeRemoved.end(); it++) {
 		remove_node(*it);

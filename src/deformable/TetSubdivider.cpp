@@ -339,10 +339,6 @@ int TetSubdivider::subdivide(VolMesh* pmesh, U32 idxCell,
 			cerr << "ERROR SUBDIVIDE: some of the subedges do not exist!" << endl;
 			assert(res);
 		}
-
-		if(revised > 0) {
-			cerr << "ERROR SUBDIVIDE: needed to revise# " << revised << endl;
-		}
 	}
 
 

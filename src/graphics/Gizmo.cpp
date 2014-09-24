@@ -425,6 +425,7 @@ namespace PS {
         }
         ////////////////////////////////////////////////////////////
         GizmoManager::GizmoManager():SGNode() {
+        	m_lpFocusedNode = NULL;
             m_buttonState = ArcBallCamera::bsUp;
             m_pressedPos = vec2i(0, 0);
 
