@@ -224,7 +224,7 @@ void GLMeshBuffer::cleanup()
 }
 
 void GLMeshBuffer::setup(const Geometry& g) {
-
+	GLMeshBuffer::cleanup();
 	if(g.countVertices() > 0)
 		this->setupVertexAttribs(g.vertices(), g.getVertexStep(), mbtPosition);
 	if(g.countColor() > 0)
