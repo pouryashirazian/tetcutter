@@ -1807,8 +1807,7 @@ void VolMesh::drawElement(U32 i) const {
 	glEnd();
 }
 
-
-AABB VolMesh::computeAABB() {
+AABB VolMesh::computeNodalAABB() const {
 	double vMin[3], vMax[3];
 	vMin[0] = vMin[1] = vMin[2] = GetMaxLimit<double>();
 	vMax[0] = vMax[1] = vMax[2] = GetMinLimit<double>();
@@ -1834,9 +1833,15 @@ AABB VolMesh::computeAABB() {
 	}
 
 	//set AABB
-	m_aabb.set(vec3f((float)vMin[0], (float)vMin[1], (float)vMin[2]),
-			   vec3f((float)vMax[0], (float)vMax[1], (float)vMax[2]));
-	m_aabb.expand(1.0);
+	AABB aabb;
+	aabb.set(vec3f((float)vMin[0], (float)vMin[1], (float)vMin[2]),
+			 vec3f((float)vMax[0], (float)vMax[1], (float)vMax[2]));
+
+	return aabb;
+}
+
+AABB VolMesh::computeAABB() {
+	m_aabb = computeNodalAABB();
 	return m_aabb;
 }
 

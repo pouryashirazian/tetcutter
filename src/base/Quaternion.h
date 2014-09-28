@@ -20,9 +20,10 @@ class Quaternion
 public:
     Quaternion() { identity();}
     Quaternion(const Quaternion& rhs):x(rhs.x),y(rhs.y),z(rhs.z), w(rhs.w) {}
-    Quaternion(float x_, float y_, float z_, float w_):x(x_),y(y_),z(z_), w(w_) {}
-    Quaternion(const vec3f& q_, float w_):x(q_.x),y(q_.y),z(q_.z), w(w_) {}
-    Quaternion(const vec4f& q_):x(q_.x),y(q_.y),z(q_.z), w(q_.w) {}
+    Quaternion(T x_, T y_, T z_, T w_):x(x_),y(y_),z(z_), w(w_) {}
+
+    Quaternion(const Vec3< T >& q_, T w_):x(q_.x),y(q_.y),z(q_.z), w(w_) {}
+    Quaternion(const Vec4< T >& q_):x(q_.x),y(q_.y),z(q_.z), w(q_.w) {}
 
 	void identity() {
         x = y = z = 0.0;
@@ -114,7 +115,7 @@ Vec3<T> Quaternion<T>::transform(const Vec3<T>& p) const
 template <typename T>
 Vec3<T> Quaternion<T>::transform(const Quaternion& inv, const Vec3<T>& p) const
 {
-    Quaternion input(p, 0.0f);
+    Quaternion input(p, 0.0);
     Quaternion res = mul(input);
     return res.mul(inv).xyz();
 }

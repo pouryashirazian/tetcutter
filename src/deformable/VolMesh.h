@@ -245,6 +245,7 @@ protected:
 
 	bool test_incidents();
 
+	AABB computeNodalAABB() const;
 protected:
 	//remove core functions
 	void remove_cell_core(U32 idxCell);

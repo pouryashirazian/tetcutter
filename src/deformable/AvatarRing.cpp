@@ -11,6 +11,10 @@
 
 using namespace PS;
 
+#define RING_RADIUS 0.2
+#define RING_SECTORS 16
+
+
 namespace PS {
 namespace MESH {
 
@@ -46,8 +50,8 @@ void AvatarRing::init() {
 	m_lpTex = NULL;
 	m_isSweptQuadValid = false;
 
-	double radius = 0.3;
-	int sectors = 8;
+	double radius = RING_RADIUS;
+	int sectors = RING_SECTORS;
 	vec3d origin = vec3d(0.0, 0.0, 0.0);
 
 	m_vSegmentsRef.reserve(sectors);

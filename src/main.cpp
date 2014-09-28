@@ -18,7 +18,7 @@
 #include "deformable/AvatarRing.h"
 #include "deformable/TetSubdivider.h"
 #include "deformable/VolMeshSamples.h"
-#include "deformable/VolMeshExport.h"
+#include "deformable/VolMeshIO.h"
 
 using namespace PS;
 using namespace PS::SG;
@@ -483,6 +483,7 @@ void cutFinished() {
 int main(int argc, char* argv[]) {
  	cout << "startup" << endl;
 
+
 	//parser
  	g_parser.add_toggle("disjoint", "converts splitted part to disjoint meshes");
  	g_parser.add_toggle("ringscalpel", "If the switch presents then the ring scalpel will be used");
@@ -519,24 +520,31 @@ int main(int argc, char* argv[]) {
 
 	//Build Shaders for drawing the mesh
 	AnsiStr strRoot = ExtractOneLevelUp(ExtractFilePath(GetExePath()));
-	AnsiStr strLeftPial = strRoot + "data/meshes/brain/pial_Full_obj/lh.pial.obj";
-	AnsiStr strRightPial = strRoot + "data/meshes/brain/pial_Full_obj/rh.pial.obj";
-
+	AnsiStr strLeftPial = strRoot + "data/meshes/obj/brain/pial_Full_obj/lh.pial.obj";
+	AnsiStr strRightPial = strRoot + "data/meshes/obj/brain/pial_Full_obj/rh.pial.obj";
 	AnsiStr strShaderRoot = strRoot + "data/shaders/";
 	AnsiStr strTextureRoot = strRoot + "data/textures/";
+
+	//convert mesh
+// 	AnsiStr strNodesFP = strRoot + AnsiStr("data/meshes/matlab/nodes.txt");
+// 	AnsiStr strFacesFP = strRoot + AnsiStr("data/meshes/matlab/faces.txt");
+// 	AnsiStr strCellsFP = strRoot + AnsiStr("data/meshes/matlab/cells.txt");
+// 	VolMeshIO::convertMatlabTextToVega(strNodesFP, strFacesFP, strCellsFP);
+
 
 	//Load Shaders
 	TheShaderManager::Instance().addFromFolder(strShaderRoot.cptr());
 
 	//Load Textures
-	//TheTexManager::Instance().add(strTextureRoot + "wood.png");
+	TheTexManager::Instance().add(strTextureRoot + "wood.png");
 	TheTexManager::Instance().add(strTextureRoot + "spin.png");
 	TheTexManager::Instance().add(strTextureRoot + "rendermask.png");
 //	TheTexManager::Instance().add(strTextureRoot + "maskalpha.png");
 //	TheTexManager::Instance().add(strTextureRoot + "maskalphafilled.png");
 
 	//Ground and Room
-	SGQuad* woodenFloor = new SGQuad(16.0f, 16.0f, TheTexManager::Instance().get("spin"));
+	SGQuad* woodenFloor = new SGQuad(16.0f, 16.0f, TheTexManager::Instance().get("wood"));
+	//SGQuad* woodenFloor = new SGQuad(16.0f, 16.0f, NULL);
 	woodenFloor->setName("floor");
 	woodenFloor->transform()->translate(vec3f(0, -0.1f, 0));
 	woodenFloor->transform()->rotate(vec3f(1.0f, 0.0f, 0.0f), 90.0f);

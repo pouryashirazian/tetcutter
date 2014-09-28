@@ -5,6 +5,7 @@
  *      Author: pourya
  */
 
+#include "base/Logger.h"
 #include "SGHeaders.h"
 #include "selectgl.h"
 #include "GLFuncs.h"
@@ -26,14 +27,18 @@ void SGHeaders::cleanup() {
 }
 
 void SGHeaders::draw() {
-	for(int i=0; i<m_vHeaders.size(); i++)
+	for(U32 i=0; i<m_vHeaders.size(); i++)
 		DrawText(m_vHeaders[i].cptr(), 10, 20 + i * 15);
 }
 
-
 int SGHeaders::addHeaderLine(const AnsiStr& title, const AnsiStr& strInfo) {
+	if(m_hashHeaders.has(strInfo.cptr())) {
+		LogInfoArg1("Header: %s is already present.", title.cptr());
+		return -1;
+	}
+
 	m_vHeaders.push_back(strInfo);
-	int id = m_vHeaders.size() - 1;
+	int id = (int)m_vHeaders.size() - 1;
 	m_hashHeaders.add(id, title.cptr());
 	return id;
 }
