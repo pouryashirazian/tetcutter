@@ -691,12 +691,12 @@ namespace PS
 		va_list	vl;
 		va_start( vl, pFmt );
 
-		char	buff[1024];
+		char	buff[MAX_STRING_BUFFER_LEN];
 
 #ifdef PS_SECURE_API
-		vsnprintf_s( buff, _countof(buff)-1, _TRUNCATE, pFmt, vl );
+		vsnprintf_s( buff, MAX_STRING_BUFFER_LEN, _TRUNCATE, pFmt, vl );
 #else
-		vsnprintf(buff, sizeof(buff)-1, pFmt, vl);
+		vsnprintf(buff, MAX_STRING_BUFFER_LEN, pFmt, vl);
 #endif
 
 		va_end( vl );
@@ -710,12 +710,12 @@ namespace PS
 		va_list	vl;
 		va_start( vl, pFmt );
 
-		char	buff[1024];
+		char	buff[MAX_STRING_BUFFER_LEN];
 
 #ifdef PS_SECURE_API
-		vsnprintf_s( buff, _countof(buff)-1, _TRUNCATE, pFmt, vl );
+		vsnprintf_s( buff, MAX_STRING_BUFFER_LEN, _TRUNCATE, pFmt, vl );
 #else
-		vsnprintf(buff, sizeof(buff)-1, pFmt, vl);
+		vsnprintf(buff, MAX_STRING_BUFFER_LEN, pFmt, vl);
 #endif
 
 		va_end( vl );

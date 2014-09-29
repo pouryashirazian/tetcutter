@@ -122,6 +122,7 @@ public:
 	bool splitParts(const vec3d sweptquad[4], double dist);
 
 	int convertDisjointPartsToMeshes(vector<CuttableMesh*>& vOutNewMeshes);
+	void applyTransformToMeshThenResetTransform();
 
 	//splitting
 	bool getFlagSplitMeshAfterCut() const {return m_flagSplitMeshAfterCut;}
@@ -132,6 +133,8 @@ public:
 
 	bool getFlagDrawSweepSurf() const { return m_flagDrawSweepSurf;}
 	void setFlagDrawSweepSurf(bool flag) { m_flagDrawSweepSurf = flag;}
+
+
 protected:
 	void setup();
 

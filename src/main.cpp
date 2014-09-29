@@ -357,6 +357,18 @@ void SpecialKey(int key, int x, int y)
 			break;
 		}
 
+		case(GLUT_KEY_F12): {
+			LogInfo("Apply transform to mesh and then reset transform");
+			g_lpTissue->applyTransformToMeshThenResetTransform();
+
+			if(FileExists(g_strFilePath)) {
+				bool res = VolMeshIO::writeVega(g_lpTissue, g_strFilePath);
+				if(res) {
+					LogInfoArg1("Modified mesh is stored to: %s", g_strFilePath.cptr());
+				}
+			}
+			break;
+		}
 	}
 
 	//Modifier
@@ -369,7 +381,6 @@ void SpecialKey(int key, int x, int y)
 void closeApp() {
 	SAFE_DELETE(g_lpScalpel);
 	SAFE_DELETE(g_lpRing);
-
 	SAFE_DELETE(g_lpTissue);
 }
 
@@ -389,6 +400,7 @@ void resetMesh() {
 	VolMesh* temp = NULL;
 	if(FileExists(g_strFilePath)) {
 		temp = new PS::MESH::VolMesh();
+		LogInfoArg1("Begin to read vega file from: %s", g_strFilePath.cptr());
 		bool res = PS::MESH::VolMeshIO::readVega(temp, g_strFilePath);
 		if(!res)
 			LogErrorArg1("Unable to load mesh from: %s", g_strFilePath.cptr());
@@ -404,7 +416,7 @@ void resetMesh() {
 
 			U32 nx, ny, nz = 0;
 			sscanf(strExample.cptr(), "cube_%u_%u_%u", &nx, &ny, &nz);
-			temp = PS::MESH::VolMeshSamples::CreateTruthCube(nx, ny, nz, 0.5);
+			temp = PS::MESH::VolMeshSamples::CreateTruthCube(nx, ny, nz, 0.2);
 		}
 		else if(strExample.lfindstr(AnsiStr("eggshell"), pos)) {
 
@@ -415,15 +427,15 @@ void resetMesh() {
 		}
 		else
 			temp = PS::MESH::VolMeshSamples::CreateOneTetra();
-		//temp = PS::MESH::VolMeshSamples::CreateTruthCube(4, 4, 4, 0.5);
-		//temp = PS::MESH::VolMeshSamples::CreateTruthCube(2, 2, 2, 2.0);
-		//temp = PS::MESH::VolMeshSamples::CreateOneTetra();
-		//temp = PS::MESH::VolMeshSamples::CreateTwoTetra();
 	}
 
 
+	LogInfo("Loaded mesh to temp");
 	g_lpTissue = new CuttableMesh(*temp);
 	g_lpTissue->setFlagSplitMeshAfterCut(true);
+	g_lpTissue->setDrawNodes(false);
+	g_lpTissue->setDrawWireFrame(false);
+	g_lpTissue->setVerbose(g_parser.value<int>("verbose") != 0);
 	SAFE_DELETE(temp);
 
 	TheSceneGraph::Instance().add(g_lpTissue);
@@ -431,6 +443,9 @@ void resetMesh() {
 		g_lpRing->setTissue(g_lpTissue);
 	else
 		g_lpScalpel->setTissue(g_lpTissue);
+
+	LogInfo("Loaded mesh completed");
+	//TheGizmoManager::Instance().cmdRotate(vec3f(1,0,0), -90.0f);
 }
 
 void runTestSubDivide(int current) {
@@ -483,12 +498,13 @@ void cutFinished() {
 int main(int argc, char* argv[]) {
  	cout << "startup" << endl;
 
-
 	//parser
  	g_parser.add_toggle("disjoint", "converts splitted part to disjoint meshes");
  	g_parser.add_toggle("ringscalpel", "If the switch presents then the ring scalpel will be used");
-	g_parser.add_option("input", "[filepath] set input file in vega format", Value(AnsiStr("internal")));
+ 	g_parser.add_toggle("verbose", "prints detailed description.");
+ 	g_parser.add_option("input", "[filepath] set input file in vega format", Value(AnsiStr("internal")));
 	g_parser.add_option("example", "[one, two, cube, eggshell] set an internal example", Value(AnsiStr("two")));
+
 	if(g_parser.parse(argc, argv) < 0)
 		exit(0);
 
@@ -538,7 +554,7 @@ int main(int argc, char* argv[]) {
 	//Load Textures
 	TheTexManager::Instance().add(strTextureRoot + "wood.png");
 	TheTexManager::Instance().add(strTextureRoot + "spin.png");
-	TheTexManager::Instance().add(strTextureRoot + "rendermask.png");
+//	TheTexManager::Instance().add(strTextureRoot + "rendermask.png");
 //	TheTexManager::Instance().add(strTextureRoot + "maskalpha.png");
 //	TheTexManager::Instance().add(strTextureRoot + "maskalphafilled.png");
 
@@ -586,6 +602,8 @@ int main(int argc, char* argv[]) {
 		TheSceneGraph::Instance().add(g_lpScalpel);
 		TheGizmoManager::Instance().setFocusedNode(g_lpScalpel);
 	}
+
+	LogInfo("move scalpel up");
 
 	//Focus gizmo manager on the scalpel
 	TheGizmoManager::Instance().cmdTranslate(vec3f(0, 3, 0));

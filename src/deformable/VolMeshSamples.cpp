@@ -122,6 +122,7 @@ VolMesh* VolMeshSamples::CreateTruthCube(int nx, int ny, int nz, double cellsize
 	FlattenVec3<double>(vertices, vFlatVertices);
 	FlattenVec4<U32>(elements, vFlatElements);
 
+
 	AnsiStr strName = printToAStr("truthcube_%dx%dx%d", nx, ny, nz);
 	VolMesh* cube = new VolMesh(vFlatVertices, vFlatElements);
 	cube->setName(strName.cptr());

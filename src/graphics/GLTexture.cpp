@@ -89,6 +89,7 @@ namespace PS {
             this->cleanup();
             
             //Generate Texture
+            glPushAttrib(GL_ALL_ATTRIB_BITS);
             glActiveTexture(GL_TEXTURE0 + m_texunit);
             glGenTextures(1, &m_glTex);
             glBindTexture(GL_TEXTURE_2D, m_glTex);
@@ -108,6 +109,7 @@ namespace PS {
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
             glBindTexture(GL_TEXTURE_2D, 0);
+            glPopAttrib();
             return true;
         }
         

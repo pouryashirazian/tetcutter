@@ -31,6 +31,8 @@ bool TestVolMesh::tst_correct_elements(VolMesh* pmesh) {
 	if(pmesh == NULL)
 		return false;
 
+	LogInfo("Begin test correct elements");
+
 	U32 ctErrors = 0;
 	for(U32 i = 0; i < pmesh->countCells(); i++) {
 		const CELL& cell = pmesh->const_cellAt(i);
@@ -125,6 +127,7 @@ bool TestVolMesh::tst_correct_elements(VolMesh* pmesh) {
 
 	}
 
+	LogInfo("End test correct elements");
 	if(ctErrors == 0)
 		LogInfoArg1("PASS: %s", __FUNCTION__);
 	else

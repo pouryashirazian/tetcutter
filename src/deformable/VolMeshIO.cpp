@@ -436,9 +436,9 @@ bool VolMeshIO::convertMatlabTextToVega(const AnsiStr& strNodesFP,
 		VolMesh* pvm = new VolMesh(vFlatNodes, vFlatCells);
 		pvm->setVerbose(true);
 
-		quatd q;
-		q.fromAxisAngle(vec3d(0, 0, 1), 90.0);
-		rotatemesh(pvm, q);
+//		quatd q;
+//		q.fromAxisAngle(vec3d(0, 0, 1), 90.0);
+//		rotatemesh(pvm, q);
 
 		//aabb
 //		AABB box1(vec3f(0.0f, 0.0f, 0.0f), vec3f(4.0f, 4.0f, 4.0f));

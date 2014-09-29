@@ -8,6 +8,8 @@
 #ifndef VOLMESH_H
 #define VOLMESH_H
 
+#include <base/Vec.h>
+#include <base/Color.h>
 #include "graphics/SGNode.h"
 #include "VolMeshEntities.h"
 #include <functional>
@@ -198,6 +200,17 @@ public:
 	void setNodeToShow(U32 idxNode = INVALID_INDEX);
 	U32 getNodeToShow() const {return m_nodeToShow;}
 
+	//flag on what to show
+	void setDrawWireFrame(bool drawWireFrame) { m_drawWireFrameMesh = drawWireFrame;}
+	bool getDrawWireFrame() const {return m_drawWireFrameMesh;}
+	void setDrawNodes(bool drawNodes) { m_drawNodes = drawNodes;}
+	bool getDrawNodes() const {return m_drawNodes;}
+
+	//set base color
+	Color getColor() const {return m_color;}
+	void setColor(const Color& c) { m_color = c;}
+
+
 	//draw
 	void draw();
 	void drawElement(U32 i) const;
@@ -257,6 +270,9 @@ protected:
 	U32 m_elemToShow;
 	U32 m_nodeToShow;
 	bool m_verbose;
+	bool m_drawWireFrameMesh;
+	bool m_drawNodes;
+	Color m_color;
 
 	//topology events
 	OnNodeEvent m_fOnNodeEvent;

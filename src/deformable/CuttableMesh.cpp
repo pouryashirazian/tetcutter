@@ -12,6 +12,7 @@
 #include "deformable/VolMeshStats.h"
 #include "base/Logger.h"
 #include "base/FlatArray.h"
+#include "base/Profiler.h"
 #include <map>
 
 using namespace std;
@@ -49,6 +50,7 @@ void CuttableMesh::setup() {
 
 	//Perform all tests
 	TestVolMesh::tst_all(this);
+	LogInfo("tests done!");
 
 	//Create subdivider
 	m_lpSubD = new TetSubdivider();
@@ -68,14 +70,17 @@ void CuttableMesh::clearCutContext() {
 
 void CuttableMesh::draw() {
 
-	drawBBox();
-
 	//draw volmesh
 	if(m_spEffect)
 		m_spEffect->bind();
+	if(m_spTransform)
+		m_spTransform->bind();
 
+	drawBBox();
 	VolMesh::draw();
 
+	if(m_spTransform)
+		m_spTransform->unbind();
 	if(m_spEffect)
 		m_spEffect->unbind();
 
@@ -273,6 +278,8 @@ int CuttableMesh::cut(const vector<vec3d>& segments,
 		return CUT_ERR_INVALID_INPUT_ARG;
 	if(quadstrips.size() < 4 || (quadstrips.size() % 2 != 0))
 		return CUT_ERR_INVALID_INPUT_ARG;
+
+	ProfileAutoArg("cut");
 
 	//1.Compute all cut-edges
 	//2.Compute cut nodes and remove all incident edges to cut nodes from cut edges
@@ -677,6 +684,26 @@ int CuttableMesh::convertDisjointPartsToMeshes(vector<CuttableMesh*>& vOutNewMes
 	return vOutNewMeshes.size();
 }
 
+void CuttableMesh::applyTransformToMeshThenResetTransform() {
+	if(!m_spTransform)
+		return;
+
+	for(U32 i = 0; i < countNodes(); i++) {
+		NODE& n = nodeAt(i);
+
+		vec3d pd = n.pos;
+		vec3f pf = vec3f(pd.x, pd.y, pd.z);
+
+		pf = m_spTransform->forward().map(pf);
+
+		pd = vec3d(pf.x, pf.y, pf.z);
+		n.pos = pd;
+		n.restpos = pd;
+	}
+
+	m_spTransform->reset();
+	computeAABB();
+}
 
 }
 

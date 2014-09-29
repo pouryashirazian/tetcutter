@@ -103,7 +103,9 @@ namespace PS{
 		//Write Event Type
 		if(m_bWriteEventTypes)
 		{
-			if(t == etInfo)
+			if(t == etProfile)
+				strEvent += printToAStr("PROFILE: ");
+			else if(t == etInfo)
 				strEvent += printToAStr("INFO: ");
 			else if(t == etWarning)
 				strEvent += printToAStr("WARNING: ");

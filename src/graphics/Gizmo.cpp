@@ -618,48 +618,53 @@ namespace PS {
 
     	void GizmoManager::cmdTranslate(const vec3f& increment) {
         	transform()->translate(increment);
-        	vec3f final = transform()->getTranslate();
+        	vec3f total = transform()->getTranslate();
 
             if(m_lpFocusedNode)
             	m_lpFocusedNode->transform()->translate(increment);
 
         	//Post Messages
         	for(U32 i=0; i<m_clients.size(); i++)
-        		m_clients[i]->onTranslate(increment, final);
+        		m_clients[i]->onTranslate(increment, total);
 
         	//push to header
         	char buffer[512];
         	sprintf(buffer,
-        			"translate increment = (%.3f, %.3f, %.3f), final = (%.3f, %0.3f, %.3f)",
-        			increment.x, increment.y, increment.z, final.x, final.y, final.z);
+        			"translate increment = (%.3f, %.3f, %.3f), total = (%.3f, %0.3f, %.3f)",
+        			increment.x, increment.y, increment.z, total.x, total.y, total.z);
         	TheSceneGraph::Instance().headers()->updateHeaderLine("gizmo", buffer);
     	}
 
 		void GizmoManager::cmdScale(const vec3f& increment) {
 			this->transform()->scale(increment);
-			vec3f final = transform()->getScale();
+			vec3f total = transform()->getScale();
 
 			if (m_lpFocusedNode)
 				m_lpFocusedNode->transform()->scale(increment);
 
 			//Post Messages
 			for (U32 i = 0; i < m_clients.size(); i++)
-				m_clients[i]->onScale(increment, final);
+				m_clients[i]->onScale(increment, total);
 
         	//push to header
         	char buffer[512];
 			sprintf(buffer,
 					"scale increment = (%.3f, %.3f, %.3f), final = (%.3f, %0.3f, %.3f)",
-					increment.x, increment.y, increment.z, final.x, final.y, final.z);
+					increment.x, increment.y, increment.z, total.x, total.y, total.z);
 			TheSceneGraph::Instance().headers()->updateHeaderLine("gizmo", buffer);
 		}
 
 		void GizmoManager::cmdRotate(const vec3f& axis, float degreeIncrement) {
 			quatf quatIncrement;
 			quatIncrement.fromAxisAngle(axis, degreeIncrement);
+			float total = 0.0f;
 
-			if (m_lpFocusedNode)
+			if (m_lpFocusedNode) {
 				m_lpFocusedNode->transform()->rotate(quatIncrement);
+
+				vec3f axis;
+				m_lpFocusedNode->transform()->getRotate().toAxisAngle(axis, total);
+			}
 
 			//rotate gizmo
 			if (m_lpGizmoRotate)
@@ -671,8 +676,8 @@ namespace PS {
 
         	//push to header
         	char buffer[512];
-			sprintf(buffer, "rotate axis=(%.3f, %.3f, %.3f), angle=(%.3f)",
-					axis.x, axis.y, axis.z, degreeIncrement);
+			sprintf(buffer, "rotate axis=(%.3f, %.3f, %.3f), angle=(%.3f), total=(%.3f)",
+					axis.x, axis.y, axis.z, degreeIncrement, total);
 			TheSceneGraph::Instance().headers()->updateHeaderLine("gizmo", buffer);
 		}
 

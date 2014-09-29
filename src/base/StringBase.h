@@ -21,6 +21,7 @@
 
 //#define PS_SECURE_API
 #define USE_NORMAL_API
+#define MAX_STRING_BUFFER_LEN 2048
 
 namespace PS{
 

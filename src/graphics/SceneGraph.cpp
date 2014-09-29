@@ -87,6 +87,9 @@ bool SceneGraph::remove(const string& name) {
 }
 
 bool SceneGraph::remove(const SGNode* pnode) {
+	if(pnode == NULL)
+		return false;
+
 	for (U32 i = 0; i < m_vSceneNodes.size(); i++) {
 		if (m_vSceneNodes[i] == pnode) {
 			m_vSceneNodes.erase(m_vSceneNodes.begin() + i);

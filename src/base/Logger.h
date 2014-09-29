@@ -63,7 +63,7 @@ public:
 	EventLogger(const char* lpFilePath, int flags = 0);
 	~EventLogger();
 
-	enum EVENTTYPE {etInfo, etWarning, etError};
+	enum EVENTTYPE {etProfile, etInfo, etWarning, etError};
 
 	
 	//Internal Class for holding an instance of an event

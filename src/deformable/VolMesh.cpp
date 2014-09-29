@@ -10,8 +10,6 @@
 #include <base/MathBase.h>
 #include <base/String.h>
 #include <base/StringBase.h>
-#include <base/Vec.h>
-#include <base/Color.h>
 #include "base/DebugUtils.h"
 #include <deformable/VolMesh.h>
 #include <graphics/AABB.h>
@@ -92,6 +90,10 @@ VolMesh::~VolMesh() {
 void VolMesh::init() {
 	m_verbose = false;
 	m_elemToShow = m_nodeToShow = INVALID_INDEX;
+	m_drawNodes = true;
+	m_drawWireFrameMesh = true;
+	m_color = Color::skin();
+
 	m_fOnNodeEvent = NULL;
 	m_fOnEdgeEvent = NULL;
 	m_fOnFaceEvent = NULL;
@@ -149,15 +151,16 @@ bool VolMesh::setup(U32 ctVertices, const double* vertices, U32 ctElements, cons
 }
 
 void VolMesh::cleanup() {
+	m_mapEdgesIndex.clear();
+	m_pendingToDeleteCells.resize(0);
+	m_incident_cells_per_face.resize(0);
+	m_incident_edges_per_node.resize(0);
+	m_incident_faces_per_edge.resize(0);
+
 	m_vCells.resize(0);
 	m_vFaces.resize(0);
 	m_vEdges.resize(0);
 	m_vNodes.resize(0);
-
-	m_mapEdgesIndex.clear();
-	m_incident_cells_per_face.clear();
-	m_incident_edges_per_node.clear();
-	m_incident_faces_per_edge.clear();
 }
 
 void VolMesh::printNodeInfo() const {
@@ -1707,10 +1710,8 @@ void VolMesh::draw() {
 		drawElement(m_elemToShow);
 	}
 	else {
-		glColor3fv(Color::skin().toVec4f().cptr());
-		for(U32 i=0; i< countCells(); i++)
-		{
-			//glColor3dv(colors[i % ctColors].cptr());
+		glColor3fv(m_color.toVec4f().cptr());
+		for (U32 i = 0; i < countCells(); i++) {
 			drawElement(i);
 		}
 	}
@@ -1718,30 +1719,34 @@ void VolMesh::draw() {
 
 
 	//Draw outlined faces
-	glDisable(GL_CULL_FACE);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glEnable(GL_BLEND);
+	if(m_drawWireFrameMesh) {
+		glDisable(GL_CULL_FACE);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_BLEND);
 
-	glLineWidth(2.0f);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	glColor4f(0.0f, 0.0f, 0.0f, 0.6f);
+		glLineWidth(2.0f);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		glColor4f(0.0f, 0.0f, 0.0f, 0.6f);
 
-	for(U32 i=0; i< countCells(); i++) {
-		drawElement(i);
+		for(U32 i=0; i< countCells(); i++) {
+			drawElement(i);
+		}
+
+		glDisable(GL_BLEND);
+		glEnable(GL_CULL_FACE);
 	}
-
-	glDisable(GL_BLEND);
-	glEnable(GL_CULL_FACE);
 
 	//Draw vertices
-	glPointSize(5.0f);
-	glColor3f(1.0f, 0.0f, 0.0f);
-	glBegin(GL_POINTS);
-	for(U32 i=0; i < m_vNodes.size(); i++) {
-		NODE n = const_nodeAt(i);
-		glVertex3dv(n.pos.cptr());
+	if (m_drawNodes) {
+		glPointSize(5.0f);
+		glColor3f(1.0f, 0.0f, 0.0f);
+		glBegin(GL_POINTS);
+		for (U32 i = 0; i < m_vNodes.size(); i++) {
+			NODE n = const_nodeAt(i);
+			glVertex3dv(n.pos.cptr());
+		}
+		glEnd();
 	}
-	glEnd();
 
 	//selected node
 	if(isNodeIndex(m_nodeToShow)) {

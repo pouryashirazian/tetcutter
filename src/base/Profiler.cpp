@@ -224,7 +224,7 @@ double Profiler::endEvent() {
 	//Inject log info
 	if((m_flags & pbInjectToLogger) != 0) {
 		AnsiStr strSource = e->filename() + AnsiStr(":") + e->funcname();
-		psLog(EventLogger::etInfo, strSource.cptr(), e->line(), "%s Took %.4f [ms]", e->desc().cptr(), e->timeMS());
+		psLog(EventLogger::etProfile, strSource.cptr(), e->line(), "%s Took %.4f [ms]", e->desc().cptr(), e->timeMS());
 	}
 
 	//Flush if exceeded the container size and there is no pending events
