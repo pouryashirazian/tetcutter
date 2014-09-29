@@ -16,9 +16,11 @@
 using namespace PS;
 using namespace PS::GL;
 
+//#define DEFAULT_GIZMO_CONFIG_FILE "gizmo.ini"
 /*!
  * Create Affine widgets for controlling transformations or Avatar for interaction with model.
  */
+
 
 namespace PS {
 namespace SG {
@@ -163,8 +165,11 @@ public:
 
 	void cmdTranslate(const vec3f& increment);
 	void cmdScale(const vec3f& increment);
+	void cmdRotate(const quatf& q);
 	void cmdRotate(const vec3f& axis, float degreeIncrement);
 
+	bool readConfig(const AnsiStr& strFP = "gizmo.ini");
+	bool writeConfig(const AnsiStr& strFP = "gizmo.ini");
 protected:
 
 private:

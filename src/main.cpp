@@ -379,6 +379,8 @@ void SpecialKey(int key, int x, int y)
 
 
 void closeApp() {
+	TheGizmoManager::Instance().writeConfig();
+
 	SAFE_DELETE(g_lpScalpel);
 	SAFE_DELETE(g_lpRing);
 	SAFE_DELETE(g_lpTissue);
@@ -504,6 +506,7 @@ int main(int argc, char* argv[]) {
  	g_parser.add_toggle("verbose", "prints detailed description.");
  	g_parser.add_option("input", "[filepath] set input file in vega format", Value(AnsiStr("internal")));
 	g_parser.add_option("example", "[one, two, cube, eggshell] set an internal example", Value(AnsiStr("two")));
+	g_parser.add_option("gizmo", "loads a file to set gizmo location and orientation", Value(AnsiStr("gizmo.ini")));
 
 	if(g_parser.parse(argc, argv) < 0)
 		exit(0);
@@ -559,8 +562,7 @@ int main(int argc, char* argv[]) {
 //	TheTexManager::Instance().add(strTextureRoot + "maskalphafilled.png");
 
 	//Ground and Room
-	SGQuad* woodenFloor = new SGQuad(16.0f, 16.0f, TheTexManager::Instance().get("wood"));
-	//SGQuad* woodenFloor = new SGQuad(16.0f, 16.0f, NULL);
+	SGQuad* woodenFloor = new SGQuad(16.0f, 16.0f, TheTexManager::Instance().get("spin"));
 	woodenFloor->setName("floor");
 	woodenFloor->transform()->translate(vec3f(0, -0.1f, 0));
 	woodenFloor->transform()->rotate(vec3f(1.0f, 0.0f, 0.0f), 90.0f);
@@ -603,10 +605,13 @@ int main(int argc, char* argv[]) {
 		TheGizmoManager::Instance().setFocusedNode(g_lpScalpel);
 	}
 
-	LogInfo("move scalpel up");
+
+	//load gizmo manager file
+	AnsiStr strGizmoFP = g_parser.value<AnsiStr>("gizmo");
+	TheGizmoManager::Instance().readConfig(strGizmoFP);
 
 	//Focus gizmo manager on the scalpel
-	TheGizmoManager::Instance().cmdTranslate(vec3f(0, 3, 0));
+	//TheGizmoManager::Instance().cmdTranslate(vec3f(0, 3, 0));
 
 	//reset cuttable mesh
 	resetMesh();

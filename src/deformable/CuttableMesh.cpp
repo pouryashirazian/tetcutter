@@ -61,6 +61,7 @@ void CuttableMesh::setup() {
 	m_flagSplitMeshAfterCut = false;
 	m_flagDetectCutNodes = false;
 	m_flagDrawSweepSurf = false;
+	m_flagDrawAABB = false;
 }
 
 void CuttableMesh::clearCutContext() {
@@ -76,7 +77,8 @@ void CuttableMesh::draw() {
 	if(m_spTransform)
 		m_spTransform->bind();
 
-	drawBBox();
+	if(m_flagDrawAABB)
+		drawBBox();
 	VolMesh::draw();
 
 	if(m_spTransform)
@@ -295,7 +297,7 @@ int CuttableMesh::cut(const vector<vec3d>& segments,
 	U32 ctQuads = (quadstrips.size() - 2) / 2;
 	assert(ctSegments == ctQuads);
 
-	int ctRemovedCutEdges = 0;
+	U32 ctRemovedCutEdges = 0;
 
 	//scalpel segments
 	vector<int> vPerSegmentCuts;
@@ -319,9 +321,9 @@ int CuttableMesh::cut(const vector<vec3d>& segments,
 	m_mapCutEdges.insert(mapTempCutEdges.begin(), mapTempCutEdges.end());
 	m_mapCutNodes.insert(mapTempCutNodes.begin(), mapTempCutNodes.end());
 	if(m_mapCutNodes.size() > 0)
-		printf("Cut nodes count %d.\n", (int)m_mapCutNodes.size());
+		printf("Cut nodes count %u.\n", (U32)m_mapCutNodes.size());
 	if(m_mapCutEdges.size() > 0)
-		printf("Cut edges count %d. removed %d\n", (int)m_mapCutEdges.size(), ctRemovedCutEdges);
+		printf("Cut edges count %u. removed %u\n", (U32)m_mapCutEdges.size(), (U32)ctRemovedCutEdges);
 
 	//Find the list of all tets impacted
 	vector<U32> vCutElements;
@@ -385,7 +387,7 @@ int CuttableMesh::cut(const vector<vec3d>& segments,
 
 	//Return if we won't modify the mesh this time
 	if(!modifyMesh)
-		return -1;
+		return CUT_ERR_USER_CANCELLED_CUT;
 
 	//Now that cutedgecodes and cutnodecodes are computed then subdivide the element
 	LogInfoArg1("BEGIN CUTTING# %u", m_ctCompletedCuts+1);

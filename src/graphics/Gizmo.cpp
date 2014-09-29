@@ -7,7 +7,9 @@
 #include "Gizmo.h"
 #include "selectgl.h"
 #include "ShaderManager.h"
+#include "base/FileDirectory.h"
 #include "base/Logger.h"
+#include "base/SettingsScript.h"
 #include "SceneGraph.h"
 
 #define DEFAULT_AXIS_LENGTH 2.0f
@@ -16,6 +18,7 @@
 #define GIZMO_ROTATION_FACTOR 10.0f
 
 using namespace PS::GL;
+using namespace PS::FILESTRINGUTILS;
 
 namespace PS {
     namespace SG {
@@ -654,6 +657,13 @@ namespace PS {
 			TheSceneGraph::Instance().headers()->updateHeaderLine("gizmo", buffer);
 		}
 
+		void GizmoManager::cmdRotate(const quatf& q) {
+			vec3f axis;
+			float deg;
+			q.toAxisAngle(axis, deg);
+			cmdRotate(axis, deg);
+		}
+
 		void GizmoManager::cmdRotate(const vec3f& axis, float degreeIncrement) {
 			quatf quatIncrement;
 			quatIncrement.fromAxisAngle(axis, degreeIncrement);
@@ -679,6 +689,47 @@ namespace PS {
 			sprintf(buffer, "rotate axis=(%.3f, %.3f, %.3f), angle=(%.3f), total=(%.3f)",
 					axis.x, axis.y, axis.z, degreeIncrement, total);
 			TheSceneGraph::Instance().headers()->updateHeaderLine("gizmo", buffer);
+		}
+
+		bool GizmoManager::readConfig(const AnsiStr& strFP) {
+			if(!FileExists(strFP)) {
+				LogErrorArg1("File %s not found to read gizmo config.", strFP.cptr());
+				return false;
+			}
+
+			SettingsScript* script = new SettingsScript(strFP, SettingsScript::fmRead);
+			vec3f s = script->readVec3f("gizmo", "scale");
+			vec4f r = script->readVec4f("gizmo", "rotate");
+			vec3f t = script->readVec3f("gizmo", "translate");
+			SAFE_DELETE(script);
+
+			//quat
+			quat q(r);
+
+			//apply
+			cmdScale(s);
+			cmdRotate(q);
+			cmdTranslate(t);
+
+			return true;
+		}
+
+		bool GizmoManager::writeConfig(const AnsiStr& strFP) {
+			if(m_lpFocusedNode == NULL)
+				return false;
+
+			SettingsScript* script = new SettingsScript(strFP, SettingsScript::fmReadWrite);
+
+			vec3f s = m_lpFocusedNode->transform()->getScale() - vec3f(1.0f);
+			quatf q = m_lpFocusedNode->transform()->getRotate();
+			vec3f t = m_lpFocusedNode->transform()->getTranslate();
+
+			script->writeVec3f("gizmo", "scale", s);
+			script->writeVec4f("gizmo", "rotate", q.xyzw());
+			script->writeVec3f("gizmo", "translate", t);
+			SAFE_DELETE(script);
+
+			return true;
 		}
 
 

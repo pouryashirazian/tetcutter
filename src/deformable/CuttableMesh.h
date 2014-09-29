@@ -24,6 +24,7 @@ namespace PS {
 #define CUT_ERR_NO_INTERSECTION -2
 #define CUT_ERR_UNHANDLED_CUT_STATE -3
 #define CUT_ERR_UNABLE_TO_CUT_EDGE -4
+#define CUT_ERR_USER_CANCELLED_CUT -5
 
 class CuttableMesh : public VolMesh {
 public:
@@ -121,7 +122,20 @@ public:
 	 */
 	bool splitParts(const vec3d sweptquad[4], double dist);
 
+	/*!
+	 * First finds all disjoint parts of the mesh and then produces new cuttablemesh nodes
+	 * out of those disjoint pieces. Main mesh will be part of the newly created meshes so the
+	 * original cuttable mesh node can be discarded if desired.
+	 * @param vOutNewMeshes list of newly created mesh nodes
+	 * @return number of newly created mesh nodes.
+	 */
 	int convertDisjointPartsToMeshes(vector<CuttableMesh*>& vOutNewMeshes);
+
+	/*!
+	 * This is a convenient function to aid in transforming original volume meshes and placing them
+	 * in the right projection view. Later the transform is applied to all mesh nodes and then the
+	 * transform itself is reset.
+	 */
 	void applyTransformToMeshThenResetTransform();
 
 	//splitting
@@ -133,6 +147,9 @@ public:
 
 	bool getFlagDrawSweepSurf() const { return m_flagDrawSweepSurf;}
 	void setFlagDrawSweepSurf(bool flag) { m_flagDrawSweepSurf = flag;}
+
+	bool getFlagDrawAABB() const { return m_flagDrawAABB;}
+	void setFlagDrawAABB(bool flag) { m_flagDrawAABB = flag;}
 
 
 protected:
@@ -149,6 +166,7 @@ private:
 
 	//sweep surfaces
 	bool m_flagDrawSweepSurf;
+	bool m_flagDrawAABB;
 	vector<vec3d> m_quadstrips;
 
 	//Cut Nodes

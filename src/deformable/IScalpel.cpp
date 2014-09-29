@@ -45,6 +45,8 @@ void IAvatar::grip() {
 
 void IAvatar::setTissue(CuttableMesh* tissue) {
 	m_lpTissue = tissue;
+	if(m_lpTissue)
+		updateVolMeshInfoHeader();
 }
 
 void IAvatar::mousePress(int button, int state, int x, int y) {
@@ -68,8 +70,15 @@ void IAvatar::mousePress(int button, int state, int x, int y) {
 		//Up = Stop
 		if (m_lpTissue) {
 			m_isToolActive = false;
-			TheSceneGraph::Instance().headers()->updateHeaderLine("scalpel",
-					"scalpel: end cutting");
+
+			//count disjoint parts
+			vector<vector<U32> > parts;
+			U32 ctParts = m_lpTissue->get_disjoint_parts(parts);
+			AnsiStr strMsg = printToAStr("scalpel: finished cut %u. disjoint parts#%u",
+										 (U32)m_lpTissue->countCompletedCuts(),
+										 ctParts);
+
+			TheSceneGraph::Instance().headers()->updateHeaderLine("scalpel", strMsg);
 		}
 	}
 }
@@ -79,7 +88,7 @@ void IAvatar::updateVolMeshInfoHeader() const {
 	if(m_lpTissue == NULL)
 		return;
 
-	char chrMsg[1024];
+	char chrMsg[MAX_STRING_BUFFER_LEN];
 	sprintf(chrMsg, "VolMesh [Nodes# %u, Edges# %u, Faces# %u, Cells# %u]",
 				m_lpTissue->countNodes(),
 				m_lpTissue->countEdges(),
