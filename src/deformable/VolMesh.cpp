@@ -370,6 +370,21 @@ double VolMesh::ComputeCellVolume(const vec3d v[4]) {
 	return (1.0 / 6.0) * fabs ( vec3d::dot(v[0] - v[3], vec3d::cross(v[1] - v[3], v[2] - v[3])));
 }
 
+U32 VolMesh::removeZeroVolumeCells() {
+	U32 ctRemoved = 0;
+	for(U32 i=0; i < countCells(); i++) {
+		double v = computeCellVolume(i);
+		if(v < FLAT_CELL_VOLUME) {
+			schedule_remove_cell(i);
+			ctRemoved++;
+		}
+	}
+
+	if(ctRemoved > 0)
+		garbage_collection();
+	return ctRemoved;
+}
+
 //add/remove
 bool VolMesh::insert_cell(const CELL& cell) {
 

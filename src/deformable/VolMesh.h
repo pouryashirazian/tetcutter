@@ -27,6 +27,7 @@ using namespace PS;
 using namespace PS::SG;
 using namespace std;
 
+#define FLAT_CELL_VOLUME 1e-4
 
 namespace PS {
 namespace MESH {
@@ -85,9 +86,12 @@ public:
 
 	//Determinant
 	double computeCellDeterminant(U32 idxCell) const;
-	double computeCellVolume(U32 idxCell) const;
-	vec3d  computeCellCentroid(U32 idxCell) const;
 
+	//Volume
+	double computeCellVolume(U32 idxCell) const;
+
+	//Centroid
+	vec3d  computeCellCentroid(U32 idxCell) const;
 
 	double computeAspectRatio(U32 idxCell) const;
 	double computeInscribedRadius(U32 idxCell) const;
@@ -96,6 +100,9 @@ public:
 	static double ComputeCircumscribedRadius(const vec3d v[4]);
 	static double ComputeCellDeterminant(const vec3d v[4]);
 	static double ComputeCellVolume(const vec3d v[4]);
+
+	U32 removeZeroVolumeCells();
+
 
 	//Index control
 	inline bool isCellIndex(U32 i) const { return (i < m_vCells.size());}

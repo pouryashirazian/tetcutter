@@ -408,6 +408,10 @@ void resetMesh() {
 		bool res = PS::MESH::VolMeshIO::readVega(temp, g_strFilePath);
 		if(!res)
 			LogErrorArg1("Unable to load mesh from: %s", g_strFilePath.cptr());
+
+		U32 ctRemoved = temp->removeZeroVolumeCells();
+		if(ctRemoved > 0)
+			LogInfoArg1("Managed to remove %u flat cells in the mesh", ctRemoved);
 	}
 	else {
 		AnsiStr strExample = g_parser.value<AnsiStr>("example");
