@@ -19,6 +19,7 @@
 #include "deformable/TetSubdivider.h"
 #include "deformable/VolMeshSamples.h"
 #include "deformable/VolMeshIO.h"
+#include "deformable/VolMeshStats.h"
 
 using namespace PS;
 using namespace PS::SG;
@@ -166,10 +167,11 @@ void NormalKey(unsigned char key, int x, int y)
 	break;
 
 	case('h'):{
-		LogInfo("Home scalpel");
-		//TheGizmoManager::Instance().
+		bool flag = !TheSceneGraph::Instance().get("headers")->isVisible();
+		TheSceneGraph::Instance().get("headers")->setVisible(flag);
+		LogInfoArg1("Set headers draw to %s", flag ? "show" : "hide");
+		break;
 	}
-	break;
 
 	case('s'):{
 		TheGizmoManager::Instance().setType(gtScale);
@@ -446,6 +448,8 @@ void resetMesh() {
 	else
 		g_lpScalpel->setTissue(g_lpTissue);
 
+	//print stats
+	VolMeshStats::printAllStats(g_lpTissue);
 	LogInfo("Loaded mesh completed");
 	//TheGizmoManager::Instance().cmdRotate(vec3f(1,0,0), -90.0f);
 }
@@ -557,16 +561,17 @@ int main(int argc, char* argv[]) {
 	//Load Textures
 	TheTexManager::Instance().add(strTextureRoot + "wood.png");
 	TheTexManager::Instance().add(strTextureRoot + "spin.png");
+	TheTexManager::Instance().add(strTextureRoot + "icefloor.png");
 //	TheTexManager::Instance().add(strTextureRoot + "rendermask.png");
 //	TheTexManager::Instance().add(strTextureRoot + "maskalpha.png");
 //	TheTexManager::Instance().add(strTextureRoot + "maskalphafilled.png");
 
 	//Ground and Room
-	SGQuad* woodenFloor = new SGQuad(16.0f, 16.0f, TheTexManager::Instance().get("spin"));
-	woodenFloor->setName("floor");
-	woodenFloor->transform()->translate(vec3f(0, -0.1f, 0));
-	woodenFloor->transform()->rotate(vec3f(1.0f, 0.0f, 0.0f), 90.0f);
-	TheSceneGraph::Instance().add(woodenFloor);
+	SGQuad* floor = new SGQuad(16.0f, 16.0f, TheTexManager::Instance().get("icefloor"));
+	floor->setName("floor");
+	floor->transform()->translate(vec3f(0, -0.1f, 0));
+	floor->transform()->rotate(vec3f(1.0f, 0.0f, 0.0f), 90.0f);
+	TheSceneGraph::Instance().add(floor);
 
 
 	/*
@@ -591,10 +596,12 @@ int main(int argc, char* argv[]) {
 	//Create Scalpel
 	g_lpScalpel = new AvatarScalpel();
 	g_lpRing = new AvatarRing(TheTexManager::Instance().get("spin"));
+	//g_lpRing = new AvatarRing(NULL);
 	g_lpScalpel->setOnCutFinishedEventHandler(cutFinished);
 	g_lpRing->setOnCutFinishedEventHandler(cutFinished);
 
 	if(g_parser.value<int>("ringscalpel")) {
+		//g_lpRing->setWireFrameMode(true);
 		g_lpAvatar = g_lpRing;
 		TheSceneGraph::Instance().add(g_lpRing);
 		TheGizmoManager::Instance().setFocusedNode(g_lpRing);

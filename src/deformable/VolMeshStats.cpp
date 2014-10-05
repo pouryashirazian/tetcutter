@@ -36,9 +36,9 @@ void VolMeshStats::printAllStats(const VolMesh* pmesh) {
 	double edgeMaxFedgeMin = (edgeLenMin == 0.0) ? edgeLenMax : (edgeLenMax/edgeLenMin);
 
 	//print
-	printf("INFO: Vol Max: %.4f, Min: %.4f, max/min: %.4f \n", volMax, volMin, vMaxFvMin);
-	printf("INFO: EdgeLen Max: %.4f, Min: %.4f, max/min: %.4f \n", edgeLenMax, edgeLenMin, edgeMaxFedgeMin);
-	printf("INFO: minAspectRatio: %.4f\n", minAR);
+	printf("INFO: Vol Max: %.8f, Min: %.8f, max/min: %.8f \n", volMax, volMin, vMaxFvMin);
+	printf("INFO: EdgeLen Max: %.8f, Min: %.8f, max/min: %.8f \n", edgeLenMax, edgeLenMin, edgeMaxFedgeMin);
+	printf("INFO: minAspectRatio: %.8f\n", minAR);
 	printf("============================end mesh stats=============================\n");
 }
 

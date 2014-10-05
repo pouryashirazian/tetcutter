@@ -195,6 +195,7 @@ int CuttableMesh::computeCutEdgesKernel(const vec3d sweptquad[4],
 				found++;
 			}
 			else {
+				mapCutEdges.erase(i);
 				LogErrorArg1("Edge %d has already been cut!", i);
 			}
 		}
