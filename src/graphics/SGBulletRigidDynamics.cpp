@@ -1,15 +1,24 @@
 /*
- * World.cpp
+ * SGBulletRigidDynamics.cpp
  *
- *  Created on: Aug 28, 2014
+ *  Created on: Sep 7, 2014
  *      Author: pourya
  */
 
-#include "World.h"
+
+#include "SGBulletRigidDynamics.h"
 
 using namespace PS::SG;
 
-World::World() {
+SGBulletRigidDynamics::SGBulletRigidDynamics():SGNode() {
+	init();
+}
+
+SGBulletRigidDynamics::~SGBulletRigidDynamics() {
+	cleanup();
+}
+
+void SGBulletRigidDynamics::init() {
 	m_lpBroadPhase = new btDbvtBroadphase();
 	m_lpCollisionConfig = new btDefaultCollisionConfiguration();
 
@@ -20,7 +29,7 @@ World::World() {
 	m_lpDynamicsWorld->setGravity(btVector3(0, -10, 0));
 }
 
-World::~World() {
+void SGBulletRigidDynamics::cleanup() {
 	delete m_lpDynamicsWorld;
 	delete m_lpSolver;
 	delete m_lpCollisionConfig;
@@ -28,12 +37,16 @@ World::~World() {
 	delete m_lpBroadPhase;
 }
 
-void World::step() {
+void SGBulletRigidDynamics::draw() {
+
+}
+
+void SGBulletRigidDynamics::timestep() {
 	m_lpDynamicsWorld->stepSimulation(1 / 60.f, 10);
 
 }
 
-bool World::addNode(SGPhysicsMesh* pMesh) {
+bool SGBulletRigidDynamics::addRigidBody(SGBulletRigidMesh* pMesh) {
 	if(pMesh == NULL)
 		return false;
 
@@ -41,15 +54,11 @@ bool World::addNode(SGPhysicsMesh* pMesh) {
 	return true;
 }
 
-bool World::removeNode(SGPhysicsMesh* pMesh) {
+bool SGBulletRigidDynamics::removeRigidBody(SGBulletRigidMesh* pMesh) {
 	if(pMesh == NULL)
 		return false;
 
 	m_lpDynamicsWorld->removeRigidBody(pMesh->getB3RigidBody());
 	return true;
 }
-
-
-
-
 

@@ -32,7 +32,7 @@ public:
 
 	void init();
 	void init(int stepVertex, int stepColor,
-			   int stepTexCoords, PS::GL::FaceType faceMode = ftTriangles);
+			   int stepTexCoords, PS::GL::GLFaceType faceMode = ftTriangles);
 
 	//stats
 	bool isCompatible(const Geometry& other) const;
@@ -46,7 +46,7 @@ public:
 	int getColorStep() const {return m_stepColor;}
 	int getTexCoordStep() const {return m_stepTexCoord;}
 	int getFaceStep() const {return m_stepFace;}
-	int getFaceMode() const {return m_faceMode;}
+	GLFaceType getFaceMode() const {return m_faceMode;}
 
 	//Access
 	vec3f vertexAt(int index) const;
@@ -86,13 +86,13 @@ public:
 	void transform(const mat44f& m);
 
 	//Add Arrays
-	bool addVertexAttribs(const vector<float>& arrAttribs, int step = 3, MemoryBufferType attribKind = mbtPosition);
+	bool addVertexAttribs(const vector<float>& arrAttribs, int step = 3, GLBufferType attribKind = gbtPosition);
 	void addPerVertexColor(const vec4f& color, U32 ctVertices = 0);
-	bool addFaceIndices(const vector<U32>& arrIndex, PS::GL::FaceType faceMode = ftTriangles);
+	bool addFaceIndices(const vector<U32>& arrIndex, PS::GL::GLFaceType faceMode = ftTriangles);
 	bool computeNormalsFromFaces();
 
 	//Clear Buffers
-	void clearBuffer(MemoryBufferType btype);
+	void clearBuffer(GLBufferType btype);
 
     //Lines
     bool addLine(const vec3f& start, const vec3f& end);
@@ -168,7 +168,7 @@ private:
 	int m_stepColor;
 	int m_stepTexCoord;
 	int m_stepFace;
-	FaceType m_faceMode;
+	GLFaceType m_faceMode;
 
 
 	vector<float> m_vertices;

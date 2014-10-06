@@ -31,11 +31,22 @@ namespace GL {
 
 
 //Memory Buffer Type
-enum MemoryBufferType {mbtPosition, mbtNormal, mbtColor, mbtTexCoord, mbtFaceIndices, mbtCount};
+enum GLBufferType {gbtPosition, gbtNormal, gbtColor, gbtTexCoord, gbtFaceIndex, gbtCount};
 
+//Usage hint for buffer access
+enum GLBufferUsage {gbuStreamDraw = 0x88E0,
+					gbuStreamRead = 0x88E1,
+					gbuStreamCopy = 0x88E2,
+					gbuStaticDraw = 0x88E4,
+					gbuStaticRead = 0x88E5,
+					gbuStaticCopy = 0x88E6,
+					gbuDynamicDraw = 0x88E8,
+					gbuDynamicRead = 0x88E9,
+					gbuDynamicCopy = 0x88EA,
+};
 
 //Face Types
-enum FaceType {ftPoints = 0x0000,
+enum GLFaceType {ftPoints = 0x0000,
 			   ftLines = 0x0001,
 			   ftLineLoop = 0x0002,
 			   ftLineStrip = 0x0003,

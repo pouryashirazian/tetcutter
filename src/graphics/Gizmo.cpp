@@ -10,6 +10,7 @@
 #include "base/FileDirectory.h"
 #include "base/Logger.h"
 #include "base/SettingsScript.h"
+#include "graphics/GLTypes.h"
 #include "SceneGraph.h"
 
 #define DEFAULT_AXIS_LENGTH 2.0f
@@ -564,17 +565,24 @@ namespace PS {
 
         	//apply to gizmo type
             switch (m_gizmoType) {
+
+            	//handle translate
                 case gtTranslate: {
                 	cmdTranslate(delta);
                 }
                 break;
+
+                //handle scale
                 case gtScale: {
                 	cmdScale(delta);
                 }
                 break;
+
+                //handle rotate
                 case gtRotate: {
         			vec3f axis = gizmoAxis[m_gizmoAxis];
         			float degree = delta[m_gizmoAxis] * GIZMO_ROTATION_FACTOR;
+        			degree = (degree < 0) ? -1.0 : 1.0;
         			cmdRotate(axis, degree);
                 }
                 break;

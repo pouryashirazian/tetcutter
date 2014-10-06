@@ -404,14 +404,15 @@ void resetMesh() {
 	VolMesh* temp = NULL;
 	if(FileExists(g_strFilePath)) {
 		temp = new PS::MESH::VolMesh();
+		temp->setVerbose(g_parser.value<int>("verbose"));
 		LogInfoArg1("Begin to read vega file from: %s", g_strFilePath.cptr());
 		bool res = PS::MESH::VolMeshIO::readVega(temp, g_strFilePath);
 		if(!res)
 			LogErrorArg1("Unable to load mesh from: %s", g_strFilePath.cptr());
 
-		U32 ctRemoved = temp->removeZeroVolumeCells();
-		if(ctRemoved > 0)
-			LogInfoArg1("Managed to remove %u flat cells in the mesh", ctRemoved);
+//		U32 ctRemoved = temp->removeZeroVolumeCells();
+//		if(ctRemoved > 0)
+//			LogInfoArg1("Managed to remove %u flat cells in the mesh", ctRemoved);
 	}
 	else {
 		AnsiStr strExample = g_parser.value<AnsiStr>("example");

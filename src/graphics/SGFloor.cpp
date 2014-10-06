@@ -82,8 +82,8 @@ SGFloor::SGFloor(int rows, int cols, float step) {
 
 	Geometry g;
 	g.init(3, 3, 2, ftLines);
-	g.addVertexAttribs(arrVertices, 3, mbtPosition);
-	g.addVertexAttribs(arrColors, 3, mbtColor);
+	g.addVertexAttribs(arrVertices, 3, gbtPosition);
+	g.addVertexAttribs(arrColors, 3, gbtColor);
 	setup(g);
 }
 

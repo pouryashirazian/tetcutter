@@ -18,33 +18,33 @@ using namespace PS::GL;
 namespace PS {
 namespace SG {
 
-class SGPhysicsMesh : public SGMesh {
+class SGBulletRigidMesh : public SGMesh {
 
 public:
-	SGPhysicsMesh();
-	SGPhysicsMesh(const Geometry& g, float mass);
-	virtual ~SGPhysicsMesh();
+	SGBulletRigidMesh();
+	SGBulletRigidMesh(const Geometry& g, float mass);
+	SGBulletRigidMesh(const SGTransform& t, const Geometry& g, float mass);
 
-	virtual void setupPhysics(const Geometry& g, float mass);
+	virtual ~SGBulletRigidMesh();
+
+	virtual void setup(const Geometry& g, float mass);
+	virtual void setup(const Geometry& g, const btRigidBody* pBody);
 
 	void updateNodeTransformFromMotionState();
 	void updateMotionStateFromNodeTransform();
 
-
-
 	btRigidBody* getB3RigidBody() const {return m_lpRigidBody;}
-	btCollisionShape* getB3CollisionShape() const {return m_lpShape;}
 
 	void draw();
 	void timestep();
 
 protected:
 	void init();
+	void cleanup();
 
 
 protected:
 	btRigidBody* m_lpRigidBody;
-	btCollisionShape* m_lpShape;
 };
 
 }

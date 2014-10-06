@@ -9,9 +9,9 @@
 #define PS_MESHGLBUFFER_H_
 
 #include <vector>
-#include "base/Vec.h"
+
 #include "GLFuncs.h"
-#include "GLTypes.h"
+#include "GLMemBuffer.h"
 #include "Geometry.h"
 #include "SGNode.h"
 
@@ -22,53 +22,6 @@ using namespace PS::SG;
 
 namespace PS {
 namespace GL {
-
-/*!
- * OpenGL Memory Buffer
- */
-class GLMemoryBuffer {
-public:
-	GLMemoryBuffer();
-	GLMemoryBuffer(MemoryBufferType type, int usage, int step,
-			   	     int datatype, U32 szTotal, const void* lpData);
-	virtual ~GLMemoryBuffer();
-
-	bool setup(MemoryBufferType type, int usage, int step,
-			   int datatype, U32 szTotal, const void* lpData);
-
-	//Resize buffer
-	void resize(U32 szTotal, const void* lpData);
-
-	void attach();
-	void detach();
-	void drawElements(int faceMode, int ctElements);
-
-	/*!
-	 * Modifies the buffer for changes
-	 */
-	bool modify(U32 offset, U32 szTotal, const void* lpData);
-
-
-	bool readBackBuffer(U32 szOutBuffer, void* lpOutBuffer);
-
-	//Read Attribs
-	bool isValid() const { return m_isValid;}
-	int step() const {return m_step;}
-	U32 size() const {return m_szBuffer;}
-	U32 handle() const {return m_handle;}
-	MemoryBufferType type() const {return m_bufferType;}
-
-protected:
-	void cleanup();
-private:
-	bool m_isValid;
-	int m_usage;
-	int m_step;
-	int m_dataType;
-	U32 m_szBuffer;
-	U32 m_handle;
-	MemoryBufferType m_bufferType;
-};
 
 
 /*!
@@ -83,46 +36,37 @@ public:
 
 	//Setup Buffer Objects
 	virtual void setup(const Geometry& g);
-	void setupVertexAttribs(const vector<float>& arrAttribs, int step = 3, MemoryBufferType attribKind = mbtPosition);
+	void setupVertexAttribs(const vector<float>& arrAttribs, int step = 3, GLBufferType attribKind = gbtPosition);
 	void setupPerVertexColor(const vec4f& color, U32 ctVertices, int step = 4);
-	void setupIndexBufferObject(const vector<U32>& arrIndex, int faceMode = ftTriangles);
-
-	//update
-	bool updateVertexBuffer(U32 offset, U32 szTotal, const void* lpData);
+	void setupIndexBufferObject(const vector<U32>& arrIndex, GLFaceType faceMode = ftTriangles);
 
     //Wireframe
 	bool getWireFrameMode() const {return m_bWireFrame;}
 	virtual void setWireFrameMode(bool bSet) { m_bWireFrame = bSet;}
 
+	//face mode
 	int getFaceMode() const {return m_faceMode;}
 	void setFaceMode(int fmode);
 
 	U32 countVertices() const {return m_ctVertices;}
-	U32 countTriangles() const {return m_ctFaceElements/3;}
-	U32 countFaceElements() const {return m_ctFaceElements;}
+	U32 countFaces() const {return m_ctFaceElements/m_gmbFaces.step();}
+
 
 	//Validity
-	bool isFaceBufferValid() const { return m_isValidIndex;}
-	bool isVertexBufferValid(MemoryBufferType attribType = mbtPosition) const;
-
-	//Steps
-	U32 faceStep() const {return m_stepFace;}
-	U32 vertexAttribStep(MemoryBufferType attribType = mbtPosition) const;
-
-	//Buffer Objects
-	U32 indexBufferObjectGL() const { return m_iboFaces;}
-	U32 vertexBufferObjectGL(MemoryBufferType attribType = mbtPosition) const;
+	bool isBufferValid(GLBufferType attribType = gbtPosition) const;
+	const GLMemoryBuffer* buffer(GLBufferType attribType) const;
 
 
-	//Reads Mesh
-	bool readbackMeshVertexAttribGL(MemoryBufferType attrib, U32& count, vector<float>& values) const;
-	bool readbackMeshFaceGL(U32& count, vector<U32>& elements) const;
+	//update
+	bool modifyVertexBuffer(U32 offset, U32 szTotal, const void* lpData);
+	bool readbackFaceBuffer(U32& count, vector<U32>& elements) const;
 
 
 	//Draw
 	virtual void draw();
 
 	//Mesh buffer to draw normals
+	static int FaceStepSizeFromMode(GLFaceType face);
     static GLMeshBuffer* PrepareMeshBufferForDrawingNormals(float len, U32 ctVertices, U32 fstep,
                                                              const vector<float>& arrVertices,
                                                              const vector<float>& arrNormals);
@@ -140,30 +84,19 @@ protected:
 
 protected:
 
-	//Index to the buffer objects
-	U32 m_vboVertex;
-	U32 m_vboColor;
-	U32 m_vboNormal;
-	U32 m_vboTexCoord;
-	U32 m_iboFaces;
-
-	//Flags
-	bool m_isValidVertex;
-	bool m_isValidNormal;
-	bool m_isValidColor;
-	bool m_isValidTexCoord;
-	bool m_isValidIndex;
+	GLMemoryBuffer m_gmbColor;
+	GLMemoryBuffer m_gmbNormal;
+	GLMemoryBuffer m_gmbVertex;
+	GLMemoryBuffer m_gmbTexcoord;
+	GLMemoryBuffer m_gmbFaces;
+	vector<GLMemoryBuffer*> m_vBuffers;
 	bool m_bWireFrame;
+	int m_faceMode;
 
 	//Count
 	U32 m_ctFaceElements;
 	U32 m_ctVertices;
 
-	int m_stepVertex;
-	int m_stepColor;
-	int m_stepTexCoord;
-	int m_stepFace;
-	int m_faceMode;
 };
 
 }

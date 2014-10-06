@@ -21,14 +21,17 @@ SceneGraph::SceneGraph() {
 	m_stkModelView.top().identity();
 	m_stkProjection.top().identity();
 
+	//World
+	//m_lpWorld = new SGBulletRigidDynamics();
+	m_lpWorld = new SGBulletSoftRigidDynamics();
+	m_vSceneNodes.push_back(m_lpWorld);
+
 	//add header to opaque list
 	m_headers = new SGHeaders();
 	m_vSceneNodes.push_back(m_headers);
 
-
 	m_tick = tbb::tick_count::now();
 	m_ctFrames = m_ctSampledFrames = 0;
-	m_lpWorld = new World();
 
 
 	//Headers to show
@@ -59,12 +62,14 @@ U32 SceneGraph::add(SGNode *aNode) {
 	return (m_vSceneNodes.size() - 1);
 }
 
-U32 SceneGraph::addToPhysicsWorld(SGPhysicsMesh* pNode) {
-	if(pNode == NULL)
-		return -1;
+U32 SceneGraph::addRigidBody(SGBulletRigidMesh* aRigidBody) {
+	m_lpWorld->addRigidBody(aRigidBody);
+	return add(aRigidBody);
+}
 
-	m_lpWorld->addNode(pNode);
-	return add(pNode);
+U32 SceneGraph::addSoftBody(SGBulletSoftMesh* aSoftBody) {
+	m_lpWorld->addSoftBody(aSoftBody);
+	return add(aSoftBody);
 }
 
 bool SceneGraph::remove(U32 index) {
@@ -164,7 +169,6 @@ void SceneGraph::draw() {
 			m_vSceneNodes[i]->draw();
 	}
 
-
 	//Cull SwapBuffers of the API such as
 	//glutSwapBuffers
 }
@@ -181,9 +185,6 @@ void SceneGraph::drawBBoxes() {
 }
 
 void SceneGraph::timestep() {
-	//world
-	m_lpWorld->step();
-
 	//update
 	for (U32 i = 0; i < m_vSceneNodes.size(); i++) {
 		if(m_vSceneNodes[i]->isAnimate())

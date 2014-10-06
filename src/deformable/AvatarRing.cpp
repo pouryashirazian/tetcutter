@@ -8,6 +8,8 @@
 #include <deformable/AvatarRing.h>
 #include "base/Logger.h"
 #include "graphics/selectgl.h"
+#include "graphics/GLTypes.h"
+
 
 using namespace PS;
 

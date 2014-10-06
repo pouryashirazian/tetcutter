@@ -9,6 +9,7 @@
 #include "base/Logger.h"
 #include "graphics/selectgl.h"
 #include "graphics/SceneGraph.h"
+#include "graphics/GLTypes.h"
 
 using namespace PS;
 

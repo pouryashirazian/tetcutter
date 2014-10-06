@@ -47,7 +47,7 @@ void Geometry::init() {
 }
 
 void Geometry::init(int stepVertex, int stepColor,
-		   	   	   	   int stepTexCoords, PS::GL::FaceType faceMode) {
+		   	   	   	   int stepTexCoords, PS::GL::GLFaceType faceMode) {
 	this->cleanup();
 	m_stepVertex = stepVertex;
 	m_stepColor = stepColor;
@@ -286,39 +286,39 @@ void Geometry::transform(const mat44f& m) {
 	}
 }
 
-bool Geometry::addVertexAttribs(const vector<float>& arrAttribs, int step, MemoryBufferType attribKind) {
+bool Geometry::addVertexAttribs(const vector<float>& arrAttribs, int step, GLBufferType attribKind) {
 
 	switch(attribKind) {
-	case(mbtPosition): {
+	case(gbtPosition): {
 		if(step != m_stepVertex)
 			return false;
 		m_vertices.insert(m_vertices.end(), arrAttribs.begin(), arrAttribs.end());
 		break;
 	}
 
-	case(mbtColor): {
+	case(gbtColor): {
 		if(step != m_stepColor)
 			return false;
 		m_colors.insert(m_colors.end(), arrAttribs.begin(), arrAttribs.end());
 		break;
 	}
 
-	case(mbtNormal): {
+	case(gbtNormal): {
 		if(step != 3)
 			return false;
 		m_normals.insert(m_normals.end(), arrAttribs.begin(), arrAttribs.end());
 		break;
 	}
 
-	case(mbtTexCoord): {
+	case(gbtTexCoord): {
 		if(step != m_stepTexCoord)
 			return false;
 		m_texCoords.insert(m_texCoords.end(), arrAttribs.begin(), arrAttribs.end());
 		break;
         
-    case(mbtFaceIndices):
+    case(gbtFaceIndex):
         return false;
-    case(mbtCount):
+    case(gbtCount):
         return false;
 	}
 	}
@@ -326,28 +326,28 @@ bool Geometry::addVertexAttribs(const vector<float>& arrAttribs, int step, Memor
 	return true;
 }
 
-void Geometry::clearBuffer(MemoryBufferType btype) {
+void Geometry::clearBuffer(GLBufferType btype) {
 	switch(btype) {
-	case(mbtPosition):
+	case(gbtPosition):
 		m_vertices.resize(0);
 	break;
 
-	case(mbtColor):
+	case(gbtColor):
 		m_colors.resize(0);
 	break;
 
-	case(mbtNormal):
+	case(gbtNormal):
 		m_normals.resize(0);
 	break;
 
-	case(mbtTexCoord):
+	case(gbtTexCoord):
 		m_texCoords.resize(0);
 	break;
 
-    case(mbtFaceIndices):
+    case(gbtFaceIndex):
     	m_indices.resize(0);
     break;
-    case(mbtCount):
+    case(gbtCount):
     break;
 	}
 }
@@ -371,7 +371,7 @@ void Geometry::addPerVertexColor(const vec4f& color, U32 ctVertices) {
 	m_colors.insert(m_colors.end(), colors.begin(), colors.end());
 }
 
-bool Geometry::addFaceIndices(const vector<U32>& arrIndex, PS::GL::FaceType faceMode) {
+bool Geometry::addFaceIndices(const vector<U32>& arrIndex, PS::GL::GLFaceType faceMode) {
 	if(m_faceMode != faceMode)
 		return false;
 
@@ -453,16 +453,16 @@ bool Geometry::readObj(const AnsiStr& strFilePath) {
 	if(unitFace != 3 && unitFace != 4)
 		return false;
 
-	PS::GL::FaceType ftype = ftTriangles;
+	PS::GL::GLFaceType ftype = ftTriangles;
 	if(node->getUnitFace() == 4)
 		ftype = ftQuads;
 
 	//read mesh info
 	init(node->getUnitVertex(), node->getUnitColor(), node->getUnitTexCoord(), ftype);
-	addVertexAttribs(node->vertices(), node->getUnitVertex(), mbtPosition);
-	addVertexAttribs(node->normals(), 3, mbtNormal);
-	addVertexAttribs(node->colors(), node->getUnitColor(), mbtColor);
-	addVertexAttribs(node->texcoords(), node->getUnitTexCoord(), mbtTexCoord);
+	addVertexAttribs(node->vertices(), node->getUnitVertex(), gbtPosition);
+	addVertexAttribs(node->normals(), 3, gbtNormal);
+	addVertexAttribs(node->colors(), node->getUnitColor(), gbtColor);
+	addVertexAttribs(node->texcoords(), node->getUnitTexCoord(), gbtTexCoord);
 	addFaceIndices(node->faceElements(), ftype);
 
 	return true;
@@ -471,10 +471,10 @@ bool Geometry::readObj(const AnsiStr& strFilePath) {
 bool Geometry::writeObj(const AnsiStr& strFilePath) const {
 
 	MeshNode* pnode = new MeshNode();
-	pnode->setVertexAttrib(m_vertices, mbtPosition, m_stepVertex);
-	pnode->setVertexAttrib(m_normals, mbtNormal, 3);
-	pnode->setVertexAttrib(m_colors, mbtColor, m_stepColor);
-	pnode->setVertexAttrib(m_texCoords, mbtTexCoord, m_stepTexCoord);
+	pnode->setVertexAttrib(m_vertices, gbtPosition, m_stepVertex);
+	pnode->setVertexAttrib(m_normals, gbtNormal, 3);
+	pnode->setVertexAttrib(m_colors, gbtColor, m_stepColor);
+	pnode->setVertexAttrib(m_texCoords, gbtTexCoord, m_stepTexCoord);
 	pnode->setFaceIndices(m_indices, m_stepFace);
 
 
@@ -811,7 +811,7 @@ void Geometry::addCube(const vec3f& lower, const vec3f& upper) {
 
     	U32 ctVertices = vertices.size() / 3;
     	U32 ctTets = tets.size() / 4;
-    	addVertexAttribs(vertices, 3, mbtPosition);
+    	addVertexAttribs(vertices, 3, gbtPosition);
 
     	vec3f v[4];
     	for(U32 i=0; i<ctTets; i++) {

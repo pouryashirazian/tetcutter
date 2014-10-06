@@ -107,9 +107,9 @@ void SGBox::setup(const vec3f& lo, const vec3f& hi) {
 	}
 
 	//Setup Mesh
-	setupVertexAttribs(arrVertices, 3, mbtPosition);
-	setupVertexAttribs(arrNormals, 3, mbtNormal);
-	setupVertexAttribs(arrColors, 4, mbtColor);
+	setupVertexAttribs(arrVertices, 3, gbtPosition);
+	setupVertexAttribs(arrNormals, 3, gbtNormal);
+	setupVertexAttribs(arrColors, 4, gbtColor);
 	//setupPerVertexColor(vec4f(1,0,0,1), m_ctVertices, 4);
 	m_ctFaceElements = m_ctVertices;
 	m_faceMode = ftQuads;

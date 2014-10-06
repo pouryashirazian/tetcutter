@@ -6,6 +6,7 @@
  */
 
 #include "SGVoxels.h"
+#include "graphics/GLTypes.h"
 
 namespace PS {
 namespace SG {

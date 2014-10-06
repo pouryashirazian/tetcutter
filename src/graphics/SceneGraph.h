@@ -23,8 +23,10 @@
 #include "ArcBallCamera.h"
 #include "SGNode.h"
 #include "SGHeaders.h"
-#include "SGPhysicsMesh.h"
-#include "World.h"
+#include "graphics/SGBulletRigidMesh.h"
+#include "graphics/SGBulletRigidDynamics.h"
+#include "graphics/SGBulletSoftRigidDynamics.h"
+
 
 using namespace Loki;
 using namespace std;
@@ -59,7 +61,9 @@ public:
 
     //Nodes
     U32 add(SGNode* aNode);
-    U32 addToPhysicsWorld(SGPhysicsMesh* pNode);
+    U32 addRigidBody(SGBulletRigidMesh* aRigidBody);
+    U32 addSoftBody(SGBulletSoftMesh* aSoftBody);
+
     U32 addSceneBox(const AABB& box);
     U32 addFloor(int rows, int cols, float step = 1.0f);
     bool remove(U32 index);
@@ -71,7 +75,7 @@ public:
     SGNode* get(const char* name) const;
     SGNode* last() const;
 
-    //void addAffineWidget();
+    SGBulletSoftRigidDynamics* world() { return m_lpWorld;}
 
     //Matrix Stacks
 	CopyStack<mat44f>& stkProjection() {return m_stkProjection;}
@@ -121,10 +125,12 @@ protected:
 private:
     int m_keyModifier;
 
+    SGBulletSoftRigidDynamics* m_lpWorld;
 	CopyStack<mat44f> m_stkProjection;
 	CopyStack<mat44f> m_stkModelView;
 	std::vector<SGNode*> m_vSceneNodes;
-	World* m_lpWorld;
+
+
     ArcBallCamera m_camera;
     SGHeaders* m_headers;
     int m_idCamHeader;
