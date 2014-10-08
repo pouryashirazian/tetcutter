@@ -88,10 +88,11 @@ VolMesh::~VolMesh() {
 }
 
 void VolMesh::init() {
-	m_verbose = false;
+
 	m_elemToShow = m_nodeToShow = INVALID_INDEX;
-	m_drawNodes = true;
-	m_drawWireFrameMesh = true;
+	m_verbose = false;
+	m_flagDrawNodes = false;
+	m_flagDrawWireFrameMesh = false;
 	m_color = Color::skin();
 
 	m_fOnNodeEvent = NULL;
@@ -1734,7 +1735,7 @@ void VolMesh::draw() {
 
 
 	//Draw outlined faces
-	if(m_drawWireFrameMesh) {
+	if(m_flagDrawWireFrameMesh) {
 		glDisable(GL_CULL_FACE);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glEnable(GL_BLEND);
@@ -1752,7 +1753,7 @@ void VolMesh::draw() {
 	}
 
 	//Draw vertices
-	if (m_drawNodes) {
+	if (m_flagDrawNodes) {
 		glPointSize(5.0f);
 		glColor3f(1.0f, 0.0f, 0.0f);
 		glBegin(GL_POINTS);

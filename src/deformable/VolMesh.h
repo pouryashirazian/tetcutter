@@ -208,10 +208,10 @@ public:
 	U32 getNodeToShow() const {return m_nodeToShow;}
 
 	//flag on what to show
-	void setDrawWireFrame(bool drawWireFrame) { m_drawWireFrameMesh = drawWireFrame;}
-	bool getDrawWireFrame() const {return m_drawWireFrameMesh;}
-	void setDrawNodes(bool drawNodes) { m_drawNodes = drawNodes;}
-	bool getDrawNodes() const {return m_drawNodes;}
+	void setFlagDrawWireFrame(bool drawWireFrame) { m_flagDrawWireFrameMesh = drawWireFrame;}
+	bool getFlagDrawWireFrame() const {return m_flagDrawWireFrameMesh;}
+	void setFlagDrawNodes(bool drawNodes) { m_flagDrawNodes = drawNodes;}
+	bool getFlagDrawNodes() const {return m_flagDrawNodes;}
 
 	//set base color
 	Color getColor() const {return m_color;}
@@ -277,8 +277,8 @@ protected:
 	U32 m_elemToShow;
 	U32 m_nodeToShow;
 	bool m_verbose;
-	bool m_drawWireFrameMesh;
-	bool m_drawNodes;
+	bool m_flagDrawWireFrameMesh;
+	bool m_flagDrawNodes;
 	Color m_color;
 
 	//topology events

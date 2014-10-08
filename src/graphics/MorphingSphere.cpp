@@ -93,7 +93,7 @@ void MorphingSphere::setup(float rho, int hseg, int vseg) {
 	setupVertexAttribs(vertices, 3, gbtPosition);
 	setupVertexAttribs(colors, 4, gbtColor);
 	setupVertexAttribs(normals, 3, gbtNormal);
-	setupIndexBufferObject(indices, ftTriangles);
+	setupFaceIndexBuffer(indices, ftTriangles);
 	//setupVertexAttribs(arrColors, 3, mbtColor);
 	//m_ctFaceElements = m_ctVertices;
 	m_faceMode = ftLineLoop;

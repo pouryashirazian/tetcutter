@@ -442,8 +442,8 @@ void resetMesh() {
 	LogInfo("Loaded mesh to temp");
 	g_lpTissue = new CuttableMesh(*temp);
 	g_lpTissue->setFlagSplitMeshAfterCut(true);
-	g_lpTissue->setDrawNodes(false);
-	g_lpTissue->setDrawWireFrame(false);
+	g_lpTissue->setFlagDrawNodes(false);
+	g_lpTissue->setFlagDrawWireFrame(false);
 	g_lpTissue->setVerbose(g_parser.value<int>("verbose") != 0);
 	SAFE_DELETE(temp);
 
@@ -456,7 +456,13 @@ void resetMesh() {
 	//print stats
 	VolMeshStats::printAllStats(g_lpTissue);
 	LogInfo("Loaded mesh completed");
-	//TheGizmoManager::Instance().cmdRotate(vec3f(1,0,0), -90.0f);
+
+	//rotate mesh
+	//	vec3d translate(-2.03281307, -3.78926992, -1.11631393);
+	//	vec3d scale(0.018766);
+	//	VolMeshIO::fitmesh(g_lpTissue, scale, translate);
+	//	TheGizmoManager::Instance().setFocusedNode(g_lpTissue);
+	//	TheGizmoManager::Instance().cmdRotate(vec3f(1,0,0), -90.0f);
 }
 
 void runTestSubDivide(int current) {
@@ -578,21 +584,30 @@ int main(int argc, char* argv[]) {
 	floor->transform()->rotate(vec3f(1.0f, 0.0f, 0.0f), 90.0f);
 	TheSceneGraph::Instance().add(floor);
 
-
-	/*
-	//load brain mesh
-	SGMesh* leftpial = new SGMesh(strLeftPial);
-	leftpial->transform()->scale(0.01);
-	leftpial->transform()->rotate(vec3f(1,0,0), -90.0);
-	leftpial->transform()->translate(vec3f(4, 1, 0));
-	TheSceneGraph::Instance().add(leftpial);
-
-	SGMesh* rightpial = new SGMesh(strRightPial);
-	rightpial->transform()->scale(0.01);
-	rightpial->transform()->rotate(vec3f(1,0,0), -90.0);
-	rightpial->transform()->translate(vec3f(4, 1, 0));
-	TheSceneGraph::Instance().add(rightpial);
-	*/
+	AnsiStr strGreyMatter = strRoot + "data/meshes/veg/brain/graymatter.veg";
+	AnsiStr strWhiteMatter = strRoot + "data/meshes/veg/brain/whitematter.veg";
+	{
+		VolMesh* temp = new VolMesh();
+		bool res = VolMeshIO::readVega(temp, strGreyMatter);
+		if(res) {
+			CuttableMesh* pmesh = new CuttableMesh(*temp);
+			pmesh->setColor(Color::grey());
+			pmesh->setName("graymatter");
+			TheSceneGraph::Instance().add(pmesh);
+		}
+		SAFE_DELETE(temp);
+	}
+	{
+		VolMesh* temp = new VolMesh();
+		bool res = VolMeshIO::readVega(temp, strWhiteMatter);
+		if(res) {
+			CuttableMesh* pmesh = new CuttableMesh(*temp);
+			pmesh->setColor(Color::white());
+			pmesh->setName("whitematter");
+			TheSceneGraph::Instance().add(pmesh);
+		}
+		SAFE_DELETE(temp);
+	}
 
 
 	//TheSceneGraph::Instance().addFloor(32, 32, 0.5f);
@@ -621,9 +636,6 @@ int main(int argc, char* argv[]) {
 	//load gizmo manager file
 	AnsiStr strGizmoFP = g_parser.value<AnsiStr>("gizmo");
 	TheGizmoManager::Instance().readConfig(strGizmoFP);
-
-	//Focus gizmo manager on the scalpel
-	//TheGizmoManager::Instance().cmdTranslate(vec3f(0, 3, 0));
 
 	//reset cuttable mesh
 	resetMesh();

@@ -55,6 +55,9 @@ void CuttableMesh::setup() {
 	//Create subdivider
 	m_lpSubD = new TetSubdivider();
 
+	//Create render
+	//m_render.sync(this);
+
 	m_aabb = VolMesh::aabb();
 	m_aabb.expand(1.0);
 	m_ctCompletedCuts = 0;
@@ -62,6 +65,8 @@ void CuttableMesh::setup() {
 	m_flagDetectCutNodes = false;
 	m_flagDrawSweepSurf = false;
 	m_flagDrawAABB = false;
+	m_flagDrawNodes = false;
+	m_flagDrawWireFrameMesh = false;
 }
 
 void CuttableMesh::clearCutContext() {
@@ -79,7 +84,9 @@ void CuttableMesh::draw() {
 
 	if(m_flagDrawAABB)
 		drawBBox();
+
 	VolMesh::draw();
+	//m_render.draw();
 
 	if(m_spTransform)
 		m_spTransform->unbind();
@@ -478,7 +485,7 @@ int CuttableMesh::cut(const vector<vec3d>& segments,
 
 		for(U32 i = 0; i < ctSegments; i++) {
 			if(vPerSegmentCuts[i] > 0)
-				splitParts(&quadstrips[i * 2], 0.2);
+				splitParts(&quadstrips[i * 2], DEFAULT_MESH_SPLIT_DIST);
 		}
 	}
 
@@ -489,6 +496,9 @@ int CuttableMesh::cut(const vector<vec3d>& segments,
 	//recompute AABB and expand it to detect cuts
 	m_aabb = this->computeAABB();
 	m_aabb.expand(1.0);
+
+	//update renderer
+	//m_render.sync(this);
 
 	//Return number of tets cut
 	return ctSubdividedTets;

@@ -11,6 +11,7 @@
 //#include "vegafem/include/tetMesh.h"
 #include "graphics/SGMesh.h"
 #include "VolMesh.h"
+#include "deformable/VolMeshRender.h"
 #include "TetSubdivider.h"
 #include "base/Vec.h"
 
@@ -25,6 +26,8 @@ namespace PS {
 #define CUT_ERR_UNHANDLED_CUT_STATE -3
 #define CUT_ERR_UNABLE_TO_CUT_EDGE -4
 #define CUT_ERR_USER_CANCELLED_CUT -5
+
+#define DEFAULT_MESH_SPLIT_DIST 0.6
 
 class CuttableMesh : public VolMesh {
 public:
@@ -159,6 +162,7 @@ protected:
 
 	//TODO: Sync vbo after synced physics mesh
 private:
+	//VolMeshRender m_render;
 	TetSubdivider* m_lpSubD;
 	int m_ctCompletedCuts;
 	bool m_flagSplitMeshAfterCut;

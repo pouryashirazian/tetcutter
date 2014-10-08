@@ -32,7 +32,9 @@ public:
 		m_color = color;
 	}
 
-	Color(const Color& other);
+	Color(const Color& other) {
+		m_color = other.m_color;
+	}
 
 	void fromRGBA(const vec4u8& color) {
 		fromRGBA(color.x, color.y, color.z, color.w);

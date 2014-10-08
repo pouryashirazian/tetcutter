@@ -61,7 +61,7 @@ void GLMeshBuffer::setup(const Geometry& g) {
 		this->setupVertexAttribs(g.normals(), 3, gbtNormal);
 
 	if(g.countFaces() > 0)
-		this->setupIndexBufferObject(g.indices(), g.getFaceMode());
+		this->setupFaceIndexBuffer(g.indices(), g.getFaceMode());
 	else
 		this->setFaceMode(g.getFaceMode());
 }
@@ -73,75 +73,34 @@ void GLMeshBuffer::setFaceMode(int fmode) {
 
 void GLMeshBuffer::setupVertexAttribs(const vector<float>& arrAttribs, int step, GLBufferType attribKind)
 {
-	U32 szTotal = arrAttribs.size() * sizeof(float);
-	if(attribKind == gbtPosition)
-	{
-		m_ctVertices = arrAttribs.size() / step;
-		m_gmbVertex.setup(gbtPosition, step, GL_FLOAT, szTotal, &arrAttribs[0]);
-	}
-	else if(attribKind == gbtNormal)
-	{
-		vector<float> arrNormalizedNormals;
-		arrNormalizedNormals.resize(arrAttribs.size());
-		U32 ctNormals = (U32)arrAttribs.size() / 3;
-		for(U32 i=0; i<ctNormals; i++)
-		{
-			vec3f n = vec3f(&arrAttribs[i * 3]);
-			n.normalize();
-			arrNormalizedNormals[i * 3 + 0] = n.x;
-			arrNormalizedNormals[i * 3 + 1] = n.y;
-			arrNormalizedNormals[i * 3 + 2] = n.z;
-		}
-
-		m_gmbNormal.setup(gbtNormal, step, GL_FLOAT, szTotal, &arrAttribs[0]);
-	}
-	else if(attribKind == gbtColor)
-	{
-		m_gmbColor.setup(gbtColor, step, GL_FLOAT, arrAttribs.size() * sizeof(float), &arrAttribs[0]);
-	}
-	else if(attribKind == gbtTexCoord)
-	{
-		m_gmbTexcoord.setup(gbtTexCoord, step, GL_FLOAT, szTotal, &arrAttribs[0]);
-	}
+	setupVertexAttribsT<float>(GL_FLOAT, arrAttribs, step, attribKind);
 }
 
 void GLMeshBuffer::setupPerVertexColor(const vec4f& color, U32 ctVertices, int step)
 {
-	vector<float> arrColors;
-	arrColors.resize(ctVertices * step);
-	for(U32 i=0; i<ctVertices; i++)
-	{
-		for(int j=0; j<step; j++)
-			arrColors[i*step + j] = color.e[j];
-	}
-
-	m_gmbColor.cleanup();
-	m_gmbColor.setup(gbtColor, step, GL_FLOAT, arrColors.size() * sizeof(float), &arrColors[0]);
+	Color cl(color);
+	setupPerVertexColorT<float>(GL_FLOAT, cl, ctVertices, step);
 }
 
-void GLMeshBuffer::setupIndexBufferObject(const vector<U32>& arrIndex, GLFaceType faceMode)
+void GLMeshBuffer::setupFaceIndexBuffer(const vector<U32>& arrIndex, GLFaceType faceMode)
 {
-	int step = FaceStepSizeFromMode(faceMode);
-	m_faceMode = faceMode;
-	m_ctFaceElements = arrIndex.size();
-	m_gmbFaces.setup(gbtFaceIndex, step, GL_UNSIGNED_INT, arrIndex.size() * sizeof(U32), &arrIndex[0]);
+	setupFaceIndexBufferT(GL_UNSIGNED_INT, arrIndex, faceMode);
 }
 
 bool GLMeshBuffer::modifyVertexBuffer(U32 offset, U32 szTotal, const void* lpData) {
 	return m_gmbVertex.modify(offset, szTotal, lpData);
 }
 
-bool GLMeshBuffer::readbackFaceBuffer(U32& count, vector<U32>& elements) const {
-	U32 ctFaceElements = m_gmbFaces.size() / sizeof(U32);
-	elements.resize(ctFaceElements);
-	return m_gmbFaces.readBack(sizeof(U32) * elements.size(), &elements[0]);
-}
 
 bool GLMeshBuffer::isBufferValid(GLBufferType attribType) const {
 	return m_vBuffers[attribType]->isValid();
 }
 
-const GLMemoryBuffer* GLMeshBuffer::buffer(GLBufferType attribType) const {
+const GLMemoryBuffer* GLMeshBuffer::const_buffer(GLBufferType attribType) const {
+	return m_vBuffers[attribType];
+}
+
+GLMemoryBuffer* GLMeshBuffer::buffer(GLBufferType attribType) {
 	return m_vBuffers[attribType];
 }
 

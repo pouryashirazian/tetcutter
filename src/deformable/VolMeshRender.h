@@ -21,6 +21,8 @@ public:
 	virtual ~VolMeshRender();
 
 	bool sync(const VolMesh* pmesh);
+
+	void draw();
 };
 
 } /* namespace MESH */

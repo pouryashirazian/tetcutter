@@ -23,6 +23,8 @@ public:
 	static bool writeObj(const VolMesh* vm, const AnsiStr& strPath);
 
 	static bool fitmesh(VolMesh* vm, const AABB& toBox);
+	static bool fitmesh(VolMesh* vm, const vec3d& scale, const vec3d& translate);
+
 	static bool rotatemesh(VolMesh* vm, const quatd& quat);
 
 

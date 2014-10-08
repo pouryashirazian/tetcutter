@@ -264,11 +264,15 @@ bool VolMeshIO::fitmesh(VolMesh* vm, const AABB& toBox) {
 	vec3f s = vec3f::div(toBox.extent(), curBox.extent());
 	double minScaleFactor = MATHMIN(MATHMIN(s.x, s.y), s.z);
 	vec3d scale(minScaleFactor);
+	LogErrorArg1("Using minScaleFactor %f", minScaleFactor);
 
 	vec3f t = toBox.lower() - curBox.lower();
 	vec3d translate(t.x, t.y, t.z);
 
+	return fitmesh(vm, scale, translate);
+}
 
+bool VolMeshIO::fitmesh(VolMesh* vm, const vec3d& scale, const vec3d& translate) {
 	//first translate all nodes
 	for(U32 i=0; i < vm->countNodes(); i++) {
 		NODE& p = vm->nodeAt(i);
@@ -278,8 +282,8 @@ bool VolMeshIO::fitmesh(VolMesh* vm, const AABB& toBox) {
 		p.restpos = p.restpos + translate;
 
 		//scale
-		p.pos = p.pos * minScaleFactor;
-		p.restpos = p.restpos * minScaleFactor;
+		p.pos = vec3d::mul(p.pos, scale);
+		p.restpos = vec3d::mul(p.restpos, scale);
 	}
 
 	return true;
