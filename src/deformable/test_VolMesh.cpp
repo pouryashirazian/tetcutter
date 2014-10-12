@@ -8,6 +8,7 @@
 
 #include "test_VolMesh.h"
 #include "base/Logger.h"
+#include "base/Profiler.h"
 #include <map>
 
 using namespace std;
@@ -265,6 +266,7 @@ bool TestVolMesh::tst_connectivity(VolMesh* pmesh) {
 
 
 bool TestVolMesh::tst_all(VolMesh* pmesh) {
+	ProfileAutoArg("testall");
 
 	U32 idxTest = 0;
 	const U32 maxTest = 4;

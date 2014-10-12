@@ -50,8 +50,11 @@ bool VolMeshStats::computeVolMaxMin(const VolMesh* pmesh, double& outVolMax, dou
 	outVolMin = GetMaxLimit<double>();
 	for(U32 i=0; i < pmesh->countCells(); i++) {
 		double v = pmesh->computeCellVolume(i);
-		outVolMax = MATHMAX(v, outVolMax);
-		outVolMin = MATHMIN(v, outVolMin);
+
+		if(v > FLAT_CELL_VOLUME) {
+			outVolMax = MATHMAX(v, outVolMax);
+			outVolMin = MATHMIN(v, outVolMin);
+		}
 	}
 
 	return true;
@@ -69,8 +72,10 @@ bool VolMeshStats::computeEdgeLenMaxMin(const VolMesh* pmesh, double& outEdgeLen
 		vec3d s1 = pmesh->const_nodeAt(edge.to).pos;
 		double d = vec3d::distance(s0, s1);
 
-		outEdgeLenMax = MATHMAX(d, outEdgeLenMax);
-		outEdgeLenMin = MATHMIN(d, outEdgeLenMin);
+		if(d > MIN_EDGE_LENGTH) {
+			outEdgeLenMax = MATHMAX(d, outEdgeLenMax);
+			outEdgeLenMin = MATHMIN(d, outEdgeLenMin);
+		}
 	}
 
 	return true;

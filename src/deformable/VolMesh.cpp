@@ -11,6 +11,7 @@
 #include <base/String.h>
 #include <base/StringBase.h>
 #include "base/DebugUtils.h"
+#include "base/Profiler.h"
 #include <deformable/VolMesh.h>
 #include <graphics/AABB.h>
 #include <graphics/SceneGraph.h>
@@ -71,10 +72,19 @@ VolMesh::VolMesh(const VolMesh& other) {
 		elements[i * 4 + 3] = elem.nodes[3];
 	}
 
-	setup(vertices, elements);
+	//set the flags
+	m_verbose = other.m_verbose;
+	m_flagDrawWireFrameMesh = other.m_flagDrawWireFrameMesh;
+	m_flagDrawNodes = other.m_flagDrawNodes;
+	m_flagFilterOutFlatCells = other.m_flagFilterOutFlatCells;
+	m_color = other.m_color;
 
 	//set the name
 	setName(other.name());
+
+	//setup vertices
+	setup(vertices, elements);
+
 }
 
 VolMesh::VolMesh(const vector<double>& vertices, const vector<U32>& elements) {
@@ -93,6 +103,7 @@ void VolMesh::init() {
 	m_verbose = false;
 	m_flagDrawNodes = false;
 	m_flagDrawWireFrameMesh = false;
+	m_flagFilterOutFlatCells = true;
 	m_color = Color::skin();
 
 	m_fOnNodeEvent = NULL;
@@ -280,10 +291,10 @@ double VolMesh::computeInscribedRadius(U32 idxCell) const {
 			np[j] = const_nodeAt(n[j]).pos;
 
 		vec3d crs = vec3d::cross(np[1] - np[0], np[2] - np[0]);
-		sumsa += 0.5 * crs.length();
+		sumsa += (0.5 * crs.length());
 	}
 
-	return 	(4.0 * computeCellVolume(idxCell)) / (4.0 * sumsa);
+	return 	(4.0 * computeCellVolume(idxCell)) / sumsa;
 }
 
 double VolMesh::computeCircumscribedRadius(U32 idxCell) const {
@@ -426,11 +437,22 @@ bool VolMesh::insert_cell(const CELL& cell) {
 
 bool VolMesh::insert_cell(U32 nodes[4]) {
 	//Inserts a tetrahedra element to the halfedged mesh structure
-	for(int i=0; i<4; i++) {
+	for(int i=0; i<COUNT_CELL_NODES; i++) {
 		if(!isNodeIndex(nodes[i])) {
 			LogErrorArg1("Invalid node index passed in. %u", nodes[i]);
 			return false;
 		}
+	}
+
+	//filter zero volume cells
+	if(m_flagFilterOutFlatCells) {
+		vec3d v[COUNT_CELL_NODES];
+		for (int i = 0; i < COUNT_CELL_NODES; i++) {
+			v[i] = const_nodeAt(nodes[i]).pos;
+		}
+		double cellvol = ComputeCellVolume(v);
+		if(cellvol < FLAT_CELL_VOLUME)
+			return false;
 	}
 
 	//face mask
@@ -448,15 +470,17 @@ bool VolMesh::insert_cell(U32 nodes[4]) {
 
 	//Add element nodes set only for now
 	CELL cell;
-	for(int i=0; i<4; i++)
+	for(int i=0; i<COUNT_CELL_NODES; i++)
 		cell.nodes[i] = nodes[i];
-	for(int i=0; i<4; i++)
+
+	for(int i=0; i<COUNT_CELL_FACES; i++)
 		cell.faces[i] = INVALID_INDEX;
-	for(int i=0; i<6; i++)
+
+	for(int i=0; i<COUNT_CELL_EDGES; i++)
 		cell.edges[i] = INVALID_INDEX;
 
 	//Loop over faces. Per each tet 6 edges or 12 half-edges added
-	for (int f = 0; f < 4; f++) {
+	for (int f = 0; f < COUNT_CELL_FACES; f++) {
 		U32 fv[3];
 
 		fv[0] = nodes[maskTetFaceNodes[f][0]];
@@ -1127,9 +1151,11 @@ U32 VolMesh::insert_face(U32 nodes[3]) {
 
 
 void VolMesh::garbage_collection() {
+	ProfileAutoArg("gc");
+
 	//acquire lock to mesh
-	if(m_verbose)
-		printf("GC BEGIN\n");
+	//if(m_verbose)
+	printf("GC BEGIN\n");
 
 	//1.delete all pending cells
 	U32 ctRemovedCells = 0;
@@ -1201,11 +1227,11 @@ void VolMesh::garbage_collection() {
 			ctRemovedCells, ctRemovedFaces, ctRemovedEdges, ctRemovedNodes);
 
 	//release lock
-	test_cells_topology();
-	test_incidents();
+//	test_cells_topology();
+//	test_incidents();
 
-	if(m_verbose)
-		printf("GC END\n");
+	//if(m_verbose)
+	printf("GC END\n");
 }
 
 bool VolMesh::getFaceNodes(U32 idxFace, U32 (&nodes)[3]) const {

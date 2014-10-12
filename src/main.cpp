@@ -404,6 +404,7 @@ void resetMesh() {
 	VolMesh* temp = NULL;
 	if(FileExists(g_strFilePath)) {
 		temp = new PS::MESH::VolMesh();
+		temp->setFlagFilterOutFlatCells(false);
 		temp->setVerbose(g_parser.value<int>("verbose"));
 		LogInfoArg1("Begin to read vega file from: %s", g_strFilePath.cptr());
 		bool res = PS::MESH::VolMeshIO::readVega(temp, g_strFilePath);
@@ -584,6 +585,7 @@ int main(int argc, char* argv[]) {
 	floor->transform()->rotate(vec3f(1.0f, 0.0f, 0.0f), 90.0f);
 	TheSceneGraph::Instance().add(floor);
 
+	/*
 	AnsiStr strGreyMatter = strRoot + "data/meshes/veg/brain/graymatter.veg";
 	AnsiStr strWhiteMatter = strRoot + "data/meshes/veg/brain/whitematter.veg";
 	{
@@ -608,6 +610,7 @@ int main(int argc, char* argv[]) {
 		}
 		SAFE_DELETE(temp);
 	}
+	*/
 
 
 	//TheSceneGraph::Instance().addFloor(32, 32, 0.5f);

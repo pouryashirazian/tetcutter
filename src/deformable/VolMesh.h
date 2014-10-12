@@ -28,6 +28,7 @@ using namespace PS::SG;
 using namespace std;
 
 #define FLAT_CELL_VOLUME 1e-4
+#define MIN_EDGE_LENGTH 1e-4
 
 namespace PS {
 namespace MESH {
@@ -210,8 +211,13 @@ public:
 	//flag on what to show
 	void setFlagDrawWireFrame(bool drawWireFrame) { m_flagDrawWireFrameMesh = drawWireFrame;}
 	bool getFlagDrawWireFrame() const {return m_flagDrawWireFrameMesh;}
+
 	void setFlagDrawNodes(bool drawNodes) { m_flagDrawNodes = drawNodes;}
 	bool getFlagDrawNodes() const {return m_flagDrawNodes;}
+
+	void setFlagFilterOutFlatCells(bool flag) { m_flagFilterOutFlatCells = flag;}
+	bool getFlagFilterOutFlatCells() const {return m_flagFilterOutFlatCells;}
+
 
 	//set base color
 	Color getColor() const {return m_color;}
@@ -279,6 +285,7 @@ protected:
 	bool m_verbose;
 	bool m_flagDrawWireFrameMesh;
 	bool m_flagDrawNodes;
+	bool m_flagFilterOutFlatCells;
 	Color m_color;
 
 	//topology events
