@@ -914,6 +914,8 @@ void VolMesh::remove_node_core(U32 idxNode) {
 
 int VolMesh::get_disjoint_parts(vector<vector<U32>>& cellgroups) {
 
+	ProfileAutoArg("get_disjoint_parts");
+
 	std::set<U32> setCells;
 
 	for(U32 i=0; i < m_vCells.size(); i++)
