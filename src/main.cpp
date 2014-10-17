@@ -183,6 +183,13 @@ void NormalKey(unsigned char key, int x, int y)
 		break;
 	}
 
+	case('.'):{
+		if(g_lpTissue)
+			g_lpTissue->setFlagDrawWireFrame(!g_lpTissue->getFlagDrawWireFrame());
+		LogInfoArg1("Wireframe mode is %d", g_lpTissue->getFlagDrawWireFrame());
+		break;
+	}
+
 	case('x'):{
 		TheGizmoManager::Instance().setAxis(axisX);
 	}
@@ -462,7 +469,7 @@ void resetMesh() {
 	//	vec3d translate(-2.03281307, -3.78926992, -1.11631393);
 	//	vec3d scale(0.018766);
 	//	VolMeshIO::fitmesh(g_lpTissue, scale, translate);
-	//	TheGizmoManager::Instance().setFocusedNode(g_lpTissue);
+	//TheGizmoManager::Instance().setFocusedNode(g_lpTissue);
 	//	TheGizmoManager::Instance().cmdRotate(vec3f(1,0,0), -90.0f);
 }
 
