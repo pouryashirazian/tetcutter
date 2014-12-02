@@ -97,15 +97,13 @@ void AvatarScalpel::draw() {
 			glPushAttrib(GL_ALL_ATTRIB_BITS);
 				glDisable(GL_CULL_FACE);
 				glEnable(GL_BLEND);
-				glBlendFunc(GL_SRC_ALPHA,GL_ONE);
+				glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-				glColor4d(1.0, 0.0, 1.0, 0.5);
-				glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+				glColor4d(1.0, 0.0, 0.0, 0.3);
 				glBegin(GL_QUAD_STRIP);
 					for(U32 i = 0; i < m_vSweptQuad.size(); i++)
 						glVertex3dv(m_vSweptQuad[i].cptr());
 				glEnd();
-				//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 				glDisable(GL_BLEND);
 				glEnable(GL_CULL_FACE);

@@ -450,8 +450,9 @@ void resetMesh() {
 	LogInfo("Loaded mesh to temp");
 	g_lpTissue = new CuttableMesh(*temp);
 	g_lpTissue->setFlagSplitMeshAfterCut(true);
-	g_lpTissue->setFlagDrawNodes(false);
+	g_lpTissue->setFlagDrawNodes(true);
 	g_lpTissue->setFlagDrawWireFrame(false);
+	g_lpTissue->setColor(Color::blue());
 	g_lpTissue->setVerbose(g_parser.value<int>("verbose") != 0);
 	SAFE_DELETE(temp);
 
