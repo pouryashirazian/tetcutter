@@ -56,7 +56,7 @@ void CuttableMesh::setup() {
 	m_lpSubD = new TetSubdivider();
 
 	//Create render
-	//m_render.sync(this);
+	syncRender();
 
 	m_aabb = VolMesh::aabb();
 	m_aabb.expand(1.0);
@@ -85,8 +85,8 @@ void CuttableMesh::draw() {
 	if(m_flagDrawAABB)
 		drawBBox();
 
-	VolMesh::draw();
-	//m_render.draw();
+	//VolMesh::draw();
+	m_render.draw();
 
 	if(m_spTransform)
 		m_spTransform->unbind();
@@ -150,6 +150,9 @@ void CuttableMesh::draw() {
 	}
 }
 
+void CuttableMesh::syncRender() {
+	m_render.sync(this);
+}
 
 int CuttableMesh::computeCutEdgesKernel(const vec3d sweptquad[4],
 						  	  	  	  	std::map<U32, CutEdge>& mapCutEdges) {
@@ -498,7 +501,7 @@ int CuttableMesh::cut(const vector<vec3d>& segments,
 	m_aabb.expand(1.0);
 
 	//update renderer
-	//m_render.sync(this);
+	syncRender();
 
 	//Return number of tets cut
 	return ctSubdividedTets;

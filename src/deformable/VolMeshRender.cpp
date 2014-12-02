@@ -115,11 +115,24 @@ bool VolMeshRender::sync(const VolMesh* pmesh) {
 	FlattenVec3(vNodalNormals, vNormals);
 
 
-	//setup mesh
+	//setup surface mesh
 	setupVertexAttribsT<double>(GL_DOUBLE, vNodes, 3, gbtPosition);
 	setupVertexAttribsT<double>(GL_DOUBLE, vNormals, 3, gbtNormal);
 	setupPerVertexColorT<float>(GL_FLOAT, pmesh->getColor(), pmesh->countNodes(), 3);
 	setupFaceIndexBufferT<U32>(GL_UNSIGNED_INT, vIndices, ftTriangles);
+
+	//setup wireframe
+	m_sgWireFrame.clearAllBuffers();
+	m_sgWireFrame.setupVertexAttribsT<double>(GL_DOUBLE, vNodes, 3, gbtPosition);
+	m_sgWireFrame.setupPerVertexColorT<float>(GL_FLOAT, Color(0, 0, 0, 100), pmesh->countNodes(), 4);
+	m_sgWireFrame.setupFaceIndexBufferT<U32>(GL_UNSIGNED_INT, vIndices, ftTriangles);
+	m_sgWireFrame.setWireFrameMode(true);
+
+	//setup nodes
+	m_sgVertices.clearAllBuffers();
+	m_sgVertices.setupVertexAttribsT<double>(GL_DOUBLE, vNodes, 3, gbtPosition);
+	m_sgVertices.setupPerVertexColorT<float>(GL_FLOAT, Color::red(), pmesh->countNodes(), 3);
+	m_sgVertices.setFaceMode(GLFaceType::ftPoints);
 
 	return true;
 }
@@ -127,8 +140,19 @@ bool VolMeshRender::sync(const VolMesh* pmesh) {
 void VolMeshRender::draw() {
 	glDisable(GL_CULL_FACE);
 
+	//draw surface
 	SGMesh::draw();
 
+	//draw wireframe
+	m_sgWireFrame.draw();
+
+	//draw points
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	glPointSize(3.0f);
+	glDisable(GL_LIGHTING);
+		m_sgVertices.drawNoEffect();
+	glEnable(GL_LIGHTING);
+	glPopAttrib();
 	glEnable(GL_CULL_FACE);
 }
 

@@ -90,6 +90,9 @@ public:
 	//draw
 	void draw();
 
+	//sync renderer
+	void syncRender();
+
 	//cutting
 	void clearCutContext();
 
@@ -162,7 +165,7 @@ protected:
 
 	//TODO: Sync vbo after synced physics mesh
 private:
-	//VolMeshRender m_render;
+	VolMeshRender m_render;
 	TetSubdivider* m_lpSubD;
 	int m_ctCompletedCuts;
 	bool m_flagSplitMeshAfterCut;

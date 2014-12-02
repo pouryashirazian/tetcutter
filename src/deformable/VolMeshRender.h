@@ -23,6 +23,13 @@ public:
 	bool sync(const VolMesh* pmesh);
 
 	void draw();
+
+private:
+//	bool m_flagDrawSurface;
+//	bool m_flagDrawWireframe;
+//	bool m_flagDrawVertices;
+	SGMesh m_sgWireFrame;
+	SGMesh m_sgVertices;
 };
 
 } /* namespace MESH */

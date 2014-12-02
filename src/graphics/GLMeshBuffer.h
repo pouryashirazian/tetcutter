@@ -64,7 +64,7 @@ public:
 
 	//face mode
 	int getFaceMode() const {return m_faceMode;}
-	void setFaceMode(int fmode);
+	void setFaceMode(GLFaceType faceMode);
 
 	U32 countVertices() const {return m_ctVertices;}
 	U32 countFaces() const {return m_ctFaceElements/m_gmbFaces.step();}
@@ -79,6 +79,8 @@ public:
 	//update
 	bool modifyVertexBuffer(U32 offset, U32 szTotal, const void* lpData);
 
+	//clears all buffers
+	void clearAllBuffers() { GLMeshBuffer::cleanup();}
 
 	//Draw
 	virtual void draw();

@@ -66,8 +66,8 @@ void GLMeshBuffer::setup(const Geometry& g) {
 		this->setFaceMode(g.getFaceMode());
 }
 
-void GLMeshBuffer::setFaceMode(int fmode) {
-	m_faceMode = fmode;
+void GLMeshBuffer::setFaceMode(GLFaceType faceMode) {
+	m_faceMode = faceMode;
 	m_ctFaceElements = m_ctVertices;
 }
 

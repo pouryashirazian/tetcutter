@@ -454,6 +454,7 @@ void resetMesh() {
 	g_lpTissue->setFlagDrawWireFrame(false);
 	g_lpTissue->setColor(Color::blue());
 	g_lpTissue->setVerbose(g_parser.value<int>("verbose") != 0);
+	g_lpTissue->syncRender();
 	SAFE_DELETE(temp);
 
 	TheSceneGraph::Instance().add(g_lpTissue);
@@ -491,6 +492,7 @@ void runTestSubDivide(int current) {
 }
 
 void cutFinished() {
+
 	if(!g_parser.value<int>("disjoint"))
 		return;
 
