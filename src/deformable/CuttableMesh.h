@@ -27,7 +27,7 @@ namespace PS {
 #define CUT_ERR_UNABLE_TO_CUT_EDGE -4
 #define CUT_ERR_USER_CANCELLED_CUT -5
 
-#define DEFAULT_MESH_SPLIT_DIST 0.2
+#define DEFAULT_MESH_SPLIT_DIST 0.3
 
 class CuttableMesh : public VolMesh {
 public:
@@ -165,7 +165,7 @@ protected:
 
 	//TODO: Sync vbo after synced physics mesh
 private:
-	VolMeshRender m_render;
+	VolMeshRender* m_lpRender;
 	TetSubdivider* m_lpSubD;
 	int m_ctCompletedCuts;
 	bool m_flagSplitMeshAfterCut;

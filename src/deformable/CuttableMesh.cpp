@@ -38,6 +38,7 @@ CuttableMesh::CuttableMesh(int ctVertices, double* vertices, int ctElements, int
 
 CuttableMesh::~CuttableMesh() {
 	SAFE_DELETE(m_lpSubD);
+	SAFE_DELETE(m_lpRender);
 	m_quadstrips.resize(0);
 }
 
@@ -51,6 +52,9 @@ void CuttableMesh::setup() {
 	//Perform all tests
 	TestVolMesh::tst_all(this);
 	LogInfo("tests done!");
+
+	//Create Renderer
+	m_lpRender = new VolMeshRender();
 
 	//Create subdivider
 	m_lpSubD = new TetSubdivider();
@@ -86,7 +90,8 @@ void CuttableMesh::draw() {
 		drawBBox();
 
 	//VolMesh::draw();
-	m_render.draw();
+	if(m_lpRender)
+		m_lpRender->draw();
 
 	if(m_spTransform)
 		m_spTransform->unbind();
@@ -151,7 +156,7 @@ void CuttableMesh::draw() {
 }
 
 void CuttableMesh::syncRender() {
-	m_render.sync(this);
+	m_lpRender->sync(this);
 }
 
 int CuttableMesh::computeCutEdgesKernel(const vec3d sweptquad[4],
@@ -642,7 +647,6 @@ int CuttableMesh::convertDisjointPartsToMeshes(vector<CuttableMesh*>& vOutNewMes
 	//
 	vector<U32> vAllSplittedCells;
 
-
 	//loop over parts
 	for(U32 i=0; i < parts.size(); i++) {
 		vector<U32> curpart = parts[i];
@@ -651,7 +655,6 @@ int CuttableMesh::convertDisjointPartsToMeshes(vector<CuttableMesh*>& vOutNewMes
 			LogErrorArg1("splitted part %d is empty.", i);
 			continue;
 		}
-
 
 		//maps old nodes to new nodes
 		map<U32, U32> mapNodes;

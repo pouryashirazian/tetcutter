@@ -24,12 +24,16 @@ public:
 
 	void draw();
 
+protected:
+	void init();
+
 private:
 //	bool m_flagDrawSurface;
 //	bool m_flagDrawWireframe;
 //	bool m_flagDrawVertices;
 	SGMesh m_sgWireFrame;
 	SGMesh m_sgVertices;
+	SGMesh m_sgNormals;
 };
 
 } /* namespace MESH */

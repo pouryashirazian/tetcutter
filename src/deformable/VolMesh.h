@@ -131,13 +131,17 @@ public:
 	inline U32 countEdges() const {return m_vEdges.size();}
 	inline U32 countNodes() const {return m_vNodes.size();}
 
+	//count incidents
+	U32 countIncidentCells(U32 idxFace) const;
+	U32 countIncidentFaces(U32 idxEdge) const;
+	U32 countIncidentEdges(U32 idxNode) const;
+
 	//edge-wise funcs
 	bool edge_exists(U32 from, U32 to);
 	U32 edge_handle(U32 from, U32 to);
 
 	U32 edge_from_node(U32 idxEdge) const;
 	U32 edge_to_node(U32 idxEdge) const;
-
 	U32 get_node_neighbors(U32 idxNode, vector<U32>& nbors) const;
 
 

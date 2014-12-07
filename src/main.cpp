@@ -452,7 +452,7 @@ void resetMesh() {
 	g_lpTissue->setFlagSplitMeshAfterCut(true);
 	g_lpTissue->setFlagDrawNodes(true);
 	g_lpTissue->setFlagDrawWireFrame(false);
-	g_lpTissue->setColor(Color::blue());
+	g_lpTissue->setColor(Color::skin());
 	g_lpTissue->setVerbose(g_parser.value<int>("verbose") != 0);
 	g_lpTissue->syncRender();
 	SAFE_DELETE(temp);
@@ -565,8 +565,6 @@ int main(int argc, char* argv[]) {
 
 	//Build Shaders for drawing the mesh
 	AnsiStr strRoot = ExtractOneLevelUp(ExtractFilePath(GetExePath()));
-	AnsiStr strLeftPial = strRoot + "data/meshes/obj/brain/pial_Full_obj/lh.pial.obj";
-	AnsiStr strRightPial = strRoot + "data/meshes/obj/brain/pial_Full_obj/rh.pial.obj";
 	AnsiStr strShaderRoot = strRoot + "data/shaders/";
 	AnsiStr strTextureRoot = strRoot + "data/textures/";
 
@@ -649,6 +647,25 @@ int main(int argc, char* argv[]) {
 	//load gizmo manager file
 	AnsiStr strGizmoFP = g_parser.value<AnsiStr>("gizmo");
 	TheGizmoManager::Instance().readConfig(strGizmoFP);
+
+	//add csf
+	auto_ptr<VolMesh> csf(new PS::MESH::VolMesh());
+	csf->setFlagFilterOutFlatCells(false);
+	csf->setVerbose(g_parser.value<int>("verbose"));
+	AnsiStr strCSF = "/home/pourya/Desktop/platform/projects/tetcutter/data/meshes/veg/brain/csf.veg";
+	LogInfoArg1("Begin to read vega file from: %s", strCSF.cptr());
+	bool res = PS::MESH::VolMeshIO::readVega(csf.get(), strCSF);
+	if(res) {
+		CuttableMesh* cutcsf = new CuttableMesh(*csf);
+		cutcsf->setFlagSplitMeshAfterCut(true);
+		cutcsf->setFlagDrawNodes(true);
+		cutcsf->setFlagDrawWireFrame(false);
+		cutcsf->setColor(Color::blue());
+		cutcsf->syncRender();
+
+		TheSceneGraph::Instance().add(cutcsf);
+	}
+
 
 	//reset cuttable mesh
 	resetMesh();

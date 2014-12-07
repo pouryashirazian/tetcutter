@@ -1161,16 +1161,20 @@ void VolMesh::garbage_collection() {
 
 	//1.delete all pending cells
 	U32 ctRemovedCells = 0;
-	if(m_pendingToDeleteCells.size() > 0) {
-		remove_cells(m_pendingToDeleteCells);
-		ctRemovedCells = m_pendingToDeleteCells.size();
-		m_pendingToDeleteCells.resize(0);
+	{
+		ProfileAutoArg("gc:cells");
+		if(m_pendingToDeleteCells.size() > 0) {
+			remove_cells(m_pendingToDeleteCells);
+			ctRemovedCells = m_pendingToDeleteCells.size();
+			m_pendingToDeleteCells.resize(0);
+		}
 	}
 
-
 	//2.faces
+	//most expensive
 	U32 ctRemovedFaces = 0;
 	{
+		ProfileAutoArg("gc:faces");
 		std::set<U32> setToBeRemoved;
 		for(U32 i = 0; i < countFaces(); i++) {
 			if(m_incident_cells_per_face[i].size() == 0) {
@@ -1190,6 +1194,7 @@ void VolMesh::garbage_collection() {
 	//3.edges
 	U32 ctRemovedEdges = 0;
 	{
+		ProfileAutoArg("gc:edges");
 		std::set<U32> setToBeRemoved;
 		for(U32 i = 0; i < countEdges(); i++) {
 			if(m_incident_faces_per_edge[i].size() == 0) {
@@ -1209,6 +1214,7 @@ void VolMesh::garbage_collection() {
 	//4.nodes
 	U32 ctRemovedNodes = 0;
 	{
+		ProfileAutoArg("gc:nodes");
 		std::set<U32> setToBeRemoved;
 		for(U32 i = 0; i < countNodes(); i++) {
 			if(m_incident_edges_per_node[i].size() == 0) {
@@ -1342,6 +1348,27 @@ U32 VolMesh::edge_to_node(U32 idxEdge) const {
 	assert(isEdgeIndex(idxEdge));
 	return m_vEdges[idxEdge].to;
 }
+
+//count incidents
+U32 VolMesh::countIncidentCells(U32 idxFace) const {
+	if(!isFaceIndex(idxFace))
+		return 0;
+	return m_incident_cells_per_face[idxFace].size();
+}
+
+U32 VolMesh::countIncidentFaces(U32 idxEdge) const {
+	if(!isEdgeIndex(idxEdge))
+		return 0;
+	return m_incident_faces_per_edge[idxEdge].size();
+
+}
+
+U32 VolMesh::countIncidentEdges(U32 idxNode) const {
+	if(!isNodeIndex(idxNode))
+		return 0;
+	return m_incident_edges_per_node[idxNode].size();
+}
+
 
 U32 VolMesh::get_node_neighbors(U32 idxNode, vector<U32>& nbors) const {
 	assert(isNodeIndex(idxNode));
