@@ -104,6 +104,7 @@ void AvatarScalpel::draw() {
 					for(U32 i = 0; i < m_vSweptQuad.size(); i++)
 						glVertex3dv(m_vSweptQuad[i].cptr());
 				glEnd();
+				//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 				glDisable(GL_BLEND);
 				glEnable(GL_CULL_FACE);

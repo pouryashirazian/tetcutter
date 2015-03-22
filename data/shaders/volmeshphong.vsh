@@ -8,7 +8,7 @@ void main(void)
     gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
     gl_FrontColor = gl_Color;
    	N = gl_Normal;
-   	if(dot(camPos, N) < 0)
+   	if(dot(camPos, N) < 0.0)
    		N = N * -1.0;
    
     N = normalize(gl_NormalMatrix * N);

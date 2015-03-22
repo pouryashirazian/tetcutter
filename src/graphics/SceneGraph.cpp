@@ -11,8 +11,11 @@
 #include "SGFloor.h"
 #include "SGTransform.h"
 #include "base/Logger.h"
+#include "base/SettingsScript.h"
+#include "base/FileDirectory.h"
 
 using namespace PS;
+using namespace PS::FILESTRINGUTILS;
 
 namespace PS {
 namespace SG {
@@ -322,6 +325,38 @@ void SceneGraph::print(const char* switches) const {
 	}
 
 }
+
+bool SceneGraph::readConfig(const AnsiStr& strFP) {
+	if(!FileExists(strFP)) {
+		LogErrorArg1("File %s not found to read scene config.", strFP.cptr());
+		return false;
+	}
+
+	SettingsScript* script = new SettingsScript(strFP, SettingsScript::fmRead);
+	m_camera.setRoll(script->readFloat("camera", "roll"));
+	m_camera.setTilt(script->readFloat("camera", "tilt"));
+	m_camera.setZoom(script->readFloat("camera", "zoom"));
+	m_camera.setPan(script->readVec2f("camera", "pan"));
+
+	SAFE_DELETE(script);
+
+	return true;
+}
+
+bool SceneGraph::writeConfig(const AnsiStr& strFP) {
+
+	SettingsScript* script = new SettingsScript(strFP, SettingsScript::fmReadWrite);
+
+	script->writeFloat("camera", "roll", m_camera.getRoll());
+	script->writeFloat("camera", "tilt", m_camera.getTilt());
+	script->writeFloat("camera", "zoom", m_camera.getZoom());
+	script->writeVec2f("camera", "pan", m_camera.getPan());
+	SAFE_DELETE(script);
+
+	return true;
+}
+
+
 }
 }
 

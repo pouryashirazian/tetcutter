@@ -27,7 +27,7 @@ namespace PS {
 #define CUT_ERR_UNABLE_TO_CUT_EDGE -4
 #define CUT_ERR_USER_CANCELLED_CUT -5
 
-#define DEFAULT_MESH_SPLIT_DIST 0.3
+#define DEFAULT_MESH_SPLIT_DIST 0.4
 
 class CuttableMesh : public VolMesh {
 public:

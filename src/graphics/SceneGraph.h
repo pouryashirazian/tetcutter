@@ -110,6 +110,9 @@ public:
     void print(const char* switches = "-a") const;
 
     //Save and Load view settings
+	bool readConfig(const AnsiStr& strFP = "scene.ini");
+	bool writeConfig(const AnsiStr& strFP = "scene.ini");
+
 
 
     //Timing and Profiling services

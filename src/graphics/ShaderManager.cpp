@@ -103,7 +103,12 @@ namespace PS {
         ListFilesInDir(vFiles, chrShadersPath, "vsh", true);
         
         for(int i=0; i<(int)vFiles.size(); i++) {
+
             AnsiStr strVShaderFP = vFiles[i];
+
+            //shade file process
+        	LogInfoArg3("Compile shader %d of %d: %s", i+1, vFiles.size(), ExtractFileTitleOnly(strVShaderFP).cptr());
+
             AnsiStr strFShaderFP = ChangeFileExt(strVShaderFP, AnsiStr(".fsh"));
             AnsiStr strGShaderFP = ChangeFileExt(strVShaderFP, AnsiStr(".gsh"));
             AnsiStr strTitle = ExtractFileTitleOnly(strVShaderFP);

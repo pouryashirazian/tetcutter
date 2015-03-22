@@ -10,8 +10,13 @@
 
 #include <algorithm>
 #include <functional>
+#include <tbb/parallel_for.h>
+#include <tbb/blocked_range.h>
+#include <vector>
 #include "base/Vec.h"
 
+using namespace std;
+using namespace tbb;
 using namespace PS;
 using namespace PS::MATH;
 
@@ -125,18 +130,41 @@ namespace MESH {
 	//correct handles
 	class HandleCorrection {
 	public:
-		HandleCorrection(U32 handle) : m_handle(handle) {}
+		HandleCorrection(U32 key) : m_key(key) {}
 
 		void correctVecValue(std::vector<U32>& _vec) {
 	        std::for_each(_vec.begin(), _vec.end(), std::bind(&HandleCorrection::correctValue, this, std::placeholders::_1));
 	    }
 
 		void correctValue(U32& rhs) {
-	        if(rhs > m_handle)
+	        if(rhs > m_key)
 	        	rhs = rhs - 1;
 	    }
 	private:
-	    U32 m_handle;
+	    U32 m_key;
+	};
+
+	//handles index correction in parallel
+	class HandleCorrectionParallel {
+	public:
+		HandleCorrectionParallel(U32 key, vector< vector<U32> >& container) :
+			m_key(key), m_container(container) {}
+
+		void operator()(const blocked_range<U32>& range) const {
+
+			//printf("RANGE [%lu, %lu] \n",range.begin(), range.end());
+			for (U32 i = range.begin(); i != range.end(); ++i) {
+				for(U32 j = 0; j < m_container[i].size(); j++) {
+					U32 val = m_container[i][j];
+					if(val > m_key)
+						m_container[i][j] = val - 1;
+				}
+			}
+		}
+
+	private:
+		U32 m_key;
+		vector< vector<U32> >& m_container;
 	};
 
 

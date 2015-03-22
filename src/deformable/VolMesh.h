@@ -94,6 +94,7 @@ public:
 	//Centroid
 	vec3d  computeCellCentroid(U32 idxCell) const;
 
+
 	double computeAspectRatio(U32 idxCell) const;
 	double computeInscribedRadius(U32 idxCell) const;
 	double computeCircumscribedRadius(U32 idxCell) const ;
@@ -142,6 +143,7 @@ public:
 
 	U32 edge_from_node(U32 idxEdge) const;
 	U32 edge_to_node(U32 idxEdge) const;
+
 	U32 get_node_neighbors(U32 idxNode, vector<U32>& nbors) const;
 
 

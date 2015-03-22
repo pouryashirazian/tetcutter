@@ -4,6 +4,7 @@
  */
 #include <iostream>
 #include <functional>
+#include <tbb/task_scheduler_init.h>
 #include "base/FileDirectory.h"
 #include "base/Logger.h"
 #include "base/CmdLineParser.h"
@@ -21,6 +22,7 @@
 #include "deformable/VolMeshIO.h"
 #include "deformable/VolMeshStats.h"
 
+using namespace tbb;
 using namespace PS;
 using namespace PS::SG;
 using namespace PS::MESH;
@@ -40,6 +42,7 @@ U32 g_cutCase = 0;
 
 //funcs
 void resetMesh();
+void cutFinished();
 void runTestSubDivide(int current);
 void handleElementEvent(CELL element, U32 handle, VolMesh::TopologyEvent event);
 
@@ -180,6 +183,22 @@ void NormalKey(unsigned char key, int x, int y)
 
 	case('r'):{
 		TheGizmoManager::Instance().setType(gtRotate);
+		break;
+	}
+
+	case ('t'): {
+		if (g_lpAvatar == g_lpScalpel) {
+			g_lpAvatar = g_lpRing;
+			g_lpScalpel->setVisible(false);
+		} else {
+			g_lpAvatar = g_lpScalpel;
+			g_lpRing->setVisible(false);
+		}
+
+		g_lpAvatar->setVisible(true);
+		g_lpAvatar->setTissue(g_lpTissue);
+		g_lpAvatar->setOnCutFinishedEventHandler(cutFinished);
+		TheGizmoManager::Instance().setFocusedNode(g_lpAvatar);
 		break;
 	}
 
@@ -389,6 +408,7 @@ void SpecialKey(int key, int x, int y)
 
 void closeApp() {
 	TheGizmoManager::Instance().writeConfig();
+	TheSceneGraph::Instance().writeConfig();
 
 	SAFE_DELETE(g_lpScalpel);
 	SAFE_DELETE(g_lpRing);
@@ -524,7 +544,9 @@ void cutFinished() {
 }
 
 int main(int argc, char* argv[]) {
- 	cout << "startup" << endl;
+	int ctThreads = tbb::task_scheduler_init::default_num_threads();
+	tbb::task_scheduler_init init(ctThreads);
+ 	cout << "started tbb with " << ctThreads << " threads." << endl;
 
 	//parser
  	g_parser.add_toggle("disjoint", "converts splitted part to disjoint meshes");
@@ -626,29 +648,34 @@ int main(int argc, char* argv[]) {
 
 	//Create Scalpel
 	g_lpScalpel = new AvatarScalpel();
+	g_lpScalpel->setVisible(false);
+
 	g_lpRing = new AvatarRing(TheTexManager::Instance().get("spin"));
-	//g_lpRing = new AvatarRing(NULL);
-	g_lpScalpel->setOnCutFinishedEventHandler(cutFinished);
-	g_lpRing->setOnCutFinishedEventHandler(cutFinished);
+	g_lpRing->setVisible(false);
+	TheSceneGraph::Instance().add(g_lpScalpel);
+	TheSceneGraph::Instance().add(g_lpRing);
 
 	if(g_parser.value<int>("ringscalpel")) {
-		//g_lpRing->setWireFrameMode(true);
 		g_lpAvatar = g_lpRing;
-		TheSceneGraph::Instance().add(g_lpRing);
-		TheGizmoManager::Instance().setFocusedNode(g_lpRing);
+		g_lpRing->setVisible(true);
 	}
 	else {
 		g_lpAvatar = g_lpScalpel;
-		TheSceneGraph::Instance().add(g_lpScalpel);
-		TheGizmoManager::Instance().setFocusedNode(g_lpScalpel);
+		g_lpScalpel->setVisible(true);
 	}
+
+	g_lpAvatar->setTissue(g_lpTissue);
+	g_lpAvatar->setOnCutFinishedEventHandler(cutFinished);
+	TheGizmoManager::Instance().setFocusedNode(g_lpAvatar);
 
 
 	//load gizmo manager file
 	AnsiStr strGizmoFP = g_parser.value<AnsiStr>("gizmo");
 	TheGizmoManager::Instance().readConfig(strGizmoFP);
+	TheSceneGraph::Instance().readConfig();
 
 	//add csf
+	/*
 	auto_ptr<VolMesh> csf(new PS::MESH::VolMesh());
 	csf->setFlagFilterOutFlatCells(false);
 	csf->setVerbose(g_parser.value<int>("verbose"));
@@ -657,14 +684,14 @@ int main(int argc, char* argv[]) {
 	bool res = PS::MESH::VolMeshIO::readVega(csf.get(), strCSF);
 	if(res) {
 		CuttableMesh* cutcsf = new CuttableMesh(*csf);
-		cutcsf->setFlagSplitMeshAfterCut(true);
-		cutcsf->setFlagDrawNodes(true);
+		//cutcsf->setFlagDrawNodes(true);
 		cutcsf->setFlagDrawWireFrame(false);
 		cutcsf->setColor(Color::blue());
 		cutcsf->syncRender();
 
 		TheSceneGraph::Instance().add(cutcsf);
 	}
+	*/
 
 
 	//reset cuttable mesh

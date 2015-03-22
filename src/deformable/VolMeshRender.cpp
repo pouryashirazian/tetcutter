@@ -195,8 +195,11 @@ void VolMeshRender::draw() {
 	//draw surface
     m_spTransform->bind();
     VolMeshEffect* peff = dynamic_cast<VolMeshEffect*>(m_spEffect.get());
-    peff->bind();
-    peff->setCamPos(TheSceneGraph::Instance().camera().getPos());
+
+    if(peff) {
+    	peff->bind();
+    	peff->setCamPos(TheSceneGraph::Instance().camera().getPos());
+    }
 
     //draw surface
     SGMesh::drawNoEffect();
@@ -204,7 +207,8 @@ void VolMeshRender::draw() {
 	//draw wireframe
 	m_sgWireFrame.drawNoEffect();
 
-	peff->unbind();
+	if(peff)
+		peff->unbind();
 
 
 	//draw points

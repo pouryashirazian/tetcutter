@@ -14,7 +14,7 @@
 using namespace PS;
 
 #define RING_RADIUS 0.2
-#define RING_SECTORS 20
+#define RING_SECTORS 24
 
 
 namespace PS {

@@ -624,6 +624,8 @@ void VolMesh::remove_cell_core(U32 idxCell) {
     std::for_each(m_incident_cells_per_face.begin(),
                   m_incident_cells_per_face.end(),
                   std::bind(&HandleCorrection::correctVecValue, &corrector, std::placeholders::_1));
+//	HandleCorrectionParallel corrector(idxCell, m_incident_cells_per_face);
+//	tbb::parallel_for( blocked_range<U32>(0, countFaces()), corrector);
 
 
 	//remove the cell from list
@@ -632,6 +634,8 @@ void VolMesh::remove_cell_core(U32 idxCell) {
 
 void VolMesh::remove_face_core(U32 idxFace) {
 	assert(isFaceIndex(idxFace));
+
+	ProfileAutoArg("gc:remove face core");
 
 	//1. remove from incident faces per edge
 	//2. Decrease all face handles > idxFace in incident cells
@@ -653,19 +657,25 @@ void VolMesh::remove_face_core(U32 idxFace) {
 	//2. decrease all face handles > idxFace in incident cells
     // Decrease all half-face handles > _h in all cells
     // and delete all half-face handles == _h
-    std::set<U32> setCellsToUpdate;
+    vector<U32> vCellsToUpdate;
     for(U32 i = idxFace; i < countFaces(); i++ ) {
-
-    	for(std::vector<U32>::const_iterator c_it = m_incident_cells_per_face[i].begin();
-    		c_it != m_incident_cells_per_face[i].end(); c_it++)
-
-    		if(isCellIndex(*c_it))
-    			setCellsToUpdate.insert(*c_it);
+    	vCellsToUpdate.insert(vCellsToUpdate.end(), m_incident_cells_per_face[i].begin(), m_incident_cells_per_face[i].end());
     }
 
+    //remove dups and sort
+    set<U32> setTemp;
+    for(U32 i=0; i < vCellsToUpdate.size(); i++)
+    	setTemp.insert(vCellsToUpdate[i]);
+    vCellsToUpdate.assign(setTemp.begin(), setTemp.end());
+
+
     //from set of update_cells unregister cell faces
-    for(std::set<U32>::const_iterator c_it = setCellsToUpdate.begin(),
-            c_end = setCellsToUpdate.end(); c_it != c_end; ++c_it) {
+    for(vector<U32>::const_iterator c_it = vCellsToUpdate.begin(),
+            c_end = vCellsToUpdate.end(); c_it != c_end; ++c_it) {
+
+    	//check if valid
+    	if(!isCellIndex(*c_it))
+    		continue;
 
     	const CELL& cell = const_cellAt(*c_it);
     	for(int i=0; i<COUNT_CELL_FACES; i++) {
@@ -681,8 +691,12 @@ void VolMesh::remove_face_core(U32 idxFace) {
 
 
     //update faces
-    for(std::set<U32>::const_iterator c_it = setCellsToUpdate.begin(),
-            c_end = setCellsToUpdate.end(); c_it != c_end; ++c_it) {
+    for(vector<U32>::const_iterator c_it = vCellsToUpdate.begin(),
+            c_end = vCellsToUpdate.end(); c_it != c_end; ++c_it) {
+
+    	//check if valid
+    	if(!isCellIndex(*c_it))
+    		continue;
 
     	CELL& cell = cellAt(*c_it);
 
@@ -704,6 +718,9 @@ void VolMesh::remove_face_core(U32 idxFace) {
     std::for_each(m_incident_faces_per_edge.begin(),
     			  m_incident_faces_per_edge.end(),
                   std::bind(&HandleCorrection::correctVecValue, &cor, std::placeholders::_1));
+//	HandleCorrectionParallel corrector(idxFace, m_incident_faces_per_edge);
+//	tbb::parallel_for( blocked_range<U32>(0, countEdges()), corrector);
+
 
     //4.delete face
     m_vFaces.erase(m_vFaces.begin() + idxFace);
@@ -990,17 +1007,27 @@ void VolMesh::remove_cell(U32 idxCell) {
 }
 
 void VolMesh::remove_face(U32 idxFace) {
+	if(!isFaceIndex(idxFace))
+		return;
 
-	vector<U32> vfaces;
-	vfaces.push_back(idxFace);
+//	vector<U32> vfaces;
+//	vfaces.push_back(idxFace);
 
 	//get incident cells to the input face
-	set<U32> outsetCells;
-	get_incident_cells(vfaces, outsetCells);
+//	set<U32> outsetCells;
+	//get_incident_cells(vfaces, outsetCells);
 
 	//remove all incident cells
-	for(set<U32>::const_iterator it = outsetCells.begin(); it != outsetCells.end(); it++)
-		remove_cell_core(*it);
+//	for(set<U32>::const_iterator it = outsetCells.begin(); it != outsetCells.end(); it++)
+//		remove_cell_core(*it);
+
+	//remove all incident cells
+	vector<U32> vCellsToDelete;
+	vCellsToDelete.assign(m_incident_cells_per_face[idxFace].begin(), m_incident_cells_per_face[idxFace].end());
+	for(U32 i=0; i < vCellsToDelete.size(); i++) {
+		if(isCellIndex(vCellsToDelete[i]))
+			remove_cell_core(vCellsToDelete[i]);
+	}
 
 	//remove the face itself
 	remove_face_core(idxFace);
@@ -1589,14 +1616,14 @@ void VolMesh::remove_faces(const ContainerT& faces) {
 	std::sort(vToBeRemoved.begin(), vToBeRemoved.end(), std::greater<U32>());
 
 	//print order
-	/*
-	printf("faces remove order: ");
-	for (std::vector<U32>::const_iterator it = vToBeRemoved.begin(); it != vToBeRemoved.end(); it++)
-		printf("%u, ", *it);
-	printf("\n");
-	*/
+//	printf("faces remove order [count = %lu]: ", vToBeRemoved.size());
+//	for (std::vector<U32>::const_iterator it = vToBeRemoved.begin(); it != vToBeRemoved.end(); it++)
+//		printf("%u, ", *it);
+//	printf("\n");
 
 	for (std::vector<U32>::const_iterator it = vToBeRemoved.begin(); it != vToBeRemoved.end(); it++) {
+		AnsiStr strMsg = printToAStr("Remove face %u", *it);
+		ProfileAutoArg(strMsg.cptr());
 		remove_face(*it);
 	}
 
