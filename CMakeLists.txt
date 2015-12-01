@@ -61,10 +61,13 @@ include_directories(src/ src/3rdparty src/3rdparty/loki/include src/3rdparty/bul
 #########################################################
 ## add source files
 #########################################################
+
 file(GLOB SRC
 	src/3rdparty/lodepng/*.cpp
+	src/3rdparty/bullet3/BulletCollision/CollisionDispatch/*.cpp
 	src/base/*.cpp
 	src/graphics/*.cpp
+	src/deformable/*.cpp
 	src/main.cpp
 	)
 	
