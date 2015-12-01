@@ -1,0 +1,2 @@
+main.o: main.cpp ../../include/loki/ScopeGuard.h \
+ ../../include/loki/RefToValue.h

@@ -1,0 +1,3 @@
+main.lo: main.cpp Thread.h ../../include/loki/Threads.h \
+ ../../include/loki/LockingPtr.h ../../include/loki/ConstPolicy.h \
+ ../../include/loki/SafeFormat.h ../../include/loki/LokiExport.h

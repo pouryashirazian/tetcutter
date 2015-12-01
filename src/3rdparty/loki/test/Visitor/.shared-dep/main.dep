@@ -1,0 +1,5 @@
+main.lo: main.cpp ../../include/loki/Visitor.h \
+ ../../include/loki/Typelist.h ../../include/loki/NullType.h \
+ ../../include/loki/TypeManip.h ../../include/loki/TypelistMacros.h \
+ ../../include/loki/HierarchyGenerators.h ../../include/loki/TypeTraits.h \
+ ../../include/loki/Sequence.h ../../include/loki/EmptyType.h

@@ -1,0 +1,23 @@
+Test.o: Test.cpp UnitTest.h SmallObjectTest.h \
+ ../../include/loki/SmallObj.h ../../include/loki/LokiExport.h \
+ ../../include/loki/Threads.h ../../include/loki/Singleton.h \
+ ../../src/SmallObj.cpp SingletonTest.h ../../include/loki/Singleton.h \
+ ../../src/Singleton.cpp ThreadsTest.h ../../include/loki/Threads.h \
+ TypelistTest.h ../../include/loki/Typelist.h \
+ ../../include/loki/NullType.h ../../include/loki/TypeManip.h \
+ ../../include/loki/TypelistMacros.h ../../include/loki/Sequence.h \
+ ../../include/loki/Typelist.h SequenceTest.h TypeManipTest.h \
+ ../../include/loki/TypeManip.h TypeTraitsTest.h \
+ ../../include/loki/TypeTraits.h ../../include/loki/Sequence.h \
+ TypeTraitsTest2.h SmartPtrTest.h ../../include/loki/SmartPtr.h \
+ ../../include/loki/SmallObj.h ../../include/loki/static_check.h \
+ ../../include/loki/RefToValue.h ../../include/loki/ConstPolicy.h \
+ ../../src/SmartPtr.cpp FactoryTest.h ../../include/loki/Factory.h \
+ ../../include/loki/LokiTypeInfo.h ../../include/loki/Functor.h \
+ ../../include/loki/EmptyType.h ../../include/loki/TypeTraits.h \
+ ../../include/loki/AssocVector.h FactoryParmTest.h AbstractFactoryTest.h \
+ ../../include/loki/AbstractFactory.h \
+ ../../include/loki/HierarchyGenerators.h FunctorTest.h \
+ ../../include/loki/Functor.h DataGeneratorsTest.h \
+ ../../include/loki/DataGenerators.h AssocVectorTest.h \
+ ../../include/loki/AssocVector.h
