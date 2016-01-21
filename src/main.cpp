@@ -4,6 +4,7 @@
  */
 #include <iostream>
 #include <functional>
+
 #include <tbb/task_scheduler_init.h>
 #include "base/FileDirectory.h"
 #include "base/Logger.h"
@@ -21,6 +22,8 @@
 #include "deformable/VolMeshSamples.h"
 #include "deformable/VolMeshIO.h"
 #include "deformable/VolMeshStats.h"
+
+#include <GLFW/glfw3.h>
 
 using namespace tbb;
 using namespace PS;
@@ -41,17 +44,194 @@ U32 g_current = 3;
 U32 g_cutCase = 0;
 
 //funcs
+void closeApp();
 void resetMesh();
 void cutFinished();
 void runTestSubDivide(int current);
 void handleElementEvent(CELL element, U32 handle, VolMesh::TopologyEvent event);
 
+
+static void error_callback(int error, const char* description)
+{
+    fputs(description, stderr);
+}
+
+void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+{
+    if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
+        LogInfo("Right button clicked");
+
+
+
+/*
+    TheSceneGraph::Instance().mousePress(button, state, x, y);
+    TheGizmoManager::Instance().mousePress(button, state, x, y);
+
+    //left key
+    if(button == GLUT_LEFT_BUTTON && state == 0) {
+        vec3f expand(0.2);
+        Ray ray = TheSceneGraph::Instance().screenToWorldRay(x, y);
+        int idxVertex = g_lpTissue->selectNode(ray);
+
+        //select vertex
+        if (idxVertex >= 0) {
+            LogInfoArg1("Selected Vertex Index = %d ", idxVertex);
+            g_lpTissue->setNodeToShow(idxVertex);
+        }
+    }
+
+*/
+
+    glutPostRedisplay();
+
+}
+
+static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
+{
+    //double xpos, ypos;
+    //glfwGetCursorPos(window, &xpos, &ypos);
+
+    //printf("xpos : %f, ypos: %f\n", xpos, ypos);
+    TheSceneGraph::Instance().mouseMove(xpos, ypos);
+    TheGizmoManager::Instance().mouseMove(xpos, ypos);
+}
+
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+    TheSceneGraph::Instance().mouseWheel(1, yoffset > 0 ? 1 : -1, xoffset, yoffset);
+}
+
+static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+        closeApp();
+        glfwSetWindowShouldClose(window, GL_TRUE);
+    }
+
+    if(action != GLFW_PRESS)
+        return;
+
+    switch(key)
+    {
+        case(GLFW_KEY_F1):
+        {
+            if(g_current > 0)
+                g_current --;
+            runTestSubDivide(g_current);
+            break;
+        }
+        case(GLFW_KEY_F2):
+        {
+            if(g_current < 3)
+                g_current ++;
+            runTestSubDivide(g_current);
+            break;
+        }
+
+        case(GLFW_KEY_F3): {
+            g_cutCase = (g_cutCase + 1) % 2;
+            g_current = 0;
+            char cutcase[6] = {'A', 'B', 'C', 'D', 'E'};
+
+            LogInfoArg2("cut case = %c, current mesh node/face = %c", cutcase[g_cutCase], g_current);
+            runTestSubDivide(g_current);
+            break;
+        }
+
+
+        case(GLFW_KEY_F4):
+        {
+            //Set UIAxis
+            int axis = (int)TheGizmoManager::Instance().axis();
+            axis = (axis + 1) % axisCount;
+            TheGizmoManager::Instance().setAxis((GizmoAxis)axis);
+            LogInfoArg1("Change haptic axis to %d", TheGizmoManager::Instance().axis());
+            break;
+        }
+
+        case(GLFW_KEY_F5):
+        {
+            GizmoAxis axis = TheGizmoManager::Instance().axis();
+            vec3f inc(0,0,0);
+            if(axis < axisFree)
+                inc.setElement(axis, -0.1);
+            else
+                inc = vec3f(-0.1, -0.1, -0.1);
+            inc = inc * 0.5;
+            TheGizmoManager::Instance().transform()->scale(inc);
+            break;
+        }
+
+
+        case(GLFW_KEY_F6):
+        {
+            GizmoAxis axis = TheGizmoManager::Instance().axis();
+            vec3f inc(0,0,0);
+            if(axis < axisFree)
+                inc.setElement(axis, 0.1);
+            else
+                inc = vec3f(0.1, 0.1, 0.1);
+            inc = inc * 0.5;
+            TheGizmoManager::Instance().transform()->scale(inc);
+            break;
+        }
+
+        case(GLFW_KEY_F7):
+        {
+            g_lpTissue->setFlagSplitMeshAfterCut(!g_lpTissue->getFlagSplitMeshAfterCut());
+            LogInfoArg1("Tissue splitting is set to: %d", g_lpTissue->getFlagSplitMeshAfterCut());
+            break;
+        }
+
+        case(GLFW_KEY_F8): {
+            bool flag = !TheSceneGraph::Instance().get("floor")->isVisible();
+            TheSceneGraph::Instance().get("floor")->setVisible(flag);
+            LogInfoArg1("Set floor to %s", flag ? "show" : "hide");
+            break;
+        }
+
+        case(GLFW_KEY_F9): {
+            bool flag = !TheGizmoManager::Instance().isVisible();
+            TheGizmoManager::Instance().setVisible(flag);
+            LogInfoArg1("Set gizmos to %s", flag ? "show" : "hide");
+
+            break;
+        }
+
+        case(GLFW_KEY_F10): {
+            resetMesh();
+            LogInfo("reset mesh");
+
+            break;
+        }
+
+        case(GLFW_KEY_F11): {
+            g_lpRing->grip();
+            LogInfo("Gripped apply on scalpel!");
+            break;
+        }
+
+        case(GLFW_KEY_F12): {
+            LogInfo("Apply transform to mesh and then reset transform");
+            g_lpTissue->applyTransformToMeshThenResetTransform();
+
+            if(FileExists(g_strFilePath)) {
+                bool res = VolMeshIO::writeVega(g_lpTissue, g_strFilePath);
+                if(res) {
+                    LogInfoArg1("Modified mesh is stored to: %s", g_strFilePath.cptr());
+                }
+            }
+            break;
+        }
+    }
+
+    //Modifier
+    TheSceneGraph::Instance().setModifier(glutGetModifiers());
+
+}
+
 void draw() {
-	TheSceneGraph::Instance().draw();
+    TheSceneGraph::Instance().draw();
 	TheGizmoManager::Instance().draw();
-
-	glutSwapBuffers();
-
 }
 
 void timestep() {
@@ -82,9 +262,6 @@ void MousePress(int button, int state, int x, int y)
 }
 
 
-void MousePassiveMove(int x, int y)
-{
-}
 
 void MouseMove(int x, int y)
 {
@@ -94,15 +271,6 @@ void MouseMove(int x, int y)
 	glutPostRedisplay();
 }
 
-void MouseWheel(int button, int dir, int x, int y)
-{
-	TheSceneGraph::Instance().mouseWheel(button, dir, x, y);
-	glutPostRedisplay();
-}
-
-void SaveAsObj() {
-
-}
 
 void NormalKey(unsigned char key, int x, int y)
 {
@@ -270,7 +438,7 @@ void NormalKey(unsigned char key, int x, int y)
 	{
 		//Saving Settings and Exit
 		LogInfo("Saving settings and exit.");
-		glutLeaveMainLoop();
+        //glutLeaveMainLoop();
 	}
 	break;
 
@@ -279,129 +447,6 @@ void NormalKey(unsigned char key, int x, int y)
 
 
 	//Update Screen
-	glutPostRedisplay();
-}
-
-
-void SpecialKey(int key, int x, int y)
-{
-	switch(key)
-	{
-		case(GLUT_KEY_F1):
-		{
-			if(g_current > 0)
-				g_current --;
-			runTestSubDivide(g_current);
-			break;
-		}
-		case(GLUT_KEY_F2):
-		{
-			if(g_current < 3)
-				g_current ++;
-			runTestSubDivide(g_current);
-			break;
-		}
-
-		case(GLUT_KEY_F3): {
-			g_cutCase = (g_cutCase + 1) % 2;
-			g_current = 0;
-			char cutcase[6] = {'A', 'B', 'C', 'D', 'E'};
-
-			LogInfoArg2("cut case = %c, current mesh node/face = %c", cutcase[g_cutCase], g_current);
-			runTestSubDivide(g_current);
-			break;
-		}
-
-
-		case(GLUT_KEY_F4):
-		{
-			//Set UIAxis
-			int axis = (int)TheGizmoManager::Instance().axis();
-			axis = (axis + 1) % axisCount;
-			TheGizmoManager::Instance().setAxis((GizmoAxis)axis);
-			LogInfoArg1("Change haptic axis to %d", TheGizmoManager::Instance().axis());
-			break;
-		}
-
-		case(GLUT_KEY_F5):
-		{
-			GizmoAxis axis = TheGizmoManager::Instance().axis();
-			vec3f inc(0,0,0);
-			if(axis < axisFree)
-				inc.setElement(axis, -0.1);
-			else
-				inc = vec3f(-0.1, -0.1, -0.1);
-			inc = inc * 0.5;
-			TheGizmoManager::Instance().transform()->scale(inc);
-			break;
-		}
-
-
-		case(GLUT_KEY_F6):
-		{
-			GizmoAxis axis = TheGizmoManager::Instance().axis();
-			vec3f inc(0,0,0);
-			if(axis < axisFree)
-				inc.setElement(axis, 0.1);
-			else
-				inc = vec3f(0.1, 0.1, 0.1);
-			inc = inc * 0.5;
-			TheGizmoManager::Instance().transform()->scale(inc);
-			break;
-		}
-
-		case(GLUT_KEY_F7):
-		{
-			g_lpTissue->setFlagSplitMeshAfterCut(!g_lpTissue->getFlagSplitMeshAfterCut());
-			LogInfoArg1("Tissue splitting is set to: %d", g_lpTissue->getFlagSplitMeshAfterCut());
-			break;
-		}
-
-		case(GLUT_KEY_F8): {
-			bool flag = !TheSceneGraph::Instance().get("floor")->isVisible();
-			TheSceneGraph::Instance().get("floor")->setVisible(flag);
-			LogInfoArg1("Set floor to %s", flag ? "show" : "hide");
-			break;
-		}
-
-		case(GLUT_KEY_F9): {
-			bool flag = !TheGizmoManager::Instance().isVisible();
-			TheGizmoManager::Instance().setVisible(flag);
-			LogInfoArg1("Set gizmos to %s", flag ? "show" : "hide");
-
-			break;
-		}
-
-		case(GLUT_KEY_F10): {
-			resetMesh();
-			LogInfo("reset mesh");
-
-			break;
-		}
-
-		case(GLUT_KEY_F11): {
-			g_lpRing->grip();
-			LogInfo("Gripped apply on scalpel!");
-			break;
-		}
-
-		case(GLUT_KEY_F12): {
-			LogInfo("Apply transform to mesh and then reset transform");
-			g_lpTissue->applyTransformToMeshThenResetTransform();
-
-			if(FileExists(g_strFilePath)) {
-				bool res = VolMeshIO::writeVega(g_lpTissue, g_strFilePath);
-				if(res) {
-					LogInfoArg1("Modified mesh is stored to: %s", g_strFilePath.cptr());
-				}
-			}
-			break;
-		}
-	}
-
-	//Modifier
-	TheSceneGraph::Instance().setModifier(glutGetModifiers());
-
 	glutPostRedisplay();
 }
 
@@ -566,13 +611,32 @@ int main(int argc, char* argv[]) {
 	else
 		g_strFilePath = "";
 
-	//Initialize appidxEdges
-	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_STENCIL);
-	glutInitWindowSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-	glutCreateWindow("OpenGL Framework");
-	glutDisplayFunc(draw);
-	glutReshapeFunc(def_resize);
+
+    //GLFW LIB
+    GLFWwindow* window;
+    glfwSetErrorCallback(error_callback);
+    if (!glfwInit())
+        exit(EXIT_FAILURE);
+
+    window = glfwCreateWindow(DEFAULT_WIDTH, DEFAULT_HEIGHT, "tetcutter - Pourya Shirazian", NULL, NULL);
+    if (!window)
+    {
+        glfwTerminate();
+        exit(EXIT_FAILURE);
+    }
+
+    glfwMakeContextCurrent(window);
+    glfwSwapInterval(1);
+    glfwSetKeyCallback(window, key_callback);
+    glfwSetCursorPosCallback(window, cursor_position_callback);
+    glfwSetMouseButtonCallback(window, mouse_button_callback);
+    glfwSetScrollCallback(window, scroll_callback);
+
+
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+    //old glut stuff
+       /*
 	glutMouseFunc(MousePress);
 	glutPassiveMotionFunc(MousePassiveMove);
 	glutMotionFunc(MouseMove);
@@ -581,6 +645,7 @@ int main(int argc, char* argv[]) {
 	glutSpecialFunc(SpecialKey);
 	glutCloseFunc(closeApp);
 	glutIdleFunc(timestep);
+    */
 
 	//init gl
 	def_initgl();
@@ -644,7 +709,7 @@ int main(int argc, char* argv[]) {
 
 
 	//TheSceneGraph::Instance().addFloor(32, 32, 0.5f);
-	TheSceneGraph::Instance().addSceneBox(AABB(vec3f(-10, -10, -16), vec3f(10, 10, 16)));
+    //TheSceneGraph::Instance().addSceneBox(AABB(vec3f(-10, -10, -16), vec3f(10, 10, 16)));
 
 	//Create Scalpel
 	g_lpScalpel = new AvatarScalpel();
@@ -705,8 +770,23 @@ int main(int argc, char* argv[]) {
 	TheSceneGraph::Instance().headers()->addHeaderLine("cell", "info");
 	TheSceneGraph::Instance().print();
 
+    //mainloop
+    while (!glfwWindowShouldClose(window))
+    {
+        //setup projection matrix
+        int width = DEFAULT_WIDTH;
+        int height = DEFAULT_HEIGHT;
+        glfwGetFramebufferSize(window, &width, &height);
+        def_resize(width, height);
 
-	glutMainLoop();
+        draw();
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
+    glfwDestroyWindow(window);
+    glfwTerminate();
+    exit(EXIT_SUCCESS);
+
 
 	return 0;
 }

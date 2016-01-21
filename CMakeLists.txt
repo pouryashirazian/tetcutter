@@ -1,9 +1,13 @@
 #cmake file to compile tetcutter project
 cmake_minimum_required(VERSION 2.8)
 
+#debug build
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
+
 #project name
 project(tetcutter)
 
+add_subdirectory(src/3rdparty/glfw-3.1.2/)
 ##############################################################################
 # Custom find modules
 ##############################################################################
@@ -56,29 +60,34 @@ endif(NOT TBB_FOUND)
 #########################################################
 ## other include files
 #########################################################
-include_directories(src/ src/3rdparty src/3rdparty/loki/include src/3rdparty/bullet3)
+include_directories(src/
+                    src/3rdparty
+                    src/3rdparty/loki/include
+                    src/3rdparty/bullet3
+                    src/3rdparty/glfw-3.1.2/include)
 
 #########################################################
 ## add source files
 #########################################################
 
 file(GLOB SRC
-	src/3rdparty/lodepng/*.cpp
-	src/3rdparty/bullet3/BulletCollision/CollisionDispatch/*.cpp
+        src/3rdparty/lodepng/*.cpp
+##	src/3rdparty/bullet3/BulletCollision/CollisionDispatch/*.cpp
 	src/base/*.cpp
 	src/graphics/*.cpp
 	src/deformable/*.cpp
 	src/main.cpp
 	)
-	
-	
+
+
 ##c++11 required
 ADD_DEFINITIONS(
     -std=c++11
+    -march=core2 -msse3    
 )
 #########################################################
 #Linking
 #########################################################
 add_executable(tetcutter ${SRC})
 
-target_link_libraries(tetcutter ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} ${GLEW_LIBRARY} ${TBB_LIBRARY})
+target_link_libraries(tetcutter glfw ${GLFW_LIBRARIES} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} ${GLEW_LIBRARY} ${TBB_LIBRARY})

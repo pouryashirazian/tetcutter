@@ -23,10 +23,13 @@
 #include "ArcBallCamera.h"
 #include "SGNode.h"
 #include "SGHeaders.h"
-#include "graphics/SGBulletRigidMesh.h"
-#include "graphics/SGBulletRigidDynamics.h"
-#include "graphics/SGBulletSoftRigidDynamics.h"
 
+
+#ifdef USE_BULLET
+    #include "graphics/SGBulletRigidMesh.h"
+    #include "graphics/SGBulletRigidDynamics.h"
+    #include "graphics/SGBulletSoftRigidDynamics.h"
+#endif
 
 using namespace Loki;
 using namespace std;
@@ -60,10 +63,7 @@ public:
     void timestep();
 
     //Nodes
-    U32 add(SGNode* aNode);
-    U32 addRigidBody(SGBulletRigidMesh* aRigidBody);
-    U32 addSoftBody(SGBulletSoftMesh* aSoftBody);
-
+    U32 add(SGNode* aNode);       
     U32 addSceneBox(const AABB& box);
     U32 addFloor(int rows, int cols, float step = 1.0f);
     bool remove(U32 index);
@@ -75,7 +75,13 @@ public:
     SGNode* get(const char* name) const;
     SGNode* last() const;
 
+    //Bullet
+#ifdef USE_BULLET
+    U32 addRigidBody(SGBulletRigidMesh* aRigidBody);
+    U32 addSoftBody(SGBulletSoftMesh* aSoftBody);
     SGBulletSoftRigidDynamics* world() { return m_lpWorld;}
+#endif
+
 
     //Matrix Stacks
 	CopyStack<mat44f>& stkProjection() {return m_stkProjection;}
@@ -126,9 +132,13 @@ protected:
     void cleanup();
 
 private:
+#ifdef USE_BULLET
+    SGBulletSoftRigidDynamics* m_lpWorld;
+#endif
+
     int m_keyModifier;
 
-    SGBulletSoftRigidDynamics* m_lpWorld;
+
 	CopyStack<mat44f> m_stkProjection;
 	CopyStack<mat44f> m_stkModelView;
 	std::vector<SGNode*> m_vSceneNodes;

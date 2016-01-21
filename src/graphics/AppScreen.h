@@ -11,8 +11,8 @@
 #include <string>
 
 using namespace std;
-#define DEFAULT_WIDTH 800
-#define DEFAULT_HEIGHT 600
+#define DEFAULT_WIDTH 1024
+#define DEFAULT_HEIGHT 800
 #define DEFAULT_APP_TITLE "HIFEM ENGINE"
 #define FOVY 45.0
 #define ZNEAR 0.01

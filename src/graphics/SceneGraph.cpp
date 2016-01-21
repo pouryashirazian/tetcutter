@@ -26,8 +26,12 @@ SceneGraph::SceneGraph() {
 
 	//World
 	//m_lpWorld = new SGBulletRigidDynamics();
+#ifdef USE_BULLET
 	m_lpWorld = new SGBulletSoftRigidDynamics();
-	m_vSceneNodes.push_back(m_lpWorld);
+    m_vSceneNodes.push_back(m_lpWorld);
+#endif
+
+
 
 	//add header to opaque list
 	m_headers = new SGHeaders();
@@ -54,7 +58,10 @@ void SceneGraph::cleanup() {
 //	for (U32 i = 0; i < m_vSceneNodes.size(); i++)
 	//	SAFE_DELETE(m_vSceneNodes[i]);
 	m_vSceneNodes.resize(0);
+
+#ifdef USE_BULLET
 	SAFE_DELETE(m_lpWorld);
+#endif
 }
 
 U32 SceneGraph::add(SGNode *aNode) {
@@ -65,6 +72,7 @@ U32 SceneGraph::add(SGNode *aNode) {
 	return (m_vSceneNodes.size() - 1);
 }
 
+#ifdef USE_BULLET
 U32 SceneGraph::addRigidBody(SGBulletRigidMesh* aRigidBody) {
 	m_lpWorld->addRigidBody(aRigidBody);
 	return add(aRigidBody);
@@ -74,6 +82,7 @@ U32 SceneGraph::addSoftBody(SGBulletSoftMesh* aSoftBody) {
 	m_lpWorld->addSoftBody(aSoftBody);
 	return add(aSoftBody);
 }
+#endif
 
 bool SceneGraph::remove(U32 index) {
 	if(index >= m_vSceneNodes.size())
