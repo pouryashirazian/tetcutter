@@ -129,8 +129,16 @@ void AvatarScalpel::clearCutContext() {
 
 
 void AvatarScalpel::onTranslate(const vec3f& delta, const vec3f& pos) {
-	if(m_lpTissue == NULL || !m_isToolActive)
+    if(m_lpTissue == NULL) {
+        LogError("Tissue is not set for scalpel");
 		return;
+    }
+
+    if(!m_isToolActive) {
+        LogError("Scalpel tool is not active");
+        return;
+    }
+
 
 	//Box test
 	m_aabbCurrent = this->aabb();

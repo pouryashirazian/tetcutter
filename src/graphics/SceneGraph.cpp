@@ -214,26 +214,12 @@ void SceneGraph::mouseMove(int x, int y) {
 	updateCameraHeader();
 }
 
-void SceneGraph::mouseWheel(int button, int dir, int x, int y) {
+void SceneGraph::mouseWheel(MouseButton button, int dir, int x, int y) {    
 	m_camera.mouseWheel(button, dir, x, y);
 	updateCameraHeader();
 }
 
-void SceneGraph::mousePress(int button, int state, int x, int y) {
-	// Wheel reports as button 3(scroll up) and button 4(scroll down)
-	if ((button == 3) || (button == 4)) {
-		// Each wheel event reports like a button click, GLUT_DOWN then GLUT_UP
-		if (state == GLUT_UP)
-			return; // Disregard redundant GLUT_UP events
-
-		if (button == 3)
-			m_camera.setZoom(m_camera.getZoom() - 0.5);
-		else
-			m_camera.setZoom(m_camera.getZoom() + 0.5);
-
-		return;
-	}
-
+void SceneGraph::mousePress(MouseButton button, MouseButtonState state, int x, int y) {
 	m_camera.mousePress(button, state, x, y);
 	updateCameraHeader();
 }
@@ -299,7 +285,7 @@ vec4i SceneGraph::viewport() const {
 }
 
 void SceneGraph::update() {
-	glutPostRedisplay();
+//	glutPostRedisplay();
 }
 
 AnsiStr SceneGraph::gpuInfo() {

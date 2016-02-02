@@ -59,7 +59,7 @@ void DrawString(const char *str, int x, int y, float color[4], void *font)
     // loop all characters in the string
     while(*str)
     {
-        glutBitmapCharacter(font, *str);
+        //glutBitmapCharacter(font, *str);
         ++str;
     }
 
@@ -84,7 +84,7 @@ void DrawString3D(const char *str, float pos[3], float color[4], void *font)
     // loop all characters in the string
     while(*str)
     {
-        glutBitmapCharacter(font, *str);
+        //glutBitmapCharacter(font, *str);
         ++str;
     }
 

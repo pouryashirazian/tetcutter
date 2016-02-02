@@ -25,5 +25,5 @@ endmacro()
 set_and_check(GLFW3_INCLUDE_DIR "${PACKAGE_PREFIX_DIR}/include")
 set_and_check(GLFW3_LIBRARY_DIR "${PACKAGE_PREFIX_DIR}/lib")
 
-find_library(GLFW3_LIBRARY "glfw3" HINTS ${GLFW3_LIBRARY_DIR})
+find_library(GLFW3_LIBRARY "glfw" HINTS ${GLFW3_LIBRARY_DIR})
 

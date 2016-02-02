@@ -33,6 +33,9 @@ using namespace PS::FILESTRINGUTILS;
 
 using namespace std;
 
+
+//global vars
+GLFWwindow* g_lpWindow = NULL;
 AvatarScalpel* g_lpScalpel = NULL;
 AvatarRing* g_lpRing = NULL;
 IAvatar* g_lpAvatar = NULL;
@@ -49,7 +52,31 @@ void resetMesh();
 void cutFinished();
 void runTestSubDivide(int current);
 void handleElementEvent(CELL element, U32 handle, VolMesh::TopologyEvent event);
+void normal_key(unsigned char key, int x, int y);
 
+inline PS::MouseButton glfw_mouse_button_to_ps(int button) {
+    switch(button) {
+    case(GLFW_MOUSE_BUTTON_LEFT):
+        return PS::mbLeft;
+    case(GLFW_MOUSE_BUTTON_RIGHT):
+        return PS::mbRight;
+    case(GLFW_MOUSE_BUTTON_MIDDLE):
+        return PS::mbMiddle;
+    default:
+        return PS::mbLeft;
+    }
+}
+
+inline PS::MouseButtonState glfw_mouse_button_state_to_ps(int action) {
+    switch(action) {
+    case(GLFW_PRESS):
+        return PS::mbsDown;
+    case(GLFW_RELEASE):
+        return PS::mbsUp;
+    default:
+        return PS::mbsDown;
+    }
+}
 
 static void error_callback(int error, const char* description)
 {
@@ -58,18 +85,22 @@ static void error_callback(int error, const char* description)
 
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 {
-    if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
-        LogInfo("Right button clicked");
+    double xpos, ypos = 0.0;
+    glfwGetCursorPos(window, &xpos, &ypos);
 
+    int x = (int)xpos;
+    int y = (int)ypos;
+    PS::MouseButton btn = glfw_mouse_button_to_ps(button);
+    PS::MouseButtonState state = glfw_mouse_button_state_to_ps(action);
 
-
-/*
-    TheSceneGraph::Instance().mousePress(button, state, x, y);
-    TheGizmoManager::Instance().mousePress(button, state, x, y);
+    TheSceneGraph::Instance().mousePress(btn, state, x, y);
+    TheGizmoManager::Instance().mousePress(btn, state, x, y);
 
     //left key
-    if(button == GLUT_LEFT_BUTTON && state == 0) {
-        vec3f expand(0.2);
+    if(btn == PS::MouseButton::mbLeft  && state == mbsDown) {
+        //vec3f expand(0.2);
+        int w, h;
+        glfwGetFramebufferSize(window, &w, &h);
         Ray ray = TheSceneGraph::Instance().screenToWorldRay(x, y);
         int idxVertex = g_lpTissue->selectNode(ray);
 
@@ -79,26 +110,20 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
             g_lpTissue->setNodeToShow(idxVertex);
         }
     }
-
-*/
-
-    glutPostRedisplay();
-
 }
 
-static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
+static void mouse_motion_callback(GLFWwindow* window, double xpos, double ypos)
 {
     //double xpos, ypos;
     //glfwGetCursorPos(window, &xpos, &ypos);
-
-    //printf("xpos : %f, ypos: %f\n", xpos, ypos);
+    //LogInfoArg2("xpos : %f, ypos: %f\n", xpos, ypos);
     TheSceneGraph::Instance().mouseMove(xpos, ypos);
     TheGizmoManager::Instance().mouseMove(xpos, ypos);
 }
 
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
-    TheSceneGraph::Instance().mouseWheel(1, yoffset > 0 ? 1 : -1, xoffset, yoffset);
+    TheSceneGraph::Instance().mouseWheel(mbMiddle, yoffset > 0 ? 1 : -1, xoffset, yoffset);
 }
 
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
@@ -222,11 +247,16 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
             }
             break;
         }
+
+    default:
+        //LogInfo("No special key handled this so I forward it to normal keys");
+        double fx, fy;
+        glfwGetCursorPos(window, &fx, &fy);
+
+        normal_key(key, (int)fx, (int)fy);
     }
 
-    //Modifier
-    TheSceneGraph::Instance().setModifier(glutGetModifiers());
-
+    glfwSwapBuffers(window);
 }
 
 void draw() {
@@ -239,41 +269,10 @@ void timestep() {
 	TheGizmoManager::Instance().timestep();
 }
 
-void MousePress(int button, int state, int x, int y)
+void normal_key(unsigned char key, int x, int y)
 {
-    TheSceneGraph::Instance().mousePress(button, state, x, y);
-    TheGizmoManager::Instance().mousePress(button, state, x, y);
+    key = tolower(key);
 
-    //left key
-    if(button == GLUT_LEFT_BUTTON && state == 0) {
-		vec3f expand(0.2);
-		Ray ray = TheSceneGraph::Instance().screenToWorldRay(x, y);
-		int idxVertex = g_lpTissue->selectNode(ray);
-
-		//select vertex
-		if (idxVertex >= 0) {
-			LogInfoArg1("Selected Vertex Index = %d ", idxVertex);
-			g_lpTissue->setNodeToShow(idxVertex);
-		}
-    }
-
-
-	glutPostRedisplay();
-}
-
-
-
-void MouseMove(int x, int y)
-{
-	TheSceneGraph::Instance().mouseMove(x, y);
-	TheGizmoManager::Instance().mouseMove(x, y);
-
-	glutPostRedisplay();
-}
-
-
-void NormalKey(unsigned char key, int x, int y)
-{
 	switch(key)
 	{
 
@@ -434,20 +433,11 @@ void NormalKey(unsigned char key, int x, int y)
 	break;
 
 
-	case(27):
-	{
-		//Saving Settings and Exit
-		LogInfo("Saving settings and exit.");
-        //glutLeaveMainLoop();
-	}
-	break;
-
-
 	}
 
 
 	//Update Screen
-	glutPostRedisplay();
+//	glutPostRedisplay();
 }
 
 
@@ -613,39 +603,24 @@ int main(int argc, char* argv[]) {
 
 
     //GLFW LIB
-    GLFWwindow* window;
+    g_lpWindow = NULL;
     glfwSetErrorCallback(error_callback);
     if (!glfwInit())
         exit(EXIT_FAILURE);
 
-    window = glfwCreateWindow(DEFAULT_WIDTH, DEFAULT_HEIGHT, "tetcutter - Pourya Shirazian", NULL, NULL);
-    if (!window)
+    g_lpWindow = glfwCreateWindow(DEFAULT_WIDTH, DEFAULT_HEIGHT, "tetcutter - Pourya Shirazian", NULL, NULL);
+    if (!g_lpWindow)
     {
         glfwTerminate();
         exit(EXIT_FAILURE);
     }
 
-    glfwMakeContextCurrent(window);
+    glfwMakeContextCurrent(g_lpWindow);
     glfwSwapInterval(1);
-    glfwSetKeyCallback(window, key_callback);
-    glfwSetCursorPosCallback(window, cursor_position_callback);
-    glfwSetMouseButtonCallback(window, mouse_button_callback);
-    glfwSetScrollCallback(window, scroll_callback);
-
-
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-
-    //old glut stuff
-       /*
-	glutMouseFunc(MousePress);
-	glutPassiveMotionFunc(MousePassiveMove);
-	glutMotionFunc(MouseMove);
-	glutMouseWheelFunc(MouseWheel);
-	glutKeyboardFunc(NormalKey);
-	glutSpecialFunc(SpecialKey);
-	glutCloseFunc(closeApp);
-	glutIdleFunc(timestep);
-    */
+    glfwSetKeyCallback(g_lpWindow, key_callback);
+    glfwSetCursorPosCallback(g_lpWindow, mouse_motion_callback);
+    glfwSetMouseButtonCallback(g_lpWindow, mouse_button_callback);
+    glfwSetScrollCallback(g_lpWindow, scroll_callback);
 
 	//init gl
 	def_initgl();
@@ -771,20 +746,27 @@ int main(int argc, char* argv[]) {
 	TheSceneGraph::Instance().print();
 
     //mainloop
-    while (!glfwWindowShouldClose(window))
+    while (!glfwWindowShouldClose(g_lpWindow))
     {
         //setup projection matrix
         int width = DEFAULT_WIDTH;
         int height = DEFAULT_HEIGHT;
-        glfwGetFramebufferSize(window, &width, &height);
+        glfwGetFramebufferSize(g_lpWindow, &width, &height);
         def_resize(width, height);
 
+        //draw frame
         draw();
-        glfwSwapBuffers(window);
+
+        timestep();
+
+        glfwSwapBuffers(g_lpWindow);
         glfwPollEvents();
     }
-    glfwDestroyWindow(window);
+
+    //destroy window
+    glfwDestroyWindow(g_lpWindow);
     glfwTerminate();
+
     exit(EXIT_SUCCESS);
 
 

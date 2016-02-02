@@ -1,4 +1,4 @@
-# Install script for directory: /Users/pourya/platform/libs/glfw-3.1.2/src
+# Install script for directory: /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "")
+    set(CMAKE_INSTALL_CONFIG_NAME "Release")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -28,10 +28,90 @@ if(NOT CMAKE_INSTALL_COMPONENT)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/Users/pourya/platform/libs/glfw-3.1.2/bin/src/libglfw3.a")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libglfw3.a" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libglfw3.a")
-    execute_process(COMMAND "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libglfw3.a")
+  if("${CMAKE_INSTALL_CONFIG_NAME}" MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES
+      "/Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/bin/src/Debug/libglfw.3.1.dylib"
+      "/Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/bin/src/Debug/libglfw.3.dylib"
+      "/Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/bin/src/Debug/libglfw.dylib"
+      )
+    foreach(file
+        "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libglfw.3.1.dylib"
+        "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libglfw.3.dylib"
+        "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libglfw.dylib"
+        )
+      if(EXISTS "${file}" AND
+         NOT IS_SYMLINK "${file}")
+        execute_process(COMMAND "/usr/bin/install_name_tool"
+          -id "/usr/local/lib/libglfw.3.dylib"
+          "${file}")
+        if(CMAKE_INSTALL_DO_STRIP)
+          execute_process(COMMAND "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip" "${file}")
+        endif()
+      endif()
+    endforeach()
+  elseif("${CMAKE_INSTALL_CONFIG_NAME}" MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES
+      "/Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/bin/src/Release/libglfw.3.1.dylib"
+      "/Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/bin/src/Release/libglfw.3.dylib"
+      "/Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/bin/src/Release/libglfw.dylib"
+      )
+    foreach(file
+        "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libglfw.3.1.dylib"
+        "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libglfw.3.dylib"
+        "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libglfw.dylib"
+        )
+      if(EXISTS "${file}" AND
+         NOT IS_SYMLINK "${file}")
+        execute_process(COMMAND "/usr/bin/install_name_tool"
+          -id "/usr/local/lib/libglfw.3.dylib"
+          "${file}")
+        if(CMAKE_INSTALL_DO_STRIP)
+          execute_process(COMMAND "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip" "${file}")
+        endif()
+      endif()
+    endforeach()
+  elseif("${CMAKE_INSTALL_CONFIG_NAME}" MATCHES "^([Mm][Ii][Nn][Ss][Ii][Zz][Ee][Rr][Ee][Ll])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES
+      "/Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/bin/src/MinSizeRel/libglfw.3.1.dylib"
+      "/Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/bin/src/MinSizeRel/libglfw.3.dylib"
+      "/Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/bin/src/MinSizeRel/libglfw.dylib"
+      )
+    foreach(file
+        "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libglfw.3.1.dylib"
+        "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libglfw.3.dylib"
+        "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libglfw.dylib"
+        )
+      if(EXISTS "${file}" AND
+         NOT IS_SYMLINK "${file}")
+        execute_process(COMMAND "/usr/bin/install_name_tool"
+          -id "/usr/local/lib/libglfw.3.dylib"
+          "${file}")
+        if(CMAKE_INSTALL_DO_STRIP)
+          execute_process(COMMAND "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip" "${file}")
+        endif()
+      endif()
+    endforeach()
+  elseif("${CMAKE_INSTALL_CONFIG_NAME}" MATCHES "^([Rr][Ee][Ll][Ww][Ii][Tt][Hh][Dd][Ee][Bb][Ii][Nn][Ff][Oo])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES
+      "/Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/bin/src/RelWithDebInfo/libglfw.3.1.dylib"
+      "/Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/bin/src/RelWithDebInfo/libglfw.3.dylib"
+      "/Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/bin/src/RelWithDebInfo/libglfw.dylib"
+      )
+    foreach(file
+        "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libglfw.3.1.dylib"
+        "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libglfw.3.dylib"
+        "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libglfw.dylib"
+        )
+      if(EXISTS "${file}" AND
+         NOT IS_SYMLINK "${file}")
+        execute_process(COMMAND "/usr/bin/install_name_tool"
+          -id "/usr/local/lib/libglfw.3.dylib"
+          "${file}")
+        if(CMAKE_INSTALL_DO_STRIP)
+          execute_process(COMMAND "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip" "${file}")
+        endif()
+      endif()
+    endforeach()
   endif()
 endif()
 

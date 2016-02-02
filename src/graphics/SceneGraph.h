@@ -92,8 +92,8 @@ public:
     ArcBallCamera& camera() { return m_camera;}
     
     //Mouse calls
-    void mousePress(int button, int state, int x, int y);
-    void mouseWheel(int button, int dir, int x, int y);
+    void mousePress(MouseButton button, MouseButtonState state, int x, int y);
+    void mouseWheel(MouseButton button, int dir, int x, int y);
     void mouseMove(int x, int y);
     
     //Coordinate Conversion

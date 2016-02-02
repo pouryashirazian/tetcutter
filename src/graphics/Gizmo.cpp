@@ -430,7 +430,7 @@ namespace PS {
         ////////////////////////////////////////////////////////////
         GizmoManager::GizmoManager():SGNode() {
         	m_lpFocusedNode = NULL;
-            m_buttonState = ArcBallCamera::bsUp;
+            m_buttonState = PS::MouseButtonState::mbsUp;
             m_pressedPos = vec2i(0, 0);
 
             //Create All needed Gizmo Widgets
@@ -522,13 +522,13 @@ namespace PS {
             
             //Apply the selected axis to this Gizmo
             m_lpGizmoCurrent->setAxis(m_gizmoAxis);
-            glutPostRedisplay();
+            //glutPostRedisplay();
         }
         
-        void GizmoManager::mousePress(int button, int state, int x, int y) {
-            m_button = (ArcBallCamera::MouseButton)button;
-            m_buttonState = (ArcBallCamera::ButtonState)state;
-            if(m_button == ArcBallCamera::mbLeft && m_buttonState == ArcBallCamera::bsDown && isVisible()) {
+        void GizmoManager::mousePress(MouseButton button, MouseButtonState state, int x, int y) {
+            m_button = button;
+            m_buttonState = state;
+            if(m_button == PS::MouseButton::mbLeft && m_buttonState == PS::MouseButtonState::mbsDown && isVisible()) {
             	LogInfoArg2("Select gizmo axis using mouse coords: [%d, %d]", x, y);
                 Ray r = TheSceneGraph::Instance().screenToWorldRay(x, y);
                 r.setStart(r.getStart() - this->transform()->getTranslate());
@@ -546,9 +546,9 @@ namespace PS {
 
         void GizmoManager::mouseMove(int x, int y) {
 
-        	if(m_button != ArcBallCamera::mbLeft)
+            if(m_button != PS::MouseButton::mbLeft)
         		return;
-        	if(m_buttonState != ArcBallCamera::bsDown)
+            if(m_buttonState != PS::MouseButtonState::mbsDown)
         		return;
 
         	//handle the case where the gizmo is not visible and we try to move
@@ -742,7 +742,7 @@ namespace PS {
 
 
         //MouseWheel
-        void GizmoManager::mouseWheel(int button, int dir, int x, int y) {
+        void GizmoManager::mouseWheel(MouseButton button, int dir, int x, int y) {
         	for(U32 i=0; i<m_clients.size(); i++)
         		m_clients[i]->mouseWheel(button, dir, x, y);
         }
@@ -756,7 +756,7 @@ namespace PS {
         	m_lpFocusedNode = node;
         	this->transform()->copyFrom(*m_lpFocusedNode->transform().get());
 
-        	glutPostRedisplay();
+            //glutPostRedisplay();
         }
 
     	int GizmoManager::registerClient(IGizmoListener* client) {

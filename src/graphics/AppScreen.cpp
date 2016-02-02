@@ -44,10 +44,10 @@ void AppScreen::close() {
 void AppScreen::init(int argc, char* argv[]) {
 
 	//Init
-	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH | GLUT_STENCIL);
-	glutInitWindowSize(m_width, m_height);
-	glutCreateWindow(m_strTitle.c_str());
+//	glutInit(&argc, argv);
+//	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH | GLUT_STENCIL);
+//	glutInitWindowSize(m_width, m_height);
+//	glutCreateWindow(m_strTitle.c_str());
 
 	//glutDisplayFunc (&AppScreen::draw);
 	//glutReshapeFunc (Resize);

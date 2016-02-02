@@ -122,12 +122,12 @@ void ArcBallCamera::goHome()
     m_center = vec3f(0.0f, 0.0f, 0.0f);
 }
 
-void ArcBallCamera::mousePress(int button, int state, int x, int y)
+void ArcBallCamera::mousePress(MouseButton button, MouseButtonState state, int x, int y)
 {
     PS_UNUSED(state);
-    m_keyModifier = glutGetModifiers();
 
-    m_mouseButton = (MouseButton)button;
+    m_mouseButton = button;
+    m_mouseButtonState = state;
     m_lastPos = vec2i(x, y);
 }
 
@@ -138,23 +138,16 @@ void ArcBallCamera::mouseMove(int x, int y)
     m_lastPos = vec2i(x, y);
 
     //Spherical movement on the left button
-    if(m_mouseButton == mbMiddle)
+    if(m_mouseButton == mbRight && m_mouseButtonState == mbsDown)
     {
-
-        if (m_keyModifier == GLUT_ACTIVE_CTRL) {
-        	m_pan.x += 0.01f * dx;
-        	m_pan.y += 0.01f * dy;
-        }
-        else {
-			setRoll(this->getRoll() + dx);
-			setTilt(this->getTilt() + dy);
-        }
+        //        	m_pan.x += 0.01f * dx;
+        //        	m_pan.y += 0.01f * dy;
+        setRoll(this->getRoll() + dx);
+        setTilt(this->getTilt() + dy);
     }
-
-
 }
 
-void ArcBallCamera::mouseWheel(int button, int dir, int x, int y)
+void ArcBallCamera::mouseWheel(MouseButton button, int dir, int x, int y)
 {
     PS_UNUSED(button);
     PS_UNUSED(x);
