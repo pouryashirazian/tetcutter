@@ -10,27 +10,30 @@
 
 namespace PS {
 
+enum MouseButton {mbLeft, mbMiddle, mbRight, mbNone};
+enum MouseButtonState {mbsDown, mbsUp};
+
 //Interface for all mouse widgets
 class IMouseListener {
 public:
-	IMouseListener() {
-		m_isFocused = false;
-	}
+    IMouseListener() {
+        m_isFocused = false;
+    }
 
-	virtual ~IMouseListener() {
+    virtual ~IMouseListener() {
 
-	}
+    }
 
-	//Mouse Events
-    virtual void mousePress(int button, int state, int x, int y) {}
+    //Mouse Events
+    virtual void mousePress(MouseButton button, MouseButtonState state, int x, int y) {}
     virtual void mouseMove(int x, int y) {}
-    virtual void mouseWheel(int button, int dir, int x, int y) {}
+    virtual void mouseWheel(MouseButton button, int dir, int x, int y) {}
 
 
     //Focus
     bool focus() const { return m_isFocused;}
     void setFocus(bool focus) {
-    	m_isFocused = focus;
+        m_isFocused = focus;
     }
 
 protected:

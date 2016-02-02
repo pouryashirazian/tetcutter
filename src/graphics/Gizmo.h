@@ -141,9 +141,9 @@ public:
     GizmoAxis axis() const {return m_gizmoAxis;}
     
     //Mouse
-    void mousePress(int button, int state, int x, int y);
+    void mousePress(MouseButton button, MouseButtonState state, int x, int y);
     void mouseMove(int x, int y);
-    void mouseWheel(int button, int dir, int x, int y);
+    void mouseWheel(MouseButton button, int dir, int x, int y);
 
     
     //Set Gizmo Type and Axis
@@ -185,8 +185,8 @@ private:
 
     //Mouse State
     vec2i m_pressedPos;
-    PS::ArcBallCamera::MouseButton m_button;
-    PS::ArcBallCamera::ButtonState m_buttonState;
+    PS::MouseButton m_button;
+    PS::MouseButtonState m_buttonState;
 
     //Register SGNode
     SGNode* m_lpFocusedNode;

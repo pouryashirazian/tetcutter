@@ -52,7 +52,7 @@ PROJECT_LOGO           =
 # If a relative path is entered, it will be relative to the location
 # where doxygen was started. If left blank the current directory will be used.
 
-OUTPUT_DIRECTORY       = /Users/pourya/platform/libs/glfw-3.1.2/bin/docs
+OUTPUT_DIRECTORY       = /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/bin/docs
 
 # If the CREATE_SUBDIRS tag is set to YES, then doxygen will create
 # 4096 sub-directories (in 2 levels) under the output directory of each output
@@ -641,7 +641,7 @@ WARN_FORMAT            = "$file:$line: $text"
 # and error messages should be written. If left blank the output is written
 # to stderr.
 
-WARN_LOGFILE           = /Users/pourya/platform/libs/glfw-3.1.2/bin/docs/warnings.txt
+WARN_LOGFILE           = /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/bin/docs/warnings.txt
 
 #---------------------------------------------------------------------------
 # configuration options related to the input files
@@ -652,22 +652,22 @@ WARN_LOGFILE           = /Users/pourya/platform/libs/glfw-3.1.2/bin/docs/warning
 # directories like "/usr/src/myproject". Separate the files or directories
 # with spaces.
 
-INPUT                  =                          \
-                         /Users/pourya/platform/libs/glfw-3.1.2/include/GLFW/glfw3.h       \
-                         /Users/pourya/platform/libs/glfw-3.1.2/include/GLFW/glfw3native.h \
-                         /Users/pourya/platform/libs/glfw-3.1.2/docs/main.dox              \
-                         /Users/pourya/platform/libs/glfw-3.1.2/docs/news.dox              \
-                         /Users/pourya/platform/libs/glfw-3.1.2/docs/moving.dox            \
-                         /Users/pourya/platform/libs/glfw-3.1.2/docs/quick.dox             \
-                         /Users/pourya/platform/libs/glfw-3.1.2/docs/compile.dox           \
-                         /Users/pourya/platform/libs/glfw-3.1.2/docs/build.dox             \
-                         /Users/pourya/platform/libs/glfw-3.1.2/docs/intro.dox             \
-                         /Users/pourya/platform/libs/glfw-3.1.2/docs/context.dox           \
-                         /Users/pourya/platform/libs/glfw-3.1.2/docs/monitor.dox           \
-                         /Users/pourya/platform/libs/glfw-3.1.2/docs/window.dox            \
-                         /Users/pourya/platform/libs/glfw-3.1.2/docs/input.dox             \
-                         /Users/pourya/platform/libs/glfw-3.1.2/docs/rift.dox              \
-                         /Users/pourya/platform/libs/glfw-3.1.2/docs/compat.dox
+INPUT                  = /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/src/internal.h /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/docs/internal.dox                         \
+                         /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/include/GLFW/glfw3.h       \
+                         /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/include/GLFW/glfw3native.h \
+                         /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/docs/main.dox              \
+                         /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/docs/news.dox              \
+                         /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/docs/moving.dox            \
+                         /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/docs/quick.dox             \
+                         /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/docs/compile.dox           \
+                         /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/docs/build.dox             \
+                         /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/docs/intro.dox             \
+                         /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/docs/context.dox           \
+                         /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/docs/monitor.dox           \
+                         /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/docs/window.dox            \
+                         /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/docs/input.dox             \
+                         /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/docs/rift.dox              \
+                         /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/docs/compat.dox
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding, which is
@@ -727,7 +727,7 @@ EXCLUDE_SYMBOLS        = APIENTRY GLFWAPI
 # directories that contain example code fragments that are included (see
 # the \include command).
 
-EXAMPLE_PATH           = /Users/pourya/platform/libs/glfw-3.1.2/examples
+EXAMPLE_PATH           = /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/examples
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the
 # EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp
@@ -903,13 +903,13 @@ HTML_FILE_EXTENSION    = .html
 # have to redo this when upgrading to a newer version of doxygen or when
 # changing the value of configuration settings such as GENERATE_TREEVIEW!
 
-HTML_HEADER            = /Users/pourya/platform/libs/glfw-3.1.2/docs/header.html
+HTML_HEADER            = /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/docs/header.html
 
 # The HTML_FOOTER tag can be used to specify a personal HTML footer for
 # each generated HTML page. If it is left blank doxygen will generate a
 # standard footer.
 
-HTML_FOOTER            = /Users/pourya/platform/libs/glfw-3.1.2/docs/footer.html
+HTML_FOOTER            = /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/docs/footer.html
 
 # The HTML_STYLESHEET tag can be used to specify a user-defined cascading
 # style sheet that is used by each HTML page. It can be used to
@@ -928,7 +928,7 @@ HTML_STYLESHEET        =
 # robust against future updates. Doxygen will copy the style sheet file to
 # the output directory.
 
-HTML_EXTRA_STYLESHEET  = /Users/pourya/platform/libs/glfw-3.1.2/docs/extra.css
+HTML_EXTRA_STYLESHEET  = /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/docs/extra.css
 
 # The HTML_EXTRA_FILES tag can be used to specify one or more extra images or
 # other source files which should be copied to the HTML output directory. Note
@@ -937,7 +937,7 @@ HTML_EXTRA_STYLESHEET  = /Users/pourya/platform/libs/glfw-3.1.2/docs/extra.css
 # files. In the HTML_STYLESHEET file, use the file name only. Also note that
 # the files will be copied as-is; there are no commands or markers available.
 
-HTML_EXTRA_FILES       = /Users/pourya/platform/libs/glfw-3.1.2/docs/spaces.svg
+HTML_EXTRA_FILES       = /Users/pourya/Desktop/platform/repos/tetcutter/src/3rdparty/glfw-3.1.2/docs/spaces.svg
 
 # The HTML_COLORSTYLE_HUE tag controls the color of the HTML output.
 # Doxygen will adjust the colors in the style sheet and background images

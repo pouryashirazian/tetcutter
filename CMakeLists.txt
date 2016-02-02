@@ -35,6 +35,7 @@ add_definitions(${GLUT_DEFINITIONS})
 if(NOT GLUT_FOUND)
     message(ERROR " GLUT not found!")
 endif(NOT GLUT_FOUND)
+
 #########################################################
 # FIND OPENGL
 #########################################################
@@ -90,4 +91,5 @@ ADD_DEFINITIONS(
 #########################################################
 add_executable(tetcutter ${SRC})
 
-target_link_libraries(tetcutter glfw ${GLFW_LIBRARIES} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} ${GLEW_LIBRARY} ${TBB_LIBRARY})
+#glfw  ${GLUT_LIBRARY}
+target_link_libraries(tetcutter glfw ${GLFW_LIBRARIES} ${OPENGL_LIBRARIES}  ${GLEW_LIBRARY} ${TBB_LIBRARY})

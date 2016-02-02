@@ -41,7 +41,7 @@ public:
 	void updateVolMeshInfoHeader() const;
 
 	//From Gizmo Manager
-	virtual void mousePress(int button, int state, int x, int y);
+    virtual void mousePress(MouseButton button, MouseButtonState state, int x, int y);
 
 protected:
 	void init();

@@ -49,22 +49,24 @@ void IAvatar::setTissue(CuttableMesh* tissue) {
 		updateVolMeshInfoHeader();
 }
 
-void IAvatar::mousePress(int button, int state, int x, int y) {
-	if (button == ArcBallCamera::mbRight) {
+void IAvatar::mousePress(PS::MouseButton button, MouseButtonState state, int x, int y) {
+    if (button == MouseButton::mbRight) {
 		LogInfo("Right clicked cleared cut context!");
 		clearCutContext();
 		return;
 	}
 
-	if (button != ArcBallCamera::mbLeft)
+    if (button != MouseButton::mbLeft)
 		return;
 
 	//Down = Start
-	if (state == 0) {
+    if (state == mbsDown) {
 		if (m_lpTissue) {
 			m_isToolActive = true;
 			TheSceneGraph::Instance().headers()->updateHeaderLine("scalpel",
 					"scalpel: start cutting");
+
+            LogInfo("Start cutting");
 		}
 	} else {
 		//Up = Stop
@@ -77,6 +79,7 @@ void IAvatar::mousePress(int button, int state, int x, int y) {
 			AnsiStr strMsg = printToAStr("scalpel: finished cut %u. disjoint parts#%u",
 										 (U32)m_lpTissue->countCompletedCuts(),
 										 ctParts);
+            LogInfo("Finished cutting");
 
 			TheSceneGraph::Instance().headers()->updateHeaderLine("scalpel", strMsg);
 		}

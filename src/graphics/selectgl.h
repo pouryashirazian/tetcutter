@@ -12,14 +12,14 @@
 
 #ifdef PS_OS_LINUX
 #include <GL/glew.h>
-#include <GL/freeglut.h>
+//#include <GL/freeglut.h>
 #include <GL/gl.h>
 #include "GL/glu.h"
 
 #elif PS_OS_MAC
 
 #include <GL/glew.h>
-#include <GL/freeglut.h>
+//#include <GL/freeglut.h>
 #include <OpenGL/gl.h>
 #include "OpenGL/glu.h"
 

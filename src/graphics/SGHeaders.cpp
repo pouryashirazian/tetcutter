@@ -102,7 +102,7 @@ void SGHeaders::DrawText(const char* chrText, int x, int y) {
     // loop all characters in the string
     while(*chrText)
     {
-        glutBitmapCharacter(GLUT_BITMAP_8_BY_13, *chrText);
+        //glutBitmapCharacter(GLUT_BITMAP_8_BY_13, *chrText);
         ++chrText;
     }
 
