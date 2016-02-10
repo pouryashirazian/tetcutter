@@ -10,11 +10,11 @@
 
 #include "base/Vec.h"
 
-using namespace PS;
-using namespace PS::MATH;
+using namespace ps;
+using namespace ps::MATH;
 
-namespace PS {
-namespace INTERSECTIONS {
+namespace ps {
+namespace base {
 
 #define EPSILON 1E-5
 #define X 0

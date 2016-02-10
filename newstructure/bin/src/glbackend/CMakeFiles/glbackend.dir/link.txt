@@ -1,0 +1,2 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc libglbackend.a  CMakeFiles/glbackend.dir/glbindable.cpp.o CMakeFiles/glbackend.dir/glbuffer.cpp.o CMakeFiles/glbackend.dir/glfuncs.cpp.o CMakeFiles/glbackend.dir/glmeshbuffer.cpp.o CMakeFiles/glbackend.dir/glshader.cpp.o CMakeFiles/glbackend.dir/glshadermanager.cpp.o CMakeFiles/glbackend.dir/gltexture.cpp.o CMakeFiles/glbackend.dir/gltexturemanager.cpp.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib libglbackend.a

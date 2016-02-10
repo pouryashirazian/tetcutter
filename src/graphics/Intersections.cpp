@@ -6,8 +6,8 @@
  */
 #include "Intersections.h"
 
-namespace PS {
-namespace INTERSECTIONS {
+namespace ps {
+namespace base {
 
 int IntersectRayTriangleF(const vec3f& ro, const vec3f& rd, const vec3f p[3], vec3f& uvt) {
 
