@@ -1,2 +1,0 @@
-Singleton.o: Singleton.cpp ../include/loki/Singleton.h \
- ../include/loki/LokiExport.h ../include/loki/Threads.h

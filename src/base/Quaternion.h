@@ -1,16 +1,11 @@
-//***************************************************************************
-// Author: Pourya Shirazian 
-// Quaternion math for efficient rotations. Use quaternions to avoid 
-// gymbal lock problem.
-//***************************************************************************
-#ifndef PS_QUATERNION_H
-#define PS_QUATERNION_H
+#ifndef QUATERNION_H
+#define QUATERNION_H
 
 #include <math.h>
-#include "Vec.h"
+#include "vec.h"
 
-namespace PS{
-namespace MATH{
+namespace ps {
+namespace base {
 
 // quaternions are always represent as type float.
 // Represents 3d rotations as a quaternion number.

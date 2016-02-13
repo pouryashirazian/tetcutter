@@ -1,17 +1,10 @@
-/*
- * Color.h
- *
- *  Created on: Sep 23, 2014
- *      Author: pourya
- */
-
 #ifndef COLOR_H_
 #define COLOR_H_
 
-#include "Vec.h"
+#include "vec.h"
 
-namespace PS{
-namespace MATH{
+namespace ps {
+namespace base {
 
 
 class Color {

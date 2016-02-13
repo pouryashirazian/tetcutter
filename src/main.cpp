@@ -4,32 +4,36 @@
  */
 #include <iostream>
 #include <functional>
-
 #include <tbb/task_scheduler_init.h>
-#include "base/FileDirectory.h"
-#include "base/Logger.h"
-#include "base/CmdLineParser.h"
 
-#include "graphics/SceneGraph.h"
-#include "graphics/Gizmo.h"
-#include "graphics/AppScreen.h"
-#include "graphics/selectgl.h"
-#include "graphics/SGQuad.h"
-#include "graphics/SGRenderMask.h"
-#include "deformable/AvatarScalpel.h"
-#include "deformable/AvatarRing.h"
-#include "deformable/TetSubdivider.h"
-#include "deformable/VolMeshSamples.h"
-#include "deformable/VolMeshIO.h"
-#include "deformable/VolMeshStats.h"
+#include "base/directory.h"
+#include "base/logger.h"
+#include "base/cmdlineparser.h"
+
+#include "scene/sgengine.h"
+#include "scene/gizmo.h"
+#include "scene/sgquad.h"
+
+#include "glbackend/glfuncs.h"
+#include "glbackend/glselect.h"
+#include "glbackend/glscreen.h"
+
+#include "elastic/avatarscalpel.h"
+#include "elastic/avatarring.h"
+#include "elastic/tetsubdivider.h"
+#include "elastic/volmeshsamples.h"
+#include "elastic/volmeshio.h"
+#include "elastic/volmeshstats.h"
+
+//#include "graphics/SGRenderMask.h"
 
 #include <GLFW/glfw3.h>
 
 using namespace tbb;
-using namespace PS;
-using namespace PS::SG;
-using namespace PS::MESH;
-using namespace PS::FILESTRINGUTILS;
+using namespace ps;
+using namespace ps::scene;
+using namespace ps::opengl;
+using namespace ps::dir;
 
 using namespace std;
 
@@ -54,27 +58,27 @@ void runTestSubDivide(int current);
 void handleElementEvent(CELL element, U32 handle, VolMesh::TopologyEvent event);
 void normal_key(unsigned char key, int x, int y);
 
-inline PS::MouseButton glfw_mouse_button_to_ps(int button) {
+inline ps::MouseButton glfw_mouse_button_to_ps(int button) {
     switch(button) {
     case(GLFW_MOUSE_BUTTON_LEFT):
-        return PS::mbLeft;
+        return ps::mbLeft;
     case(GLFW_MOUSE_BUTTON_RIGHT):
-        return PS::mbRight;
+        return ps::mbRight;
     case(GLFW_MOUSE_BUTTON_MIDDLE):
-        return PS::mbMiddle;
+        return ps::mbMiddle;
     default:
-        return PS::mbLeft;
+        return ps::mbLeft;
     }
 }
 
-inline PS::MouseButtonState glfw_mouse_button_state_to_ps(int action) {
+inline ps::MouseButtonState glfw_mouse_button_state_to_ps(int action) {
     switch(action) {
     case(GLFW_PRESS):
-        return PS::mbsDown;
+        return ps::mbsPressed;
     case(GLFW_RELEASE):
-        return PS::mbsUp;
+        return ps::mbsReleased;
     default:
-        return PS::mbsDown;
+        return ps::mbsPressed;
     }
 }
 
@@ -90,18 +94,18 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 
     int x = (int)xpos;
     int y = (int)ypos;
-    PS::MouseButton btn = glfw_mouse_button_to_ps(button);
-    PS::MouseButtonState state = glfw_mouse_button_state_to_ps(action);
+    ps::MouseButton btn = glfw_mouse_button_to_ps(button);
+    ps::MouseButtonState state = glfw_mouse_button_state_to_ps(action);
 
-    TheSceneGraph::Instance().mousePress(btn, state, x, y);
+    TheEngine::Instance().mousePress(btn, state, x, y);
     TheGizmoManager::Instance().mousePress(btn, state, x, y);
 
     //left key
-    if(btn == PS::MouseButton::mbLeft  && state == mbsDown) {
+    if(btn == ps::MouseButton::mbLeft  && state == mbsPressed) {
         //vec3f expand(0.2);
         int w, h;
         glfwGetFramebufferSize(window, &w, &h);
-        Ray ray = TheSceneGraph::Instance().screenToWorldRay(x, y);
+        Ray ray = TheEngine::Instance().screenToWorldRay(x, y);
         int idxVertex = g_lpTissue->selectNode(ray);
 
         //select vertex
@@ -117,13 +121,13 @@ static void mouse_motion_callback(GLFWwindow* window, double xpos, double ypos)
     //double xpos, ypos;
     //glfwGetCursorPos(window, &xpos, &ypos);
     //LogInfoArg2("xpos : %f, ypos: %f\n", xpos, ypos);
-    TheSceneGraph::Instance().mouseMove(xpos, ypos);
+    TheEngine::Instance().mouseMove(xpos, ypos);
     TheGizmoManager::Instance().mouseMove(xpos, ypos);
 }
 
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
-    TheSceneGraph::Instance().mouseWheel(mbMiddle, yoffset > 0 ? 1 : -1, xoffset, yoffset);
+    TheEngine::Instance().mouseWheel(yoffset > 0 ? MouseWheelDir::mwUp : MouseWheelDir::mwDown);
 }
 
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
@@ -208,8 +212,8 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
         }
 
         case(GLFW_KEY_F8): {
-            bool flag = !TheSceneGraph::Instance().get("floor")->isVisible();
-            TheSceneGraph::Instance().get("floor")->setVisible(flag);
+            bool flag = !TheEngine::Instance().get("floor")->isVisible();
+            TheEngine::Instance().get("floor")->setVisible(flag);
             LogInfoArg1("Set floor to %s", flag ? "show" : "hide");
             break;
         }
@@ -260,12 +264,12 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 }
 
 void draw() {
-    TheSceneGraph::Instance().draw();
+    TheEngine::Instance().draw();
 	TheGizmoManager::Instance().draw();
 }
 
 void timestep() {
-	TheSceneGraph::Instance().timestep();
+    TheEngine::Instance().timestep();
 	TheGizmoManager::Instance().timestep();
 }
 
@@ -294,7 +298,7 @@ void normal_key(unsigned char key, int x, int y)
 			const CELL& cell = g_lpTissue->const_cellAt(i);
 			AnsiStr strInfo = printToAStr("cell [%u], nodes [%u, %u, %u, %u]",
 										  i, cell.nodes[0], cell.nodes[1], cell.nodes[2], cell.nodes[3]);
-			TheSceneGraph::Instance().headers()->updateHeaderLine("cell", strInfo);
+            TheEngine::Instance().headers()->updateHeaderLine("cell", strInfo);
 		}
 	}
 	break;
@@ -312,7 +316,7 @@ void normal_key(unsigned char key, int x, int y)
 			const CELL& cell = g_lpTissue->const_cellAt(i);
 			AnsiStr strInfo = printToAStr("cell [%u], nodes [%u, %u, %u, %u]",
 										  i, cell.nodes[0], cell.nodes[1], cell.nodes[2], cell.nodes[3]);
-			TheSceneGraph::Instance().headers()->updateHeaderLine("cell", strInfo);
+            TheEngine::Instance().headers()->updateHeaderLine("cell", strInfo);
 		}
 	}
 	break;
@@ -337,8 +341,8 @@ void normal_key(unsigned char key, int x, int y)
 	break;
 
 	case('h'):{
-		bool flag = !TheSceneGraph::Instance().get("headers")->isVisible();
-		TheSceneGraph::Instance().get("headers")->setVisible(flag);
+        bool flag = !TheEngine::Instance().get("headers")->isVisible();
+        TheEngine::Instance().get("headers")->setVisible(flag);
 		LogInfoArg1("Set headers draw to %s", flag ? "show" : "hide");
 		break;
 	}
@@ -390,25 +394,25 @@ void normal_key(unsigned char key, int x, int y)
 	break;
 
 	case('m'): {
-		bool flag = !TheSceneGraph::Instance().get("rendermask")->isVisible();
-		TheSceneGraph::Instance().get("rendermask")->setVisible(flag);
+        bool flag = !TheEngine::Instance().get("rendermask")->isVisible();
+        TheEngine::Instance().get("rendermask")->setVisible(flag);
 		LogInfoArg1("Set rendermask to %s", flag ? "show" : "hide");
 		break;
 	}
 	break;
 
 	case('p'): {
-		TheSceneGraph::Instance().print();
+        TheEngine::Instance().print();
 	}
 	break;
 
 
 	case('['):{
-		TheSceneGraph::Instance().camera().incrZoom(0.5f);
+        TheEngine::Instance().camera().incrZoomLevel(0.5f);
 	}
 	break;
 	case(']'):{
-		TheSceneGraph::Instance().camera().incrZoom(-0.5f);
+        TheEngine::Instance().camera().incrZoomLevel(-0.5f);
 	}
 	break;
 	case('w'):{
@@ -443,7 +447,7 @@ void normal_key(unsigned char key, int x, int y)
 
 void closeApp() {
 	TheGizmoManager::Instance().writeConfig();
-	TheSceneGraph::Instance().writeConfig();
+    TheEngine::Instance().writeConfig();
 
 	SAFE_DELETE(g_lpScalpel);
 	SAFE_DELETE(g_lpRing);
@@ -460,16 +464,16 @@ void handleElementEvent(CELL element, U32 handle, VolMesh::TopologyEvent event) 
 
 void resetMesh() {
 	//remove it from scenegraph
-	TheSceneGraph::Instance().remove(g_lpTissue);
+    TheEngine::Instance().remove(g_lpTissue);
 	SAFE_DELETE(g_lpTissue);
 
 	VolMesh* temp = NULL;
 	if(FileExists(g_strFilePath)) {
-		temp = new PS::MESH::VolMesh();
+        temp = new VolMesh();
 		temp->setFlagFilterOutFlatCells(false);
 		temp->setVerbose(g_parser.value<int>("verbose"));
 		LogInfoArg1("Begin to read vega file from: %s", g_strFilePath.cptr());
-		bool res = PS::MESH::VolMeshIO::readVega(temp, g_strFilePath);
+        bool res = VolMeshIO::readVega(temp, g_strFilePath);
 		if(!res)
 			LogErrorArg1("Unable to load mesh from: %s", g_strFilePath.cptr());
 
@@ -481,24 +485,24 @@ void resetMesh() {
 		AnsiStr strExample = g_parser.value<AnsiStr>("example");
 		int pos = -1;
 		if(strExample == "one")
-			temp = PS::MESH::VolMeshSamples::CreateOneTetra();
+            temp = VolMeshSamples::CreateOneTetra();
 		else if(strExample == "two")
-			temp = PS::MESH::VolMeshSamples::CreateTwoTetra();
+            temp = VolMeshSamples::CreateTwoTetra();
 		else if(strExample.lfindstr(AnsiStr("cube"), pos)) {
 
 			U32 nx, ny, nz = 0;
 			sscanf(strExample.cptr(), "cube_%u_%u_%u", &nx, &ny, &nz);
-			temp = PS::MESH::VolMeshSamples::CreateTruthCube(nx, ny, nz, 0.2);
+            temp = VolMeshSamples::CreateTruthCube(nx, ny, nz, 0.2);
 		}
 		else if(strExample.lfindstr(AnsiStr("eggshell"), pos)) {
 
 			U32 nx, ny;
 			//float radius, thickness;
 			sscanf(strExample.cptr(), "eggshell_%u_%u", &nx, &ny);
-			temp = PS::MESH::VolMeshSamples::CreateEggShell(nx, ny);
+            temp = VolMeshSamples::CreateEggShell(nx, ny);
 		}
 		else
-			temp = PS::MESH::VolMeshSamples::CreateOneTetra();
+            temp = VolMeshSamples::CreateOneTetra();
 	}
 
 
@@ -512,7 +516,7 @@ void resetMesh() {
 	g_lpTissue->syncRender();
 	SAFE_DELETE(temp);
 
-	TheSceneGraph::Instance().add(g_lpTissue);
+    TheEngine::Instance().add(g_lpTissue);
 	if(g_parser.value<int>("ringscalpel") == 1)
 		g_lpRing->setTissue(g_lpTissue);
 	else
@@ -563,7 +567,7 @@ void cutFinished() {
 	for(U32 i=0; i < vMeshes.size(); i++) {
 		vMeshes[i]->computeAABB();
 		vMeshes[i]->setElemToShow(0);
-		TheSceneGraph::Instance().add(vMeshes[i]);
+        TheEngine::Instance().add(vMeshes[i]);
 
 		if(vMeshes[i]->countCells() > ctMaxCells) {
 			ctMaxCells = vMeshes[i]->countCells();
@@ -653,7 +657,7 @@ int main(int argc, char* argv[]) {
 	floor->setName("floor");
 	floor->transform()->translate(vec3f(0, -0.1f, 0));
 	floor->transform()->rotate(vec3f(1.0f, 0.0f, 0.0f), 90.0f);
-	TheSceneGraph::Instance().add(floor);
+    TheEngine::Instance().add(floor);
 
 	/*
 	AnsiStr strGreyMatter = strRoot + "data/meshes/veg/brain/graymatter.veg";
@@ -665,7 +669,7 @@ int main(int argc, char* argv[]) {
 			CuttableMesh* pmesh = new CuttableMesh(*temp);
 			pmesh->setColor(Color::grey());
 			pmesh->setName("graymatter");
-			TheSceneGraph::Instance().add(pmesh);
+            TheEngine::Instance().add(pmesh);
 		}
 		SAFE_DELETE(temp);
 	}
@@ -676,15 +680,15 @@ int main(int argc, char* argv[]) {
 			CuttableMesh* pmesh = new CuttableMesh(*temp);
 			pmesh->setColor(Color::white());
 			pmesh->setName("whitematter");
-			TheSceneGraph::Instance().add(pmesh);
+            TheEngine::Instance().add(pmesh);
 		}
 		SAFE_DELETE(temp);
 	}
 	*/
 
 
-	//TheSceneGraph::Instance().addFloor(32, 32, 0.5f);
-    //TheSceneGraph::Instance().addSceneBox(AABB(vec3f(-10, -10, -16), vec3f(10, 10, 16)));
+    //TheEngine::Instance().addFloor(32, 32, 0.5f);
+    //TheEngine::Instance().addSceneBox(AABB(vec3f(-10, -10, -16), vec3f(10, 10, 16)));
 
 	//Create Scalpel
 	g_lpScalpel = new AvatarScalpel();
@@ -692,8 +696,8 @@ int main(int argc, char* argv[]) {
 
 	g_lpRing = new AvatarRing(TheTexManager::Instance().get("spin"));
 	g_lpRing->setVisible(false);
-	TheSceneGraph::Instance().add(g_lpScalpel);
-	TheSceneGraph::Instance().add(g_lpRing);
+    TheEngine::Instance().add(g_lpScalpel);
+    TheEngine::Instance().add(g_lpRing);
 
 	if(g_parser.value<int>("ringscalpel")) {
 		g_lpAvatar = g_lpRing;
@@ -712,16 +716,16 @@ int main(int argc, char* argv[]) {
 	//load gizmo manager file
 	AnsiStr strGizmoFP = g_parser.value<AnsiStr>("gizmo");
 	TheGizmoManager::Instance().readConfig(strGizmoFP);
-	TheSceneGraph::Instance().readConfig();
+    TheEngine::Instance().readConfig();
 
 	//add csf
 	/*
-	auto_ptr<VolMesh> csf(new PS::MESH::VolMesh());
+    auto_ptr<VolMesh> csf(new ps::MESH::VolMesh());
 	csf->setFlagFilterOutFlatCells(false);
 	csf->setVerbose(g_parser.value<int>("verbose"));
 	AnsiStr strCSF = "/home/pourya/Desktop/platform/projects/tetcutter/data/meshes/veg/brain/csf.veg";
 	LogInfoArg1("Begin to read vega file from: %s", strCSF.cptr());
-	bool res = PS::MESH::VolMeshIO::readVega(csf.get(), strCSF);
+    bool res = ps::MESH::VolMeshIO::readVega(csf.get(), strCSF);
 	if(res) {
 		CuttableMesh* cutcsf = new CuttableMesh(*csf);
 		//cutcsf->setFlagDrawNodes(true);
@@ -729,7 +733,7 @@ int main(int argc, char* argv[]) {
 		cutcsf->setColor(Color::blue());
 		cutcsf->syncRender();
 
-		TheSceneGraph::Instance().add(cutcsf);
+        TheEngine::Instance().add(cutcsf);
 	}
 	*/
 
@@ -739,11 +743,11 @@ int main(int argc, char* argv[]) {
 
 //	SGRenderMask* renderMask = new SGRenderMask(TheTexManager::Instance().get("maskalpha"));
 //	renderMask->setName("rendermask");
-//	TheSceneGraph::Instance().add(renderMask);
+//	TheEngine::Instance().add(renderMask);
 
 
-	TheSceneGraph::Instance().headers()->addHeaderLine("cell", "info");
-	TheSceneGraph::Instance().print();
+    TheEngine::Instance().headers()->addHeaderLine("cell", "info");
+    TheEngine::Instance().print();
 
     //mainloop
     while (!glfwWindowShouldClose(g_lpWindow))

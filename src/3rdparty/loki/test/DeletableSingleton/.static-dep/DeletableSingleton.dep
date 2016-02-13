@@ -1,3 +1,0 @@
-DeletableSingleton.o: DeletableSingleton.cpp \
- ../../include/loki/Singleton.h ../../include/loki/LokiExport.h \
- ../../include/loki/Threads.h

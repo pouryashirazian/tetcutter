@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 pshiraz. All rights reserved.
 //
 
-#ifndef hifem_Value_h
-#define hifem_Value_h
+#ifndef VALUE_H
+#define VALUE_H
 
 
 #include <typeinfo>
@@ -16,15 +16,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "loki/TypeTraits.h"
-#include "String.h"
-#include "MathBase.h"
-#include "Vec.h"
+#include "base.h"
+#include "str.h"
+#include "vec.h"
 
 using namespace std;
 using namespace Loki;
-using namespace PS::MATH;
+using namespace ps::base;
 
-namespace PS {
+namespace ps {
     
     namespace PRIVATE {
         //Interface

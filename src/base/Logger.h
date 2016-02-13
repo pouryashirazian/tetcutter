@@ -1,17 +1,21 @@
-/*!
- * A multi-purpose logging system for writing high quality, human readable logs.
- * Usages: Debugging, Performance measurements, Profiling, Event Reviews, Process Control
- * Logs are written to disk after a certain sized buffer is filled. 
- * Event logging system is accessible globally so it can be used in all classes. 
- */
+#pragma once
+#ifndef LOGGER_H
+#define LOGGER_H
+
 #include <vector>
 #include <time.h>
-#include "String.h"
+#include "str.h"
 #include "loki/Singleton.h"
 
 using namespace std;
-using namespace PS;
+using namespace ps;
 using namespace Loki;
+
+
+namespace ps {
+namespace utils {
+
+class EventLogger;
 
 #define PS_LOG_WRITE_EVENTTYPE 1
 #define PS_LOG_WRITE_TIMESTAMP 2
@@ -24,33 +28,32 @@ using namespace Loki;
 #define PS_LOG_BUFFER_SIZE  8*PS_LOG_LINE_SIZE
 
 //Logging Info, Error or Warning
-#define LogInfo(message) psLog(EventLogger::etInfo, __FILE__, __LINE__, message)
-#define LogError(message) psLog(EventLogger::etError, __FILE__, __LINE__, message)
-#define LogWarning(message) psLog(EventLogger::etWarning, __FILE__, __LINE__, message)
+#define LogInfo(message) psLog(ps::utils::EventLogger::etInfo, __FILE__, __LINE__, message)
+#define LogError(message) psLog(ps::utils::EventLogger::etError, __FILE__, __LINE__, message)
+#define LogWarning(message) psLog(ps::utils::EventLogger::etWarning, __FILE__, __LINE__, message)
 
-#define LogInfoArg1(message, arg1) psLog(EventLogger::etInfo, __FILE__, __LINE__, message, arg1)
-#define LogErrorArg1(message, arg1) psLog(EventLogger::etError, __FILE__, __LINE__, message, arg1)
-#define LogWarningArg1(message, arg1) psLog(EventLogger::etWarning, __FILE__, __LINE__, message, arg1)
+#define LogInfoArg1(message, arg1) psLog(ps::utils::EventLogger::etInfo, __FILE__, __LINE__, message, arg1)
+#define LogErrorArg1(message, arg1) psLog(ps::utils::EventLogger::etError, __FILE__, __LINE__, message, arg1)
+#define LogWarningArg1(message, arg1) psLog(ps::utils::EventLogger::etWarning, __FILE__, __LINE__, message, arg1)
 
-#define LogInfoArg2(message, arg1, arg2) psLog(EventLogger::etInfo, __FILE__, __LINE__, message, arg1, arg2)
-#define LogErrorArg2(message, arg1, arg2) psLog(EventLogger::etError, __FILE__, __LINE__, message, arg1, arg2)
-#define LogWarningArg2(message, arg1, arg2) psLog(EventLogger::etWarning, __FILE__, __LINE__, message, arg1, arg2)
+#define LogInfoArg2(message, arg1, arg2) psLog(ps::utils::EventLogger::etInfo, __FILE__, __LINE__, message, arg1, arg2)
+#define LogErrorArg2(message, arg1, arg2) psLog(ps::utils::EventLogger::etError, __FILE__, __LINE__, message, arg1, arg2)
+#define LogWarningArg2(message, arg1, arg2) psLog(ps::utils::EventLogger::etWarning, __FILE__, __LINE__, message, arg1, arg2)
 
-#define LogInfoArg3(message, arg1, arg2, arg3) psLog(EventLogger::etInfo, __FILE__, __LINE__, message, arg1, arg2, arg3)
-#define LogErrorArg3(message, arg1, arg2, arg3) psLog(EventLogger::etError, __FILE__, __LINE__, message, arg1, arg2, arg3)
-#define LogWarningArg3(message, arg1, arg2, arg3) psLog(EventLogger::etWarning, __FILE__, __LINE__, message, arg1, arg2, arg3)
+#define LogInfoArg3(message, arg1, arg2, arg3) psLog(ps::utils::EventLogger::etInfo, __FILE__, __LINE__, message, arg1, arg2, arg3)
+#define LogErrorArg3(message, arg1, arg2, arg3) psLog(ps::utils::EventLogger::etError, __FILE__, __LINE__, message, arg1, arg2, arg3)
+#define LogWarningArg3(message, arg1, arg2, arg3) psLog(ps::utils::EventLogger::etWarning, __FILE__, __LINE__, message, arg1, arg2, arg3)
 
 
 //Display Error Message
 typedef void (*FOnDisplay)(const char* message);
 
 
-namespace PS{
 
 /*!
 * Event Logger class for writing major application events to disk. 
 */
-class EventLogger{
+class EventLogger {
 public:
 	EventLogger();
 
@@ -141,3 +144,6 @@ void psLog(const char* lpDesc, ...);
 void psLog(EventLogger::EVENTTYPE etype, const char* lpSource, int line, const char* lpDesc, ...);
 
 }
+}
+
+#endif

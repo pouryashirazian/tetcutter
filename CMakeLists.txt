@@ -59,32 +59,33 @@ endif(NOT TBB_FOUND)
 
 
 #########################################################
+## build all libs
+#########################################################
+add_subdirectory(src/base/)
+add_subdirectory(src/glbackend/)
+add_subdirectory(src/scene/)
+add_subdirectory(src/elastic/)
+
+#########################################################
 ## other include files
 #########################################################
 include_directories(src/
                     src/3rdparty
                     src/3rdparty/loki/include
-                    src/3rdparty/bullet3
                     src/3rdparty/glfw-3.1.2/include)
 
 #########################################################
 ## add source files
 #########################################################
-
 file(GLOB SRC
-        src/3rdparty/lodepng/*.cpp
-##	src/3rdparty/bullet3/BulletCollision/CollisionDispatch/*.cpp
-	src/base/*.cpp
-	src/graphics/*.cpp
-	src/deformable/*.cpp
-	src/main.cpp
-	)
+	   src/main.cpp
+	  )
 
 
 ##c++11 required
 ADD_DEFINITIONS(
     -std=c++11
-    -march=core2 -msse3    
+    -march=core2 -msse3
 )
 #########################################################
 #Linking
@@ -92,4 +93,4 @@ ADD_DEFINITIONS(
 add_executable(tetcutter ${SRC})
 
 #glfw  ${GLUT_LIBRARY}
-target_link_libraries(tetcutter glfw ${GLFW_LIBRARIES} ${OPENGL_LIBRARIES}  ${GLEW_LIBRARY} ${TBB_LIBRARY})
+target_link_libraries(tetcutter glfw base scene elastic glbackend ${GLFW_LIBRARIES} ${OPENGL_LIBRARIES}  ${GLEW_LIBRARY} ${TBB_LIBRARY})

@@ -11,10 +11,10 @@
 
 #include "Value.h"
 #include "String.h"
-#include "FastAccessToNamedResource.h"
+#include "resourcemanager.h"
 
 
-namespace PS {
+namespace ps {
     
     //Logging and NoDuplicates enabled by default
     typedef FastAccessNamedResource<Value, TypeValue, InsertRemoveNoop> ValueStorageParent;

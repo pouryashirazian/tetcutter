@@ -4,10 +4,10 @@
  *  Created on: Aug 16, 2014
  *      Author: pourya
  */
-#include "CmdLineParser.h"
-#include "base/Logger.h"
+#include "cmdlineparser.h"
+#include "base/logger.h"
 
-using namespace PS;
+using namespace ps;
 
 CmdLineParser::CmdLineParser() {
 

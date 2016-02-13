@@ -1,23 +1,17 @@
-/*
- * PS_MovingAverage.h
- *
- *  Created on: Jul 12, 2011
- *      Author: pourya
- */
-
-#ifndef PS_MOVINGAVERAGE_H_
-#define PS_MOVINGAVERAGE_H_
+#ifndef MOVINGAVERAGE_H_
+#define MOVINGAVERAGE_H_
 
 #include <math.h>
 #include <assert.h>
 #include <vector>
-#include "DataArray.h"
+#include "alignedarray.h"
 
 #define DEFAULT_WINDOW_SIZE 20
-using namespace PS;
+using namespace ps;
+using namespace ps::simd;
 
-namespace PS{
-namespace MATH{
+namespace ps {
+namespace base {
 
 template <typename T, int length = DEFAULT_WINDOW_SIZE>
 class MovingAvg
@@ -36,7 +30,7 @@ public:
 	int getWindowSize() {return m_szWindow;}
 
 private:
-	DataArray<T, (size_t)length> m_buffer;
+    AlignedArray<T, (size_t)length> m_buffer;
 	T	m_current;
 	int m_szWindow;
 	int m_idxCurrent;
@@ -91,4 +85,4 @@ T MovingAvg<T, length>::getCurrent() const
 }
 }
 
-#endif /* PS_MOVINGAVERAGE_H_ */
+#endif

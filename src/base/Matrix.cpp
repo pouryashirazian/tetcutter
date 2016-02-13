@@ -1,12 +1,11 @@
-#include "Matrix.h"
+#include "matrix.h"
 #include <stdio.h>
 #include <iostream>
 
 using namespace std;
 
-namespace PS{
-namespace MATH{
-
+namespace ps {
+namespace base {
 
 
 void MtxPrint(const mat44& a)

@@ -6,10 +6,10 @@
 #ifndef PS_VECTOR_H
 #define PS_VECTOR_H
 
-#include "MathBase.h"
+#include "base.h"
 
-namespace PS{
-namespace MATH{
+namespace ps {
+namespace base {
 
 enum ScalarType {stFloat, stDouble};
 typedef float psreal;

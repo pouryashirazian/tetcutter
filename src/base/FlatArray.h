@@ -12,9 +12,9 @@
 #include <vector>
 
 using namespace std;
-using namespace PS::MATH;
+using namespace ps::base;
 
-namespace PS {
+namespace ps {
 
 template<typename T>
 void FlattenVec2(const vector< Vec2<T> >& vBefore, vector<T>& vAfter) {

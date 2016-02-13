@@ -1,21 +1,13 @@
-/*
- * PS_DebugUtils.cpp
- *
- *  Created on: 2012-02-16
- *      Author: pourya
- */
-#include "DebugUtils.h"
-#include "base/FileDirectory.h"
+#include "debugutils.h"
+#include "base/directory.h"
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
 
 using namespace std;
-using namespace PS;
-using namespace PS::FILESTRINGUTILS;
-
-namespace PS{
-namespace DEBUGTOOLS{
+using namespace ps;
+using namespace ps::dir;
+using namespace ps::utils;
 
 int SaveArrayCSV(const char* chrFilePath, float* lpArray, U32 count)
 {
@@ -63,7 +55,7 @@ bool LoadArray(const char* chrFilePath, double** lpArray, U32& count) {
 				return false;
 		}
 
-		int index = 0;
+        U32 index = 0;
 		while ( myfile.good() )
 		{
 			getline (myfile,line);
@@ -103,15 +95,12 @@ void PrintArrayF(const float* lpData, U32 count)
 
 void FillArray(U32* lpData, U32 count, U32 nMin, U32 nMax)
 {
-	for(int i=0; i < count; i++)
+    for(U32 i=0; i < count; i++)
 		lpData[i] = static_cast<U32>(RandRangeT<float>(nMin, nMax));
 }
 
 void FillArrayF(float* lpData, U32 count, float nMin, float nMax)
 {
-	for(int i=0; i < count; i++)
+    for(U32 i=0; i < count; i++)
 		lpData[i] = RandRangeT<float>(nMin, nMax);
-}
-
-}
 }

@@ -3,11 +3,11 @@
 
 #include <string.h>
 #include <iostream>
-#include "Vec.h"
-#include "Quaternion.h"
+#include "vec.h"
+#include "quaternion.h"
 
-namespace PS{
-namespace MATH{
+namespace ps {
+namespace base {
 
 
 //Column-major order to match OpenGL.

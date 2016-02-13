@@ -1,24 +1,18 @@
-/*
- * Profiler.cpp
- *
- *  Created on: Oct 14, 2013
- *      Author: pourya
- */
-#include "Profiler.h"
-#include "Logger.h"
-#include "FileDirectory.h"
+#include "profiler.h"
+#include "logger.h"
+#include "directory.h"
 #include <fstream>
 
-using namespace PS::FILESTRINGUTILS;
+using namespace ps::dir;
+using namespace ps::utils;
 
-namespace PS {
 
 ProfileAutoEvent::ProfileAutoEvent(const char* filename, const char* funcname, int line, const char* desc) {
-	psProfileStart(filename, funcname, line, desc);
+    __ProfileStart(filename, funcname, line, desc);
 }
 
 ProfileAutoEvent::~ProfileAutoEvent() {
-	psProfileEnd();
+    __ProfileEnd();
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -48,8 +42,8 @@ double ProfileEvent::end() {
 
 //////////////////////////////////////////////////////////////////////////////////
 ProfileSession::ProfileSession() {
-	m_strTextFile = ChangeFileExt(GetExePath(), AnsiStr(".psprofile.txt"));
-	m_strSQLDB = ChangeFileExt(GetExePath(), AnsiStr(".sqlite"));
+    m_strTextFile = ChangeFileExt(GetExePath(), AnsiStr(".psprofile.txt"));
+    m_strSQLDB = ChangeFileExt(GetExePath(), AnsiStr(".sqlite"));
 
 	cleanup();
 }
@@ -252,15 +246,14 @@ void Profiler::setInjectToLogFlag(bool enable) {
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
-void psProfileStart(const char* filename, const char* funcname, int line, const char* desc) {
+void ps::utils::__ProfileStart(const char* filename, const char* funcname, int line, const char* desc) {
 	TheProfiler::Instance().startEvent(filename, funcname, line, desc);
 }
 
-void psProfileEnd() {
+void ps::utils::__ProfileEnd() {
 	TheProfiler::Instance().endEvent();
 }
 
 
-}
 
 

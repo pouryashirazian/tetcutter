@@ -1,35 +1,31 @@
-/*
- * Profiler.h
- *
- *  Created on: Oct 14, 2013
- *      Author: pourya
- */
-
 #ifndef PROFILER_H_
 #define PROFILER_H_
 
 #include <vector>
 #include <stack>
 #include <time.h>
-#include "String.h"
+#include "str.h"
 #include "loki/Singleton.h"
 #include "tbb/tick_count.h"
 
 using namespace std;
 using namespace Loki;
 using namespace tbb;
+using namespace ps;
 
 #define MAX_LOG_EVENTS	32
 
 //Easy usage with preprocessor
-#define ProfileAuto() PS::ProfileAutoEvent profile(__FILE__, __FUNCTION__, __LINE__, NULL);
-#define ProfileAutoArg(desc) PS::ProfileAutoEvent profile(__FILE__, __FUNCTION__, __LINE__, desc);
+#define ProfileAuto() ps::utils::ProfileAutoEvent profile(__FILE__, __FUNCTION__, __LINE__, NULL);
+#define ProfileAutoArg(desc) ps::utils::ProfileAutoEvent profile(__FILE__, __FUNCTION__, __LINE__, desc);
 
-#define	 ProfileStart() psProfileStart(__FILE__, __FUNCTION__, __LINE__, NULL);
-#define	 ProfileStartArg(desc) psProfileStart(__FILE__, __FUNCTION__, __LINE__, desc);
-#define ProfileEnd() psProfileEnd();
+#define	 ProfileStart() ps::utils::ProfileStart(__FILE__, __FUNCTION__, __LINE__, NULL);
+#define	 ProfileStartArg(desc) ps::utils::ProfileStart(__FILE__, __FUNCTION__, __LINE__, desc);
+#define ProfileEnd() ps::utils::__ProfileEnd();
 
-namespace PS {
+namespace ps {
+namespace utils {
+
 
 typedef tbb::tick_count		tick;
 
@@ -176,9 +172,10 @@ private:
 //Singleton Instance
 typedef SingletonHolder<Profiler, CreateUsingNew, PhoenixSingleton> TheProfiler;
 
-void psProfileStart(const char* filename, const char* funcname, int line, const char* desc = NULL);
-void psProfileEnd();
+void __ProfileStart(const char* filename, const char* funcname, int line, const char* desc = NULL);
+void __ProfileEnd();
 
+}
 }
 
 #endif /* PROFILER_H_ */

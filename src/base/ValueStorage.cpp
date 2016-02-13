@@ -6,17 +6,19 @@
 //  Copyright (c) 2014 pshiraz. All rights reserved.
 //
 
-#include "ValueStorage.h"
-#include "loki/TypeTraits.h"
-#include "SettingsScript.h"
-#include "Logger.h"
 #include <istream>
 #include <fstream>
 
+#include "valuestorage.h"
+#include "loki/TypeTraits.h"
+#include "inifile.h"
+#include "logger.h"
+
 using namespace std;
 using namespace Loki;
+using namespace ps::utils;
 
-namespace PS {
+namespace ps {
     
     bool ValueStorage::read(const AnsiStr& strFP) {
 
@@ -75,7 +77,7 @@ namespace PS {
     }
     /////////////////////////////////////////////////////////
     bool ValueStorage::readScript(const AnsiStr& strFP, const AnsiStr& section) {
-        SettingsScript* script = new SettingsScript(strFP, SettingsScript::fmRead);
+        IniFile* script = new IniFile(strFP, IniFile::fmRead);
         
         
         if(this->size() == 0) {
@@ -100,7 +102,7 @@ namespace PS {
     }
 
     bool ValueStorage::writeScript(const AnsiStr& strFP, const AnsiStr& section) {
-        SettingsScript* script = new SettingsScript(strFP, SettingsScript::fmReadWrite);
+        IniFile* script = new IniFile(strFP, IniFile::fmReadWrite);
         
         
         for(ValueStorage::CONST_ITER it = this->cbegin(); it != this->cend(); it++) {

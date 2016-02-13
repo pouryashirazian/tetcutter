@@ -5,8 +5,8 @@
 
 #define INTERVAL_EPSILON 0.0001f
 
-namespace PS{
-	namespace MATH{
+namespace ps {
+namespace base {
 
 template <typename T>
 class Interval
@@ -80,6 +80,7 @@ typedef Interval<double> RangeD;
 typedef Interval<float> RangeF;
 typedef Interval<psreal> Range;
 typedef Interval<int> RangeI;
+
 }
 }
 

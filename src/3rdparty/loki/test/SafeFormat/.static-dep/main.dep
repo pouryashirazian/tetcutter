@@ -1,2 +1,0 @@
-main.o: main.cpp ../../include/loki/SafeFormat.h \
- ../../include/loki/LokiExport.h ../SmallObj/timer.h

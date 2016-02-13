@@ -9,12 +9,12 @@
 #define CMDLINEPROCESSOR_H_
 
 #include <string>
-#include "FastAccessToNamedResource.h"
-#include "Value.h"
-#include "String.h"
+#include "resourcemanager.h"
+#include "value.h"
+#include "str.h"
 
 using namespace std;
-namespace PS {
+namespace ps {
 
 class CmdOption {
 public:

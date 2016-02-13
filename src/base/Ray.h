@@ -1,13 +1,11 @@
 #pragma once
-#ifndef CRAY
-#define CRAY
+#ifndef RAY_H
+#define RAY_H
 
-#include "Vec.h"
+#include "vec.h"
 
-using namespace PS::MATH;
-
-namespace PS{
-namespace MATH{
+namespace ps {
+namespace base {
 
 //Used optimized ray implemented in http://www.cs.utah.edu/~awilliam/box/box.pdf
 class Ray
