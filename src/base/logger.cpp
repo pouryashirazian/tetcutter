@@ -12,7 +12,7 @@
 
 using namespace ps::dir;
 using namespace ps::utils;
-
+using namespace ps::base;
 
 void ps::utils::psLog(const char* lpDesc, ...)
 {

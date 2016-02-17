@@ -6,6 +6,7 @@
 
 using namespace std;
 using namespace ps;
+using namespace ps::base;
 using namespace ps::dir;
 using namespace ps::utils;
 

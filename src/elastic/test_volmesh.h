@@ -10,7 +10,8 @@
 
 #include "VolMesh.h"
 
-using namespace ps::elastic;
+namespace ps {
+namespace elastic {
 
 /*!
  * east test returns true if successful and false otherwise
@@ -29,5 +30,7 @@ public:
 	static bool tst_all(VolMesh* pmesh);
 };
 
+}
+}
 
 #endif /* TEST_HALFEDGETETMESH_H_ */

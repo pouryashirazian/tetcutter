@@ -4,7 +4,7 @@
 #include <string.h>
 #include <iostream>
 #include "vec.h"
-#include "quaternion.h"
+#include "quat.h"
 
 namespace ps {
 namespace base {

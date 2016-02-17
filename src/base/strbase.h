@@ -22,6 +22,7 @@
 #define MAX_STRING_BUFFER_LEN 2048
 
 namespace ps {
+namespace base {
 
 	template<typename Type>
 	class CTString
@@ -666,5 +667,6 @@ namespace ps {
 	}
 */
 
+}
 }
 #endif

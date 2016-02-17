@@ -34,6 +34,7 @@ using namespace ps;
 using namespace ps::scene;
 using namespace ps::opengl;
 using namespace ps::dir;
+using namespace ps::elastic;
 
 using namespace std;
 

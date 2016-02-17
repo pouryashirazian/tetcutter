@@ -11,6 +11,8 @@
 
 
 namespace ps {
+namespace base {
+
 
 //Implementations Start by CAString and then CWString
 //==================================================================================================
@@ -726,4 +728,5 @@ CWString printToWStr( const char *pFmt, ... )
     return strOut;
 }
 
+}
 }

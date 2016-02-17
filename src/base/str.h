@@ -6,6 +6,7 @@
 #include "strbase.h"
 
 namespace ps {
+namespace base {
 
 	//AnsiString a replacement for std and char* strings
 	class CAString : public CTString<char>
@@ -131,12 +132,13 @@ namespace ps {
 	CWString printToWStr( const char *pFmt, ... );
 
 }
+}
 
 //=========================================================================================================
 //TypeDefs
 //=========================================================================================================
-typedef ps::CAString AnsiStr;
-typedef ps::CWString WideStr;
+typedef ps::base::CAString AnsiStr;
+typedef ps::base::CWString WideStr;
 
 
 #endif

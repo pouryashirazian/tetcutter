@@ -5,6 +5,10 @@
 
 using namespace std;
 
+namespace ps {
+namespace base {
+
+
 template <typename T>
 class CopyStack{
 
@@ -30,5 +34,8 @@ public:
 private:
     std::vector<T> m_stk;
 };
+
+}
+}
 
 #endif // PS_MATRIXSTACK_H

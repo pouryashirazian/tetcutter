@@ -20,6 +20,8 @@ using namespace std;
 using namespace ps::base;
 
 namespace ps {
+namespace elastic {
+
 
 ///////////////////////////////////////////////////////////////////////////
 CuttableMesh::CuttableMesh(const VolMesh& volmesh): VolMesh(volmesh) {
@@ -351,7 +353,7 @@ int CuttableMesh::cut(const vector<vec3d>& segments,
 	vCutNodeCodes.reserve(128);
 
 	for(U32 i=0; i < this->countCells(); i++) {
-		const CELL& cell = this->const_cellAt(i);
+        const CELL& cell = this->const_cellAt_(CellLink::create(i));
 		U8 cutEdgeCode = 0;
 		U8 cutNodeCode = 0;
 
@@ -725,6 +727,7 @@ void CuttableMesh::applyTransformToMeshThenResetTransform() {
 	computeAABB();
 }
 
+}
 }
 
 

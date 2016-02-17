@@ -7,7 +7,7 @@
 #include "loki/SmartPtr.h"
 #include "base/copystack.h"
 #include "base/resourcemanager.h"
-#include "base/movingaverage.h"
+#include "base/movingavg.h"
 
 #include "glbackend/glshadermanager.h"
 #include "glbackend/gltexturemanager.h"

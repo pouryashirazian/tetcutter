@@ -14,6 +14,9 @@
 using namespace std;
 using namespace ps;
 
+namespace ps {
+namespace elastic {
+
 bool TestVolMesh::tst_report_mesh_info(VolMesh* pmesh) {
 	if(pmesh == NULL)
 		return false;
@@ -291,3 +294,5 @@ bool TestVolMesh::tst_all(VolMesh* pmesh) {
 }
 
 
+}
+}

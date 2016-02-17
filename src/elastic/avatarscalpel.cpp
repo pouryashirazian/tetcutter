@@ -13,6 +13,10 @@
 
 using namespace ps;
 
+namespace ps {
+namespace elastic {
+
+
 AvatarScalpel::AvatarScalpel():IAvatar(), m_isSweptQuadValid(false) {
 	this->init();
 }
@@ -230,4 +234,7 @@ void AvatarScalpel::onTranslate(const vec3f& delta, const vec3f& pos) {
 
 	//int res = m_lpTissue->cut(m_vCuttingPathEdge0, m_vCuttingPathEdge1, m_sweptQuad, false);
 	//LogInfoArg1("Progressive cutting not implemented. res = %d", res);
+}
+
+}
 }

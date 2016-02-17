@@ -13,6 +13,8 @@
 using namespace ps;
 using namespace ps::scene;
 
+namespace ps {
+namespace elastic {
 
 /*!
  * Synopsis: Haptics Avatar guide
@@ -51,6 +53,7 @@ protected:
 	vector<vec3d> m_vBladeSegments;
 };
 
-
+}
+}
 
 #endif /* AVATARSCALPEL_H_ */

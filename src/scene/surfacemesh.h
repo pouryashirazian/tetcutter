@@ -5,7 +5,7 @@
 
 #include "base/str.h"
 #include "base/vec.h"
-#include "base/quaternion.h"
+#include "base/quat.h"
 #include "base/aabb.h"
 
 #include "scene/sgassetmanager.h"

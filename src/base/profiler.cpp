@@ -5,6 +5,7 @@
 
 using namespace ps::dir;
 using namespace ps::utils;
+using namespace ps::base;
 
 
 ProfileAutoEvent::ProfileAutoEvent(const char* filename, const char* funcname, int line, const char* desc) {

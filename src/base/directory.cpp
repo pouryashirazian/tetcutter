@@ -18,6 +18,7 @@
 #endif
 
 using namespace ps;
+using namespace ps::base;
 
 namespace ps {
 namespace dir {

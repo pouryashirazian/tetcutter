@@ -18,6 +18,7 @@ include_directories(..
 #########################################################
 
 file(GLOB BASE_SRC
+         *.h
 	 *.cpp
 	)
 

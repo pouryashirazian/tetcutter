@@ -26,7 +26,7 @@
 #include "base/aabb.h"
 
 #include "elastic/volmesh.h"
-
+#include "elastic/volmeshentities.h"
 #include "scene/sgengine.h"
 #include "glbackend/glselect.h"
 
@@ -1353,9 +1353,14 @@ NODE& VolMesh::nodeAt(U32 i) {
 
 
 //access
+const CELL& VolMesh::const_cellAt_(const CellLink& i) const {
+    assert(isCellIndex((U32)i));
+    return m_vCells[i];
+}
+
 const CELL& VolMesh::const_cellAt(U32 i) const {
-	assert(isCellIndex(i));
-	return m_vCells[i];
+    assert(isCellIndex((U32)i));
+    return m_vCells[i];
 }
 
 const FACE& VolMesh::const_faceAt(U32 i) const {

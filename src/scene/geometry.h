@@ -4,7 +4,7 @@
 #include <vector>
 #include "base/vec.h"
 #include "base/matrix.h"
-#include "base/quaternion.h"
+#include "base/quat.h"
 #include "base/str.h"
 #include "base/aabb.h"
 #include "glbackend/gltypes.h"

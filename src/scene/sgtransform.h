@@ -4,7 +4,7 @@
 #include <memory>
 #include "base/matrix.h"
 #include "base/vec.h"
-#include "base/quaternion.h"
+#include "base/quat.h"
 
 using namespace ps::base;
 

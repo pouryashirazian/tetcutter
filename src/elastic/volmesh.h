@@ -122,10 +122,11 @@ public:
 	NODE& nodeAt(U32 i);
 	EDGE& edgeAt(U32 i);
 
-	const CELL& const_cellAt(U32 i) const;
-	const FACE& const_faceAt(U32 i) const;
-	const NODE& const_nodeAt(U32 i) const;
-	const EDGE& const_edgeAt(U32 i) const;
+    const CELL& const_cellAt_(const CellLink& i) const;
+    const CELL& const_cellAt(U32 i) const;
+    const FACE& const_faceAt(U32 i) const;
+    const NODE& const_nodeAt(U32 i) const;
+    const EDGE& const_edgeAt(U32 i) const;
 
 	inline U32 countCells() const { return m_vCells.size();}
 	inline U32 countFaces() const {return m_vFaces.size();}

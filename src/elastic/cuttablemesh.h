@@ -16,9 +16,9 @@
 
 
 using namespace ps::base;
-using namespace ps::elastic;
 
 namespace ps {
+namespace elastic {
 
 #define CUT_ERR_INVALID_INPUT_ARG -1
 #define CUT_ERR_NO_INTERSECTION -2
@@ -186,7 +186,7 @@ private:
 
 
 }
-
+}
 
 
 

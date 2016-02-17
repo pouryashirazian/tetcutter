@@ -5,8 +5,8 @@
  *      Author: pourya
  */
 
-#ifndef CELLULARMESHTYPES_H_
-#define CELLULARMESHTYPES_H_
+#ifndef VOLMESHENTITIES_H_
+#define VOLMESHENTITIES_H_
 
 #include <algorithm>
 #include <functional>
@@ -80,10 +80,29 @@ namespace elastic {
 	};
 
 	//links for all entities
-	class NodeLink : public BaseLink { NodeLink(U32 idx = INVALID): BaseLink(idx){} };
-	class EdgeLink : public BaseLink { EdgeLink(U32 idx = INVALID): BaseLink(idx){} };
-	class FaceLink : public BaseLink { FaceLink(U32 idx = INVALID): BaseLink(idx){} };
-	class CellLink : public BaseLink { CellLink(U32 idx = INVALID): BaseLink(idx){} };
+    class NodeLink : public BaseLink {
+        NodeLink(U32 idx = INVALID): BaseLink(idx){}
+    public:
+        static NodeLink create(U32 idx) { return NodeLink(idx); }
+    };
+
+    class EdgeLink : public BaseLink {
+        EdgeLink(U32 idx = INVALID): BaseLink(idx){}
+    public:
+        static EdgeLink create(U32 idx) { return EdgeLink(idx); }
+    };
+
+    class FaceLink : public BaseLink {
+        FaceLink(U32 idx = INVALID): BaseLink(idx){}
+    public:
+        static FaceLink create(U32 idx) { return FaceLink(idx); }
+    };
+
+    class CellLink : public BaseLink {
+        CellLink(U32 idx = INVALID): BaseLink(idx){}
+    public:
+        static CellLink create(U32 idx) { return CellLink(idx); }
+    };
 
 
 	// Helper class that is used to decrease all handles
@@ -343,4 +362,4 @@ namespace elastic {
 }
 
 
-#endif /* CELLULARMESHTYPES_H_ */
+#endif /* VOLMESHENTITIES_H_ */

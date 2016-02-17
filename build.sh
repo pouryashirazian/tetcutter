@@ -8,3 +8,10 @@ cmake ..
 make
 
 popd
+
+echo "Make documentation"
+pushd doc
+
+doxygen
+
+popd 
