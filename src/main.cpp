@@ -31,6 +31,7 @@
 
 using namespace tbb;
 using namespace ps;
+using namespace ps::utils;
 using namespace ps::scene;
 using namespace ps::opengl;
 using namespace ps::dir;
@@ -472,7 +473,7 @@ void resetMesh() {
 	if(FileExists(g_strFilePath)) {
         temp = new VolMesh();
 		temp->setFlagFilterOutFlatCells(false);
-		temp->setVerbose(g_parser.value<int>("verbose"));
+        temp->setVerbose(g_parser.value_to_int("verbose"));
 		LogInfoArg1("Begin to read vega file from: %s", g_strFilePath.cptr());
         bool res = VolMeshIO::readVega(temp, g_strFilePath);
 		if(!res)
@@ -483,7 +484,7 @@ void resetMesh() {
 //			LogInfoArg1("Managed to remove %u flat cells in the mesh", ctRemoved);
 	}
 	else {
-		AnsiStr strExample = g_parser.value<AnsiStr>("example");
+        AnsiStr strExample = AnsiStr(g_parser.value("example").c_str());
 		int pos = -1;
 		if(strExample == "one")
             temp = VolMeshSamples::CreateOneTetra();
@@ -513,12 +514,12 @@ void resetMesh() {
 	g_lpTissue->setFlagDrawNodes(true);
 	g_lpTissue->setFlagDrawWireFrame(false);
 	g_lpTissue->setColor(Color::skin());
-	g_lpTissue->setVerbose(g_parser.value<int>("verbose") != 0);
+    g_lpTissue->setVerbose(g_parser.value_to_int("verbose") != 0);
 	g_lpTissue->syncRender();
 	SAFE_DELETE(temp);
 
     TheEngine::Instance().add(g_lpTissue);
-	if(g_parser.value<int>("ringscalpel") == 1)
+    if(g_parser.value_to_int("ringscalpel") == 1)
 		g_lpRing->setTissue(g_lpTissue);
 	else
 		g_lpScalpel->setTissue(g_lpTissue);
@@ -553,7 +554,7 @@ void runTestSubDivide(int current) {
 
 void cutFinished() {
 
-	if(!g_parser.value<int>("disjoint"))
+    if(!g_parser.value_to_int("disjoint"))
 		return;
 
 
@@ -589,18 +590,19 @@ int main(int argc, char* argv[]) {
  	cout << "started tbb with " << ctThreads << " threads." << endl;
 
 	//parser
- 	g_parser.add_toggle("disjoint", "converts splitted part to disjoint meshes");
- 	g_parser.add_toggle("ringscalpel", "If the switch presents then the ring scalpel will be used");
- 	g_parser.add_toggle("verbose", "prints detailed description.");
- 	g_parser.add_option("input", "[filepath] set input file in vega format", Value(AnsiStr("internal")));
-	g_parser.add_option("example", "[one, two, cube, eggshell] set an internal example", Value(AnsiStr("two")));
-	g_parser.add_option("gizmo", "loads a file to set gizmo location and orientation", Value(AnsiStr("gizmo.ini")));
+    g_parser.addSwitch("--disjoint", "-d", "converts splitted part to disjoint meshes", "0");
+    g_parser.addSwitch("--ringscalpel", "-r", "If the switch presents then the ring scalpel will be used");
+    g_parser.addSwitch("--verbose", "-v", "prints detailed description.");
+    g_parser.addSwitch("--input", "-i", "[filepath] set input file in vega format", "internal");
+    g_parser.addSwitch("--example", "-e", "[one, two, cube, eggshell] set an internal example", "two");
+    g_parser.addSwitch("--gizmo", "-g", "loads a file to set gizmo location and orientation", "gizmo.ini");
 
 	if(g_parser.parse(argc, argv) < 0)
 		exit(0);
 
 	//file path
-	g_strFilePath = ExtractFilePath(GetExePath()) + g_parser.value<AnsiStr>("input");
+    AnsiStr strInput = AnsiStr(g_parser.value("input").c_str());
+    g_strFilePath = ExtractFilePath(GetExePath()) + strInput;
 	if(FileExists(g_strFilePath))
 		LogInfoArg1("input file: %s.", g_strFilePath.cptr());
 	else
@@ -700,7 +702,7 @@ int main(int argc, char* argv[]) {
     TheEngine::Instance().add(g_lpScalpel);
     TheEngine::Instance().add(g_lpRing);
 
-	if(g_parser.value<int>("ringscalpel")) {
+    if(g_parser.value_to_int("ringscalpel") == 1) {
 		g_lpAvatar = g_lpRing;
 		g_lpRing->setVisible(true);
 	}
@@ -715,7 +717,7 @@ int main(int argc, char* argv[]) {
 
 
 	//load gizmo manager file
-	AnsiStr strGizmoFP = g_parser.value<AnsiStr>("gizmo");
+    AnsiStr strGizmoFP = AnsiStr(g_parser.value("gizmo").c_str());
 	TheGizmoManager::Instance().readConfig(strGizmoFP);
     TheEngine::Instance().readConfig();
 

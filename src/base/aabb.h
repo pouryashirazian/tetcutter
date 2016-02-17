@@ -1,5 +1,5 @@
-#ifndef PS_BOX_H
-#define PS_BOX_H
+#ifndef AABB_H
+#define AABB_H
 
 #include <vector>
 #include "base/vec.h"

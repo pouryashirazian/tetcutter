@@ -1,26 +1,51 @@
 tetcutter
 =========
-One of the main objectives of virtual reality based surgical simulation systems is the removal of pathologic tissue. 
-Cutting imposes many challenges in the development of a robust, interactive surgery 
-simulation, not only because of the nonlinear material behavior exhibited by soft tissue but also due to the
-complexity of introducing the cutting-induced discontinuity. In most publications, the progressive surgical cutting is modelled
-by the conventional finite element (FE) method, in which the high computational cost and error accumulation due to remeshing constrain 
-the computational efficiency and accuracy.
+Cutting tetrahedral meshes with applications in surgical simulation, visual effects,
+mesh manipulation and 3D printing!
 
-We present a GPU-assisted approach to cutting tetrahedral meshes in real-time. The input to our system is a cut trajectory 
-and an edge-based data structure representing the tetrahedral mesh. The user moves the cutting tool and the system records the 
-path of the blade endpoints. The first intersection between the recorded trajectory and the model marks the beginning of the 
-cutting process. The following steps are performed to complete the cut induced by the scalpel on the mesh:
-
-![ScreenShot](https://raw.githubusercontent.com/GraphicsEmpire/tetcutter/master/data/images/workflow.png)
-
-Cut configurations
+License:
 =========
-Cutting a tetrahedra requires a lookup table to handle different cases. This project also helps to identify those cases.
+The software library is release under the terms of MIT license.
 
-Examples
+External Dependencies
 =========
-![ScreenShot](https://raw.githubusercontent.com/GraphicsEmpire/tetcutter/master/data/images/dumbel04.png)
-![ScreenShot](https://raw.githubusercontent.com/GraphicsEmpire/tetcutter/master/data/images/tumor04.png)
+The source code for the example application uses the following libraries:
+
+1. GLFW: http://www.glfw.org/
+2. TBB: https://www.threadingbuildingblocks.org/
+3. libpng
+
+How to build?
+=========
+Just execute build.sh on a unix-based system.
+
+>> ./build.sh
+
+or perform the following in order:
+
+>> mkdir bin && cd bin
+>> cmake ..
+>> make
+
+Run with the example meshes
+==========
+Start cutting a voxel grid of 8x8x8
+
+>> ./bin/tetcutter -e cube_8_8_8  
+
+The number of cells in the voxel can be altered arbitrarily: cube_<nx>_<ny>_<nz>:
+
+>> ./bin/tetcutter -e cube_10_4_8  
+
+The same rule holds for our eggshell model: eggshell_<nh>_<nv>
+where <nh> and <nv> are the number of segments along the latitude and longtitude of the model, respectively.
 
 
+>> ./bin/tetcutter -e eggshell_20_16
+
+
+Input Models
+===========
+Input models should follow the VEGA file format for volumetric meshes.
+More about this format:
+http://run.usc.edu/vega/index.html

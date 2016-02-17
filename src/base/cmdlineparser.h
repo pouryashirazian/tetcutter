@@ -1,68 +1,117 @@
-/*
- * CmdLineProcessor.h
- *
- *  Created on: Aug 16, 2014
- *      Author: pourya
- */
+#ifndef CMDLINEPARSER_H_
+#define CMDLINEPARSER_H_
 
-#ifndef CMDLINEPROCESSOR_H_
-#define CMDLINEPROCESSOR_H_
-
+#include <map>
 #include <string>
-#include "resourcemanager.h"
-#include "value.h"
-#include "str.h"
+#include <vector>
 
 using namespace std;
+
 namespace ps {
+namespace utils {
 
-class CmdOption {
-public:
-	CmdOption(): toggle(false) {
-	}
-
-public:
-	AnsiStr desc;
-	AnsiStr shortcut;
-	Value value;
-	bool toggle;
-
-	void operator=(const CmdOption& b) {
-		desc = b.desc;
-		shortcut = b.shortcut;
-		value = b.value;
-	}
-};
-
-//Logging and NoDuplicates enabled by default
-typedef FastAccessNamedResource<CmdOption, TypeValue, InsertRemoveNoop> CmdOptionStorage;
+bool is_file(const std::string& name);
 
 /*!
- * Command line parser
+ * Synopsis:
+ * 1.Parses the command line passed in from the user and stores all enabled
+ * 	 system options.
+ * 2.Prints help for the user if an option is not valid.
+ * 3.Stores options and provides a mechanism to read those options
  */
-class CmdLineParser : public CmdOptionStorage {
+class CmdLineParser {
+public:
+	class CmdSwitch {
+	public:
+		CmdSwitch() {}
+		CmdSwitch(const CmdSwitch& rhs) {
+			copyfrom(rhs);
+		}
+
+		void copyfrom(const CmdSwitch& rhs) {
+			this->key = rhs.key;
+			this->shortcut = rhs.shortcut;
+			this->default_value = rhs.default_value;
+			this->value = rhs.value;
+			this->desc = rhs.desc;
+			this->istoggle = rhs.istoggle;
+			this->isvalid = rhs.isvalid;
+		}
+
+		CmdSwitch& operator=(const CmdSwitch& rhs) {
+			this->copyfrom(rhs);
+			return *this;
+		}
+	public:
+		string key;
+		string shortcut;
+		string default_value;
+		string value;
+		string desc;
+		bool istoggle;
+		bool isvalid;
+	};
+
 public:
 	CmdLineParser();
+	//CmdLineParser(int argc, char* argv[]);
 	virtual ~CmdLineParser();
 
-	void printHelp() const;
-	bool add_option(const AnsiStr& name, const AnsiStr& desc, const Value& defval);
-	bool add_toggle(const AnsiStr& name, const AnsiStr& desc);
+
+	bool addSwitch(const CmdSwitch& s);
+	bool addSwitch(const string& name, const string& shortcut,
+					const string& desc, const string& default_value = "",
+					bool istoggle = false);
+
+	/*!
+	 * sets default key to be able to read a 2 argumented call
+	 */
+	bool setDefaultKey(const char* key);
+
+	/*!
+	 * parse and store command line
+	 */
 	int parse(int argc, char* argv[]);
 
-	template <typename value_type>
-	value_type value(const char* name) {
-		return this->get(name).value.get<value_type>();
-	}
+	/*!
+	 * retrieve value using a key
+	 */
+	string value(const char* key);
+
+	int value_to_int(const char* key);
 
 
-	static bool isTokenName(const AnsiStr& str);
+	double value_to_double(const char* key);
+
+	/*!
+	 * Returns true if a valid value is supplied by user
+	 */
+	bool isValid(const char* key);
+
+	/*!
+	 * prints the help menu in case the options are not correct.
+	 */
+	virtual void printHelp();
+
 protected:
-	std::map<string, string> m_shortcuts;
+	/*!
+	 * Retrieve command switch
+	 */
+	CmdSwitch* getCmdSwitch(const char* key);
+
+	bool token_to_fullkeyname(const string& token, string& fullkey);
+
+
+private:
+	map<string, CmdSwitch*> m_mapKeySwitch;
+	map<string, string> m_mapShortcutKeys;
+	vector<CmdSwitch*> m_vSwitches;
+	string m_strDefaultKey;
+	string m_appname;
 };
+
+//bool starts_with(const string& src, const string& sub);
+
 }
-
-
-
-
-#endif /* CMDLINEPROCESSOR_H_ */
+}
+#endif /* CMDLINEPARSER_H_ */
