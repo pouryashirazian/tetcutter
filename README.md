@@ -53,14 +53,14 @@ Start cutting a voxel grid of 8x8x8
 > ./bin/tetcutter -e cube_8_8_8  
 ```
 
-The number of cells in the voxel can be altered arbitrarily: **cube_<nx>_<ny>_<nz>**
+The number of cells in the voxel can be altered arbitrarily: **cube_[nx]_[ny]_[nz]**
 
 ```
 > ./bin/tetcutter -e cube_10_4_8  
 ```
 
-The same rule holds for our eggshell model: **eggshell_<nh>_<nv>**
-where **<nh>** and **<nv>** are the number of segments along the latitude and longtitude of the model, respectively.
+The same rule holds for our eggshell model: **eggshell_[nh]_[nv]**
+where **nh** and **nv** are the number of segments along the latitude and longtitude of the model, respectively.
 
 ```
 > ./bin/tetcutter -e eggshell_20_16
