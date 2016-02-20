@@ -1,7 +1,9 @@
 tetcutter
 =========
 Cutting tetrahedral meshes with applications in surgical simulation, visual effects,
-mesh manipulation and 3D printing!
+mesh manipulation and 3D printing! Watch this demo on youtube:
+
+![Alt text](https://www.youtube.com/watch?v=r2nqwWJuNPc)
 
 Introduction
 =========
