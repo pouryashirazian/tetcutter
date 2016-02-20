@@ -1,0 +1,100 @@
+\hypertarget{classLoki_1_1FunctionStorage}{}\section{Loki\+:\+:Function\+Storage$<$ T $>$ Class Template Reference}
+\label{classLoki_1_1FunctionStorage}\index{Loki\+::\+Function\+Storage$<$ T $>$@{Loki\+::\+Function\+Storage$<$ T $>$}}
+
+
+Implementation of the Storage\+Policy used by \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}.  
+
+
+
+
+{\ttfamily \#include $<$S\+P\+Cached\+Factory.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1FunctionStorage_a52a1fc18d9685e6496bde1078e6949c5}{}typedef T $\ast$ \hyperlink{classLoki_1_1FunctionStorage_a52a1fc18d9685e6496bde1078e6949c5}{Stored\+Type}\label{classLoki_1_1FunctionStorage_a52a1fc18d9685e6496bde1078e6949c5}
+
+\begin{DoxyCompactList}\small\item\em the type of the pointee\+\_\+ object \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1FunctionStorage_a08681726c77c6a7492a375de7c34a1be}{}typedef T $\ast$ \hyperlink{classLoki_1_1FunctionStorage_a08681726c77c6a7492a375de7c34a1be}{Init\+Pointer\+Type}\label{classLoki_1_1FunctionStorage_a08681726c77c6a7492a375de7c34a1be}
+
+\begin{DoxyCompactList}\small\item\em type used to declare Ownership\+Policy type. \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1FunctionStorage_a0e56f22b839615e3082416ca4025ca69}{}typedef T $\ast$ \hyperlink{classLoki_1_1FunctionStorage_a0e56f22b839615e3082416ca4025ca69}{Pointer\+Type}\label{classLoki_1_1FunctionStorage_a0e56f22b839615e3082416ca4025ca69}
+
+\begin{DoxyCompactList}\small\item\em type returned by operator-\/$>$ \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1FunctionStorage_a9d90fd63b1864a25cda9f1c76a276841}{}typedef T \& \hyperlink{classLoki_1_1FunctionStorage_a9d90fd63b1864a25cda9f1c76a276841}{Reference\+Type}\label{classLoki_1_1FunctionStorage_a9d90fd63b1864a25cda9f1c76a276841}
+
+\begin{DoxyCompactList}\small\item\em type returned by operator$\ast$ \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1FunctionStorage_ae72e07ed847e973c97f8ab1e035f827a}{}typedef \hyperlink{classLoki_1_1Functor}{Functor}$<$ void, \hyperlink{structLoki_1_1Seq}{Seq}$<$ void $\ast$ $>$ $>$ \hyperlink{classLoki_1_1FunctionStorage_ae72e07ed847e973c97f8ab1e035f827a}{Functor\+Type}\label{classLoki_1_1FunctionStorage_ae72e07ed847e973c97f8ab1e035f827a}
+
+\begin{DoxyCompactList}\small\item\em type of the \hyperlink{classLoki_1_1Functor}{Functor} to set \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1FunctionStorage_a2f5e046b3001fb5a347c80ea23718530}{}{\bfseries Function\+Storage} (const \hyperlink{classLoki_1_1FunctionStorage}{Function\+Storage} \&rsh)\label{classLoki_1_1FunctionStorage_a2f5e046b3001fb5a347c80ea23718530}
+
+\item 
+\hypertarget{classLoki_1_1FunctionStorage_a5ea4ef9fd738453790b6857bf2afb626}{}{\footnotesize template$<$class U $>$ }\\{\bfseries Function\+Storage} (const \hyperlink{classLoki_1_1FunctionStorage}{Function\+Storage}$<$ U $>$ \&rsh)\label{classLoki_1_1FunctionStorage_a5ea4ef9fd738453790b6857bf2afb626}
+
+\item 
+\hypertarget{classLoki_1_1FunctionStorage_a22c77c0991eca5dfba57bae5ff08c003}{}{\bfseries Function\+Storage} (const \hyperlink{classLoki_1_1FunctionStorage_a52a1fc18d9685e6496bde1078e6949c5}{Stored\+Type} \&p)\label{classLoki_1_1FunctionStorage_a22c77c0991eca5dfba57bae5ff08c003}
+
+\item 
+\hypertarget{classLoki_1_1FunctionStorage_a6a09030ef003aae00d26712413c1fd56}{}\hyperlink{classLoki_1_1FunctionStorage_a0e56f22b839615e3082416ca4025ca69}{Pointer\+Type} {\bfseries operator-\/$>$} () const \label{classLoki_1_1FunctionStorage_a6a09030ef003aae00d26712413c1fd56}
+
+\item 
+\hypertarget{classLoki_1_1FunctionStorage_a6f86cf90c0dec38084349de80d003f73}{}\hyperlink{classLoki_1_1FunctionStorage_a9d90fd63b1864a25cda9f1c76a276841}{Reference\+Type} {\bfseries operator$\ast$} () const \label{classLoki_1_1FunctionStorage_a6f86cf90c0dec38084349de80d003f73}
+
+\item 
+\hypertarget{classLoki_1_1FunctionStorage_afffbf664589ddf954d25fed13b762755}{}void {\bfseries Swap} (\hyperlink{classLoki_1_1FunctionStorage}{Function\+Storage} \&rhs)\label{classLoki_1_1FunctionStorage_afffbf664589ddf954d25fed13b762755}
+
+\item 
+void \hyperlink{classLoki_1_1FunctionStorage_ac55c8a149c74a27751204b0215c76041}{Set\+Call\+Back\+Function} (const \hyperlink{classLoki_1_1FunctionStorage_ae72e07ed847e973c97f8ab1e035f827a}{Functor\+Type} \&functor)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1FunctionStorage_ac7f58b1c0640240fbe17c2f7bc148a7a}{}void {\bfseries Destroy} ()\label{classLoki_1_1FunctionStorage_ac7f58b1c0640240fbe17c2f7bc148a7a}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1FunctionStorage_a0a7769b064aa2b15ef22338f8ca3b76c}{}static \hyperlink{classLoki_1_1FunctionStorage_a52a1fc18d9685e6496bde1078e6949c5}{Stored\+Type} {\bfseries Default} ()\label{classLoki_1_1FunctionStorage_a0a7769b064aa2b15ef22338f8ca3b76c}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1FunctionStorage_a3dc5859035d88a940d9aac1499f40f16}{}{\footnotesize template$<$class F $>$ }\\\hyperlink{classLoki_1_1FunctionStorage}{Function\+Storage}$<$ F $>$\+::\hyperlink{classLoki_1_1FunctionStorage_a0e56f22b839615e3082416ca4025ca69}{Pointer\+Type} {\bfseries Get\+Impl} (const \hyperlink{classLoki_1_1FunctionStorage}{Function\+Storage}$<$ F $>$ \&sp)\label{classLoki_1_1FunctionStorage_a3dc5859035d88a940d9aac1499f40f16}
+
+\item 
+\hypertarget{classLoki_1_1FunctionStorage_a9fff842b3ebebf29e059ebb4cfeae5c7}{}{\footnotesize template$<$class F $>$ }\\const \hyperlink{classLoki_1_1FunctionStorage}{Function\+Storage}$<$ F $>$\+::\hyperlink{classLoki_1_1FunctionStorage_a52a1fc18d9685e6496bde1078e6949c5}{Stored\+Type} \& {\bfseries Get\+Impl\+Ref} (const \hyperlink{classLoki_1_1FunctionStorage}{Function\+Storage}$<$ F $>$ \&sp)\label{classLoki_1_1FunctionStorage_a9fff842b3ebebf29e059ebb4cfeae5c7}
+
+\item 
+\hypertarget{classLoki_1_1FunctionStorage_aca2f0cdd3bc7902fd958661243d76f8b}{}{\footnotesize template$<$class F $>$ }\\\hyperlink{classLoki_1_1FunctionStorage}{Function\+Storage}$<$ F $>$\+::\hyperlink{classLoki_1_1FunctionStorage_a52a1fc18d9685e6496bde1078e6949c5}{Stored\+Type} \& {\bfseries Get\+Impl\+Ref} (\hyperlink{classLoki_1_1FunctionStorage}{Function\+Storage}$<$ F $>$ \&sp)\label{classLoki_1_1FunctionStorage_aca2f0cdd3bc7902fd958661243d76f8b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$class Loki\+::\+Function\+Storage$<$ T $>$}
+
+Implementation of the Storage\+Policy used by \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}. 
+
+This storage policy is used by \hyperlink{classLoki_1_1SmartPointer}{Smart\+Pointer} \hyperlink{classLoki_1_1CachedFactory}{Cached\+Factory}\textquotesingle{}s encapsulation policy. It\textquotesingle{}s purpose is to call a \hyperlink{classLoki_1_1Functor}{Functor} instead of deleting the underlying pointee object. You have to set the callback functor by calling \hyperlink{classLoki_1_1FunctionStorage_ac55c8a149c74a27751204b0215c76041}{Set\+Call\+Back\+Function(const Functor\+Type \&functor)}.
+
+Unfortunately, the functor argument is not a reference to the \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr} but a void $\ast$. Making functor argument a reference to the pointer would require the \hyperlink{classLoki_1_1FunctionStorage}{Function\+Storage} template to know the full definition of the \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classLoki_1_1FunctionStorage_ac55c8a149c74a27751204b0215c76041}{}\index{Loki\+::\+Function\+Storage@{Loki\+::\+Function\+Storage}!Set\+Call\+Back\+Function@{Set\+Call\+Back\+Function}}
+\index{Set\+Call\+Back\+Function@{Set\+Call\+Back\+Function}!Loki\+::\+Function\+Storage@{Loki\+::\+Function\+Storage}}
+\subsubsection[{Set\+Call\+Back\+Function(const Functor\+Type \&functor)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Loki\+::\+Function\+Storage}$<$ T $>$\+::Set\+Call\+Back\+Function (
+\begin{DoxyParamCaption}
+\item[{const {\bf Functor\+Type} \&}]{functor}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classLoki_1_1FunctionStorage_ac55c8a149c74a27751204b0215c76041}
+Sets the callback function to call. You have to specify it or the smart\+Ptr will throw a bad\+\_\+function\+\_\+call exception. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/S\+P\+Cached\+Factory.\+h\end{DoxyCompactItemize}

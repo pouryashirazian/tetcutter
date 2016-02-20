@@ -1,0 +1,367 @@
+\hypertarget{classflex__string}{}\section{flex\+\_\+string$<$ E, T, A, Storage $>$ Class Template Reference}
+\label{classflex__string}\index{flex\+\_\+string$<$ E, T, A, Storage $>$@{flex\+\_\+string$<$ E, T, A, Storage $>$}}
+Inheritance diagram for flex\+\_\+string$<$ E, T, A, Storage $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classflex__string}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classflex__string_a66c448bc16b3cec175400864262d93fc}{}typedef T {\bfseries traits\+\_\+type}\label{classflex__string_a66c448bc16b3cec175400864262d93fc}
+
+\item 
+\hypertarget{classflex__string_a2cb8c0d8a782f5a7769654ba99a61618}{}typedef traits\+\_\+type\+::char\+\_\+type {\bfseries value\+\_\+type}\label{classflex__string_a2cb8c0d8a782f5a7769654ba99a61618}
+
+\item 
+\hypertarget{classflex__string_afcb5dbf4966814de3f16a301920e0c90}{}typedef \hyperlink{structA}{A} {\bfseries allocator\+\_\+type}\label{classflex__string_afcb5dbf4966814de3f16a301920e0c90}
+
+\item 
+\hypertarget{classflex__string_a7ae428793cf045d4e8544056e951c788}{}typedef A\+::size\+\_\+type {\bfseries size\+\_\+type}\label{classflex__string_a7ae428793cf045d4e8544056e951c788}
+
+\item 
+\hypertarget{classflex__string_ac1da64ed58cd3d8242e20cb9172aad5e}{}typedef A\+::difference\+\_\+type {\bfseries difference\+\_\+type}\label{classflex__string_ac1da64ed58cd3d8242e20cb9172aad5e}
+
+\item 
+\hypertarget{classflex__string_af1e8a979856e8eed0c7ba81a85b50226}{}typedef Storage\+::reference {\bfseries reference}\label{classflex__string_af1e8a979856e8eed0c7ba81a85b50226}
+
+\item 
+\hypertarget{classflex__string_a231b8f032142c847d20485cd3aed9aea}{}typedef A\+::const\+\_\+reference {\bfseries const\+\_\+reference}\label{classflex__string_a231b8f032142c847d20485cd3aed9aea}
+
+\item 
+\hypertarget{classflex__string_ac51291fb770b8855286dd7164504c542}{}typedef A\+::pointer {\bfseries pointer}\label{classflex__string_ac51291fb770b8855286dd7164504c542}
+
+\item 
+\hypertarget{classflex__string_adacef9509ba4579eca939f690aa10c63}{}typedef A\+::const\+\_\+pointer {\bfseries const\+\_\+pointer}\label{classflex__string_adacef9509ba4579eca939f690aa10c63}
+
+\item 
+\hypertarget{classflex__string_a8cd7b30a00d934ccd6661afdcdd0c67b}{}typedef Storage\+::iterator {\bfseries iterator}\label{classflex__string_a8cd7b30a00d934ccd6661afdcdd0c67b}
+
+\item 
+\hypertarget{classflex__string_a22f3fb6c89f0f3f4c9ee4dd7cf816196}{}typedef Storage\+::const\+\_\+iterator {\bfseries const\+\_\+iterator}\label{classflex__string_a22f3fb6c89f0f3f4c9ee4dd7cf816196}
+
+\item 
+\hypertarget{classflex__string_a8396716ab94a6b57f3347055a94cf0e4}{}typedef std\+::reverse\+\_\+iterator$<$ iterator $>$ {\bfseries reverse\+\_\+iterator}\label{classflex__string_a8396716ab94a6b57f3347055a94cf0e4}
+
+\item 
+\hypertarget{classflex__string_ab86c55410af53cb8c84153e992db1006}{}typedef std\+::reverse\+\_\+iterator$<$ const\+\_\+iterator $>$ {\bfseries const\+\_\+reverse\+\_\+iterator}\label{classflex__string_ab86c55410af53cb8c84153e992db1006}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classflex__string_a27220a92152bbfcc209f9ee0cf4dffcc}{}{\bfseries flex\+\_\+string} (const \hyperlink{structA}{A} \&a=\hyperlink{structA}{A}())\label{classflex__string_a27220a92152bbfcc209f9ee0cf4dffcc}
+
+\item 
+\hypertarget{classflex__string_adf6e3072ea35c2e80adfd932b72467c7}{}{\bfseries flex\+\_\+string} (const \hyperlink{classflex__string}{flex\+\_\+string} \&str)\label{classflex__string_adf6e3072ea35c2e80adfd932b72467c7}
+
+\item 
+\hypertarget{classflex__string_a9ffee10331b94d45db23a6dbfd774c2d}{}{\bfseries flex\+\_\+string} (const \hyperlink{classflex__string}{flex\+\_\+string} \&str, size\+\_\+type pos, size\+\_\+type n=npos, const \hyperlink{structA}{A} \&a=\hyperlink{structA}{A}())\label{classflex__string_a9ffee10331b94d45db23a6dbfd774c2d}
+
+\item 
+\hypertarget{classflex__string_a12d7418707c9d7b5f250f6d9ec94f814}{}{\bfseries flex\+\_\+string} (const value\+\_\+type $\ast$s, const \hyperlink{structA}{A} \&a=\hyperlink{structA}{A}())\label{classflex__string_a12d7418707c9d7b5f250f6d9ec94f814}
+
+\item 
+\hypertarget{classflex__string_a6f7ace824d1078c45093a2ca6a9cdf65}{}{\bfseries flex\+\_\+string} (const value\+\_\+type $\ast$s, size\+\_\+type n, const \hyperlink{structA}{A} \&a=\hyperlink{structA}{A}())\label{classflex__string_a6f7ace824d1078c45093a2ca6a9cdf65}
+
+\item 
+\hypertarget{classflex__string_a024c0a3e46057274094a804558925aa4}{}{\bfseries flex\+\_\+string} (size\+\_\+type n, value\+\_\+type c, const \hyperlink{structA}{A} \&a=\hyperlink{structA}{A}())\label{classflex__string_a024c0a3e46057274094a804558925aa4}
+
+\item 
+\hypertarget{classflex__string_a73d09be00e3286cf5e91483bcd0ce111}{}{\footnotesize template$<$class Input\+Iterator $>$ }\\{\bfseries flex\+\_\+string} (Input\+Iterator begin, Input\+Iterator end, const \hyperlink{structA}{A} \&a=\hyperlink{structA}{A}())\label{classflex__string_a73d09be00e3286cf5e91483bcd0ce111}
+
+\item 
+\hypertarget{classflex__string_a747444808628335f796005e33fca486e}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries operator=} (const \hyperlink{classflex__string}{flex\+\_\+string} \&str)\label{classflex__string_a747444808628335f796005e33fca486e}
+
+\item 
+\hypertarget{classflex__string_ac76611e7ef248c3ab031554e50c3a86f}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries operator=} (const value\+\_\+type $\ast$s)\label{classflex__string_ac76611e7ef248c3ab031554e50c3a86f}
+
+\item 
+\hypertarget{classflex__string_a817c6c368496152f83da6e661ff64060}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries operator=} (value\+\_\+type c)\label{classflex__string_a817c6c368496152f83da6e661ff64060}
+
+\item 
+\hypertarget{classflex__string_a06025498b76a2660dfb25b0c4aa63469}{}iterator {\bfseries begin} ()\label{classflex__string_a06025498b76a2660dfb25b0c4aa63469}
+
+\item 
+\hypertarget{classflex__string_ab06752c30321809dff9616aef60202dd}{}const\+\_\+iterator {\bfseries begin} () const \label{classflex__string_ab06752c30321809dff9616aef60202dd}
+
+\item 
+\hypertarget{classflex__string_a2cd3953a1928e4b3a495277cf6264c47}{}iterator {\bfseries end} ()\label{classflex__string_a2cd3953a1928e4b3a495277cf6264c47}
+
+\item 
+\hypertarget{classflex__string_af82226838b1e13a7b196ccebecda6786}{}const\+\_\+iterator {\bfseries end} () const \label{classflex__string_af82226838b1e13a7b196ccebecda6786}
+
+\item 
+\hypertarget{classflex__string_a09c0ee34a964d70f79a8b503c8b71008}{}reverse\+\_\+iterator {\bfseries rbegin} ()\label{classflex__string_a09c0ee34a964d70f79a8b503c8b71008}
+
+\item 
+\hypertarget{classflex__string_a7f41c942769ce469cb2912c9828bf4bc}{}const\+\_\+reverse\+\_\+iterator {\bfseries rbegin} () const \label{classflex__string_a7f41c942769ce469cb2912c9828bf4bc}
+
+\item 
+\hypertarget{classflex__string_ad6c6cb1838871504899ddb007eb4696d}{}reverse\+\_\+iterator {\bfseries rend} ()\label{classflex__string_ad6c6cb1838871504899ddb007eb4696d}
+
+\item 
+\hypertarget{classflex__string_aff0bf8a692e81ced1297d0fc4ea384da}{}const\+\_\+reverse\+\_\+iterator {\bfseries rend} () const \label{classflex__string_aff0bf8a692e81ced1297d0fc4ea384da}
+
+\item 
+\hypertarget{classflex__string_a245c6e40d747cdf29cf7b3c36142a2cf}{}size\+\_\+type {\bfseries size} () const \label{classflex__string_a245c6e40d747cdf29cf7b3c36142a2cf}
+
+\item 
+\hypertarget{classflex__string_a5ed1d79d2d94def72d7ef732d3528afc}{}size\+\_\+type {\bfseries length} () const \label{classflex__string_a5ed1d79d2d94def72d7ef732d3528afc}
+
+\item 
+\hypertarget{classflex__string_aeeb4d4cc1294da2b9e3e5e1b51107f86}{}size\+\_\+type {\bfseries max\+\_\+size} () const \label{classflex__string_aeeb4d4cc1294da2b9e3e5e1b51107f86}
+
+\item 
+\hypertarget{classflex__string_a37f2d5d1a32e6fffaed473703982fe03}{}void {\bfseries resize} (size\+\_\+type n, value\+\_\+type c)\label{classflex__string_a37f2d5d1a32e6fffaed473703982fe03}
+
+\item 
+\hypertarget{classflex__string_aa0dccb9c891a86fe51f8f07abec44b15}{}void {\bfseries resize} (size\+\_\+type n)\label{classflex__string_aa0dccb9c891a86fe51f8f07abec44b15}
+
+\item 
+\hypertarget{classflex__string_a1ec0a1d91015721160f34e23d193721d}{}size\+\_\+type {\bfseries capacity} () const \label{classflex__string_a1ec0a1d91015721160f34e23d193721d}
+
+\item 
+\hypertarget{classflex__string_a6f27dc470f1e73b3ea44b8ec583bbf24}{}void {\bfseries reserve} (size\+\_\+type res\+\_\+arg=0)\label{classflex__string_a6f27dc470f1e73b3ea44b8ec583bbf24}
+
+\item 
+\hypertarget{classflex__string_a9ce581d28e862aee2d086ad74a5c7a65}{}void {\bfseries clear} ()\label{classflex__string_a9ce581d28e862aee2d086ad74a5c7a65}
+
+\item 
+\hypertarget{classflex__string_ab2aa343bbd2825719e3f7e77724627c7}{}bool {\bfseries empty} () const \label{classflex__string_ab2aa343bbd2825719e3f7e77724627c7}
+
+\item 
+\hypertarget{classflex__string_a8d0f232658eca24088b530541386fb6d}{}const\+\_\+reference {\bfseries operator\mbox{[}$\,$\mbox{]}} (size\+\_\+type pos) const \label{classflex__string_a8d0f232658eca24088b530541386fb6d}
+
+\item 
+\hypertarget{classflex__string_a3ec911801500cc3687b0c5703d12fdca}{}reference {\bfseries operator\mbox{[}$\,$\mbox{]}} (size\+\_\+type pos)\label{classflex__string_a3ec911801500cc3687b0c5703d12fdca}
+
+\item 
+\hypertarget{classflex__string_a076f6c73fd9eafd4378cb37e690bc42b}{}const\+\_\+reference {\bfseries at} (size\+\_\+type n) const \label{classflex__string_a076f6c73fd9eafd4378cb37e690bc42b}
+
+\item 
+\hypertarget{classflex__string_a904084287c3f438772d2d251a70d15e5}{}reference {\bfseries at} (size\+\_\+type n)\label{classflex__string_a904084287c3f438772d2d251a70d15e5}
+
+\item 
+\hypertarget{classflex__string_ae72d573ea35d592fff2eb3d6a877bf19}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries operator+=} (const \hyperlink{classflex__string}{flex\+\_\+string} \&str)\label{classflex__string_ae72d573ea35d592fff2eb3d6a877bf19}
+
+\item 
+\hypertarget{classflex__string_af6c5fdfa05ba7df599288fa867656f9a}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries operator+=} (const value\+\_\+type $\ast$s)\label{classflex__string_af6c5fdfa05ba7df599288fa867656f9a}
+
+\item 
+\hypertarget{classflex__string_a877453894a291e6a776f0c714d936841}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries operator+=} (const value\+\_\+type c)\label{classflex__string_a877453894a291e6a776f0c714d936841}
+
+\item 
+\hypertarget{classflex__string_a92a83736280501f1a452221185eade6f}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries append} (const \hyperlink{classflex__string}{flex\+\_\+string} \&str)\label{classflex__string_a92a83736280501f1a452221185eade6f}
+
+\item 
+\hypertarget{classflex__string_aced9e4a3440eda7e83e4b73f3d7af9c5}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries append} (const \hyperlink{classflex__string}{flex\+\_\+string} \&str, const size\+\_\+type pos, size\+\_\+type n)\label{classflex__string_aced9e4a3440eda7e83e4b73f3d7af9c5}
+
+\item 
+\hypertarget{classflex__string_a4eaeb072cc00991e8f1c81543b65e4b6}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries append} (const value\+\_\+type $\ast$s, const size\+\_\+type n)\label{classflex__string_a4eaeb072cc00991e8f1c81543b65e4b6}
+
+\item 
+\hypertarget{classflex__string_ae73673d04e1cadba07341f4d13baec29}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries append} (const value\+\_\+type $\ast$s)\label{classflex__string_ae73673d04e1cadba07341f4d13baec29}
+
+\item 
+\hypertarget{classflex__string_aa6d7f525edc191c58440b36a87de8ab7}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries append} (size\+\_\+type n, value\+\_\+type c)\label{classflex__string_aa6d7f525edc191c58440b36a87de8ab7}
+
+\item 
+\hypertarget{classflex__string_a23bf38b8c1000d800de23fbb8f5beb6b}{}{\footnotesize template$<$class Input\+Iterator $>$ }\\\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries append} (Input\+Iterator first, Input\+Iterator last)\label{classflex__string_a23bf38b8c1000d800de23fbb8f5beb6b}
+
+\item 
+\hypertarget{classflex__string_a801448bd91d762765f2b7e6d6872f612}{}void {\bfseries push\+\_\+back} (const value\+\_\+type c)\label{classflex__string_a801448bd91d762765f2b7e6d6872f612}
+
+\item 
+\hypertarget{classflex__string_a6de7772aeb80c07932e840b49902d67f}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries assign} (const \hyperlink{classflex__string}{flex\+\_\+string} \&str)\label{classflex__string_a6de7772aeb80c07932e840b49902d67f}
+
+\item 
+\hypertarget{classflex__string_adef1c9e27e25c731a2c96725b823a355}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries assign} (const \hyperlink{classflex__string}{flex\+\_\+string} \&str, const size\+\_\+type pos, size\+\_\+type n)\label{classflex__string_adef1c9e27e25c731a2c96725b823a355}
+
+\item 
+\hypertarget{classflex__string_a3893570569871084a8f3e2056b8be555}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries assign} (const value\+\_\+type $\ast$s, const size\+\_\+type n)\label{classflex__string_a3893570569871084a8f3e2056b8be555}
+
+\item 
+\hypertarget{classflex__string_a5e597de370673605035a0164f5db63d4}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries assign} (const value\+\_\+type $\ast$s)\label{classflex__string_a5e597de370673605035a0164f5db63d4}
+
+\item 
+\hypertarget{classflex__string_a994d97d2724fe8a60e2f2d3910797631}{}{\footnotesize template$<$class It\+Or\+Length , class It\+Or\+Char $>$ }\\\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries assign} (It\+Or\+Length first\+\_\+or\+\_\+n, It\+Or\+Char last\+\_\+or\+\_\+c)\label{classflex__string_a994d97d2724fe8a60e2f2d3910797631}
+
+\item 
+\hypertarget{classflex__string_aacd704c0d3e1ab40df08047a21b3c1c7}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries insert} (size\+\_\+type pos1, const \hyperlink{classflex__string}{flex\+\_\+string} \&str)\label{classflex__string_aacd704c0d3e1ab40df08047a21b3c1c7}
+
+\item 
+\hypertarget{classflex__string_ab4e70d467ff71d2dd40f5f3524fc4767}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries insert} (size\+\_\+type pos1, const \hyperlink{classflex__string}{flex\+\_\+string} \&str, size\+\_\+type pos2, size\+\_\+type n)\label{classflex__string_ab4e70d467ff71d2dd40f5f3524fc4767}
+
+\item 
+\hypertarget{classflex__string_a83b819622c5a7eb8e089ade6cef5a856}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries insert} (size\+\_\+type pos, const value\+\_\+type $\ast$s, size\+\_\+type n)\label{classflex__string_a83b819622c5a7eb8e089ade6cef5a856}
+
+\item 
+\hypertarget{classflex__string_a7df35328684b21fe76a38859d01e9049}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries insert} (size\+\_\+type pos, const value\+\_\+type $\ast$s)\label{classflex__string_a7df35328684b21fe76a38859d01e9049}
+
+\item 
+\hypertarget{classflex__string_abd52cde511b6c181d1bb43caa0d28297}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries insert} (size\+\_\+type pos, size\+\_\+type n, value\+\_\+type c)\label{classflex__string_abd52cde511b6c181d1bb43caa0d28297}
+
+\item 
+\hypertarget{classflex__string_a46805fc7ee83ea9f933cf9b3219974d4}{}iterator {\bfseries insert} (const iterator p, const value\+\_\+type c)\label{classflex__string_a46805fc7ee83ea9f933cf9b3219974d4}
+
+\item 
+\hypertarget{classflex__string_af803c29f025be644d4247841d0a19f57}{}{\footnotesize template$<$class It\+Or\+Length , class It\+Or\+Char $>$ }\\void {\bfseries insert} (iterator p, It\+Or\+Length first\+\_\+or\+\_\+n, It\+Or\+Char last\+\_\+or\+\_\+c)\label{classflex__string_af803c29f025be644d4247841d0a19f57}
+
+\item 
+\hypertarget{classflex__string_a2643bc7c6b8645e6a68325cd5abaaf1b}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries erase} (size\+\_\+type pos=0, size\+\_\+type n=npos)\label{classflex__string_a2643bc7c6b8645e6a68325cd5abaaf1b}
+
+\item 
+\hypertarget{classflex__string_ab655fa9ddc17b4ddf0a6c5fbbf5482b9}{}iterator {\bfseries erase} (iterator position)\label{classflex__string_ab655fa9ddc17b4ddf0a6c5fbbf5482b9}
+
+\item 
+\hypertarget{classflex__string_a14e27f548e81824bd275ae434e28f8fd}{}iterator {\bfseries erase} (iterator first, iterator last)\label{classflex__string_a14e27f548e81824bd275ae434e28f8fd}
+
+\item 
+\hypertarget{classflex__string_ac8846d323c27d9682d528bb3146cd665}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries replace} (size\+\_\+type pos1, size\+\_\+type n1, const \hyperlink{classflex__string}{flex\+\_\+string} \&str)\label{classflex__string_ac8846d323c27d9682d528bb3146cd665}
+
+\item 
+\hypertarget{classflex__string_a688e173ef34b3df6d5e7ff7b75a93d77}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries replace} (size\+\_\+type pos1, size\+\_\+type n1, const \hyperlink{classflex__string}{flex\+\_\+string} \&str, size\+\_\+type pos2, size\+\_\+type n2)\label{classflex__string_a688e173ef34b3df6d5e7ff7b75a93d77}
+
+\item 
+\hypertarget{classflex__string_a728de078552de8651b106af395aed9e7}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries replace} (size\+\_\+type pos, size\+\_\+type n1, const value\+\_\+type $\ast$s)\label{classflex__string_a728de078552de8651b106af395aed9e7}
+
+\item 
+\hypertarget{classflex__string_a028e18005476b8ccf22704e502244449}{}{\footnotesize template$<$class Str\+Or\+Length , class Num\+Or\+Char $>$ }\\\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries replace} (size\+\_\+type pos, size\+\_\+type n1, Str\+Or\+Length s\+\_\+or\+\_\+n2, Num\+Or\+Char n\+\_\+or\+\_\+c)\label{classflex__string_a028e18005476b8ccf22704e502244449}
+
+\item 
+\hypertarget{classflex__string_a37a69f797e6994cb34f614657d0198bc}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries replace} (iterator i1, iterator i2, const \hyperlink{classflex__string}{flex\+\_\+string} \&str)\label{classflex__string_a37a69f797e6994cb34f614657d0198bc}
+
+\item 
+\hypertarget{classflex__string_aea9140a6e584ea29688a7a2bf5e22423}{}\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries replace} (iterator i1, iterator i2, const value\+\_\+type $\ast$s)\label{classflex__string_aea9140a6e584ea29688a7a2bf5e22423}
+
+\item 
+\hypertarget{classflex__string_ac073f6e89b362c2140076cfa2c833618}{}{\footnotesize template$<$class T1 , class T2 $>$ }\\\hyperlink{classflex__string}{flex\+\_\+string} \& {\bfseries replace} (iterator i1, iterator i2, T1 first\+\_\+or\+\_\+n\+\_\+or\+\_\+s, T2 last\+\_\+or\+\_\+c\+\_\+or\+\_\+n)\label{classflex__string_ac073f6e89b362c2140076cfa2c833618}
+
+\item 
+\hypertarget{classflex__string_a90244c0a4dadc5ad7c93957043f57a86}{}size\+\_\+type {\bfseries copy} (value\+\_\+type $\ast$s, size\+\_\+type n, size\+\_\+type pos=0) const \label{classflex__string_a90244c0a4dadc5ad7c93957043f57a86}
+
+\item 
+\hypertarget{classflex__string_a985cf302541ae071e4116ae21f71c27f}{}void {\bfseries swap} (\hyperlink{classflex__string}{flex\+\_\+string} \&rhs)\label{classflex__string_a985cf302541ae071e4116ae21f71c27f}
+
+\item 
+\hypertarget{classflex__string_a9e6826eb690a19ec8ab7abd792f64d6d}{}const value\+\_\+type $\ast$ {\bfseries c\+\_\+str} () const \label{classflex__string_a9e6826eb690a19ec8ab7abd792f64d6d}
+
+\item 
+\hypertarget{classflex__string_a1628c666bd06d404db681d9cbb654773}{}const value\+\_\+type $\ast$ {\bfseries data} () const \label{classflex__string_a1628c666bd06d404db681d9cbb654773}
+
+\item 
+\hypertarget{classflex__string_a9d9d8b9e3d8dacf0a5e911b13e47c2b4}{}\hyperlink{structA}{allocator\+\_\+type} {\bfseries get\+\_\+allocator} () const \label{classflex__string_a9d9d8b9e3d8dacf0a5e911b13e47c2b4}
+
+\item 
+\hypertarget{classflex__string_ae78df4c283746d918fcf89eb9bbc3b64}{}size\+\_\+type {\bfseries find} (const \hyperlink{classflex__string}{flex\+\_\+string} \&str, size\+\_\+type pos=0) const \label{classflex__string_ae78df4c283746d918fcf89eb9bbc3b64}
+
+\item 
+\hypertarget{classflex__string_a16bec2f60f34f9ed5167c37248d57b43}{}size\+\_\+type {\bfseries find} (const value\+\_\+type $\ast$s, size\+\_\+type pos, size\+\_\+type n) const \label{classflex__string_a16bec2f60f34f9ed5167c37248d57b43}
+
+\item 
+\hypertarget{classflex__string_af2cf5fbd2399ac3f23b7524f3d1a6377}{}size\+\_\+type {\bfseries find} (const value\+\_\+type $\ast$s, size\+\_\+type pos=0) const \label{classflex__string_af2cf5fbd2399ac3f23b7524f3d1a6377}
+
+\item 
+\hypertarget{classflex__string_aeab64396cfccee77ea9e8efb8a652ad0}{}size\+\_\+type {\bfseries find} (value\+\_\+type c, size\+\_\+type pos=0) const \label{classflex__string_aeab64396cfccee77ea9e8efb8a652ad0}
+
+\item 
+\hypertarget{classflex__string_a262930d7f7f596eeb637b9dad077e43f}{}size\+\_\+type {\bfseries rfind} (const \hyperlink{classflex__string}{flex\+\_\+string} \&str, size\+\_\+type pos=npos) const \label{classflex__string_a262930d7f7f596eeb637b9dad077e43f}
+
+\item 
+\hypertarget{classflex__string_a6d6c0922b9068957e6280da37fcf9639}{}size\+\_\+type {\bfseries rfind} (const value\+\_\+type $\ast$s, size\+\_\+type pos, size\+\_\+type n) const \label{classflex__string_a6d6c0922b9068957e6280da37fcf9639}
+
+\item 
+\hypertarget{classflex__string_a2c70e16921b7f35a0d1bb6c7e401510c}{}size\+\_\+type {\bfseries rfind} (const value\+\_\+type $\ast$s, size\+\_\+type pos=npos) const \label{classflex__string_a2c70e16921b7f35a0d1bb6c7e401510c}
+
+\item 
+\hypertarget{classflex__string_a6fe09b5fe4d70f5acb2b88683dd62dfa}{}size\+\_\+type {\bfseries rfind} (value\+\_\+type c, size\+\_\+type pos=npos) const \label{classflex__string_a6fe09b5fe4d70f5acb2b88683dd62dfa}
+
+\item 
+\hypertarget{classflex__string_a0b064f873745bda5d40950e3f46eff0d}{}size\+\_\+type {\bfseries find\+\_\+first\+\_\+of} (const \hyperlink{classflex__string}{flex\+\_\+string} \&str, size\+\_\+type pos=0) const \label{classflex__string_a0b064f873745bda5d40950e3f46eff0d}
+
+\item 
+\hypertarget{classflex__string_ad20dd6173ab4a096bb205d9164415c8c}{}size\+\_\+type {\bfseries find\+\_\+first\+\_\+of} (const value\+\_\+type $\ast$s, size\+\_\+type pos, size\+\_\+type n) const \label{classflex__string_ad20dd6173ab4a096bb205d9164415c8c}
+
+\item 
+\hypertarget{classflex__string_a1ff8c110a4a4d2b87c6fcc0bc5bbc862}{}size\+\_\+type {\bfseries find\+\_\+first\+\_\+of} (const value\+\_\+type $\ast$s, size\+\_\+type pos=0) const \label{classflex__string_a1ff8c110a4a4d2b87c6fcc0bc5bbc862}
+
+\item 
+\hypertarget{classflex__string_a40614ca7a1de7f52a3be046ab2f9cc96}{}size\+\_\+type {\bfseries find\+\_\+first\+\_\+of} (value\+\_\+type c, size\+\_\+type pos=0) const \label{classflex__string_a40614ca7a1de7f52a3be046ab2f9cc96}
+
+\item 
+\hypertarget{classflex__string_a2c1939f46e585de400e11dd55ee2a8c8}{}size\+\_\+type {\bfseries find\+\_\+last\+\_\+of} (const \hyperlink{classflex__string}{flex\+\_\+string} \&str, size\+\_\+type pos=npos) const \label{classflex__string_a2c1939f46e585de400e11dd55ee2a8c8}
+
+\item 
+\hypertarget{classflex__string_a3415f16cc01dcd00a07473aac9eeaf6d}{}size\+\_\+type {\bfseries find\+\_\+last\+\_\+of} (const value\+\_\+type $\ast$s, size\+\_\+type pos, size\+\_\+type n) const \label{classflex__string_a3415f16cc01dcd00a07473aac9eeaf6d}
+
+\item 
+\hypertarget{classflex__string_a76de2577f86988ad6a06f62502c3803d}{}size\+\_\+type {\bfseries find\+\_\+last\+\_\+of} (const value\+\_\+type $\ast$s, size\+\_\+type pos=npos) const \label{classflex__string_a76de2577f86988ad6a06f62502c3803d}
+
+\item 
+\hypertarget{classflex__string_ad97f67c48a9dee1a6d027ec22569cce7}{}size\+\_\+type {\bfseries find\+\_\+last\+\_\+of} (value\+\_\+type c, size\+\_\+type pos=npos) const \label{classflex__string_ad97f67c48a9dee1a6d027ec22569cce7}
+
+\item 
+\hypertarget{classflex__string_a721561dd249367b0919c25feab562aec}{}size\+\_\+type {\bfseries find\+\_\+first\+\_\+not\+\_\+of} (const \hyperlink{classflex__string}{flex\+\_\+string} \&str, size\+\_\+type pos=0) const \label{classflex__string_a721561dd249367b0919c25feab562aec}
+
+\item 
+\hypertarget{classflex__string_a9b8faa063095ab210907bd412f10ca97}{}size\+\_\+type {\bfseries find\+\_\+first\+\_\+not\+\_\+of} (const value\+\_\+type $\ast$s, size\+\_\+type pos, size\+\_\+type n) const \label{classflex__string_a9b8faa063095ab210907bd412f10ca97}
+
+\item 
+\hypertarget{classflex__string_af1de4015dee37c3701dd9a584c3ecec0}{}size\+\_\+type {\bfseries find\+\_\+first\+\_\+not\+\_\+of} (const value\+\_\+type $\ast$s, size\+\_\+type pos=0) const \label{classflex__string_af1de4015dee37c3701dd9a584c3ecec0}
+
+\item 
+\hypertarget{classflex__string_aaa4a33fb78a972fd35e2ccb516acb243}{}size\+\_\+type {\bfseries find\+\_\+first\+\_\+not\+\_\+of} (value\+\_\+type c, size\+\_\+type pos=0) const \label{classflex__string_aaa4a33fb78a972fd35e2ccb516acb243}
+
+\item 
+\hypertarget{classflex__string_a0fbd1499e22573baaa4a898af9fb74f0}{}size\+\_\+type {\bfseries find\+\_\+last\+\_\+not\+\_\+of} (const \hyperlink{classflex__string}{flex\+\_\+string} \&str, size\+\_\+type pos=npos) const \label{classflex__string_a0fbd1499e22573baaa4a898af9fb74f0}
+
+\item 
+\hypertarget{classflex__string_a93b5a4ed5c87d796464bac3478097e47}{}size\+\_\+type {\bfseries find\+\_\+last\+\_\+not\+\_\+of} (const value\+\_\+type $\ast$s, size\+\_\+type pos, size\+\_\+type n) const \label{classflex__string_a93b5a4ed5c87d796464bac3478097e47}
+
+\item 
+\hypertarget{classflex__string_aae94881140d9f2d5d42f1c8eb1025a41}{}size\+\_\+type {\bfseries find\+\_\+last\+\_\+not\+\_\+of} (const value\+\_\+type $\ast$s, size\+\_\+type pos=npos) const \label{classflex__string_aae94881140d9f2d5d42f1c8eb1025a41}
+
+\item 
+\hypertarget{classflex__string_a915850aff970bc869f3b4d0b1619988a}{}size\+\_\+type {\bfseries find\+\_\+last\+\_\+not\+\_\+of} (value\+\_\+type c, size\+\_\+type pos=npos) const \label{classflex__string_a915850aff970bc869f3b4d0b1619988a}
+
+\item 
+\hypertarget{classflex__string_a0239419ef31036fa3e96884f4d4da315}{}\hyperlink{classflex__string}{flex\+\_\+string} {\bfseries substr} (size\+\_\+type pos=0, size\+\_\+type n=npos) const \label{classflex__string_a0239419ef31036fa3e96884f4d4da315}
+
+\item 
+\hypertarget{classflex__string_a08d9da3dd77f83afc7ed617f4638d1ca}{}int {\bfseries compare} (const \hyperlink{classflex__string}{flex\+\_\+string} \&str) const \label{classflex__string_a08d9da3dd77f83afc7ed617f4638d1ca}
+
+\item 
+\hypertarget{classflex__string_a3299051537691e90b36f0dcb01395443}{}int {\bfseries compare} (size\+\_\+type pos1, size\+\_\+type n1, const \hyperlink{classflex__string}{flex\+\_\+string} \&str) const \label{classflex__string_a3299051537691e90b36f0dcb01395443}
+
+\item 
+\hypertarget{classflex__string_a3ee42b128e0450d66aa78d7a26d85b39}{}int {\bfseries compare} (size\+\_\+type pos1, size\+\_\+type n1, const value\+\_\+type $\ast$s) const \label{classflex__string_a3ee42b128e0450d66aa78d7a26d85b39}
+
+\item 
+\hypertarget{classflex__string_a323cc7aeba7842b15b4315ae4213db2e}{}int {\bfseries compare} (size\+\_\+type pos1, size\+\_\+type n1, const value\+\_\+type $\ast$s, size\+\_\+type n2) const \label{classflex__string_a323cc7aeba7842b15b4315ae4213db2e}
+
+\item 
+\hypertarget{classflex__string_a8d650141091a4ab1cba2240a80e1344f}{}int {\bfseries compare} (size\+\_\+type pos1, size\+\_\+type n1, const \hyperlink{classflex__string}{flex\+\_\+string} \&str, size\+\_\+type pos2, size\+\_\+type n2) const \label{classflex__string_a8d650141091a4ab1cba2240a80e1344f}
+
+\item 
+\hypertarget{classflex__string_a57ea4129a7a1f912db84959733d5bd09}{}int {\bfseries compare} (const value\+\_\+type $\ast$s) const \label{classflex__string_a57ea4129a7a1f912db84959733d5bd09}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classflex__string_a6de8d81894f55dfcfe0311c2f7674bd5}{}static const size\+\_\+type {\bfseries npos} = static\+\_\+cast$<$typename \hyperlink{classflex__string}{flex\+\_\+string}$<$E1, T, \hyperlink{structA}{A}, S$>$\+::size\+\_\+type$>$(-\/1)\label{classflex__string_a6de8d81894f55dfcfe0311c2f7674bd5}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classflex__string_afae2d776dbbbd9036eb95c8b01d8399e}{}struct {\bfseries Invariant}\label{classflex__string_afae2d776dbbbd9036eb95c8b01d8399e}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/flex/flex\+\_\+string\+\_\+shell.\+h\end{DoxyCompactItemize}

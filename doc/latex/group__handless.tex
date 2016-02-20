@@ -1,0 +1,41 @@
+\hypertarget{group__handless}{}\section{String Handles}
+\label{group__handless}\index{String Handles@{String Handles}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__handless_ga0a723522866c77dbe13ace2d32ee429c}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create}~\hyperlink{group__handless_ga353ab13a4b9325ded923c1c951f6f849}{\+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create\+A}\label{group__handless_ga0a723522866c77dbe13ace2d32ee429c}
+
+\item 
+\hypertarget{group__handless_ga4af0e0826a5b33bf0d9ed25746419936}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create\+\_\+ptr}~\+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create\+A\+\_\+ptr\label{group__handless_ga4af0e0826a5b33bf0d9ed25746419936}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$I\+T\+T\+A\+P\+I \hyperlink{group__handless_ga353ab13a4b9325ded923c1c951f6f849}{\+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create\+A} (const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Create a string handle. Create and return handle value that can be associated with a string. Consecutive calls to \+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create with the same name return the same value. Because the set of string handles is expected to remain static during the application\textquotesingle{}s execution time, there is no mechanism to destroy a string handle. Any string handle can be accessed by any thread in the process, regardless of which thread created the string handle. This call is thread-\/safe. \end{DoxyCompactList}\item 
+\hypertarget{group__handless_ga01b031a1ec465e650ccfacae18a3c121}{}\+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create\+W} (const wchar\+\_\+t $\ast$name)\label{group__handless_ga01b031a1ec465e650ccfacae18a3c121}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+String Handles group 
+
+\subsection{Function Documentation}
+\hypertarget{group__handless_ga353ab13a4b9325ded923c1c951f6f849}{}\index{String Handles@{String Handles}!\+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create\+A@{\+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create\+A}}
+\index{\+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create\+A@{\+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create\+A}!String Handles@{String Handles}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create\+A(const char $\ast$name)}]{\setlength{\rightskip}{0pt plus 5cm}\+\_\+\+\_\+itt\+\_\+string\+\_\+handle$\ast$ I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create\+A (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}\label{group__handless_ga353ab13a4b9325ded923c1c951f6f849}
+
+
+Create a string handle. Create and return handle value that can be associated with a string. Consecutive calls to \+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create with the same name return the same value. Because the set of string handles is expected to remain static during the application\textquotesingle{}s execution time, there is no mechanism to destroy a string handle. Any string handle can be accessed by any thread in the process, regardless of which thread created the string handle. This call is thread-\/safe. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & The input string \\
+\hline
+\end{DoxyParams}

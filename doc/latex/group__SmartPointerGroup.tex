@@ -1,0 +1,275 @@
+\hypertarget{group__SmartPointerGroup}{}\section{Smart pointers}
+\label{group__SmartPointerGroup}\index{Smart pointers@{Smart pointers}}
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__SmartPointerOwnershipGroup}{Ownership policies}
+\item 
+\hyperlink{group__SmartPointerStorageGroup}{Storage policies}
+\item 
+\hyperlink{group__SmartPointerConversionGroup}{Conversion policies}
+\item 
+\hyperlink{group__SmartPointerCheckingGroup}{Checking policies}
+\item 
+\hyperlink{group__StrongPointerOwnershipGroup}{Strong\+Ptr Ownership policies}
+\item 
+\hyperlink{group__StrongPointerDeleteGroup}{Delete policies}
+\item 
+\hyperlink{group__StrongPointerResetGroup}{Reset policies}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespacestd}{std}
+\end{DoxyCompactItemize}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structstd_1_1less_3_01Loki_1_1SmartPtr_3_01T_00_01OP_00_01CP_00_01KP_00_01SP_00_01CNP_01_4_01_4}{std\+::less$<$ Loki\+::\+Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ $>$}
+\item 
+struct \hyperlink{structstd_1_1less_3_01Loki_1_1StrongPtr_3_01T_00_01S_00_01OP_00_01CP_00_01KP_00_01RP_00_01DP_00_01CNP_01_4_01_4}{std\+::less$<$ Loki\+::\+Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ $>$}
+\item 
+class \hyperlink{classLoki_1_1RefToValue}{Loki\+::\+Ref\+To\+Value$<$ T $>$}
+\item 
+struct \hyperlink{structLoki_1_1NullPointerException}{Loki\+::\+Null\+Pointer\+Exception}
+\item 
+class \hyperlink{classLoki_1_1SmartPtr}{Loki\+::\+Smart\+Ptr$<$ T, Ownership\+Policy, Conversion\+Policy, Checking\+Policy, Storage\+Policy, Constness\+Policy $>$}
+\item 
+class \hyperlink{classLoki_1_1StrongPtr}{Loki\+::\+Strong\+Ptr$<$ T, Strong, Ownership\+Policy, Conversion\+Policy, Checking\+Policy, Reset\+Policy, Delete\+Policy, Constness\+Policy $>$}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P1, typename U $>$ }\\bool \hyperlink{group__SmartPointerGroup_ga6367f7dd2ba62b272c7a14b2d5db3e01}{Loki\+::operator==} (const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P1 $>$ \&lhs, U $\ast$rhs)
+\item 
+{\footnotesize template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P1, typename U $>$ }\\bool \hyperlink{group__SmartPointerGroup_ga7f01888cb34c0dd52ded70b83ee20e06}{Loki\+::operator==} (U $\ast$lhs, const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P1 $>$ \&rhs)
+\item 
+{\footnotesize template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P, typename U $>$ }\\bool \hyperlink{group__SmartPointerGroup_ga4737a73b3c8d0a42d5f1f94526728f75}{Loki\+::operator!=} (const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&lhs, U $\ast$rhs)
+\item 
+{\footnotesize template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P, typename U $>$ }\\bool \hyperlink{group__SmartPointerGroup_ga7ed292fb9144360e60f0589f7387ec67}{Loki\+::operator!=} (U $\ast$lhs, const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&rhs)
+\item 
+{\footnotesize template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P, typename U $>$ }\\bool \hyperlink{group__SmartPointerGroup_ga1e7dc23efb70f2a1ebdf633ba941a3a9}{Loki\+::operator$<$} (const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&lhs, U $\ast$rhs)
+\item 
+{\footnotesize template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P, typename U $>$ }\\bool \hyperlink{group__SmartPointerGroup_ga077391f2d5ea6f967f6c948817fe4378}{Loki\+::operator$<$} (U $\ast$lhs, const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&rhs)
+\item 
+\hypertarget{group__SmartPointerGroup_ga0482b2c131ab426526ff9463fda7f2ea}{}{\footnotesize template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P, typename U $>$ }\\bool {\bfseries Loki\+::operator$>$} (const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&lhs, U $\ast$rhs)\label{group__SmartPointerGroup_ga0482b2c131ab426526ff9463fda7f2ea}
+
+\item 
+{\footnotesize template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P, typename U $>$ }\\bool \hyperlink{group__SmartPointerGroup_ga00cd20c13933b70e7bb734527502c674}{Loki\+::operator$>$} (U $\ast$lhs, const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&rhs)
+\item 
+{\footnotesize template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P, typename U $>$ }\\bool \hyperlink{group__SmartPointerGroup_gacdb4a26ac587767f90a6f31fa2b59975}{Loki\+::operator$<$=} (const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&lhs, U $\ast$rhs)
+\item 
+{\footnotesize template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P, typename U $>$ }\\bool \hyperlink{group__SmartPointerGroup_gae9b52490dde1823ba37309c4435d8757}{Loki\+::operator$<$=} (U $\ast$lhs, const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&rhs)
+\item 
+{\footnotesize template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P, typename U $>$ }\\bool \hyperlink{group__SmartPointerGroup_ga6ecb015692643d88fa04ba2eaa1bc72e}{Loki\+::operator$>$=} (const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&lhs, U $\ast$rhs)
+\item 
+{\footnotesize template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P, typename U $>$ }\\bool \hyperlink{group__SmartPointerGroup_ga21e42b6dac17e9ce23d32c7a9309b09c}{Loki\+::operator$>$=} (U $\ast$lhs, const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&rhs)
+\item 
+{\footnotesize template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ }\\bool \hyperlink{group__SmartPointerGroup_ga07aa8a1b2cb0199fb22738a7092756bc}{Loki\+::operator==} (const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&lhs, U $\ast$rhs)
+\item 
+{\footnotesize template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ }\\bool \hyperlink{group__SmartPointerGroup_ga48c72731581ab583eec9089f89f7952d}{Loki\+::operator==} (U $\ast$lhs, const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&rhs)
+\item 
+{\footnotesize template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ }\\bool \hyperlink{group__SmartPointerGroup_ga96776169708326535577e35ed03b0206}{Loki\+::operator!=} (const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&lhs, U $\ast$rhs)
+\item 
+{\footnotesize template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ }\\bool \hyperlink{group__SmartPointerGroup_gaca7b2b5192e9fb2952e93dd3083205a8}{Loki\+::operator!=} (U $\ast$lhs, const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&rhs)
+\item 
+{\footnotesize template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ }\\bool \hyperlink{group__SmartPointerGroup_ga20438e5ca3dfc1b9359c2d99cc45d4e0}{Loki\+::operator$<$} (const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&lhs, U $\ast$rhs)
+\item 
+{\footnotesize template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ }\\bool \hyperlink{group__SmartPointerGroup_gaf1276b464e5c0354aab98d7c14d82f72}{Loki\+::operator$<$} (U $\ast$lhs, const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&rhs)
+\item 
+\hypertarget{group__SmartPointerGroup_ga2b79faec17ec4ccfaea9149b1008b09d}{}{\footnotesize template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ }\\bool {\bfseries Loki\+::operator$>$} (const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&lhs, U $\ast$rhs)\label{group__SmartPointerGroup_ga2b79faec17ec4ccfaea9149b1008b09d}
+
+\item 
+{\footnotesize template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ }\\bool \hyperlink{group__SmartPointerGroup_ga2e66dcb340f8be20d59c0bc25e31f847}{Loki\+::operator$>$} (U $\ast$lhs, const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&rhs)
+\item 
+{\footnotesize template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ }\\bool \hyperlink{group__SmartPointerGroup_ga1349a2ef1d4d18e0d825d1a22299c585}{Loki\+::operator$<$=} (const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&lhs, U $\ast$rhs)
+\item 
+{\footnotesize template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ }\\bool \hyperlink{group__SmartPointerGroup_ga79f9bc3cba5be737713e01278836071b}{Loki\+::operator$<$=} (U $\ast$lhs, const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&rhs)
+\item 
+{\footnotesize template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ }\\bool \hyperlink{group__SmartPointerGroup_gafff630dad25f2390bfddba4e494c18e1}{Loki\+::operator$>$=} (const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&lhs, U $\ast$rhs)
+\item 
+{\footnotesize template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ }\\bool \hyperlink{group__SmartPointerGroup_gaadaa4698c496d593d62e877aadf02580}{Loki\+::operator$>$=} (U $\ast$lhs, const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&rhs)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{structPolicy}{Policy} based implementation of a smart pointer 
+
+\subsection{Function Documentation}
+\hypertarget{group__SmartPointerGroup_ga96776169708326535577e35ed03b0206}{}\index{Smart pointers@{Smart pointers}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator"!=(const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&lhs, U $\ast$rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ bool Loki\+::operator!= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Strong\+Ptr}$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&}]{lhs, }
+\item[{U $\ast$}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_ga96776169708326535577e35ed03b0206}
+operator!= for lhs = \hyperlink{classLoki_1_1StrongPtr}{Strong\+Ptr}, rhs = raw pointer \hypertarget{group__SmartPointerGroup_gaca7b2b5192e9fb2952e93dd3083205a8}{}\index{Smart pointers@{Smart pointers}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator"!=(\+U $\ast$lhs, const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ bool Loki\+::operator!= (
+\begin{DoxyParamCaption}
+\item[{U $\ast$}]{lhs, }
+\item[{const {\bf Strong\+Ptr}$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_gaca7b2b5192e9fb2952e93dd3083205a8}
+operator!= for lhs = raw pointer, rhs = \hyperlink{classLoki_1_1StrongPtr}{Strong\+Ptr} \hypertarget{group__SmartPointerGroup_ga4737a73b3c8d0a42d5f1f94526728f75}{}\index{Smart pointers@{Smart pointers}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator"!=(const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&lhs, U $\ast$rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P, typename U $>$ bool Loki\+::operator!= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Smart\+Ptr}$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&}]{lhs, }
+\item[{U $\ast$}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_ga4737a73b3c8d0a42d5f1f94526728f75}
+operator!= for lhs = \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}, rhs = raw pointer \hypertarget{group__SmartPointerGroup_ga7ed292fb9144360e60f0589f7387ec67}{}\index{Smart pointers@{Smart pointers}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator"!=(\+U $\ast$lhs, const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P, typename U $>$ bool Loki\+::operator!= (
+\begin{DoxyParamCaption}
+\item[{U $\ast$}]{lhs, }
+\item[{const {\bf Smart\+Ptr}$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_ga7ed292fb9144360e60f0589f7387ec67}
+operator!= for lhs = raw pointer, rhs = \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr} \hypertarget{group__SmartPointerGroup_ga20438e5ca3dfc1b9359c2d99cc45d4e0}{}\index{Smart pointers@{Smart pointers}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator$<$(const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&lhs, U $\ast$rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ bool Loki\+::operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Strong\+Ptr}$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&}]{lhs, }
+\item[{U $\ast$}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_ga20438e5ca3dfc1b9359c2d99cc45d4e0}
+operator$<$ for lhs = \hyperlink{classLoki_1_1StrongPtr}{Strong\+Ptr}, rhs = raw pointer \hypertarget{group__SmartPointerGroup_gaf1276b464e5c0354aab98d7c14d82f72}{}\index{Smart pointers@{Smart pointers}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator$<$(\+U $\ast$lhs, const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ bool Loki\+::operator$<$ (
+\begin{DoxyParamCaption}
+\item[{U $\ast$}]{lhs, }
+\item[{const {\bf Strong\+Ptr}$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_gaf1276b464e5c0354aab98d7c14d82f72}
+operator$<$ for lhs = raw pointer, rhs = \hyperlink{classLoki_1_1StrongPtr}{Strong\+Ptr} \hypertarget{group__SmartPointerGroup_ga1e7dc23efb70f2a1ebdf633ba941a3a9}{}\index{Smart pointers@{Smart pointers}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator$<$(const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&lhs, U $\ast$rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P, typename U $>$ bool Loki\+::operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Smart\+Ptr}$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&}]{lhs, }
+\item[{U $\ast$}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_ga1e7dc23efb70f2a1ebdf633ba941a3a9}
+operator$<$ for lhs = \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}, rhs = raw pointer \hypertarget{group__SmartPointerGroup_ga077391f2d5ea6f967f6c948817fe4378}{}\index{Smart pointers@{Smart pointers}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator$<$(\+U $\ast$lhs, const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P, typename U $>$ bool Loki\+::operator$<$ (
+\begin{DoxyParamCaption}
+\item[{U $\ast$}]{lhs, }
+\item[{const {\bf Smart\+Ptr}$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_ga077391f2d5ea6f967f6c948817fe4378}
+operator$<$ for lhs = raw pointer, rhs = \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr} \hypertarget{group__SmartPointerGroup_ga1349a2ef1d4d18e0d825d1a22299c585}{}\index{Smart pointers@{Smart pointers}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator$<$=(const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&lhs, U $\ast$rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ bool Loki\+::operator$<$= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Strong\+Ptr}$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&}]{lhs, }
+\item[{U $\ast$}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_ga1349a2ef1d4d18e0d825d1a22299c585}
+operator$<$= for lhs = \hyperlink{classLoki_1_1StrongPtr}{Strong\+Ptr}, rhs = raw pointer \hypertarget{group__SmartPointerGroup_ga79f9bc3cba5be737713e01278836071b}{}\index{Smart pointers@{Smart pointers}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator$<$=(\+U $\ast$lhs, const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ bool Loki\+::operator$<$= (
+\begin{DoxyParamCaption}
+\item[{U $\ast$}]{lhs, }
+\item[{const {\bf Strong\+Ptr}$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_ga79f9bc3cba5be737713e01278836071b}
+operator$<$= for lhs = raw pointer, rhs = \hyperlink{classLoki_1_1StrongPtr}{Strong\+Ptr} \hypertarget{group__SmartPointerGroup_gacdb4a26ac587767f90a6f31fa2b59975}{}\index{Smart pointers@{Smart pointers}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator$<$=(const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&lhs, U $\ast$rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P, typename U $>$ bool Loki\+::operator$<$= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Smart\+Ptr}$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&}]{lhs, }
+\item[{U $\ast$}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_gacdb4a26ac587767f90a6f31fa2b59975}
+operator$<$= for lhs = \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}, rhs = raw pointer \hypertarget{group__SmartPointerGroup_gae9b52490dde1823ba37309c4435d8757}{}\index{Smart pointers@{Smart pointers}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator$<$=(\+U $\ast$lhs, const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P, typename U $>$ bool Loki\+::operator$<$= (
+\begin{DoxyParamCaption}
+\item[{U $\ast$}]{lhs, }
+\item[{const {\bf Smart\+Ptr}$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_gae9b52490dde1823ba37309c4435d8757}
+operator$<$= for lhs = raw pointer, rhs = \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr} \hypertarget{group__SmartPointerGroup_ga07aa8a1b2cb0199fb22738a7092756bc}{}\index{Smart pointers@{Smart pointers}!operator==@{operator==}}
+\index{operator==@{operator==}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator==(const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&lhs, U $\ast$rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ bool Loki\+::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Strong\+Ptr}$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&}]{lhs, }
+\item[{U $\ast$}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_ga07aa8a1b2cb0199fb22738a7092756bc}
+operator== for lhs = \hyperlink{classLoki_1_1StrongPtr}{Strong\+Ptr}, rhs = raw pointer \hypertarget{group__SmartPointerGroup_ga48c72731581ab583eec9089f89f7952d}{}\index{Smart pointers@{Smart pointers}!operator==@{operator==}}
+\index{operator==@{operator==}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator==(\+U $\ast$lhs, const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ bool Loki\+::operator== (
+\begin{DoxyParamCaption}
+\item[{U $\ast$}]{lhs, }
+\item[{const {\bf Strong\+Ptr}$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_ga48c72731581ab583eec9089f89f7952d}
+operator== for lhs = raw pointer, rhs = \hyperlink{classLoki_1_1StrongPtr}{Strong\+Ptr} \hypertarget{group__SmartPointerGroup_ga6367f7dd2ba62b272c7a14b2d5db3e01}{}\index{Smart pointers@{Smart pointers}!operator==@{operator==}}
+\index{operator==@{operator==}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator==(const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P1 $>$ \&lhs, U $\ast$rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P1, typename U $>$ bool Loki\+::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Smart\+Ptr}$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P1 $>$ \&}]{lhs, }
+\item[{U $\ast$}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_ga6367f7dd2ba62b272c7a14b2d5db3e01}
+operator== for lhs = \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}, rhs = raw pointer \hypertarget{group__SmartPointerGroup_ga7f01888cb34c0dd52ded70b83ee20e06}{}\index{Smart pointers@{Smart pointers}!operator==@{operator==}}
+\index{operator==@{operator==}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator==(\+U $\ast$lhs, const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P1 $>$ \&rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P1, typename U $>$ bool Loki\+::operator== (
+\begin{DoxyParamCaption}
+\item[{U $\ast$}]{lhs, }
+\item[{const {\bf Smart\+Ptr}$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P1 $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_ga7f01888cb34c0dd52ded70b83ee20e06}
+operator== for lhs = raw pointer, rhs = \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr} \hypertarget{group__SmartPointerGroup_ga2e66dcb340f8be20d59c0bc25e31f847}{}\index{Smart pointers@{Smart pointers}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator$>$(\+U $\ast$lhs, const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ bool Loki\+::operator$>$ (
+\begin{DoxyParamCaption}
+\item[{U $\ast$}]{lhs, }
+\item[{const {\bf Strong\+Ptr}$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_ga2e66dcb340f8be20d59c0bc25e31f847}
+operator$>$ for lhs = raw pointer, rhs = \hyperlink{classLoki_1_1StrongPtr}{Strong\+Ptr} \hypertarget{group__SmartPointerGroup_ga00cd20c13933b70e7bb734527502c674}{}\index{Smart pointers@{Smart pointers}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator$>$(\+U $\ast$lhs, const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P, typename U $>$ bool Loki\+::operator$>$ (
+\begin{DoxyParamCaption}
+\item[{U $\ast$}]{lhs, }
+\item[{const {\bf Smart\+Ptr}$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_ga00cd20c13933b70e7bb734527502c674}
+operator$>$ for lhs = raw pointer, rhs = \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr} \hypertarget{group__SmartPointerGroup_gafff630dad25f2390bfddba4e494c18e1}{}\index{Smart pointers@{Smart pointers}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator$>$=(const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&lhs, U $\ast$rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ bool Loki\+::operator$>$= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Strong\+Ptr}$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&}]{lhs, }
+\item[{U $\ast$}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_gafff630dad25f2390bfddba4e494c18e1}
+operator$>$= for lhs = \hyperlink{classLoki_1_1StrongPtr}{Strong\+Ptr}, rhs = raw pointer \hypertarget{group__SmartPointerGroup_gaadaa4698c496d593d62e877aadf02580}{}\index{Smart pointers@{Smart pointers}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator$>$=(\+U $\ast$lhs, const Strong\+Ptr$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename U , typename T , bool S, class O\+P , class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class R\+P, template$<$ class $>$ class D\+P, template$<$ class $>$ class C\+N\+P$>$ bool Loki\+::operator$>$= (
+\begin{DoxyParamCaption}
+\item[{U $\ast$}]{lhs, }
+\item[{const {\bf Strong\+Ptr}$<$ T, S, O\+P, C\+P, K\+P, R\+P, D\+P, C\+N\+P $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_gaadaa4698c496d593d62e877aadf02580}
+operator$>$= for lhs = raw pointer, rhs = \hyperlink{classLoki_1_1StrongPtr}{Strong\+Ptr} \hypertarget{group__SmartPointerGroup_ga6ecb015692643d88fa04ba2eaa1bc72e}{}\index{Smart pointers@{Smart pointers}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator$>$=(const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&lhs, U $\ast$rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P, typename U $>$ bool Loki\+::operator$>$= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Smart\+Ptr}$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&}]{lhs, }
+\item[{U $\ast$}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_ga6ecb015692643d88fa04ba2eaa1bc72e}
+operator$>$= for lhs = \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}, rhs = raw pointer \hypertarget{group__SmartPointerGroup_ga21e42b6dac17e9ce23d32c7a9309b09c}{}\index{Smart pointers@{Smart pointers}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!Smart pointers@{Smart pointers}}
+\subsubsection[{operator$>$=(\+U $\ast$lhs, const Smart\+Ptr$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&rhs)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , template$<$ class $>$ class O\+P, class C\+P , template$<$ class $>$ class K\+P, template$<$ class $>$ class S\+P, template$<$ class $>$ class C\+N\+P, typename U $>$ bool Loki\+::operator$>$= (
+\begin{DoxyParamCaption}
+\item[{U $\ast$}]{lhs, }
+\item[{const {\bf Smart\+Ptr}$<$ T, O\+P, C\+P, K\+P, S\+P, C\+N\+P $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group__SmartPointerGroup_ga21e42b6dac17e9ce23d32c7a9309b09c}
+operator$>$= for lhs = raw pointer, rhs = \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr} 

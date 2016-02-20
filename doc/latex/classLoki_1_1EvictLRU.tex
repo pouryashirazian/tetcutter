@@ -1,0 +1,56 @@
+\hypertarget{classLoki_1_1EvictLRU}{}\section{Loki\+:\+:Evict\+L\+R\+U$<$ D\+T, S\+T $>$ Class Template Reference}
+\label{classLoki_1_1EvictLRU}\index{Loki\+::\+Evict\+L\+R\+U$<$ D\+T, S\+T $>$@{Loki\+::\+Evict\+L\+R\+U$<$ D\+T, S\+T $>$}}
+
+
+Evicts least accessed objects first.  
+
+
+
+
+{\ttfamily \#include $<$Cached\+Factory.\+h$>$}
+
+Inheritance diagram for Loki\+:\+:Evict\+L\+R\+U$<$ D\+T, S\+T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLoki_1_1EvictLRU}
+\end{center}
+\end{figure}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1EvictLRU_a5982a28a470f49676881bb05ec2f2760}{}void {\bfseries on\+Create} (const D\+T \&key)\label{classLoki_1_1EvictLRU_a5982a28a470f49676881bb05ec2f2760}
+
+\item 
+\hypertarget{classLoki_1_1EvictLRU_abc7f4d133d366dfa1f141c990e29cd16}{}void {\bfseries on\+Fetch} (const D\+T \&)\label{classLoki_1_1EvictLRU_abc7f4d133d366dfa1f141c990e29cd16}
+
+\item 
+\hypertarget{classLoki_1_1EvictLRU_a8a2a0c1becb607a5c3147e7e17571180}{}void {\bfseries on\+Release} (const D\+T \&key)\label{classLoki_1_1EvictLRU_a8a2a0c1becb607a5c3147e7e17571180}
+
+\item 
+\hypertarget{classLoki_1_1EvictLRU_a25b762e1f387bc962c92eba6d771a71a}{}void {\bfseries on\+Destroy} (const D\+T \&key)\label{classLoki_1_1EvictLRU_a25b762e1f387bc962c92eba6d771a71a}
+
+\item 
+\hypertarget{classLoki_1_1EvictLRU_aca96d1b85e1a8199f44463ce81076cf2}{}virtual void {\bfseries remove} (D\+T const key)=0\label{classLoki_1_1EvictLRU_aca96d1b85e1a8199f44463ce81076cf2}
+
+\item 
+\hypertarget{classLoki_1_1EvictLRU_a096fa684040eec490b15adc51a262a05}{}void {\bfseries evict} ()\label{classLoki_1_1EvictLRU_a096fa684040eec490b15adc51a262a05}
+
+\item 
+\hypertarget{classLoki_1_1EvictLRU_a8f3587ef1de88468975d87a88a94faf2}{}const char $\ast$ {\bfseries name} ()\label{classLoki_1_1EvictLRU_a8f3587ef1de88468975d87a88a94faf2}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename D\+T, typename S\+T = unsigned$>$class Loki\+::\+Evict\+L\+R\+U$<$ D\+T, S\+T $>$}
+
+Evicts least accessed objects first. 
+
+Implementation of the Least recent used algorithm as described in \href{http://en.wikipedia.org/wiki/Page_replacement_algorithms}{\tt http\+://en.\+wikipedia.\+org/wiki/\+Page\+\_\+replacement\+\_\+algorithms} .
+
+W\+A\+R\+N\+I\+N\+G \+: If an object is heavily fetched (more than U\+L\+O\+N\+G\+\_\+\+M\+A\+X = U\+I\+N\+T\+\_\+\+M\+A\+X = 4294967295\+U) it could unfortunately be removed from the cache. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Cached\+Factory.\+h\end{DoxyCompactItemize}

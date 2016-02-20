@@ -1,0 +1,98 @@
+\hypertarget{classLoki_1_1StaticChecker}{}\section{Loki\+:\+:Static\+Checker$<$ Exception\+Policy $>$ Class Template Reference}
+\label{classLoki_1_1StaticChecker}\index{Loki\+::\+Static\+Checker$<$ Exception\+Policy $>$@{Loki\+::\+Static\+Checker$<$ Exception\+Policy $>$}}
+
+
+{\ttfamily \#include $<$Checker.\+h$>$}
+
+Inheritance diagram for Loki\+:\+:Static\+Checker$<$ Exception\+Policy $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLoki_1_1StaticChecker}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1StaticChecker_a0569fd17467e7258926bf033a3da8823}{}typedef bool($\ast$ \hyperlink{classLoki_1_1StaticChecker_a0569fd17467e7258926bf033a3da8823}{Validator}) (void)\label{classLoki_1_1StaticChecker_a0569fd17467e7258926bf033a3da8823}
+
+\begin{DoxyCompactList}\small\item\em Signature for the validation function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLoki_1_1StaticChecker_a03eca9af5c834a019115f519994d84d7}{Static\+Checker} (\hyperlink{structValidator}{Validator} validator, \hyperlink{structValidator}{Validator} pre=0, \hyperlink{structValidator}{Validator} post=0)
+\item 
+\hyperlink{classLoki_1_1StaticChecker_ac34b548bb197793f0e393e0448b07b6f}{$\sim$\+Static\+Checker} (void)
+\item 
+bool \hyperlink{classLoki_1_1StaticChecker_ad8e80dcf79a603395ecc9d5b2fe91491}{Check} (void) const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Exception\+Policy$>$class Loki\+::\+Static\+Checker$<$ Exception\+Policy $>$}
+
+This class checks if a function provides the no-\/throw exception safety level and if the function violated any invariants. Invariants for stand-\/alone and static functions act as pre-\/conditions and post-\/conditions.
+
+\begin{DoxyParagraph}{Usage}
+
+\begin{DoxyEnumerate}
+\item Implement a function that checks the invariants associated with a function, or with the static data for a class. The function must have the signature similar to the \hyperlink{structValidator}{Validator} type. Something like\+: \char`\"{}static bool Host\+::\+Static\+Is\+Valid( void );\char`\"{} or \char`\"{}bool Is\+Okay( void );\char`\"{}
+\begin{DoxyItemize}
+\item The function should return true if everything is okay, but false if something is wrong.
+\item Or it could assert if anything is wrong.
+\end{DoxyItemize}
+\item If the checker is for static functions within a class, declare typedef\textquotesingle{}s inside the class declaration like these. Make one typedef for each policy you use. I typedef\textquotesingle{}ed the \hyperlink{classLoki_1_1CheckForNothing}{Check\+For\+Nothing} policy as Check\+Invariants because even if a function can\textquotesingle{}t provide the no-\/throw guarantee, it should still make sure that static data remains in a valid state.
+\begin{DoxyItemize}
+\item typedef \+::\+Loki\+::\+Static\+Checker$<$ \+::\+Loki\+::\+Check\+For\+No\+Throw $>$ \hyperlink{classLoki_1_1CheckStaticForNoThrow}{Check\+Static\+For\+No\+Throw};
+\item typedef \+::\+Loki\+::\+Static\+Checker$<$ \+::\+Loki\+::\+Check\+For\+Nothing $>$ Check\+Static\+Invariants;
+\end{DoxyItemize}
+\item Construct a checker near the top of each member function -\/ except in the validator member function. Pass the address of your validator function into the checker\textquotesingle{}s constructor.
+\begin{DoxyItemize}
+\item If the function never throws, then use the \hyperlink{classLoki_1_1CheckForNoThrow}{Check\+For\+No\+Throw} policy.
+\item Otherwise use the Check\+Invariants policy.
+\end{DoxyItemize}
+\item Recompile a debug version of your program, run it, and see if an assertion fails. 
+\end{DoxyEnumerate}
+\end{DoxyParagraph}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classLoki_1_1StaticChecker_a03eca9af5c834a019115f519994d84d7}{}\index{Loki\+::\+Static\+Checker@{Loki\+::\+Static\+Checker}!Static\+Checker@{Static\+Checker}}
+\index{Static\+Checker@{Static\+Checker}!Loki\+::\+Static\+Checker@{Loki\+::\+Static\+Checker}}
+\subsubsection[{Static\+Checker(\+Validator validator, Validator pre=0, Validator post=0)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Exception\+Policy $>$ {\bf Loki\+::\+Static\+Checker}$<$ Exception\+Policy $>$\+::{\bf Static\+Checker} (
+\begin{DoxyParamCaption}
+\item[{{\bf Validator}}]{validator, }
+\item[{{\bf Validator}}]{pre = {\ttfamily 0}, }
+\item[{{\bf Validator}}]{post = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}\label{classLoki_1_1StaticChecker_a03eca9af5c834a019115f519994d84d7}
+The constructor makes sure the host is valid at the time the checker was created, thus insuring the host object was not corrupt from the start. \begin{DoxyParagraph}{validator Pointer to function that checks class invariants.}
+
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{pre Optional pointer to function that checks pre-\/conditions.}
+
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{post Optional pointer to function that checks post-\/conditions.}
+
+\end{DoxyParagraph}
+\hypertarget{classLoki_1_1StaticChecker_ac34b548bb197793f0e393e0448b07b6f}{}\index{Loki\+::\+Static\+Checker@{Loki\+::\+Static\+Checker}!````~Static\+Checker@{$\sim$\+Static\+Checker}}
+\index{````~Static\+Checker@{$\sim$\+Static\+Checker}!Loki\+::\+Static\+Checker@{Loki\+::\+Static\+Checker}}
+\subsubsection[{$\sim$\+Static\+Checker(void)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Exception\+Policy $>$ {\bf Loki\+::\+Static\+Checker}$<$ Exception\+Policy $>$\+::$\sim${\bf Static\+Checker} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classLoki_1_1StaticChecker_ac34b548bb197793f0e393e0448b07b6f}
+The destructor checks if any Host invariants failed, and then calls the Exception\+Policy\textquotesingle{}s \hyperlink{structCheck}{Check} function to determine what to do in case of an exception. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classLoki_1_1StaticChecker_ad8e80dcf79a603395ecc9d5b2fe91491}{}\index{Loki\+::\+Static\+Checker@{Loki\+::\+Static\+Checker}!Check@{Check}}
+\index{Check@{Check}!Loki\+::\+Static\+Checker@{Loki\+::\+Static\+Checker}}
+\subsubsection[{Check(void) const }]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Exception\+Policy $>$ bool {\bf Loki\+::\+Static\+Checker}$<$ Exception\+Policy $>$\+::{\bf Check} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classLoki_1_1StaticChecker_ad8e80dcf79a603395ecc9d5b2fe91491}
+This first checks its own invariants, and then calls the validator function to make sure no invariants were broken by the function which created this checker. That function can call \hyperlink{structCheck}{Check} directly to verify the data remains valid at any time. This does not care if the pre-\/ and post-\/ condition validator pointers are null since a host class may pass in N\+U\+L\+L pointers for either to indicate the pre-\/conditions or post-\/conditions are the same as the overall class invariants. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/\hyperlink{Checker_8h}{Checker.\+h}\end{DoxyCompactItemize}

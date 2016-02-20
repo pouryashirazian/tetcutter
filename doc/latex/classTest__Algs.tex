@@ -1,0 +1,78 @@
+\hypertarget{classTest__Algs}{}\section{Test\+\_\+\+Algs Class Reference}
+\label{classTest__Algs}\index{Test\+\_\+\+Algs@{Test\+\_\+\+Algs}}
+Inheritance diagram for Test\+\_\+\+Algs\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.297436cm]{classTest__Algs}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classTest__Algs_ac2cd9b51c80c063731e3fa9b428cc03f}{}{\bfseries Test\+\_\+\+Algs} (Partitioner\+Type pt=Simple\+Partitioner)\label{classTest__Algs_ac2cd9b51c80c063731e3fa9b428cc03f}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classTest__Algs_ab52175b91adce716012f7b92be50a9e1}{}bool {\bfseries Use\+Auto\+Partitioner} () const \label{classTest__Algs_ab52175b91adce716012f7b92be50a9e1}
+
+\item 
+\hypertarget{classTest__Algs_a6c6af1aa5dc59c67b0598899e83156a5}{}int \hyperlink{classTest__Algs_a6c6af1aa5dc59c67b0598899e83156a5}{Num\+Workloads} ()\label{classTest__Algs_a6c6af1aa5dc59c67b0598899e83156a5}
+
+\begin{DoxyCompactList}\small\item\em Returns the number of workloads supported. \end{DoxyCompactList}\item 
+void \hyperlink{classTest__Algs_a18ccd1cedb43cdbb4fce546a1abba490}{Set\+Workload} (int idx)
+\begin{DoxyCompactList}\small\item\em Set workload info for the subsequent calls to \hyperlink{classPerf_1_1Test_a64ad02d5651eb526f14e8d17df229cfb}{Run()} and \hyperlink{classPerf_1_1Test_aa36442055c9cd1267cbdf8a0bf431239}{Run\+Serial()} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classTest__Algs_ac1b0d3d7958df78e069f40804f061b47}{}tbb\+::simple\+\_\+partitioner {\bfseries my\+\_\+simple\+Partitioner}\label{classTest__Algs_ac1b0d3d7958df78e069f40804f061b47}
+
+\item 
+\hypertarget{classTest__Algs_a26111aa2d6cabf133a543a10b4230452}{}tbb\+::auto\+\_\+partitioner {\bfseries my\+\_\+auto\+Partitioner}\label{classTest__Algs_a26111aa2d6cabf133a543a10b4230452}
+
+\item 
+\hypertarget{classTest__Algs_a6c670aa4c90de6a31a9e7a030e51a175}{}Partitioner\+Type {\bfseries my\+\_\+partitioner\+Type}\label{classTest__Algs_a6c670aa4c90de6a31a9e7a030e51a175}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classTest__Algs_a1690a5fde07543428bbe50e084097636}{}static const int {\bfseries num\+Workloads} = 4\label{classTest__Algs_a1690a5fde07543428bbe50e084097636}
+
+\item 
+\hypertarget{classTest__Algs_a5fbd443d987a0d6fb767beeaaa73621e}{}static const count\+\_\+t {\bfseries alg\+Ranges} \mbox{[}num\+Workloads\mbox{]} = \{N\+\_\+finest, N\+\_\+fine, N\+\_\+med, N\}\label{classTest__Algs_a5fbd443d987a0d6fb767beeaaa73621e}
+
+\item 
+\hypertarget{classTest__Algs_a72ab1b8d620215cb381f057c3b55c0ee}{}static const count\+\_\+t {\bfseries alg\+Grains} \mbox{[}num\+Workloads\mbox{]} = \{1, F\+I\+N\+E\+\_\+\+G\+R\+A\+I\+N, M\+E\+D\+\_\+\+G\+R\+A\+I\+N, C\+O\+A\+R\+S\+E\+\_\+\+G\+R\+A\+I\+N\}\label{classTest__Algs_a72ab1b8d620215cb381f057c3b55c0ee}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classTest__Algs_a18ccd1cedb43cdbb4fce546a1abba490}{}\index{Test\+\_\+\+Algs@{Test\+\_\+\+Algs}!Set\+Workload@{Set\+Workload}}
+\index{Set\+Workload@{Set\+Workload}!Test\+\_\+\+Algs@{Test\+\_\+\+Algs}}
+\subsubsection[{Set\+Workload(int idx)}]{\setlength{\rightskip}{0pt plus 5cm}void Test\+\_\+\+Algs\+::\+Set\+Workload (
+\begin{DoxyParamCaption}
+\item[{int}]{workload\+Index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}\label{classTest__Algs_a18ccd1cedb43cdbb4fce546a1abba490}
+
+
+Set workload info for the subsequent calls to \hyperlink{classPerf_1_1Test_a64ad02d5651eb526f14e8d17df229cfb}{Run()} and \hyperlink{classPerf_1_1Test_aa36442055c9cd1267cbdf8a0bf431239}{Run\+Serial()} 
+
+This method can use global helper function Perf\+::\+Set\+Workload\+Name() in order to specify the name of the current workload, which will be used in output to designate the workload. If Set\+Workload\+Name is not called, workload\+Index will be used for this purpose.
+
+When testing task scheduler, make sure that this method does not trigger its automatic initialization. 
+
+Implements \hyperlink{classPerf_1_1Test_a49e2b75f552355cea43b841bba1237b3}{Perf\+::\+Test}.
+
+
+
+Reimplemented in \hyperlink{classTest__PFor__Nested_a8144237486dd3ba38cecae30d6d58c26}{Test\+\_\+\+P\+For\+\_\+\+Nested}, and \hyperlink{classTest__PFor__Skewed_a8844b30c0bbfc98f57a6bc7ae295fcd5}{Test\+\_\+\+P\+For\+\_\+\+Skewed}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/perf/perf\+\_\+sched.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,86 @@
+\hypertarget{classrml_1_1internal_1_1thread__monitor}{}\section{rml\+:\+:internal\+:\+:thread\+\_\+monitor Class Reference}
+\label{classrml_1_1internal_1_1thread__monitor}\index{rml\+::internal\+::thread\+\_\+monitor@{rml\+::internal\+::thread\+\_\+monitor}}
+
+
+Monitor with limited two-\/phase commit form of wait.  
+
+
+
+
+{\ttfamily \#include $<$thread\+\_\+monitor.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classrml_1_1internal_1_1thread__monitor_1_1cookie}{cookie}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classrml_1_1internal_1_1thread__monitor_a3d1ae1d2476f27d49814bedd78bca43a}{notify} ()
+\begin{DoxyCompactList}\small\item\em If a thread is waiting or started a two-\/phase wait, notify it. \end{DoxyCompactList}\item 
+void \hyperlink{classrml_1_1internal_1_1thread__monitor_aa70a8ea008c6fbf2edfc1282a6926fb8}{prepare\+\_\+wait} (\hyperlink{classrml_1_1internal_1_1thread__monitor_1_1cookie}{cookie} \&c)
+\begin{DoxyCompactList}\small\item\em Begin two-\/phase wait. \end{DoxyCompactList}\item 
+\hypertarget{classrml_1_1internal_1_1thread__monitor_aade3c809fbe1271d73a0a68a56987c84}{}void \hyperlink{classrml_1_1internal_1_1thread__monitor_aade3c809fbe1271d73a0a68a56987c84}{commit\+\_\+wait} (\hyperlink{classrml_1_1internal_1_1thread__monitor_1_1cookie}{cookie} \&c)\label{classrml_1_1internal_1_1thread__monitor_aade3c809fbe1271d73a0a68a56987c84}
+
+\begin{DoxyCompactList}\small\item\em Complete a two-\/phase wait and wait until notification occurs after the earlier prepare\+\_\+wait. \end{DoxyCompactList}\item 
+\hypertarget{classrml_1_1internal_1_1thread__monitor_aaeb8faebaa89d96f89d537bd9c2782b7}{}void \hyperlink{classrml_1_1internal_1_1thread__monitor_aaeb8faebaa89d96f89d537bd9c2782b7}{cancel\+\_\+wait} ()\label{classrml_1_1internal_1_1thread__monitor_aaeb8faebaa89d96f89d537bd9c2782b7}
+
+\begin{DoxyCompactList}\small\item\em Cancel a two-\/phase wait. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classrml_1_1internal_1_1thread__monitor_a5c286f93f53ec2ac4f0d70650ba32b92}{yield} ()
+\begin{DoxyCompactList}\small\item\em Yield control to O\+S. \end{DoxyCompactList}\item 
+\hypertarget{classrml_1_1internal_1_1thread__monitor_a2be9fe6a3ec89c83442b2acd31d87df7}{}static void \hyperlink{classrml_1_1internal_1_1thread__monitor_a2be9fe6a3ec89c83442b2acd31d87df7}{join} (handle\+\_\+type handle)\label{classrml_1_1internal_1_1thread__monitor_a2be9fe6a3ec89c83442b2acd31d87df7}
+
+\begin{DoxyCompactList}\small\item\em Join thread. \end{DoxyCompactList}\item 
+\hypertarget{classrml_1_1internal_1_1thread__monitor_aaec978fb92f21dd1823401f7fd1d6f24}{}static void \hyperlink{classrml_1_1internal_1_1thread__monitor_aaec978fb92f21dd1823401f7fd1d6f24}{detach\+\_\+thread} (handle\+\_\+type handle)\label{classrml_1_1internal_1_1thread__monitor_aaec978fb92f21dd1823401f7fd1d6f24}
+
+\begin{DoxyCompactList}\small\item\em Detach thread. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Monitor with limited two-\/phase commit form of wait. 
+
+At most one thread should wait on an instance at a time. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrml_1_1internal_1_1thread__monitor_a3d1ae1d2476f27d49814bedd78bca43a}{}\index{rml\+::internal\+::thread\+\_\+monitor@{rml\+::internal\+::thread\+\_\+monitor}!notify@{notify}}
+\index{notify@{notify}!rml\+::internal\+::thread\+\_\+monitor@{rml\+::internal\+::thread\+\_\+monitor}}
+\subsubsection[{notify()}]{\setlength{\rightskip}{0pt plus 5cm}void rml\+::internal\+::thread\+\_\+monitor\+::notify (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classrml_1_1internal_1_1thread__monitor_a3d1ae1d2476f27d49814bedd78bca43a}
+
+
+If a thread is waiting or started a two-\/phase wait, notify it. 
+
+Can be called by any thread. \hypertarget{classrml_1_1internal_1_1thread__monitor_aa70a8ea008c6fbf2edfc1282a6926fb8}{}\index{rml\+::internal\+::thread\+\_\+monitor@{rml\+::internal\+::thread\+\_\+monitor}!prepare\+\_\+wait@{prepare\+\_\+wait}}
+\index{prepare\+\_\+wait@{prepare\+\_\+wait}!rml\+::internal\+::thread\+\_\+monitor@{rml\+::internal\+::thread\+\_\+monitor}}
+\subsubsection[{prepare\+\_\+wait(cookie \&c)}]{\setlength{\rightskip}{0pt plus 5cm}void rml\+::internal\+::thread\+\_\+monitor\+::prepare\+\_\+wait (
+\begin{DoxyParamCaption}
+\item[{{\bf cookie} \&}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classrml_1_1internal_1_1thread__monitor_aa70a8ea008c6fbf2edfc1282a6926fb8}
+
+
+Begin two-\/phase wait. 
+
+Should only be called by thread that owns the monitor. The caller must either complete the wait or cancel it. \hypertarget{classrml_1_1internal_1_1thread__monitor_a5c286f93f53ec2ac4f0d70650ba32b92}{}\index{rml\+::internal\+::thread\+\_\+monitor@{rml\+::internal\+::thread\+\_\+monitor}!yield@{yield}}
+\index{yield@{yield}!rml\+::internal\+::thread\+\_\+monitor@{rml\+::internal\+::thread\+\_\+monitor}}
+\subsubsection[{yield()}]{\setlength{\rightskip}{0pt plus 5cm}static void rml\+::internal\+::thread\+\_\+monitor\+::yield (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classrml_1_1internal_1_1thread__monitor_a5c286f93f53ec2ac4f0d70650ba32b92}
+
+
+Yield control to O\+S. 
+
+Affects the calling thread. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/rml/server/thread\+\_\+monitor.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,31 @@
+\hypertarget{classHarness_1_1SpinBarrier}{}\section{Harness\+:\+:Spin\+Barrier Class Reference}
+\label{classHarness_1_1SpinBarrier}\index{Harness\+::\+Spin\+Barrier@{Harness\+::\+Spin\+Barrier}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classHarness_1_1SpinBarrier_a98a1a7c3ec679f35e5f36ac8ca0ce6cf}{}{\bfseries Spin\+Barrier} (unsigned nthreads=0)\label{classHarness_1_1SpinBarrier_a98a1a7c3ec679f35e5f36ac8ca0ce6cf}
+
+\item 
+\hypertarget{classHarness_1_1SpinBarrier_a6de60821931c62c0c02670f090c25e29}{}void {\bfseries initialize} (unsigned nthreads)\label{classHarness_1_1SpinBarrier_a6de60821931c62c0c02670f090c25e29}
+
+\item 
+\hypertarget{classHarness_1_1SpinBarrier_ab3da5fe87e4dec7287a09a3ec3940a57}{}{\footnotesize template$<$typename Wait\+Eq , typename Callback $>$ }\\bool {\bfseries custom\+\_\+wait} (const Wait\+Eq \&on\+Wait\+Callback, const Callback \&on\+Open\+Barrier\+Callback)\label{classHarness_1_1SpinBarrier_ab3da5fe87e4dec7287a09a3ec3940a57}
+
+\item 
+\hypertarget{classHarness_1_1SpinBarrier_af2db7bc311f2249da4d493541952f2e1}{}bool {\bfseries timed\+\_\+wait} (double n\+\_\+seconds, const char $\ast$msg=\char`\"{}Time is out while waiting on a barrier\char`\"{})\label{classHarness_1_1SpinBarrier_af2db7bc311f2249da4d493541952f2e1}
+
+\item 
+\hypertarget{classHarness_1_1SpinBarrier_af528a17cba96eb8d4bfa01b1a10c2002}{}{\footnotesize template$<$typename Callback $>$ }\\bool \hyperlink{classHarness_1_1SpinBarrier_af528a17cba96eb8d4bfa01b1a10c2002}{wait} (const Callback \&on\+Open\+Barrier\+Callback)\label{classHarness_1_1SpinBarrier_af528a17cba96eb8d4bfa01b1a10c2002}
+
+\begin{DoxyCompactList}\small\item\em on\+Open\+Barrier\+Callback is called by last thread arrived on a barrier \end{DoxyCompactList}\item 
+\hypertarget{classHarness_1_1SpinBarrier_aab07028767930586d4f452eb942539ed}{}bool {\bfseries wait} ()\label{classHarness_1_1SpinBarrier_aab07028767930586d4f452eb942539ed}
+
+\item 
+\hypertarget{classHarness_1_1SpinBarrier_a6c22bc19755a5a4276caf5fec9e4e3f4}{}bool \hyperlink{classHarness_1_1SpinBarrier_a6c22bc19755a5a4276caf5fec9e4e3f4}{signal\+\_\+nowait} ()\label{classHarness_1_1SpinBarrier_a6c22bc19755a5a4276caf5fec9e4e3f4}
+
+\begin{DoxyCompactList}\small\item\em signal to the barrier, rather a semaphore functionality \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/test/harness\+\_\+barrier.\+h\end{DoxyCompactItemize}

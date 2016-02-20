@@ -1,0 +1,101 @@
+\hypertarget{classLoki_1_1LokiAllocator}{}\section{Loki\+:\+:Loki\+Allocator$<$ Type, Alloc\+T $>$ Class Template Reference}
+\label{classLoki_1_1LokiAllocator}\index{Loki\+::\+Loki\+Allocator$<$ Type, Alloc\+T $>$@{Loki\+::\+Loki\+Allocator$<$ Type, Alloc\+T $>$}}
+
+
+{\ttfamily \#include $<$Allocator.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structLoki_1_1LokiAllocator_1_1rebind}{rebind}
+\begin{DoxyCompactList}\small\item\em Convert an allocator$<$\+Type$>$ to an allocator $<$\+Type1$>$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1LokiAllocator_a1c87886cf95b47057a9ddf03591c65a8}{}typedef \+::std\+::size\+\_\+t {\bfseries size\+\_\+type}\label{classLoki_1_1LokiAllocator_a1c87886cf95b47057a9ddf03591c65a8}
+
+\item 
+\hypertarget{classLoki_1_1LokiAllocator_a8160d93d1777e704ec2a210a3bf275a5}{}typedef \+::std\+::ptrdiff\+\_\+t {\bfseries difference\+\_\+type}\label{classLoki_1_1LokiAllocator_a8160d93d1777e704ec2a210a3bf275a5}
+
+\item 
+\hypertarget{classLoki_1_1LokiAllocator_aae09ea567738ddcefabf38d568bde0b5}{}typedef Type $\ast$ {\bfseries pointer}\label{classLoki_1_1LokiAllocator_aae09ea567738ddcefabf38d568bde0b5}
+
+\item 
+\hypertarget{classLoki_1_1LokiAllocator_a246c6466f4ffbabfbacb7eb9bcbc3225}{}typedef const Type $\ast$ {\bfseries const\+\_\+pointer}\label{classLoki_1_1LokiAllocator_a246c6466f4ffbabfbacb7eb9bcbc3225}
+
+\item 
+\hypertarget{classLoki_1_1LokiAllocator_a3c0e84862b9fdf9eb20e5b950d7ec13a}{}typedef Type \& {\bfseries reference}\label{classLoki_1_1LokiAllocator_a3c0e84862b9fdf9eb20e5b950d7ec13a}
+
+\item 
+\hypertarget{classLoki_1_1LokiAllocator_abf623fcffd35ec6ddc95b87112a586ab}{}typedef const Type \& {\bfseries const\+\_\+reference}\label{classLoki_1_1LokiAllocator_abf623fcffd35ec6ddc95b87112a586ab}
+
+\item 
+\hypertarget{classLoki_1_1LokiAllocator_ad811fbe72e96b093d78fd47b0f655caf}{}typedef Type {\bfseries value\+\_\+type}\label{classLoki_1_1LokiAllocator_ad811fbe72e96b093d78fd47b0f655caf}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1LokiAllocator_aca0350e215466300ad6e6998f272aba5}{}\hyperlink{classLoki_1_1LokiAllocator_aca0350e215466300ad6e6998f272aba5}{Loki\+Allocator} (void)  throw ()\label{classLoki_1_1LokiAllocator_aca0350e215466300ad6e6998f272aba5}
+
+\begin{DoxyCompactList}\small\item\em Default constructor does nothing. \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1LokiAllocator_a69aaba440cb8ee0527a04691c9e3b9eb}{}\hyperlink{classLoki_1_1LokiAllocator_a69aaba440cb8ee0527a04691c9e3b9eb}{Loki\+Allocator} (const \hyperlink{classLoki_1_1LokiAllocator}{Loki\+Allocator} \&)  throw ()\label{classLoki_1_1LokiAllocator_a69aaba440cb8ee0527a04691c9e3b9eb}
+
+\begin{DoxyCompactList}\small\item\em Copy constructor does nothing. \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1LokiAllocator_aa2f4469767a21a7f393075f9ea16730a}{}{\footnotesize template$<$typename Type1 $>$ }\\\hyperlink{classLoki_1_1LokiAllocator_aa2f4469767a21a7f393075f9ea16730a}{Loki\+Allocator} (const \hyperlink{classLoki_1_1LokiAllocator}{Loki\+Allocator}$<$ \hyperlink{classType1}{Type1} $>$ \&)  throw ()\label{classLoki_1_1LokiAllocator_aa2f4469767a21a7f393075f9ea16730a}
+
+\begin{DoxyCompactList}\small\item\em Type converting allocator constructor does nothing. \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1LokiAllocator_a9ac9082a843ef7c772a74a420d5ffd88}{}\hyperlink{classLoki_1_1LokiAllocator_a9ac9082a843ef7c772a74a420d5ffd88}{$\sim$\+Loki\+Allocator} ()  throw ()\label{classLoki_1_1LokiAllocator_a9ac9082a843ef7c772a74a420d5ffd88}
+
+\begin{DoxyCompactList}\small\item\em Destructor does nothing. \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1LokiAllocator_ac95609b0bb01996e9d7fa94406f787b4}{}pointer \hyperlink{classLoki_1_1LokiAllocator_ac95609b0bb01996e9d7fa94406f787b4}{address} (reference elem) const \label{classLoki_1_1LokiAllocator_ac95609b0bb01996e9d7fa94406f787b4}
+
+\begin{DoxyCompactList}\small\item\em Return address of reference to mutable element. \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1LokiAllocator_a6f984e7db2d509ad2b49d2229974d87c}{}const\+\_\+pointer \hyperlink{classLoki_1_1LokiAllocator_a6f984e7db2d509ad2b49d2229974d87c}{address} (const\+\_\+reference elem) const \label{classLoki_1_1LokiAllocator_a6f984e7db2d509ad2b49d2229974d87c}
+
+\begin{DoxyCompactList}\small\item\em Return address of reference to const element. \end{DoxyCompactList}\item 
+pointer \hyperlink{classLoki_1_1LokiAllocator_a856c0d1e1f32b786421c02d468020758}{allocate} (size\+\_\+type count, const void $\ast$hint=0)
+\item 
+\hypertarget{classLoki_1_1LokiAllocator_a3713aa29d4ccf61db725f7ba4111eaa9}{}void \hyperlink{classLoki_1_1LokiAllocator_a3713aa29d4ccf61db725f7ba4111eaa9}{deallocate} (pointer p, size\+\_\+type size)\label{classLoki_1_1LokiAllocator_a3713aa29d4ccf61db725f7ba4111eaa9}
+
+\begin{DoxyCompactList}\small\item\em Ask allocator to release memory at pointer with size bytes. \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1LokiAllocator_a78270e4c9b333f80199bc0867b4b9e0a}{}size\+\_\+type \hyperlink{classLoki_1_1LokiAllocator_a78270e4c9b333f80199bc0867b4b9e0a}{max\+\_\+size} (void) const   throw ()\label{classLoki_1_1LokiAllocator_a78270e4c9b333f80199bc0867b4b9e0a}
+
+\begin{DoxyCompactList}\small\item\em Calculate max \# of elements allocator can handle. \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1LokiAllocator_af6f7b3cb7e64ee71a2bda37e78c08654}{}void \hyperlink{classLoki_1_1LokiAllocator_af6f7b3cb7e64ee71a2bda37e78c08654}{construct} (pointer p, const Type \&value)\label{classLoki_1_1LokiAllocator_af6f7b3cb7e64ee71a2bda37e78c08654}
+
+\begin{DoxyCompactList}\small\item\em Construct an element at the pointer. \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1LokiAllocator_a213cb5506ab35d29ad8a626165d2b03a}{}void \hyperlink{classLoki_1_1LokiAllocator_a213cb5506ab35d29ad8a626165d2b03a}{destroy} (pointer p)\label{classLoki_1_1LokiAllocator_a213cb5506ab35d29ad8a626165d2b03a}
+
+\begin{DoxyCompactList}\small\item\em Destruct the object at pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Type, typename Alloc\+T = Loki\+::\+Allocator\+Singleton$<$$>$$>$class Loki\+::\+Loki\+Allocator$<$ Type, Alloc\+T $>$}
+
+Adapts \hyperlink{namespaceLoki}{Loki}\textquotesingle{}s Small-\/\+Object Allocator for S\+T\+L container classes. This class provides all the functionality required for S\+T\+L allocators, but uses \hyperlink{namespaceLoki}{Loki}\textquotesingle{}s Small-\/\+Object Allocator to perform actual memory operations. Implementation comes from a post in \hyperlink{namespaceLoki}{Loki} forums (by Rasmus Ekman?). 
+
+\subsection{Member Function Documentation}
+\hypertarget{classLoki_1_1LokiAllocator_a856c0d1e1f32b786421c02d468020758}{}\index{Loki\+::\+Loki\+Allocator@{Loki\+::\+Loki\+Allocator}!allocate@{allocate}}
+\index{allocate@{allocate}!Loki\+::\+Loki\+Allocator@{Loki\+::\+Loki\+Allocator}}
+\subsubsection[{allocate(size\+\_\+type count, const void $\ast$hint=0)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type, typename Alloc\+T = Loki\+::\+Allocator\+Singleton$<$$>$$>$ pointer {\bf Loki\+::\+Loki\+Allocator}$<$ Type, Alloc\+T $>$\+::allocate (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+type}]{count, }
+\item[{const void $\ast$}]{hint = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classLoki_1_1LokiAllocator_a856c0d1e1f32b786421c02d468020758}
+Allocate an array of count elements. Warning! The true parameter in the call to Allocate means this function can throw exceptions. This is better than not throwing, and returning a null pointer in case the caller assumes the return value is not null. 
+\begin{DoxyParams}{Parameters}
+{\em count} & \# of elements in array. \\
+\hline
+{\em hint} & Place where caller thinks allocation should occur. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to block of memory. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Allocator.\+h\end{DoxyCompactItemize}

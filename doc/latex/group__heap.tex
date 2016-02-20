@@ -1,0 +1,97 @@
+\hypertarget{group__heap}{}\section{Heap}
+\label{group__heap}\index{Heap@{Heap}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__heap_gaee7be7751f527b329c003ab6b448c3b3}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+heap\+\_\+function\+\_\+create}~\hyperlink{group__heap_gabbde8e9d232ceaf48c90adad4c1ce233}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+function\+\_\+create\+A}\label{group__heap_gaee7be7751f527b329c003ab6b448c3b3}
+
+\item 
+\hypertarget{group__heap_gaa1e210ca1b3c31b5ee21996a2d9ed5d7}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+heap\+\_\+function\+\_\+create\+\_\+ptr}~\+\_\+\+\_\+itt\+\_\+heap\+\_\+function\+\_\+create\+A\+\_\+ptr\label{group__heap_gaa1e210ca1b3c31b5ee21996a2d9ed5d7}
+
+\item 
+\#define \hyperlink{group__heap_gaaa7b9ac40d4b4111561778090c52ec40}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+leaks}
+\begin{DoxyCompactList}\small\item\em Specify the type of heap detection/reporting to modify. \end{DoxyCompactList}\item 
+\hypertarget{group__heap_ga2cc49fdf479eba77b24b8ab3d507c5cd}{}\#define \hyperlink{group__heap_ga2cc49fdf479eba77b24b8ab3d507c5cd}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+growth}\label{group__heap_ga2cc49fdf479eba77b24b8ab3d507c5cd}
+
+\begin{DoxyCompactList}\small\item\em Report on memory growth. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__heap_ga3907115617c96d09c646554d1a386bdf}{}typedef void $\ast$ {\bfseries \+\_\+\+\_\+itt\+\_\+heap\+\_\+function}\label{group__heap_ga3907115617c96d09c646554d1a386bdf}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\+\_\+\+\_\+itt\+\_\+heap\+\_\+function I\+T\+T\+A\+P\+I \hyperlink{group__heap_gabbde8e9d232ceaf48c90adad4c1ce233}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+function\+\_\+create\+A} (const char $\ast$name, const char $\ast$domain)
+\begin{DoxyCompactList}\small\item\em Create an identification for heap function. \end{DoxyCompactList}\item 
+\hypertarget{group__heap_ga90fea265a5509cd00e053d9b0d0ba020}{}\+\_\+\+\_\+itt\+\_\+heap\+\_\+function I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+heap\+\_\+function\+\_\+create\+W} (const wchar\+\_\+t $\ast$name, const wchar\+\_\+t $\ast$domain)\label{group__heap_ga90fea265a5509cd00e053d9b0d0ba020}
+
+\item 
+\hypertarget{group__heap_gaf925d76e7660314a9f5bc10420053d28}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_gaf925d76e7660314a9f5bc10420053d28}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+allocate\+\_\+begin} (\+\_\+\+\_\+itt\+\_\+heap\+\_\+function h, size\+\_\+t size, int initialized)\label{group__heap_gaf925d76e7660314a9f5bc10420053d28}
+
+\begin{DoxyCompactList}\small\item\em Record an allocation begin occurrence. \end{DoxyCompactList}\item 
+\hypertarget{group__heap_ga28f07d01cc3333fa5e98531585a1b5d0}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_ga28f07d01cc3333fa5e98531585a1b5d0}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+allocate\+\_\+end} (\+\_\+\+\_\+itt\+\_\+heap\+\_\+function h, void $\ast$$\ast$addr, size\+\_\+t size, int initialized)\label{group__heap_ga28f07d01cc3333fa5e98531585a1b5d0}
+
+\begin{DoxyCompactList}\small\item\em Record an allocation end occurrence. \end{DoxyCompactList}\item 
+\hypertarget{group__heap_ga37cf3971eb7a4ffdcb2ec4a29c97ef7d}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_ga37cf3971eb7a4ffdcb2ec4a29c97ef7d}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+free\+\_\+begin} (\+\_\+\+\_\+itt\+\_\+heap\+\_\+function h, void $\ast$addr)\label{group__heap_ga37cf3971eb7a4ffdcb2ec4a29c97ef7d}
+
+\begin{DoxyCompactList}\small\item\em Record an free begin occurrence. \end{DoxyCompactList}\item 
+\hypertarget{group__heap_gaf7f76cc500828981b9b785292a974c0b}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_gaf7f76cc500828981b9b785292a974c0b}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+free\+\_\+end} (\+\_\+\+\_\+itt\+\_\+heap\+\_\+function h, void $\ast$addr)\label{group__heap_gaf7f76cc500828981b9b785292a974c0b}
+
+\begin{DoxyCompactList}\small\item\em Record an free end occurrence. \end{DoxyCompactList}\item 
+\hypertarget{group__heap_gae25ce7c1240c935198ce4652ae8048fd}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_gae25ce7c1240c935198ce4652ae8048fd}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+reallocate\+\_\+begin} (\+\_\+\+\_\+itt\+\_\+heap\+\_\+function h, void $\ast$addr, size\+\_\+t new\+\_\+size, int initialized)\label{group__heap_gae25ce7c1240c935198ce4652ae8048fd}
+
+\begin{DoxyCompactList}\small\item\em Record an reallocation begin occurrence. \end{DoxyCompactList}\item 
+\hypertarget{group__heap_gaf9533c88db849c2e7e898083b2eb40c7}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_gaf9533c88db849c2e7e898083b2eb40c7}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+reallocate\+\_\+end} (\+\_\+\+\_\+itt\+\_\+heap\+\_\+function h, void $\ast$addr, void $\ast$$\ast$new\+\_\+addr, size\+\_\+t new\+\_\+size, int initialized)\label{group__heap_gaf9533c88db849c2e7e898083b2eb40c7}
+
+\begin{DoxyCompactList}\small\item\em Record an reallocation end occurrence. \end{DoxyCompactList}\item 
+\hypertarget{group__heap_gac199e6db97784bf770736cb2ecbe39fe}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_gac199e6db97784bf770736cb2ecbe39fe}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+internal\+\_\+access\+\_\+begin} (void)\label{group__heap_gac199e6db97784bf770736cb2ecbe39fe}
+
+\begin{DoxyCompactList}\small\item\em internal access begin \end{DoxyCompactList}\item 
+\hypertarget{group__heap_ga2e8dbae7f1fb1c93cc50b4549e2ec91f}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_ga2e8dbae7f1fb1c93cc50b4549e2ec91f}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+internal\+\_\+access\+\_\+end} (void)\label{group__heap_ga2e8dbae7f1fb1c93cc50b4549e2ec91f}
+
+\begin{DoxyCompactList}\small\item\em internal access end \end{DoxyCompactList}\item 
+\hypertarget{group__heap_ga3e449ab4b9c0cab883f23f74e70db5fb}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_ga3e449ab4b9c0cab883f23f74e70db5fb}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+record\+\_\+memory\+\_\+growth\+\_\+begin} (void)\label{group__heap_ga3e449ab4b9c0cab883f23f74e70db5fb}
+
+\begin{DoxyCompactList}\small\item\em record memory growth begin \end{DoxyCompactList}\item 
+\hypertarget{group__heap_ga4127abefaf89ca2c2a76c70dc0d7e124}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_ga4127abefaf89ca2c2a76c70dc0d7e124}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+record\+\_\+memory\+\_\+growth\+\_\+end} (void)\label{group__heap_ga4127abefaf89ca2c2a76c70dc0d7e124}
+
+\begin{DoxyCompactList}\small\item\em record memory growth end \end{DoxyCompactList}\item 
+\hypertarget{group__heap_gae980b97cc0134229a27c1b6263def28c}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_gae980b97cc0134229a27c1b6263def28c}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+reset\+\_\+detection} (unsigned int reset\+\_\+mask)\label{group__heap_gae980b97cc0134229a27c1b6263def28c}
+
+\begin{DoxyCompactList}\small\item\em heap reset detection \end{DoxyCompactList}\item 
+\hypertarget{group__heap_ga8de33699cca1b37a8309d8047124174e}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_ga8de33699cca1b37a8309d8047124174e}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+record} (unsigned int record\+\_\+mask)\label{group__heap_ga8de33699cca1b37a8309d8047124174e}
+
+\begin{DoxyCompactList}\small\item\em report \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Heap group 
+
+\subsection{Macro Definition Documentation}
+\hypertarget{group__heap_gaaa7b9ac40d4b4111561778090c52ec40}{}\index{Heap@{Heap}!\+\_\+\+\_\+itt\+\_\+heap\+\_\+leaks@{\+\_\+\+\_\+itt\+\_\+heap\+\_\+leaks}}
+\index{\+\_\+\+\_\+itt\+\_\+heap\+\_\+leaks@{\+\_\+\+\_\+itt\+\_\+heap\+\_\+leaks}!Heap@{Heap}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+heap\+\_\+leaks}]{\setlength{\rightskip}{0pt plus 5cm}\#define \+\_\+\+\_\+itt\+\_\+heap\+\_\+leaks}\label{group__heap_gaaa7b9ac40d4b4111561778090c52ec40}
+
+
+Specify the type of heap detection/reporting to modify. 
+
+Report on memory leaks. 
+
+\subsection{Function Documentation}
+\hypertarget{group__heap_gabbde8e9d232ceaf48c90adad4c1ce233}{}\index{Heap@{Heap}!\+\_\+\+\_\+itt\+\_\+heap\+\_\+function\+\_\+create\+A@{\+\_\+\+\_\+itt\+\_\+heap\+\_\+function\+\_\+create\+A}}
+\index{\+\_\+\+\_\+itt\+\_\+heap\+\_\+function\+\_\+create\+A@{\+\_\+\+\_\+itt\+\_\+heap\+\_\+function\+\_\+create\+A}!Heap@{Heap}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+heap\+\_\+function\+\_\+create\+A(const char $\ast$name, const char $\ast$domain)}]{\setlength{\rightskip}{0pt plus 5cm}\+\_\+\+\_\+itt\+\_\+heap\+\_\+function I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+heap\+\_\+function\+\_\+create\+A (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name, }
+\item[{const char $\ast$}]{domain}
+\end{DoxyParamCaption}
+)}\label{group__heap_gabbde8e9d232ceaf48c90adad4c1ce233}
+
+
+Create an identification for heap function. 
+
+\begin{DoxyReturn}{Returns}
+non-\/zero identifier or N\+U\+L\+L 
+\end{DoxyReturn}

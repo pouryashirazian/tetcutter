@@ -1,0 +1,60 @@
+\hypertarget{classLoki_1_1CheckReturn}{}\section{Loki\+:\+:Check\+Return$<$ Value, On\+Error $>$ Class Template Reference}
+\label{classLoki_1_1CheckReturn}\index{Loki\+::\+Check\+Return$<$ Value, On\+Error $>$@{Loki\+::\+Check\+Return$<$ Value, On\+Error $>$}}
+
+
+{\ttfamily \#include $<$Check\+Return.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1CheckReturn_a9e250eb61af69adaee7773a79400a6f7}{}\hyperlink{classLoki_1_1CheckReturn_a9e250eb61af69adaee7773a79400a6f7}{Check\+Return} (const \hyperlink{structValue}{Value} \&value)\label{classLoki_1_1CheckReturn_a9e250eb61af69adaee7773a79400a6f7}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{structLoki_1_1Conversion}{Conversion} constructor changes \hyperlink{structValue}{Value} type to \hyperlink{classLoki_1_1CheckReturn}{Check\+Return} type. \end{DoxyCompactList}\item 
+\hyperlink{classLoki_1_1CheckReturn_ac25f0d90452244c84dafbb23c5cdb012}{Check\+Return} (const \hyperlink{classLoki_1_1CheckReturn}{Check\+Return} \&that)
+\item 
+\hypertarget{classLoki_1_1CheckReturn_a9da9337fca355e5dbcadc246159719f7}{}\hyperlink{classLoki_1_1CheckReturn_a9da9337fca355e5dbcadc246159719f7}{$\sim$\+Check\+Return} (void)\label{classLoki_1_1CheckReturn_a9da9337fca355e5dbcadc246159719f7}
+
+\begin{DoxyCompactList}\small\item\em Destructor checks if return value was used. \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1CheckReturn_a6a77fab4729207c4c74ac74317ba58d6}{}\hyperlink{classLoki_1_1CheckReturn_a6a77fab4729207c4c74ac74317ba58d6}{operator Value} (void)\label{classLoki_1_1CheckReturn_a6a77fab4729207c4c74ac74317ba58d6}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{structLoki_1_1Conversion}{Conversion} operator changes \hyperlink{classLoki_1_1CheckReturn}{Check\+Return} back to \hyperlink{structValue}{Value} type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Value, template$<$ class $>$ class On\+Error = Trigger\+Assert$>$class Loki\+::\+Check\+Return$<$ Value, On\+Error $>$}
+
+\begin{DoxyParagraph}{Purpose}
+C++ provides no mechanism within the language itself to force code to check the return value from a function call. This simple class provides a mechanism by which programmers can force calling functions to check the return value. Or at least make them consciously choose to disregard the return value. If the calling function fails to use or store the return value, the destructor calls the On\+Error policy.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Template Parameters}
+\hyperlink{classLoki_1_1CheckReturn}{Check\+Return} has two template parameters, \hyperlink{structValue}{Value} and On\+Error.
+\begin{DoxyItemize}
+\item \hyperlink{structValue}{Value} is the return type from the function. \hyperlink{classLoki_1_1CheckReturn}{Check\+Return} stores a copy of it rather than a reference or pointer since return value could be local to a function. \hyperlink{classLoki_1_1CheckReturn}{Check\+Return} works best when the return type is a built-\/in primitive (bool, int, etc...) a pointer, or an enum (such as an error condition enum). It can work with other types that have cheap copy operations.
+\item On\+Error is a policy class indicating how to handle the situation when a caller does not check or copy the returned value. \hyperlink{namespaceLoki}{Loki} provides some policy classs and you may also write your own. For example, you can write a policy to create a message box when the function ignores the return value. That would quickly tell you places where code ignores the function call. If your write your own, you only need a templated class or struct with a public function named \char`\"{}run\char`\"{} that accepts a reference to a const value.
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Provided Policy Classes}
+
+\begin{DoxyItemize}
+\item \hyperlink{structLoki_1_1IgnoreReturnValue}{Ignore\+Return\+Value} Deliberately ignores when the caller ignores the return value.
+\item \hyperlink{structLoki_1_1TriggerAssert}{Trigger\+Assert} Asserts in debug builds if the caller ignores the return value.
+\item \hyperlink{structLoki_1_1FprintfStderr}{Fprintf\+Stderr} Prints out an error message if the caller ignores the return value.
+\item \hyperlink{structLoki_1_1ThrowTheValue}{Throw\+The\+Value} Throws the ignored value as an exception.
+\item \hyperlink{structLoki_1_1ThrowLogicError}{Throw\+Logic\+Error} Throws a logic\+\_\+error exception to indicate a programming error. 
+\end{DoxyItemize}
+\end{DoxyParagraph}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classLoki_1_1CheckReturn_ac25f0d90452244c84dafbb23c5cdb012}{}\index{Loki\+::\+Check\+Return@{Loki\+::\+Check\+Return}!Check\+Return@{Check\+Return}}
+\index{Check\+Return@{Check\+Return}!Loki\+::\+Check\+Return@{Loki\+::\+Check\+Return}}
+\subsubsection[{Check\+Return(const Check\+Return \&that)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Value , template$<$ class $>$ class On\+Error = Trigger\+Assert$>$ {\bf Loki\+::\+Check\+Return}$<$ {\bf Value}, On\+Error $>$\+::{\bf Check\+Return} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Check\+Return}$<$ {\bf Value}, On\+Error $>$ \&}]{that}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classLoki_1_1CheckReturn_ac25f0d90452244c84dafbb23c5cdb012}
+Copy-\/constructor allows functions to call another function within the return statement. The other \hyperlink{classLoki_1_1CheckReturn}{Check\+Return}\textquotesingle{}s m\+\_\+checked flag is set since its duty has been passed to the m\+\_\+checked flag in this one. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Check\+Return.\+h\end{DoxyCompactItemize}

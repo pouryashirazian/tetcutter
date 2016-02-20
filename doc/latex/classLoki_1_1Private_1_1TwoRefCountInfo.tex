@@ -1,0 +1,53 @@
+\hypertarget{classLoki_1_1Private_1_1TwoRefCountInfo}{}\section{Loki\+:\+:Private\+:\+:Two\+Ref\+Count\+Info Class Reference}
+\label{classLoki_1_1Private_1_1TwoRefCountInfo}\index{Loki\+::\+Private\+::\+Two\+Ref\+Count\+Info@{Loki\+::\+Private\+::\+Two\+Ref\+Count\+Info}}
+
+
+{\ttfamily \#include $<$Strong\+Ptr.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1Private_1_1TwoRefCountInfo_ad6514d29185e886dad3a89dd6c6ea505}{}{\bfseries Two\+Ref\+Count\+Info} (bool strong)\label{classLoki_1_1Private_1_1TwoRefCountInfo_ad6514d29185e886dad3a89dd6c6ea505}
+
+\item 
+\hypertarget{classLoki_1_1Private_1_1TwoRefCountInfo_afa2cb8cd1584b3a57c25ab2f2b0d8f29}{}{\bfseries Two\+Ref\+Count\+Info} (void $\ast$p, bool strong)\label{classLoki_1_1Private_1_1TwoRefCountInfo_afa2cb8cd1584b3a57c25ab2f2b0d8f29}
+
+\item 
+\hypertarget{classLoki_1_1Private_1_1TwoRefCountInfo_a26289c848ed507acf5a2fa2f48d162eb}{}bool {\bfseries Has\+Strong\+Pointer} (void) const \label{classLoki_1_1Private_1_1TwoRefCountInfo_a26289c848ed507acf5a2fa2f48d162eb}
+
+\item 
+\hypertarget{classLoki_1_1Private_1_1TwoRefCountInfo_a1b3c31d25009a48184cc5198e7bc3efe}{}bool {\bfseries Has\+Weak\+Pointer} (void) const \label{classLoki_1_1Private_1_1TwoRefCountInfo_a1b3c31d25009a48184cc5198e7bc3efe}
+
+\item 
+\hypertarget{classLoki_1_1Private_1_1TwoRefCountInfo_a5737023579f9b5761e6a9922ab93e29f}{}void {\bfseries Inc\+Strong\+Count} (void)\label{classLoki_1_1Private_1_1TwoRefCountInfo_a5737023579f9b5761e6a9922ab93e29f}
+
+\item 
+\hypertarget{classLoki_1_1Private_1_1TwoRefCountInfo_a7510e96ae727fe452f8861b45b3d9c14}{}void {\bfseries Inc\+Weak\+Count} (void)\label{classLoki_1_1Private_1_1TwoRefCountInfo_a7510e96ae727fe452f8861b45b3d9c14}
+
+\item 
+\hypertarget{classLoki_1_1Private_1_1TwoRefCountInfo_a88621200e94fc594ba323a4407953f84}{}bool {\bfseries Dec\+Strong\+Count} (void)\label{classLoki_1_1Private_1_1TwoRefCountInfo_a88621200e94fc594ba323a4407953f84}
+
+\item 
+\hypertarget{classLoki_1_1Private_1_1TwoRefCountInfo_aa1ff44e3904668bef02e88ee657bf8e9}{}void {\bfseries Dec\+Weak\+Count} (void)\label{classLoki_1_1Private_1_1TwoRefCountInfo_aa1ff44e3904668bef02e88ee657bf8e9}
+
+\item 
+\hypertarget{classLoki_1_1Private_1_1TwoRefCountInfo_a883e9c6365094cada92d85824bf8678d}{}void {\bfseries Zap\+Pointer} (void)\label{classLoki_1_1Private_1_1TwoRefCountInfo_a883e9c6365094cada92d85824bf8678d}
+
+\item 
+\hypertarget{classLoki_1_1Private_1_1TwoRefCountInfo_a0bcc0c04c0797735a3d669ef17c1844c}{}void {\bfseries Set\+Pointer} (void $\ast$p)\label{classLoki_1_1Private_1_1TwoRefCountInfo_a0bcc0c04c0797735a3d669ef17c1844c}
+
+\item 
+\hypertarget{classLoki_1_1Private_1_1TwoRefCountInfo_adfb7c18019573638bf12fda69a030208}{}void $\ast$ {\bfseries Get\+Pointer} (void) const \label{classLoki_1_1Private_1_1TwoRefCountInfo_adfb7c18019573638bf12fda69a030208}
+
+\item 
+\hypertarget{classLoki_1_1Private_1_1TwoRefCountInfo_ae221933ef016782aca8c54067848cac9}{}void $\ast$\& {\bfseries Get\+Pointer\+Ref} (void) const \label{classLoki_1_1Private_1_1TwoRefCountInfo_ae221933ef016782aca8c54067848cac9}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation detail for reference counting strong and weak pointers. It maintains a void pointer and 2 reference counts. Since it is just a class for managing implementation details, it is not intended to be used directly -\/ which is why it is in a private namespace. Each instance is a shared resource for all copointers, and there should be only one of these for each set of copointers. This class is small, trivial, and inline. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Strong\+Ptr.\+h\end{DoxyCompactItemize}

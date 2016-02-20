@@ -1,0 +1,82 @@
+\hypertarget{classtbb_1_1cache__aligned__allocator}{}\section{tbb\+:\+:cache\+\_\+aligned\+\_\+allocator$<$ T $>$ Class Template Reference}
+\label{classtbb_1_1cache__aligned__allocator}\index{tbb\+::cache\+\_\+aligned\+\_\+allocator$<$ T $>$@{tbb\+::cache\+\_\+aligned\+\_\+allocator$<$ T $>$}}
+
+
+Meets \char`\"{}allocator\char`\"{} requirements of I\+S\+O C++ Standard, Section 20.\+1.\+5.  
+
+
+
+
+{\ttfamily \#include $<$cache\+\_\+aligned\+\_\+allocator.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structtbb_1_1cache__aligned__allocator_1_1rebind}{rebind}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1cache__aligned__allocator_a7aba3042b0a1c934879d5299f0c20e7e}{}typedef internal\+::allocator\+\_\+type$<$ T $>$\+::value\+\_\+type {\bfseries value\+\_\+type}\label{classtbb_1_1cache__aligned__allocator_a7aba3042b0a1c934879d5299f0c20e7e}
+
+\item 
+\hypertarget{classtbb_1_1cache__aligned__allocator_a6fabbb51a8fd7b270b94fc4d9548847b}{}typedef value\+\_\+type $\ast$ {\bfseries pointer}\label{classtbb_1_1cache__aligned__allocator_a6fabbb51a8fd7b270b94fc4d9548847b}
+
+\item 
+\hypertarget{classtbb_1_1cache__aligned__allocator_a35edf40f1bb3418f61e7d33c9f796824}{}typedef const value\+\_\+type $\ast$ {\bfseries const\+\_\+pointer}\label{classtbb_1_1cache__aligned__allocator_a35edf40f1bb3418f61e7d33c9f796824}
+
+\item 
+\hypertarget{classtbb_1_1cache__aligned__allocator_ac9f2f6c7ca74e1f3968d838eec2c4dcb}{}typedef value\+\_\+type \& {\bfseries reference}\label{classtbb_1_1cache__aligned__allocator_ac9f2f6c7ca74e1f3968d838eec2c4dcb}
+
+\item 
+\hypertarget{classtbb_1_1cache__aligned__allocator_af50d27e385aea41dbb8a9cd0734f1c84}{}typedef const value\+\_\+type \& {\bfseries const\+\_\+reference}\label{classtbb_1_1cache__aligned__allocator_af50d27e385aea41dbb8a9cd0734f1c84}
+
+\item 
+\hypertarget{classtbb_1_1cache__aligned__allocator_a51eed827a49fd636d1d6c73908f9635b}{}typedef size\+\_\+t {\bfseries size\+\_\+type}\label{classtbb_1_1cache__aligned__allocator_a51eed827a49fd636d1d6c73908f9635b}
+
+\item 
+\hypertarget{classtbb_1_1cache__aligned__allocator_a8bf47c52cdeee1bc0dcd410cc97faeec}{}typedef ptrdiff\+\_\+t {\bfseries difference\+\_\+type}\label{classtbb_1_1cache__aligned__allocator_a8bf47c52cdeee1bc0dcd410cc97faeec}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1cache__aligned__allocator_a11b1921251262137671599e99fbe8d4e}{}{\bfseries cache\+\_\+aligned\+\_\+allocator} (const \hyperlink{classtbb_1_1cache__aligned__allocator}{cache\+\_\+aligned\+\_\+allocator} \&)  throw ()\label{classtbb_1_1cache__aligned__allocator_a11b1921251262137671599e99fbe8d4e}
+
+\item 
+\hypertarget{classtbb_1_1cache__aligned__allocator_ab5a78cc56dcc0851117b3c88bb3af16a}{}{\footnotesize template$<$typename U $>$ }\\{\bfseries cache\+\_\+aligned\+\_\+allocator} (const \hyperlink{classtbb_1_1cache__aligned__allocator}{cache\+\_\+aligned\+\_\+allocator}$<$ U $>$ \&)  throw ()\label{classtbb_1_1cache__aligned__allocator_ab5a78cc56dcc0851117b3c88bb3af16a}
+
+\item 
+\hypertarget{classtbb_1_1cache__aligned__allocator_a39aa68042abff22210f801eab98f6dfa}{}pointer {\bfseries address} (reference x) const \label{classtbb_1_1cache__aligned__allocator_a39aa68042abff22210f801eab98f6dfa}
+
+\item 
+\hypertarget{classtbb_1_1cache__aligned__allocator_a5bd8fe0e5de894404c8b868b37a0fe53}{}const\+\_\+pointer {\bfseries address} (const\+\_\+reference x) const \label{classtbb_1_1cache__aligned__allocator_a5bd8fe0e5de894404c8b868b37a0fe53}
+
+\item 
+\hypertarget{classtbb_1_1cache__aligned__allocator_a99d05096f80877849cb31d80247e0f85}{}pointer \hyperlink{classtbb_1_1cache__aligned__allocator_a99d05096f80877849cb31d80247e0f85}{allocate} (size\+\_\+type n, const void $\ast$hint=0)\label{classtbb_1_1cache__aligned__allocator_a99d05096f80877849cb31d80247e0f85}
+
+\begin{DoxyCompactList}\small\item\em Allocate space for n objects, starting on a cache/sector line. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1cache__aligned__allocator_a7f7310e046c4b6b8618864de8e27a471}{}void \hyperlink{classtbb_1_1cache__aligned__allocator_a7f7310e046c4b6b8618864de8e27a471}{deallocate} (pointer p, size\+\_\+type)\label{classtbb_1_1cache__aligned__allocator_a7f7310e046c4b6b8618864de8e27a471}
+
+\begin{DoxyCompactList}\small\item\em Free block of memory that starts on a cache line. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1cache__aligned__allocator_a4b945b3180ea3dfe16dfa048f4591c6d}{}size\+\_\+type \hyperlink{classtbb_1_1cache__aligned__allocator_a4b945b3180ea3dfe16dfa048f4591c6d}{max\+\_\+size} () const   throw ()\label{classtbb_1_1cache__aligned__allocator_a4b945b3180ea3dfe16dfa048f4591c6d}
+
+\begin{DoxyCompactList}\small\item\em Largest value for which method allocate might succeed. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1cache__aligned__allocator_a5086d395a952eb13eb7d72bb0cb26937}{}void \hyperlink{classtbb_1_1cache__aligned__allocator_a5086d395a952eb13eb7d72bb0cb26937}{construct} (pointer p, const value\+\_\+type \&value)\label{classtbb_1_1cache__aligned__allocator_a5086d395a952eb13eb7d72bb0cb26937}
+
+\begin{DoxyCompactList}\small\item\em Copy-\/construct value at location pointed to by p. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1cache__aligned__allocator_af2fd054d055403d4ea669fd3af661cc8}{}void \hyperlink{classtbb_1_1cache__aligned__allocator_af2fd054d055403d4ea669fd3af661cc8}{destroy} (pointer p)\label{classtbb_1_1cache__aligned__allocator_af2fd054d055403d4ea669fd3af661cc8}
+
+\begin{DoxyCompactList}\small\item\em Destroy value at location pointed to by p. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$class tbb\+::cache\+\_\+aligned\+\_\+allocator$<$ T $>$}
+
+Meets \char`\"{}allocator\char`\"{} requirements of I\+S\+O C++ Standard, Section 20.\+1.\+5. 
+
+The members are ordered the same way they are in section 20.\+4.\+1 of the I\+S\+O C++ standard. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/cache\+\_\+aligned\+\_\+allocator.\+h\end{DoxyCompactItemize}

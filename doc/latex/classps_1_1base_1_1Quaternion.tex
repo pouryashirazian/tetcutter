@@ -1,0 +1,103 @@
+\hypertarget{classps_1_1base_1_1Quaternion}{}\section{ps\+:\+:base\+:\+:Quaternion$<$ T $>$ Class Template Reference}
+\label{classps_1_1base_1_1Quaternion}\index{ps\+::base\+::\+Quaternion$<$ T $>$@{ps\+::base\+::\+Quaternion$<$ T $>$}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_a9903fb590eb85a1af582b2ebe0d1044b}{}{\bfseries Quaternion} (const \hyperlink{classps_1_1base_1_1Quaternion}{Quaternion} \&rhs)\label{classps_1_1base_1_1Quaternion_a9903fb590eb85a1af582b2ebe0d1044b}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_abd31fce62d2b8570ab08665e4714bdd1}{}{\bfseries Quaternion} (T x\+\_\+, T y\+\_\+, T z\+\_\+, T w\+\_\+)\label{classps_1_1base_1_1Quaternion_abd31fce62d2b8570ab08665e4714bdd1}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_a1612947f376b2b11b392eba35d4d2d98}{}{\bfseries Quaternion} (const \hyperlink{classps_1_1base_1_1Vec3}{Vec3}$<$ T $>$ \&q\+\_\+, T w\+\_\+)\label{classps_1_1base_1_1Quaternion_a1612947f376b2b11b392eba35d4d2d98}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_ae34a0d1eb033dba1a2ccbe6cb7544da1}{}{\bfseries Quaternion} (const \hyperlink{classps_1_1base_1_1Vec4}{Vec4}$<$ T $>$ \&q\+\_\+)\label{classps_1_1base_1_1Quaternion_ae34a0d1eb033dba1a2ccbe6cb7544da1}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_a01d54399d22c490df2bc61991a343c4d}{}void {\bfseries identity} ()\label{classps_1_1base_1_1Quaternion_a01d54399d22c490df2bc61991a343c4d}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_afe853b8d96380b74e612df03580608d6}{}\hyperlink{classps_1_1base_1_1Vec3}{Vec3}$<$ T $>$ {\bfseries xyz} () const \label{classps_1_1base_1_1Quaternion_afe853b8d96380b74e612df03580608d6}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_a835b86f8154d6c4c5a34b4283be9430c}{}\hyperlink{classps_1_1base_1_1Vec4}{Vec4}$<$ T $>$ {\bfseries xyzw} () const \label{classps_1_1base_1_1Quaternion_a835b86f8154d6c4c5a34b4283be9430c}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_a51217afbeff443006bd1291e5226f4e8}{}void {\bfseries normalize} ()\label{classps_1_1base_1_1Quaternion_a51217afbeff443006bd1291e5226f4e8}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_aa759dd2cd36b30566ee6f878c6ce7c09}{}\hyperlink{classps_1_1base_1_1Vec3}{Vec3}$<$ T $>$ {\bfseries transform} (const \hyperlink{classps_1_1base_1_1Vec3}{Vec3}$<$ T $>$ \&p) const \label{classps_1_1base_1_1Quaternion_aa759dd2cd36b30566ee6f878c6ce7c09}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_a9b8056b4245be689156a606d24b4eac0}{}\hyperlink{classps_1_1base_1_1Vec3}{Vec3}$<$ T $>$ {\bfseries transform} (const \hyperlink{classps_1_1base_1_1Quaternion}{Quaternion} \&inv, const \hyperlink{classps_1_1base_1_1Vec3}{Vec3}$<$ T $>$ \&p) const \label{classps_1_1base_1_1Quaternion_a9b8056b4245be689156a606d24b4eac0}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_a2ec237cabe8b49da342c1b52a30d8a6e}{}void {\bfseries from\+Euler} (T roll, T pitch, T yaw)\label{classps_1_1base_1_1Quaternion_a2ec237cabe8b49da342c1b52a30d8a6e}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_a127d109fa1b5433de6329238066342ff}{}void {\bfseries to\+Euler} (T \&roll, T \&pitch, T \&yaw) const \label{classps_1_1base_1_1Quaternion_a127d109fa1b5433de6329238066342ff}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_a38158d647aed26fbc4d7fe1d09046929}{}void {\bfseries from\+Axis\+Angle} (const \hyperlink{classps_1_1base_1_1Vec3}{Vec3}$<$ T $>$ \&axis, T deg)\label{classps_1_1base_1_1Quaternion_a38158d647aed26fbc4d7fe1d09046929}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_a38ec26ebb3e6fb4673e815b1207a1e7c}{}void {\bfseries to\+Axis\+Angle} (\hyperlink{classps_1_1base_1_1Vec3}{Vec3}$<$ T $>$ \&axis, T \&deg) const \label{classps_1_1base_1_1Quaternion_a38ec26ebb3e6fb4673e815b1207a1e7c}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_a97b93db5da574263f122f5fbbc16b7e6}{}void {\bfseries reciprocal} ()\label{classps_1_1base_1_1Quaternion_a97b93db5da574263f122f5fbbc16b7e6}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_a098386b15ccfcd6b8e34fd0dfc644cc4}{}void {\bfseries invert} ()\label{classps_1_1base_1_1Quaternion_a098386b15ccfcd6b8e34fd0dfc644cc4}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_a6b9893a4127a63159575ec392cdb4cbf}{}\hyperlink{classps_1_1base_1_1Quaternion}{Quaternion} {\bfseries inverted} () const \label{classps_1_1base_1_1Quaternion_a6b9893a4127a63159575ec392cdb4cbf}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_ad119271b76fbd8d2f81144c4227d443f}{}\hyperlink{classps_1_1base_1_1Quaternion}{Quaternion} {\bfseries mul} (const \hyperlink{classps_1_1base_1_1Quaternion}{Quaternion} \&b) const \label{classps_1_1base_1_1Quaternion_ad119271b76fbd8d2f81144c4227d443f}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_ac133bd4bc34a7bac7d6e7ee02fa92f8d}{}\hyperlink{classps_1_1base_1_1Quaternion}{Quaternion} \& {\bfseries operator=} (const \hyperlink{classps_1_1base_1_1Quaternion}{Quaternion} \&rhs)\label{classps_1_1base_1_1Quaternion_ac133bd4bc34a7bac7d6e7ee02fa92f8d}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_a8f48a8c5e72bc18be835fa2e30117c9b}{}bool {\bfseries operator==} (const \hyperlink{classps_1_1base_1_1Quaternion}{Quaternion} \&rhs) const \label{classps_1_1base_1_1Quaternion_a8f48a8c5e72bc18be835fa2e30117c9b}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_af9e8ab9005b1e318f59c48b05016c3b8}{}\hyperlink{classps_1_1base_1_1Quaternion}{Quaternion} {\bfseries operator$\ast$} (const \hyperlink{classps_1_1base_1_1Quaternion}{Quaternion} \&rhs) const \label{classps_1_1base_1_1Quaternion_af9e8ab9005b1e318f59c48b05016c3b8}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_a916e885a33a69cc63912b8706f08bd4a}{}T \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (int index)\label{classps_1_1base_1_1Quaternion_a916e885a33a69cc63912b8706f08bd4a}
+
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_a883e53fd6a55a912318b548f33388c41}{}const T \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (int index) const \label{classps_1_1base_1_1Quaternion_a883e53fd6a55a912318b548f33388c41}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_a5e80f16632142549c22efb4d5777bcdb}{}static \hyperlink{classps_1_1base_1_1Quaternion}{Quaternion} {\bfseries mul} (const \hyperlink{classps_1_1base_1_1Quaternion}{Quaternion} \&a, const \hyperlink{classps_1_1base_1_1Quaternion}{Quaternion} \&b)\label{classps_1_1base_1_1Quaternion_a5e80f16632142549c22efb4d5777bcdb}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1base_1_1Quaternion_a473bc537459bf923f9bab416f4ab4aa1}{}\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\hypertarget{unionps_1_1base_1_1Quaternion_1_1_0D0_aa63cea41f223940ae38cdb9545c653fd}{}\>struct \{\\
+\>\>T {\bfseries x}\\
+\>\>T {\bfseries y}\\
+\>\>T {\bfseries z}\\
+\>\>T {\bfseries w}\\
+\>\} \label{unionps_1_1base_1_1Quaternion_1_1_0D0_aa63cea41f223940ae38cdb9545c653fd}
+\\
+\>T {\bfseries e} \mbox{[}4\mbox{]}\\
+\}; \label{classps_1_1base_1_1Quaternion_a473bc537459bf923f9bab416f4ab4aa1}
+\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/base/quat.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,84 @@
+\hypertarget{group__legacy__events}{}\section{Events}
+\label{group__legacy__events}\index{Events@{Events}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__legacy__events_ga6047262ecd47411ed590bd073f9e4da0}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+event\+\_\+create}~\hyperlink{group__legacy__events_ga6de94d8c80ce1289fc90a4d4154e4538}{\+\_\+\+\_\+itt\+\_\+event\+\_\+create\+A}\label{group__legacy__events_ga6047262ecd47411ed590bd073f9e4da0}
+
+\item 
+\hypertarget{group__legacy__events_ga89cc719b31bd37bcb563754a9c9e7f8d}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+event\+\_\+create\+\_\+ptr}~\+\_\+\+\_\+itt\+\_\+event\+\_\+create\+A\+\_\+ptr\label{group__legacy__events_ga89cc719b31bd37bcb563754a9c9e7f8d}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__legacy__events_gaf3abb988e507916595fa4a13f5a524e4}{}typedef int \hyperlink{group__legacy__events_gaf3abb988e507916595fa4a13f5a524e4}{\+\_\+\+\_\+itt\+\_\+event}\label{group__legacy__events_gaf3abb988e507916595fa4a13f5a524e4}
+
+\begin{DoxyCompactList}\small\item\em user event type \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__legacy__events_gaf3abb988e507916595fa4a13f5a524e4}{\+\_\+\+\_\+itt\+\_\+event} L\+I\+B\+I\+T\+T\+A\+P\+I \hyperlink{group__legacy__events_ga6de94d8c80ce1289fc90a4d4154e4538}{\+\_\+\+\_\+itt\+\_\+event\+\_\+create\+A} (const char $\ast$name, int namelen)
+\begin{DoxyCompactList}\small\item\em Create an event notification. \end{DoxyCompactList}\item 
+\hypertarget{group__legacy__events_ga656b8b44d98d21f42cdb179f6da343c6}{}\hyperlink{group__legacy__events_gaf3abb988e507916595fa4a13f5a524e4}{\+\_\+\+\_\+itt\+\_\+event} L\+I\+B\+I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+event\+\_\+create\+W} (const wchar\+\_\+t $\ast$name, int namelen)\label{group__legacy__events_ga656b8b44d98d21f42cdb179f6da343c6}
+
+\item 
+int L\+I\+B\+I\+T\+T\+A\+P\+I \hyperlink{group__legacy__events_gaa8d6914227075c6a03e18a17e0d0749c}{\+\_\+\+\_\+itt\+\_\+event\+\_\+start} (\hyperlink{group__legacy__events_gaf3abb988e507916595fa4a13f5a524e4}{\+\_\+\+\_\+itt\+\_\+event} \hyperlink{classevent}{event})
+\begin{DoxyCompactList}\small\item\em Record an event occurrence. \end{DoxyCompactList}\item 
+int L\+I\+B\+I\+T\+T\+A\+P\+I \hyperlink{group__legacy__events_ga652d494fbcc6c727e15cfb60af679816}{\+\_\+\+\_\+itt\+\_\+event\+\_\+end} (\hyperlink{group__legacy__events_gaf3abb988e507916595fa4a13f5a524e4}{\+\_\+\+\_\+itt\+\_\+event} \hyperlink{classevent}{event})
+\begin{DoxyCompactList}\small\item\em Record an event end occurrence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Events group 
+
+\subsection{Function Documentation}
+\hypertarget{group__legacy__events_ga6de94d8c80ce1289fc90a4d4154e4538}{}\index{Events@{Events}!\+\_\+\+\_\+itt\+\_\+event\+\_\+create\+A@{\+\_\+\+\_\+itt\+\_\+event\+\_\+create\+A}}
+\index{\+\_\+\+\_\+itt\+\_\+event\+\_\+create\+A@{\+\_\+\+\_\+itt\+\_\+event\+\_\+create\+A}!Events@{Events}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+event\+\_\+create\+A(const char $\ast$name, int namelen)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \+\_\+\+\_\+itt\+\_\+event} L\+I\+B\+I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+event\+\_\+create\+A (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name, }
+\item[{int}]{namelen}
+\end{DoxyParamCaption}
+)}\label{group__legacy__events_ga6de94d8c80ce1289fc90a4d4154e4538}
+
+
+Create an event notification. 
+
+\begin{DoxyNote}{Note}
+name or namelen being null/name and namelen not matching, user event feature not enabled 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+non-\/zero event identifier upon success and \+\_\+\+\_\+itt\+\_\+err otherwise 
+\end{DoxyReturn}
+\hypertarget{group__legacy__events_ga652d494fbcc6c727e15cfb60af679816}{}\index{Events@{Events}!\+\_\+\+\_\+itt\+\_\+event\+\_\+end@{\+\_\+\+\_\+itt\+\_\+event\+\_\+end}}
+\index{\+\_\+\+\_\+itt\+\_\+event\+\_\+end@{\+\_\+\+\_\+itt\+\_\+event\+\_\+end}!Events@{Events}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+event\+\_\+end(\+\_\+\+\_\+itt\+\_\+event event)}]{\setlength{\rightskip}{0pt plus 5cm}int L\+I\+B\+I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+event\+\_\+end (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+\_\+itt\+\_\+event}}]{event}
+\end{DoxyParamCaption}
+)}\label{group__legacy__events_ga652d494fbcc6c727e15cfb60af679816}
+
+
+Record an event end occurrence. 
+
+\begin{DoxyNote}{Note}
+It is optional if events do not have durations. 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+itt\+\_\+err upon failure (invalid event id/user event feature not enabled) 
+\end{DoxyReturn}
+\hypertarget{group__legacy__events_gaa8d6914227075c6a03e18a17e0d0749c}{}\index{Events@{Events}!\+\_\+\+\_\+itt\+\_\+event\+\_\+start@{\+\_\+\+\_\+itt\+\_\+event\+\_\+start}}
+\index{\+\_\+\+\_\+itt\+\_\+event\+\_\+start@{\+\_\+\+\_\+itt\+\_\+event\+\_\+start}!Events@{Events}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+event\+\_\+start(\+\_\+\+\_\+itt\+\_\+event event)}]{\setlength{\rightskip}{0pt plus 5cm}int L\+I\+B\+I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+event\+\_\+start (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+\_\+itt\+\_\+event}}]{event}
+\end{DoxyParamCaption}
+)}\label{group__legacy__events_gaa8d6914227075c6a03e18a17e0d0749c}
+
+
+Record an event occurrence. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+itt\+\_\+err upon failure (invalid event id/user event feature not enabled) 
+\end{DoxyReturn}

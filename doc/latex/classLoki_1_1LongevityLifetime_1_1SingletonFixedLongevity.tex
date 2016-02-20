@@ -1,0 +1,27 @@
+\hypertarget{classLoki_1_1LongevityLifetime_1_1SingletonFixedLongevity}{}\section{Loki\+:\+:Longevity\+Lifetime\+:\+:Singleton\+Fixed\+Longevity$<$ Longevity, T $>$ Struct Template Reference}
+\label{classLoki_1_1LongevityLifetime_1_1SingletonFixedLongevity}\index{Loki\+::\+Longevity\+Lifetime\+::\+Singleton\+Fixed\+Longevity$<$ Longevity, T $>$@{Loki\+::\+Longevity\+Lifetime\+::\+Singleton\+Fixed\+Longevity$<$ Longevity, T $>$}}
+
+
+{\ttfamily \#include $<$Singleton.\+h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1LongevityLifetime_1_1SingletonFixedLongevity_a1d2485084acb6833205c603131c4ede2}{}static void {\bfseries Schedule\+Destruction} (T $\ast$p\+Obj, atexit\+\_\+pfn\+\_\+t p\+Fun)\label{classLoki_1_1LongevityLifetime_1_1SingletonFixedLongevity_a1d2485084acb6833205c603131c4ede2}
+
+\item 
+\hypertarget{classLoki_1_1LongevityLifetime_1_1SingletonFixedLongevity_a7469345a20917d5cb1b5312e77af71e2}{}static void {\bfseries On\+Dead\+Reference} ()\label{classLoki_1_1LongevityLifetime_1_1SingletonFixedLongevity_a7469345a20917d5cb1b5312e77af71e2}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$unsigned int Longevity, class T$>$struct Loki\+::\+Longevity\+Lifetime\+::\+Singleton\+Fixed\+Longevity$<$ Longevity, T $>$}
+
+Add your own lifetimes into the namespace \textquotesingle{}\hyperlink{namespaceLongevityLifetime}{Longevity\+Lifetime}\textquotesingle{} with your prefered lifetime by adding a struct like this\+:
+
+template$<$class T$>$ struct My\+Lifetime \+: Singleton\+Fixed\+Longevity$<$ My\+Lifetime\+Number ,\+T$>$ \{\} 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Singleton.\+h\end{DoxyCompactItemize}

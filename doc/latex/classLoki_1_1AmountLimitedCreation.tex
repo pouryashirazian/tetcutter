@@ -1,0 +1,42 @@
+\hypertarget{classLoki_1_1AmountLimitedCreation}{}\section{Loki\+:\+:Amount\+Limited\+Creation Class Reference}
+\label{classLoki_1_1AmountLimitedCreation}\index{Loki\+::\+Amount\+Limited\+Creation@{Loki\+::\+Amount\+Limited\+Creation}}
+
+
+\hyperlink{classLimit}{Limit} by number of objects.  
+
+
+
+
+{\ttfamily \#include $<$Cached\+Factory.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1AmountLimitedCreation_a9a58222f8a3c72c68c6d0df6343c9bc2}{}void {\bfseries set\+Max\+Creation} (unsigned max\+Creation)\label{classLoki_1_1AmountLimitedCreation_a9a58222f8a3c72c68c6d0df6343c9bc2}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1AmountLimitedCreation_a34f40f022197c7e9ec74898105b379e9}{}bool {\bfseries can\+Create} ()\label{classLoki_1_1AmountLimitedCreation_a34f40f022197c7e9ec74898105b379e9}
+
+\item 
+\hypertarget{classLoki_1_1AmountLimitedCreation_aea057bad31c6cdc6176829496b8d5bf3}{}void {\bfseries on\+Create} ()\label{classLoki_1_1AmountLimitedCreation_aea057bad31c6cdc6176829496b8d5bf3}
+
+\item 
+\hypertarget{classLoki_1_1AmountLimitedCreation_a99170f38e9837d5a9f5382b37bfb6945}{}void {\bfseries on\+Destroy} ()\label{classLoki_1_1AmountLimitedCreation_a99170f38e9837d5a9f5382b37bfb6945}
+
+\item 
+\hypertarget{classLoki_1_1AmountLimitedCreation_a07b90847a2511fb1374428ce5013bea5}{}const char $\ast$ {\bfseries name} ()\label{classLoki_1_1AmountLimitedCreation_a07b90847a2511fb1374428ce5013bea5}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classLimit}{Limit} by number of objects. 
+
+This implementation will prevent from Creating more than max\+Creation objects within by\+Time ms by calling eviction policy. Use the set\+Rate method to set the rate parameters. default is 10 objects. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Cached\+Factory.\+h\end{DoxyCompactItemize}

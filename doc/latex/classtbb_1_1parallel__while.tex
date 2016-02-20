@@ -1,0 +1,79 @@
+\hypertarget{classtbb_1_1parallel__while}{}\section{tbb\+:\+:parallel\+\_\+while$<$ Body $>$ Class Template Reference}
+\label{classtbb_1_1parallel__while}\index{tbb\+::parallel\+\_\+while$<$ Body $>$@{tbb\+::parallel\+\_\+while$<$ Body $>$}}
+
+
+Parallel iteration over a stream, with optional addition of more work.  
+
+
+
+
+{\ttfamily \#include $<$parallel\+\_\+while.\+h$>$}
+
+Inheritance diagram for tbb\+:\+:parallel\+\_\+while$<$ Body $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classtbb_1_1parallel__while}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1parallel__while_a2442f019427e608d46801376267e44a8}{}typedef \hyperlink{classCell}{Body\+::argument\+\_\+type} \hyperlink{classtbb_1_1parallel__while_a2442f019427e608d46801376267e44a8}{value\+\_\+type}\label{classtbb_1_1parallel__while_a2442f019427e608d46801376267e44a8}
+
+\begin{DoxyCompactList}\small\item\em Type of items. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1parallel__while_a220a7307358aa36802c8754ea45ca385}{}\hyperlink{classtbb_1_1parallel__while_a220a7307358aa36802c8754ea45ca385}{parallel\+\_\+while} ()\label{classtbb_1_1parallel__while_a220a7307358aa36802c8754ea45ca385}
+
+\begin{DoxyCompactList}\small\item\em Construct empty non-\/running parallel while. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1parallel__while_ac2fd559c8a38639fa1ba97a0d5639ca8}{}\hyperlink{classtbb_1_1parallel__while_ac2fd559c8a38639fa1ba97a0d5639ca8}{$\sim$parallel\+\_\+while} ()\label{classtbb_1_1parallel__while_ac2fd559c8a38639fa1ba97a0d5639ca8}
+
+\begin{DoxyCompactList}\small\item\em Destructor cleans up data members before returning. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{classtbb_1_1parallel__while_a20607ba5faa958144787d980aa850c16}{run} (Stream \&stream, const \hyperlink{classBody}{Body} \&body)
+\begin{DoxyCompactList}\small\item\em Apply body.\+apply to each item in the stream. \end{DoxyCompactList}\item 
+void \hyperlink{classtbb_1_1parallel__while_a4861989d7f5e3111d264d4d6013e8fe1}{add} (const \hyperlink{classtbb_1_1parallel__while_a2442f019427e608d46801376267e44a8}{value\+\_\+type} \&item)
+\begin{DoxyCompactList}\small\item\em Add a work item while running. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Body$>$class tbb\+::parallel\+\_\+while$<$ Body $>$}
+
+Parallel iteration over a stream, with optional addition of more work. 
+
+The \hyperlink{classBody}{Body} b has the requirement\+: ~\newline
+ \char`\"{}b(v)\char`\"{} ~\newline
+ \char`\"{}b.\+argument\+\_\+type\char`\"{} ~\newline
+where v is an argument\+\_\+type 
+
+\subsection{Member Function Documentation}
+\hypertarget{classtbb_1_1parallel__while_a4861989d7f5e3111d264d4d6013e8fe1}{}\index{tbb\+::parallel\+\_\+while@{tbb\+::parallel\+\_\+while}!add@{add}}
+\index{add@{add}!tbb\+::parallel\+\_\+while@{tbb\+::parallel\+\_\+while}}
+\subsubsection[{add(const value\+\_\+type \&item)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Body $>$ void {\bf tbb\+::parallel\+\_\+while}$<$ {\bf Body} $>$\+::add (
+\begin{DoxyParamCaption}
+\item[{const {\bf value\+\_\+type} \&}]{item}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1parallel__while_a4861989d7f5e3111d264d4d6013e8fe1}
+
+
+Add a work item while running. 
+
+Should be executed only by body.\+apply or a thread spawned therefrom. \hypertarget{classtbb_1_1parallel__while_a20607ba5faa958144787d980aa850c16}{}\index{tbb\+::parallel\+\_\+while@{tbb\+::parallel\+\_\+while}!run@{run}}
+\index{run@{run}!tbb\+::parallel\+\_\+while@{tbb\+::parallel\+\_\+while}}
+\subsubsection[{run(\+Stream \&stream, const Body \&body)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Body$>$ template$<$typename Stream $>$ void {\bf tbb\+::parallel\+\_\+while}$<$ {\bf Body} $>$\+::run (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{stream, }
+\item[{const {\bf Body} \&}]{body}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1parallel__while_a20607ba5faa958144787d980aa850c16}
+
+
+Apply body.\+apply to each item in the stream. 
+
+\hyperlink{structA}{A} Stream s has the requirements ~\newline
+ \char`\"{}\+S\+::value\+\_\+type\char`\"{} ~\newline
+ "s.\+pop\+\_\+if\+\_\+present(value) is convertible to bool 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/parallel\+\_\+while.\+h\end{DoxyCompactItemize}

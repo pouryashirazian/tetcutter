@@ -1,0 +1,40 @@
+\hypertarget{classMallocMutex}{}\section{Malloc\+Mutex Class Reference}
+\label{classMallocMutex}\index{Malloc\+Mutex@{Malloc\+Mutex}}
+
+
+Stripped down version of spin\+\_\+mutex.  
+
+
+
+
+{\ttfamily \#include $<$Customize.\+h$>$}
+
+Inheritance diagram for Malloc\+Mutex\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMallocMutex}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classMallocMutex_1_1scoped__lock}{scoped\+\_\+lock}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classMallocMutex_afcf922650b2fd9d76b7b939d8511bbd8}{}class {\bfseries scoped\+\_\+lock}\label{classMallocMutex_afcf922650b2fd9d76b7b939d8511bbd8}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Stripped down version of spin\+\_\+mutex. 
+
+Instances of \hyperlink{classMallocMutex}{Malloc\+Mutex} must be declared in memory that is zero-\/initialized. There are no constructors. This is a feature that lets it be used in situations where the mutex might be used while file-\/scope constructors are running.
+
+There are no methods \char`\"{}acquire\char`\"{} or \char`\"{}release\char`\"{}. The \hyperlink{classMallocMutex_1_1scoped__lock}{scoped\+\_\+lock} must be used in a strict block-\/scoped locking pattern. Omitting these methods permitted further simplification. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbbmalloc/Customize.\+h\end{DoxyCompactItemize}

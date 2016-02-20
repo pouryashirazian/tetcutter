@@ -1,0 +1,91 @@
+\hypertarget{structtbb_1_1internal_1_1arena__base}{}\section{tbb\+:\+:internal\+:\+:arena\+\_\+base Struct Reference}
+\label{structtbb_1_1internal_1_1arena__base}\index{tbb\+::internal\+::arena\+\_\+base@{tbb\+::internal\+::arena\+\_\+base}}
+
+
+arena data except the array of slots  
+
+
+
+
+{\ttfamily \#include $<$arena.\+h$>$}
+
+Inheritance diagram for tbb\+:\+:internal\+:\+:arena\+\_\+base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{structtbb_1_1internal_1_1arena__base}
+\end{center}
+\end{figure}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structtbb_1_1internal_1_1arena__base_a5db92c4ad3061c5cf83425507ed9446e}{}unsigned \hyperlink{structtbb_1_1internal_1_1arena__base_a5db92c4ad3061c5cf83425507ed9446e}{my\+\_\+num\+\_\+workers\+\_\+allotted}\label{structtbb_1_1internal_1_1arena__base_a5db92c4ad3061c5cf83425507ed9446e}
+
+\begin{DoxyCompactList}\small\item\em Number of workers that have been marked out by the resource manager to service the arena. \end{DoxyCompactList}\item 
+\hyperlink{structtbb_1_1atomic}{atomic}$<$ unsigned $>$ \hyperlink{structtbb_1_1internal_1_1arena__base_afda80ce7337049bd96b883cef6e8483e}{my\+\_\+references}
+\begin{DoxyCompactList}\small\item\em References of the arena. \end{DoxyCompactList}\item 
+\hypertarget{structtbb_1_1internal_1_1arena__base_a0184ffea730d663e63f0f60946422da2}{}\hyperlink{structtbb_1_1atomic}{atomic}$<$ unsigned $>$ \hyperlink{structtbb_1_1internal_1_1arena__base_a0184ffea730d663e63f0f60946422da2}{my\+\_\+limit}\label{structtbb_1_1internal_1_1arena__base_a0184ffea730d663e63f0f60946422da2}
+
+\begin{DoxyCompactList}\small\item\em Maximal currently busy slot. \end{DoxyCompactList}\item 
+\hyperlink{classtbb_1_1internal_1_1task__stream}{task\+\_\+stream}$<$ 1 $>$ \hyperlink{structtbb_1_1internal_1_1arena__base_a2aefd9085b89be7e4c31820197697358}{my\+\_\+task\+\_\+stream}
+\begin{DoxyCompactList}\small\item\em Task pool for the tasks scheduled via task\+::enqueue() method. \end{DoxyCompactList}\item 
+\hypertarget{structtbb_1_1internal_1_1arena__base_a8e346bbed329804473efe0f8080c9e8b}{}int \hyperlink{structtbb_1_1internal_1_1arena__base_a8e346bbed329804473efe0f8080c9e8b}{my\+\_\+num\+\_\+workers\+\_\+requested}\label{structtbb_1_1internal_1_1arena__base_a8e346bbed329804473efe0f8080c9e8b}
+
+\begin{DoxyCompactList}\small\item\em Number of workers that are currently requested from the resource manager. \end{DoxyCompactList}\item 
+\hypertarget{structtbb_1_1internal_1_1arena__base_a87fa3017fe36fc2d82a59af27dbd80c2}{}unsigned \hyperlink{structtbb_1_1internal_1_1arena__base_a87fa3017fe36fc2d82a59af27dbd80c2}{my\+\_\+max\+\_\+num\+\_\+workers}\label{structtbb_1_1internal_1_1arena__base_a87fa3017fe36fc2d82a59af27dbd80c2}
+
+\begin{DoxyCompactList}\small\item\em Number of workers requested by the master thread owning the arena. \end{DoxyCompactList}\item 
+\hyperlink{structtbb_1_1atomic}{tbb\+::atomic}$<$ uintptr\+\_\+t $>$ \hyperlink{structtbb_1_1internal_1_1arena__base_a4a62e36b7d674c0023897118be16498d}{my\+\_\+pool\+\_\+state}
+\begin{DoxyCompactList}\small\item\em Current task pool state and estimate of available tasks amount. \end{DoxyCompactList}\item 
+\hypertarget{structtbb_1_1internal_1_1arena__base_a9571049272687e3f4d113809f0a62080}{}\hyperlink{classtbb_1_1internal_1_1market}{market} $\ast$ \hyperlink{structtbb_1_1internal_1_1arena__base_a9571049272687e3f4d113809f0a62080}{my\+\_\+market}\label{structtbb_1_1internal_1_1arena__base_a9571049272687e3f4d113809f0a62080}
+
+\begin{DoxyCompactList}\small\item\em Market owning this arena. \end{DoxyCompactList}\item 
+\hypertarget{structtbb_1_1internal_1_1arena__base_a296eec178d5cc622a8fa921d188dbc4f}{}uintptr\+\_\+t \hyperlink{structtbb_1_1internal_1_1arena__base_a296eec178d5cc622a8fa921d188dbc4f}{my\+\_\+aba\+\_\+epoch}\label{structtbb_1_1internal_1_1arena__base_a296eec178d5cc622a8fa921d188dbc4f}
+
+\begin{DoxyCompactList}\small\item\em A\+B\+A prevention marker. \end{DoxyCompactList}\item 
+\hypertarget{structtbb_1_1internal_1_1arena__base_ad3bceeb970e25673b1a1e60b67078062}{}\hyperlink{classtbb_1_1internal_1_1cpu__ctl__env}{cpu\+\_\+ctl\+\_\+env} \hyperlink{structtbb_1_1internal_1_1arena__base_ad3bceeb970e25673b1a1e60b67078062}{my\+\_\+cpu\+\_\+ctl\+\_\+env}\label{structtbb_1_1internal_1_1arena__base_ad3bceeb970e25673b1a1e60b67078062}
+
+\begin{DoxyCompactList}\small\item\em F\+P\+U control settings of arena\textquotesingle{}s master thread captured at the moment of arena instantiation. \end{DoxyCompactList}\item 
+\hypertarget{structtbb_1_1internal_1_1arena__base_a7770213e3c679d92756b791cccb84e35}{}unsigned \hyperlink{structtbb_1_1internal_1_1arena__base_a7770213e3c679d92756b791cccb84e35}{my\+\_\+num\+\_\+slots}\label{structtbb_1_1internal_1_1arena__base_a7770213e3c679d92756b791cccb84e35}
+
+\begin{DoxyCompactList}\small\item\em Number of slots in the arena. \end{DoxyCompactList}\item 
+\hypertarget{structtbb_1_1internal_1_1arena__base_ae434159677617280df2f182c8ffe16ac}{}bool \hyperlink{structtbb_1_1internal_1_1arena__base_ae434159677617280df2f182c8ffe16ac}{my\+\_\+mandatory\+\_\+concurrency}\label{structtbb_1_1internal_1_1arena__base_ae434159677617280df2f182c8ffe16ac}
+
+\begin{DoxyCompactList}\small\item\em Indicates if there is an oversubscribing worker created to service enqueued tasks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+arena data except the array of slots 
+
+Separated in order to simplify padding. Intrusive list node base class is used by market to form a list of arenas. 
+
+\subsection{Member Data Documentation}
+\hypertarget{structtbb_1_1internal_1_1arena__base_a4a62e36b7d674c0023897118be16498d}{}\index{tbb\+::internal\+::arena\+\_\+base@{tbb\+::internal\+::arena\+\_\+base}!my\+\_\+pool\+\_\+state@{my\+\_\+pool\+\_\+state}}
+\index{my\+\_\+pool\+\_\+state@{my\+\_\+pool\+\_\+state}!tbb\+::internal\+::arena\+\_\+base@{tbb\+::internal\+::arena\+\_\+base}}
+\subsubsection[{my\+\_\+pool\+\_\+state}]{\setlength{\rightskip}{0pt plus 5cm}{\bf tbb\+::atomic}$<$uintptr\+\_\+t$>$ tbb\+::internal\+::arena\+\_\+base\+::my\+\_\+pool\+\_\+state}\label{structtbb_1_1internal_1_1arena__base_a4a62e36b7d674c0023897118be16498d}
+
+
+Current task pool state and estimate of available tasks amount. 
+
+The estimate is either 0 (S\+N\+A\+P\+S\+H\+O\+T\+\_\+\+E\+M\+P\+T\+Y) or infinity (S\+N\+A\+P\+S\+H\+O\+T\+\_\+\+F\+U\+L\+L). Special state is \char`\"{}busy\char`\"{} (any other unsigned value). Note that the implementation of arena\+::is\+\_\+busy\+\_\+or\+\_\+empty() requires my\+\_\+pool\+\_\+state to be unsigned. \hypertarget{structtbb_1_1internal_1_1arena__base_afda80ce7337049bd96b883cef6e8483e}{}\index{tbb\+::internal\+::arena\+\_\+base@{tbb\+::internal\+::arena\+\_\+base}!my\+\_\+references@{my\+\_\+references}}
+\index{my\+\_\+references@{my\+\_\+references}!tbb\+::internal\+::arena\+\_\+base@{tbb\+::internal\+::arena\+\_\+base}}
+\subsubsection[{my\+\_\+references}]{\setlength{\rightskip}{0pt plus 5cm}{\bf atomic}$<$unsigned$>$ tbb\+::internal\+::arena\+\_\+base\+::my\+\_\+references}\label{structtbb_1_1internal_1_1arena__base_afda80ce7337049bd96b883cef6e8483e}
+
+
+References of the arena. 
+
+Counts workers and master references separately. Bit 0 indicates reference from implicit master or explicit task\+\_\+arena; the next bits contain number of workers servicing the arena. \hypertarget{structtbb_1_1internal_1_1arena__base_a2aefd9085b89be7e4c31820197697358}{}\index{tbb\+::internal\+::arena\+\_\+base@{tbb\+::internal\+::arena\+\_\+base}!my\+\_\+task\+\_\+stream@{my\+\_\+task\+\_\+stream}}
+\index{my\+\_\+task\+\_\+stream@{my\+\_\+task\+\_\+stream}!tbb\+::internal\+::arena\+\_\+base@{tbb\+::internal\+::arena\+\_\+base}}
+\subsubsection[{my\+\_\+task\+\_\+stream}]{\setlength{\rightskip}{0pt plus 5cm}{\bf task\+\_\+stream}$<$1$>$ tbb\+::internal\+::arena\+\_\+base\+::my\+\_\+task\+\_\+stream}\label{structtbb_1_1internal_1_1arena__base_a2aefd9085b89be7e4c31820197697358}
+
+
+Task pool for the tasks scheduled via task\+::enqueue() method. 
+
+Such scheduling guarantees eventual execution even if
+\begin{DoxyItemize}
+\item new tasks are constantly coming (by extracting scheduled tasks in relaxed F\+I\+F\+O order);
+\item the enqueuing thread does not call any of wait\+\_\+for\+\_\+all methods. 
+\end{DoxyItemize}
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/arena.\+h\end{DoxyCompactItemize}

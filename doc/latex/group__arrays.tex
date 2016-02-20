@@ -1,0 +1,80 @@
+\hypertarget{group__arrays}{}\section{Arrays Visualizer}
+\label{group__arrays}\index{Arrays Visualizer@{Arrays Visualizer}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__arrays_gaeb4215c9a934c515c6607dd9420e0413}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+av\+\_\+save}~\hyperlink{group__arrays_ga36a1b96487c316dfa1d773fb5bf5e8af}{\+\_\+\+\_\+itt\+\_\+av\+\_\+save\+A}\label{group__arrays_gaeb4215c9a934c515c6607dd9420e0413}
+
+\item 
+\hypertarget{group__arrays_gab86c8591bc2869f08484d8a792d47b14}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+av\+\_\+save\+\_\+ptr}~\+\_\+\+\_\+itt\+\_\+av\+\_\+save\+A\+\_\+ptr\label{group__arrays_gab86c8591bc2869f08484d8a792d47b14}
+
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__arrays_ga5bd7ba5314d3404b24bf164e87fb3635}{}enum \hyperlink{group__arrays_ga5bd7ba5314d3404b24bf164e87fb3635}{\+\_\+\+\_\+itt\+\_\+av\+\_\+data\+\_\+type} \{ \\*
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+first} = 0, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+char} = 0, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+uchar}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+int16}, 
+\\*
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+uint16}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+int32}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+uint32}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+int64}, 
+\\*
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+uint64}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+float}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+double}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+last} = \+\_\+\+\_\+itt\+\_\+e\+\_\+double
+ \}\label{group__arrays_ga5bd7ba5314d3404b24bf164e87fb3635}
+\begin{DoxyCompactList}\small\item\em Defines types of arrays data (for C/\+C++ intrinsic types) \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int I\+T\+T\+A\+P\+I \hyperlink{group__arrays_ga36a1b96487c316dfa1d773fb5bf5e8af}{\+\_\+\+\_\+itt\+\_\+av\+\_\+save\+A} (void $\ast$data, int rank, const int $\ast$dimensions, int type, const char $\ast$file\+Path, int column\+Order)
+\begin{DoxyCompactList}\small\item\em Save an array data to a file. Output format is defined by the file extension. The csv and bmp formats are supported (bmp -\/ for 2-\/dimensional array only). \end{DoxyCompactList}\item 
+\hypertarget{group__arrays_ga06b495bcd228c1d087d07363fe60b350}{}int I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+av\+\_\+save\+W} (void $\ast$data, int rank, const int $\ast$dimensions, int type, const wchar\+\_\+t $\ast$file\+Path, int column\+Order)\label{group__arrays_ga06b495bcd228c1d087d07363fe60b350}
+
+\item 
+\hypertarget{group__arrays_ga478fa1e11418e7ef53beddf9eac9f07d}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+enable\+\_\+attach} (void)\label{group__arrays_ga478fa1e11418e7ef53beddf9eac9f07d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Visualize arrays 
+
+\subsection{Function Documentation}
+\hypertarget{group__arrays_ga36a1b96487c316dfa1d773fb5bf5e8af}{}\index{Arrays Visualizer@{Arrays Visualizer}!\+\_\+\+\_\+itt\+\_\+av\+\_\+save\+A@{\+\_\+\+\_\+itt\+\_\+av\+\_\+save\+A}}
+\index{\+\_\+\+\_\+itt\+\_\+av\+\_\+save\+A@{\+\_\+\+\_\+itt\+\_\+av\+\_\+save\+A}!Arrays Visualizer@{Arrays Visualizer}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+av\+\_\+save\+A(void $\ast$data, int rank, const int $\ast$dimensions, int type, const char $\ast$file\+Path, int column\+Order)}]{\setlength{\rightskip}{0pt plus 5cm}int I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+av\+\_\+save\+A (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{data, }
+\item[{int}]{rank, }
+\item[{const int $\ast$}]{dimensions, }
+\item[{int}]{type, }
+\item[{const char $\ast$}]{file\+Path, }
+\item[{int}]{column\+Order}
+\end{DoxyParamCaption}
+)}\label{group__arrays_ga36a1b96487c316dfa1d773fb5bf5e8af}
+
+
+Save an array data to a file. Output format is defined by the file extension. The csv and bmp formats are supported (bmp -\/ for 2-\/dimensional array only). 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & -\/ pointer to the array data \\
+\hline
+\mbox{\tt in}  & {\em rank} & -\/ the rank of the array \\
+\hline
+\mbox{\tt in}  & {\em dimensions} & -\/ pointer to an array of integers, which specifies the array dimensions. The size of dimensions must be equal to the rank \\
+\hline
+\mbox{\tt in}  & {\em type} & -\/ the type of the array, specified as one of the \+\_\+\+\_\+itt\+\_\+av\+\_\+data\+\_\+type values (for intrinsic types) \\
+\hline
+\mbox{\tt in}  & {\em file\+Path} & -\/ the file path; the output format is defined by the file extension \\
+\hline
+\mbox{\tt in}  & {\em column\+Order} & -\/ defines how the array is stored in the linear memory. It should be 1 for column-\/major order (e.\+g. in F\+O\+R\+T\+R\+A\+N) or 0 -\/ for row-\/major order (e.\+g. in \hyperlink{classC}{C}). \\
+\hline
+\end{DoxyParams}

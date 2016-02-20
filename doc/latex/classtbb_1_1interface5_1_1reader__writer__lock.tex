@@ -1,0 +1,146 @@
+\hypertarget{classtbb_1_1interface5_1_1reader__writer__lock}{}\section{tbb\+:\+:interface5\+:\+:reader\+\_\+writer\+\_\+lock Class Reference}
+\label{classtbb_1_1interface5_1_1reader__writer__lock}\index{tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock@{tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock}}
+
+
+Writer-\/preference reader-\/writer lock with local-\/only spinning on readers.  
+
+
+
+
+{\ttfamily \#include $<$reader\+\_\+writer\+\_\+lock.\+h$>$}
+
+Inheritance diagram for tbb\+:\+:interface5\+:\+:reader\+\_\+writer\+\_\+lock\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classtbb_1_1interface5_1_1reader__writer__lock}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock_1_1scoped__lock}{scoped\+\_\+lock}
+\begin{DoxyCompactList}\small\item\em The scoped lock pattern for write locks. \end{DoxyCompactList}\item 
+class \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock_1_1scoped__lock__read}{scoped\+\_\+lock\+\_\+read}
+\begin{DoxyCompactList}\small\item\em The scoped lock pattern for read locks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock_a29bbf9ca21c12b313d9fa5326feaf3ed}{status\+\_\+t} \{ {\bfseries waiting\+\_\+nonblocking}, 
+{\bfseries waiting}, 
+{\bfseries active}, 
+{\bfseries invalid}
+ \}\begin{DoxyCompactList}\small\item\em Status type for nodes associated with lock instances. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1interface5_1_1reader__writer__lock_abceda6c50b0c36eacbef51f4682742f3}{}\hyperlink{classtbb_1_1interface5_1_1reader__writer__lock_abceda6c50b0c36eacbef51f4682742f3}{reader\+\_\+writer\+\_\+lock} ()\label{classtbb_1_1interface5_1_1reader__writer__lock_abceda6c50b0c36eacbef51f4682742f3}
+
+\begin{DoxyCompactList}\small\item\em Constructs a new \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock}{reader\+\_\+writer\+\_\+lock}. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1reader__writer__lock_aeee96b648c7b5ff6126c8a2e13ec7241}{}\hyperlink{classtbb_1_1interface5_1_1reader__writer__lock_aeee96b648c7b5ff6126c8a2e13ec7241}{$\sim$reader\+\_\+writer\+\_\+lock} ()\label{classtbb_1_1interface5_1_1reader__writer__lock_aeee96b648c7b5ff6126c8a2e13ec7241}
+
+\begin{DoxyCompactList}\small\item\em Destructs a \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock}{reader\+\_\+writer\+\_\+lock} object. \end{DoxyCompactList}\item 
+void \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock_a2368b20444e310be9f8f3cf24337acc7}{lock} ()
+\begin{DoxyCompactList}\small\item\em Acquires the \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock}{reader\+\_\+writer\+\_\+lock} for write. \end{DoxyCompactList}\item 
+bool \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock_adea99248bc11b4bdac946edb72781f98}{try\+\_\+lock} ()
+\begin{DoxyCompactList}\small\item\em Tries to acquire the \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock}{reader\+\_\+writer\+\_\+lock} for write. \end{DoxyCompactList}\item 
+void \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock_ad4c8eb4cb105c0e8df6dad7ee81c306b}{lock\+\_\+read} ()
+\begin{DoxyCompactList}\small\item\em Acquires the \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock}{reader\+\_\+writer\+\_\+lock} for read. \end{DoxyCompactList}\item 
+bool \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock_ad35e891c521b4be7a5397db241d50784}{try\+\_\+lock\+\_\+read} ()
+\begin{DoxyCompactList}\small\item\em Tries to acquire the \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock}{reader\+\_\+writer\+\_\+lock} for read. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1reader__writer__lock_ad2567a723d160b812f2a637e12e3091a}{}void \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock_ad2567a723d160b812f2a637e12e3091a}{unlock} ()\label{classtbb_1_1interface5_1_1reader__writer__lock_ad2567a723d160b812f2a637e12e3091a}
+
+\begin{DoxyCompactList}\small\item\em Releases the \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock}{reader\+\_\+writer\+\_\+lock}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1interface5_1_1reader__writer__lock_afcf922650b2fd9d76b7b939d8511bbd8}{}class {\bfseries scoped\+\_\+lock}\label{classtbb_1_1interface5_1_1reader__writer__lock_afcf922650b2fd9d76b7b939d8511bbd8}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1reader__writer__lock_a578ccbc6ecbc6d32cb45ccfdc0ed4ee6}{}class {\bfseries scoped\+\_\+lock\+\_\+read}\label{classtbb_1_1interface5_1_1reader__writer__lock_a578ccbc6ecbc6d32cb45ccfdc0ed4ee6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Writer-\/preference reader-\/writer lock with local-\/only spinning on readers. 
+
+Loosely adapted from Mellor-\/\+Crummey and Scott pseudocode at \href{http://www.cs.rochester.edu/research/synchronization/pseudocode/rw.html#s_wp}{\tt http\+://www.\+cs.\+rochester.\+edu/research/synchronization/pseudocode/rw.\+html\#s\+\_\+wp} 
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{classtbb_1_1interface5_1_1reader__writer__lock_a29bbf9ca21c12b313d9fa5326feaf3ed}{}\index{tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock@{tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock}!status\+\_\+t@{status\+\_\+t}}
+\index{status\+\_\+t@{status\+\_\+t}!tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock@{tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock}}
+\subsubsection[{status\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock\+::status\+\_\+t}}\label{classtbb_1_1interface5_1_1reader__writer__lock_a29bbf9ca21c12b313d9fa5326feaf3ed}
+
+
+Status type for nodes associated with lock instances. 
+
+waiting\+\_\+nonblocking\+: the wait state for nonblocking lock instances; for writes, these transition straight to active states; for reads, these are unused.
+
+waiting\+: the start and spin state for all lock instances; these will transition to active state when appropriate. Non-\/blocking write locks transition from this state to waiting\+\_\+nonblocking immediately.
+
+active\+: the active state means that the lock instance holds the lock; it will transition to invalid state during node deletion
+
+invalid\+: the end state for all nodes; this is set in the destructor so if we encounter this state, we are looking at memory that has already been freed
+
+The state diagrams below describe the status transitions. Single arrows indicate that the thread that owns the node is responsible for the transition; double arrows indicate that any thread could make the transition.
+
+\hyperlink{structState}{State} diagram for \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock_1_1scoped__lock}{scoped\+\_\+lock} status\+:
+
+waiting -\/-\/-\/-\/-\/-\/-\/---$>$ waiting\+\_\+nonblocking $\vert$ \+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+\+\_\+/ $\vert$ V V V active -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---$>$ invalid
+
+\hyperlink{structState}{State} diagram for \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock_1_1scoped__lock__read}{scoped\+\_\+lock\+\_\+read} status\+:
+
+waiting $\vert$ V active -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---$>$invalid 
+
+\subsection{Member Function Documentation}
+\hypertarget{classtbb_1_1interface5_1_1reader__writer__lock_a2368b20444e310be9f8f3cf24337acc7}{}\index{tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock@{tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock}!lock@{lock}}
+\index{lock@{lock}!tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock@{tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock}}
+\subsubsection[{lock()}]{\setlength{\rightskip}{0pt plus 5cm}void tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock\+::lock (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1interface5_1_1reader__writer__lock_a2368b20444e310be9f8f3cf24337acc7}
+
+
+Acquires the \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock}{reader\+\_\+writer\+\_\+lock} for write. 
+
+If the lock is currently held in write mode by another context, the writer will block by spinning on a local variable. Exceptions thrown\+: \hyperlink{classtbb_1_1improper__lock}{improper\+\_\+lock} The context tries to acquire a \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock}{reader\+\_\+writer\+\_\+lock} that it already has write ownership of. \hypertarget{classtbb_1_1interface5_1_1reader__writer__lock_ad4c8eb4cb105c0e8df6dad7ee81c306b}{}\index{tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock@{tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock}!lock\+\_\+read@{lock\+\_\+read}}
+\index{lock\+\_\+read@{lock\+\_\+read}!tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock@{tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock}}
+\subsubsection[{lock\+\_\+read()}]{\setlength{\rightskip}{0pt plus 5cm}void tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock\+::lock\+\_\+read (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1interface5_1_1reader__writer__lock_ad4c8eb4cb105c0e8df6dad7ee81c306b}
+
+
+Acquires the \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock}{reader\+\_\+writer\+\_\+lock} for read. 
+
+If the lock is currently held by a writer, this reader will block and wait until the writers are done. Exceptions thrown\+: \hyperlink{classtbb_1_1improper__lock}{improper\+\_\+lock} The context tries to acquire a \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock}{reader\+\_\+writer\+\_\+lock} that it already has write ownership of. \hypertarget{classtbb_1_1interface5_1_1reader__writer__lock_adea99248bc11b4bdac946edb72781f98}{}\index{tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock@{tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock}!try\+\_\+lock@{try\+\_\+lock}}
+\index{try\+\_\+lock@{try\+\_\+lock}!tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock@{tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock}}
+\subsubsection[{try\+\_\+lock()}]{\setlength{\rightskip}{0pt plus 5cm}bool tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock\+::try\+\_\+lock (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1interface5_1_1reader__writer__lock_adea99248bc11b4bdac946edb72781f98}
+
+
+Tries to acquire the \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock}{reader\+\_\+writer\+\_\+lock} for write. 
+
+This function does not block. Return \hyperlink{structValue}{Value}\+: True or false, depending on whether the lock is acquired or not. If the lock is already held by this acquiring context, \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock_adea99248bc11b4bdac946edb72781f98}{try\+\_\+lock()} returns false. \hypertarget{classtbb_1_1interface5_1_1reader__writer__lock_ad35e891c521b4be7a5397db241d50784}{}\index{tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock@{tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock}!try\+\_\+lock\+\_\+read@{try\+\_\+lock\+\_\+read}}
+\index{try\+\_\+lock\+\_\+read@{try\+\_\+lock\+\_\+read}!tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock@{tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock}}
+\subsubsection[{try\+\_\+lock\+\_\+read()}]{\setlength{\rightskip}{0pt plus 5cm}bool tbb\+::interface5\+::reader\+\_\+writer\+\_\+lock\+::try\+\_\+lock\+\_\+read (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1interface5_1_1reader__writer__lock_ad35e891c521b4be7a5397db241d50784}
+
+
+Tries to acquire the \hyperlink{classtbb_1_1interface5_1_1reader__writer__lock}{reader\+\_\+writer\+\_\+lock} for read. 
+
+This function does not block. Return \hyperlink{structValue}{Value}\+: True or false, depending on whether the lock is acquired or not. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/reader\+\_\+writer\+\_\+lock.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/reader\+\_\+writer\+\_\+lock.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,19 @@
+\hypertarget{classLockableTwoRefCountInfo}{}\section{Lockable\+Two\+Ref\+Count\+Info Class Reference}
+\label{classLockableTwoRefCountInfo}\index{Lockable\+Two\+Ref\+Count\+Info@{Lockable\+Two\+Ref\+Count\+Info}}
+
+
+{\ttfamily \#include $<$Strong\+Ptr.\+h$>$}
+
+
+
+\subsection{Detailed Description}
+Implementation detail for thread-\/safe reference counting for strong and weak pointers. It uses Two\+Ref\+Count\+Info to manage the pointer and counts. All this does is provide a thread safety mechanism. Since it is just a class for managing implementation details, it is not intended to be used directly -\/ which is why it is in a private namespace. Each instance is a shared resource for all copointers, and there should be only one of these for each set of copointers. This class is small, trivial, and inline.
+
+\begin{DoxyNote}{Note}
+This class is not designed for use with a single-\/threaded model. Tests using a single-\/threaded model will not run properly, but tests in a multi-\/threaded model with either class-\/level-\/locking or object-\/level-\/locking do run properly. 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Strong\+Ptr.\+h\end{DoxyCompactItemize}

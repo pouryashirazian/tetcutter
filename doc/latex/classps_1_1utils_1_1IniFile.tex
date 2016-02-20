@@ -1,0 +1,147 @@
+\hypertarget{classps_1_1utils_1_1IniFile}{}\section{ps\+:\+:utils\+:\+:Ini\+File Class Reference}
+\label{classps_1_1utils_1_1IniFile}\index{ps\+::utils\+::\+Ini\+File@{ps\+::utils\+::\+Ini\+File}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a80edfc4b159559e04445a5d9cedc2c1f}{}enum {\bfseries File\+Mode} \{ {\bfseries fm\+Read}, 
+{\bfseries fm\+Write}, 
+{\bfseries fm\+Read\+Write}, 
+{\bfseries fm\+Memory\+Stream}
+ \}\label{classps_1_1utils_1_1IniFile_a80edfc4b159559e04445a5d9cedc2c1f}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a33ce9f03f3f70c25e5d38ced09f481d2}{}{\bfseries Ini\+File} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&str\+File\+Name, File\+Mode mode=fm\+Read\+Write)\label{classps_1_1utils_1_1IniFile_a33ce9f03f3f70c25e5d38ced09f481d2}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_aabe8563b7528ec69b2c09e853d888a3a}{}File\+Mode {\bfseries get\+File\+Mode} () const \label{classps_1_1utils_1_1IniFile_aabe8563b7528ec69b2c09e853d888a3a}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a8dc30778ae042ee0f6059d4e897c9598}{}\hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} {\bfseries get\+File\+Name} () const \label{classps_1_1utils_1_1IniFile_a8dc30778ae042ee0f6059d4e897c9598}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_aa7cc97c94e5e961fe429fdc458edcdb5}{}int {\bfseries extract\+Section} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&title, std\+::vector$<$ \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} $>$ \&lines)\label{classps_1_1utils_1_1IniFile_aa7cc97c94e5e961fe429fdc458edcdb5}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_af3b90889481cbbc3499b959cd7eca0b5}{}void {\bfseries clear\+Content\+Buffer} ()\label{classps_1_1utils_1_1IniFile_af3b90889481cbbc3499b959cd7eca0b5}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a6ecd023595e6c6e44a46804aa557d4a0}{}void {\bfseries get\+Content\+Buffer} (std\+::vector$<$ \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} $>$ out\+Content\+Buf) const \label{classps_1_1utils_1_1IniFile_a6ecd023595e6c6e44a46804aa557d4a0}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a62a5f4a75b1c45a0e5cd166fd43af646}{}void {\bfseries set\+Content\+Buffer} (const std\+::vector$<$ \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} $>$ \&in\+Content\+Buf)\label{classps_1_1utils_1_1IniFile_a62a5f4a75b1c45a0e5cd166fd43af646}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_ae8fb149fa22d610954c46ca66904b6a5}{}void {\bfseries set} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&str\+File\+Name, File\+Mode mode=fm\+Read\+Write)\label{classps_1_1utils_1_1IniFile_ae8fb149fa22d610954c46ca66904b6a5}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a8205bc39dae3c81eef8d8ecd6415c341}{}bool {\bfseries set\+For\+Read} ()\label{classps_1_1utils_1_1IniFile_a8205bc39dae3c81eef8d8ecd6415c341}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_aa9878c7a066bbde67e7b7d81d9de1188}{}void {\bfseries set\+For\+Write} ()\label{classps_1_1utils_1_1IniFile_aa9878c7a066bbde67e7b7d81d9de1188}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a769059b86ee86ab853270f9b20c37662}{}\hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} {\bfseries get\+File\+Path} () const \label{classps_1_1utils_1_1IniFile_a769059b86ee86ab853270f9b20c37662}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a04e55cb072e34470192bd84112308778}{}int {\bfseries has\+Section} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&str\+Section)\label{classps_1_1utils_1_1IniFile_a04e55cb072e34470192bd84112308778}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_ab4b96643273bbd43814514df6c3cb716}{}bool {\bfseries write\+Value} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&str\+Value)\label{classps_1_1utils_1_1IniFile_ab4b96643273bbd43814514df6c3cb716}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_ac1f7d9eeabf23affb0a596b332313aee}{}bool {\bfseries read\+Line} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable, \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&str\+Line)\label{classps_1_1utils_1_1IniFile_ac1f7d9eeabf23affb0a596b332313aee}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a6be2b512881ff9957daf3743a2801d86}{}bool {\bfseries read\+Value} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable, \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&str\+Value)\label{classps_1_1utils_1_1IniFile_a6be2b512881ff9957daf3743a2801d86}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a3eb09c6424b2f1d82fe7008445838fed}{}int {\bfseries read\+Int} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable, int def=0)\label{classps_1_1utils_1_1IniFile_a3eb09c6424b2f1d82fe7008445838fed}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a0ebbcfb0c2053b526665893902dfbdc9}{}void {\bfseries write\+Int} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable, int val)\label{classps_1_1utils_1_1IniFile_a0ebbcfb0c2053b526665893902dfbdc9}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a5d06bd9d2c705cf333fb9fc5af9f1e04}{}float {\bfseries read\+Float} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable, float def=0.\+0f)\label{classps_1_1utils_1_1IniFile_a5d06bd9d2c705cf333fb9fc5af9f1e04}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a5eca8b88c79d70495281dde32a286eb4}{}void {\bfseries write\+Float} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable, float val)\label{classps_1_1utils_1_1IniFile_a5eca8b88c79d70495281dde32a286eb4}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a7faa7ef48f69cab0a2c1b2b383340058}{}double {\bfseries read\+Double} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable, double def=0.\+0)\label{classps_1_1utils_1_1IniFile_a7faa7ef48f69cab0a2c1b2b383340058}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_abedf8c9d2bf99739981a82a798cf2f20}{}void {\bfseries write\+Double} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable, double val)\label{classps_1_1utils_1_1IniFile_abedf8c9d2bf99739981a82a798cf2f20}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a3c71ee3326d326ecaa7d4cbef0217c18}{}\hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} {\bfseries read\+String} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&def=\hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str}(\char`\"{}\char`\"{}))\label{classps_1_1utils_1_1IniFile_a3c71ee3326d326ecaa7d4cbef0217c18}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_ac69953da626a53d7a46d0ddcd879510d}{}void {\bfseries write\+String} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&val)\label{classps_1_1utils_1_1IniFile_ac69953da626a53d7a46d0ddcd879510d}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a1ac87c714e4d5a89a0b116e2d19f33ed}{}bool {\bfseries read\+Bool} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable, bool def=false)\label{classps_1_1utils_1_1IniFile_a1ac87c714e4d5a89a0b116e2d19f33ed}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_ae574f5efb7fa245d428b043a331bf00e}{}void {\bfseries write\+Bool} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable, bool val)\label{classps_1_1utils_1_1IniFile_ae574f5efb7fa245d428b043a331bf00e}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a88c23cbd0b42047cba44f538f8955549}{}bool {\bfseries read\+Int\+Array} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable, int ct\+Expected, std\+::vector$<$ int $>$ \&array\+Int)\label{classps_1_1utils_1_1IniFile_a88c23cbd0b42047cba44f538f8955549}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_afc7f4d702a9d1b1b8db7993f58792bcb}{}int {\bfseries write\+Int\+Array} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable, const std\+::vector$<$ int $>$ \&array\+Int)\label{classps_1_1utils_1_1IniFile_afc7f4d702a9d1b1b8db7993f58792bcb}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a9ae3407a3ad2b42eaefef68a1900dba8}{}bool {\bfseries read\+Int\+Array\+U32} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable, int ct\+Expected, std\+::vector$<$ U32 $>$ \&array\+Int)\label{classps_1_1utils_1_1IniFile_a9ae3407a3ad2b42eaefef68a1900dba8}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_aebc38e8b148acf9c8f8c0881ddf6dd23}{}int {\bfseries write\+Int\+Array\+U32} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable, const std\+::vector$<$ U32 $>$ \&array\+Int)\label{classps_1_1utils_1_1IniFile_aebc38e8b148acf9c8f8c0881ddf6dd23}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a7b64f974dbfd820a2c7dac596a91a138}{}\hyperlink{classps_1_1base_1_1Vec2}{vec2f} {\bfseries read\+Vec2f} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable)\label{classps_1_1utils_1_1IniFile_a7b64f974dbfd820a2c7dac596a91a138}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a2c3df693b3b71890f5493eb05d8f0dd9}{}void {\bfseries write\+Vec2f} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable, const \hyperlink{classps_1_1base_1_1Vec2}{vec2f} \&val)\label{classps_1_1utils_1_1IniFile_a2c3df693b3b71890f5493eb05d8f0dd9}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a51a68ba0787d7f43124e5f7cd1aba1cb}{}\hyperlink{classps_1_1base_1_1Vec3}{vec3f} {\bfseries read\+Vec3f} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable)\label{classps_1_1utils_1_1IniFile_a51a68ba0787d7f43124e5f7cd1aba1cb}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_ab2ae618c766ce2e9a38a4e0679018f62}{}void {\bfseries write\+Vec3f} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable, const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&val)\label{classps_1_1utils_1_1IniFile_ab2ae618c766ce2e9a38a4e0679018f62}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a6dd96db96d4b9be19c2404bf91ad2d83}{}\hyperlink{classps_1_1base_1_1Vec4}{vec4f} {\bfseries read\+Vec4f} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable)\label{classps_1_1utils_1_1IniFile_a6dd96db96d4b9be19c2404bf91ad2d83}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a078a704b08b9f4f259076a5595641fc2}{}void {\bfseries write\+Vec4f} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&section, const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&variable, const \hyperlink{classps_1_1base_1_1Vec4}{vec4f} \&val)\label{classps_1_1utils_1_1IniFile_a078a704b08b9f4f259076a5595641fc2}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a6c15e81582f02519149d37d72b542823}{}bool {\bfseries read\+File} ()\label{classps_1_1utils_1_1IniFile_a6c15e81582f02519149d37d72b542823}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a69b8632d32012766c252cf9a631a98fd}{}bool {\bfseries write\+File} ()\label{classps_1_1utils_1_1IniFile_a69b8632d32012766c252cf9a631a98fd}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a2f957d0c331b6aadeada134d2bdfc9d1}{}\hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} {\bfseries m\+\_\+str\+File\+Name}\label{classps_1_1utils_1_1IniFile_a2f957d0c331b6aadeada134d2bdfc9d1}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a92b9cd3e5172fb4e200b36cc4eb9d454}{}File\+Mode {\bfseries m\+\_\+fmode}\label{classps_1_1utils_1_1IniFile_a92b9cd3e5172fb4e200b36cc4eb9d454}
+
+\item 
+\hypertarget{classps_1_1utils_1_1IniFile_a8d9ecf2d3996d484016e3e44f5715a4e}{}std\+::vector$<$ \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} $>$ {\bfseries m\+\_\+content}\label{classps_1_1utils_1_1IniFile_a8d9ecf2d3996d484016e3e44f5715a4e}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/base/inifile.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/base/inifile.\+cpp\end{DoxyCompactItemize}

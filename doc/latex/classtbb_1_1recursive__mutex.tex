@@ -1,0 +1,88 @@
+\hypertarget{classtbb_1_1recursive__mutex}{}\section{tbb\+:\+:recursive\+\_\+mutex Class Reference}
+\label{classtbb_1_1recursive__mutex}\index{tbb\+::recursive\+\_\+mutex@{tbb\+::recursive\+\_\+mutex}}
+
+
+Mutex that allows recursive mutex acquisition.  
+
+
+
+
+{\ttfamily \#include $<$recursive\+\_\+mutex.\+h$>$}
+
+Inheritance diagram for tbb\+:\+:recursive\+\_\+mutex\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classtbb_1_1recursive__mutex}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classtbb_1_1recursive__mutex_1_1scoped__lock}{scoped\+\_\+lock}
+\begin{DoxyCompactList}\small\item\em The scoped locking pattern. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1recursive__mutex_a59f90e65656fec5a07e375c6e7cd39f3}{}typedef pthread\+\_\+mutex\+\_\+t $\ast$ \hyperlink{classtbb_1_1recursive__mutex_a59f90e65656fec5a07e375c6e7cd39f3}{native\+\_\+handle\+\_\+type}\label{classtbb_1_1recursive__mutex_a59f90e65656fec5a07e375c6e7cd39f3}
+
+\begin{DoxyCompactList}\small\item\em Return native\+\_\+handle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1recursive__mutex_a47eb6e7e7ffa5d35341125792b17236b}{}\hyperlink{classtbb_1_1recursive__mutex_a47eb6e7e7ffa5d35341125792b17236b}{recursive\+\_\+mutex} ()\label{classtbb_1_1recursive__mutex_a47eb6e7e7ffa5d35341125792b17236b}
+
+\begin{DoxyCompactList}\small\item\em Construct unacquired \hyperlink{classtbb_1_1recursive__mutex}{recursive\+\_\+mutex}. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1recursive__mutex_adea997b45dc4a360f38d14bde9c991f2}{}void \hyperlink{classtbb_1_1recursive__mutex_adea997b45dc4a360f38d14bde9c991f2}{lock} ()\label{classtbb_1_1recursive__mutex_adea997b45dc4a360f38d14bde9c991f2}
+
+\begin{DoxyCompactList}\small\item\em Acquire lock. \end{DoxyCompactList}\item 
+bool \hyperlink{classtbb_1_1recursive__mutex_a8b181d9aaa95444145222cfe206e8094}{try\+\_\+lock} ()
+\begin{DoxyCompactList}\small\item\em Try acquiring lock (non-\/blocking) \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1recursive__mutex_af57e8d25e0e7614e98bcfa50bc9416c8}{}void \hyperlink{classtbb_1_1recursive__mutex_af57e8d25e0e7614e98bcfa50bc9416c8}{unlock} ()\label{classtbb_1_1recursive__mutex_af57e8d25e0e7614e98bcfa50bc9416c8}
+
+\begin{DoxyCompactList}\small\item\em Release lock. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1recursive__mutex_a050ca2a8d3b5c98f9d6c1252856436db}{}\hyperlink{classtbb_1_1recursive__mutex_a59f90e65656fec5a07e375c6e7cd39f3}{native\+\_\+handle\+\_\+type} {\bfseries native\+\_\+handle} ()\label{classtbb_1_1recursive__mutex_a050ca2a8d3b5c98f9d6c1252856436db}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1recursive__mutex_a668511b8520c41a342c038ba26ce70ff}{}static const bool {\bfseries is\+\_\+rw\+\_\+mutex} = false\label{classtbb_1_1recursive__mutex_a668511b8520c41a342c038ba26ce70ff}
+
+\item 
+\hypertarget{classtbb_1_1recursive__mutex_a2817cf2c1a7875590548f49a834ca668}{}static const bool {\bfseries is\+\_\+recursive\+\_\+mutex} = true\label{classtbb_1_1recursive__mutex_a2817cf2c1a7875590548f49a834ca668}
+
+\item 
+\hypertarget{classtbb_1_1recursive__mutex_abcc4a830c307cb4d25311550a527fe4d}{}static const bool {\bfseries is\+\_\+fair\+\_\+mutex} = false\label{classtbb_1_1recursive__mutex_abcc4a830c307cb4d25311550a527fe4d}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1recursive__mutex_afcf922650b2fd9d76b7b939d8511bbd8}{}class {\bfseries scoped\+\_\+lock}\label{classtbb_1_1recursive__mutex_afcf922650b2fd9d76b7b939d8511bbd8}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Mutex that allows recursive mutex acquisition. 
+
+Mutex that allows recursive mutex acquisition. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classtbb_1_1recursive__mutex_a8b181d9aaa95444145222cfe206e8094}{}\index{tbb\+::recursive\+\_\+mutex@{tbb\+::recursive\+\_\+mutex}!try\+\_\+lock@{try\+\_\+lock}}
+\index{try\+\_\+lock@{try\+\_\+lock}!tbb\+::recursive\+\_\+mutex@{tbb\+::recursive\+\_\+mutex}}
+\subsubsection[{try\+\_\+lock()}]{\setlength{\rightskip}{0pt plus 5cm}bool tbb\+::recursive\+\_\+mutex\+::try\+\_\+lock (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1recursive__mutex_a8b181d9aaa95444145222cfe206e8094}
+
+
+Try acquiring lock (non-\/blocking) 
+
+Return true if lock acquired; false otherwise. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/recursive\+\_\+mutex.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/recursive\+\_\+mutex.\+cpp\end{DoxyCompactItemize}

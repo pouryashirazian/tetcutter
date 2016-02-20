@@ -1,0 +1,35 @@
+\hypertarget{structLoki_1_1Function}{}\section{Loki\+:\+:Function$<$ R $>$ Struct Template Reference}
+\label{structLoki_1_1Function}\index{Loki\+::\+Function$<$ R $>$@{Loki\+::\+Function$<$ R $>$}}
+
+
+{\ttfamily \#include $<$Function.\+h$>$}
+
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class R = void()$>$struct Loki\+::\+Function$<$ R $>$}
+
+Allows a boost/\+T\+R1 like usage of \hyperlink{classLoki_1_1Functor}{Functor}.
+
+\begin{DoxyParagraph}{Usage}
+
+\end{DoxyParagraph}
+
+\begin{DoxyItemize}
+\item free functions\+: e.\+g.
+\begin{DoxyCode}
+Function<int(int,int)> f(&freeFunction);
+\end{DoxyCode}
+
+\item member functions\+: e.\+g
+\begin{DoxyCode}
+Function<int()> f(&\textcolor{keywordtype}{object},&ObjectType::memberFunction); 
+\end{DoxyCode}
+
+\end{DoxyItemize}
+
+see also test/\+Function/\+Function\+Test.\+cpp (the modified test program from boost) 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Function.\+h\end{DoxyCompactItemize}

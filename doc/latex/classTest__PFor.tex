@@ -1,0 +1,60 @@
+\hypertarget{classTest__PFor}{}\section{Test\+\_\+\+P\+For$<$ Body $>$ Class Template Reference}
+\label{classTest__PFor}\index{Test\+\_\+\+P\+For$<$ Body $>$@{Test\+\_\+\+P\+For$<$ Body $>$}}
+Inheritance diagram for Test\+\_\+\+P\+For$<$ Body $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classTest__PFor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classTest__PFor_aa75737390cd4795b965b5f2587130d80}{}{\bfseries Test\+\_\+\+P\+For} (Partitioner\+Type pt=Simple\+Partitioner)\label{classTest__PFor_aa75737390cd4795b965b5f2587130d80}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classTest__PFor_a14d67cebd4bca82da7d103686392618d}{Run} (\hyperlink{structPerf_1_1Test_1_1ThreadInfo}{Thread\+Info} \&)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classTest}{Test} implementation. \end{DoxyCompactList}\item 
+void \hyperlink{classTest__PFor_ace2d473bba6b5c78861bec4b3167d7b6}{Run\+Serial} (\hyperlink{structPerf_1_1Test_1_1ThreadInfo}{Thread\+Info} \&)
+\begin{DoxyCompactList}\small\item\em Executes serial workload equivalent to the one processed by \hyperlink{classTest__PFor_a14d67cebd4bca82da7d103686392618d}{Run()} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classTest__PFor_a14d67cebd4bca82da7d103686392618d}{}\index{Test\+\_\+\+P\+For@{Test\+\_\+\+P\+For}!Run@{Run}}
+\index{Run@{Run}!Test\+\_\+\+P\+For@{Test\+\_\+\+P\+For}}
+\subsubsection[{Run(\+Thread\+Info \&)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Body$>$ void {\bf Test\+\_\+\+P\+For}$<$ {\bf Body} $>$\+::{\bf Run} (
+\begin{DoxyParamCaption}
+\item[{{\bf Thread\+Info} \&}]{ti}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}\label{classTest__PFor_a14d67cebd4bca82da7d103686392618d}
+
+
+\hyperlink{classTest}{Test} implementation. 
+
+Called by the timing framework several times in a loop to achieve approx. Run\+Duration time, and this loop is timed Num\+Runs times to collect statistics. Argument ti specifies information about the master thread calling this method. 
+
+Implements \hyperlink{classPerf_1_1Test_a64ad02d5651eb526f14e8d17df229cfb}{Perf\+::\+Test}.
+
+\hypertarget{classTest__PFor_ace2d473bba6b5c78861bec4b3167d7b6}{}\index{Test\+\_\+\+P\+For@{Test\+\_\+\+P\+For}!Run\+Serial@{Run\+Serial}}
+\index{Run\+Serial@{Run\+Serial}!Test\+\_\+\+P\+For@{Test\+\_\+\+P\+For}}
+\subsubsection[{Run\+Serial(\+Thread\+Info \&)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Body$>$ void {\bf Test\+\_\+\+P\+For}$<$ {\bf Body} $>$\+::Run\+Serial (
+\begin{DoxyParamCaption}
+\item[{{\bf Thread\+Info} \&}]{ti}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}\label{classTest__PFor_ace2d473bba6b5c78861bec4b3167d7b6}
+
+
+Executes serial workload equivalent to the one processed by \hyperlink{classTest__PFor_a14d67cebd4bca82da7d103686392618d}{Run()} 
+
+Called by the timing framework several times in a loop to collect statistics. 
+
+Reimplemented from \hyperlink{classPerf_1_1Test_aa36442055c9cd1267cbdf8a0bf431239}{Perf\+::\+Test}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/perf/perf\+\_\+sched.\+cpp\end{DoxyCompactItemize}

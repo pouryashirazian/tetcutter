@@ -1,0 +1,36 @@
+\hypertarget{structtbb_1_1internal_1_1arena__slot__line1}{}\section{tbb\+:\+:internal\+:\+:arena\+\_\+slot\+\_\+line1 Struct Reference}
+\label{structtbb_1_1internal_1_1arena__slot__line1}\index{tbb\+::internal\+::arena\+\_\+slot\+\_\+line1@{tbb\+::internal\+::arena\+\_\+slot\+\_\+line1}}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtbb_1_1internal_1_1generic__scheduler}{generic\+\_\+scheduler} $\ast$ \hyperlink{structtbb_1_1internal_1_1arena__slot__line1_a988ed3221b0b40efb97849a53b168e79}{my\+\_\+scheduler}
+\begin{DoxyCompactList}\small\item\em Scheduler of the thread attached to the slot. \end{DoxyCompactList}\item 
+task $\ast$$\ast$\+\_\+\+\_\+\+T\+B\+B\+\_\+atomic \hyperlink{structtbb_1_1internal_1_1arena__slot__line1_a9096bfd9df29790ef46791385c5a8162}{task\+\_\+pool}
+\item 
+\+\_\+\+\_\+\+T\+B\+B\+\_\+atomic size\+\_\+t \hyperlink{structtbb_1_1internal_1_1arena__slot__line1_a6b0b8214404af0b2c30f442b33d0d209}{head}
+\begin{DoxyCompactList}\small\item\em Index of the first ready task in the deque. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{structtbb_1_1internal_1_1arena__slot__line1_a6b0b8214404af0b2c30f442b33d0d209}{}\index{tbb\+::internal\+::arena\+\_\+slot\+\_\+line1@{tbb\+::internal\+::arena\+\_\+slot\+\_\+line1}!head@{head}}
+\index{head@{head}!tbb\+::internal\+::arena\+\_\+slot\+\_\+line1@{tbb\+::internal\+::arena\+\_\+slot\+\_\+line1}}
+\subsubsection[{head}]{\setlength{\rightskip}{0pt plus 5cm}\+\_\+\+\_\+\+T\+B\+B\+\_\+atomic size\+\_\+t tbb\+::internal\+::arena\+\_\+slot\+\_\+line1\+::head}\label{structtbb_1_1internal_1_1arena__slot__line1_a6b0b8214404af0b2c30f442b33d0d209}
+
+
+Index of the first ready task in the deque. 
+
+Modified by thieves, and by the owner during compaction/reallocation \hypertarget{structtbb_1_1internal_1_1arena__slot__line1_a988ed3221b0b40efb97849a53b168e79}{}\index{tbb\+::internal\+::arena\+\_\+slot\+\_\+line1@{tbb\+::internal\+::arena\+\_\+slot\+\_\+line1}!my\+\_\+scheduler@{my\+\_\+scheduler}}
+\index{my\+\_\+scheduler@{my\+\_\+scheduler}!tbb\+::internal\+::arena\+\_\+slot\+\_\+line1@{tbb\+::internal\+::arena\+\_\+slot\+\_\+line1}}
+\subsubsection[{my\+\_\+scheduler}]{\setlength{\rightskip}{0pt plus 5cm}{\bf generic\+\_\+scheduler}$\ast$ tbb\+::internal\+::arena\+\_\+slot\+\_\+line1\+::my\+\_\+scheduler}\label{structtbb_1_1internal_1_1arena__slot__line1_a988ed3221b0b40efb97849a53b168e79}
+
+
+Scheduler of the thread attached to the slot. 
+
+Marks the slot as busy, and is used to iterate through the schedulers belonging to this arena \hypertarget{structtbb_1_1internal_1_1arena__slot__line1_a9096bfd9df29790ef46791385c5a8162}{}\index{tbb\+::internal\+::arena\+\_\+slot\+\_\+line1@{tbb\+::internal\+::arena\+\_\+slot\+\_\+line1}!task\+\_\+pool@{task\+\_\+pool}}
+\index{task\+\_\+pool@{task\+\_\+pool}!tbb\+::internal\+::arena\+\_\+slot\+\_\+line1@{tbb\+::internal\+::arena\+\_\+slot\+\_\+line1}}
+\subsubsection[{task\+\_\+pool}]{\setlength{\rightskip}{0pt plus 5cm}task$\ast$ $\ast$ \+\_\+\+\_\+\+T\+B\+B\+\_\+atomic tbb\+::internal\+::arena\+\_\+slot\+\_\+line1\+::task\+\_\+pool}\label{structtbb_1_1internal_1_1arena__slot__line1_a9096bfd9df29790ef46791385c5a8162}
+Also is used to specify if the slot is empty or locked\+: 0 -\/ empty -\/1 -\/ locked 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/scheduler\+\_\+common.\+h\end{DoxyCompactItemize}

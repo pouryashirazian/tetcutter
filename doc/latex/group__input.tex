@@ -1,0 +1,1245 @@
+\hypertarget{group__input}{}\section{Input handling}
+\label{group__input}\index{Input handling@{Input handling}}
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__keys}{Keyboard keys}
+\item 
+\hyperlink{group__mods}{Modifier key flags}
+\item 
+\hyperlink{group__buttons}{Mouse buttons}
+\item 
+\hyperlink{group__joysticks}{Joysticks}
+\item 
+\hyperlink{group__shapes}{Standard cursor shapes}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ \hyperlink{group__input_ga39893a4a7e7c3239c98d29c9e084350c}{G\+L\+F\+Wmousebuttonfun}) (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$, int, int, int)
+\begin{DoxyCompactList}\small\item\em The function signature for mouse button callbacks. \end{DoxyCompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_ga4cfad918fa836f09541e7b9acd36686c}{G\+L\+F\+Wcursorposfun}) (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$, double, double)
+\begin{DoxyCompactList}\small\item\em The function signature for cursor position callbacks. \end{DoxyCompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_ga51ab436c41eeaed6db5a0c9403b1c840}{G\+L\+F\+Wcursorenterfun}) (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$, int)
+\begin{DoxyCompactList}\small\item\em The function signature for cursor enter/leave callbacks. \end{DoxyCompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_ga4687e2199c60a18a8dd1da532e6d75c9}{G\+L\+F\+Wscrollfun}) (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$, double, double)
+\begin{DoxyCompactList}\small\item\em The function signature for scroll callbacks. \end{DoxyCompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_ga0192a232a41e4e82948217c8ba94fdfd}{G\+L\+F\+Wkeyfun}) (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$, int, int, int, int)
+\begin{DoxyCompactList}\small\item\em The function signature for keyboard key callbacks. \end{DoxyCompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_gabf24451c7ceb1952bc02b17a0d5c3e5f}{G\+L\+F\+Wcharfun}) (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$, unsigned int)
+\begin{DoxyCompactList}\small\item\em The function signature for Unicode character callbacks. \end{DoxyCompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_gae36fb6897d2b7df9b128900c8ce9c507}{G\+L\+F\+Wcharmodsfun}) (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$, unsigned int, int)
+\begin{DoxyCompactList}\small\item\em The function signature for Unicode character with modifiers callbacks. \end{DoxyCompactList}\item 
+typedef void($\ast$ \hyperlink{group__input_gab71f4ca80b651462852e601caf308c4a}{G\+L\+F\+Wdropfun}) (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$, int, const char $\ast$$\ast$)
+\begin{DoxyCompactList}\small\item\em The function signature for file drop callbacks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+G\+L\+F\+W\+A\+P\+I int \hyperlink{group__input_ga1248dd5b1e566b2817e71547564d6af9}{glfw\+Get\+Input\+Mode} (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$window, int mode)
+\begin{DoxyCompactList}\small\item\em Returns the value of an input option for the specified window. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I void \hyperlink{group__input_gae1eb729d2dd91dc33fd60e150a6e1684}{glfw\+Set\+Input\+Mode} (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$window, int mode, int value)
+\begin{DoxyCompactList}\small\item\em Sets an input option for the specified window. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I int \hyperlink{group__input_ga7d8ad8ffaf272808f04e1d5d33ec8859}{glfw\+Get\+Key} (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$window, int key)
+\begin{DoxyCompactList}\small\item\em Returns the last reported state of a keyboard key for the specified window. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I int \hyperlink{group__input_ga6da5efb04f700c312a57a169fa9393a0}{glfw\+Get\+Mouse\+Button} (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$window, int button)
+\begin{DoxyCompactList}\small\item\em Returns the last reported state of a mouse button for the specified window. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I void \hyperlink{group__input_gad289438eb7cf53d11eca685373f44105}{glfw\+Get\+Cursor\+Pos} (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$window, double $\ast$xpos, double $\ast$ypos)
+\begin{DoxyCompactList}\small\item\em Retrieves the position of the cursor relative to the client area of the window. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I void \hyperlink{group__input_gaaf152cc93418acb0ba342e3f4af922bc}{glfw\+Set\+Cursor\+Pos} (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$window, double xpos, double ypos)
+\begin{DoxyCompactList}\small\item\em Sets the position of the cursor, relative to the client area of the window. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I G\+L\+F\+Wcursor $\ast$ \hyperlink{group__input_gac0f0f691f2d110f9acfb4bfe07f1216c}{glfw\+Create\+Cursor} (const \hyperlink{structGLFWimage}{G\+L\+F\+Wimage} $\ast$image, int xhot, int yhot)
+\begin{DoxyCompactList}\small\item\em Creates a custom cursor. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I G\+L\+F\+Wcursor $\ast$ \hyperlink{group__input_ga969dd87ad2ddbf3e1086cc40f235eed1}{glfw\+Create\+Standard\+Cursor} (int shape)
+\begin{DoxyCompactList}\small\item\em Creates a cursor with a standard shape. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I void \hyperlink{group__input_ga27556b7122117bc1bbb4bb3cc003ea43}{glfw\+Destroy\+Cursor} (G\+L\+F\+Wcursor $\ast$cursor)
+\begin{DoxyCompactList}\small\item\em Destroys a cursor. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I void \hyperlink{group__input_gafaf103cea2f43530cff7de4e01126a4f}{glfw\+Set\+Cursor} (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$window, G\+L\+F\+Wcursor $\ast$cursor)
+\begin{DoxyCompactList}\small\item\em Sets the cursor for the window. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I \hyperlink{group__input_ga0192a232a41e4e82948217c8ba94fdfd}{G\+L\+F\+Wkeyfun} \hyperlink{group__input_gaa73bb92f628a2a0be9c132d56f19362c}{glfw\+Set\+Key\+Callback} (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$window, \hyperlink{group__input_ga0192a232a41e4e82948217c8ba94fdfd}{G\+L\+F\+Wkeyfun} cbfun)
+\begin{DoxyCompactList}\small\item\em Sets the key callback. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I \hyperlink{group__input_gabf24451c7ceb1952bc02b17a0d5c3e5f}{G\+L\+F\+Wcharfun} \hyperlink{group__input_ga07b2959b23dc3e466ce7475746021002}{glfw\+Set\+Char\+Callback} (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$window, \hyperlink{group__input_gabf24451c7ceb1952bc02b17a0d5c3e5f}{G\+L\+F\+Wcharfun} cbfun)
+\begin{DoxyCompactList}\small\item\em Sets the Unicode character callback. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I \hyperlink{group__input_gae36fb6897d2b7df9b128900c8ce9c507}{G\+L\+F\+Wcharmodsfun} \hyperlink{group__input_gae6eee0bda7429bfe8028615847cf6795}{glfw\+Set\+Char\+Mods\+Callback} (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$window, \hyperlink{group__input_gae36fb6897d2b7df9b128900c8ce9c507}{G\+L\+F\+Wcharmodsfun} cbfun)
+\begin{DoxyCompactList}\small\item\em Sets the Unicode character with modifiers callback. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I \hyperlink{group__input_ga39893a4a7e7c3239c98d29c9e084350c}{G\+L\+F\+Wmousebuttonfun} \hyperlink{group__input_ga20e5ba1ce4e086aedd48a06dc311c95f}{glfw\+Set\+Mouse\+Button\+Callback} (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$window, \hyperlink{group__input_ga39893a4a7e7c3239c98d29c9e084350c}{G\+L\+F\+Wmousebuttonfun} cbfun)
+\begin{DoxyCompactList}\small\item\em Sets the mouse button callback. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I \hyperlink{group__input_ga4cfad918fa836f09541e7b9acd36686c}{G\+L\+F\+Wcursorposfun} \hyperlink{group__input_ga9c49c0d3d3c775c3124726f1d902124d}{glfw\+Set\+Cursor\+Pos\+Callback} (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$window, \hyperlink{group__input_ga4cfad918fa836f09541e7b9acd36686c}{G\+L\+F\+Wcursorposfun} cbfun)
+\begin{DoxyCompactList}\small\item\em Sets the cursor position callback. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I \hyperlink{group__input_ga51ab436c41eeaed6db5a0c9403b1c840}{G\+L\+F\+Wcursorenterfun} \hyperlink{group__input_gaa20014985561efeb2c53f1956f727830}{glfw\+Set\+Cursor\+Enter\+Callback} (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$window, \hyperlink{group__input_ga51ab436c41eeaed6db5a0c9403b1c840}{G\+L\+F\+Wcursorenterfun} cbfun)
+\begin{DoxyCompactList}\small\item\em Sets the cursor enter/exit callback. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I \hyperlink{group__input_ga4687e2199c60a18a8dd1da532e6d75c9}{G\+L\+F\+Wscrollfun} \hyperlink{group__input_ga29011514e93368712a3063a28707ced3}{glfw\+Set\+Scroll\+Callback} (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$window, \hyperlink{group__input_ga4687e2199c60a18a8dd1da532e6d75c9}{G\+L\+F\+Wscrollfun} cbfun)
+\begin{DoxyCompactList}\small\item\em Sets the scroll callback. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I \hyperlink{group__input_gab71f4ca80b651462852e601caf308c4a}{G\+L\+F\+Wdropfun} \hyperlink{group__input_gad4fc40df63a5d0441ab06de9a585cc04}{glfw\+Set\+Drop\+Callback} (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$window, \hyperlink{group__input_gab71f4ca80b651462852e601caf308c4a}{G\+L\+F\+Wdropfun} cbfun)
+\begin{DoxyCompactList}\small\item\em Sets the file drop callback. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I int \hyperlink{group__input_ga7f81f22f355f4b7d315caf73cdfd9906}{glfw\+Joystick\+Present} (int joy)
+\begin{DoxyCompactList}\small\item\em Returns whether the specified joystick is present. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I const float $\ast$ \hyperlink{group__input_gaab9e573d808b088c5079c0f577d39448}{glfw\+Get\+Joystick\+Axes} (int joy, int $\ast$count)
+\begin{DoxyCompactList}\small\item\em Returns the values of all axes of the specified joystick. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I const unsigned char $\ast$ \hyperlink{group__input_ga3951bea72b5fb4870b1aa0e5c2e9c903}{glfw\+Get\+Joystick\+Buttons} (int joy, int $\ast$count)
+\begin{DoxyCompactList}\small\item\em Returns the state of all buttons of the specified joystick. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I const char $\ast$ \hyperlink{group__input_gac50a4fd9b01886cf9fa2c45f19191fb8}{glfw\+Get\+Joystick\+Name} (int joy)
+\begin{DoxyCompactList}\small\item\em Returns the name of the specified joystick. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I void \hyperlink{group__input_ga7a580309bbc185a0459c3559021d2fd7}{glfw\+Set\+Clipboard\+String} (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$window, const char $\ast$string)
+\begin{DoxyCompactList}\small\item\em Sets the clipboard to the specified string. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I const char $\ast$ \hyperlink{group__input_ga3ac90c8bbaf0b46063bb02b574f3b6f7}{glfw\+Get\+Clipboard\+String} (\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$window)
+\begin{DoxyCompactList}\small\item\em Returns the contents of the clipboard as a string. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I double \hyperlink{group__input_ga03d4a1039b8662c71eeb40beea8cb622}{glfw\+Get\+Time} (void)
+\begin{DoxyCompactList}\small\item\em Returns the value of the G\+L\+F\+W timer. \end{DoxyCompactList}\item 
+G\+L\+F\+W\+A\+P\+I void \hyperlink{group__input_ga94360a3628a09f32708f83cc3fa48590}{glfw\+Set\+Time} (double time)
+\begin{DoxyCompactList}\small\item\em Sets the G\+L\+F\+W timer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Key and button actions}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__input_gada11d965c4da13090ad336e030e4d11f}{G\+L\+F\+W\+\_\+\+R\+E\+L\+E\+A\+S\+E}~0
+\begin{DoxyCompactList}\small\item\em The key or mouse button was released. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__input_ga2485743d0b59df3791c45951c4195265}{G\+L\+F\+W\+\_\+\+P\+R\+E\+S\+S}~1
+\begin{DoxyCompactList}\small\item\em The key or mouse button was pressed. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__input_gac96fd3b9fc66c6f0eebaf6532595338f}{G\+L\+F\+W\+\_\+\+R\+E\+P\+E\+A\+T}~2
+\begin{DoxyCompactList}\small\item\em The key was held down until it repeated. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the reference documentation for input related functions and types. For more information, see the \hyperlink{group__input}{Input handling}. 
+
+\subsection{Macro Definition Documentation}
+\hypertarget{group__input_ga2485743d0b59df3791c45951c4195265}{}\index{Input handling@{Input handling}!G\+L\+F\+W\+\_\+\+P\+R\+E\+S\+S@{G\+L\+F\+W\+\_\+\+P\+R\+E\+S\+S}}
+\index{G\+L\+F\+W\+\_\+\+P\+R\+E\+S\+S@{G\+L\+F\+W\+\_\+\+P\+R\+E\+S\+S}!Input handling@{Input handling}}
+\subsubsection[{G\+L\+F\+W\+\_\+\+P\+R\+E\+S\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+L\+F\+W\+\_\+\+P\+R\+E\+S\+S~1}\label{group__input_ga2485743d0b59df3791c45951c4195265}
+
+
+The key or mouse button was pressed. 
+
+The key or mouse button was pressed. \hypertarget{group__input_gada11d965c4da13090ad336e030e4d11f}{}\index{Input handling@{Input handling}!G\+L\+F\+W\+\_\+\+R\+E\+L\+E\+A\+S\+E@{G\+L\+F\+W\+\_\+\+R\+E\+L\+E\+A\+S\+E}}
+\index{G\+L\+F\+W\+\_\+\+R\+E\+L\+E\+A\+S\+E@{G\+L\+F\+W\+\_\+\+R\+E\+L\+E\+A\+S\+E}!Input handling@{Input handling}}
+\subsubsection[{G\+L\+F\+W\+\_\+\+R\+E\+L\+E\+A\+S\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+L\+F\+W\+\_\+\+R\+E\+L\+E\+A\+S\+E~0}\label{group__input_gada11d965c4da13090ad336e030e4d11f}
+
+
+The key or mouse button was released. 
+
+The key or mouse button was released. \hypertarget{group__input_gac96fd3b9fc66c6f0eebaf6532595338f}{}\index{Input handling@{Input handling}!G\+L\+F\+W\+\_\+\+R\+E\+P\+E\+A\+T@{G\+L\+F\+W\+\_\+\+R\+E\+P\+E\+A\+T}}
+\index{G\+L\+F\+W\+\_\+\+R\+E\+P\+E\+A\+T@{G\+L\+F\+W\+\_\+\+R\+E\+P\+E\+A\+T}!Input handling@{Input handling}}
+\subsubsection[{G\+L\+F\+W\+\_\+\+R\+E\+P\+E\+A\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+L\+F\+W\+\_\+\+R\+E\+P\+E\+A\+T~2}\label{group__input_gac96fd3b9fc66c6f0eebaf6532595338f}
+
+
+The key was held down until it repeated. 
+
+The key was held down until it repeated. 
+
+\subsection{Typedef Documentation}
+\hypertarget{group__input_gabf24451c7ceb1952bc02b17a0d5c3e5f}{}\index{Input handling@{Input handling}!G\+L\+F\+Wcharfun@{G\+L\+F\+Wcharfun}}
+\index{G\+L\+F\+Wcharfun@{G\+L\+F\+Wcharfun}!Input handling@{Input handling}}
+\subsubsection[{G\+L\+F\+Wcharfun}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  G\+L\+F\+Wcharfun) ({\bf G\+L\+F\+Wwindow} $\ast$, unsigned int)}\label{group__input_gabf24451c7ceb1952bc02b17a0d5c3e5f}
+
+
+The function signature for Unicode character callbacks. 
+
+This is the function signature for Unicode character callback functions.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window that received the event. \\
+\hline
+\mbox{\tt in}  & {\em codepoint} & The Unicode code point of the character.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__input_ga07b2959b23dc3e466ce7475746021002}{glfw\+Set\+Char\+Callback} 
+\end{DoxySeeAlso}
+\hypertarget{group__input_gae36fb6897d2b7df9b128900c8ce9c507}{}\index{Input handling@{Input handling}!G\+L\+F\+Wcharmodsfun@{G\+L\+F\+Wcharmodsfun}}
+\index{G\+L\+F\+Wcharmodsfun@{G\+L\+F\+Wcharmodsfun}!Input handling@{Input handling}}
+\subsubsection[{G\+L\+F\+Wcharmodsfun}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  G\+L\+F\+Wcharmodsfun) ({\bf G\+L\+F\+Wwindow} $\ast$, unsigned int, int)}\label{group__input_gae36fb6897d2b7df9b128900c8ce9c507}
+
+
+The function signature for Unicode character with modifiers callbacks. 
+
+This is the function signature for Unicode character with modifiers callback functions. It is called for each input character, regardless of what modifier keys are held down.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window that received the event. \\
+\hline
+\mbox{\tt in}  & {\em codepoint} & The Unicode code point of the character. \\
+\hline
+\mbox{\tt in}  & {\em mods} & Bit field describing which \hyperlink{group__mods}{modifier keys} were held down.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__input_gae6eee0bda7429bfe8028615847cf6795}{glfw\+Set\+Char\+Mods\+Callback} 
+\end{DoxySeeAlso}
+\hypertarget{group__input_ga51ab436c41eeaed6db5a0c9403b1c840}{}\index{Input handling@{Input handling}!G\+L\+F\+Wcursorenterfun@{G\+L\+F\+Wcursorenterfun}}
+\index{G\+L\+F\+Wcursorenterfun@{G\+L\+F\+Wcursorenterfun}!Input handling@{Input handling}}
+\subsubsection[{G\+L\+F\+Wcursorenterfun}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  G\+L\+F\+Wcursorenterfun) ({\bf G\+L\+F\+Wwindow} $\ast$, int)}\label{group__input_ga51ab436c41eeaed6db5a0c9403b1c840}
+
+
+The function signature for cursor enter/leave callbacks. 
+
+This is the function signature for cursor enter/leave callback functions.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window that received the event. \\
+\hline
+\mbox{\tt in}  & {\em entered} & {\ttfamily G\+L\+\_\+\+T\+R\+U\+E} if the cursor entered the window\textquotesingle{}s client area, or {\ttfamily G\+L\+\_\+\+F\+A\+L\+S\+E} if it left it.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__input_gaa20014985561efeb2c53f1956f727830}{glfw\+Set\+Cursor\+Enter\+Callback} 
+\end{DoxySeeAlso}
+\hypertarget{group__input_ga4cfad918fa836f09541e7b9acd36686c}{}\index{Input handling@{Input handling}!G\+L\+F\+Wcursorposfun@{G\+L\+F\+Wcursorposfun}}
+\index{G\+L\+F\+Wcursorposfun@{G\+L\+F\+Wcursorposfun}!Input handling@{Input handling}}
+\subsubsection[{G\+L\+F\+Wcursorposfun}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  G\+L\+F\+Wcursorposfun) ({\bf G\+L\+F\+Wwindow} $\ast$, double, double)}\label{group__input_ga4cfad918fa836f09541e7b9acd36686c}
+
+
+The function signature for cursor position callbacks. 
+
+This is the function signature for cursor position callback functions.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window that received the event. \\
+\hline
+\mbox{\tt in}  & {\em xpos} & The new x-\/coordinate, in screen coordinates, of the cursor. \\
+\hline
+\mbox{\tt in}  & {\em ypos} & The new y-\/coordinate, in screen coordinates, of the cursor.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__input_ga9c49c0d3d3c775c3124726f1d902124d}{glfw\+Set\+Cursor\+Pos\+Callback} 
+\end{DoxySeeAlso}
+\hypertarget{group__input_gab71f4ca80b651462852e601caf308c4a}{}\index{Input handling@{Input handling}!G\+L\+F\+Wdropfun@{G\+L\+F\+Wdropfun}}
+\index{G\+L\+F\+Wdropfun@{G\+L\+F\+Wdropfun}!Input handling@{Input handling}}
+\subsubsection[{G\+L\+F\+Wdropfun}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  G\+L\+F\+Wdropfun) ({\bf G\+L\+F\+Wwindow} $\ast$, int, const char $\ast$$\ast$)}\label{group__input_gab71f4ca80b651462852e601caf308c4a}
+
+
+The function signature for file drop callbacks. 
+
+This is the function signature for file drop callbacks.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window that received the event. \\
+\hline
+\mbox{\tt in}  & {\em count} & The number of dropped files. \\
+\hline
+\mbox{\tt in}  & {\em paths} & The U\+T\+F-\/8 encoded file and/or directory path names.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__input_gad4fc40df63a5d0441ab06de9a585cc04}{glfw\+Set\+Drop\+Callback} 
+\end{DoxySeeAlso}
+\hypertarget{group__input_ga0192a232a41e4e82948217c8ba94fdfd}{}\index{Input handling@{Input handling}!G\+L\+F\+Wkeyfun@{G\+L\+F\+Wkeyfun}}
+\index{G\+L\+F\+Wkeyfun@{G\+L\+F\+Wkeyfun}!Input handling@{Input handling}}
+\subsubsection[{G\+L\+F\+Wkeyfun}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  G\+L\+F\+Wkeyfun) ({\bf G\+L\+F\+Wwindow} $\ast$, int, int, int, int)}\label{group__input_ga0192a232a41e4e82948217c8ba94fdfd}
+
+
+The function signature for keyboard key callbacks. 
+
+This is the function signature for keyboard key callback functions.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window that received the event. \\
+\hline
+\mbox{\tt in}  & {\em key} & The \hyperlink{group__keys}{keyboard key} that was pressed or released. \\
+\hline
+\mbox{\tt in}  & {\em scancode} & The system-\/specific scancode of the key. \\
+\hline
+\mbox{\tt in}  & {\em action} & {\ttfamily G\+L\+F\+W\+\_\+\+P\+R\+E\+S\+S}, {\ttfamily G\+L\+F\+W\+\_\+\+R\+E\+L\+E\+A\+S\+E} or {\ttfamily G\+L\+F\+W\+\_\+\+R\+E\+P\+E\+A\+T}. \\
+\hline
+\mbox{\tt in}  & {\em mods} & Bit field describing which \hyperlink{group__mods}{modifier keys} were held down.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__input_gaa73bb92f628a2a0be9c132d56f19362c}{glfw\+Set\+Key\+Callback} 
+\end{DoxySeeAlso}
+\hypertarget{group__input_ga39893a4a7e7c3239c98d29c9e084350c}{}\index{Input handling@{Input handling}!G\+L\+F\+Wmousebuttonfun@{G\+L\+F\+Wmousebuttonfun}}
+\index{G\+L\+F\+Wmousebuttonfun@{G\+L\+F\+Wmousebuttonfun}!Input handling@{Input handling}}
+\subsubsection[{G\+L\+F\+Wmousebuttonfun}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  G\+L\+F\+Wmousebuttonfun) ({\bf G\+L\+F\+Wwindow} $\ast$, int, int, int)}\label{group__input_ga39893a4a7e7c3239c98d29c9e084350c}
+
+
+The function signature for mouse button callbacks. 
+
+This is the function signature for mouse button callback functions.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window that received the event. \\
+\hline
+\mbox{\tt in}  & {\em button} & The \hyperlink{group__buttons}{mouse button} that was pressed or released. \\
+\hline
+\mbox{\tt in}  & {\em action} & One of {\ttfamily G\+L\+F\+W\+\_\+\+P\+R\+E\+S\+S} or {\ttfamily G\+L\+F\+W\+\_\+\+R\+E\+L\+E\+A\+S\+E}. \\
+\hline
+\mbox{\tt in}  & {\em mods} & Bit field describing which \hyperlink{group__mods}{modifier keys} were held down.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__input_ga20e5ba1ce4e086aedd48a06dc311c95f}{glfw\+Set\+Mouse\+Button\+Callback} 
+\end{DoxySeeAlso}
+\hypertarget{group__input_ga4687e2199c60a18a8dd1da532e6d75c9}{}\index{Input handling@{Input handling}!G\+L\+F\+Wscrollfun@{G\+L\+F\+Wscrollfun}}
+\index{G\+L\+F\+Wscrollfun@{G\+L\+F\+Wscrollfun}!Input handling@{Input handling}}
+\subsubsection[{G\+L\+F\+Wscrollfun}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  G\+L\+F\+Wscrollfun) ({\bf G\+L\+F\+Wwindow} $\ast$, double, double)}\label{group__input_ga4687e2199c60a18a8dd1da532e6d75c9}
+
+
+The function signature for scroll callbacks. 
+
+This is the function signature for scroll callback functions.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window that received the event. \\
+\hline
+\mbox{\tt in}  & {\em xoffset} & The scroll offset along the x-\/axis. \\
+\hline
+\mbox{\tt in}  & {\em yoffset} & The scroll offset along the y-\/axis.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__input_ga29011514e93368712a3063a28707ced3}{glfw\+Set\+Scroll\+Callback} 
+\end{DoxySeeAlso}
+
+
+\subsection{Function Documentation}
+\hypertarget{group__input_gac0f0f691f2d110f9acfb4bfe07f1216c}{}\index{Input handling@{Input handling}!glfw\+Create\+Cursor@{glfw\+Create\+Cursor}}
+\index{glfw\+Create\+Cursor@{glfw\+Create\+Cursor}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Create\+Cursor(const G\+L\+F\+Wimage $\ast$image, int xhot, int yhot)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I G\+L\+F\+Wcursor$\ast$ glfw\+Create\+Cursor (
+\begin{DoxyParamCaption}
+\item[{const {\bf G\+L\+F\+Wimage} $\ast$}]{image, }
+\item[{int}]{xhot, }
+\item[{int}]{yhot}
+\end{DoxyParamCaption}
+)}\label{group__input_gac0f0f691f2d110f9acfb4bfe07f1216c}
+
+
+Creates a custom cursor. 
+
+Creates a new custom cursor image that can be set for a window with \hyperlink{group__input_gafaf103cea2f43530cff7de4e01126a4f}{glfw\+Set\+Cursor}. The cursor can be destroyed with \hyperlink{group__input_ga27556b7122117bc1bbb4bb3cc003ea43}{glfw\+Destroy\+Cursor}. Any remaining cursors are destroyed by \hyperlink{group__init_gafd90e6fd4819ea9e22e5e739519a6504}{glfw\+Terminate}.
+
+The pixels are 32-\/bit, little-\/endian, non-\/premultiplied R\+G\+B\+A, i.\+e. eight bits per channel. They are arranged canonically as packed sequential rows, starting from the top-\/left corner.
+
+The cursor hotspot is specified in pixels, relative to the upper-\/left corner of the cursor image. Like all other coordinate systems in G\+L\+F\+W, the X-\/axis points to the right and the Y-\/axis points down.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em image} & The desired cursor image. \\
+\hline
+\mbox{\tt in}  & {\em xhot} & The desired x-\/coordinate, in pixels, of the cursor hotspot. \\
+\hline
+\mbox{\tt in}  & {\em yhot} & The desired y-\/coordinate, in pixels, of the cursor hotspot.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The handle of the created cursor, or {\ttfamily N\+U\+L\+L} if an error occurred.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Pointer Lifetime}
+The specified image data is copied before this function returns.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Reentrancy}
+This function may not be called from a callback.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+cursor\+\_\+object 
+
+\hyperlink{group__input_ga27556b7122117bc1bbb4bb3cc003ea43}{glfw\+Destroy\+Cursor} 
+
+\hyperlink{group__input_ga969dd87ad2ddbf3e1086cc40f235eed1}{glfw\+Create\+Standard\+Cursor}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+1. 
+\end{DoxySince}
+\hypertarget{group__input_ga969dd87ad2ddbf3e1086cc40f235eed1}{}\index{Input handling@{Input handling}!glfw\+Create\+Standard\+Cursor@{glfw\+Create\+Standard\+Cursor}}
+\index{glfw\+Create\+Standard\+Cursor@{glfw\+Create\+Standard\+Cursor}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Create\+Standard\+Cursor(int shape)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I G\+L\+F\+Wcursor$\ast$ glfw\+Create\+Standard\+Cursor (
+\begin{DoxyParamCaption}
+\item[{int}]{shape}
+\end{DoxyParamCaption}
+)}\label{group__input_ga969dd87ad2ddbf3e1086cc40f235eed1}
+
+
+Creates a cursor with a standard shape. 
+
+Returns a cursor with a \hyperlink{group__shapes}{standard shape}, that can be set for a window with \hyperlink{group__input_gafaf103cea2f43530cff7de4e01126a4f}{glfw\+Set\+Cursor}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em shape} & One of the \hyperlink{group__shapes}{standard shapes}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{structA}{A} new cursor ready to use or {\ttfamily N\+U\+L\+L} if an error occurred.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Reentrancy}
+This function may not be called from a callback.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+cursor\+\_\+object 
+
+\hyperlink{group__input_gac0f0f691f2d110f9acfb4bfe07f1216c}{glfw\+Create\+Cursor}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+1. 
+\end{DoxySince}
+\hypertarget{group__input_ga27556b7122117bc1bbb4bb3cc003ea43}{}\index{Input handling@{Input handling}!glfw\+Destroy\+Cursor@{glfw\+Destroy\+Cursor}}
+\index{glfw\+Destroy\+Cursor@{glfw\+Destroy\+Cursor}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Destroy\+Cursor(\+G\+L\+F\+Wcursor $\ast$cursor)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I void glfw\+Destroy\+Cursor (
+\begin{DoxyParamCaption}
+\item[{G\+L\+F\+Wcursor $\ast$}]{cursor}
+\end{DoxyParamCaption}
+)}\label{group__input_ga27556b7122117bc1bbb4bb3cc003ea43}
+
+
+Destroys a cursor. 
+
+This function destroys a cursor previously created with \hyperlink{group__input_gac0f0f691f2d110f9acfb4bfe07f1216c}{glfw\+Create\+Cursor}. Any remaining cursors will be destroyed by \hyperlink{group__init_gafd90e6fd4819ea9e22e5e739519a6504}{glfw\+Terminate}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cursor} & The cursor object to destroy.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Reentrancy}
+This function may not be called from a callback.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+cursor\+\_\+object 
+
+\hyperlink{group__input_gac0f0f691f2d110f9acfb4bfe07f1216c}{glfw\+Create\+Cursor}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+1. 
+\end{DoxySince}
+\hypertarget{group__input_ga3ac90c8bbaf0b46063bb02b574f3b6f7}{}\index{Input handling@{Input handling}!glfw\+Get\+Clipboard\+String@{glfw\+Get\+Clipboard\+String}}
+\index{glfw\+Get\+Clipboard\+String@{glfw\+Get\+Clipboard\+String}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Get\+Clipboard\+String(\+G\+L\+F\+Wwindow $\ast$window)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I const char$\ast$ glfw\+Get\+Clipboard\+String (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+L\+F\+Wwindow} $\ast$}]{window}
+\end{DoxyParamCaption}
+)}\label{group__input_ga3ac90c8bbaf0b46063bb02b574f3b6f7}
+
+
+Returns the contents of the clipboard as a string. 
+
+This function returns the contents of the system clipboard, if it contains or is convertible to a U\+T\+F-\/8 encoded string. If the clipboard is empty or if its contents cannot be converted, {\ttfamily N\+U\+L\+L} is returned and a \hyperlink{group__errors_ga196e125ef261d94184e2b55c05762f14}{G\+L\+F\+W\+\_\+\+F\+O\+R\+M\+A\+T\+\_\+\+U\+N\+A\+V\+A\+I\+L\+A\+B\+L\+E} error is generated.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window that will request the clipboard contents. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The contents of the clipboard as a U\+T\+F-\/8 encoded string, or {\ttfamily N\+U\+L\+L} if an error occurred.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Pointer Lifetime}
+The returned string is allocated and freed by G\+L\+F\+W. You should not free it yourself. It is valid until the next call to \hyperlink{group__input_ga3ac90c8bbaf0b46063bb02b574f3b6f7}{glfw\+Get\+Clipboard\+String} or \hyperlink{group__input_ga7a580309bbc185a0459c3559021d2fd7}{glfw\+Set\+Clipboard\+String}, or until the library is terminated.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+clipboard 
+
+\hyperlink{group__input_ga7a580309bbc185a0459c3559021d2fd7}{glfw\+Set\+Clipboard\+String}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. 
+\end{DoxySince}
+\hypertarget{group__input_gad289438eb7cf53d11eca685373f44105}{}\index{Input handling@{Input handling}!glfw\+Get\+Cursor\+Pos@{glfw\+Get\+Cursor\+Pos}}
+\index{glfw\+Get\+Cursor\+Pos@{glfw\+Get\+Cursor\+Pos}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Get\+Cursor\+Pos(\+G\+L\+F\+Wwindow $\ast$window, double $\ast$xpos, double $\ast$ypos)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I void glfw\+Get\+Cursor\+Pos (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{double $\ast$}]{xpos, }
+\item[{double $\ast$}]{ypos}
+\end{DoxyParamCaption}
+)}\label{group__input_gad289438eb7cf53d11eca685373f44105}
+
+
+Retrieves the position of the cursor relative to the client area of the window. 
+
+This function returns the position of the cursor, in screen coordinates, relative to the upper-\/left corner of the client area of the specified window.
+
+If the cursor is disabled (with {\ttfamily G\+L\+F\+W\+\_\+\+C\+U\+R\+S\+O\+R\+\_\+\+D\+I\+S\+A\+B\+L\+E\+D}) then the cursor position is unbounded and limited only by the minimum and maximum values of a {\ttfamily double}.
+
+The coordinate can be converted to their integer equivalents with the {\ttfamily floor} function. Casting directly to an integer type works for positive coordinates, but fails for negative ones.
+
+Any or all of the position arguments may be {\ttfamily N\+U\+L\+L}. If an error occurs, all non-\/{\ttfamily N\+U\+L\+L} position arguments will be set to zero.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The desired window. \\
+\hline
+\mbox{\tt out}  & {\em xpos} & Where to store the cursor x-\/coordinate, relative to the left edge of the client area, or {\ttfamily N\+U\+L\+L}. \\
+\hline
+\mbox{\tt out}  & {\em ypos} & Where to store the cursor y-\/coordinate, relative to the to top edge of the client area, or {\ttfamily N\+U\+L\+L}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+cursor\+\_\+pos 
+
+\hyperlink{group__input_gaaf152cc93418acb0ba342e3f4af922bc}{glfw\+Set\+Cursor\+Pos}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. Replaces {\ttfamily glfw\+Get\+Mouse\+Pos}. 
+\end{DoxySince}
+\hypertarget{group__input_ga1248dd5b1e566b2817e71547564d6af9}{}\index{Input handling@{Input handling}!glfw\+Get\+Input\+Mode@{glfw\+Get\+Input\+Mode}}
+\index{glfw\+Get\+Input\+Mode@{glfw\+Get\+Input\+Mode}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Get\+Input\+Mode(\+G\+L\+F\+Wwindow $\ast$window, int mode)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I int glfw\+Get\+Input\+Mode (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{int}]{mode}
+\end{DoxyParamCaption}
+)}\label{group__input_ga1248dd5b1e566b2817e71547564d6af9}
+
+
+Returns the value of an input option for the specified window. 
+
+This function returns the value of an input option for the specified window. The mode must be one of {\ttfamily G\+L\+F\+W\+\_\+\+C\+U\+R\+S\+O\+R}, {\ttfamily G\+L\+F\+W\+\_\+\+S\+T\+I\+C\+K\+Y\+\_\+\+K\+E\+Y\+S} or {\ttfamily G\+L\+F\+W\+\_\+\+S\+T\+I\+C\+K\+Y\+\_\+\+M\+O\+U\+S\+E\+\_\+\+B\+U\+T\+T\+O\+N\+S}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window to query. \\
+\hline
+\mbox{\tt in}  & {\em mode} & One of {\ttfamily G\+L\+F\+W\+\_\+\+C\+U\+R\+S\+O\+R}, {\ttfamily G\+L\+F\+W\+\_\+\+S\+T\+I\+C\+K\+Y\+\_\+\+K\+E\+Y\+S} or {\ttfamily G\+L\+F\+W\+\_\+\+S\+T\+I\+C\+K\+Y\+\_\+\+M\+O\+U\+S\+E\+\_\+\+B\+U\+T\+T\+O\+N\+S}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__input_gae1eb729d2dd91dc33fd60e150a6e1684}{glfw\+Set\+Input\+Mode}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. 
+\end{DoxySince}
+\hypertarget{group__input_gaab9e573d808b088c5079c0f577d39448}{}\index{Input handling@{Input handling}!glfw\+Get\+Joystick\+Axes@{glfw\+Get\+Joystick\+Axes}}
+\index{glfw\+Get\+Joystick\+Axes@{glfw\+Get\+Joystick\+Axes}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Get\+Joystick\+Axes(int joy, int $\ast$count)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I const float$\ast$ glfw\+Get\+Joystick\+Axes (
+\begin{DoxyParamCaption}
+\item[{int}]{joy, }
+\item[{int $\ast$}]{count}
+\end{DoxyParamCaption}
+)}\label{group__input_gaab9e573d808b088c5079c0f577d39448}
+
+
+Returns the values of all axes of the specified joystick. 
+
+This function returns the values of all axes of the specified joystick. Each element in the array is a value between -\/1.\+0 and 1.\+0.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em joy} & The \hyperlink{group__joysticks}{joystick} to query. \\
+\hline
+\mbox{\tt out}  & {\em count} & Where to store the number of axis values in the returned array. This is set to zero if an error occurred. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An array of axis values, or {\ttfamily N\+U\+L\+L} if the joystick is not present.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Pointer Lifetime}
+The returned array is allocated and freed by G\+L\+F\+W. You should not free it yourself. It is valid until the specified joystick is disconnected, this function is called again for that joystick or the library is terminated.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+joystick\+\_\+axis
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. Replaces {\ttfamily glfw\+Get\+Joystick\+Pos}. 
+\end{DoxySince}
+\hypertarget{group__input_ga3951bea72b5fb4870b1aa0e5c2e9c903}{}\index{Input handling@{Input handling}!glfw\+Get\+Joystick\+Buttons@{glfw\+Get\+Joystick\+Buttons}}
+\index{glfw\+Get\+Joystick\+Buttons@{glfw\+Get\+Joystick\+Buttons}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Get\+Joystick\+Buttons(int joy, int $\ast$count)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I const unsigned char$\ast$ glfw\+Get\+Joystick\+Buttons (
+\begin{DoxyParamCaption}
+\item[{int}]{joy, }
+\item[{int $\ast$}]{count}
+\end{DoxyParamCaption}
+)}\label{group__input_ga3951bea72b5fb4870b1aa0e5c2e9c903}
+
+
+Returns the state of all buttons of the specified joystick. 
+
+This function returns the state of all buttons of the specified joystick. Each element in the array is either {\ttfamily G\+L\+F\+W\+\_\+\+P\+R\+E\+S\+S} or {\ttfamily G\+L\+F\+W\+\_\+\+R\+E\+L\+E\+A\+S\+E}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em joy} & The \hyperlink{group__joysticks}{joystick} to query. \\
+\hline
+\mbox{\tt out}  & {\em count} & Where to store the number of button states in the returned array. This is set to zero if an error occurred. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An array of button states, or {\ttfamily N\+U\+L\+L} if the joystick is not present.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Pointer Lifetime}
+The returned array is allocated and freed by G\+L\+F\+W. You should not free it yourself. It is valid until the specified joystick is disconnected, this function is called again for that joystick or the library is terminated.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+joystick\+\_\+button
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 2.\+2.
+\end{DoxySince}
+\begin{DoxyParagraph}{}
+{\bfseries G\+L\+F\+W 3\+:} Changed to return a dynamic array. 
+\end{DoxyParagraph}
+\hypertarget{group__input_gac50a4fd9b01886cf9fa2c45f19191fb8}{}\index{Input handling@{Input handling}!glfw\+Get\+Joystick\+Name@{glfw\+Get\+Joystick\+Name}}
+\index{glfw\+Get\+Joystick\+Name@{glfw\+Get\+Joystick\+Name}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Get\+Joystick\+Name(int joy)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I const char$\ast$ glfw\+Get\+Joystick\+Name (
+\begin{DoxyParamCaption}
+\item[{int}]{joy}
+\end{DoxyParamCaption}
+)}\label{group__input_gac50a4fd9b01886cf9fa2c45f19191fb8}
+
+
+Returns the name of the specified joystick. 
+
+This function returns the name, encoded as U\+T\+F-\/8, of the specified joystick. The returned string is allocated and freed by G\+L\+F\+W. You should not free it yourself.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em joy} & The \hyperlink{group__joysticks}{joystick} to query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The U\+T\+F-\/8 encoded name of the joystick, or {\ttfamily N\+U\+L\+L} if the joystick is not present.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Pointer Lifetime}
+The returned string is allocated and freed by G\+L\+F\+W. You should not free it yourself. It is valid until the specified joystick is disconnected, this function is called again for that joystick or the library is terminated.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+joystick\+\_\+name
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. 
+\end{DoxySince}
+\hypertarget{group__input_ga7d8ad8ffaf272808f04e1d5d33ec8859}{}\index{Input handling@{Input handling}!glfw\+Get\+Key@{glfw\+Get\+Key}}
+\index{glfw\+Get\+Key@{glfw\+Get\+Key}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Get\+Key(\+G\+L\+F\+Wwindow $\ast$window, int key)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I int glfw\+Get\+Key (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{int}]{key}
+\end{DoxyParamCaption}
+)}\label{group__input_ga7d8ad8ffaf272808f04e1d5d33ec8859}
+
+
+Returns the last reported state of a keyboard key for the specified window. 
+
+This function returns the last state reported for the specified key to the specified window. The returned state is one of {\ttfamily G\+L\+F\+W\+\_\+\+P\+R\+E\+S\+S} or {\ttfamily G\+L\+F\+W\+\_\+\+R\+E\+L\+E\+A\+S\+E}. The higher-\/level action {\ttfamily G\+L\+F\+W\+\_\+\+R\+E\+P\+E\+A\+T} is only reported to the key callback.
+
+If the {\ttfamily G\+L\+F\+W\+\_\+\+S\+T\+I\+C\+K\+Y\+\_\+\+K\+E\+Y\+S} input mode is enabled, this function returns {\ttfamily G\+L\+F\+W\+\_\+\+P\+R\+E\+S\+S} the first time you call it for a key that was pressed, even if that key has already been released.
+
+The key functions deal with physical keys, with \hyperlink{group__keys}{key tokens} named after their use on the standard U\+S keyboard layout. If you want to input text, use the Unicode character callback instead.
+
+The \hyperlink{group__mods}{modifier key bit masks} are not key tokens and cannot be used with this function.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The desired window. \\
+\hline
+\mbox{\tt in}  & {\em key} & The desired \hyperlink{group__keys}{keyboard key}. {\ttfamily G\+L\+F\+W\+\_\+\+K\+E\+Y\+\_\+\+U\+N\+K\+N\+O\+W\+N} is not a valid key for this function. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+One of {\ttfamily G\+L\+F\+W\+\_\+\+P\+R\+E\+S\+S} or {\ttfamily G\+L\+F\+W\+\_\+\+R\+E\+L\+E\+A\+S\+E}.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+input\+\_\+key
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 1.\+0.
+\end{DoxySince}
+\begin{DoxyParagraph}{}
+{\bfseries G\+L\+F\+W 3\+:} Added window handle parameter. 
+\end{DoxyParagraph}
+\hypertarget{group__input_ga6da5efb04f700c312a57a169fa9393a0}{}\index{Input handling@{Input handling}!glfw\+Get\+Mouse\+Button@{glfw\+Get\+Mouse\+Button}}
+\index{glfw\+Get\+Mouse\+Button@{glfw\+Get\+Mouse\+Button}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Get\+Mouse\+Button(\+G\+L\+F\+Wwindow $\ast$window, int button)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I int glfw\+Get\+Mouse\+Button (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{int}]{button}
+\end{DoxyParamCaption}
+)}\label{group__input_ga6da5efb04f700c312a57a169fa9393a0}
+
+
+Returns the last reported state of a mouse button for the specified window. 
+
+This function returns the last state reported for the specified mouse button to the specified window. The returned state is one of {\ttfamily G\+L\+F\+W\+\_\+\+P\+R\+E\+S\+S} or {\ttfamily G\+L\+F\+W\+\_\+\+R\+E\+L\+E\+A\+S\+E}.
+
+If the {\ttfamily G\+L\+F\+W\+\_\+\+S\+T\+I\+C\+K\+Y\+\_\+\+M\+O\+U\+S\+E\+\_\+\+B\+U\+T\+T\+O\+N\+S} input mode is enabled, this function {\ttfamily G\+L\+F\+W\+\_\+\+P\+R\+E\+S\+S} the first time you call it for a mouse button that was pressed, even if that mouse button has already been released.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The desired window. \\
+\hline
+\mbox{\tt in}  & {\em button} & The desired \hyperlink{group__buttons}{mouse button}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+One of {\ttfamily G\+L\+F\+W\+\_\+\+P\+R\+E\+S\+S} or {\ttfamily G\+L\+F\+W\+\_\+\+R\+E\+L\+E\+A\+S\+E}.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+input\+\_\+mouse\+\_\+button
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 1.\+0.
+\end{DoxySince}
+\begin{DoxyParagraph}{}
+{\bfseries G\+L\+F\+W 3\+:} Added window handle parameter. 
+\end{DoxyParagraph}
+\hypertarget{group__input_ga03d4a1039b8662c71eeb40beea8cb622}{}\index{Input handling@{Input handling}!glfw\+Get\+Time@{glfw\+Get\+Time}}
+\index{glfw\+Get\+Time@{glfw\+Get\+Time}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Get\+Time(void)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I double glfw\+Get\+Time (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{group__input_ga03d4a1039b8662c71eeb40beea8cb622}
+
+
+Returns the value of the G\+L\+F\+W timer. 
+
+This function returns the value of the G\+L\+F\+W timer. Unless the timer has been set using \hyperlink{group__input_ga94360a3628a09f32708f83cc3fa48590}{glfw\+Set\+Time}, the timer measures time elapsed since G\+L\+F\+W was initialized.
+
+The resolution of the timer is system dependent, but is usually on the order of a few micro-\/ or nanoseconds. It uses the highest-\/resolution monotonic time source on each supported platform.
+
+\begin{DoxyReturn}{Returns}
+The current value, in seconds, or zero if an error occurred.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread. Access is not synchronized.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+time
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 1.\+0. 
+\end{DoxySince}
+\hypertarget{group__input_ga7f81f22f355f4b7d315caf73cdfd9906}{}\index{Input handling@{Input handling}!glfw\+Joystick\+Present@{glfw\+Joystick\+Present}}
+\index{glfw\+Joystick\+Present@{glfw\+Joystick\+Present}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Joystick\+Present(int joy)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I int glfw\+Joystick\+Present (
+\begin{DoxyParamCaption}
+\item[{int}]{joy}
+\end{DoxyParamCaption}
+)}\label{group__input_ga7f81f22f355f4b7d315caf73cdfd9906}
+
+
+Returns whether the specified joystick is present. 
+
+This function returns whether the specified joystick is present.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em joy} & The \hyperlink{group__joysticks}{joystick} to query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily G\+L\+\_\+\+T\+R\+U\+E} if the joystick is present, or {\ttfamily G\+L\+\_\+\+F\+A\+L\+S\+E} otherwise.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+joystick
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. Replaces {\ttfamily glfw\+Get\+Joystick\+Param}. 
+\end{DoxySince}
+\hypertarget{group__input_ga07b2959b23dc3e466ce7475746021002}{}\index{Input handling@{Input handling}!glfw\+Set\+Char\+Callback@{glfw\+Set\+Char\+Callback}}
+\index{glfw\+Set\+Char\+Callback@{glfw\+Set\+Char\+Callback}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Set\+Char\+Callback(\+G\+L\+F\+Wwindow $\ast$window, G\+L\+F\+Wcharfun cbfun)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I {\bf G\+L\+F\+Wcharfun} glfw\+Set\+Char\+Callback (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{{\bf G\+L\+F\+Wcharfun}}]{cbfun}
+\end{DoxyParamCaption}
+)}\label{group__input_ga07b2959b23dc3e466ce7475746021002}
+
+
+Sets the Unicode character callback. 
+
+This function sets the character callback of the specified window, which is called when a Unicode character is input.
+
+The character callback is intended for Unicode text input. As it deals with characters, it is keyboard layout dependent, whereas the \hyperlink{group__input_gaa73bb92f628a2a0be9c132d56f19362c}{key callback} is not. Characters do not map 1\+:1 to physical keys, as a key may produce zero, one or more characters. If you want to know whether a specific physical key was pressed or released, see the key callback instead.
+
+The character callback behaves as system text input normally does and will not be called if modifier keys are held down that would prevent normal text input on that platform, for example a Super (Command) key on O\+S \hyperlink{structX}{X} or Alt key on Windows. There is a \hyperlink{group__input_gae6eee0bda7429bfe8028615847cf6795}{character with modifiers callback} that receives these events.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window whose callback to set. \\
+\hline
+\mbox{\tt in}  & {\em cbfun} & The new callback, or {\ttfamily N\+U\+L\+L} to remove the currently set callback. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The previously set callback, or {\ttfamily N\+U\+L\+L} if no callback was set or the library had not been initialized.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+input\+\_\+char
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 2.\+4.
+\end{DoxySince}
+\begin{DoxyParagraph}{}
+{\bfseries G\+L\+F\+W 3\+:} Added window handle parameter. Updated callback signature. 
+\end{DoxyParagraph}
+\hypertarget{group__input_gae6eee0bda7429bfe8028615847cf6795}{}\index{Input handling@{Input handling}!glfw\+Set\+Char\+Mods\+Callback@{glfw\+Set\+Char\+Mods\+Callback}}
+\index{glfw\+Set\+Char\+Mods\+Callback@{glfw\+Set\+Char\+Mods\+Callback}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Set\+Char\+Mods\+Callback(\+G\+L\+F\+Wwindow $\ast$window, G\+L\+F\+Wcharmodsfun cbfun)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I {\bf G\+L\+F\+Wcharmodsfun} glfw\+Set\+Char\+Mods\+Callback (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{{\bf G\+L\+F\+Wcharmodsfun}}]{cbfun}
+\end{DoxyParamCaption}
+)}\label{group__input_gae6eee0bda7429bfe8028615847cf6795}
+
+
+Sets the Unicode character with modifiers callback. 
+
+This function sets the character with modifiers callback of the specified window, which is called when a Unicode character is input regardless of what modifier keys are used.
+
+The character with modifiers callback is intended for implementing custom Unicode character input. For regular Unicode text input, see the \hyperlink{group__input_ga07b2959b23dc3e466ce7475746021002}{character callback}. Like the character callback, the character with modifiers callback deals with characters and is keyboard layout dependent. Characters do not map 1\+:1 to physical keys, as a key may produce zero, one or more characters. If you want to know whether a specific physical key was pressed or released, see the \hyperlink{group__input_gaa73bb92f628a2a0be9c132d56f19362c}{key callback} instead.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window whose callback to set. \\
+\hline
+\mbox{\tt in}  & {\em cbfun} & The new callback, or {\ttfamily N\+U\+L\+L} to remove the currently set callback. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The previously set callback, or {\ttfamily N\+U\+L\+L} if no callback was set or an error occurred.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+input\+\_\+char
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+1. 
+\end{DoxySince}
+\hypertarget{group__input_ga7a580309bbc185a0459c3559021d2fd7}{}\index{Input handling@{Input handling}!glfw\+Set\+Clipboard\+String@{glfw\+Set\+Clipboard\+String}}
+\index{glfw\+Set\+Clipboard\+String@{glfw\+Set\+Clipboard\+String}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Set\+Clipboard\+String(\+G\+L\+F\+Wwindow $\ast$window, const char $\ast$string)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I void glfw\+Set\+Clipboard\+String (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{const char $\ast$}]{string}
+\end{DoxyParamCaption}
+)}\label{group__input_ga7a580309bbc185a0459c3559021d2fd7}
+
+
+Sets the clipboard to the specified string. 
+
+This function sets the system clipboard to the specified, U\+T\+F-\/8 encoded string.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window that will own the clipboard contents. \\
+\hline
+\mbox{\tt in}  & {\em string} & \hyperlink{structA}{A} U\+T\+F-\/8 encoded string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Pointer Lifetime}
+The specified string is copied before this function returns.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+clipboard 
+
+\hyperlink{group__input_ga3ac90c8bbaf0b46063bb02b574f3b6f7}{glfw\+Get\+Clipboard\+String}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. 
+\end{DoxySince}
+\hypertarget{group__input_gafaf103cea2f43530cff7de4e01126a4f}{}\index{Input handling@{Input handling}!glfw\+Set\+Cursor@{glfw\+Set\+Cursor}}
+\index{glfw\+Set\+Cursor@{glfw\+Set\+Cursor}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Set\+Cursor(\+G\+L\+F\+Wwindow $\ast$window, G\+L\+F\+Wcursor $\ast$cursor)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I void glfw\+Set\+Cursor (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{G\+L\+F\+Wcursor $\ast$}]{cursor}
+\end{DoxyParamCaption}
+)}\label{group__input_gafaf103cea2f43530cff7de4e01126a4f}
+
+
+Sets the cursor for the window. 
+
+This function sets the cursor image to be used when the cursor is over the client area of the specified window. The set cursor will only be visible when the cursor mode of the window is {\ttfamily G\+L\+F\+W\+\_\+\+C\+U\+R\+S\+O\+R\+\_\+\+N\+O\+R\+M\+A\+L}.
+
+On some platforms, the set cursor may not be visible unless the window also has input focus.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window to set the cursor for. \\
+\hline
+\mbox{\tt in}  & {\em cursor} & The cursor to set, or {\ttfamily N\+U\+L\+L} to switch back to the default arrow cursor.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+cursor\+\_\+object
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+1. 
+\end{DoxySince}
+\hypertarget{group__input_gaa20014985561efeb2c53f1956f727830}{}\index{Input handling@{Input handling}!glfw\+Set\+Cursor\+Enter\+Callback@{glfw\+Set\+Cursor\+Enter\+Callback}}
+\index{glfw\+Set\+Cursor\+Enter\+Callback@{glfw\+Set\+Cursor\+Enter\+Callback}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Set\+Cursor\+Enter\+Callback(\+G\+L\+F\+Wwindow $\ast$window, G\+L\+F\+Wcursorenterfun cbfun)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I {\bf G\+L\+F\+Wcursorenterfun} glfw\+Set\+Cursor\+Enter\+Callback (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{{\bf G\+L\+F\+Wcursorenterfun}}]{cbfun}
+\end{DoxyParamCaption}
+)}\label{group__input_gaa20014985561efeb2c53f1956f727830}
+
+
+Sets the cursor enter/exit callback. 
+
+This function sets the cursor boundary crossing callback of the specified window, which is called when the cursor enters or leaves the client area of the window.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window whose callback to set. \\
+\hline
+\mbox{\tt in}  & {\em cbfun} & The new callback, or {\ttfamily N\+U\+L\+L} to remove the currently set callback. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The previously set callback, or {\ttfamily N\+U\+L\+L} if no callback was set or the library had not been initialized.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+cursor\+\_\+enter
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. 
+\end{DoxySince}
+\hypertarget{group__input_gaaf152cc93418acb0ba342e3f4af922bc}{}\index{Input handling@{Input handling}!glfw\+Set\+Cursor\+Pos@{glfw\+Set\+Cursor\+Pos}}
+\index{glfw\+Set\+Cursor\+Pos@{glfw\+Set\+Cursor\+Pos}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Set\+Cursor\+Pos(\+G\+L\+F\+Wwindow $\ast$window, double xpos, double ypos)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I void glfw\+Set\+Cursor\+Pos (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{double}]{xpos, }
+\item[{double}]{ypos}
+\end{DoxyParamCaption}
+)}\label{group__input_gaaf152cc93418acb0ba342e3f4af922bc}
+
+
+Sets the position of the cursor, relative to the client area of the window. 
+
+This function sets the position, in screen coordinates, of the cursor relative to the upper-\/left corner of the client area of the specified window. The window must have input focus. If the window does not have input focus when this function is called, it fails silently.
+
+{\bfseries Do not use this function} to implement things like camera controls. G\+L\+F\+W already provides the {\ttfamily G\+L\+F\+W\+\_\+\+C\+U\+R\+S\+O\+R\+\_\+\+D\+I\+S\+A\+B\+L\+E\+D} cursor mode that hides the cursor, transparently re-\/centers it and provides unconstrained cursor motion. See \hyperlink{group__input_gae1eb729d2dd91dc33fd60e150a6e1684}{glfw\+Set\+Input\+Mode} for more information.
+
+If the cursor mode is {\ttfamily G\+L\+F\+W\+\_\+\+C\+U\+R\+S\+O\+R\+\_\+\+D\+I\+S\+A\+B\+L\+E\+D} then the cursor position is unconstrained and limited only by the minimum and maximum values of a {\ttfamily double}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The desired window. \\
+\hline
+\mbox{\tt in}  & {\em xpos} & The desired x-\/coordinate, relative to the left edge of the client area. \\
+\hline
+\mbox{\tt in}  & {\em ypos} & The desired y-\/coordinate, relative to the top edge of the client area.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+{\bfseries X11\+:} Due to the asynchronous nature of X11, it may take a moment for the window focus event to arrive. This means you may not be able to set the cursor position directly after window creation.
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+cursor\+\_\+pos 
+
+\hyperlink{group__input_gad289438eb7cf53d11eca685373f44105}{glfw\+Get\+Cursor\+Pos}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. Replaces {\ttfamily glfw\+Set\+Mouse\+Pos}. 
+\end{DoxySince}
+\hypertarget{group__input_ga9c49c0d3d3c775c3124726f1d902124d}{}\index{Input handling@{Input handling}!glfw\+Set\+Cursor\+Pos\+Callback@{glfw\+Set\+Cursor\+Pos\+Callback}}
+\index{glfw\+Set\+Cursor\+Pos\+Callback@{glfw\+Set\+Cursor\+Pos\+Callback}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Set\+Cursor\+Pos\+Callback(\+G\+L\+F\+Wwindow $\ast$window, G\+L\+F\+Wcursorposfun cbfun)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I {\bf G\+L\+F\+Wcursorposfun} glfw\+Set\+Cursor\+Pos\+Callback (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{{\bf G\+L\+F\+Wcursorposfun}}]{cbfun}
+\end{DoxyParamCaption}
+)}\label{group__input_ga9c49c0d3d3c775c3124726f1d902124d}
+
+
+Sets the cursor position callback. 
+
+This function sets the cursor position callback of the specified window, which is called when the cursor is moved. The callback is provided with the position, in screen coordinates, relative to the upper-\/left corner of the client area of the window.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window whose callback to set. \\
+\hline
+\mbox{\tt in}  & {\em cbfun} & The new callback, or {\ttfamily N\+U\+L\+L} to remove the currently set callback. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The previously set callback, or {\ttfamily N\+U\+L\+L} if no callback was set or the library had not been initialized.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+cursor\+\_\+pos
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. Replaces {\ttfamily glfw\+Set\+Mouse\+Pos\+Callback}. 
+\end{DoxySince}
+\hypertarget{group__input_gad4fc40df63a5d0441ab06de9a585cc04}{}\index{Input handling@{Input handling}!glfw\+Set\+Drop\+Callback@{glfw\+Set\+Drop\+Callback}}
+\index{glfw\+Set\+Drop\+Callback@{glfw\+Set\+Drop\+Callback}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Set\+Drop\+Callback(\+G\+L\+F\+Wwindow $\ast$window, G\+L\+F\+Wdropfun cbfun)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I {\bf G\+L\+F\+Wdropfun} glfw\+Set\+Drop\+Callback (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{{\bf G\+L\+F\+Wdropfun}}]{cbfun}
+\end{DoxyParamCaption}
+)}\label{group__input_gad4fc40df63a5d0441ab06de9a585cc04}
+
+
+Sets the file drop callback. 
+
+This function sets the file drop callback of the specified window, which is called when one or more dragged files are dropped on the window.
+
+Because the path array and its strings may have been generated specifically for that event, they are not guaranteed to be valid after the callback has returned. If you wish to use them after the callback returns, you need to make a deep copy.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window whose callback to set. \\
+\hline
+\mbox{\tt in}  & {\em cbfun} & The new file drop callback, or {\ttfamily N\+U\+L\+L} to remove the currently set callback. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The previously set callback, or {\ttfamily N\+U\+L\+L} if no callback was set or the library had not been initialized.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+path\+\_\+drop
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+1. 
+\end{DoxySince}
+\hypertarget{group__input_gae1eb729d2dd91dc33fd60e150a6e1684}{}\index{Input handling@{Input handling}!glfw\+Set\+Input\+Mode@{glfw\+Set\+Input\+Mode}}
+\index{glfw\+Set\+Input\+Mode@{glfw\+Set\+Input\+Mode}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Set\+Input\+Mode(\+G\+L\+F\+Wwindow $\ast$window, int mode, int value)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I void glfw\+Set\+Input\+Mode (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{int}]{mode, }
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)}\label{group__input_gae1eb729d2dd91dc33fd60e150a6e1684}
+
+
+Sets an input option for the specified window. 
+
+This function sets an input mode option for the specified window. The mode must be one of {\ttfamily G\+L\+F\+W\+\_\+\+C\+U\+R\+S\+O\+R}, {\ttfamily G\+L\+F\+W\+\_\+\+S\+T\+I\+C\+K\+Y\+\_\+\+K\+E\+Y\+S} or {\ttfamily G\+L\+F\+W\+\_\+\+S\+T\+I\+C\+K\+Y\+\_\+\+M\+O\+U\+S\+E\+\_\+\+B\+U\+T\+T\+O\+N\+S}.
+
+If the mode is {\ttfamily G\+L\+F\+W\+\_\+\+C\+U\+R\+S\+O\+R}, the value must be one of the following cursor modes\+:
+\begin{DoxyItemize}
+\item {\ttfamily G\+L\+F\+W\+\_\+\+C\+U\+R\+S\+O\+R\+\_\+\+N\+O\+R\+M\+A\+L} makes the cursor visible and behaving normally.
+\item {\ttfamily G\+L\+F\+W\+\_\+\+C\+U\+R\+S\+O\+R\+\_\+\+H\+I\+D\+D\+E\+N} makes the cursor invisible when it is over the client area of the window but does not restrict the cursor from leaving.
+\item {\ttfamily G\+L\+F\+W\+\_\+\+C\+U\+R\+S\+O\+R\+\_\+\+D\+I\+S\+A\+B\+L\+E\+D} hides and grabs the cursor, providing virtual and unlimited cursor movement. This is useful for implementing for example 3\+D camera controls.
+\end{DoxyItemize}
+
+If the mode is {\ttfamily G\+L\+F\+W\+\_\+\+S\+T\+I\+C\+K\+Y\+\_\+\+K\+E\+Y\+S}, the value must be either {\ttfamily G\+L\+\_\+\+T\+R\+U\+E} to enable sticky keys, or {\ttfamily G\+L\+\_\+\+F\+A\+L\+S\+E} to disable it. If sticky keys are enabled, a key press will ensure that \hyperlink{group__input_ga7d8ad8ffaf272808f04e1d5d33ec8859}{glfw\+Get\+Key} returns {\ttfamily G\+L\+F\+W\+\_\+\+P\+R\+E\+S\+S} the next time it is called even if the key had been released before the call. This is useful when you are only interested in whether keys have been pressed but not when or in which order.
+
+If the mode is {\ttfamily G\+L\+F\+W\+\_\+\+S\+T\+I\+C\+K\+Y\+\_\+\+M\+O\+U\+S\+E\+\_\+\+B\+U\+T\+T\+O\+N\+S}, the value must be either {\ttfamily G\+L\+\_\+\+T\+R\+U\+E} to enable sticky mouse buttons, or {\ttfamily G\+L\+\_\+\+F\+A\+L\+S\+E} to disable it. If sticky mouse buttons are enabled, a mouse button press will ensure that \hyperlink{group__input_ga6da5efb04f700c312a57a169fa9393a0}{glfw\+Get\+Mouse\+Button} returns {\ttfamily G\+L\+F\+W\+\_\+\+P\+R\+E\+S\+S} the next time it is called even if the mouse button had been released before the call. This is useful when you are only interested in whether mouse buttons have been pressed but not when or in which order.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window whose input mode to set. \\
+\hline
+\mbox{\tt in}  & {\em mode} & One of {\ttfamily G\+L\+F\+W\+\_\+\+C\+U\+R\+S\+O\+R}, {\ttfamily G\+L\+F\+W\+\_\+\+S\+T\+I\+C\+K\+Y\+\_\+\+K\+E\+Y\+S} or {\ttfamily G\+L\+F\+W\+\_\+\+S\+T\+I\+C\+K\+Y\+\_\+\+M\+O\+U\+S\+E\+\_\+\+B\+U\+T\+T\+O\+N\+S}. \\
+\hline
+\mbox{\tt in}  & {\em value} & The new value of the specified input mode.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__input_ga1248dd5b1e566b2817e71547564d6af9}{glfw\+Get\+Input\+Mode}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. Replaces {\ttfamily glfw\+Enable} and {\ttfamily glfw\+Disable}. 
+\end{DoxySince}
+\hypertarget{group__input_gaa73bb92f628a2a0be9c132d56f19362c}{}\index{Input handling@{Input handling}!glfw\+Set\+Key\+Callback@{glfw\+Set\+Key\+Callback}}
+\index{glfw\+Set\+Key\+Callback@{glfw\+Set\+Key\+Callback}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Set\+Key\+Callback(\+G\+L\+F\+Wwindow $\ast$window, G\+L\+F\+Wkeyfun cbfun)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I {\bf G\+L\+F\+Wkeyfun} glfw\+Set\+Key\+Callback (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{{\bf G\+L\+F\+Wkeyfun}}]{cbfun}
+\end{DoxyParamCaption}
+)}\label{group__input_gaa73bb92f628a2a0be9c132d56f19362c}
+
+
+Sets the key callback. 
+
+This function sets the key callback of the specified window, which is called when a key is pressed, repeated or released.
+
+The key functions deal with physical keys, with layout independent \hyperlink{group__keys}{key tokens} named after their values in the standard U\+S keyboard layout. If you want to input text, use the \hyperlink{group__input_ga07b2959b23dc3e466ce7475746021002}{character callback} instead.
+
+When a window loses input focus, it will generate synthetic key release events for all pressed keys. You can tell these events from user-\/generated events by the fact that the synthetic ones are generated after the focus loss event has been processed, i.\+e. after the \hyperlink{group__window_gac89c6534ba7fbab6f6c68b855656c0d4}{window focus callback} has been called.
+
+The scancode of a key is specific to that platform or sometimes even to that machine. Scancodes are intended to allow users to bind keys that don\textquotesingle{}t have a G\+L\+F\+W key token. Such keys have {\ttfamily key} set to {\ttfamily G\+L\+F\+W\+\_\+\+K\+E\+Y\+\_\+\+U\+N\+K\+N\+O\+W\+N}, their state is not saved and so it cannot be queried with \hyperlink{group__input_ga7d8ad8ffaf272808f04e1d5d33ec8859}{glfw\+Get\+Key}.
+
+Sometimes G\+L\+F\+W needs to generate synthetic key events, in which case the scancode may be zero.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window whose callback to set. \\
+\hline
+\mbox{\tt in}  & {\em cbfun} & The new key callback, or {\ttfamily N\+U\+L\+L} to remove the currently set callback. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The previously set callback, or {\ttfamily N\+U\+L\+L} if no callback was set or the library had not been initialized.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+input\+\_\+key
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 1.\+0.
+\end{DoxySince}
+\begin{DoxyParagraph}{}
+{\bfseries G\+L\+F\+W 3\+:} Added window handle parameter. Updated callback signature. 
+\end{DoxyParagraph}
+\hypertarget{group__input_ga20e5ba1ce4e086aedd48a06dc311c95f}{}\index{Input handling@{Input handling}!glfw\+Set\+Mouse\+Button\+Callback@{glfw\+Set\+Mouse\+Button\+Callback}}
+\index{glfw\+Set\+Mouse\+Button\+Callback@{glfw\+Set\+Mouse\+Button\+Callback}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Set\+Mouse\+Button\+Callback(\+G\+L\+F\+Wwindow $\ast$window, G\+L\+F\+Wmousebuttonfun cbfun)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I {\bf G\+L\+F\+Wmousebuttonfun} glfw\+Set\+Mouse\+Button\+Callback (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{{\bf G\+L\+F\+Wmousebuttonfun}}]{cbfun}
+\end{DoxyParamCaption}
+)}\label{group__input_ga20e5ba1ce4e086aedd48a06dc311c95f}
+
+
+Sets the mouse button callback. 
+
+This function sets the mouse button callback of the specified window, which is called when a mouse button is pressed or released.
+
+When a window loses input focus, it will generate synthetic mouse button release events for all pressed mouse buttons. You can tell these events from user-\/generated events by the fact that the synthetic ones are generated after the focus loss event has been processed, i.\+e. after the \hyperlink{group__window_gac89c6534ba7fbab6f6c68b855656c0d4}{window focus callback} has been called.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window whose callback to set. \\
+\hline
+\mbox{\tt in}  & {\em cbfun} & The new callback, or {\ttfamily N\+U\+L\+L} to remove the currently set callback. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The previously set callback, or {\ttfamily N\+U\+L\+L} if no callback was set or the library had not been initialized.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+input\+\_\+mouse\+\_\+button
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 1.\+0.
+\end{DoxySince}
+\begin{DoxyParagraph}{}
+{\bfseries G\+L\+F\+W 3\+:} Added window handle parameter. Updated callback signature. 
+\end{DoxyParagraph}
+\hypertarget{group__input_ga29011514e93368712a3063a28707ced3}{}\index{Input handling@{Input handling}!glfw\+Set\+Scroll\+Callback@{glfw\+Set\+Scroll\+Callback}}
+\index{glfw\+Set\+Scroll\+Callback@{glfw\+Set\+Scroll\+Callback}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Set\+Scroll\+Callback(\+G\+L\+F\+Wwindow $\ast$window, G\+L\+F\+Wscrollfun cbfun)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I {\bf G\+L\+F\+Wscrollfun} glfw\+Set\+Scroll\+Callback (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{{\bf G\+L\+F\+Wscrollfun}}]{cbfun}
+\end{DoxyParamCaption}
+)}\label{group__input_ga29011514e93368712a3063a28707ced3}
+
+
+Sets the scroll callback. 
+
+This function sets the scroll callback of the specified window, which is called when a scrolling device is used, such as a mouse wheel or scrolling area of a touchpad.
+
+The scroll callback receives all scrolling input, like that from a mouse wheel or a touchpad scrolling area.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window whose callback to set. \\
+\hline
+\mbox{\tt in}  & {\em cbfun} & The new scroll callback, or {\ttfamily N\+U\+L\+L} to remove the currently set callback. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The previously set callback, or {\ttfamily N\+U\+L\+L} if no callback was set or the library had not been initialized.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+scrolling
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. Replaces {\ttfamily glfw\+Set\+Mouse\+Wheel\+Callback}. 
+\end{DoxySince}
+\hypertarget{group__input_ga94360a3628a09f32708f83cc3fa48590}{}\index{Input handling@{Input handling}!glfw\+Set\+Time@{glfw\+Set\+Time}}
+\index{glfw\+Set\+Time@{glfw\+Set\+Time}!Input handling@{Input handling}}
+\subsubsection[{glfw\+Set\+Time(double time)}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+W\+A\+P\+I void glfw\+Set\+Time (
+\begin{DoxyParamCaption}
+\item[{double}]{time}
+\end{DoxyParamCaption}
+)}\label{group__input_ga94360a3628a09f32708f83cc3fa48590}
+
+
+Sets the G\+L\+F\+W timer. 
+
+This function sets the value of the G\+L\+F\+W timer. It then continues to count up from that value. The value must be a positive finite number less than or equal to 18446744073.\+0, which is approximately 584.\+5 years.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em time} & The new value, in seconds.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+The upper limit of the timer is calculated as floor((2\textsuperscript{64} -\/ 1) / 10\textsuperscript{9}) and is due to implementations storing nanoseconds in 64 bits. The limit may be increased in the future.
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+time
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 2.\+2. 
+\end{DoxySince}

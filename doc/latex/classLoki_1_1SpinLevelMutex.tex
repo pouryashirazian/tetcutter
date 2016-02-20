@@ -1,0 +1,42 @@
+\hypertarget{classLoki_1_1SpinLevelMutex}{}\section{Loki\+:\+:Spin\+Level\+Mutex Class Reference}
+\label{classLoki_1_1SpinLevelMutex}\index{Loki\+::\+Spin\+Level\+Mutex@{Loki\+::\+Spin\+Level\+Mutex}}
+
+
+{\ttfamily \#include $<$Level\+Mutex.\+h$>$}
+
+Inheritance diagram for Loki\+:\+:Spin\+Level\+Mutex\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classLoki_1_1SpinLevelMutex}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1SpinLevelMutex_a89f6e3f88dd10a5940d53764cf0f29b5}{}\hyperlink{classLoki_1_1SpinLevelMutex_a89f6e3f88dd10a5940d53764cf0f29b5}{Spin\+Level\+Mutex} (unsigned int level)\label{classLoki_1_1SpinLevelMutex_a89f6e3f88dd10a5940d53764cf0f29b5}
+
+\begin{DoxyCompactList}\small\item\em Constructs a spin-\/level mutex. \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1SpinLevelMutex_a7740e7e636a9513d73891aa874a00777}{}virtual \hyperlink{classLoki_1_1SpinLevelMutex_a7740e7e636a9513d73891aa874a00777}{$\sim$\+Spin\+Level\+Mutex} (void)\label{classLoki_1_1SpinLevelMutex_a7740e7e636a9513d73891aa874a00777}
+
+\begin{DoxyCompactList}\small\item\em Destructs the mutex. \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1SpinLevelMutex_a77d9d3b6baab0185750e26f3fe5ad914}{}virtual \hyperlink{classLoki_1_1MutexErrors_acd0eb6065ca303083d2e0229d7bff590}{Mutex\+Errors\+::\+Type} {\bfseries Lock} (void) volatile\label{classLoki_1_1SpinLevelMutex_a77d9d3b6baab0185750e26f3fe5ad914}
+
+\item 
+\hypertarget{classLoki_1_1SpinLevelMutex_a722f2ecc002bc06a56191babef96cf20}{}virtual \hyperlink{classLoki_1_1MutexErrors_acd0eb6065ca303083d2e0229d7bff590}{Mutex\+Errors\+::\+Type} {\bfseries Try\+Lock} (void) volatile\label{classLoki_1_1SpinLevelMutex_a722f2ecc002bc06a56191babef96cf20}
+
+\item 
+\hypertarget{classLoki_1_1SpinLevelMutex_ae7d2ee05c4fc87ee58dc07db630863c8}{}virtual \hyperlink{classLoki_1_1MutexErrors_acd0eb6065ca303083d2e0229d7bff590}{Mutex\+Errors\+::\+Type} {\bfseries Unlock} (void) volatile\label{classLoki_1_1SpinLevelMutex_ae7d2ee05c4fc87ee58dc07db630863c8}
+
+\item 
+\hypertarget{classLoki_1_1SpinLevelMutex_a1f0f467488151c59acae91530f22220a}{}unsigned int {\bfseries Get\+Level} (void) const  volatile\label{classLoki_1_1SpinLevelMutex_a1f0f467488151c59acae91530f22220a}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implements a spin-\/loop to wait for the mutex to unlock. Since this class makes the thread wait in a tight spin-\/loop, it can cause the thread to remain busy while waiting and thus consume C\+P\+U cycles. For that reason, this mutex is best used only for very low-\/level resources -\/ especially resources which do not require much C\+P\+U time to exercise. Rule of thumb\+: Use this only if all actions on the resource consume a very small number of C\+P\+U cycles. Otherwise, use the \hyperlink{classLoki_1_1SleepLevelMutex}{Sleep\+Level\+Mutex} instead. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/\hyperlink{LevelMutex_8h}{Level\+Mutex.\+h}\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/src/\hyperlink{LevelMutex_8cpp}{Level\+Mutex.\+cpp}\end{DoxyCompactItemize}

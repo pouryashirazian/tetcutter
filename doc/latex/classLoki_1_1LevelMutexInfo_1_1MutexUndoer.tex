@@ -1,0 +1,27 @@
+\hypertarget{classLoki_1_1LevelMutexInfo_1_1MutexUndoer}{}\section{Loki\+:\+:Level\+Mutex\+Info\+:\+:Mutex\+Undoer Class Reference}
+\label{classLoki_1_1LevelMutexInfo_1_1MutexUndoer}\index{Loki\+::\+Level\+Mutex\+Info\+::\+Mutex\+Undoer@{Loki\+::\+Level\+Mutex\+Info\+::\+Mutex\+Undoer}}
+
+
+{\ttfamily \#include $<$Level\+Mutex.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1LevelMutexInfo_1_1MutexUndoer_ae1874886d545529c628055a550413150}{}{\bfseries Mutex\+Undoer} (\hyperlink{classLoki_1_1LevelMutexInfo_a76a0315d91234f5066c75660a9f27a7f}{Mutex\+Container} \&mutexes)\label{classLoki_1_1LevelMutexInfo_1_1MutexUndoer_ae1874886d545529c628055a550413150}
+
+\item 
+\hypertarget{classLoki_1_1LevelMutexInfo_1_1MutexUndoer_a61c4b4e18a13559800d73239396ee514}{}void {\bfseries Set\+Place} (Level\+Mutex\+Container\+Iter \&here)\label{classLoki_1_1LevelMutexInfo_1_1MutexUndoer_a61c4b4e18a13559800d73239396ee514}
+
+\item 
+\hypertarget{classLoki_1_1LevelMutexInfo_1_1MutexUndoer_aa32b3632b9732b539dd445a48cc9a2a2}{}void {\bfseries Cancel} (void)\label{classLoki_1_1LevelMutexInfo_1_1MutexUndoer_aa32b3632b9732b539dd445a48cc9a2a2}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Undoes actions by Multi\+Lock if an exception occurs. It keeps track of which mutexes in a container got locked, and if an exception occurs, then the destructor unlocks them. If Multi\+Lock succeeds, then it cancels the undoer so nothing gets unlocked inadvertently. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/\hyperlink{LevelMutex_8h}{Level\+Mutex.\+h}\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/src/\hyperlink{LevelMutex_8cpp}{Level\+Mutex.\+cpp}\end{DoxyCompactItemize}

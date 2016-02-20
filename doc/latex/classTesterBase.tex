@@ -1,0 +1,92 @@
+\hypertarget{classTesterBase}{}\section{Tester\+Base Class Reference}
+\label{classTesterBase}\index{Tester\+Base@{Tester\+Base}}
+Inheritance diagram for Tester\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.413793cm]{classTesterBase}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classTesterBase_aa4b9a75a4516a4f3ab9485b437693811}{}enum \hyperlink{classTesterBase_aa4b9a75a4516a4f3ab9485b437693811}{result\+\_\+t} \{ {\bfseries S\+U\+M}, 
+{\bfseries A\+V\+G}, 
+{\bfseries M\+I\+N}, 
+{\bfseries M\+A\+X}
+ \}\label{classTesterBase_aa4b9a75a4516a4f3ab9485b437693811}
+\begin{DoxyCompactList}\small\item\em Type of aggregation from results of threads. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classTesterBase_ace45830020ea18f7847faa2eb757f9fc}{Tester\+Base} (int ntests)
+\begin{DoxyCompactList}\small\item\em init tester base. \end{DoxyCompactList}\item 
+\hypertarget{classTesterBase_aaaca975185011c1d4bfffbde2b153936}{}void \hyperlink{classTesterBase_aaaca975185011c1d4bfffbde2b153936}{base\+\_\+init} (arg\+\_\+t v, int t, \hyperlink{classHarness_1_1SpinBarrier}{Harness\+::\+Spin\+Barrier} \&b)\label{classTesterBase_aaaca975185011c1d4bfffbde2b153936}
+
+\begin{DoxyCompactList}\small\item\em internal function \end{DoxyCompactList}\item 
+\hypertarget{classTesterBase_a3c84ff308ec38fa49f89109d18d61e2a}{}virtual void \hyperlink{classTesterBase_a3c84ff308ec38fa49f89109d18d61e2a}{init} ()\label{classTesterBase_a3c84ff308ec38fa49f89109d18d61e2a}
+
+\begin{DoxyCompactList}\small\item\em optionally override to init after value and threads count were set. \end{DoxyCompactList}\item 
+\hypertarget{classTesterBase_a7f3417f782fc30d35c34b91d976fbfe4}{}virtual std\+::string \hyperlink{classTesterBase_a7f3417f782fc30d35c34b91d976fbfe4}{get\+\_\+name} (int testn)\label{classTesterBase_a7f3417f782fc30d35c34b91d976fbfe4}
+
+\begin{DoxyCompactList}\small\item\em Override to provide your names. \end{DoxyCompactList}\item 
+\hypertarget{classTesterBase_a49fe38263c8f9fbfb8bc385220903012}{}virtual void \hyperlink{classTesterBase_a49fe38263c8f9fbfb8bc385220903012}{test\+\_\+prefix} (int testn, int threadn)\label{classTesterBase_a49fe38263c8f9fbfb8bc385220903012}
+
+\begin{DoxyCompactList}\small\item\em optionally override to init test mode just before execution for a given thread number. \end{DoxyCompactList}\item 
+\hypertarget{classTesterBase_aebc1085725f77fc35803a131c484cbe7}{}virtual \hyperlink{classvalue__t}{value\+\_\+t} \hyperlink{classTesterBase_aebc1085725f77fc35803a131c484cbe7}{test} (int testn, int threadn)=0\label{classTesterBase_aebc1085725f77fc35803a131c484cbe7}
+
+\begin{DoxyCompactList}\small\item\em Override to provide main test\textquotesingle{}s entry function returns a value to record. \end{DoxyCompactList}\item 
+\hypertarget{classTesterBase_a06eed8a46bdb8f2d731e1de7edbd5a6a}{}virtual const char $\ast$ \hyperlink{classTesterBase_a06eed8a46bdb8f2d731e1de7edbd5a6a}{get\+\_\+result\+\_\+type} (int, \hyperlink{classTesterBase_aa4b9a75a4516a4f3ab9485b437693811}{result\+\_\+t} type) const \label{classTesterBase_a06eed8a46bdb8f2d731e1de7edbd5a6a}
+
+\begin{DoxyCompactList}\small\item\em Override to change result type for the test. Return postfix for test name or 0 if result type is not needed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classTesterBase_a4da7e37b63e55de4716d7cd9dce8ce34}{}\hyperlink{classHarness_1_1SpinBarrier}{Harness\+::\+Spin\+Barrier} $\ast$ \hyperlink{classTesterBase_a4da7e37b63e55de4716d7cd9dce8ce34}{barrier}\label{classTesterBase_a4da7e37b63e55de4716d7cd9dce8ce34}
+
+\begin{DoxyCompactList}\small\item\em it is barrier for synchronizing between threads \end{DoxyCompactList}\item 
+\hypertarget{classTesterBase_a13fd7dbd72a31cf16945f4b8a347d86c}{}const int \hyperlink{classTesterBase_a13fd7dbd72a31cf16945f4b8a347d86c}{tests\+\_\+count}\label{classTesterBase_a13fd7dbd72a31cf16945f4b8a347d86c}
+
+\begin{DoxyCompactList}\small\item\em number of tests per this tester \end{DoxyCompactList}\item 
+\hypertarget{classTesterBase_aac0718877844ec5dac8f8f512067627b}{}int \hyperlink{classTesterBase_aac0718877844ec5dac8f8f512067627b}{threads\+\_\+count}\label{classTesterBase_aac0718877844ec5dac8f8f512067627b}
+
+\begin{DoxyCompactList}\small\item\em number of threads to operate \end{DoxyCompactList}\item 
+\hypertarget{classTesterBase_a1f1fa58ae32a2a127ce50e9a5aa021b8}{}arg\+\_\+t \hyperlink{classTesterBase_a1f1fa58ae32a2a127ce50e9a5aa021b8}{value}\label{classTesterBase_a1f1fa58ae32a2a127ce50e9a5aa021b8}
+
+\begin{DoxyCompactList}\small\item\em some value for tester \end{DoxyCompactList}\item 
+\hypertarget{classTesterBase_a0ba2f6c047b8ac4555fd3106a08c325a}{}const char $\ast$ \hyperlink{classTesterBase_a0ba2f6c047b8ac4555fd3106a08c325a}{tester\+\_\+name}\label{classTesterBase_a0ba2f6c047b8ac4555fd3106a08c325a}
+
+\begin{DoxyCompactList}\small\item\em tester name \end{DoxyCompactList}\item 
+\hypertarget{classTesterBase_a628c30b80de86cb69fb3a44f34ed9adc}{}char {\bfseries pad} \mbox{[}128-\/sizeof(arg\+\_\+t)-\/sizeof(int)$\ast$2-\/sizeof(void $\ast$)$\ast$2\mbox{]}\label{classTesterBase_a628c30b80de86cb69fb3a44f34ed9adc}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classTesterBase_a3572f7bef6d46d09a8579123b0752fd6}{}class {\bfseries Test\+Processor}\label{classTesterBase_a3572f7bef6d46d09a8579123b0752fd6}
+
+\item 
+\hypertarget{classTesterBase_aef55eac6a104472bd865f4dd2a13d378}{}class {\bfseries Test\+Runner}\label{classTesterBase_aef55eac6a104472bd865f4dd2a13d378}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classTesterBase_ace45830020ea18f7847faa2eb757f9fc}{}\index{Tester\+Base@{Tester\+Base}!Tester\+Base@{Tester\+Base}}
+\index{Tester\+Base@{Tester\+Base}!Tester\+Base@{Tester\+Base}}
+\subsubsection[{Tester\+Base(int ntests)}]{\setlength{\rightskip}{0pt plus 5cm}Tester\+Base\+::\+Tester\+Base (
+\begin{DoxyParamCaption}
+\item[{int}]{ntests}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classTesterBase_ace45830020ea18f7847faa2eb757f9fc}
+
+
+init tester base. 
+
+\begin{DoxyItemize}
+\item ntests is number of embeded tests in this tester. \end{DoxyItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/perf/time\+\_\+framework.\+h\end{DoxyCompactItemize}

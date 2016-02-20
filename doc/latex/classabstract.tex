@@ -1,0 +1,138 @@
+\hypertarget{classabstract}{}\section{abstract Class Reference}
+\label{classabstract}\index{abstract@{abstract}}
+
+
+{\ttfamily \#include $<$Evolution.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classabstract_ab1051dc45e6e791c9ddfc88bed0387ea}{Evolution} (\hyperlink{classMatrix}{Matrix} $\ast$m, Board\+Ptr board)
+\item 
+\hypertarget{classabstract_ad8d24fd14ed498a4dedb93a63383155d}{}virtual void \hyperlink{classabstract_ad8d24fd14ed498a4dedb93a63383155d}{Run} ()=0\label{classabstract_ad8d24fd14ed498a4dedb93a63383155d}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classabstract_ad8d24fd14ed498a4dedb93a63383155d}{Run()} -\/ begins looped evolution. \end{DoxyCompactList}\item 
+\hypertarget{classabstract_a75f5d25135b14afe868120a0c4945c9b}{}virtual void \hyperlink{classabstract_a75f5d25135b14afe868120a0c4945c9b}{Quit} ()\label{classabstract_a75f5d25135b14afe868120a0c4945c9b}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classabstract_a75f5d25135b14afe868120a0c4945c9b}{Quit()} -\/ tell the thread to terminate. \end{DoxyCompactList}\item 
+\hypertarget{classabstract_a1a0ecdaa6b7bfc32a064e4a5e9ccd81d}{}virtual void \hyperlink{classabstract_a1a0ecdaa6b7bfc32a064e4a5e9ccd81d}{Step} ()=0\label{classabstract_a1a0ecdaa6b7bfc32a064e4a5e9ccd81d}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classabstract_a1a0ecdaa6b7bfc32a064e4a5e9ccd81d}{Step()} -\/ performs a single evolutionary generation computation on the game matrix. \end{DoxyCompactList}\item 
+\hypertarget{classabstract_a4fddd7589c3969ecd3f2d6b13454237f}{}virtual void \hyperlink{classabstract_a4fddd7589c3969ecd3f2d6b13454237f}{Set\+Pause} (bool condition)\label{classabstract_a4fddd7589c3969ecd3f2d6b13454237f}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classabstract_a4fddd7589c3969ecd3f2d6b13454237f}{Set\+Pause()} -\/ change condition of variable is\+\_\+paused. \end{DoxyCompactList}\item 
+\hypertarget{classabstract_a7493affccf805f00fd570b71e21f7f28}{}virtual void {\bfseries Initialize} (Windows\+::\+U\+I\+::\+Core\+::\+Core\+Window$^\wedge$window, Windows\+::\+U\+I\+::\+Xaml\+::\+Controls\+::\+Swap\+Chain\+Background\+Panel$^\wedge$panel, float dpi)\label{classabstract_a7493affccf805f00fd570b71e21f7f28}
+
+\item 
+\hypertarget{classabstract_ae5d9c0f184dd5b93fa25c592b1216a48}{}virtual void {\bfseries Create\+Device\+Independent\+Resources} ()\label{classabstract_ae5d9c0f184dd5b93fa25c592b1216a48}
+
+\item 
+\hypertarget{classabstract_a7552b9f91e3323806eaa5ee1ff98272b}{}virtual void {\bfseries Create\+Device\+Resources} ()\label{classabstract_a7552b9f91e3323806eaa5ee1ff98272b}
+
+\item 
+\hypertarget{classabstract_a919866f3e1802ac79792f1298c5ece87}{}virtual void {\bfseries Set\+Dpi} (float dpi)\label{classabstract_a919866f3e1802ac79792f1298c5ece87}
+
+\item 
+\hypertarget{classabstract_acfccc8b9e516e87c3e04cf09221e0992}{}virtual void {\bfseries Create\+Window\+Size\+Dependent\+Resources} ()\label{classabstract_acfccc8b9e516e87c3e04cf09221e0992}
+
+\item 
+\hypertarget{classabstract_a3804ec15b30b817f87d5d3a8e85675c9}{}virtual void {\bfseries Update\+For\+Window\+Size\+Change} ()\label{classabstract_a3804ec15b30b817f87d5d3a8e85675c9}
+
+\item 
+\hypertarget{classabstract_ac1ca23d738617f830fc0914e0ed1fb0d}{}virtual void {\bfseries Render} ()=0\label{classabstract_ac1ca23d738617f830fc0914e0ed1fb0d}
+
+\item 
+\hypertarget{classabstract_a05542813f28858202c441b8a6cfe3f72}{}virtual void {\bfseries Present} ()\label{classabstract_a05542813f28858202c441b8a6cfe3f72}
+
+\item 
+\hypertarget{classabstract_a08561ac9785cb94afcb6b46c418166f8}{}virtual float {\bfseries Convert\+Dips\+To\+Pixels} (float dips)\label{classabstract_a08561ac9785cb94afcb6b46c418166f8}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classabstract_a2ec8eb0ec848bf4d7f218c8d6cfc870d}{}internal {\bfseries \+\_\+\+\_\+pad0\+\_\+\+\_\+}\+: Direct\+X\+Base()\label{classabstract_a2ec8eb0ec848bf4d7f218c8d6cfc870d}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classabstract_a54ed8fddb5fc83149e11a442803e30b6}{Update\+Matrix} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classabstract_afd156626a2264fdb5a8ef0080444bc7c}{}\hyperlink{classMatrix}{Matrix} $\ast$ {\bfseries m\+\_\+matrix}\label{classabstract_afd156626a2264fdb5a8ef0080444bc7c}
+
+\item 
+\hypertarget{classabstract_ad69f834dcf8ee5825bd14215f85642f1}{}char $\ast$ \hyperlink{classabstract_ad69f834dcf8ee5825bd14215f85642f1}{m\+\_\+dest}\label{classabstract_ad69f834dcf8ee5825bd14215f85642f1}
+
+\begin{DoxyCompactList}\small\item\em Pointer to initial matrix. \end{DoxyCompactList}\item 
+\hypertarget{classabstract_ae5372638ee6221954150aac4284abe6a}{}Board\+Ptr \hyperlink{classabstract_ae5372638ee6221954150aac4284abe6a}{m\+\_\+board}\label{classabstract_ae5372638ee6221954150aac4284abe6a}
+
+\begin{DoxyCompactList}\small\item\em Pointer to calculation destination data. \end{DoxyCompactList}\item 
+\hypertarget{classabstract_ab5503f99091b55b49196f0676cda7d91}{}int \hyperlink{classabstract_ab5503f99091b55b49196f0676cda7d91}{m\+\_\+size}\label{classabstract_ab5503f99091b55b49196f0676cda7d91}
+
+\begin{DoxyCompactList}\small\item\em The game board to update. \end{DoxyCompactList}\item 
+\hypertarget{classabstract_a603c9183f72c7eac955dde6ca08a2d36}{}volatile bool \hyperlink{classabstract_a603c9183f72c7eac955dde6ca08a2d36}{m\+\_\+done}\label{classabstract_a603c9183f72c7eac955dde6ca08a2d36}
+
+\begin{DoxyCompactList}\small\item\em size of the matrix data block \end{DoxyCompactList}\item 
+\hypertarget{classabstract_a63a0cbaa40101932a4bcbfb6be42a670}{}Int32 \hyperlink{classabstract_a63a0cbaa40101932a4bcbfb6be42a670}{m\+\_\+n\+Iteration}\label{classabstract_a63a0cbaa40101932a4bcbfb6be42a670}
+
+\begin{DoxyCompactList}\small\item\em a flag used to terminate the thread \end{DoxyCompactList}\item 
+\hypertarget{classabstract_a9a591d53b6c198319e01bffa04009233}{}volatile bool \hyperlink{classabstract_a9a591d53b6c198319e01bffa04009233}{is\+\_\+paused}\label{classabstract_a9a591d53b6c198319e01bffa04009233}
+
+\begin{DoxyCompactList}\small\item\em current calculation cycle index \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static volatile double \hyperlink{classabstract_a695c458d4949105d155a6839b1570b0d}{m\+\_\+serial\+\_\+time} = 0
+\begin{DoxyCompactList}\small\item\em is needed to perform next iteration \end{DoxyCompactList}\item 
+\hypertarget{classabstract_a71e22ed08dac79fd10ef02eaf3c41181}{}static System\+::\+Threading\+::\+Auto\+Reset\+Event {\bfseries m\+\_\+evt\+\_\+start\+\_\+serial} = gcnew Auto\+Reset\+Event(false)\label{classabstract_a71e22ed08dac79fd10ef02eaf3c41181}
+
+\item 
+\hypertarget{classabstract_a9e445622a55642f7404d61cb4ec15661}{}static System\+::\+Threading\+::\+Auto\+Reset\+Event {\bfseries m\+\_\+evt\+\_\+start\+\_\+parallel} = gcnew Auto\+Reset\+Event(false)\label{classabstract_a9e445622a55642f7404d61cb4ec15661}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+class Evolution -\/ base class for \hyperlink{classSequentialEvolution}{Sequential\+Evolution} and \hyperlink{classParallelEvolution}{Parallel\+Evolution} 
+
+\subsection{Member Function Documentation}
+\hypertarget{classabstract_ab1051dc45e6e791c9ddfc88bed0387ea}{}\index{abstract@{abstract}!Evolution@{Evolution}}
+\index{Evolution@{Evolution}!abstract@{abstract}}
+\subsubsection[{Evolution(\+Matrix $\ast$m, Board\+Ptr board)}]{\setlength{\rightskip}{0pt plus 5cm}abstract\+::\+Evolution (
+\begin{DoxyParamCaption}
+\item[{{\bf Matrix} $\ast$}]{m, }
+\item[{Board\+Ptr}]{board}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classabstract_ab1051dc45e6e791c9ddfc88bed0387ea}
+allocate memory for second matrix data block 
+\begin{DoxyParams}{Parameters}
+{\em board} & beginning matrix including initial pattern the board to update \\
+\hline
+\end{DoxyParams}
+\hypertarget{classabstract_a54ed8fddb5fc83149e11a442803e30b6}{}\index{abstract@{abstract}!Update\+Matrix@{Update\+Matrix}}
+\index{Update\+Matrix@{Update\+Matrix}!abstract@{abstract}}
+\subsubsection[{Update\+Matrix()}]{\setlength{\rightskip}{0pt plus 5cm}void abstract\+::\+Update\+Matrix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{classabstract_a54ed8fddb5fc83149e11a442803e30b6}
+\hyperlink{classabstract_a54ed8fddb5fc83149e11a442803e30b6}{Update\+Matrix()} -\/ moves the previous destination data to the source data block and zeros out destination. 
+
+\subsection{Member Data Documentation}
+\hypertarget{classabstract_a695c458d4949105d155a6839b1570b0d}{}\index{abstract@{abstract}!m\+\_\+serial\+\_\+time@{m\+\_\+serial\+\_\+time}}
+\index{m\+\_\+serial\+\_\+time@{m\+\_\+serial\+\_\+time}!abstract@{abstract}}
+\subsubsection[{m\+\_\+serial\+\_\+time}]{\setlength{\rightskip}{0pt plus 5cm}volatile double abstract\+::m\+\_\+serial\+\_\+time = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}\label{classabstract_a695c458d4949105d155a6839b1570b0d}
+
+
+is needed to perform next iteration 
+
+Calculation time of the sequential version (since the start), seconds. This member is updated by the sequential version and read by parallel, so no synchronization is necessary. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/examples/parallel\+\_\+for/game\+\_\+of\+\_\+life/src/Evolution.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/examples/parallel\+\_\+for/tachyon/msvs/win8ui/Direct\+X\+Base.\+h\end{DoxyCompactItemize}

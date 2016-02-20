@@ -1,0 +1,45 @@
+\hypertarget{group__ThreadingGroup}{}\section{Threading}
+\label{group__ThreadingGroup}\index{Threading@{Threading}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classLoki_1_1Mutex}{Loki\+::\+Mutex}
+\item 
+class \hyperlink{classLoki_1_1SingleThreaded}{Loki\+::\+Single\+Threaded$<$ Host, Mutex\+Policy $>$}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Policies to for the threading model\+:
+
+
+\begin{DoxyItemize}
+\item Single\+Threaded
+\item Object\+Level\+Lockable
+\item Class\+Level\+Lockable
+\end{DoxyItemize}
+
+All classes in \hyperlink{namespaceLoki}{Loki} have configurable threading model.
+
+The macro L\+O\+K\+I\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+T\+H\+R\+E\+A\+D\+I\+N\+G selects the default threading model for certain components of \hyperlink{namespaceLoki}{Loki} (it affects only default template arguments)
+
+\begin{DoxyParagraph}{Usage\+:}
+
+\end{DoxyParagraph}
+To use a specific threading model define
+
+
+\begin{DoxyItemize}
+\item nothing, single-\/theading is default
+\item L\+O\+K\+I\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+L\+E\+V\+E\+L\+\_\+\+T\+H\+R\+E\+A\+D\+I\+N\+G for object-\/level-\/threading
+\item L\+O\+K\+I\+\_\+\+C\+L\+A\+S\+S\+\_\+\+L\+E\+V\+E\+L\+\_\+\+T\+H\+R\+E\+A\+D\+I\+N\+G for class-\/level-\/threading
+\end{DoxyItemize}
+
+\begin{DoxyParagraph}{Supported platfroms\+:}
+
+\end{DoxyParagraph}
+
+\begin{DoxyItemize}
+\item Windows (windows.\+h)
+\item P\+O\+S\+I\+X (pthread.\+h)\+: No recursive mutex support with pthread. This means\+: calling Lock() on a \hyperlink{classLoki_1_1Mutex}{Loki\+::\+Mutex} twice from the same thread before unlocking the mutex deadlocks the system. To avoid this redesign your synchronization. See also\+: \href{http://sourceforge.net/tracker/index.php?func=detail&aid=1516182&group_id=29557&atid=396647}{\tt http\+://sourceforge.\+net/tracker/index.\+php?func=detail\&aid=1516182\&group\+\_\+id=29557\&atid=396647} 
+\end{DoxyItemize}

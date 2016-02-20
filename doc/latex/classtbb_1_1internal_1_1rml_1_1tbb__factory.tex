@@ -1,0 +1,72 @@
+\hypertarget{classtbb_1_1internal_1_1rml_1_1tbb__factory}{}\section{tbb\+:\+:internal\+:\+:rml\+:\+:tbb\+\_\+factory Class Reference}
+\label{classtbb_1_1internal_1_1rml_1_1tbb__factory}\index{tbb\+::internal\+::rml\+::tbb\+\_\+factory@{tbb\+::internal\+::rml\+::tbb\+\_\+factory}}
+
+
+{\ttfamily \#include $<$rml\+\_\+tbb.\+h$>$}
+
+Inheritance diagram for tbb\+:\+:internal\+:\+:rml\+:\+:tbb\+\_\+factory\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classtbb_1_1internal_1_1rml_1_1tbb__factory}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1rml_1_1tbb__factory_a8bd38f4beaeb53c089cd6f7d2bc1d3d0}{}typedef \+::\hyperlink{classrml_1_1versioned__object_a759650010b271238ef9433442730c423}{rml\+::versioned\+\_\+object\+::version\+\_\+type} {\bfseries version\+\_\+type}\label{classtbb_1_1internal_1_1rml_1_1tbb__factory_a8bd38f4beaeb53c089cd6f7d2bc1d3d0}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1rml_1_1tbb__factory_a5b5493b8ef6617aa87e1ef8c62ecfd02}{}typedef \hyperlink{classtbb_1_1internal_1_1rml_1_1tbb__client}{tbb\+\_\+client} {\bfseries client\+\_\+type}\label{classtbb_1_1internal_1_1rml_1_1tbb__factory_a5b5493b8ef6617aa87e1ef8c62ecfd02}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1rml_1_1tbb__factory_a44660954dca2c2c0175de3857677ab25}{}typedef \hyperlink{classtbb_1_1internal_1_1rml_1_1tbb__server}{tbb\+\_\+server} {\bfseries server\+\_\+type}\label{classtbb_1_1internal_1_1rml_1_1tbb__factory_a44660954dca2c2c0175de3857677ab25}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrml_1_1factory_a4c1de6c79581a01b37d4ff16340e44c9}{status\+\_\+type} \hyperlink{classtbb_1_1internal_1_1rml_1_1tbb__factory_a86bfebfa4755f0d0f07283a74c1581fd}{open} ()
+\begin{DoxyCompactList}\small\item\em Open factory. \end{DoxyCompactList}\item 
+\hyperlink{classrml_1_1factory_a4c1de6c79581a01b37d4ff16340e44c9}{status\+\_\+type} \hyperlink{classtbb_1_1internal_1_1rml_1_1tbb__factory_a81f736b9875ed1dc7dccd7404e08a057}{make\+\_\+server} (\hyperlink{classtbb_1_1internal_1_1rml_1_1tbb__server}{server\+\_\+type} $\ast$\&, \hyperlink{classtbb_1_1internal_1_1rml_1_1tbb__client}{client\+\_\+type} \&)
+\begin{DoxyCompactList}\small\item\em Factory method to be called by client to create a server object. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1rml_1_1tbb__factory_a324b0329d0356ce02c1f8d7fce8ed7af}{}void \hyperlink{classtbb_1_1internal_1_1rml_1_1tbb__factory_a324b0329d0356ce02c1f8d7fce8ed7af}{close} ()\label{classtbb_1_1internal_1_1rml_1_1tbb__factory_a324b0329d0356ce02c1f8d7fce8ed7af}
+
+\begin{DoxyCompactList}\small\item\em Close factory. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1rml_1_1tbb__factory_a7377ea182a09d60d4cf6c5d80befd88a}{}void \hyperlink{classtbb_1_1internal_1_1rml_1_1tbb__factory_a7377ea182a09d60d4cf6c5d80befd88a}{call\+\_\+with\+\_\+server\+\_\+info} (\+::rml\+::server\+\_\+info\+\_\+callback\+\_\+t cb, void $\ast$arg) const \label{classtbb_1_1internal_1_1rml_1_1tbb__factory_a7377ea182a09d60d4cf6c5d80befd88a}
+
+\begin{DoxyCompactList}\small\item\em Call the callback with the server build info. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Client must ensure that instance is zero-\/inited, typically by being a file-\/scope object. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classtbb_1_1internal_1_1rml_1_1tbb__factory_a81f736b9875ed1dc7dccd7404e08a057}{}\index{tbb\+::internal\+::rml\+::tbb\+\_\+factory@{tbb\+::internal\+::rml\+::tbb\+\_\+factory}!make\+\_\+server@{make\+\_\+server}}
+\index{make\+\_\+server@{make\+\_\+server}!tbb\+::internal\+::rml\+::tbb\+\_\+factory@{tbb\+::internal\+::rml\+::tbb\+\_\+factory}}
+\subsubsection[{make\+\_\+server(server\+\_\+type $\ast$\&, client\+\_\+type \&)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf status\+\_\+type} tbb\+::internal\+::rml\+::tbb\+\_\+factory\+::make\+\_\+server (
+\begin{DoxyParamCaption}
+\item[{{\bf server\+\_\+type} $\ast$\&}]{, }
+\item[{{\bf client\+\_\+type} \&}]{}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1internal_1_1rml_1_1tbb__factory_a81f736b9875ed1dc7dccd7404e08a057}
+
+
+Factory method to be called by client to create a server object. 
+
+Factory must be open. Returns st\+\_\+success, or st\+\_\+incompatible . \hypertarget{classtbb_1_1internal_1_1rml_1_1tbb__factory_a86bfebfa4755f0d0f07283a74c1581fd}{}\index{tbb\+::internal\+::rml\+::tbb\+\_\+factory@{tbb\+::internal\+::rml\+::tbb\+\_\+factory}!open@{open}}
+\index{open@{open}!tbb\+::internal\+::rml\+::tbb\+\_\+factory@{tbb\+::internal\+::rml\+::tbb\+\_\+factory}}
+\subsubsection[{open()}]{\setlength{\rightskip}{0pt plus 5cm}{\bf status\+\_\+type} tbb\+::internal\+::rml\+::tbb\+\_\+factory\+::open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1internal_1_1rml_1_1tbb__factory_a86bfebfa4755f0d0f07283a74c1581fd}
+
+
+Open factory. 
+
+Dynamically links against R\+M\+L library. Returns st\+\_\+success, st\+\_\+incompatible, or st\+\_\+not\+\_\+found. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/rml/include/rml\+\_\+tbb.\+h\end{DoxyCompactItemize}

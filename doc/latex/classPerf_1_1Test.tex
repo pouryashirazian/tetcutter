@@ -1,0 +1,179 @@
+\hypertarget{classPerf_1_1Test}{}\section{Perf\+:\+:Test Class Reference}
+\label{classPerf_1_1Test}\index{Perf\+::\+Test@{Perf\+::\+Test}}
+Inheritance diagram for Perf\+:\+:Test\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.641026cm]{classPerf_1_1Test}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structPerf_1_1Test_1_1ThreadInfo}{Thread\+Info}
+\begin{DoxyCompactList}\small\item\em Struct used by tests running in multiple masters mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classPerf_1_1Test_a6c29f916fc475135f7ab216991787233}{}virtual int \hyperlink{classPerf_1_1Test_a6c29f916fc475135f7ab216991787233}{Num\+Workloads} ()=0\label{classPerf_1_1Test_a6c29f916fc475135f7ab216991787233}
+
+\begin{DoxyCompactList}\small\item\em Returns the number of workloads supported. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classPerf_1_1Test_a49e2b75f552355cea43b841bba1237b3}{Set\+Workload} (int workload\+Index)=0
+\begin{DoxyCompactList}\small\item\em Set workload info for the subsequent calls to \hyperlink{classPerf_1_1Test_a64ad02d5651eb526f14e8d17df229cfb}{Run()} and \hyperlink{classPerf_1_1Test_aa36442055c9cd1267cbdf8a0bf431239}{Run\+Serial()} \end{DoxyCompactList}\item 
+virtual void \hyperlink{classPerf_1_1Test_a64ad02d5651eb526f14e8d17df229cfb}{Run} (\hyperlink{structPerf_1_1Test_1_1ThreadInfo}{Thread\+Info} \&ti)=0
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPerf_1_1Test}{Test} implementation. \end{DoxyCompactList}\item 
+virtual const char $\ast$ \hyperlink{classPerf_1_1Test_a4a4be9dc1805f2bb1b8ad8cf8fe78e94}{Name} ()
+\begin{DoxyCompactList}\small\item\em Returns short title string to be used in the regular output to identify the test. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classPerf_1_1Test_ac56059ea14218db626951886e7f7f6db}{Min\+Num\+Masters} ()
+\begin{DoxyCompactList}\small\item\em Returns minimal number of master threads. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classPerf_1_1Test_abbfd7f54b8d823e6a505dc0932a49ef4}{Max\+Num\+Masters} ()
+\begin{DoxyCompactList}\small\item\em Returns maximal number of master threads. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classPerf_1_1Test_aa36442055c9cd1267cbdf8a0bf431239}{Run\+Serial} (\hyperlink{structPerf_1_1Test_1_1ThreadInfo}{Thread\+Info} \&ti)
+\begin{DoxyCompactList}\small\item\em Executes serial workload equivalent to the one processed by \hyperlink{classPerf_1_1Test_a64ad02d5651eb526f14e8d17df229cfb}{Run()} \end{DoxyCompactList}\item 
+virtual void \hyperlink{classPerf_1_1Test_a87a68df5a69fe0805fc858ea9756d42d}{On\+Start} (\hyperlink{structPerf_1_1Test_1_1ThreadInfo}{Thread\+Info} \&ti)
+\begin{DoxyCompactList}\small\item\em Invoked before each call to \hyperlink{classPerf_1_1Test_a64ad02d5651eb526f14e8d17df229cfb}{Run()} \end{DoxyCompactList}\item 
+virtual void \hyperlink{classPerf_1_1Test_a496b4663baca967436dad05299deed2b}{On\+Finish} (\hyperlink{structPerf_1_1Test_1_1ThreadInfo}{Thread\+Info} \&ti)
+\begin{DoxyCompactList}\small\item\em Invoked after each call to \hyperlink{classPerf_1_1Test_a64ad02d5651eb526f14e8d17df229cfb}{Run()} \end{DoxyCompactList}\item 
+virtual void \hyperlink{classPerf_1_1Test_ac3d76a83270f92de9e7e0349d6765f51}{Baseline} (\hyperlink{structPerf_1_1Test_1_1ThreadInfo}{Thread\+Info} \&)
+\begin{DoxyCompactList}\small\item\em Functionality, the cost of which has to be factored out from timing results. \end{DoxyCompactList}\item 
+\hypertarget{classPerf_1_1Test_a1e4dfdeff61c870a24e00bdf23a4df79}{}virtual const char $\ast$ \hyperlink{classPerf_1_1Test_a1e4dfdeff61c870a24e00bdf23a4df79}{Description} ()\label{classPerf_1_1Test_a1e4dfdeff61c870a24e00bdf23a4df79}
+
+\begin{DoxyCompactList}\small\item\em Returns description string to be used in the benchmark info/summary output. \end{DoxyCompactList}\item 
+virtual const char $\ast$ \hyperlink{classPerf_1_1Test_a10d8919439d2f0bc37aafbb447a2c493}{Histogram\+Name} ()
+\begin{DoxyCompactList}\small\item\em Specifies if the histogram of individual run times in a series. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classPerf_1_1Test_ac3d76a83270f92de9e7e0349d6765f51}{}\index{Perf\+::\+Test@{Perf\+::\+Test}!Baseline@{Baseline}}
+\index{Baseline@{Baseline}!Perf\+::\+Test@{Perf\+::\+Test}}
+\subsubsection[{Baseline(\+Thread\+Info \&)}]{\setlength{\rightskip}{0pt plus 5cm}\+\_\+\+\_\+\+T\+B\+B\+\_\+\+P\+E\+R\+F\+\_\+\+A\+P\+I void Test\+::\+Baseline (
+\begin{DoxyParamCaption}
+\item[{{\bf Thread\+Info} \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classPerf_1_1Test_ac3d76a83270f92de9e7e0349d6765f51}
+
+
+Functionality, the cost of which has to be factored out from timing results. 
+
+Applies to both parallel and serial versions. \hypertarget{classPerf_1_1Test_a10d8919439d2f0bc37aafbb447a2c493}{}\index{Perf\+::\+Test@{Perf\+::\+Test}!Histogram\+Name@{Histogram\+Name}}
+\index{Histogram\+Name@{Histogram\+Name}!Perf\+::\+Test@{Perf\+::\+Test}}
+\subsubsection[{Histogram\+Name()}]{\setlength{\rightskip}{0pt plus 5cm}virtual const char$\ast$ Perf\+::\+Test\+::\+Histogram\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{classPerf_1_1Test_a10d8919439d2f0bc37aafbb447a2c493}
+
+
+Specifies if the histogram of individual run times in a series. 
+
+If the method is not overridden, histogram\+Name argument of Test\+Main is used. \hypertarget{classPerf_1_1Test_abbfd7f54b8d823e6a505dc0932a49ef4}{}\index{Perf\+::\+Test@{Perf\+::\+Test}!Max\+Num\+Masters@{Max\+Num\+Masters}}
+\index{Max\+Num\+Masters@{Max\+Num\+Masters}!Perf\+::\+Test@{Perf\+::\+Test}}
+\subsubsection[{Max\+Num\+Masters()}]{\setlength{\rightskip}{0pt plus 5cm}virtual int Perf\+::\+Test\+::\+Max\+Num\+Masters (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{classPerf_1_1Test_abbfd7f54b8d823e6a505dc0932a49ef4}
+
+
+Returns maximal number of master threads. 
+
+Used for task scheduler tests only (when Use\+Tbb\+Scheduler option is specified in session settings). \hypertarget{classPerf_1_1Test_ac56059ea14218db626951886e7f7f6db}{}\index{Perf\+::\+Test@{Perf\+::\+Test}!Min\+Num\+Masters@{Min\+Num\+Masters}}
+\index{Min\+Num\+Masters@{Min\+Num\+Masters}!Perf\+::\+Test@{Perf\+::\+Test}}
+\subsubsection[{Min\+Num\+Masters()}]{\setlength{\rightskip}{0pt plus 5cm}virtual int Perf\+::\+Test\+::\+Min\+Num\+Masters (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{classPerf_1_1Test_ac56059ea14218db626951886e7f7f6db}
+
+
+Returns minimal number of master threads. 
+
+Used for task scheduler tests only (when Use\+Tbb\+Scheduler option is specified in session settings). \hypertarget{classPerf_1_1Test_a4a4be9dc1805f2bb1b8ad8cf8fe78e94}{}\index{Perf\+::\+Test@{Perf\+::\+Test}!Name@{Name}}
+\index{Name@{Name}!Perf\+::\+Test@{Perf\+::\+Test}}
+\subsubsection[{Name()}]{\setlength{\rightskip}{0pt plus 5cm}virtual const char$\ast$ Perf\+::\+Test\+::\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{classPerf_1_1Test_a4a4be9dc1805f2bb1b8ad8cf8fe78e94}
+
+
+Returns short title string to be used in the regular output to identify the test. 
+
+Should uniquely identify the test among other ones in the given benchmark suite. If not implemented, the test implementation class\textquotesingle{} R\+T\+T\+I name is used. 
+
+Reimplemented in \hyperlink{classTest__PReduce_aff89ac590b2a62b7ea161e70a2a55eaf}{Test\+\_\+\+P\+Reduce}, \hyperlink{classTest__PFor__Nested_a62d8e88996141d23d5af4c7d3d00ed4e}{Test\+\_\+\+P\+For\+\_\+\+Nested}, \hyperlink{classTest__PFor__Skewed_a56892af93bf8191333a5d8204df1b233}{Test\+\_\+\+P\+For\+\_\+\+Skewed}, \hyperlink{classTest__PFor__Simple_abf441e1a65196b8bb6c78cff98ba1ee7}{Test\+\_\+\+P\+For\+\_\+\+Simple}, and \hyperlink{classTest__SPMC_a461ecee8efb0d49bdaa93e10d4f3da3a}{Test\+\_\+\+S\+P\+M\+C}.
+
+\hypertarget{classPerf_1_1Test_a496b4663baca967436dad05299deed2b}{}\index{Perf\+::\+Test@{Perf\+::\+Test}!On\+Finish@{On\+Finish}}
+\index{On\+Finish@{On\+Finish}!Perf\+::\+Test@{Perf\+::\+Test}}
+\subsubsection[{On\+Finish(\+Thread\+Info \&ti)}]{\setlength{\rightskip}{0pt plus 5cm}\+\_\+\+\_\+\+T\+B\+B\+\_\+\+P\+E\+R\+F\+\_\+\+A\+P\+I void Test\+::\+On\+Finish (
+\begin{DoxyParamCaption}
+\item[{{\bf Thread\+Info} \&}]{ti}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classPerf_1_1Test_a496b4663baca967436dad05299deed2b}
+
+
+Invoked after each call to \hyperlink{classPerf_1_1Test_a64ad02d5651eb526f14e8d17df229cfb}{Run()} 
+
+Can be used to free resources allocated by \hyperlink{classPerf_1_1Test_a87a68df5a69fe0805fc858ea9756d42d}{On\+Start()}. Note that this method must work correctly independently of whether \hyperlink{classPerf_1_1Test_a64ad02d5651eb526f14e8d17df229cfb}{Run()}, \hyperlink{classPerf_1_1Test_aa36442055c9cd1267cbdf8a0bf431239}{Run\+Serial()} or nothing is called between \hyperlink{classPerf_1_1Test_a87a68df5a69fe0805fc858ea9756d42d}{On\+Start()} and \hyperlink{classPerf_1_1Test_a496b4663baca967436dad05299deed2b}{On\+Finish()}. In multiple masters mode this method is called on each thread. \hypertarget{classPerf_1_1Test_a87a68df5a69fe0805fc858ea9756d42d}{}\index{Perf\+::\+Test@{Perf\+::\+Test}!On\+Start@{On\+Start}}
+\index{On\+Start@{On\+Start}!Perf\+::\+Test@{Perf\+::\+Test}}
+\subsubsection[{On\+Start(\+Thread\+Info \&ti)}]{\setlength{\rightskip}{0pt plus 5cm}\+\_\+\+\_\+\+T\+B\+B\+\_\+\+P\+E\+R\+F\+\_\+\+A\+P\+I void Test\+::\+On\+Start (
+\begin{DoxyParamCaption}
+\item[{{\bf Thread\+Info} \&}]{ti}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classPerf_1_1Test_a87a68df5a69fe0805fc858ea9756d42d}
+
+
+Invoked before each call to \hyperlink{classPerf_1_1Test_a64ad02d5651eb526f14e8d17df229cfb}{Run()} 
+
+Can be used to preinitialize data necessary for the test, clean up caches (see Perf\+::\+Wipe\+Caches), etc. In multiple masters mode this method is called on each thread. \hypertarget{classPerf_1_1Test_a64ad02d5651eb526f14e8d17df229cfb}{}\index{Perf\+::\+Test@{Perf\+::\+Test}!Run@{Run}}
+\index{Run@{Run}!Perf\+::\+Test@{Perf\+::\+Test}}
+\subsubsection[{Run(\+Thread\+Info \&ti)=0}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Perf\+::\+Test\+::\+Run (
+\begin{DoxyParamCaption}
+\item[{{\bf Thread\+Info} \&}]{ti}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classPerf_1_1Test_a64ad02d5651eb526f14e8d17df229cfb}
+
+
+\hyperlink{classPerf_1_1Test}{Test} implementation. 
+
+Called by the timing framework several times in a loop to achieve approx. Run\+Duration time, and this loop is timed Num\+Runs times to collect statistics. Argument ti specifies information about the master thread calling this method. 
+
+Implemented in \hyperlink{classTest__PReduce_ad442376e26a571efe467cd7a4cec9832}{Test\+\_\+\+P\+Reduce}, \hyperlink{classTest__PFor__Nested_aec54294278d15e3d49f900fc419ca234}{Test\+\_\+\+P\+For\+\_\+\+Nested}, \hyperlink{classTest__PFor_a14d67cebd4bca82da7d103686392618d}{Test\+\_\+\+P\+For$<$ Body $>$}, \hyperlink{classTest__PFor_a14d67cebd4bca82da7d103686392618d}{Test\+\_\+\+P\+For$<$ Skewed\+For\+Body $>$}, \hyperlink{classTest__PFor_a14d67cebd4bca82da7d103686392618d}{Test\+\_\+\+P\+For$<$ Simple\+For\+Body $>$}, and \hyperlink{classTest__SPMC_ae9aa674af5d72d2615202ca7a22dadc0}{Test\+\_\+\+S\+P\+M\+C}.
+
+\hypertarget{classPerf_1_1Test_aa36442055c9cd1267cbdf8a0bf431239}{}\index{Perf\+::\+Test@{Perf\+::\+Test}!Run\+Serial@{Run\+Serial}}
+\index{Run\+Serial@{Run\+Serial}!Perf\+::\+Test@{Perf\+::\+Test}}
+\subsubsection[{Run\+Serial(\+Thread\+Info \&ti)}]{\setlength{\rightskip}{0pt plus 5cm}\+\_\+\+\_\+\+T\+B\+B\+\_\+\+P\+E\+R\+F\+\_\+\+A\+P\+I void Test\+::\+Run\+Serial (
+\begin{DoxyParamCaption}
+\item[{{\bf Thread\+Info} \&}]{ti}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classPerf_1_1Test_aa36442055c9cd1267cbdf8a0bf431239}
+
+
+Executes serial workload equivalent to the one processed by \hyperlink{classPerf_1_1Test_a64ad02d5651eb526f14e8d17df229cfb}{Run()} 
+
+Called by the timing framework several times in a loop to collect statistics. 
+
+Reimplemented in \hyperlink{classTest__PReduce_a0e5c4680eb9bbae63adeb7cf4891bcef}{Test\+\_\+\+P\+Reduce}, \hyperlink{classTest__PFor__Nested_af72783c3a7cc4f010d0484058af2ed34}{Test\+\_\+\+P\+For\+\_\+\+Nested}, \hyperlink{classTest__PFor_ace2d473bba6b5c78861bec4b3167d7b6}{Test\+\_\+\+P\+For$<$ Body $>$}, \hyperlink{classTest__PFor_ace2d473bba6b5c78861bec4b3167d7b6}{Test\+\_\+\+P\+For$<$ Skewed\+For\+Body $>$}, \hyperlink{classTest__PFor_ace2d473bba6b5c78861bec4b3167d7b6}{Test\+\_\+\+P\+For$<$ Simple\+For\+Body $>$}, and \hyperlink{classTest__SPMC_a4e252a3e4b1ab3c4505d5347828c80c6}{Test\+\_\+\+S\+P\+M\+C}.
+
+\hypertarget{classPerf_1_1Test_a49e2b75f552355cea43b841bba1237b3}{}\index{Perf\+::\+Test@{Perf\+::\+Test}!Set\+Workload@{Set\+Workload}}
+\index{Set\+Workload@{Set\+Workload}!Perf\+::\+Test@{Perf\+::\+Test}}
+\subsubsection[{Set\+Workload(int workload\+Index)=0}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Perf\+::\+Test\+::\+Set\+Workload (
+\begin{DoxyParamCaption}
+\item[{int}]{workload\+Index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classPerf_1_1Test_a49e2b75f552355cea43b841bba1237b3}
+
+
+Set workload info for the subsequent calls to \hyperlink{classPerf_1_1Test_a64ad02d5651eb526f14e8d17df229cfb}{Run()} and \hyperlink{classPerf_1_1Test_aa36442055c9cd1267cbdf8a0bf431239}{Run\+Serial()} 
+
+This method can use global helper function Perf\+::\+Set\+Workload\+Name() in order to specify the name of the current workload, which will be used in output to designate the workload. If Set\+Workload\+Name is not called, workload\+Index will be used for this purpose.
+
+When testing task scheduler, make sure that this method does not trigger its automatic initialization. 
+
+Implemented in \hyperlink{classTest__PFor__Nested_a8144237486dd3ba38cecae30d6d58c26}{Test\+\_\+\+P\+For\+\_\+\+Nested}, \hyperlink{classTest__PFor__Skewed_a8844b30c0bbfc98f57a6bc7ae295fcd5}{Test\+\_\+\+P\+For\+\_\+\+Skewed}, \hyperlink{classTest__Algs_a18ccd1cedb43cdbb4fce546a1abba490}{Test\+\_\+\+Algs}, and \hyperlink{classTest__SPMC_acbd5640f40c9ad5718de33aa708d07d0}{Test\+\_\+\+S\+P\+M\+C}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/perf/perf.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/perf/perf.\+cpp\end{DoxyCompactItemize}

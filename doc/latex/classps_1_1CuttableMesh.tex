@@ -1,0 +1,149 @@
+\hypertarget{classps_1_1CuttableMesh}{}\section{ps\+:\+:Cuttable\+Mesh Class Reference}
+\label{classps_1_1CuttableMesh}\index{ps\+::\+Cuttable\+Mesh@{ps\+::\+Cuttable\+Mesh}}
+Inheritance diagram for ps\+:\+:Cuttable\+Mesh\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classps_1_1CuttableMesh}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classps_1_1CuttableMesh_1_1CutEdge}{Cut\+Edge}
+\item 
+struct \hyperlink{structps_1_1CuttableMesh_1_1CutNode}{Cut\+Node}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1CuttableMesh_a9969d385027ffbb77308dc1b44812a39}{}{\bfseries Cuttable\+Mesh} (const \hyperlink{classps_1_1elastic_1_1VolMesh}{Vol\+Mesh} \&volmesh)\label{classps_1_1CuttableMesh_a9969d385027ffbb77308dc1b44812a39}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_aa60935a8ca7343c3e139ef38b02af32f}{}{\bfseries Cuttable\+Mesh} (const vector$<$ double $>$ \&vertices, const vector$<$ U32 $>$ \&elements)\label{classps_1_1CuttableMesh_aa60935a8ca7343c3e139ef38b02af32f}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_aa881e5aa86338a74eb75e33ecdec6789}{}{\bfseries Cuttable\+Mesh} (int ct\+Vertices, double $\ast$vertices, int ct\+Elements, int $\ast$elements)\label{classps_1_1CuttableMesh_aa881e5aa86338a74eb75e33ecdec6789}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_a6a89ae5f513b9698e0fb809c6e5bde48}{}double {\bfseries point\+Line\+Distance} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3d} \&v1, const \hyperlink{classps_1_1base_1_1Vec3}{vec3d} \&v2, const \hyperlink{classps_1_1base_1_1Vec3}{vec3d} \&p)\label{classps_1_1CuttableMesh_a6a89ae5f513b9698e0fb809c6e5bde48}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_a7b3446f71b62a03e5ffa7ae975f05359}{}double {\bfseries point\+Line\+Distance} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3d} \&v1, const \hyperlink{classps_1_1base_1_1Vec3}{vec3d} \&v2, const double len2, const \hyperlink{classps_1_1base_1_1Vec3}{vec3d} \&p, double $\ast$out\+T=N\+U\+L\+L)\label{classps_1_1CuttableMesh_a7b3446f71b62a03e5ffa7ae975f05359}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_a5b53677ca793f330d8653dedcbe2d10b}{}void {\bfseries draw} ()\label{classps_1_1CuttableMesh_a5b53677ca793f330d8653dedcbe2d10b}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_ac9f811f9e12fc893d73212b9f4c15313}{}void {\bfseries sync\+Render} ()\label{classps_1_1CuttableMesh_ac9f811f9e12fc893d73212b9f4c15313}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_a8d394dc966b3276bf8220bd5a9058acd}{}void {\bfseries clear\+Cut\+Context} ()\label{classps_1_1CuttableMesh_a8d394dc966b3276bf8220bd5a9058acd}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_a0c50266011ed7637ad4abda831919d43}{}int {\bfseries compute\+Cut\+Edges\+Kernel} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3d} sweptquad\mbox{[}4\mbox{]}, std\+::map$<$ U32, \hyperlink{classps_1_1CuttableMesh_1_1CutEdge}{Cut\+Edge} $>$ \&map\+Cut\+Edges)\label{classps_1_1CuttableMesh_a0c50266011ed7637ad4abda831919d43}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_a8fbf505ed7c7071ef1224669c4765a54}{}int {\bfseries compute\+Cut\+Nodes\+Kernel} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3d} \&blade0, const \hyperlink{classps_1_1base_1_1Vec3}{vec3d} \&blade1, const \hyperlink{classps_1_1base_1_1Vec3}{vec3d} sweptquad\mbox{[}4\mbox{]}, std\+::map$<$ U32, \hyperlink{classps_1_1CuttableMesh_1_1CutEdge}{Cut\+Edge} $>$ \&map\+Cut\+Edges, std\+::map$<$ U32, \hyperlink{structps_1_1CuttableMesh_1_1CutNode}{Cut\+Node} $>$ \&map\+Cut\+Nodes)\label{classps_1_1CuttableMesh_a8fbf505ed7c7071ef1224669c4765a54}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_aebb71b94c4889bc626895965caeea560}{}int {\bfseries cut} (const vector$<$ \hyperlink{classps_1_1base_1_1Vec3}{vec3d} $>$ \&segments, const vector$<$ \hyperlink{classps_1_1base_1_1Vec3}{vec3d} $>$ \&quadstrips, bool modify\+Mesh)\label{classps_1_1CuttableMesh_aebb71b94c4889bc626895965caeea560}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_a8300d6e660ec93f702b0d5e8be75df65}{}\hyperlink{classps_1_1base_1_1Vec3}{vec3d} {\bfseries vertex\+Rest\+Pos\+At} (U32 i) const \label{classps_1_1CuttableMesh_a8300d6e660ec93f702b0d5e8be75df65}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_acbda1bf7e9844cda0b7860f49ace337a}{}int {\bfseries find\+Closest\+Vertex} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3d} \&query, double \&dist, \hyperlink{classps_1_1base_1_1Vec3}{vec3d} \&out\+P) const \label{classps_1_1CuttableMesh_acbda1bf7e9844cda0b7860f49ace337a}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_a7dd74f231775e7e66338712865cddd89}{}int {\bfseries count\+Completed\+Cuts} () const \label{classps_1_1CuttableMesh_a7dd74f231775e7e66338712865cddd89}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_a602f7731e62546b6cd5a017908932c24}{}\hyperlink{classps_1_1elastic_1_1TetSubdivider}{Tet\+Subdivider} $\ast$ {\bfseries get\+Sub\+D} () const \label{classps_1_1CuttableMesh_a602f7731e62546b6cd5a017908932c24}
+
+\item 
+bool \hyperlink{classps_1_1CuttableMesh_acd91060a3627c4b737c720453fedf048}{split\+Parts} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3d} sweptquad\mbox{[}4\mbox{]}, double dist)
+\item 
+int \hyperlink{classps_1_1CuttableMesh_ab4c5dbf71be7d1c5eefcdba554407f86}{convert\+Disjoint\+Parts\+To\+Meshes} (vector$<$ \hyperlink{classps_1_1CuttableMesh}{Cuttable\+Mesh} $\ast$ $>$ \&v\+Out\+New\+Meshes)
+\item 
+void \hyperlink{classps_1_1CuttableMesh_aea1783d6244415e4e017ba5e52e2f5a6}{apply\+Transform\+To\+Mesh\+Then\+Reset\+Transform} ()
+\item 
+\hypertarget{classps_1_1CuttableMesh_afed24c1acaf388922be83f172f8e48aa}{}bool {\bfseries get\+Flag\+Split\+Mesh\+After\+Cut} () const \label{classps_1_1CuttableMesh_afed24c1acaf388922be83f172f8e48aa}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_a7e1db77d6b343f5dc0f86c848f4e29ae}{}void {\bfseries set\+Flag\+Split\+Mesh\+After\+Cut} (bool flag)\label{classps_1_1CuttableMesh_a7e1db77d6b343f5dc0f86c848f4e29ae}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_a78b480e1d1e2de13bc8bdec7f71b0bd7}{}bool {\bfseries get\+Flag\+Detect\+Cut\+Nodes} () const \label{classps_1_1CuttableMesh_a78b480e1d1e2de13bc8bdec7f71b0bd7}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_a7bbaa6fa077d08cdd5319a7c93bb36b8}{}void {\bfseries set\+Flag\+Detect\+Cut\+Nodes} (bool flag)\label{classps_1_1CuttableMesh_a7bbaa6fa077d08cdd5319a7c93bb36b8}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_a44f67ac93471e5521fd2b7cc5d39ad19}{}bool {\bfseries get\+Flag\+Draw\+Sweep\+Surf} () const \label{classps_1_1CuttableMesh_a44f67ac93471e5521fd2b7cc5d39ad19}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_ac0b41a7285b699f01c5d612f2396f3f5}{}void {\bfseries set\+Flag\+Draw\+Sweep\+Surf} (bool flag)\label{classps_1_1CuttableMesh_ac0b41a7285b699f01c5d612f2396f3f5}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_a6f002ac4fc3df84628a1d047a21c31e9}{}bool {\bfseries get\+Flag\+Draw\+A\+A\+B\+B} () const \label{classps_1_1CuttableMesh_a6f002ac4fc3df84628a1d047a21c31e9}
+
+\item 
+\hypertarget{classps_1_1CuttableMesh_aef9e81db1058ec6529d0b123b2fe88c6}{}void {\bfseries set\+Flag\+Draw\+A\+A\+B\+B} (bool flag)\label{classps_1_1CuttableMesh_aef9e81db1058ec6529d0b123b2fe88c6}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1CuttableMesh_ad72dbadf3de4a51bdeee2983bc29e978}{}void {\bfseries setup} ()\label{classps_1_1CuttableMesh_ad72dbadf3de4a51bdeee2983bc29e978}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classps_1_1CuttableMesh_aea1783d6244415e4e017ba5e52e2f5a6}{}\index{ps\+::\+Cuttable\+Mesh@{ps\+::\+Cuttable\+Mesh}!apply\+Transform\+To\+Mesh\+Then\+Reset\+Transform@{apply\+Transform\+To\+Mesh\+Then\+Reset\+Transform}}
+\index{apply\+Transform\+To\+Mesh\+Then\+Reset\+Transform@{apply\+Transform\+To\+Mesh\+Then\+Reset\+Transform}!ps\+::\+Cuttable\+Mesh@{ps\+::\+Cuttable\+Mesh}}
+\subsubsection[{apply\+Transform\+To\+Mesh\+Then\+Reset\+Transform()}]{\setlength{\rightskip}{0pt plus 5cm}void ps\+::\+Cuttable\+Mesh\+::apply\+Transform\+To\+Mesh\+Then\+Reset\+Transform (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classps_1_1CuttableMesh_aea1783d6244415e4e017ba5e52e2f5a6}
+This is a convenient function to aid in transforming original volume meshes and placing them in the right projection view. Later the transform is applied to all mesh nodes and then the transform itself is reset. \hypertarget{classps_1_1CuttableMesh_ab4c5dbf71be7d1c5eefcdba554407f86}{}\index{ps\+::\+Cuttable\+Mesh@{ps\+::\+Cuttable\+Mesh}!convert\+Disjoint\+Parts\+To\+Meshes@{convert\+Disjoint\+Parts\+To\+Meshes}}
+\index{convert\+Disjoint\+Parts\+To\+Meshes@{convert\+Disjoint\+Parts\+To\+Meshes}!ps\+::\+Cuttable\+Mesh@{ps\+::\+Cuttable\+Mesh}}
+\subsubsection[{convert\+Disjoint\+Parts\+To\+Meshes(vector$<$ Cuttable\+Mesh $\ast$ $>$ \&v\+Out\+New\+Meshes)}]{\setlength{\rightskip}{0pt plus 5cm}int ps\+::\+Cuttable\+Mesh\+::convert\+Disjoint\+Parts\+To\+Meshes (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Cuttable\+Mesh} $\ast$ $>$ \&}]{v\+Out\+New\+Meshes}
+\end{DoxyParamCaption}
+)}\label{classps_1_1CuttableMesh_ab4c5dbf71be7d1c5eefcdba554407f86}
+First finds all disjoint parts of the mesh and then produces new cuttablemesh nodes out of those disjoint pieces. Main mesh will be part of the newly created meshes so the original cuttable mesh node can be discarded if desired. 
+\begin{DoxyParams}{Parameters}
+{\em v\+Out\+New\+Meshes} & list of newly created mesh nodes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of newly created mesh nodes. 
+\end{DoxyReturn}
+\hypertarget{classps_1_1CuttableMesh_acd91060a3627c4b737c720453fedf048}{}\index{ps\+::\+Cuttable\+Mesh@{ps\+::\+Cuttable\+Mesh}!split\+Parts@{split\+Parts}}
+\index{split\+Parts@{split\+Parts}!ps\+::\+Cuttable\+Mesh@{ps\+::\+Cuttable\+Mesh}}
+\subsubsection[{split\+Parts(const vec3d sweptquad[4], double dist)}]{\setlength{\rightskip}{0pt plus 5cm}bool ps\+::\+Cuttable\+Mesh\+::split\+Parts (
+\begin{DoxyParamCaption}
+\item[{const {\bf vec3d}}]{sweptquad\mbox{[}4\mbox{]}, }
+\item[{double}]{dist}
+\end{DoxyParamCaption}
+)}\label{classps_1_1CuttableMesh_acd91060a3627c4b737c720453fedf048}
+splits the mesh parts using the sweep surface. 
+\begin{DoxyParams}{Parameters}
+{\em v\+Sweept\+Surf} & \\
+\hline
+{\em dist} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/elastic/cuttablemesh.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/elastic/cuttablemesh.\+cpp\end{DoxyCompactItemize}

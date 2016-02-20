@@ -1,0 +1,55 @@
+\hypertarget{classLoki_1_1ObjScopeGuardImpl1}{}\section{Loki\+:\+:Obj\+Scope\+Guard\+Impl1$<$ Obj, Mem\+Fun, P1 $>$ Class Template Reference}
+\label{classLoki_1_1ObjScopeGuardImpl1}\index{Loki\+::\+Obj\+Scope\+Guard\+Impl1$<$ Obj, Mem\+Fun, P1 $>$@{Loki\+::\+Obj\+Scope\+Guard\+Impl1$<$ Obj, Mem\+Fun, P1 $>$}}
+
+
+{\ttfamily \#include $<$Scope\+Guard.\+h$>$}
+
+Inheritance diagram for Loki\+:\+:Obj\+Scope\+Guard\+Impl1$<$ Obj, Mem\+Fun, P1 $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLoki_1_1ObjScopeGuardImpl1}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1ObjScopeGuardImpl1_a36cb828d2580abc7a30819e23a119231}{}void {\bfseries Execute} ()\label{classLoki_1_1ObjScopeGuardImpl1_a36cb828d2580abc7a30819e23a119231}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1ObjScopeGuardImpl1_a06c916ff726060574a5990dadf1f8ccc}{}static \hyperlink{classLoki_1_1ObjScopeGuardImpl1}{Obj\+Scope\+Guard\+Impl1}$<$ Obj, Mem\+Fun, \hyperlink{structP1}{P1} $>$ {\bfseries Make\+Obj\+Guard} (Obj \&obj, Mem\+Fun mem\+Fun, \hyperlink{structP1}{P1} p1)\label{classLoki_1_1ObjScopeGuardImpl1_a06c916ff726060574a5990dadf1f8ccc}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1ObjScopeGuardImpl1_a269858fb1e50c1189fc548edcee7d97a}{}{\bfseries Obj\+Scope\+Guard\+Impl1} (Obj \&obj, Mem\+Fun mem\+Fun, \hyperlink{structP1}{P1} p1)\label{classLoki_1_1ObjScopeGuardImpl1_a269858fb1e50c1189fc548edcee7d97a}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1ObjScopeGuardImpl1_ab6b19b530a4dc7a651efd3659dd46c97}{}Obj \& {\bfseries obj\+\_\+}\label{classLoki_1_1ObjScopeGuardImpl1_ab6b19b530a4dc7a651efd3659dd46c97}
+
+\item 
+\hypertarget{classLoki_1_1ObjScopeGuardImpl1_acafcb16342d38149f8c6af656a90ec8b}{}Mem\+Fun {\bfseries mem\+Fun\+\_\+}\label{classLoki_1_1ObjScopeGuardImpl1_acafcb16342d38149f8c6af656a90ec8b}
+
+\item 
+\hypertarget{classLoki_1_1ObjScopeGuardImpl1_a8ae7efc0607fd3a95d71aa913bd8606d}{}const \hyperlink{structP1}{P1} {\bfseries p1\+\_\+}\label{classLoki_1_1ObjScopeGuardImpl1_a8ae7efc0607fd3a95d71aa913bd8606d}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Obj, typename Mem\+Fun, typename P1$>$class Loki\+::\+Obj\+Scope\+Guard\+Impl1$<$ Obj, Mem\+Fun, P1 $>$}
+
+Implementation class for a class per-\/instance member function with one parameter. The parameter is copied by value -\/ use \hyperlink{group__ExceptionGroup_ga0a94ba0342e6abcdb8f9b32ed5ad7e3d}{Loki\+::\+By\+Ref} if you must use a reference instead. Scope\+Guard ignores any value returned from the call within the Execute function.
+
+This class has 3 standalone helper functions which create a Scope\+Guard. One is Make\+Obj\+Guard, which is deprecated but provided for older code. The other two are Make\+Guard overloads, one which takes a pointer to an object, and the other which takes a reference. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Scope\+Guard.\+h\end{DoxyCompactItemize}

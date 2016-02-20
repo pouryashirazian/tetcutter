@@ -1,0 +1,83 @@
+\hypertarget{classLoki_1_1LockedStorage}{}\section{Loki\+:\+:Locked\+Storage$<$ T $>$ Class Template Reference}
+\label{classLoki_1_1LockedStorage}\index{Loki\+::\+Locked\+Storage$<$ T $>$@{Loki\+::\+Locked\+Storage$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Smart\+Ptr.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1LockedStorage_a4c054f5a5c2140598bb851f61ed4ad1a}{}typedef T $\ast$ {\bfseries Stored\+Type}\label{classLoki_1_1LockedStorage_a4c054f5a5c2140598bb851f61ed4ad1a}
+
+\item 
+\hypertarget{classLoki_1_1LockedStorage_a77b3c2a08c0d43a83b447d9c2c34bbb6}{}typedef T $\ast$ \hyperlink{classLoki_1_1LockedStorage_a77b3c2a08c0d43a83b447d9c2c34bbb6}{Init\+Pointer\+Type}\label{classLoki_1_1LockedStorage_a77b3c2a08c0d43a83b447d9c2c34bbb6}
+
+\begin{DoxyCompactList}\small\item\em the type of the pointee\+\_\+ object \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1LockedStorage_a88844c5eb40b576359da4234b76702d8}{}typedef \hyperlink{classLoki_1_1Locker}{Locker}$<$ T $>$ \hyperlink{classLoki_1_1LockedStorage_a88844c5eb40b576359da4234b76702d8}{Pointer\+Type}\label{classLoki_1_1LockedStorage_a88844c5eb40b576359da4234b76702d8}
+
+\begin{DoxyCompactList}\small\item\em type used to declare Ownership\+Policy type. \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1LockedStorage_a5ffd134a01c0a2a7b0450f7969c89a2c}{}typedef T \& \hyperlink{classLoki_1_1LockedStorage_a5ffd134a01c0a2a7b0450f7969c89a2c}{Reference\+Type}\label{classLoki_1_1LockedStorage_a5ffd134a01c0a2a7b0450f7969c89a2c}
+
+\begin{DoxyCompactList}\small\item\em type returned by operator-\/$>$ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1LockedStorage_a8a214aaa9bd4d0ed532b9b5a338cb96e}{}\hyperlink{classLoki_1_1LockedStorage_a8a214aaa9bd4d0ed532b9b5a338cb96e}{Locked\+Storage} ()\label{classLoki_1_1LockedStorage_a8a214aaa9bd4d0ed532b9b5a338cb96e}
+
+\begin{DoxyCompactList}\small\item\em type returned by operator$\ast$ \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1LockedStorage_aa460382a07ef115bca46f97ab48d2488}{}{\bfseries Locked\+Storage} (const \hyperlink{classLoki_1_1LockedStorage}{Locked\+Storage} \&)\label{classLoki_1_1LockedStorage_aa460382a07ef115bca46f97ab48d2488}
+
+\item 
+\hypertarget{classLoki_1_1LockedStorage_a6385d862cc4540021a9231b6d1675d7a}{}{\bfseries Locked\+Storage} (const Stored\+Type \&p)\label{classLoki_1_1LockedStorage_a6385d862cc4540021a9231b6d1675d7a}
+
+\item 
+\hypertarget{classLoki_1_1LockedStorage_a341cdab8a282dc62f338d419bde32c26}{}\hyperlink{classLoki_1_1LockedStorage_a88844c5eb40b576359da4234b76702d8}{Pointer\+Type} {\bfseries operator-\/$>$} ()\label{classLoki_1_1LockedStorage_a341cdab8a282dc62f338d419bde32c26}
+
+\item 
+\hypertarget{classLoki_1_1LockedStorage_a1157c51679f248d2ada5fce538270deb}{}void {\bfseries Swap} (\hyperlink{classLoki_1_1LockedStorage}{Locked\+Storage} \&rhs)\label{classLoki_1_1LockedStorage_a1157c51679f248d2ada5fce538270deb}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1LockedStorage_af08d28ecd4dc64596ee5c5ae4578ff01}{}void {\bfseries Destroy} ()\label{classLoki_1_1LockedStorage_af08d28ecd4dc64596ee5c5ae4578ff01}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1LockedStorage_a701c5035e513f58a2e1e853a6f353fec}{}static Stored\+Type {\bfseries Default} ()\label{classLoki_1_1LockedStorage_a701c5035e513f58a2e1e853a6f353fec}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1LockedStorage_a0bccb4ab9e91411e9503377cb58f31b8}{}{\footnotesize template$<$class F $>$ }\\\hyperlink{classLoki_1_1LockedStorage}{Locked\+Storage}$<$ F $>$\+::\hyperlink{classLoki_1_1LockedStorage_a77b3c2a08c0d43a83b447d9c2c34bbb6}{Init\+Pointer\+Type} {\bfseries Get\+Impl} (const \hyperlink{classLoki_1_1LockedStorage}{Locked\+Storage}$<$ F $>$ \&sp)\label{classLoki_1_1LockedStorage_a0bccb4ab9e91411e9503377cb58f31b8}
+
+\item 
+\hypertarget{classLoki_1_1LockedStorage_a8de340e8a5bc5dba6bbf517b9ca90bf6}{}{\footnotesize template$<$class F $>$ }\\const \hyperlink{classLoki_1_1LockedStorage}{Locked\+Storage}$<$ F $>$\+::Stored\+Type \& {\bfseries Get\+Impl\+Ref} (const \hyperlink{classLoki_1_1LockedStorage}{Locked\+Storage}$<$ F $>$ \&sp)\label{classLoki_1_1LockedStorage_a8de340e8a5bc5dba6bbf517b9ca90bf6}
+
+\item 
+\hypertarget{classLoki_1_1LockedStorage_aa4db569de2c5162102a6f1fad8f2f662}{}{\footnotesize template$<$class F $>$ }\\\hyperlink{classLoki_1_1LockedStorage}{Locked\+Storage}$<$ F $>$\+::Stored\+Type \& {\bfseries Get\+Impl\+Ref} (\hyperlink{classLoki_1_1LockedStorage}{Locked\+Storage}$<$ F $>$ \&sp)\label{classLoki_1_1LockedStorage_aa4db569de2c5162102a6f1fad8f2f662}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$class Loki\+::\+Locked\+Storage$<$ T $>$}
+
+Implementation of the Storage\+Policy used by \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}.
+
+Each call to operator-\/$>$ locks the object for the duration of a call to a member function of T.
+
+\begin{DoxyParagraph}{How It Works}
+\hyperlink{classLoki_1_1LockedStorage}{Locked\+Storage} has a helper class called \hyperlink{classLoki_1_1Locker}{Locker}, which acts as a smart pointer with limited abilities. Locked\+Storage\+::operator-\/$>$ returns an unnamed temporary of type Locker$<$\+T$>$ that exists for the duration of the call to a member function of T. The unnamed temporary locks the object when it is constructed by operator-\/$>$ and unlocks the object when it is destructed.
+\end{DoxyParagraph}
+\begin{DoxyNote}{Note}
+This storage policy requires class T to have member functions Lock and Unlock. If your class does not have Lock or Unlock functions, you may either make a child class which does, or make a policy class similar to \hyperlink{classLoki_1_1LockedStorage}{Locked\+Storage} which calls other functions to lock the object. 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Smart\+Ptr.\+h\end{DoxyCompactItemize}

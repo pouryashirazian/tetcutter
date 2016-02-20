@@ -1,0 +1,61 @@
+\hypertarget{classLoki_1_1ObjScopeGuardImpl3}{}\section{Loki\+:\+:Obj\+Scope\+Guard\+Impl3$<$ Obj, Mem\+Fun, P1, P2, P3 $>$ Class Template Reference}
+\label{classLoki_1_1ObjScopeGuardImpl3}\index{Loki\+::\+Obj\+Scope\+Guard\+Impl3$<$ Obj, Mem\+Fun, P1, P2, P3 $>$@{Loki\+::\+Obj\+Scope\+Guard\+Impl3$<$ Obj, Mem\+Fun, P1, P2, P3 $>$}}
+
+
+{\ttfamily \#include $<$Scope\+Guard.\+h$>$}
+
+Inheritance diagram for Loki\+:\+:Obj\+Scope\+Guard\+Impl3$<$ Obj, Mem\+Fun, P1, P2, P3 $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLoki_1_1ObjScopeGuardImpl3}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1ObjScopeGuardImpl3_a83843d3a1a6d7123a1122589f884929d}{}void {\bfseries Execute} ()\label{classLoki_1_1ObjScopeGuardImpl3_a83843d3a1a6d7123a1122589f884929d}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1ObjScopeGuardImpl3_a56d84beb5b0f53645b25d8e081e7330b}{}static \hyperlink{classLoki_1_1ObjScopeGuardImpl3}{Obj\+Scope\+Guard\+Impl3}$<$ Obj, Mem\+Fun, \hyperlink{structP1}{P1}, \hyperlink{structP2}{P2}, \hyperlink{structP3}{P3} $>$ {\bfseries Make\+Obj\+Guard} (Obj \&obj, Mem\+Fun mem\+Fun, \hyperlink{structP1}{P1} p1, \hyperlink{structP2}{P2} p2, \hyperlink{structP3}{P3} p3)\label{classLoki_1_1ObjScopeGuardImpl3_a56d84beb5b0f53645b25d8e081e7330b}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1ObjScopeGuardImpl3_a6c29b38c1f99225bfa31fe8d485dea43}{}{\bfseries Obj\+Scope\+Guard\+Impl3} (Obj \&obj, Mem\+Fun mem\+Fun, \hyperlink{structP1}{P1} p1, \hyperlink{structP2}{P2} p2, \hyperlink{structP3}{P3} p3)\label{classLoki_1_1ObjScopeGuardImpl3_a6c29b38c1f99225bfa31fe8d485dea43}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1ObjScopeGuardImpl3_a6701680612a8880b8f32168625bad6ef}{}Obj \& {\bfseries obj\+\_\+}\label{classLoki_1_1ObjScopeGuardImpl3_a6701680612a8880b8f32168625bad6ef}
+
+\item 
+\hypertarget{classLoki_1_1ObjScopeGuardImpl3_a195a55e33fdac1b29cee8aef56ffa039}{}Mem\+Fun {\bfseries mem\+Fun\+\_\+}\label{classLoki_1_1ObjScopeGuardImpl3_a195a55e33fdac1b29cee8aef56ffa039}
+
+\item 
+\hypertarget{classLoki_1_1ObjScopeGuardImpl3_a9d42acb192e2692cefe56f0e3d7f1eee}{}const \hyperlink{structP1}{P1} {\bfseries p1\+\_\+}\label{classLoki_1_1ObjScopeGuardImpl3_a9d42acb192e2692cefe56f0e3d7f1eee}
+
+\item 
+\hypertarget{classLoki_1_1ObjScopeGuardImpl3_ae8be97b576e51ddf82808a5431a600f0}{}const \hyperlink{structP2}{P2} {\bfseries p2\+\_\+}\label{classLoki_1_1ObjScopeGuardImpl3_ae8be97b576e51ddf82808a5431a600f0}
+
+\item 
+\hypertarget{classLoki_1_1ObjScopeGuardImpl3_a2bf58ca0fc0bda75a769a3d6d4b60998}{}const \hyperlink{structP3}{P3} {\bfseries p3\+\_\+}\label{classLoki_1_1ObjScopeGuardImpl3_a2bf58ca0fc0bda75a769a3d6d4b60998}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Obj, typename Mem\+Fun, typename P1, typename P2, typename P3$>$class Loki\+::\+Obj\+Scope\+Guard\+Impl3$<$ Obj, Mem\+Fun, P1, P2, P3 $>$}
+
+Implementation class for a class per-\/instance member function with three parameters. Each parameter is copied by value -\/ use \hyperlink{group__ExceptionGroup_ga0a94ba0342e6abcdb8f9b32ed5ad7e3d}{Loki\+::\+By\+Ref} if you must use a reference instead. Scope\+Guard ignores any value returned from the call within the Execute function.
+
+This class has 3 standalone helper functions which create a Scope\+Guard. One is Make\+Obj\+Guard, which is deprecated but provided for older code. The other two are Make\+Guard overloads, one which takes a pointer to an object, and the other which takes a reference. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Scope\+Guard.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,88 @@
+\hypertarget{classrml_1_1internal_1_1FreeBlock}{}\section{rml\+:\+:internal\+:\+:Free\+Block Class Reference}
+\label{classrml_1_1internal_1_1FreeBlock}\index{rml\+::internal\+::\+Free\+Block@{rml\+::internal\+::\+Free\+Block}}
+Inheritance diagram for rml\+:\+:internal\+:\+:Free\+Block\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrml_1_1internal_1_1FreeBlock}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrml_1_1internal_1_1FreeBlock_ac918010c7b735489ecf3b66ce5b9fec3}{}\hyperlink{classrml_1_1internal_1_1FreeBlock}{Free\+Block} $\ast$ {\bfseries right\+Neig} (size\+\_\+t sz) const \label{classrml_1_1internal_1_1FreeBlock_ac918010c7b735489ecf3b66ce5b9fec3}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1FreeBlock_a2629897db375d1ce063839a7ad40a3d7}{}\hyperlink{classrml_1_1internal_1_1FreeBlock}{Free\+Block} $\ast$ {\bfseries left\+Neig} (size\+\_\+t sz) const \label{classrml_1_1internal_1_1FreeBlock_a2629897db375d1ce063839a7ad40a3d7}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1FreeBlock_a777d30e3372942de87930981c943576f}{}void {\bfseries init\+Header} ()\label{classrml_1_1internal_1_1FreeBlock_a777d30e3372942de87930981c943576f}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1FreeBlock_a288e6db81f9d5882ddc9cec10aa38db2}{}void {\bfseries set\+Me\+Free} (size\+\_\+t size)\label{classrml_1_1internal_1_1FreeBlock_a288e6db81f9d5882ddc9cec10aa38db2}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1FreeBlock_a98f8c45a82c2e5191fc54a0f55f85eb4}{}size\+\_\+t {\bfseries try\+Set\+Me\+Used} (Guarded\+Size\+::\+State s)\label{classrml_1_1internal_1_1FreeBlock_a98f8c45a82c2e5191fc54a0f55f85eb4}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1FreeBlock_aec3adaa09c9a1ac4ee63ec09f919d0ce}{}void {\bfseries set\+Left\+Free} (size\+\_\+t sz)\label{classrml_1_1internal_1_1FreeBlock_aec3adaa09c9a1ac4ee63ec09f919d0ce}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1FreeBlock_a130e1d04a373da8fc346399589225bb7}{}size\+\_\+t {\bfseries try\+Set\+Left\+Used} (Guarded\+Size\+::\+State s)\label{classrml_1_1internal_1_1FreeBlock_a130e1d04a373da8fc346399589225bb7}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1FreeBlock_a8ca50d0f759fba59416e6932741b8670}{}size\+\_\+t {\bfseries try\+Lock\+Block} ()\label{classrml_1_1internal_1_1FreeBlock_a8ca50d0f759fba59416e6932741b8670}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1FreeBlock_a3ce0e6bfe3611b907f50f4a37b6baa39}{}void {\bfseries mark\+Coalescing} (size\+\_\+t block\+Sz)\label{classrml_1_1internal_1_1FreeBlock_a3ce0e6bfe3611b907f50f4a37b6baa39}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1FreeBlock_a551ebe51b611de44a1ae83546c084321}{}void {\bfseries mark\+Used} ()\label{classrml_1_1internal_1_1FreeBlock_a551ebe51b611de44a1ae83546c084321}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrml_1_1internal_1_1FreeBlock_aa5bf7b2524e73ac7930fe322b4a5dc95}{}static void {\bfseries mark\+Blocks} (\hyperlink{classrml_1_1internal_1_1FreeBlock}{Free\+Block} $\ast$f\+Block, int num, size\+\_\+t size)\label{classrml_1_1internal_1_1FreeBlock_aa5bf7b2524e73ac7930fe322b4a5dc95}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrml_1_1internal_1_1FreeBlock_a3890a43039a9aa4263209d289b99a5f5}{}\hyperlink{classrml_1_1internal_1_1FreeBlock}{Free\+Block} $\ast$ {\bfseries prev}\label{classrml_1_1internal_1_1FreeBlock_a3890a43039a9aa4263209d289b99a5f5}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1FreeBlock_a4f8f5b6624ca1156d114636545df9405}{}\hyperlink{classrml_1_1internal_1_1FreeBlock}{Free\+Block} $\ast$ {\bfseries next}\label{classrml_1_1internal_1_1FreeBlock_a4f8f5b6624ca1156d114636545df9405}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1FreeBlock_a12d3a961b4a80692682efaa6b6a4ca7f}{}\hyperlink{classrml_1_1internal_1_1FreeBlock}{Free\+Block} $\ast$ {\bfseries next\+To\+Free}\label{classrml_1_1internal_1_1FreeBlock_a12d3a961b4a80692682efaa6b6a4ca7f}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1FreeBlock_a594e33ba0fa27dd516f8ab159e604e70}{}size\+\_\+t {\bfseries size\+Tmp}\label{classrml_1_1internal_1_1FreeBlock_a594e33ba0fa27dd516f8ab159e604e70}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1FreeBlock_a236dc29af3816add14a81310cb33eaac}{}int {\bfseries my\+Bin}\label{classrml_1_1internal_1_1FreeBlock_a236dc29af3816add14a81310cb33eaac}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1FreeBlock_a5879253425432f551c1260dbf993b462}{}bool {\bfseries aligned}\label{classrml_1_1internal_1_1FreeBlock_a5879253425432f551c1260dbf993b462}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1FreeBlock_a00fc0a609cf2ac2f00e70de227f30cb1}{}bool {\bfseries block\+In\+Bin}\label{classrml_1_1internal_1_1FreeBlock_a00fc0a609cf2ac2f00e70de227f30cb1}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrml_1_1internal_1_1FreeBlock_a39998265a13976471f018c1e63d691ab}{}static const size\+\_\+t {\bfseries min\+Block\+Size} = sizeof(\hyperlink{classrml_1_1internal_1_1FreeBlock}{Free\+Block})\label{classrml_1_1internal_1_1FreeBlock_a39998265a13976471f018c1e63d691ab}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrml_1_1internal_1_1FreeBlock_a5ded4302f29ea027d939c14136d0ef70}{}void {\bfseries Backend\+::\+Indexed\+Bins\+::verify} ()\label{classrml_1_1internal_1_1FreeBlock_a5ded4302f29ea027d939c14136d0ef70}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbbmalloc/backend.\+cpp\end{DoxyCompactItemize}

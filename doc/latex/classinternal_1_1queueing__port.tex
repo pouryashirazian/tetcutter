@@ -1,0 +1,82 @@
+\hypertarget{classinternal_1_1queueing__port}{}\section{internal\+:\+:queueing\+\_\+port$<$ T $>$ Class Template Reference}
+\label{classinternal_1_1queueing__port}\index{internal\+::queueing\+\_\+port$<$ T $>$@{internal\+::queueing\+\_\+port$<$ T $>$}}
+
+
+queueing join\+\_\+port  
+
+
+
+
+{\ttfamily \#include $<$\+\_\+flow\+\_\+graph\+\_\+join\+\_\+impl.\+h$>$}
+
+Inheritance diagram for internal\+:\+:queueing\+\_\+port$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classinternal_1_1queueing__port}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1queueing__port_a8531a9e37933c07863d8eff560b1f4fc}{}typedef T {\bfseries input\+\_\+type}\label{classinternal_1_1queueing__port_a8531a9e37933c07863d8eff560b1f4fc}
+
+\item 
+\hypertarget{classinternal_1_1queueing__port_a894847300ecf130239e8482e24c60f5a}{}typedef sender$<$ T $>$ {\bfseries predecessor\+\_\+type}\label{classinternal_1_1queueing__port_a894847300ecf130239e8482e24c60f5a}
+
+\item 
+\hypertarget{classinternal_1_1queueing__port_a7035451572baf72e3eff987f61644aa3}{}typedef \hyperlink{classinternal_1_1queueing__port}{queueing\+\_\+port}$<$ T $>$ {\bfseries my\+\_\+node\+\_\+type}\label{classinternal_1_1queueing__port_a7035451572baf72e3eff987f61644aa3}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1queueing__port_a490b88d2d32e360f70e169711981feda}{}\hyperlink{classinternal_1_1queueing__port_a490b88d2d32e360f70e169711981feda}{queueing\+\_\+port} ()\label{classinternal_1_1queueing__port_a490b88d2d32e360f70e169711981feda}
+
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hypertarget{classinternal_1_1queueing__port_ae3ce8c06643164298edb702141830eeb}{}\hyperlink{classinternal_1_1queueing__port_ae3ce8c06643164298edb702141830eeb}{queueing\+\_\+port} (const \hyperlink{classinternal_1_1queueing__port}{queueing\+\_\+port} \&)\label{classinternal_1_1queueing__port_ae3ce8c06643164298edb702141830eeb}
+
+\begin{DoxyCompactList}\small\item\em copy constructor \end{DoxyCompactList}\item 
+\hypertarget{classinternal_1_1queueing__port_ae3860f28fbd47c47301bb93cc34f962b}{}void \hyperlink{classinternal_1_1queueing__port_ae3860f28fbd47c47301bb93cc34f962b}{set\+\_\+join\+\_\+node\+\_\+pointer} (\hyperlink{structinternal_1_1forwarding__base}{forwarding\+\_\+base} $\ast$join)\label{classinternal_1_1queueing__port_ae3860f28fbd47c47301bb93cc34f962b}
+
+\begin{DoxyCompactList}\small\item\em record parent for tallying available items \end{DoxyCompactList}\item 
+\hypertarget{classinternal_1_1queueing__port_aab8489d12db2fd9c3ba4ddf5079ee724}{}bool {\bfseries get\+\_\+item} (T \&v)\label{classinternal_1_1queueing__port_aab8489d12db2fd9c3ba4ddf5079ee724}
+
+\item 
+\hypertarget{classinternal_1_1queueing__port_a822c5d68413b5952a4dd24d22714c9e5}{}void {\bfseries reset\+\_\+port} ()\label{classinternal_1_1queueing__port_a822c5d68413b5952a4dd24d22714c9e5}
+
+\item 
+\hypertarget{classinternal_1_1queueing__port_a32a30c4b51bce92705aed61878735239}{}void {\bfseries reset\+\_\+receiver} (\+\_\+\+\_\+\+T\+B\+B\+\_\+\+P\+F\+G\+\_\+\+R\+E\+S\+E\+T\+\_\+\+A\+R\+G(reset\+\_\+flags))\label{classinternal_1_1queueing__port_a32a30c4b51bce92705aed61878735239}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1queueing__port_a8e7282fa0b262d9fd813bc94b00d2bc9}{}task $\ast$ {\bfseries try\+\_\+put\+\_\+task} (const T \&v)\label{classinternal_1_1queueing__port_a8e7282fa0b262d9fd813bc94b00d2bc9}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1queueing__port_a84dd97089b354d1004c34b624bdd6881}{}class {\bfseries internal\+::aggregating\+\_\+functor$<$ my\+\_\+class, queueing\+\_\+port\+\_\+operation $>$}\label{classinternal_1_1queueing__port_a84dd97089b354d1004c34b624bdd6881}
+
+\item 
+\hypertarget{classinternal_1_1queueing__port_abaf9bf74ca5f2854d09f5f07337280eb}{}{\footnotesize template$<$typename R , typename B $>$ }\\class {\bfseries run\+\_\+and\+\_\+put\+\_\+task}\label{classinternal_1_1queueing__port_abaf9bf74ca5f2854d09f5f07337280eb}
+
+\item 
+\hypertarget{classinternal_1_1queueing__port_a1360e38efe396058978cf3754ad620f5}{}{\footnotesize template$<$typename X , typename Y $>$ }\\class {\bfseries internal\+::broadcast\+\_\+cache}\label{classinternal_1_1queueing__port_a1360e38efe396058978cf3754ad620f5}
+
+\item 
+\hypertarget{classinternal_1_1queueing__port_acbd9ac2610587a99cd7d43344297cc49}{}{\footnotesize template$<$typename X , typename Y $>$ }\\class {\bfseries internal\+::round\+\_\+robin\+\_\+cache}\label{classinternal_1_1queueing__port_acbd9ac2610587a99cd7d43344297cc49}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$class internal\+::queueing\+\_\+port$<$ T $>$}
+
+queueing join\+\_\+port 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/internal/\+\_\+flow\+\_\+graph\+\_\+join\+\_\+impl.\+h\end{DoxyCompactItemize}

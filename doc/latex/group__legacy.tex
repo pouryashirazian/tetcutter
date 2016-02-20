@@ -1,0 +1,113 @@
+\hypertarget{group__legacy}{}\section{Legacy A\+P\+I}
+\label{group__legacy}\index{Legacy A\+P\+I@{Legacy A\+P\+I}}
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__legacy__control}{Collection Control}
+\item 
+\hyperlink{group__legacy__threads}{Threads}
+\item 
+\hyperlink{group__legacy__sync}{Synchronization}
+\item 
+\hyperlink{group__legacy__events}{Events}
+\item 
+\hyperlink{group__legacy__memory}{Memory Accesses}
+\item 
+\hyperlink{group__legacy__state}{Thread and Object States}
+\item 
+\hyperlink{group__frames}{Frames}
+\end{DoxyCompactItemize}
+\subsection*{group of functions is used for correctness checking tools}
+\begin{DoxyCompactItemize}
+\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__legacy_ga529918590edeef71ffbe8c6692b7019c}{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+prepare} (void $\ast$addr)
+\begin{DoxyCompactList}\small\item\em Fast synchronization which does no require spinning. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__legacy_ga196fcb16865c3f9a316148fa620f7e13}{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+cancel} (void $\ast$addr)
+\begin{DoxyCompactList}\small\item\em Fast synchronization which does no require spinning. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__legacy_ga538018fcdc9be04929e3fdcaf444e3be}{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+acquired} (void $\ast$addr)
+\begin{DoxyCompactList}\small\item\em Fast synchronization which does no require spinning. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__legacy_ga67e0e05bdecc21673acecf207372b307}{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+releasing} (void $\ast$addr)
+\begin{DoxyCompactList}\small\item\em Fast synchronization which does no require spinning. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\hypertarget{group__legacy_ga538018fcdc9be04929e3fdcaf444e3be}{}\index{Legacy A\+P\+I@{Legacy A\+P\+I}!\+\_\+\+\_\+itt\+\_\+fsync\+\_\+acquired@{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+acquired}}
+\index{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+acquired@{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+acquired}!Legacy A\+P\+I@{Legacy A\+P\+I}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+acquired(void $\ast$addr)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+fsync\+\_\+acquired (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{addr}
+\end{DoxyParamCaption}
+)}\label{group__legacy_ga538018fcdc9be04929e3fdcaf444e3be}
+
+
+Fast synchronization which does no require spinning. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000004}{Deprecated}]Legacy A\+P\+I \end{DoxyRefDesc}
+-\/ This special function is to be used by T\+B\+B and Open\+M\+P libraries only when they know there is no spin but they need to suppress T\+C warnings about shared variable modifications.
+\begin{DoxyItemize}
+\item It only has corresponding pointers in static library and does not have corresponding function in dynamic library. \begin{DoxySeeAlso}{See also}
+void \hyperlink{group__sync_ga3a08077b82c93d544473e6155a1e66c6}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+acquired(void $\ast$addr)}; 
+\end{DoxySeeAlso}
+
+\end{DoxyItemize}\hypertarget{group__legacy_ga196fcb16865c3f9a316148fa620f7e13}{}\index{Legacy A\+P\+I@{Legacy A\+P\+I}!\+\_\+\+\_\+itt\+\_\+fsync\+\_\+cancel@{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+cancel}}
+\index{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+cancel@{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+cancel}!Legacy A\+P\+I@{Legacy A\+P\+I}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+cancel(void $\ast$addr)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+fsync\+\_\+cancel (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{addr}
+\end{DoxyParamCaption}
+)}\label{group__legacy_ga196fcb16865c3f9a316148fa620f7e13}
+
+
+Fast synchronization which does no require spinning. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000003}{Deprecated}]Legacy A\+P\+I \end{DoxyRefDesc}
+-\/ This special function is to be used by T\+B\+B and Open\+M\+P libraries only when they know there is no spin but they need to suppress T\+C warnings about shared variable modifications.
+\begin{DoxyItemize}
+\item It only has corresponding pointers in static library and does not have corresponding function in dynamic library. \begin{DoxySeeAlso}{See also}
+void \hyperlink{group__sync_gadf4d915083aa5ab2193ef5d1b0987e01}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+cancel(void $\ast$addr)}; 
+\end{DoxySeeAlso}
+
+\end{DoxyItemize}\hypertarget{group__legacy_ga529918590edeef71ffbe8c6692b7019c}{}\index{Legacy A\+P\+I@{Legacy A\+P\+I}!\+\_\+\+\_\+itt\+\_\+fsync\+\_\+prepare@{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+prepare}}
+\index{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+prepare@{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+prepare}!Legacy A\+P\+I@{Legacy A\+P\+I}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+prepare(void $\ast$addr)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+fsync\+\_\+prepare (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{addr}
+\end{DoxyParamCaption}
+)}\label{group__legacy_ga529918590edeef71ffbe8c6692b7019c}
+
+
+Fast synchronization which does no require spinning. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000002}{Deprecated}]Legacy A\+P\+I \end{DoxyRefDesc}
+-\/ This special function is to be used by T\+B\+B and Open\+M\+P libraries only when they know there is no spin but they need to suppress T\+C warnings about shared variable modifications.
+\begin{DoxyItemize}
+\item It only has corresponding pointers in static library and does not have corresponding function in dynamic library. \begin{DoxySeeAlso}{See also}
+void \hyperlink{group__sync_ga27637e91541f997e5e9369a04f094721}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+prepare(void$\ast$ addr)}; 
+\end{DoxySeeAlso}
+
+\end{DoxyItemize}\hypertarget{group__legacy_ga67e0e05bdecc21673acecf207372b307}{}\index{Legacy A\+P\+I@{Legacy A\+P\+I}!\+\_\+\+\_\+itt\+\_\+fsync\+\_\+releasing@{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+releasing}}
+\index{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+releasing@{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+releasing}!Legacy A\+P\+I@{Legacy A\+P\+I}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+releasing(void $\ast$addr)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+fsync\+\_\+releasing (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{addr}
+\end{DoxyParamCaption}
+)}\label{group__legacy_ga67e0e05bdecc21673acecf207372b307}
+
+
+Fast synchronization which does no require spinning. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000005}{Deprecated}]Legacy A\+P\+I \end{DoxyRefDesc}
+-\/ This special function is to be used by T\+B\+B and Open\+M\+P libraries only when they know there is no spin but they need to suppress T\+C warnings about shared variable modifications.
+\begin{DoxyItemize}
+\item It only has corresponding pointers in static library and does not have corresponding function in dynamic library. \begin{DoxySeeAlso}{See also}
+void \hyperlink{group__sync_gadde263abd14a8ff4b88edf8afd86f7a2}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+releasing(void$\ast$ addr)}; 
+\end{DoxySeeAlso}
+
+\end{DoxyItemize}

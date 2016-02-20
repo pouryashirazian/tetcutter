@@ -1,0 +1,49 @@
+\hypertarget{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array}{}\section{concurrency\+\_\+tests\+:\+:filled\+\_\+instance\+\_\+counting\+\_\+fixture\+\_\+with\+\_\+external\+\_\+array Struct Reference}
+\label{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array}\index{concurrency\+\_\+tests\+::filled\+\_\+instance\+\_\+counting\+\_\+fixture\+\_\+with\+\_\+external\+\_\+array@{concurrency\+\_\+tests\+::filled\+\_\+instance\+\_\+counting\+\_\+fixture\+\_\+with\+\_\+external\+\_\+array}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array_a8a7e8dd4e6325517dca90cf001c767fb}{}typedef \hyperlink{structconcurrency__tests_1_1helpers_1_1array__searcher}{helpers\+::array\+\_\+searcher}$<$ size\+\_\+t, \hyperlink{structhelpers_1_1object__instances__counting__type}{helpers\+::object\+\_\+instances\+\_\+counting\+\_\+concurrent\+\_\+type}, array\+\_\+size $>$ {\bfseries array\+\_\+searcher\+\_\+type}\label{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array_a8a7e8dd4e6325517dca90cf001c767fb}
+
+\item 
+\hypertarget{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array_a5cb22b94b3f7483e38a30d7457c089bc}{}typedef array\+\_\+searcher\+\_\+type\+::array\+\_\+type {\bfseries objects\+\_\+array\+\_\+type}\label{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array_a5cb22b94b3f7483e38a30d7457c089bc}
+
+\item 
+\hypertarget{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array_a9aff4f3aa15619f958d9db5d6d6c2896}{}typedef \hyperlink{structget__lru__cache__type_1_1apply}{get\+\_\+lru\+\_\+cache\+\_\+type\+::apply}$<$ size\+\_\+t, \hyperlink{structhelpers_1_1object__instances__counting__type}{helpers\+::object\+\_\+instances\+\_\+counting\+\_\+concurrent\+\_\+type}, \hyperlink{structconcurrency__tests_1_1helpers_1_1array__searcher}{array\+\_\+searcher\+\_\+type} $>$\+::type {\bfseries cache\+\_\+type}\label{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array_a9aff4f3aa15619f958d9db5d6d6c2896}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array_a274a059d6c335ca2d9afe2ab5f525e30}{}bool {\bfseries is\+\_\+evicted} (size\+\_\+t k) const \label{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array_a274a059d6c335ca2d9afe2ab5f525e30}
+
+\item 
+\hypertarget{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array_a945f96ffea22a4030c8f46562f60d8c0}{}void {\bfseries fill\+\_\+up\+\_\+cache} (size\+\_\+t lower\+\_\+bound, size\+\_\+t upper\+\_\+bound)\label{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array_a945f96ffea22a4030c8f46562f60d8c0}
+
+\item 
+\hypertarget{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array_aa9b7091bedbbeb88be6e077bb61d2242}{}size\+\_\+t {\bfseries number\+\_\+of\+\_\+non\+\_\+evicted\+\_\+from\+\_\+cache} () const \label{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array_aa9b7091bedbbeb88be6e077bb61d2242}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array_a0b8ee29aca88332c8f63f9ae2b39a658}{}array\+\_\+searcher\+\_\+type\+::array\+\_\+type {\bfseries objects\+\_\+array}\label{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array_a0b8ee29aca88332c8f63f9ae2b39a658}
+
+\item 
+\hypertarget{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array_af25bc3529f7ceaf24ab3b30e78601400}{}cache\+\_\+type {\bfseries cache}\label{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array_af25bc3529f7ceaf24ab3b30e78601400}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array_af8f6f8c3d0d3e98d4c47e553533da781}{}static const size\+\_\+t {\bfseries number\+\_\+of\+\_\+lru\+\_\+history\+\_\+items} = 8\label{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array_af8f6f8c3d0d3e98d4c47e553533da781}
+
+\item 
+\hypertarget{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array_af97010e0e1ba9b5d37ea69b5681b98e9}{}static const size\+\_\+t {\bfseries array\+\_\+size} = 16$\ast$number\+\_\+of\+\_\+lru\+\_\+history\+\_\+items\label{structconcurrency__tests_1_1filled__instance__counting__fixture__with__external__array_af97010e0e1ba9b5d37ea69b5681b98e9}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/test/test\+\_\+concurrent\+\_\+lru\+\_\+cache.\+cpp\end{DoxyCompactItemize}

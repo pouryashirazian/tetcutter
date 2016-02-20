@@ -1,0 +1,427 @@
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map}{}\section{tbb\+:\+:interface5\+:\+:concurrent\+\_\+hash\+\_\+map$<$ Key, T, Hash\+Compare, Allocator $>$ Class Template Reference}
+\label{classtbb_1_1interface5_1_1concurrent__hash__map}\index{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map$<$ Key, T, Hash\+Compare, Allocator $>$@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map$<$ Key, T, Hash\+Compare, Allocator $>$}}
+
+
+Unordered map from Key to T.  
+
+
+
+
+{\ttfamily \#include $<$concurrent\+\_\+hash\+\_\+map.\+h$>$}
+
+Inheritance diagram for tbb\+:\+:interface5\+:\+:concurrent\+\_\+hash\+\_\+map$<$ Key, T, Hash\+Compare, Allocator $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classtbb_1_1interface5_1_1concurrent__hash__map}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_1_1accessor}{accessor}
+\begin{DoxyCompactList}\small\item\em Allows write access to elements and combines data access, locking, and garbage collection. \end{DoxyCompactList}\item 
+class \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_1_1bucket__accessor}{bucket\+\_\+accessor}
+\begin{DoxyCompactList}\small\item\em bucket accessor is to find, rehash, acquire a lock, and access a bucket \end{DoxyCompactList}\item 
+struct \hyperlink{structtbb_1_1interface5_1_1concurrent__hash__map_1_1call__clear__on__leave}{call\+\_\+clear\+\_\+on\+\_\+leave}
+\item 
+class \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_1_1const__accessor}{const\+\_\+accessor}
+\begin{DoxyCompactList}\small\item\em Combines data access, locking, and garbage collection. \end{DoxyCompactList}\item 
+struct \hyperlink{structtbb_1_1interface5_1_1concurrent__hash__map_1_1node}{node}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_adc987b6320b26a8bdb5003648296c2de}{}typedef Key {\bfseries key\+\_\+type}\label{classtbb_1_1interface5_1_1concurrent__hash__map_adc987b6320b26a8bdb5003648296c2de}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a7c54e73cfe6b896b50436894468e24c3}{}typedef T {\bfseries mapped\+\_\+type}\label{classtbb_1_1interface5_1_1concurrent__hash__map_a7c54e73cfe6b896b50436894468e24c3}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a9a0c5050d8e20a1b2ca3252699982d27}{}typedef std\+::pair$<$ const Key, T $>$ {\bfseries value\+\_\+type}\label{classtbb_1_1interface5_1_1concurrent__hash__map_a9a0c5050d8e20a1b2ca3252699982d27}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a4e9350645064c83816bb609c3c31dfd5}{}typedef hash\+\_\+map\+\_\+base\+::size\+\_\+type {\bfseries size\+\_\+type}\label{classtbb_1_1interface5_1_1concurrent__hash__map_a4e9350645064c83816bb609c3c31dfd5}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a11895b1b794c6754d89fc26510a9cc4b}{}typedef ptrdiff\+\_\+t {\bfseries difference\+\_\+type}\label{classtbb_1_1interface5_1_1concurrent__hash__map_a11895b1b794c6754d89fc26510a9cc4b}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_ab0f54e0d32428d8829196a70c1b3cd3c}{}typedef value\+\_\+type $\ast$ {\bfseries pointer}\label{classtbb_1_1interface5_1_1concurrent__hash__map_ab0f54e0d32428d8829196a70c1b3cd3c}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a8834de86a86fd9badab79dadeebf5dd6}{}typedef const value\+\_\+type $\ast$ {\bfseries const\+\_\+pointer}\label{classtbb_1_1interface5_1_1concurrent__hash__map_a8834de86a86fd9badab79dadeebf5dd6}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_ac06f91e56e401af586de6ca02f638cda}{}typedef value\+\_\+type \& {\bfseries reference}\label{classtbb_1_1interface5_1_1concurrent__hash__map_ac06f91e56e401af586de6ca02f638cda}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a94bd468fd1e316ab5f2fcdaab13256d2}{}typedef const value\+\_\+type \& {\bfseries const\+\_\+reference}\label{classtbb_1_1interface5_1_1concurrent__hash__map_a94bd468fd1e316ab5f2fcdaab13256d2}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_ad8e8d0320a40522466145894268e93d2}{}typedef internal\+::hash\+\_\+map\+\_\+iterator$<$ \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map}{concurrent\+\_\+hash\+\_\+map}, value\+\_\+type $>$ {\bfseries iterator}\label{classtbb_1_1interface5_1_1concurrent__hash__map_ad8e8d0320a40522466145894268e93d2}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a4d719f4927647da558d240275fd6a5ec}{}typedef internal\+::hash\+\_\+map\+\_\+iterator$<$ \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map}{concurrent\+\_\+hash\+\_\+map}, const value\+\_\+type $>$ {\bfseries const\+\_\+iterator}\label{classtbb_1_1interface5_1_1concurrent__hash__map_a4d719f4927647da558d240275fd6a5ec}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a4f2c8bb239d5eeb705a6f36b5f950d8a}{}typedef internal\+::hash\+\_\+map\+\_\+range$<$ iterator $>$ {\bfseries range\+\_\+type}\label{classtbb_1_1interface5_1_1concurrent__hash__map_a4f2c8bb239d5eeb705a6f36b5f950d8a}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a01da04aebcff08bf75374fc9ae160d05}{}typedef internal\+::hash\+\_\+map\+\_\+range$<$ const\+\_\+iterator $>$ {\bfseries const\+\_\+range\+\_\+type}\label{classtbb_1_1interface5_1_1concurrent__hash__map_a01da04aebcff08bf75374fc9ae160d05}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_aa888b9a21f08eca699102aac328a546b}{}typedef Allocator {\bfseries allocator\+\_\+type}\label{classtbb_1_1interface5_1_1concurrent__hash__map_aa888b9a21f08eca699102aac328a546b}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a4099225948ab299cf7abc43ec8c8c504}{}\hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a4099225948ab299cf7abc43ec8c8c504}{concurrent\+\_\+hash\+\_\+map} (const allocator\+\_\+type \&a=allocator\+\_\+type())\label{classtbb_1_1interface5_1_1concurrent__hash__map_a4099225948ab299cf7abc43ec8c8c504}
+
+\begin{DoxyCompactList}\small\item\em Construct empty table. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a98c35338629328b16802f27c7ea1f4c2}{}\hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a98c35338629328b16802f27c7ea1f4c2}{concurrent\+\_\+hash\+\_\+map} (size\+\_\+type n, const allocator\+\_\+type \&a=allocator\+\_\+type())\label{classtbb_1_1interface5_1_1concurrent__hash__map_a98c35338629328b16802f27c7ea1f4c2}
+
+\begin{DoxyCompactList}\small\item\em Construct empty table with n preallocated buckets. This number serves also as initial concurrency level. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a1e9c7e1650a87c6fdfd282c61587059e}{}\hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a1e9c7e1650a87c6fdfd282c61587059e}{concurrent\+\_\+hash\+\_\+map} (const \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map}{concurrent\+\_\+hash\+\_\+map} \&table, const allocator\+\_\+type \&a=allocator\+\_\+type())\label{classtbb_1_1interface5_1_1concurrent__hash__map_a1e9c7e1650a87c6fdfd282c61587059e}
+
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_ae5554a86cf627e7a21de256920d03690}{}{\footnotesize template$<$typename I $>$ }\\\hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_ae5554a86cf627e7a21de256920d03690}{concurrent\+\_\+hash\+\_\+map} (I first, I last, const allocator\+\_\+type \&a=allocator\+\_\+type())\label{classtbb_1_1interface5_1_1concurrent__hash__map_ae5554a86cf627e7a21de256920d03690}
+
+\begin{DoxyCompactList}\small\item\em Construction with copying iteration range and given allocator instance. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_ad0f01ce516b8d3ab574954843622c7cd}{}\hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map}{concurrent\+\_\+hash\+\_\+map} \& \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_ad0f01ce516b8d3ab574954843622c7cd}{operator=} (const \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map}{concurrent\+\_\+hash\+\_\+map} \&table)\label{classtbb_1_1interface5_1_1concurrent__hash__map_ad0f01ce516b8d3ab574954843622c7cd}
+
+\begin{DoxyCompactList}\small\item\em Assignment. \end{DoxyCompactList}\item 
+void \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_adf1fa9470c605731063e5949f0418eb7}{rehash} (size\+\_\+type n=0)
+\begin{DoxyCompactList}\small\item\em Rehashes and optionally resizes the whole table. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_ab8295bc260b5e4df883fef11574b84c6}{}void \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_ab8295bc260b5e4df883fef11574b84c6}{clear} ()\label{classtbb_1_1interface5_1_1concurrent__hash__map_ab8295bc260b5e4df883fef11574b84c6}
+
+\begin{DoxyCompactList}\small\item\em Clear table. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_aa9db855aa80ce639ffcef786ae12fd09}{}\hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_aa9db855aa80ce639ffcef786ae12fd09}{$\sim$concurrent\+\_\+hash\+\_\+map} ()\label{classtbb_1_1interface5_1_1concurrent__hash__map_aa9db855aa80ce639ffcef786ae12fd09}
+
+\begin{DoxyCompactList}\small\item\em Clear table and destroy it. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a3f2076a43052ae0f9add158ffe7700db}{}range\+\_\+type {\bfseries range} (size\+\_\+type grainsize=1)\label{classtbb_1_1interface5_1_1concurrent__hash__map_a3f2076a43052ae0f9add158ffe7700db}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a904058bdca16f5d3d209389c32ee6465}{}const\+\_\+range\+\_\+type {\bfseries range} (size\+\_\+type grainsize=1) const \label{classtbb_1_1interface5_1_1concurrent__hash__map_a904058bdca16f5d3d209389c32ee6465}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a5c999351f9b8ab78c61ce487d27ceb2d}{}iterator {\bfseries begin} ()\label{classtbb_1_1interface5_1_1concurrent__hash__map_a5c999351f9b8ab78c61ce487d27ceb2d}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a642a53f457a71c5529076535e15e6c7c}{}iterator {\bfseries end} ()\label{classtbb_1_1interface5_1_1concurrent__hash__map_a642a53f457a71c5529076535e15e6c7c}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a9a0f0ee20346ff74347e76810c620523}{}const\+\_\+iterator {\bfseries begin} () const \label{classtbb_1_1interface5_1_1concurrent__hash__map_a9a0f0ee20346ff74347e76810c620523}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a3555b096633f740bb0fd5e6064fd9d9e}{}const\+\_\+iterator {\bfseries end} () const \label{classtbb_1_1interface5_1_1concurrent__hash__map_a3555b096633f740bb0fd5e6064fd9d9e}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a1e7ff65326e5c0584863aad46a5f6433}{}std\+::pair$<$ iterator, iterator $>$ {\bfseries equal\+\_\+range} (const Key \&key)\label{classtbb_1_1interface5_1_1concurrent__hash__map_a1e7ff65326e5c0584863aad46a5f6433}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a8d931126ba43e2b725bbeb828fb53af5}{}std\+::pair$<$ const\+\_\+iterator, const\+\_\+iterator $>$ {\bfseries equal\+\_\+range} (const Key \&key) const \label{classtbb_1_1interface5_1_1concurrent__hash__map_a8d931126ba43e2b725bbeb828fb53af5}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a252731d8fa53963cc28fbc0e2172c4d0}{}size\+\_\+type \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a252731d8fa53963cc28fbc0e2172c4d0}{size} () const \label{classtbb_1_1interface5_1_1concurrent__hash__map_a252731d8fa53963cc28fbc0e2172c4d0}
+
+\begin{DoxyCompactList}\small\item\em Number of items in table. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_aa6bb663b0b7d69c4c80057849ef11ab7}{}bool \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_aa6bb663b0b7d69c4c80057849ef11ab7}{empty} () const \label{classtbb_1_1interface5_1_1concurrent__hash__map_aa6bb663b0b7d69c4c80057849ef11ab7}
+
+\begin{DoxyCompactList}\small\item\em True if \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a252731d8fa53963cc28fbc0e2172c4d0}{size()}==0. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a4be6e1a8e4e2430e02d9ed62ae7093bf}{}size\+\_\+type \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a4be6e1a8e4e2430e02d9ed62ae7093bf}{max\+\_\+size} () const \label{classtbb_1_1interface5_1_1concurrent__hash__map_a4be6e1a8e4e2430e02d9ed62ae7093bf}
+
+\begin{DoxyCompactList}\small\item\em Upper bound on size. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_ae8e11f8b67d8553d3a3a1d0b09328088}{}size\+\_\+type \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_ae8e11f8b67d8553d3a3a1d0b09328088}{bucket\+\_\+count} () const \label{classtbb_1_1interface5_1_1concurrent__hash__map_ae8e11f8b67d8553d3a3a1d0b09328088}
+
+\begin{DoxyCompactList}\small\item\em Returns the current number of buckets. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_ad4993bc44e0c923f2e8430d81367889d}{}allocator\+\_\+type \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_ad4993bc44e0c923f2e8430d81367889d}{get\+\_\+allocator} () const \label{classtbb_1_1interface5_1_1concurrent__hash__map_ad4993bc44e0c923f2e8430d81367889d}
+
+\begin{DoxyCompactList}\small\item\em return allocator object \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a4c8edf603bc776a6c84c007702c1808e}{}void \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a4c8edf603bc776a6c84c007702c1808e}{swap} (\hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map}{concurrent\+\_\+hash\+\_\+map} \&table)\label{classtbb_1_1interface5_1_1concurrent__hash__map_a4c8edf603bc776a6c84c007702c1808e}
+
+\begin{DoxyCompactList}\small\item\em swap two instances. Iterators are invalidated \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a7f9cb611a5effb650959cdde1b8ee901}{}size\+\_\+type \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a7f9cb611a5effb650959cdde1b8ee901}{count} (const Key \&key) const \label{classtbb_1_1interface5_1_1concurrent__hash__map_a7f9cb611a5effb650959cdde1b8ee901}
+
+\begin{DoxyCompactList}\small\item\em Return count of items (0 or 1) \end{DoxyCompactList}\item 
+bool \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a6d95753173af3646ba9281fd119f5733}{find} (\hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_1_1const__accessor}{const\+\_\+accessor} \&result, const Key \&key) const 
+\begin{DoxyCompactList}\small\item\em \hyperlink{structFind}{Find} item and acquire a read lock on the item. \end{DoxyCompactList}\item 
+bool \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_aa7ff5cf736270e2076456d7cec38445f}{find} (\hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_1_1accessor}{accessor} \&result, const Key \&key)
+\begin{DoxyCompactList}\small\item\em \hyperlink{structFind}{Find} item and acquire a write lock on the item. \end{DoxyCompactList}\item 
+bool \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_ae20cd9cdb08def2bcb2fd86c8276f52b}{insert} (\hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_1_1const__accessor}{const\+\_\+accessor} \&result, const Key \&key)
+\begin{DoxyCompactList}\small\item\em \hyperlink{structInsert}{Insert} item (if not already present) and acquire a read lock on the item. \end{DoxyCompactList}\item 
+bool \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a8b08213788c7124cab61ca40247a643a}{insert} (\hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_1_1accessor}{accessor} \&result, const Key \&key)
+\begin{DoxyCompactList}\small\item\em \hyperlink{structInsert}{Insert} item (if not already present) and acquire a write lock on the item. \end{DoxyCompactList}\item 
+bool \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_ab89cfe8fca962154a521eaae88b3a453}{insert} (\hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_1_1const__accessor}{const\+\_\+accessor} \&result, const value\+\_\+type \&value)
+\begin{DoxyCompactList}\small\item\em \hyperlink{structInsert}{Insert} item by copying if there is no such key present already and acquire a read lock on the item. \end{DoxyCompactList}\item 
+bool \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_ae85ca36788e47e16f48bfe8590e6e360}{insert} (\hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_1_1accessor}{accessor} \&result, const value\+\_\+type \&value)
+\begin{DoxyCompactList}\small\item\em \hyperlink{structInsert}{Insert} item by copying if there is no such key present already and acquire a write lock on the item. \end{DoxyCompactList}\item 
+bool \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a8409ddd83cfe0a4de912f92a05081111}{insert} (const value\+\_\+type \&value)
+\begin{DoxyCompactList}\small\item\em \hyperlink{structInsert}{Insert} item by copying if there is no such key present already. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a1d6b7a7e3d4361bb12fb5185cd6d0e65}{}{\footnotesize template$<$typename I $>$ }\\void \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a1d6b7a7e3d4361bb12fb5185cd6d0e65}{insert} (I first, I last)\label{classtbb_1_1interface5_1_1concurrent__hash__map_a1d6b7a7e3d4361bb12fb5185cd6d0e65}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{structInsert}{Insert} range \mbox{[}first, last) \end{DoxyCompactList}\item 
+bool \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a5144122dbb946d933b94a92117543b33}{erase} (const Key \&key)
+\begin{DoxyCompactList}\small\item\em \hyperlink{structErase}{Erase} item. \end{DoxyCompactList}\item 
+bool \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a52cd8c021eab3d09e75383064ca7d80a}{erase} (\hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_1_1const__accessor}{const\+\_\+accessor} \&item\+\_\+accessor)
+\begin{DoxyCompactList}\small\item\em \hyperlink{structErase}{Erase} item by \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_1_1const__accessor}{const\+\_\+accessor}. \end{DoxyCompactList}\item 
+bool \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_ae8ae6006f9756f3bfd9b5d4407250ada}{erase} (\hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_1_1accessor}{accessor} \&item\+\_\+accessor)
+\begin{DoxyCompactList}\small\item\em \hyperlink{structErase}{Erase} item by accessor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_ab98f8222c91dbde0852a7389dc35b60f}{}typedef Allocator\+::template rebind$<$ \hyperlink{structtbb_1_1interface5_1_1concurrent__hash__map_1_1node}{node} $>$\+::other {\bfseries node\+\_\+allocator\+\_\+type}\label{classtbb_1_1interface5_1_1concurrent__hash__map_ab98f8222c91dbde0852a7389dc35b60f}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_acb1f5cd0e8379a652cb59c07ff952987}{}void {\bfseries delete\+\_\+node} (node\+\_\+base $\ast$n)\label{classtbb_1_1interface5_1_1concurrent__hash__map_acb1f5cd0e8379a652cb59c07ff952987}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a00bdad0b401861e0a04468ee926561d4}{}\hyperlink{structtbb_1_1interface5_1_1concurrent__hash__map_1_1node}{node} $\ast$ {\bfseries search\+\_\+bucket} (const key\+\_\+type \&key, bucket $\ast$b) const \label{classtbb_1_1interface5_1_1concurrent__hash__map_a00bdad0b401861e0a04468ee926561d4}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a7f29734b96e4dfb714200ba1bdf2e427}{}void {\bfseries rehash\+\_\+bucket} (bucket $\ast$b\+\_\+new, const hashcode\+\_\+t h)\label{classtbb_1_1interface5_1_1concurrent__hash__map_a7f29734b96e4dfb714200ba1bdf2e427}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a54c7e526a1dc75509a1f059195d4f24c}{}bool \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a54c7e526a1dc75509a1f059195d4f24c}{lookup} (bool op\+\_\+insert, const Key \&key, const T $\ast$t, \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_1_1const__accessor}{const\+\_\+accessor} $\ast$result, bool write, \hyperlink{structtbb_1_1interface5_1_1concurrent__hash__map_1_1node}{node} $\ast$($\ast$allocate\+\_\+node)(node\+\_\+allocator\+\_\+type \&, const Key \&, const T $\ast$))\label{classtbb_1_1interface5_1_1concurrent__hash__map_a54c7e526a1dc75509a1f059195d4f24c}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{structInsert}{Insert} or find item and optionally acquire a lock on the item. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a6fec452b31b8f0e185dc2de64b7128b2}{}bool \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a6fec452b31b8f0e185dc2de64b7128b2}{exclude} (\hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_1_1const__accessor}{const\+\_\+accessor} \&item\+\_\+accessor)\label{classtbb_1_1interface5_1_1concurrent__hash__map_a6fec452b31b8f0e185dc2de64b7128b2}
+
+\begin{DoxyCompactList}\small\item\em delete item by accessor \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a8603f5288db63ec35a16844427e97e42}{}{\footnotesize template$<$typename I $>$ }\\std\+::pair$<$ I, I $>$ \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a8603f5288db63ec35a16844427e97e42}{internal\+\_\+equal\+\_\+range} (const Key \&key, I end) const \label{classtbb_1_1interface5_1_1concurrent__hash__map_a8603f5288db63ec35a16844427e97e42}
+
+\begin{DoxyCompactList}\small\item\em Returns an iterator for an item defined by the key, or for the next item after it (if upper==true) \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a0bc3593f82b3b4f9839fc051780212ab}{}void \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a0bc3593f82b3b4f9839fc051780212ab}{internal\+\_\+copy} (const \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map}{concurrent\+\_\+hash\+\_\+map} \&source)\label{classtbb_1_1interface5_1_1concurrent__hash__map_a0bc3593f82b3b4f9839fc051780212ab}
+
+\begin{DoxyCompactList}\small\item\em Copy \char`\"{}source\char`\"{} to $\ast$this, where $\ast$this must start out empty. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a31e69cc4fd5adafb379e7c6de5660912}{}{\footnotesize template$<$typename I $>$ }\\void {\bfseries internal\+\_\+copy} (I first, I last)\label{classtbb_1_1interface5_1_1concurrent__hash__map_a31e69cc4fd5adafb379e7c6de5660912}
+
+\item 
+const\+\_\+pointer \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_adddfc01df4dc3681ab2bfaf910455e1f}{internal\+\_\+fast\+\_\+find} (const Key \&key) const 
+\begin{DoxyCompactList}\small\item\em Fast find when no concurrent erasure is used. For internal use inside T\+B\+B only! \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a5d0511bb9f53f6269308e761b8e21280}{}static \hyperlink{structtbb_1_1interface5_1_1concurrent__hash__map_1_1node}{node} $\ast$ {\bfseries allocate\+\_\+node\+\_\+copy\+\_\+construct} (node\+\_\+allocator\+\_\+type \&allocator, const Key \&key, const T $\ast$t)\label{classtbb_1_1interface5_1_1concurrent__hash__map_a5d0511bb9f53f6269308e761b8e21280}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a9f67fd62790d6c336829967e57dcbf49}{}static \hyperlink{structtbb_1_1interface5_1_1concurrent__hash__map_1_1node}{node} $\ast$ {\bfseries allocate\+\_\+node\+\_\+default\+\_\+construct} (node\+\_\+allocator\+\_\+type \&allocator, const Key \&key, const T $\ast$)\label{classtbb_1_1interface5_1_1concurrent__hash__map_a9f67fd62790d6c336829967e57dcbf49}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_ae6f3bf945cc7e9c0f308b5773c6ef187}{}static \hyperlink{structtbb_1_1interface5_1_1concurrent__hash__map_1_1node}{node} $\ast$ {\bfseries do\+\_\+not\+\_\+allocate\+\_\+node} (node\+\_\+allocator\+\_\+type \&, const Key \&, const T $\ast$)\label{classtbb_1_1interface5_1_1concurrent__hash__map_ae6f3bf945cc7e9c0f308b5773c6ef187}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a19465c779184824a26fef997c1c93704}{}node\+\_\+allocator\+\_\+type {\bfseries my\+\_\+allocator}\label{classtbb_1_1interface5_1_1concurrent__hash__map_a19465c779184824a26fef997c1c93704}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a527efdaab0be6cf6826f0b73b379cebb}{}Hash\+Compare {\bfseries my\+\_\+hash\+\_\+compare}\label{classtbb_1_1interface5_1_1concurrent__hash__map_a527efdaab0be6cf6826f0b73b379cebb}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a0ecadabdc31088d7bace5a0b6e5ee3f9}{}{\footnotesize template$<$typename Container , typename Value $>$ }\\class {\bfseries internal\+::hash\+\_\+map\+\_\+iterator}\label{classtbb_1_1interface5_1_1concurrent__hash__map_a0ecadabdc31088d7bace5a0b6e5ee3f9}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_ad49112156111ee1b85be9f4b89e410ca}{}{\footnotesize template$<$typename I $>$ }\\class {\bfseries internal\+::hash\+\_\+map\+\_\+range}\label{classtbb_1_1interface5_1_1concurrent__hash__map_ad49112156111ee1b85be9f4b89e410ca}
+
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a584bf754a8408612d4bfd33a3eafd80d}{}class {\bfseries const\+\_\+accessor}\label{classtbb_1_1interface5_1_1concurrent__hash__map_a584bf754a8408612d4bfd33a3eafd80d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Key, typename T, typename Hash\+Compare, typename Allocator$>$class tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map$<$ Key, T, Hash\+Compare, Allocator $>$}
+
+Unordered map from Key to T. 
+
+\hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map}{concurrent\+\_\+hash\+\_\+map} is associative container with concurrent access.
+
+\begin{DoxyParagraph}{Compatibility}
+The class meets all Container Requirements from C++ Standard (See I\+S\+O/\+I\+E\+C 14882\+:2003(E), clause 23.\+1).
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Exception Safety}
+
+\begin{DoxyItemize}
+\item \hyperlink{structHash}{Hash} function is not permitted to throw an exception. User-\/defined types Key and T are forbidden from throwing an exception in destructors.
+\item If exception happens during \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_ae20cd9cdb08def2bcb2fd86c8276f52b}{insert()} operations, it has no effect (unless exception raised by Hash\+Compare\+::hash() function during grow\+\_\+segment).
+\item If exception happens during \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_ad0f01ce516b8d3ab574954843622c7cd}{operator=()} operation, the container can have a part of source items, and methods \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a252731d8fa53963cc28fbc0e2172c4d0}{size()} and \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_aa6bb663b0b7d69c4c80057849ef11ab7}{empty()} can return wrong results.
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Changes since T\+B\+B 2.1}
+
+\begin{DoxyItemize}
+\item Replaced internal algorithm and data structure. Patent is pending.
+\item Added buckets number argument for constructor
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Changes since T\+B\+B 2.0}
+
+\begin{DoxyItemize}
+\item Fixed exception-\/safety
+\item Added template argument for allocator
+\item Added allocator argument in constructors
+\item Added constructor from a range of iterators
+\item Added several new overloaded \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_ae20cd9cdb08def2bcb2fd86c8276f52b}{insert()} methods
+\item Added \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_ad4993bc44e0c923f2e8430d81367889d}{get\+\_\+allocator()}
+\item Added \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a4c8edf603bc776a6c84c007702c1808e}{swap()}
+\item Added \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a7f9cb611a5effb650959cdde1b8ee901}{count()}
+\item Added overloaded \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_ae8ae6006f9756f3bfd9b5d4407250ada}{erase(accessor \&)} and \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a52cd8c021eab3d09e75383064ca7d80a}{erase(const\+\_\+accessor\&)}
+\item Added equal\+\_\+range() \mbox{[}const\mbox{]}
+\item Added \mbox{[}const\+\_\+\mbox{]}pointer, \mbox{[}const\+\_\+\mbox{]}reference, and allocator\+\_\+type types
+\item Added global functions\+: \hyperlink{group__SmartPointerGroup_ga6367f7dd2ba62b272c7a14b2d5db3e01}{operator==()}, \hyperlink{group__SmartPointerGroup_ga4737a73b3c8d0a42d5f1f94526728f75}{operator!=()}, and \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a4c8edf603bc776a6c84c007702c1808e}{swap()} 
+\end{DoxyItemize}
+\end{DoxyParagraph}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a5144122dbb946d933b94a92117543b33}{}\index{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}!erase@{erase}}
+\index{erase@{erase}!tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}}
+\subsubsection[{erase(const Key \&key)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Key , typename T , typename Hash\+Compare , typename A $>$ bool {\bf tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}$<$ Key, T, Hash\+Compare, {\bf A} $>$\+::erase (
+\begin{DoxyParamCaption}
+\item[{const Key \&}]{key}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1interface5_1_1concurrent__hash__map_a5144122dbb946d933b94a92117543b33}
+
+
+\hyperlink{structErase}{Erase} item. 
+
+Return true if item was erased by particularly this call. \hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a52cd8c021eab3d09e75383064ca7d80a}{}\index{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}!erase@{erase}}
+\index{erase@{erase}!tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}}
+\subsubsection[{erase(const\+\_\+accessor \&item\+\_\+accessor)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Key , typename T , typename Hash\+Compare , typename Allocator $>$ bool {\bf tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}$<$ Key, T, Hash\+Compare, Allocator $>$\+::erase (
+\begin{DoxyParamCaption}
+\item[{{\bf const\+\_\+accessor} \&}]{item\+\_\+accessor}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1interface5_1_1concurrent__hash__map_a52cd8c021eab3d09e75383064ca7d80a}
+
+
+\hyperlink{structErase}{Erase} item by \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_1_1const__accessor}{const\+\_\+accessor}. 
+
+Return true if item was erased by particularly this call. \hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_ae8ae6006f9756f3bfd9b5d4407250ada}{}\index{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}!erase@{erase}}
+\index{erase@{erase}!tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}}
+\subsubsection[{erase(accessor \&item\+\_\+accessor)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Key , typename T , typename Hash\+Compare , typename Allocator $>$ bool {\bf tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}$<$ Key, T, Hash\+Compare, Allocator $>$\+::erase (
+\begin{DoxyParamCaption}
+\item[{{\bf accessor} \&}]{item\+\_\+accessor}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1interface5_1_1concurrent__hash__map_ae8ae6006f9756f3bfd9b5d4407250ada}
+
+
+\hyperlink{structErase}{Erase} item by accessor. 
+
+Return true if item was erased by particularly this call. \hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a6d95753173af3646ba9281fd119f5733}{}\index{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}!find@{find}}
+\index{find@{find}!tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}}
+\subsubsection[{find(const\+\_\+accessor \&result, const Key \&key) const }]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Key , typename T , typename Hash\+Compare , typename Allocator $>$ bool {\bf tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}$<$ Key, T, Hash\+Compare, Allocator $>$\+::find (
+\begin{DoxyParamCaption}
+\item[{{\bf const\+\_\+accessor} \&}]{result, }
+\item[{const Key \&}]{key}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1interface5_1_1concurrent__hash__map_a6d95753173af3646ba9281fd119f5733}
+
+
+\hyperlink{structFind}{Find} item and acquire a read lock on the item. 
+
+Return true if item is found, false otherwise. \hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_aa7ff5cf736270e2076456d7cec38445f}{}\index{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}!find@{find}}
+\index{find@{find}!tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}}
+\subsubsection[{find(accessor \&result, const Key \&key)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Key , typename T , typename Hash\+Compare , typename Allocator $>$ bool {\bf tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}$<$ Key, T, Hash\+Compare, Allocator $>$\+::find (
+\begin{DoxyParamCaption}
+\item[{{\bf accessor} \&}]{result, }
+\item[{const Key \&}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1interface5_1_1concurrent__hash__map_aa7ff5cf736270e2076456d7cec38445f}
+
+
+\hyperlink{structFind}{Find} item and acquire a write lock on the item. 
+
+Return true if item is found, false otherwise. \hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_ae20cd9cdb08def2bcb2fd86c8276f52b}{}\index{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}!insert@{insert}}
+\index{insert@{insert}!tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}}
+\subsubsection[{insert(const\+\_\+accessor \&result, const Key \&key)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Key , typename T , typename Hash\+Compare , typename Allocator $>$ bool {\bf tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}$<$ Key, T, Hash\+Compare, Allocator $>$\+::insert (
+\begin{DoxyParamCaption}
+\item[{{\bf const\+\_\+accessor} \&}]{result, }
+\item[{const Key \&}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1interface5_1_1concurrent__hash__map_ae20cd9cdb08def2bcb2fd86c8276f52b}
+
+
+\hyperlink{structInsert}{Insert} item (if not already present) and acquire a read lock on the item. 
+
+Returns true if item is new. \hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a8b08213788c7124cab61ca40247a643a}{}\index{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}!insert@{insert}}
+\index{insert@{insert}!tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}}
+\subsubsection[{insert(accessor \&result, const Key \&key)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Key , typename T , typename Hash\+Compare , typename Allocator $>$ bool {\bf tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}$<$ Key, T, Hash\+Compare, Allocator $>$\+::insert (
+\begin{DoxyParamCaption}
+\item[{{\bf accessor} \&}]{result, }
+\item[{const Key \&}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1interface5_1_1concurrent__hash__map_a8b08213788c7124cab61ca40247a643a}
+
+
+\hyperlink{structInsert}{Insert} item (if not already present) and acquire a write lock on the item. 
+
+Returns true if item is new. \hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_ab89cfe8fca962154a521eaae88b3a453}{}\index{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}!insert@{insert}}
+\index{insert@{insert}!tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}}
+\subsubsection[{insert(const\+\_\+accessor \&result, const value\+\_\+type \&value)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Key , typename T , typename Hash\+Compare , typename Allocator $>$ bool {\bf tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}$<$ Key, T, Hash\+Compare, Allocator $>$\+::insert (
+\begin{DoxyParamCaption}
+\item[{{\bf const\+\_\+accessor} \&}]{result, }
+\item[{const value\+\_\+type \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1interface5_1_1concurrent__hash__map_ab89cfe8fca962154a521eaae88b3a453}
+
+
+\hyperlink{structInsert}{Insert} item by copying if there is no such key present already and acquire a read lock on the item. 
+
+Returns true if item is new. \hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_ae85ca36788e47e16f48bfe8590e6e360}{}\index{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}!insert@{insert}}
+\index{insert@{insert}!tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}}
+\subsubsection[{insert(accessor \&result, const value\+\_\+type \&value)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Key , typename T , typename Hash\+Compare , typename Allocator $>$ bool {\bf tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}$<$ Key, T, Hash\+Compare, Allocator $>$\+::insert (
+\begin{DoxyParamCaption}
+\item[{{\bf accessor} \&}]{result, }
+\item[{const value\+\_\+type \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1interface5_1_1concurrent__hash__map_ae85ca36788e47e16f48bfe8590e6e360}
+
+
+\hyperlink{structInsert}{Insert} item by copying if there is no such key present already and acquire a write lock on the item. 
+
+Returns true if item is new. \hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_a8409ddd83cfe0a4de912f92a05081111}{}\index{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}!insert@{insert}}
+\index{insert@{insert}!tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}}
+\subsubsection[{insert(const value\+\_\+type \&value)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Key , typename T , typename Hash\+Compare , typename Allocator $>$ bool {\bf tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}$<$ Key, T, Hash\+Compare, Allocator $>$\+::insert (
+\begin{DoxyParamCaption}
+\item[{const value\+\_\+type \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1interface5_1_1concurrent__hash__map_a8409ddd83cfe0a4de912f92a05081111}
+
+
+\hyperlink{structInsert}{Insert} item by copying if there is no such key present already. 
+
+Returns true if item is inserted. \hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_adddfc01df4dc3681ab2bfaf910455e1f}{}\index{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}!internal\+\_\+fast\+\_\+find@{internal\+\_\+fast\+\_\+find}}
+\index{internal\+\_\+fast\+\_\+find@{internal\+\_\+fast\+\_\+find}!tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}}
+\subsubsection[{internal\+\_\+fast\+\_\+find(const Key \&key) const }]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Key , typename T , typename Hash\+Compare , typename Allocator $>$ const\+\_\+pointer {\bf tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}$<$ Key, T, Hash\+Compare, Allocator $>$\+::internal\+\_\+fast\+\_\+find (
+\begin{DoxyParamCaption}
+\item[{const Key \&}]{key}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}\label{classtbb_1_1interface5_1_1concurrent__hash__map_adddfc01df4dc3681ab2bfaf910455e1f}
+
+
+Fast find when no concurrent erasure is used. For internal use inside T\+B\+B only! 
+
+Return pointer to item with given key, or N\+U\+L\+L if no such item exists. Must not be called concurrently with erasure operations. \hypertarget{classtbb_1_1interface5_1_1concurrent__hash__map_adf1fa9470c605731063e5949f0418eb7}{}\index{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}!rehash@{rehash}}
+\index{rehash@{rehash}!tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map@{tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}}
+\subsubsection[{rehash(size\+\_\+type n=0)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Key , typename T , typename Hash\+Compare , typename A $>$ void {\bf tbb\+::interface5\+::concurrent\+\_\+hash\+\_\+map}$<$ Key, T, Hash\+Compare, {\bf A} $>$\+::rehash (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+type}]{n = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1interface5_1_1concurrent__hash__map_adf1fa9470c605731063e5949f0418eb7}
+
+
+Rehashes and optionally resizes the whole table. 
+
+Useful to optimize performance before or after concurrent operations. Also enables using of \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a6d95753173af3646ba9281fd119f5733}{find()} and \hyperlink{classtbb_1_1interface5_1_1concurrent__hash__map_a7f9cb611a5effb650959cdde1b8ee901}{count()} concurrent methods in serial context. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/concurrent\+\_\+hash\+\_\+map.\+h\end{DoxyCompactItemize}

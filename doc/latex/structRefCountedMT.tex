@@ -1,0 +1,19 @@
+\hypertarget{structRefCountedMT}{}\section{Ref\+Counted\+M\+T Struct Reference}
+\label{structRefCountedMT}\index{Ref\+Counted\+M\+T@{Ref\+Counted\+M\+T}}
+
+
+{\ttfamily \#include $<$Smart\+Ptr.\+h$>$}
+
+
+
+\subsection{Detailed Description}
+Implementation of the Ownership\+Policy used by Smart\+Ptr Implements external reference counting for multithreaded programs \hyperlink{structPolicy}{Policy} Usage\+: Ref\+Counted\+M\+T\+Adj$<$\+Threading\+Model$>$\+::\+Ref\+Counted\+M\+T
+
+\begin{DoxyParagraph}{Warning}
+There could be a race condition, see bug \char`\"{}\+Race condition in Ref\+Counted\+M\+T\+Adj\+::\+Release\char`\"{} \href{http://sourceforge.net/tracker/index.php?func=detail&aid=1408845&group_id=29557&atid=396644}{\tt http\+://sourceforge.\+net/tracker/index.\+php?func=detail\&aid=1408845\&group\+\_\+id=29557\&atid=396644} As stated in bug 1408845, the Release function is not thread safe if a Smart\+Ptr copy-\/constructor tries to copy the last pointer to an object in one thread, while the destructor is acting on the last pointer in another thread. The existence of a race between a copy-\/constructor and destructor implies a design flaw at a higher level. That race condition must be fixed at a higher design level, and no change to this class could fix it. 
+\end{DoxyParagraph}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Smart\+Ptr.\+h\end{DoxyCompactItemize}

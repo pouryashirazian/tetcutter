@@ -1,0 +1,85 @@
+\hypertarget{group__markers}{}\section{Markers}
+\label{group__markers}\index{Markers@{Markers}}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__markers_ga9712c6a992a435d4d134e7164f609f04}{}enum \hyperlink{group__markers_ga9712c6a992a435d4d134e7164f609f04}{\+\_\+\+\_\+itt\+\_\+scope} \{ \\*
+{\bfseries \+\_\+\+\_\+itt\+\_\+scope\+\_\+unknown} = 0, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+scope\+\_\+global}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+scope\+\_\+track\+\_\+group}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+scope\+\_\+track}, 
+\\*
+{\bfseries \+\_\+\+\_\+itt\+\_\+scope\+\_\+task}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+scope\+\_\+marker}
+ \}\label{group__markers_ga9712c6a992a435d4d134e7164f609f04}
+\begin{DoxyCompactList}\small\item\em Describes the scope of an event object in the trace. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__markers_gaf5bb17e236d525fa8a84d66d62259503}{\+\_\+\+\_\+itt\+\_\+marker} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id id, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$name, \hyperlink{group__markers_ga9712c6a992a435d4d134e7164f609f04}{\+\_\+\+\_\+itt\+\_\+scope} scope)
+\begin{DoxyCompactList}\small\item\em Create a marker instance. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__markers_gad4d64549f975be3321d5bf6e7666311e}{\+\_\+\+\_\+itt\+\_\+marker\+\_\+ex} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$clock\+\_\+domain, unsigned long long timestamp, \+\_\+\+\_\+itt\+\_\+id id, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$name, \hyperlink{group__markers_ga9712c6a992a435d4d134e7164f609f04}{\+\_\+\+\_\+itt\+\_\+scope} scope)
+\begin{DoxyCompactList}\small\item\em Create a marker instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Markers represent a single discreet event in time. Markers have a scope, described by an enumerated type \+\_\+\+\_\+itt\+\_\+scope. Markers are created by the A\+P\+I call \+\_\+\+\_\+itt\+\_\+marker. \hyperlink{structA}{A} marker instance can be given an I\+D for use in adding metadata. 
+
+\subsection{Function Documentation}
+\hypertarget{group__markers_gaf5bb17e236d525fa8a84d66d62259503}{}\index{Markers@{Markers}!\+\_\+\+\_\+itt\+\_\+marker@{\+\_\+\+\_\+itt\+\_\+marker}}
+\index{\+\_\+\+\_\+itt\+\_\+marker@{\+\_\+\+\_\+itt\+\_\+marker}!Markers@{Markers}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+marker(const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id id, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$name, \+\_\+\+\_\+itt\+\_\+scope scope)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+marker (
+\begin{DoxyParamCaption}
+\item[{const \+\_\+\+\_\+itt\+\_\+domain $\ast$}]{domain, }
+\item[{\+\_\+\+\_\+itt\+\_\+id}]{id, }
+\item[{\+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$}]{name, }
+\item[{{\bf \+\_\+\+\_\+itt\+\_\+scope}}]{scope}
+\end{DoxyParamCaption}
+)}\label{group__markers_gaf5bb17e236d525fa8a84d66d62259503}
+
+
+Create a marker instance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em domain} & The domain for this marker \\
+\hline
+\mbox{\tt in}  & {\em id} & The instance I\+D for this marker or \+\_\+\+\_\+itt\+\_\+null \\
+\hline
+\mbox{\tt in}  & {\em name} & The name for this marker \\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope for this marker \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__markers_gad4d64549f975be3321d5bf6e7666311e}{}\index{Markers@{Markers}!\+\_\+\+\_\+itt\+\_\+marker\+\_\+ex@{\+\_\+\+\_\+itt\+\_\+marker\+\_\+ex}}
+\index{\+\_\+\+\_\+itt\+\_\+marker\+\_\+ex@{\+\_\+\+\_\+itt\+\_\+marker\+\_\+ex}!Markers@{Markers}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+marker\+\_\+ex(const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$clock\+\_\+domain, unsigned long long timestamp, \+\_\+\+\_\+itt\+\_\+id id, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$name, \+\_\+\+\_\+itt\+\_\+scope scope)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+marker\+\_\+ex (
+\begin{DoxyParamCaption}
+\item[{const \+\_\+\+\_\+itt\+\_\+domain $\ast$}]{domain, }
+\item[{\+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$}]{clock\+\_\+domain, }
+\item[{unsigned long long}]{timestamp, }
+\item[{\+\_\+\+\_\+itt\+\_\+id}]{id, }
+\item[{\+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$}]{name, }
+\item[{{\bf \+\_\+\+\_\+itt\+\_\+scope}}]{scope}
+\end{DoxyParamCaption}
+)}\label{group__markers_gad4d64549f975be3321d5bf6e7666311e}
+
+
+Create a marker instance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em domain} & The domain for this marker \\
+\hline
+\mbox{\tt in}  & {\em clock\+\_\+domain} & The clock domain controlling the execution of this call. \\
+\hline
+\mbox{\tt in}  & {\em timestamp} & The user defined timestamp. \\
+\hline
+\mbox{\tt in}  & {\em id} & The instance I\+D for this marker, or \+\_\+\+\_\+itt\+\_\+null \\
+\hline
+\mbox{\tt in}  & {\em name} & The name for this marker \\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope for this marker \\
+\hline
+\end{DoxyParams}

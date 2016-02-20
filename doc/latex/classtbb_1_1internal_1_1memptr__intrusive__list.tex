@@ -1,0 +1,40 @@
+\hypertarget{classtbb_1_1internal_1_1memptr__intrusive__list}{}\section{tbb\+:\+:internal\+:\+:memptr\+\_\+intrusive\+\_\+list$<$ T, U, Node\+Ptr $>$ Class Template Reference}
+\label{classtbb_1_1internal_1_1memptr__intrusive__list}\index{tbb\+::internal\+::memptr\+\_\+intrusive\+\_\+list$<$ T, U, Node\+Ptr $>$@{tbb\+::internal\+::memptr\+\_\+intrusive\+\_\+list$<$ T, U, Node\+Ptr $>$}}
+
+
+Double linked list of items of type T containing a member of type \hyperlink{structtbb_1_1internal_1_1intrusive__list__node}{intrusive\+\_\+list\+\_\+node}.  
+
+
+
+
+{\ttfamily \#include $<$intrusive\+\_\+list.\+h$>$}
+
+Inheritance diagram for tbb\+:\+:internal\+:\+:memptr\+\_\+intrusive\+\_\+list$<$ T, U, Node\+Ptr $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classtbb_1_1internal_1_1memptr__intrusive__list}
+\end{center}
+\end{figure}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1memptr__intrusive__list_ac6df6ea4ad2922821e998056197560ae}{}class {\bfseries intrusive\+\_\+list\+\_\+base$<$ memptr\+\_\+intrusive\+\_\+list$<$ T, U, Node\+Ptr $>$, T $>$}\label{classtbb_1_1internal_1_1memptr__intrusive__list_ac6df6ea4ad2922821e998056197560ae}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T, class U, intrusive\+\_\+list\+\_\+node U\+::$\ast$ Node\+Ptr$>$class tbb\+::internal\+::memptr\+\_\+intrusive\+\_\+list$<$ T, U, Node\+Ptr $>$}
+
+Double linked list of items of type T containing a member of type \hyperlink{structtbb_1_1internal_1_1intrusive__list__node}{intrusive\+\_\+list\+\_\+node}. 
+
+Node\+Ptr is a member pointer to the node data field. Class U is either T or a base class of T containing the node member. Default values exist for the sake of a partial specialization working with inheritance case.
+
+The list does not have ownership of its items. Its purpose is to avoid dynamic memory allocation when forming lists of existing objects.
+
+The class is not thread safe. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/intrusive\+\_\+list.\+h\end{DoxyCompactItemize}

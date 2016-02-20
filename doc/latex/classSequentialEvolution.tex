@@ -1,0 +1,46 @@
+\hypertarget{classSequentialEvolution}{}\section{Sequential\+Evolution Class Reference}
+\label{classSequentialEvolution}\index{Sequential\+Evolution@{Sequential\+Evolution}}
+
+
+{\ttfamily \#include $<$Evolution.\+h$>$}
+
+Inheritance diagram for Sequential\+Evolution\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSequentialEvolution}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classSequentialEvolution_accfed29679c22ebffc25ffcd8736edae}{}{\bfseries Sequential\+Evolution} (\hyperlink{classMatrix}{Matrix} $\ast$m, Board\+Ptr board)\label{classSequentialEvolution_accfed29679c22ebffc25ffcd8736edae}
+
+\item 
+virtual void \hyperlink{classSequentialEvolution_aa4906c7ab5d634a8489540eea449b9ff}{Run} () override
+\begin{DoxyCompactList}\small\item\em \hyperlink{classSequentialEvolution_aa4906c7ab5d634a8489540eea449b9ff}{Sequential\+Evolution\+::\+Run} -\/ begins looped evolution. \end{DoxyCompactList}\item 
+\hypertarget{classSequentialEvolution_ac44e0ac2593d5aeb40fac42b36dc032d}{}virtual void \hyperlink{classSequentialEvolution_ac44e0ac2593d5aeb40fac42b36dc032d}{Step} () override\label{classSequentialEvolution_ac44e0ac2593d5aeb40fac42b36dc032d}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classSequentialEvolution_ac44e0ac2593d5aeb40fac42b36dc032d}{Sequential\+Evolution\+::\+Step()} -\/ override of step method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+class \hyperlink{classSequentialEvolution}{Sequential\+Evolution} -\/ derived from Evolution -\/ calculate life generations serially 
+
+\subsection{Member Function Documentation}
+\hypertarget{classSequentialEvolution_aa4906c7ab5d634a8489540eea449b9ff}{}\index{Sequential\+Evolution@{Sequential\+Evolution}!Run@{Run}}
+\index{Run@{Run}!Sequential\+Evolution@{Sequential\+Evolution}}
+\subsubsection[{Run() override}]{\setlength{\rightskip}{0pt plus 5cm}void Sequential\+Evolution\+::\+Run (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}\label{classSequentialEvolution_aa4906c7ab5d634a8489540eea449b9ff}
+
+
+\hyperlink{classSequentialEvolution_aa4906c7ab5d634a8489540eea449b9ff}{Sequential\+Evolution\+::\+Run} -\/ begins looped evolution. 
+
+Let the parallel algorithm work uncontended almost the same time as the serial one. See \hyperlink{classParallelEvolution_a3a8c4d586560d929f7a8edfab1cced5e}{Parallel\+Evolution\+::\+Run()} as well. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/examples/parallel\+\_\+for/game\+\_\+of\+\_\+life/src/Evolution.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/examples/parallel\+\_\+for/game\+\_\+of\+\_\+life/src/Evolution.\+cpp\end{DoxyCompactItemize}

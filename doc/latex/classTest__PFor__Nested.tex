@@ -1,0 +1,99 @@
+\hypertarget{classTest__PFor__Nested}{}\section{Test\+\_\+\+P\+For\+\_\+\+Nested Class Reference}
+\label{classTest__PFor__Nested}\index{Test\+\_\+\+P\+For\+\_\+\+Nested@{Test\+\_\+\+P\+For\+\_\+\+Nested}}
+Inheritance diagram for Test\+\_\+\+P\+For\+\_\+\+Nested\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classTest__PFor__Nested}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classTest__PFor__Nested_ab21ad9a9ae491b098e2fb6d657a31ba8}{}{\bfseries Test\+\_\+\+P\+For\+\_\+\+Nested} (Nesting\+Type nt, Partitioner\+Type pt)\label{classTest__PFor__Nested_ab21ad9a9ae491b098e2fb6d657a31ba8}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \hyperlink{classTest__PFor__Nested_a62d8e88996141d23d5af4c7d3d00ed4e}{Name} ()
+\begin{DoxyCompactList}\small\item\em Returns short title string to be used in the regular output to identify the test. \end{DoxyCompactList}\item 
+\hypertarget{classTest__PFor__Nested_a5158c9c794c38ce2f34a3c3672f4c568}{}int \hyperlink{classTest__PFor__Nested_a5158c9c794c38ce2f34a3c3672f4c568}{Num\+Workloads} ()\label{classTest__PFor__Nested_a5158c9c794c38ce2f34a3c3672f4c568}
+
+\begin{DoxyCompactList}\small\item\em Returns the number of workloads supported. \end{DoxyCompactList}\item 
+void \hyperlink{classTest__PFor__Nested_a8144237486dd3ba38cecae30d6d58c26}{Set\+Workload} (int idx)
+\begin{DoxyCompactList}\small\item\em Set workload info for the subsequent calls to \hyperlink{classTest__PFor__Nested_aec54294278d15e3d49f900fc419ca234}{Run()} and \hyperlink{classTest__PFor__Nested_af72783c3a7cc4f010d0484058af2ed34}{Run\+Serial()} \end{DoxyCompactList}\item 
+void \hyperlink{classTest__PFor__Nested_aec54294278d15e3d49f900fc419ca234}{Run} (\hyperlink{structPerf_1_1Test_1_1ThreadInfo}{Thread\+Info} \&)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classTest}{Test} implementation. \end{DoxyCompactList}\item 
+void \hyperlink{classTest__PFor__Nested_af72783c3a7cc4f010d0484058af2ed34}{Run\+Serial} (\hyperlink{structPerf_1_1Test_1_1ThreadInfo}{Thread\+Info} \&)
+\begin{DoxyCompactList}\small\item\em Executes serial workload equivalent to the one processed by \hyperlink{classTest__PFor__Nested_aec54294278d15e3d49f900fc419ca234}{Run()} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classTest__PFor__Nested_a62d8e88996141d23d5af4c7d3d00ed4e}{}\index{Test\+\_\+\+P\+For\+\_\+\+Nested@{Test\+\_\+\+P\+For\+\_\+\+Nested}!Name@{Name}}
+\index{Name@{Name}!Test\+\_\+\+P\+For\+\_\+\+Nested@{Test\+\_\+\+P\+For\+\_\+\+Nested}}
+\subsubsection[{Name()}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ Test\+\_\+\+P\+For\+\_\+\+Nested\+::\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}\label{classTest__PFor__Nested_a62d8e88996141d23d5af4c7d3d00ed4e}
+
+
+Returns short title string to be used in the regular output to identify the test. 
+
+Should uniquely identify the test among other ones in the given benchmark suite. If not implemented, the test implementation class\textquotesingle{} R\+T\+T\+I name is used. 
+
+Reimplemented from \hyperlink{classPerf_1_1Test_a4a4be9dc1805f2bb1b8ad8cf8fe78e94}{Perf\+::\+Test}.
+
+\hypertarget{classTest__PFor__Nested_aec54294278d15e3d49f900fc419ca234}{}\index{Test\+\_\+\+P\+For\+\_\+\+Nested@{Test\+\_\+\+P\+For\+\_\+\+Nested}!Run@{Run}}
+\index{Run@{Run}!Test\+\_\+\+P\+For\+\_\+\+Nested@{Test\+\_\+\+P\+For\+\_\+\+Nested}}
+\subsubsection[{Run(\+Thread\+Info \&)}]{\setlength{\rightskip}{0pt plus 5cm}void Test\+\_\+\+P\+For\+\_\+\+Nested\+::\+Run (
+\begin{DoxyParamCaption}
+\item[{{\bf Thread\+Info} \&}]{ti}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}\label{classTest__PFor__Nested_aec54294278d15e3d49f900fc419ca234}
+
+
+\hyperlink{classTest}{Test} implementation. 
+
+Called by the timing framework several times in a loop to achieve approx. Run\+Duration time, and this loop is timed Num\+Runs times to collect statistics. Argument ti specifies information about the master thread calling this method. 
+
+Implements \hyperlink{classPerf_1_1Test_a64ad02d5651eb526f14e8d17df229cfb}{Perf\+::\+Test}.
+
+\hypertarget{classTest__PFor__Nested_af72783c3a7cc4f010d0484058af2ed34}{}\index{Test\+\_\+\+P\+For\+\_\+\+Nested@{Test\+\_\+\+P\+For\+\_\+\+Nested}!Run\+Serial@{Run\+Serial}}
+\index{Run\+Serial@{Run\+Serial}!Test\+\_\+\+P\+For\+\_\+\+Nested@{Test\+\_\+\+P\+For\+\_\+\+Nested}}
+\subsubsection[{Run\+Serial(\+Thread\+Info \&)}]{\setlength{\rightskip}{0pt plus 5cm}void Test\+\_\+\+P\+For\+\_\+\+Nested\+::\+Run\+Serial (
+\begin{DoxyParamCaption}
+\item[{{\bf Thread\+Info} \&}]{ti}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}\label{classTest__PFor__Nested_af72783c3a7cc4f010d0484058af2ed34}
+
+
+Executes serial workload equivalent to the one processed by \hyperlink{classTest__PFor__Nested_aec54294278d15e3d49f900fc419ca234}{Run()} 
+
+Called by the timing framework several times in a loop to collect statistics. 
+
+Reimplemented from \hyperlink{classPerf_1_1Test_aa36442055c9cd1267cbdf8a0bf431239}{Perf\+::\+Test}.
+
+\hypertarget{classTest__PFor__Nested_a8144237486dd3ba38cecae30d6d58c26}{}\index{Test\+\_\+\+P\+For\+\_\+\+Nested@{Test\+\_\+\+P\+For\+\_\+\+Nested}!Set\+Workload@{Set\+Workload}}
+\index{Set\+Workload@{Set\+Workload}!Test\+\_\+\+P\+For\+\_\+\+Nested@{Test\+\_\+\+P\+For\+\_\+\+Nested}}
+\subsubsection[{Set\+Workload(int idx)}]{\setlength{\rightskip}{0pt plus 5cm}void Test\+\_\+\+P\+For\+\_\+\+Nested\+::\+Set\+Workload (
+\begin{DoxyParamCaption}
+\item[{int}]{workload\+Index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}\label{classTest__PFor__Nested_a8144237486dd3ba38cecae30d6d58c26}
+
+
+Set workload info for the subsequent calls to \hyperlink{classTest__PFor__Nested_aec54294278d15e3d49f900fc419ca234}{Run()} and \hyperlink{classTest__PFor__Nested_af72783c3a7cc4f010d0484058af2ed34}{Run\+Serial()} 
+
+This method can use global helper function Perf\+::\+Set\+Workload\+Name() in order to specify the name of the current workload, which will be used in output to designate the workload. If Set\+Workload\+Name is not called, workload\+Index will be used for this purpose.
+
+When testing task scheduler, make sure that this method does not trigger its automatic initialization. 
+
+Reimplemented from \hyperlink{classTest__Algs_a18ccd1cedb43cdbb4fce546a1abba490}{Test\+\_\+\+Algs}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/perf/perf\+\_\+sched.\+cpp\end{DoxyCompactItemize}

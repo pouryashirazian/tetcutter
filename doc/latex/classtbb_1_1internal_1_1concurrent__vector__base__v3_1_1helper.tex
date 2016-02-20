@@ -1,0 +1,105 @@
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper}{}\section{tbb\+:\+:internal\+:\+:concurrent\+\_\+vector\+\_\+base\+\_\+v3\+:\+:helper Class Reference}
+\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper}\index{tbb\+::internal\+::concurrent\+\_\+vector\+\_\+base\+\_\+v3\+::helper@{tbb\+::internal\+::concurrent\+\_\+vector\+\_\+base\+\_\+v3\+::helper}}
+Inheritance diagram for tbb\+:\+:internal\+:\+:concurrent\+\_\+vector\+\_\+base\+\_\+v3\+:\+:helper\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_1_1destroy__body}{destroy\+\_\+body}
+\item 
+struct \hyperlink{structtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_1_1init__body}{init\+\_\+body}
+\begin{DoxyCompactList}\small\item\em T\+O\+D\+O\+: turn into lambda functions when available. \end{DoxyCompactList}\item 
+struct \hyperlink{structtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_1_1safe__init__body}{safe\+\_\+init\+\_\+body}
+\item 
+struct \hyperlink{structtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_1_1segment__not__used__predicate}{segment\+\_\+not\+\_\+used\+\_\+predicate}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a1d27a17f878241689d578c39dbc60e52}{}{\bfseries helper} (segment\+\_\+t $\ast$segments, size\+\_\+type fb, size\+\_\+type esize, size\+\_\+type index, size\+\_\+type s, size\+\_\+type f)  throw ()\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a1d27a17f878241689d578c39dbc60e52}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_ae2d37e907eaf946201ffabab9933e9e8}{}void {\bfseries first\+\_\+segment} ()  throw ()\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_ae2d37e907eaf946201ffabab9933e9e8}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_aa063e0585da75011b5da50814190bc73}{}void {\bfseries next\+\_\+segment} ()  throw ()\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_aa063e0585da75011b5da50814190bc73}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a8b58384ccecbc58008a80cd16ad7e92c}{}{\footnotesize template$<$typename F $>$ }\\size\+\_\+type {\bfseries apply} (const F \&func)\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a8b58384ccecbc58008a80cd16ad7e92c}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_af83f8e2f96bd0d59afca03d43aa4cf74}{}segment\+\_\+value\+\_\+t {\bfseries get\+\_\+segment\+\_\+value} (size\+\_\+type index, bool wait)\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_af83f8e2f96bd0d59afca03d43aa4cf74}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a0fe7c70323f24d5d3ef9fa6912104bf3}{}void \hyperlink{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a0fe7c70323f24d5d3ef9fa6912104bf3}{cleanup} ()\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a0fe7c70323f24d5d3ef9fa6912104bf3}
+
+\begin{DoxyCompactList}\small\item\em Out of line code to assists destructor in infrequent cases. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_af8b33b18f5eab370c9915f1f0c22503e}{}static bool {\bfseries incompact\+\_\+predicate} (size\+\_\+type size)\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_af8b33b18f5eab370c9915f1f0c22503e}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_add3df3e1829916023d39bc38b58045fd}{}static size\+\_\+type {\bfseries find\+\_\+segment\+\_\+end} (const concurrent\+\_\+vector\+\_\+base\+\_\+v3 \&v)\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_add3df3e1829916023d39bc38b58045fd}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a7c21850aac02edc06d2a84b3c261c1ea}{}static void \hyperlink{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a7c21850aac02edc06d2a84b3c261c1ea}{assign\+\_\+first\+\_\+segment\+\_\+if\+\_\+necessary} (concurrent\+\_\+vector\+\_\+base\+\_\+v3 \&v, segment\+\_\+index\+\_\+t k)\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a7c21850aac02edc06d2a84b3c261c1ea}
+
+\begin{DoxyCompactList}\small\item\em assign first segment size. k -\/ is index of last segment to be allocated, not a count of segments \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_abc9b42f80c282fe57a98f7407d52a033}{}static void $\ast$ {\bfseries allocate\+\_\+segment} (concurrent\+\_\+vector\+\_\+base\+\_\+v3 \&v, size\+\_\+type n)\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_abc9b42f80c282fe57a98f7407d52a033}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_aa6a138a09384f9cc92fda2966dbf4c43}{}{\footnotesize template$<$typename argument\+\_\+type $>$ }\\static void \hyperlink{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_aa6a138a09384f9cc92fda2966dbf4c43}{publish\+\_\+segment} (segment\+\_\+t \&s, argument\+\_\+type rhs)\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_aa6a138a09384f9cc92fda2966dbf4c43}
+
+\begin{DoxyCompactList}\small\item\em Publish segment so other threads can see it. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_aaa6b8fda2720bafd919c7df8d5568a21}{}static size\+\_\+type {\bfseries enable\+\_\+segment} (concurrent\+\_\+vector\+\_\+base\+\_\+v3 \&v, size\+\_\+type k, size\+\_\+type element\+\_\+size, bool mark\+\_\+as\+\_\+not\+\_\+used\+\_\+on\+\_\+failure=false)\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_aaa6b8fda2720bafd919c7df8d5568a21}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a590ab0cbfcc483109fb960f8a46582cd}{}static void {\bfseries extend\+\_\+table\+\_\+if\+\_\+necessary} (concurrent\+\_\+vector\+\_\+base\+\_\+v3 \&v, size\+\_\+type k, size\+\_\+type start)\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a590ab0cbfcc483109fb960f8a46582cd}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_af34163bf84fb94d9e824679f644e6873}{}static void {\bfseries extend\+\_\+segment\+\_\+table} (concurrent\+\_\+vector\+\_\+base\+\_\+v3 \&v, size\+\_\+type start)\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_af34163bf84fb94d9e824679f644e6873}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a120ea3a0581ced46f0ee33e6ad7fc060}{}static segment\+\_\+t \& {\bfseries acquire\+\_\+segment} (concurrent\+\_\+vector\+\_\+base\+\_\+v3 \&v, size\+\_\+type index, size\+\_\+type element\+\_\+size, bool owner)\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a120ea3a0581ced46f0ee33e6ad7fc060}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_ade11e62e7608600e0e5acc3fdebf8ddd}{}segment\+\_\+t $\ast$ {\bfseries table}\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_ade11e62e7608600e0e5acc3fdebf8ddd}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a0bfebabd7551c449ff44e48dad7bb2b5}{}size\+\_\+type {\bfseries first\+\_\+block}\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a0bfebabd7551c449ff44e48dad7bb2b5}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_abeb926466385f891306b12ba45c53133}{}size\+\_\+type {\bfseries k}\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_abeb926466385f891306b12ba45c53133}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a74b4bc9a95dd47c3b99ded21803328ac}{}size\+\_\+type {\bfseries sz}\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a74b4bc9a95dd47c3b99ded21803328ac}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_ae2072fe56d23f0c7546651fd2caf3c7f}{}size\+\_\+type {\bfseries start}\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_ae2072fe56d23f0c7546651fd2caf3c7f}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a233f671bfd4ea097f6e9affca4b66997}{}size\+\_\+type {\bfseries finish}\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a233f671bfd4ea097f6e9affca4b66997}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a25b10a87ff8ed0b65b976a72b731c076}{}size\+\_\+type {\bfseries element\+\_\+size}\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_a25b10a87ff8ed0b65b976a72b731c076}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_ac029c305830edd5f9e0fc59287b25e27}{}static const size\+\_\+type \hyperlink{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_ac029c305830edd5f9e0fc59287b25e27}{page\+\_\+size} = 4096\label{classtbb_1_1internal_1_1concurrent__vector__base__v3_1_1helper_ac029c305830edd5f9e0fc59287b25e27}
+
+\begin{DoxyCompactList}\small\item\em memory page size \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/concurrent\+\_\+vector.\+cpp\end{DoxyCompactItemize}

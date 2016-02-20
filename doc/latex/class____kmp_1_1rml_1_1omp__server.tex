@@ -1,0 +1,77 @@
+\hypertarget{class____kmp_1_1rml_1_1omp__server}{}\section{\+\_\+\+\_\+kmp\+:\+:rml\+:\+:omp\+\_\+server Class Reference}
+\label{class____kmp_1_1rml_1_1omp__server}\index{\+\_\+\+\_\+kmp\+::rml\+::omp\+\_\+server@{\+\_\+\+\_\+kmp\+::rml\+::omp\+\_\+server}}
+
+
+Represents a set of omp worker threads provided by the server.  
+
+
+
+
+{\ttfamily \#include $<$rml\+\_\+omp.\+h$>$}
+
+Inheritance diagram for \+\_\+\+\_\+kmp\+:\+:rml\+:\+:omp\+\_\+server\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{class____kmp_1_1rml_1_1omp__server}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class____kmp_1_1rml_1_1omp__server_a57f7e7cc71ec562fcb379da256cdffb0}{}typedef unsigned \hyperlink{class____kmp_1_1rml_1_1omp__server_a57f7e7cc71ec562fcb379da256cdffb0}{size\+\_\+type}\label{class____kmp_1_1rml_1_1omp__server_a57f7e7cc71ec562fcb379da256cdffb0}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{structA}{A} number of coins (i.\+e., threads) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class____kmp_1_1rml_1_1omp__server_a09afe890ace0fd68aef904d3a2177a2b}{}virtual int \hyperlink{class____kmp_1_1rml_1_1omp__server_a09afe890ace0fd68aef904d3a2177a2b}{current\+\_\+balance} () const  =0\label{class____kmp_1_1rml_1_1omp__server_a09afe890ace0fd68aef904d3a2177a2b}
+
+\begin{DoxyCompactList}\small\item\em Return the number of coins in the bank. (negative if machine is oversubscribed). \end{DoxyCompactList}\item 
+virtual int \hyperlink{class____kmp_1_1rml_1_1omp__server_acc039131c85db996a1e83fb43e061da1}{try\+\_\+increase\+\_\+load} (\hyperlink{class____kmp_1_1rml_1_1omp__server_a57f7e7cc71ec562fcb379da256cdffb0}{size\+\_\+type}, bool)=0
+\begin{DoxyCompactList}\small\item\em Request n coins. Returns number of coins granted. Oversubscription amount if negative. \end{DoxyCompactList}\item 
+\hypertarget{class____kmp_1_1rml_1_1omp__server_a193f20e658a19979377af2bfcb544a2b}{}virtual void \hyperlink{class____kmp_1_1rml_1_1omp__server_a193f20e658a19979377af2bfcb544a2b}{decrease\+\_\+load} (\hyperlink{class____kmp_1_1rml_1_1omp__server_a57f7e7cc71ec562fcb379da256cdffb0}{size\+\_\+type})=0\label{class____kmp_1_1rml_1_1omp__server_a193f20e658a19979377af2bfcb544a2b}
+
+\begin{DoxyCompactList}\small\item\em Return n coins into the bank. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class____kmp_1_1rml_1_1omp__server_a7ab8dbd3c94a50c907b2aba731c438a8}{get\+\_\+threads} (\hyperlink{class____kmp_1_1rml_1_1omp__server_a57f7e7cc71ec562fcb379da256cdffb0}{size\+\_\+type}, void $\ast$, \hyperlink{classrml_1_1server_ac812e52a5bb3de275e624c36997eac0e}{job} $\ast$\mbox{[}$\,$\mbox{]})=0
+\begin{DoxyCompactList}\small\item\em Convert n coins into n threads. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Represents a set of omp worker threads provided by the server. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class____kmp_1_1rml_1_1omp__server_a7ab8dbd3c94a50c907b2aba731c438a8}{}\index{\+\_\+\+\_\+kmp\+::rml\+::omp\+\_\+server@{\+\_\+\+\_\+kmp\+::rml\+::omp\+\_\+server}!get\+\_\+threads@{get\+\_\+threads}}
+\index{get\+\_\+threads@{get\+\_\+threads}!\+\_\+\+\_\+kmp\+::rml\+::omp\+\_\+server@{\+\_\+\+\_\+kmp\+::rml\+::omp\+\_\+server}}
+\subsubsection[{get\+\_\+threads(size\+\_\+type, void $\ast$, job $\ast$[])=0}]{\setlength{\rightskip}{0pt plus 5cm}virtual void \+\_\+\+\_\+kmp\+::rml\+::omp\+\_\+server\+::get\+\_\+threads (
+\begin{DoxyParamCaption}
+\item[{{\bf size\+\_\+type}}]{, }
+\item[{void $\ast$}]{, }
+\item[{{\bf job} $\ast$}]{\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{class____kmp_1_1rml_1_1omp__server_a7ab8dbd3c94a50c907b2aba731c438a8}
+
+
+Convert n coins into n threads. 
+
+When a thread returns, it is converted back into a coin and the coin is returned to the bank. \hypertarget{class____kmp_1_1rml_1_1omp__server_acc039131c85db996a1e83fb43e061da1}{}\index{\+\_\+\+\_\+kmp\+::rml\+::omp\+\_\+server@{\+\_\+\+\_\+kmp\+::rml\+::omp\+\_\+server}!try\+\_\+increase\+\_\+load@{try\+\_\+increase\+\_\+load}}
+\index{try\+\_\+increase\+\_\+load@{try\+\_\+increase\+\_\+load}!\+\_\+\+\_\+kmp\+::rml\+::omp\+\_\+server@{\+\_\+\+\_\+kmp\+::rml\+::omp\+\_\+server}}
+\subsubsection[{try\+\_\+increase\+\_\+load(size\+\_\+type, bool)=0}]{\setlength{\rightskip}{0pt plus 5cm}virtual int \+\_\+\+\_\+kmp\+::rml\+::omp\+\_\+server\+::try\+\_\+increase\+\_\+load (
+\begin{DoxyParamCaption}
+\item[{{\bf size\+\_\+type}}]{, }
+\item[{bool}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{class____kmp_1_1rml_1_1omp__server_acc039131c85db996a1e83fb43e061da1}
+
+
+Request n coins. Returns number of coins granted. Oversubscription amount if negative. 
+
+Always granted if is\+\_\+strict is true.
+\begin{DoxyItemize}
+\item Positive or zero result indicates that the number of coins was taken from the bank.
+\item Negative result indicates that no coins were taken, and that the bank has deficit by that amount and the caller (if being a good citizen) should return that many coins. 
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/rml/include/rml\+\_\+omp.\+h\end{DoxyCompactItemize}

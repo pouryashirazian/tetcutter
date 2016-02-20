@@ -1,0 +1,156 @@
+\hypertarget{classLoki_1_1SmartPtr}{}\section{Loki\+:\+:Smart\+Ptr$<$ T, Ownership\+Policy, Conversion\+Policy, Checking\+Policy, Storage\+Policy, Constness\+Policy $>$ Class Template Reference}
+\label{classLoki_1_1SmartPtr}\index{Loki\+::\+Smart\+Ptr$<$ T, Ownership\+Policy, Conversion\+Policy, Checking\+Policy, Storage\+Policy, Constness\+Policy $>$@{Loki\+::\+Smart\+Ptr$<$ T, Ownership\+Policy, Conversion\+Policy, Checking\+Policy, Storage\+Policy, Constness\+Policy $>$}}
+
+
+{\ttfamily \#include $<$Smart\+Ptr.\+h$>$}
+
+Inheritance diagram for Loki\+:\+:Smart\+Ptr$<$ T, Ownership\+Policy, Conversion\+Policy, Checking\+Policy, Storage\+Policy, Constness\+Policy $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.445151cm]{classLoki_1_1SmartPtr}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1SmartPtr_a82c386516bb52546d0d165e2a01d5659}{}typedef Constness\+Policy$<$ T $>$\+::Type $\ast$ {\bfseries Const\+Pointer\+Type}\label{classLoki_1_1SmartPtr_a82c386516bb52546d0d165e2a01d5659}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_aa9c4b0bdbaa1e4246b3ae5f10b1b6fdd}{}typedef Constness\+Policy$<$ T $>$\+::Type \& {\bfseries Const\+Reference\+Type}\label{classLoki_1_1SmartPtr_aa9c4b0bdbaa1e4246b3ae5f10b1b6fdd}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_a184565f8f72ed2555f1c6f6cb0496f01}{}typedef S\+P\+::\+Pointer\+Type {\bfseries Pointer\+Type}\label{classLoki_1_1SmartPtr_a184565f8f72ed2555f1c6f6cb0496f01}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_ad9fc9e0139194cb862df369bd07c1861}{}typedef S\+P\+::\+Stored\+Type {\bfseries Stored\+Type}\label{classLoki_1_1SmartPtr_ad9fc9e0139194cb862df369bd07c1861}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_a6d91056f1394ad68d27584d22da7934d}{}typedef S\+P\+::\+Reference\+Type {\bfseries Reference\+Type}\label{classLoki_1_1SmartPtr_a6d91056f1394ad68d27584d22da7934d}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_ace87f19b4c7dccc630c69b703bf14b36}{}typedef \hyperlink{structLoki_1_1Select}{Select}$<$ O\+P\+::destructive\+Copy, \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}, const \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr} $>$\+::Result {\bfseries Copy\+Arg}\label{classLoki_1_1SmartPtr_ace87f19b4c7dccc630c69b703bf14b36}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1SmartPtr_a2d27f3bcd0008d514847fbb00564997c}{}{\bfseries Smart\+Ptr} (\hyperlink{structP1}{Explicit\+Arg} p)\label{classLoki_1_1SmartPtr_a2d27f3bcd0008d514847fbb00564997c}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_af636e3d35a3029109dfbb0e240accff6}{}{\bfseries Smart\+Ptr} (Implicit\+Arg p)\label{classLoki_1_1SmartPtr_af636e3d35a3029109dfbb0e240accff6}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_ac6226be2cd87114118136de2e075081d}{}{\bfseries Smart\+Ptr} (\hyperlink{structP1}{Copy\+Arg} \&rhs)\label{classLoki_1_1SmartPtr_ac6226be2cd87114118136de2e075081d}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_abcd9f9b93c73471f1e28341f80fa8335}{}{\footnotesize template$<$typename T1 , template$<$ class $>$ class O\+P1, class C\+P1 , template$<$ class $>$ class K\+P1, template$<$ class $>$ class S\+P1, template$<$ class $>$ class C\+N\+P1$>$ }\\{\bfseries Smart\+Ptr} (const \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}$<$ T1, O\+P1, C\+P1, K\+P1, S\+P1, C\+N\+P1 $>$ \&rhs)\label{classLoki_1_1SmartPtr_abcd9f9b93c73471f1e28341f80fa8335}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_a94f63aadf23d86afbbdacf1d6fe6cac1}{}{\footnotesize template$<$typename T1 , template$<$ class $>$ class O\+P1, class C\+P1 , template$<$ class $>$ class K\+P1, template$<$ class $>$ class S\+P1, template$<$ class $>$ class C\+N\+P1$>$ }\\{\bfseries Smart\+Ptr} (\hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}$<$ T1, O\+P1, C\+P1, K\+P1, S\+P1, C\+N\+P1 $>$ \&rhs)\label{classLoki_1_1SmartPtr_a94f63aadf23d86afbbdacf1d6fe6cac1}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_afedab27e4ba97da76f6b3b78eb5ae5ca}{}{\bfseries Smart\+Ptr} (\hyperlink{classLoki_1_1RefToValue}{Ref\+To\+Value}$<$ \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr} $>$ rhs)\label{classLoki_1_1SmartPtr_afedab27e4ba97da76f6b3b78eb5ae5ca}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_a56ec04b9b27019f880b872a257b9917a}{}{\bfseries operator Ref\+To\+Value$<$ Smart\+Ptr $>$} ()\label{classLoki_1_1SmartPtr_a56ec04b9b27019f880b872a257b9917a}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_af1ae0026dde20f60d7c1a166a5510988}{}\hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr} \& {\bfseries operator=} (\hyperlink{structP1}{Copy\+Arg} \&rhs)\label{classLoki_1_1SmartPtr_af1ae0026dde20f60d7c1a166a5510988}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_ae4a839b8d070150ff5c7e2d1cb3e9259}{}{\footnotesize template$<$typename T1 , template$<$ class $>$ class O\+P1, class C\+P1 , template$<$ class $>$ class K\+P1, template$<$ class $>$ class S\+P1, template$<$ class $>$ class C\+N\+P1$>$ }\\\hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr} \& {\bfseries operator=} (const \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}$<$ T1, O\+P1, C\+P1, K\+P1, S\+P1, C\+N\+P1 $>$ \&rhs)\label{classLoki_1_1SmartPtr_ae4a839b8d070150ff5c7e2d1cb3e9259}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_a5226a31f9cfd2ff47f45f7ac2c8bf490}{}{\footnotesize template$<$typename T1 , template$<$ class $>$ class O\+P1, class C\+P1 , template$<$ class $>$ class K\+P1, template$<$ class $>$ class S\+P1, template$<$ class $>$ class C\+N\+P1$>$ }\\\hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr} \& {\bfseries operator=} (\hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}$<$ T1, O\+P1, C\+P1, K\+P1, S\+P1, C\+N\+P1 $>$ \&rhs)\label{classLoki_1_1SmartPtr_a5226a31f9cfd2ff47f45f7ac2c8bf490}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_a5034856df3e636d3847e4b1813418931}{}void {\bfseries Swap} (\hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr} \&rhs)\label{classLoki_1_1SmartPtr_a5034856df3e636d3847e4b1813418931}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_a21530058c74cdba8f1884063cc03ded0}{}{\footnotesize template$<$typename T1 , template$<$ class $>$ class O\+P1, class C\+P1 , template$<$ class $>$ class K\+P1, template$<$ class $>$ class S\+P1, template$<$ class $>$ class C\+N\+P1$>$ }\\bool {\bfseries Merge} (\hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}$<$ T1, O\+P1, C\+P1, K\+P1, S\+P1, C\+N\+P1 $>$ \&rhs)\label{classLoki_1_1SmartPtr_a21530058c74cdba8f1884063cc03ded0}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_a6e4cd5ef0251b9e864a5948c00a85331}{}Pointer\+Type {\bfseries operator-\/$>$} ()\label{classLoki_1_1SmartPtr_a6e4cd5ef0251b9e864a5948c00a85331}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_ab1246ff061b41899edc5b8af5f0ba20d}{}Const\+Pointer\+Type {\bfseries operator-\/$>$} () const \label{classLoki_1_1SmartPtr_ab1246ff061b41899edc5b8af5f0ba20d}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_a8f150af9c1a84390e421c814c5a8d460}{}Reference\+Type {\bfseries operator$\ast$} ()\label{classLoki_1_1SmartPtr_a8f150af9c1a84390e421c814c5a8d460}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_afcd98ed4ca3cd91ffe9b034bfb023a1b}{}Const\+Reference\+Type {\bfseries operator$\ast$} () const \label{classLoki_1_1SmartPtr_afcd98ed4ca3cd91ffe9b034bfb023a1b}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_adbf71990e5a620acfbbc4193c4cb9262}{}bool {\bfseries operator!} () const \label{classLoki_1_1SmartPtr_adbf71990e5a620acfbbc4193c4cb9262}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_a136af120315e59fdd5d0a97ba2e736a9}{}{\footnotesize template$<$typename T1 , template$<$ class $>$ class O\+P1, class C\+P1 , template$<$ class $>$ class K\+P1, template$<$ class $>$ class S\+P1, template$<$ class $>$ class C\+N\+P1$>$ }\\bool {\bfseries operator==} (const \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}$<$ T1, O\+P1, C\+P1, K\+P1, S\+P1, C\+N\+P1 $>$ \&rhs) const \label{classLoki_1_1SmartPtr_a136af120315e59fdd5d0a97ba2e736a9}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_abbf2678829356227fc9a6eec2c3eb5b3}{}{\footnotesize template$<$typename T1 , template$<$ class $>$ class O\+P1, class C\+P1 , template$<$ class $>$ class K\+P1, template$<$ class $>$ class S\+P1, template$<$ class $>$ class C\+N\+P1$>$ }\\bool {\bfseries operator!=} (const \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}$<$ T1, O\+P1, C\+P1, K\+P1, S\+P1, C\+N\+P1 $>$ \&rhs) const \label{classLoki_1_1SmartPtr_abbf2678829356227fc9a6eec2c3eb5b3}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_afee57012d545be4f5ffb7d58b57adf6b}{}{\footnotesize template$<$typename T1 , template$<$ class $>$ class O\+P1, class C\+P1 , template$<$ class $>$ class K\+P1, template$<$ class $>$ class S\+P1, template$<$ class $>$ class C\+N\+P1$>$ }\\bool {\bfseries operator$<$} (const \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}$<$ T1, O\+P1, C\+P1, K\+P1, S\+P1, C\+N\+P1 $>$ \&rhs) const \label{classLoki_1_1SmartPtr_afee57012d545be4f5ffb7d58b57adf6b}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_a5bad2bb983dbb2ec39f036d77bdf035d}{}{\footnotesize template$<$typename T1 , template$<$ class $>$ class O\+P1, class C\+P1 , template$<$ class $>$ class K\+P1, template$<$ class $>$ class S\+P1, template$<$ class $>$ class C\+N\+P1$>$ }\\bool {\bfseries operator$>$} (const \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}$<$ T1, O\+P1, C\+P1, K\+P1, S\+P1, C\+N\+P1 $>$ \&rhs)\label{classLoki_1_1SmartPtr_a5bad2bb983dbb2ec39f036d77bdf035d}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_a701a4268f6f87b06ee58c7a37914ceaa}{}{\footnotesize template$<$typename T1 , template$<$ class $>$ class O\+P1, class C\+P1 , template$<$ class $>$ class K\+P1, template$<$ class $>$ class S\+P1, template$<$ class $>$ class C\+N\+P1$>$ }\\bool {\bfseries operator$<$=} (const \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}$<$ T1, O\+P1, C\+P1, K\+P1, S\+P1, C\+N\+P1 $>$ \&rhs)\label{classLoki_1_1SmartPtr_a701a4268f6f87b06ee58c7a37914ceaa}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_a24082ec8b2ca2ed1283930243ec52710}{}{\footnotesize template$<$typename T1 , template$<$ class $>$ class O\+P1, class C\+P1 , template$<$ class $>$ class K\+P1, template$<$ class $>$ class S\+P1, template$<$ class $>$ class C\+N\+P1$>$ }\\bool {\bfseries operator$>$=} (const \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}$<$ T1, O\+P1, C\+P1, K\+P1, S\+P1, C\+N\+P1 $>$ \&rhs)\label{classLoki_1_1SmartPtr_a24082ec8b2ca2ed1283930243ec52710}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_ab07ea03a5dd34b47e53991b0633d9127}{}{\bfseries operator unspecified\+\_\+boolean\+\_\+type} () const \label{classLoki_1_1SmartPtr_ab07ea03a5dd34b47e53991b0633d9127}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_a19a910e807477980145a3d07e85c3b8a}{}{\bfseries operator Automatic\+Conversion\+Result} () const \label{classLoki_1_1SmartPtr_a19a910e807477980145a3d07e85c3b8a}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1SmartPtr_afd0bd0f14a87cc43e6758296a6c3b29e}{}static T $\ast$ {\bfseries Get\+Pointer} (const \hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr} \&sp)\label{classLoki_1_1SmartPtr_afd0bd0f14a87cc43e6758296a6c3b29e}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1SmartPtr_a1c09b79eccdf16403892fc68d84d20db}{}{\footnotesize template$<$typename T1 , template$<$ class $>$ class O\+P1, class C\+P1 , template$<$ class $>$ class K\+P1, template$<$ class $>$ class S\+P1, template$<$ class $>$ class C\+N\+P1$>$ }\\void {\bfseries Release} (\hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}$<$ T1, O\+P1, C\+P1, K\+P1, S\+P1, C\+N\+P1 $>$ \&sp, typename S\+P1$<$ T1 $>$\+::Stored\+Type \&p)\label{classLoki_1_1SmartPtr_a1c09b79eccdf16403892fc68d84d20db}
+
+\item 
+\hypertarget{classLoki_1_1SmartPtr_a75182d85b8ef20fe584d0199a4302e11}{}{\footnotesize template$<$typename T1 , template$<$ class $>$ class O\+P1, class C\+P1 , template$<$ class $>$ class K\+P1, template$<$ class $>$ class S\+P1, template$<$ class $>$ class C\+N\+P1$>$ }\\void {\bfseries Reset} (\hyperlink{classLoki_1_1SmartPtr}{Smart\+Ptr}$<$ T1, O\+P1, C\+P1, K\+P1, S\+P1, C\+N\+P1 $>$ \&sp, typename S\+P1$<$ T1 $>$\+::Stored\+Type p)\label{classLoki_1_1SmartPtr_a75182d85b8ef20fe584d0199a4302e11}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T, template$<$ class $>$ class Ownership\+Policy, class Conversion\+Policy, template$<$ class $>$ class Checking\+Policy, template$<$ class $>$ class Storage\+Policy, template$<$ class $>$ class Constness\+Policy$>$class Loki\+::\+Smart\+Ptr$<$ T, Ownership\+Policy, Conversion\+Policy, Checking\+Policy, Storage\+Policy, Constness\+Policy $>$}
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ownership\+Policy} & default = \hyperlink{classLoki_1_1RefCounted}{Ref\+Counted}, \\
+\hline
+{\em Conversion\+Policy} & default = \hyperlink{structLoki_1_1DisallowConversion}{Disallow\+Conversion}, \\
+\hline
+{\em Checking\+Policy} & default = \hyperlink{structLoki_1_1AssertCheck}{Assert\+Check}, \\
+\hline
+{\em Storage\+Policy} & default = \hyperlink{classLoki_1_1DefaultSPStorage}{Default\+S\+P\+Storage} \\
+\hline
+{\em Constness\+Policy} & default = L\+O\+K\+I\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+O\+N\+S\+T\+N\+E\+S\+S\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{I\+M\+P\+O\+R\+T\+A\+N\+T N\+O\+T\+E}
+Due to threading issues, the Ownership\+Policy has been changed as follows\+:
+\end{DoxyParagraph}
+
+\begin{DoxyItemize}
+\item Release() returns a boolean saying if that was the last release so the pointer can be deleted by the Storage\+Policy
+\item Is\+Unique() was removed 
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Smart\+Ptr.\+h\end{DoxyCompactItemize}

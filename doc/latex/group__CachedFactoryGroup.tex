@@ -1,0 +1,29 @@
+\hypertarget{group__CachedFactoryGroup}{}\section{Cached Factory}
+\label{group__CachedFactoryGroup}\index{Cached Factory@{Cached Factory}}
+
+
+Cached\+Factory provides an extension of a Factory with caching support.  
+
+
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__EncapsulationPolicyCachedFactoryGroup}{Encapsulation policies}
+\begin{DoxyCompactList}\small\item\em Defines how the object is returned to the client. \end{DoxyCompactList}\item 
+\hyperlink{group__CreationPolicyCachedFactoryGroup}{Creation policies}
+\begin{DoxyCompactList}\small\item\em Defines a way to limit the creation operation. \end{DoxyCompactList}\item 
+\hyperlink{group__EvictionPolicyCachedFactoryGroup}{Eviction policies}
+\begin{DoxyCompactList}\small\item\em Gathers informations about the stored objects and choose a candidate for eviction. \end{DoxyCompactList}\item 
+\hyperlink{group__StatisticPolicyCachedFactoryGroup}{Statistic policies}
+\begin{DoxyCompactList}\small\item\em Gathers information about the cache. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classLoki_1_1CachedFactory}{Loki\+::\+Cached\+Factory$<$ Abstract\+Product, Identifier\+Type, Creator\+Parm\+T\+List, Encapsulation\+Policy, Creation\+Policy, Eviction\+Policy, Statistic\+Policy, Factory\+Error\+Policy, Obj\+Vector $>$}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classLoki_1_1Factory}{Factory} with caching support. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Cached\+Factory provides an extension of a Factory with caching support. 
+
+Once used objects are returned to the Cached\+Factory that manages its destruction. If your code uses lots of \char`\"{}long to construct/destruct objects\char`\"{} using the Cached\+Factory will surely speedup the execution. 

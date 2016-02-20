@@ -1,0 +1,108 @@
+\hypertarget{classrml_1_1internal_1_1thread__map}{}\section{rml\+:\+:internal\+:\+:thread\+\_\+map Class Reference}
+\label{classrml_1_1internal_1_1thread__map}\index{rml\+::internal\+::thread\+\_\+map@{rml\+::internal\+::thread\+\_\+map}}
+
+
+Type-\/independent part of class \hyperlink{classrml_1_1internal_1_1generic__connection}{generic\+\_\+connection}.  
+
+
+Inheritance diagram for rml\+:\+:internal\+:\+:thread\+\_\+map\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrml_1_1internal_1_1thread__map}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrml_1_1internal_1_1thread__map_a48090762785b094c42d9a4ab72ab62af}{}typedef \hyperlink{classrml_1_1client_a0dc06ede570f7ee6d3021862cb71119f}{rml\+::client\+::size\+\_\+type} {\bfseries size\+\_\+type}\label{classrml_1_1internal_1_1thread__map_a48090762785b094c42d9a4ab72ab62af}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1thread__map_a6973b16d669a79bad45ac3a577bc8183}{}typedef array\+\_\+type\+::iterator {\bfseries iterator}\label{classrml_1_1internal_1_1thread__map_a6973b16d669a79bad45ac3a577bc8183}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrml_1_1internal_1_1thread__map_a7e5265e08e97f46a19b90e1ec8da98dd}{}\hyperlink{classrml_1_1internal_1_1thread__map_a7e5265e08e97f46a19b90e1ec8da98dd}{thread\+\_\+map} (\hyperlink{classrml_1_1internal_1_1wait__counter}{wait\+\_\+counter} \&fc,\+::\hyperlink{classrml_1_1client}{rml\+::client} \&\hyperlink{classrml_1_1client}{client})\label{classrml_1_1internal_1_1thread__map_a7e5265e08e97f46a19b90e1ec8da98dd}
+
+\begin{DoxyCompactList}\small\item\em ctor \end{DoxyCompactList}\item 
+\hypertarget{classrml_1_1internal_1_1thread__map_aa335f63e14a336af1245b997089a56ea}{}\hyperlink{classrml_1_1internal_1_1thread__map_aa335f63e14a336af1245b997089a56ea}{$\sim$thread\+\_\+map} ()\label{classrml_1_1internal_1_1thread__map_aa335f63e14a336af1245b997089a56ea}
+
+\begin{DoxyCompactList}\small\item\em dtor \end{DoxyCompactList}\item 
+\hypertarget{classrml_1_1internal_1_1thread__map_a49c6d1883cda2ad44a23b97a8eb2caeb}{}iterator {\bfseries begin} ()\label{classrml_1_1internal_1_1thread__map_a49c6d1883cda2ad44a23b97a8eb2caeb}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1thread__map_a0151c43180c743744d2300fe38e471fa}{}iterator {\bfseries end} ()\label{classrml_1_1internal_1_1thread__map_a0151c43180c743744d2300fe38e471fa}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1thread__map_aa3b385b87eba57de58f1a03b94a9b31e}{}void {\bfseries bind} ()\label{classrml_1_1internal_1_1thread__map_aa3b385b87eba57de58f1a03b94a9b31e}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1thread__map_a3c738c51cf0c968aa3976ec532c77b2c}{}void {\bfseries unbind} ()\label{classrml_1_1internal_1_1thread__map_a3c738c51cf0c968aa3976ec532c77b2c}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1thread__map_a05ab6e759575a57c6a34add7a757d77e}{}void {\bfseries assist\+\_\+cleanup} (bool assist\+\_\+null\+\_\+only)\label{classrml_1_1internal_1_1thread__map_a05ab6e759575a57c6a34add7a757d77e}
+
+\item 
+size\+\_\+type \hyperlink{classrml_1_1internal_1_1thread__map_a9c42750f9189e27c2952adea24584144}{wakeup\+\_\+tbb\+\_\+threads} (size\+\_\+type n)
+\item 
+\hypertarget{classrml_1_1internal_1_1thread__map_af08755b54c700eda6cbefdb509747f7f}{}bool {\bfseries wakeup\+\_\+next\+\_\+thread} (iterator i, \hyperlink{classrml_1_1internal_1_1tbb__connection__v2}{tbb\+\_\+connection\+\_\+v2} \&conn)\label{classrml_1_1internal_1_1thread__map_af08755b54c700eda6cbefdb509747f7f}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1thread__map_a4023425963a1d53527c63f47a0deb8c4}{}void {\bfseries release\+\_\+tbb\+\_\+threads} (\hyperlink{classrml_1_1internal_1_1server__thread}{server\+\_\+thread} $\ast$t)\label{classrml_1_1internal_1_1thread__map_a4023425963a1d53527c63f47a0deb8c4}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1thread__map_ac3afdc24bdd2d73ab699653ead541aee}{}void {\bfseries adjust\+\_\+balance} (int delta)\label{classrml_1_1internal_1_1thread__map_ac3afdc24bdd2d73ab699653ead541aee}
+
+\item 
+\hyperlink{classrml_1_1internal_1_1thread__map__base_1_1value__type}{value\+\_\+type} $\ast$ \hyperlink{classrml_1_1internal_1_1thread__map_aa3487b9b383ff6b2c16324377e73ef41}{add\+\_\+one\+\_\+thread} (bool is\+\_\+omp\+\_\+thread\+\_\+)
+\begin{DoxyCompactList}\small\item\em Add a \hyperlink{classrml_1_1internal_1_1server__thread}{server\+\_\+thread} object to the map, but do not bind it. \end{DoxyCompactList}\item 
+\hypertarget{classrml_1_1internal_1_1thread__map_a3dfcea79b46fc794121fc4f1a9f9456e}{}void {\bfseries bind\+\_\+one\+\_\+thread} (\hyperlink{classrml_1_1server}{rml\+::server} \&\hyperlink{classrml_1_1server}{server}, \hyperlink{classrml_1_1internal_1_1thread__map__base_1_1value__type}{value\+\_\+type} \&x)\label{classrml_1_1internal_1_1thread__map_a3dfcea79b46fc794121fc4f1a9f9456e}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1thread__map_a5f92061bc2464e9b3dab697972dddba1}{}void {\bfseries remove\+\_\+client\+\_\+ref} ()\label{classrml_1_1internal_1_1thread__map_a5f92061bc2464e9b3dab697972dddba1}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1thread__map_a99112292877f23570e53617cb0543aa8}{}int {\bfseries add\+\_\+server\+\_\+ref} ()\label{classrml_1_1internal_1_1thread__map_a99112292877f23570e53617cb0543aa8}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1thread__map_ac3dd9c36c704da62827bb718106000eb}{}int {\bfseries remove\+\_\+server\+\_\+ref} ()\label{classrml_1_1internal_1_1thread__map_ac3dd9c36c704da62827bb718106000eb}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1thread__map_a48e93bfa16bb3992f18952cb47fedaf7}{}\+::\hyperlink{classrml_1_1client}{rml\+::client} \& {\bfseries client} () const \label{classrml_1_1internal_1_1thread__map_a48e93bfa16bb3992f18952cb47fedaf7}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1thread__map_a851871965536c60c123bf1b5c2535e23}{}size\+\_\+type {\bfseries get\+\_\+unrealized\+\_\+threads} ()\label{classrml_1_1internal_1_1thread__map_a851871965536c60c123bf1b5c2535e23}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Type-\/independent part of class \hyperlink{classrml_1_1internal_1_1generic__connection}{generic\+\_\+connection}. 
+
+One to one map from server threads to jobs, and associated reference counting. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrml_1_1internal_1_1thread__map_aa3487b9b383ff6b2c16324377e73ef41}{}\index{rml\+::internal\+::thread\+\_\+map@{rml\+::internal\+::thread\+\_\+map}!add\+\_\+one\+\_\+thread@{add\+\_\+one\+\_\+thread}}
+\index{add\+\_\+one\+\_\+thread@{add\+\_\+one\+\_\+thread}!rml\+::internal\+::thread\+\_\+map@{rml\+::internal\+::thread\+\_\+map}}
+\subsubsection[{add\+\_\+one\+\_\+thread(bool is\+\_\+omp\+\_\+thread\+\_\+)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf thread\+\_\+map\+::value\+\_\+type} $\ast$ rml\+::internal\+::thread\+\_\+map\+::add\+\_\+one\+\_\+thread (
+\begin{DoxyParamCaption}
+\item[{bool}]{is\+\_\+omp\+\_\+thread\+\_\+}
+\end{DoxyParamCaption}
+)}\label{classrml_1_1internal_1_1thread__map_aa3487b9b383ff6b2c16324377e73ef41}
+
+
+Add a \hyperlink{classrml_1_1internal_1_1server__thread}{server\+\_\+thread} object to the map, but do not bind it. 
+
+Return N\+U\+L\+L if out of unrealized threads. \hypertarget{classrml_1_1internal_1_1thread__map_a9c42750f9189e27c2952adea24584144}{}\index{rml\+::internal\+::thread\+\_\+map@{rml\+::internal\+::thread\+\_\+map}!wakeup\+\_\+tbb\+\_\+threads@{wakeup\+\_\+tbb\+\_\+threads}}
+\index{wakeup\+\_\+tbb\+\_\+threads@{wakeup\+\_\+tbb\+\_\+threads}!rml\+::internal\+::thread\+\_\+map@{rml\+::internal\+::thread\+\_\+map}}
+\subsubsection[{wakeup\+\_\+tbb\+\_\+threads(size\+\_\+type n)}]{\setlength{\rightskip}{0pt plus 5cm}thread\+\_\+map\+::size\+\_\+type rml\+::internal\+::thread\+\_\+map\+::wakeup\+\_\+tbb\+\_\+threads (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+type}]{n}
+\end{DoxyParamCaption}
+)}\label{classrml_1_1internal_1_1thread__map_a9c42750f9189e27c2952adea24584144}
+Returns number of unrealized threads to create. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/rml/server/rml\+\_\+server.\+cpp\end{DoxyCompactItemize}

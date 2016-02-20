@@ -1,0 +1,76 @@
+\hypertarget{classtbb_1_1thread__bound__filter}{}\section{tbb\+:\+:thread\+\_\+bound\+\_\+filter Class Reference}
+\label{classtbb_1_1thread__bound__filter}\index{tbb\+::thread\+\_\+bound\+\_\+filter@{tbb\+::thread\+\_\+bound\+\_\+filter}}
+
+
+\hyperlink{structA}{A} stage in a pipeline served by a user thread.  
+
+
+
+
+{\ttfamily \#include $<$pipeline.\+h$>$}
+
+Inheritance diagram for tbb\+:\+:thread\+\_\+bound\+\_\+filter\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classtbb_1_1thread__bound__filter}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1thread__bound__filter_a2425d6944a22a57c906945df57290e9d}{}enum {\bfseries result\+\_\+type} \{ {\bfseries success}, 
+{\bfseries item\+\_\+not\+\_\+available}, 
+{\bfseries end\+\_\+of\+\_\+stream}
+ \}\label{classtbb_1_1thread__bound__filter_a2425d6944a22a57c906945df57290e9d}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+result\+\_\+type \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D \hyperlink{classtbb_1_1thread__bound__filter_a24e2c3a15f273ca9de5e7c99de68d12d}{try\+\_\+process\+\_\+item} ()
+\begin{DoxyCompactList}\small\item\em If a data item is available, invoke operator() on that item. \end{DoxyCompactList}\item 
+result\+\_\+type \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D \hyperlink{classtbb_1_1thread__bound__filter_ab333776ead226405c5b3a6834cd79edf}{process\+\_\+item} ()
+\begin{DoxyCompactList}\small\item\em Wait until a data item becomes available, and invoke operator() on that item. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1thread__bound__filter_a5f236956f85f28c783127c949e902610}{}{\bfseries thread\+\_\+bound\+\_\+filter} (\hyperlink{classtbb_1_1filter_a8145c736bafcf0b401d50bf1a1df9125}{mode} filter\+\_\+mode)\label{classtbb_1_1thread__bound__filter_a5f236956f85f28c783127c949e902610}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\hyperlink{structA}{A} stage in a pipeline served by a user thread. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classtbb_1_1thread__bound__filter_ab333776ead226405c5b3a6834cd79edf}{}\index{tbb\+::thread\+\_\+bound\+\_\+filter@{tbb\+::thread\+\_\+bound\+\_\+filter}!process\+\_\+item@{process\+\_\+item}}
+\index{process\+\_\+item@{process\+\_\+item}!tbb\+::thread\+\_\+bound\+\_\+filter@{tbb\+::thread\+\_\+bound\+\_\+filter}}
+\subsubsection[{process\+\_\+item()}]{\setlength{\rightskip}{0pt plus 5cm}thread\+\_\+bound\+\_\+filter\+::result\+\_\+type tbb\+::thread\+\_\+bound\+\_\+filter\+::process\+\_\+item (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1thread__bound__filter_ab333776ead226405c5b3a6834cd79edf}
+
+
+Wait until a data item becomes available, and invoke operator() on that item. 
+
+This interface is blocking. Returns \textquotesingle{}success\textquotesingle{} if an item was processed. Returns \textquotesingle{}end\+\_\+of\+\_\+stream\textquotesingle{} if there are no more items to process. Never returns \textquotesingle{}item\+\_\+not\+\_\+available\textquotesingle{}, as it blocks until another return condition applies. \hypertarget{classtbb_1_1thread__bound__filter_a24e2c3a15f273ca9de5e7c99de68d12d}{}\index{tbb\+::thread\+\_\+bound\+\_\+filter@{tbb\+::thread\+\_\+bound\+\_\+filter}!try\+\_\+process\+\_\+item@{try\+\_\+process\+\_\+item}}
+\index{try\+\_\+process\+\_\+item@{try\+\_\+process\+\_\+item}!tbb\+::thread\+\_\+bound\+\_\+filter@{tbb\+::thread\+\_\+bound\+\_\+filter}}
+\subsubsection[{try\+\_\+process\+\_\+item()}]{\setlength{\rightskip}{0pt plus 5cm}thread\+\_\+bound\+\_\+filter\+::result\+\_\+type tbb\+::thread\+\_\+bound\+\_\+filter\+::try\+\_\+process\+\_\+item (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1thread__bound__filter_a24e2c3a15f273ca9de5e7c99de68d12d}
+
+
+If a data item is available, invoke operator() on that item. 
+
+This interface is non-\/blocking. Returns \textquotesingle{}success\textquotesingle{} if an item was processed. Returns \textquotesingle{}item\+\_\+not\+\_\+available\textquotesingle{} if no item can be processed now but more may arrive in the future, or if token limit is reached. Returns \textquotesingle{}end\+\_\+of\+\_\+stream\textquotesingle{} if there are no more items to process. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/pipeline.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/pipeline.\+cpp\end{DoxyCompactItemize}

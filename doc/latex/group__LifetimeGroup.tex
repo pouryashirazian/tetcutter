@@ -1,0 +1,50 @@
+\hypertarget{group__LifetimeGroup}{}\section{Lifetime policies}
+\label{group__LifetimeGroup}\index{Lifetime policies@{Lifetime policies}}
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__LongevityLifetimeGroup}{Longevity\+Lifetime}
+\end{DoxyCompactItemize}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structLoki_1_1DefaultLifetime}{Loki\+::\+Default\+Lifetime$<$ T $>$}
+\item 
+struct \hyperlink{classLoki_1_1PhoenixSingleton}{Loki\+::\+Phoenix\+Singleton$<$ T $>$}
+\item 
+struct \hyperlink{classLoki_1_1DeletableSingleton}{Loki\+::\+Deletable\+Singleton$<$ T $>$}
+\item 
+struct \hyperlink{classLoki_1_1SingletonWithLongevity}{Loki\+::\+Singleton\+With\+Longevity$<$ T $>$}
+\item 
+struct \hyperlink{structLoki_1_1NoDestroy}{Loki\+::\+No\+Destroy$<$ T $>$}
+\item 
+class \hyperlink{classLoki_1_1FollowIntoDeath}{Loki\+::\+Follow\+Into\+Death}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T , typename Destroyer $>$ }\\void \hyperlink{group__LifetimeGroup_ga3d62eacf2db507af877988f5a2ed34d7}{Loki\+::\+Set\+Longevity} (T $\ast$p\+Dyn\+Object, unsigned int longevity, Destroyer d)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The lifetimes of the singleton. \begin{DoxyParagraph}{Special lifetime for Small\+Objects}
+When the holded object is a Small(\+Value)Object or the holded object uses objects which are or inherit from Small(\+Value)Object then you can\textquotesingle{}t use the default lifetime\+: you must use the lifetime 
+\begin{DoxyCode}
+\hyperlink{structLoki_1_1LongevityLifetime_1_1DieAsSmallObjectChild}{Loki::LongevityLifetime::DieAsSmallObjectChild} 
+\end{DoxyCode}
+ Be aware of this when you use \hyperlink{classLoki_1_1Factory}{Loki\+::\+Factory}, \hyperlink{classLoki_1_1Functor}{Loki\+::\+Functor}, or \hyperlink{structLoki_1_1Function}{Loki\+::\+Function}. 
+\end{DoxyParagraph}
+
+
+\subsection{Function Documentation}
+\hypertarget{group__LifetimeGroup_ga3d62eacf2db507af877988f5a2ed34d7}{}\index{Lifetime policies@{Lifetime policies}!Set\+Longevity@{Set\+Longevity}}
+\index{Set\+Longevity@{Set\+Longevity}!Lifetime policies@{Lifetime policies}}
+\subsubsection[{Set\+Longevity(\+T $\ast$p\+Dyn\+Object, unsigned int longevity, Destroyer d)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Destroyer $>$ void Loki\+::\+Set\+Longevity (
+\begin{DoxyParamCaption}
+\item[{T $\ast$}]{p\+Dyn\+Object, }
+\item[{unsigned int}]{longevity, }
+\item[{Destroyer}]{d}
+\end{DoxyParamCaption}
+)}\label{group__LifetimeGroup_ga3d62eacf2db507af877988f5a2ed34d7}
+Assigns an object a longevity; ensures ordered destructions of objects registered thusly during the exit sequence of the application 

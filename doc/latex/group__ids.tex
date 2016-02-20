@@ -1,0 +1,74 @@
+\hypertarget{group__ids}{}\section{I\+Ds}
+\label{group__ids}\index{I\+Ds@{I\+Ds}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+I\+T\+T\+\_\+\+I\+N\+L\+I\+N\+E \+\_\+\+\_\+itt\+\_\+id I\+T\+T\+A\+P\+I \hyperlink{group__ids_ga3a34add1c1ff5133f68e87a6f21ce8cb}{\+\_\+\+\_\+itt\+\_\+id\+\_\+make} (void $\ast$addr, unsigned long long extra) I\+T\+T\+\_\+\+I\+N\+L\+I\+N\+E\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E
+\begin{DoxyCompactList}\small\item\em \hyperlink{structA}{A} convenience function is provided to create an I\+D without domain control. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__ids_ga935dd3611e942563fb60db1ccee453c7}{\+\_\+\+\_\+itt\+\_\+id\+\_\+create} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id id)
+\begin{DoxyCompactList}\small\item\em Create an instance of identifier. This establishes the beginning of the lifetime of an instance of the given I\+D in the trace. Once this lifetime starts, the I\+D can be used to tag named entity instances in calls such as \+\_\+\+\_\+itt\+\_\+task\+\_\+begin, and to specify relationships among identified named entity instances, using the \hyperlink{group__relations}{Relations} A\+P\+Is. Instance I\+Ds are not domain specific! \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__ids_ga9b1b0ac6c1084ae77b22708886f468a5}{\+\_\+\+\_\+itt\+\_\+id\+\_\+destroy} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id id)
+\begin{DoxyCompactList}\small\item\em Destroy an instance of identifier. This ends the lifetime of the current instance of the given I\+D value in the trace. Any relationships that are established after this lifetime ends are invalid. This call must be performed before the given I\+D value can be reused for a different named entity instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+I\+Ds group 
+
+\subsection{Function Documentation}
+\hypertarget{group__ids_ga935dd3611e942563fb60db1ccee453c7}{}\index{I\+Ds@{I\+Ds}!\+\_\+\+\_\+itt\+\_\+id\+\_\+create@{\+\_\+\+\_\+itt\+\_\+id\+\_\+create}}
+\index{\+\_\+\+\_\+itt\+\_\+id\+\_\+create@{\+\_\+\+\_\+itt\+\_\+id\+\_\+create}!I\+Ds@{I\+Ds}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+id\+\_\+create(const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id id)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+id\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{const \+\_\+\+\_\+itt\+\_\+domain $\ast$}]{domain, }
+\item[{\+\_\+\+\_\+itt\+\_\+id}]{id}
+\end{DoxyParamCaption}
+)}\label{group__ids_ga935dd3611e942563fb60db1ccee453c7}
+
+
+Create an instance of identifier. This establishes the beginning of the lifetime of an instance of the given I\+D in the trace. Once this lifetime starts, the I\+D can be used to tag named entity instances in calls such as \+\_\+\+\_\+itt\+\_\+task\+\_\+begin, and to specify relationships among identified named entity instances, using the \hyperlink{group__relations}{Relations} A\+P\+Is. Instance I\+Ds are not domain specific! 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em domain} & The domain controlling the execution of this call. \\
+\hline
+\mbox{\tt in}  & {\em id} & The I\+D to create. \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__ids_ga9b1b0ac6c1084ae77b22708886f468a5}{}\index{I\+Ds@{I\+Ds}!\+\_\+\+\_\+itt\+\_\+id\+\_\+destroy@{\+\_\+\+\_\+itt\+\_\+id\+\_\+destroy}}
+\index{\+\_\+\+\_\+itt\+\_\+id\+\_\+destroy@{\+\_\+\+\_\+itt\+\_\+id\+\_\+destroy}!I\+Ds@{I\+Ds}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+id\+\_\+destroy(const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id id)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+id\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{const \+\_\+\+\_\+itt\+\_\+domain $\ast$}]{domain, }
+\item[{\+\_\+\+\_\+itt\+\_\+id}]{id}
+\end{DoxyParamCaption}
+)}\label{group__ids_ga9b1b0ac6c1084ae77b22708886f468a5}
+
+
+Destroy an instance of identifier. This ends the lifetime of the current instance of the given I\+D value in the trace. Any relationships that are established after this lifetime ends are invalid. This call must be performed before the given I\+D value can be reused for a different named entity instance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em domain} & The domain controlling the execution of this call. \\
+\hline
+\mbox{\tt in}  & {\em id} & The I\+D to destroy. \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__ids_ga3a34add1c1ff5133f68e87a6f21ce8cb}{}\index{I\+Ds@{I\+Ds}!\+\_\+\+\_\+itt\+\_\+id\+\_\+make@{\+\_\+\+\_\+itt\+\_\+id\+\_\+make}}
+\index{\+\_\+\+\_\+itt\+\_\+id\+\_\+make@{\+\_\+\+\_\+itt\+\_\+id\+\_\+make}!I\+Ds@{I\+Ds}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+id\+\_\+make(void $\ast$addr, unsigned long long extra) I\+T\+T\+\_\+\+I\+N\+L\+I\+N\+E\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E}]{\setlength{\rightskip}{0pt plus 5cm}I\+T\+T\+\_\+\+I\+N\+L\+I\+N\+E \+\_\+\+\_\+itt\+\_\+id I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+id\+\_\+make (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{addr, }
+\item[{unsigned long long}]{extra}
+\end{DoxyParamCaption}
+)}\label{group__ids_ga3a34add1c1ff5133f68e87a6f21ce8cb}
+
+
+\hyperlink{structA}{A} convenience function is provided to create an I\+D without domain control. 
+
+This is a convenience function to initialize an \+\_\+\+\_\+itt\+\_\+id structure. This function does not affect the trace collector runtime in any way. After you make the I\+D with this function, you still must create it with the \+\_\+\+\_\+itt\+\_\+id\+\_\+create function before using the I\+D to identify a named entity. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em addr} & The address of object; high Q\+W\+O\+R\+D of the I\+D value. \\
+\hline
+\mbox{\tt in}  & {\em extra} & The extra data to unique identify object; low Q\+W\+O\+R\+D of the I\+D value. \\
+\hline
+\end{DoxyParams}

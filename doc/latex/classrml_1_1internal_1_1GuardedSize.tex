@@ -1,0 +1,47 @@
+\hypertarget{classrml_1_1internal_1_1GuardedSize}{}\section{rml\+:\+:internal\+:\+:Guarded\+Size Class Reference}
+\label{classrml_1_1internal_1_1GuardedSize}\index{rml\+::internal\+::\+Guarded\+Size@{rml\+::internal\+::\+Guarded\+Size}}
+Inheritance diagram for rml\+:\+:internal\+:\+:Guarded\+Size\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrml_1_1internal_1_1GuardedSize}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrml_1_1internal_1_1GuardedSize_a101bd64153c2bea266a3abcf51597915}{}enum {\bfseries State} \{ \\*
+{\bfseries L\+O\+C\+K\+E\+D}, 
+{\bfseries C\+O\+A\+L\+\_\+\+B\+L\+O\+C\+K}, 
+{\bfseries M\+A\+X\+\_\+\+L\+O\+C\+K\+E\+D\+\_\+\+V\+A\+L} = C\+O\+A\+L\+\_\+\+B\+L\+O\+C\+K, 
+{\bfseries L\+A\+S\+T\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+B\+L\+O\+C\+K}, 
+\\*
+{\bfseries M\+A\+X\+\_\+\+S\+P\+E\+C\+\_\+\+V\+A\+L} = L\+A\+S\+T\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+B\+L\+O\+C\+K
+ \}\label{classrml_1_1internal_1_1GuardedSize_a101bd64153c2bea266a3abcf51597915}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrml_1_1internal_1_1GuardedSize_a6a7cb118023313c7ef8b138e34d7bbdf}{}void {\bfseries init\+Locked} ()\label{classrml_1_1internal_1_1GuardedSize_a6a7cb118023313c7ef8b138e34d7bbdf}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1GuardedSize_a2b93f9e88583b7265aa1aff428fabe7a}{}void {\bfseries make\+Coalscing} ()\label{classrml_1_1internal_1_1GuardedSize_a2b93f9e88583b7265aa1aff428fabe7a}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1GuardedSize_ad6a1c333f5909571f7473e6b5a5a7a1e}{}size\+\_\+t {\bfseries try\+Lock} (\hyperlink{structState}{State} state)\label{classrml_1_1internal_1_1GuardedSize_ad6a1c333f5909571f7473e6b5a5a7a1e}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1GuardedSize_aff1231294f9be84d687871955a97526b}{}void {\bfseries unlock} (size\+\_\+t size)\label{classrml_1_1internal_1_1GuardedSize_aff1231294f9be84d687871955a97526b}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrml_1_1internal_1_1GuardedSize_a5ded4302f29ea027d939c14136d0ef70}{}void {\bfseries Backend\+::\+Indexed\+Bins\+::verify} ()\label{classrml_1_1internal_1_1GuardedSize_a5ded4302f29ea027d939c14136d0ef70}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbbmalloc/backend.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,122 @@
+\hypertarget{classps_1_1utils_1_1EventLogger}{}\section{ps\+:\+:utils\+:\+:Event\+Logger Class Reference}
+\label{classps_1_1utils_1_1EventLogger}\index{ps\+::utils\+::\+Event\+Logger@{ps\+::utils\+::\+Event\+Logger}}
+
+
+{\ttfamily \#include $<$logger.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structps_1_1utils_1_1EventLogger_1_1Event}{Event}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1utils_1_1EventLogger_a2ec7ed52f7fe7780454cfa214ecdc575}{}enum {\bfseries E\+V\+E\+N\+T\+T\+Y\+P\+E} \{ {\bfseries et\+Profile}, 
+{\bfseries et\+Info}, 
+{\bfseries et\+Warning}, 
+{\bfseries et\+Error}
+ \}\label{classps_1_1utils_1_1EventLogger_a2ec7ed52f7fe7780454cfa214ecdc575}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classps_1_1utils_1_1EventLogger_a952c1d904e9dbe976bc80919413bdaa7}{Event\+Logger} (const char $\ast$lp\+File\+Path, int flags=0)
+\item 
+void \hyperlink{classps_1_1utils_1_1EventLogger_a408da0eba198ea67f4f5dd2cbad50a5b}{add} (const \hyperlink{structps_1_1utils_1_1EventLogger_1_1Event}{Event} \&e)
+\item 
+void \hyperlink{classps_1_1utils_1_1EventLogger_a1218f827938c74c78d96ab63f0a826a1}{add} (const char $\ast$lp\+Str\+Desc, E\+V\+E\+N\+T\+T\+Y\+P\+E t=et\+Info, const char $\ast$lp\+Str\+Source=N\+U\+L\+L, int value=0)
+\item 
+void \hyperlink{classps_1_1utils_1_1EventLogger_ac86c18aa6df7a5eb774d34d31dde0451}{set\+Write\+Flags} (int flags)
+\item 
+\hypertarget{classps_1_1utils_1_1EventLogger_a385bd436b0f21cbf11c7a554b9f0dcab}{}void {\bfseries set\+Out\+File\+Path} (const char $\ast$lp\+Str\+File\+Path)\label{classps_1_1utils_1_1EventLogger_a385bd436b0f21cbf11c7a554b9f0dcab}
+
+\item 
+\hypertarget{classps_1_1utils_1_1EventLogger_a0f6b79c708ee991dc18adbdd8aff6ffb}{}void {\bfseries set\+Display\+Call\+Back} (F\+On\+Display cb)\label{classps_1_1utils_1_1EventLogger_a0f6b79c708ee991dc18adbdd8aff6ffb}
+
+\item 
+\hypertarget{classps_1_1utils_1_1EventLogger_ab5f54fa75186ec718accd369bde4a138}{}bool {\bfseries flush} ()\label{classps_1_1utils_1_1EventLogger_ab5f54fa75186ec718accd369bde4a138}
+
+\item 
+\hypertarget{classps_1_1utils_1_1EventLogger_a38e7c4ad4cfe86133f0055481f4f1d77}{}\hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} {\bfseries root\+Path} () const \label{classps_1_1utils_1_1EventLogger_a38e7c4ad4cfe86133f0055481f4f1d77}
+
+\item 
+\hypertarget{classps_1_1utils_1_1EventLogger_ae39e90031c86daa9ab9dc1e5e6f0793a}{}\hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} {\bfseries shorten\+Path\+Based\+On\+Root} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&str\+Path) const \label{classps_1_1utils_1_1EventLogger_ae39e90031c86daa9ab9dc1e5e6f0793a}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{structps_1_1utils_1_1EventLogger_1_1Event}{Event} Logger class for writing major application events to disk. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classps_1_1utils_1_1EventLogger_a952c1d904e9dbe976bc80919413bdaa7}{}\index{ps\+::utils\+::\+Event\+Logger@{ps\+::utils\+::\+Event\+Logger}!Event\+Logger@{Event\+Logger}}
+\index{Event\+Logger@{Event\+Logger}!ps\+::utils\+::\+Event\+Logger@{ps\+::utils\+::\+Event\+Logger}}
+\subsubsection[{Event\+Logger(const char $\ast$lp\+File\+Path, int flags=0)}]{\setlength{\rightskip}{0pt plus 5cm}Event\+Logger\+::\+Event\+Logger (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{lp\+File\+Path, }
+\item[{int}]{flags = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{classps_1_1utils_1_1EventLogger_a952c1d904e9dbe976bc80919413bdaa7}
+Constructor for setting the log file path on disk and setting up the flags for controlling how the log is written. 
+\begin{DoxyParams}{Parameters}
+{\em lp\+File\+Path} & the string of the file path \\
+\hline
+{\em flags} & that indicate how each log entry has to be written \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classps_1_1utils_1_1EventLogger_a408da0eba198ea67f4f5dd2cbad50a5b}{}\index{ps\+::utils\+::\+Event\+Logger@{ps\+::utils\+::\+Event\+Logger}!add@{add}}
+\index{add@{add}!ps\+::utils\+::\+Event\+Logger@{ps\+::utils\+::\+Event\+Logger}}
+\subsubsection[{add(const Event \&e)}]{\setlength{\rightskip}{0pt plus 5cm}void Event\+Logger\+::add (
+\begin{DoxyParamCaption}
+\item[{const {\bf Event} \&}]{e}
+\end{DoxyParamCaption}
+)}\label{classps_1_1utils_1_1EventLogger_a408da0eba198ea67f4f5dd2cbad50a5b}
+Adds an event to the event log system 
+\begin{DoxyParams}{Parameters}
+{\em e} & reference to the event variable \\
+\hline
+\end{DoxyParams}
+\hypertarget{classps_1_1utils_1_1EventLogger_a1218f827938c74c78d96ab63f0a826a1}{}\index{ps\+::utils\+::\+Event\+Logger@{ps\+::utils\+::\+Event\+Logger}!add@{add}}
+\index{add@{add}!ps\+::utils\+::\+Event\+Logger@{ps\+::utils\+::\+Event\+Logger}}
+\subsubsection[{add(const char $\ast$lp\+Str\+Desc, E\+V\+E\+N\+T\+T\+Y\+P\+E t=et\+Info, const char $\ast$lp\+Str\+Source=\+N\+U\+L\+L, int value=0)}]{\setlength{\rightskip}{0pt plus 5cm}void Event\+Logger\+::add (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{lp\+Str\+Desc, }
+\item[{E\+V\+E\+N\+T\+T\+Y\+P\+E}]{t = {\ttfamily etInfo}, }
+\item[{const char $\ast$}]{lp\+Str\+Source = {\ttfamily NULL}, }
+\item[{int}]{value = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{classps_1_1utils_1_1EventLogger_a1218f827938c74c78d96ab63f0a826a1}
+Adds an entry to the log system 
+\begin{DoxyParams}{Parameters}
+{\em lp\+Str\+Desc} & Description for this event \\
+\hline
+{\em t} & type of this event \\
+\hline
+{\em lp\+Source} & the source of the event (Can be a File, File + Function Name) \\
+\hline
+{\em value} & can be line number or the error code \\
+\hline
+\end{DoxyParams}
+\hypertarget{classps_1_1utils_1_1EventLogger_ac86c18aa6df7a5eb774d34d31dde0451}{}\index{ps\+::utils\+::\+Event\+Logger@{ps\+::utils\+::\+Event\+Logger}!set\+Write\+Flags@{set\+Write\+Flags}}
+\index{set\+Write\+Flags@{set\+Write\+Flags}!ps\+::utils\+::\+Event\+Logger@{ps\+::utils\+::\+Event\+Logger}}
+\subsubsection[{set\+Write\+Flags(int flags)}]{\setlength{\rightskip}{0pt plus 5cm}void Event\+Logger\+::set\+Write\+Flags (
+\begin{DoxyParamCaption}
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\label{classps_1_1utils_1_1EventLogger_ac86c18aa6df7a5eb774d34d31dde0451}
+
+\begin{DoxyParams}{Parameters}
+{\em flags} & to control the way log entries are being written to disk \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/base/logger.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/base/logger.\+cpp\end{DoxyCompactItemize}

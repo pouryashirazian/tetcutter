@@ -1,0 +1,92 @@
+\hypertarget{classSmallStringOpt}{}\section{Small\+String\+Opt$<$ Storage, threshold, Align $>$ Class Template Reference}
+\label{classSmallStringOpt}\index{Small\+String\+Opt$<$ Storage, threshold, Align $>$@{Small\+String\+Opt$<$ Storage, threshold, Align $>$}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classSmallStringOpt_a51c92638f611cc99f58e0a3c001c237a}{}enum \{ {\bfseries max\+Small\+String}
+ \}\label{classSmallStringOpt_a51c92638f611cc99f58e0a3c001c237a}
+
+\item 
+\hypertarget{classSmallStringOpt_a8086102e8c8d58e7e861305ad9bc001b}{}typedef Storage\+::value\+\_\+type {\bfseries value\+\_\+type}\label{classSmallStringOpt_a8086102e8c8d58e7e861305ad9bc001b}
+
+\item 
+\hypertarget{classSmallStringOpt_ac9be07d0c6aacbf93e49534f19db008c}{}typedef value\+\_\+type $\ast$ {\bfseries iterator}\label{classSmallStringOpt_ac9be07d0c6aacbf93e49534f19db008c}
+
+\item 
+\hypertarget{classSmallStringOpt_a18fc34d330f5cf619130601361204729}{}typedef const value\+\_\+type $\ast$ {\bfseries const\+\_\+iterator}\label{classSmallStringOpt_a18fc34d330f5cf619130601361204729}
+
+\item 
+\hypertarget{classSmallStringOpt_ac28385b62752f9ed69ec3c5094443be1}{}typedef Storage\+::allocator\+\_\+type {\bfseries allocator\+\_\+type}\label{classSmallStringOpt_ac28385b62752f9ed69ec3c5094443be1}
+
+\item 
+\hypertarget{classSmallStringOpt_abd00b45b374c99cf07b7390b7f7aef84}{}typedef allocator\+\_\+type\+::size\+\_\+type {\bfseries size\+\_\+type}\label{classSmallStringOpt_abd00b45b374c99cf07b7390b7f7aef84}
+
+\item 
+\hypertarget{classSmallStringOpt_a55436c7f3a4c81440b15c4dfb47de37d}{}typedef Storage\+::reference {\bfseries reference}\label{classSmallStringOpt_a55436c7f3a4c81440b15c4dfb47de37d}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classSmallStringOpt_a0e043f4ed81dbd4034a834aa299c348f}{}{\bfseries Small\+String\+Opt} (const \hyperlink{classSmallStringOpt}{Small\+String\+Opt} \&s)\label{classSmallStringOpt_a0e043f4ed81dbd4034a834aa299c348f}
+
+\item 
+\hypertarget{classSmallStringOpt_a8d5dd4560b1063e5fbb59998a65a8356}{}{\bfseries Small\+String\+Opt} (const allocator\+\_\+type \&)\label{classSmallStringOpt_a8d5dd4560b1063e5fbb59998a65a8356}
+
+\item 
+\hypertarget{classSmallStringOpt_a136ae5b8d1b8d8383bdfbccd4bb6cdf8}{}{\bfseries Small\+String\+Opt} (const value\+\_\+type $\ast$s, size\+\_\+type len, const allocator\+\_\+type \&a)\label{classSmallStringOpt_a136ae5b8d1b8d8383bdfbccd4bb6cdf8}
+
+\item 
+\hypertarget{classSmallStringOpt_a3da612284ca1777c66a4dc29434de9a7}{}{\bfseries Small\+String\+Opt} (size\+\_\+type len, value\+\_\+type c, const allocator\+\_\+type \&a)\label{classSmallStringOpt_a3da612284ca1777c66a4dc29434de9a7}
+
+\item 
+\hypertarget{classSmallStringOpt_a49204aed714a5bb731599e304285a245}{}\hyperlink{classSmallStringOpt}{Small\+String\+Opt} \& {\bfseries operator=} (const \hyperlink{classSmallStringOpt}{Small\+String\+Opt} \&rhs)\label{classSmallStringOpt_a49204aed714a5bb731599e304285a245}
+
+\item 
+\hypertarget{classSmallStringOpt_afbc94c8e7c4e2001052d445c5857c3d2}{}iterator {\bfseries begin} ()\label{classSmallStringOpt_afbc94c8e7c4e2001052d445c5857c3d2}
+
+\item 
+\hypertarget{classSmallStringOpt_a727d95214948dc69721ca42a168070c3}{}const\+\_\+iterator {\bfseries begin} () const \label{classSmallStringOpt_a727d95214948dc69721ca42a168070c3}
+
+\item 
+\hypertarget{classSmallStringOpt_ac3811fcdf6e665caa9b3d59f6fa63115}{}iterator {\bfseries end} ()\label{classSmallStringOpt_ac3811fcdf6e665caa9b3d59f6fa63115}
+
+\item 
+\hypertarget{classSmallStringOpt_a0c984f4002881157bfa1eeb38479247e}{}const\+\_\+iterator {\bfseries end} () const \label{classSmallStringOpt_a0c984f4002881157bfa1eeb38479247e}
+
+\item 
+\hypertarget{classSmallStringOpt_ac54d37be05fe643189b087e04bb49c7f}{}size\+\_\+type {\bfseries size} () const \label{classSmallStringOpt_ac54d37be05fe643189b087e04bb49c7f}
+
+\item 
+\hypertarget{classSmallStringOpt_a2a149ca0d1729e390ff5f825b4138665}{}size\+\_\+type {\bfseries max\+\_\+size} () const \label{classSmallStringOpt_a2a149ca0d1729e390ff5f825b4138665}
+
+\item 
+\hypertarget{classSmallStringOpt_a4bb061bdf9c9d1d438e8327a86434bbe}{}size\+\_\+type {\bfseries capacity} () const \label{classSmallStringOpt_a4bb061bdf9c9d1d438e8327a86434bbe}
+
+\item 
+\hypertarget{classSmallStringOpt_aa14f9a0fa37edcefafbdcc84ee448817}{}void {\bfseries reserve} (size\+\_\+type res\+\_\+arg)\label{classSmallStringOpt_aa14f9a0fa37edcefafbdcc84ee448817}
+
+\item 
+\hypertarget{classSmallStringOpt_a46f984e8700ddbd3c9b58e022f5c77c4}{}{\footnotesize template$<$class Fwd\+Iterator $>$ }\\void {\bfseries append} (Fwd\+Iterator b, Fwd\+Iterator e)\label{classSmallStringOpt_a46f984e8700ddbd3c9b58e022f5c77c4}
+
+\item 
+\hypertarget{classSmallStringOpt_a05d1e2c6a65702d55f3bbed60394692f}{}void {\bfseries resize} (size\+\_\+type n, value\+\_\+type c)\label{classSmallStringOpt_a05d1e2c6a65702d55f3bbed60394692f}
+
+\item 
+\hypertarget{classSmallStringOpt_a55a4f8360d90262d424641f681632517}{}void {\bfseries swap} (\hyperlink{classSmallStringOpt}{Small\+String\+Opt} \&rhs)\label{classSmallStringOpt_a55a4f8360d90262d424641f681632517}
+
+\item 
+\hypertarget{classSmallStringOpt_a548bb73e456f035f5eae1326c23b5884}{}const value\+\_\+type $\ast$ {\bfseries c\+\_\+str} () const \label{classSmallStringOpt_a548bb73e456f035f5eae1326c23b5884}
+
+\item 
+\hypertarget{classSmallStringOpt_a4b7a679ae3bf582acec94a2752ae3fb6}{}const value\+\_\+type $\ast$ {\bfseries data} () const \label{classSmallStringOpt_a4b7a679ae3bf582acec94a2752ae3fb6}
+
+\item 
+\hypertarget{classSmallStringOpt_a6256080389ad20e56e356b61cf6d8785}{}allocator\+\_\+type {\bfseries get\+\_\+allocator} () const \label{classSmallStringOpt_a6256080389ad20e56e356b61cf6d8785}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/flex/smallstringopt.\+h\end{DoxyCompactItemize}

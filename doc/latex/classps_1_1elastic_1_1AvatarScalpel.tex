@@ -1,0 +1,70 @@
+\hypertarget{classps_1_1elastic_1_1AvatarScalpel}{}\section{ps\+:\+:elastic\+:\+:Avatar\+Scalpel Class Reference}
+\label{classps_1_1elastic_1_1AvatarScalpel}\index{ps\+::elastic\+::\+Avatar\+Scalpel@{ps\+::elastic\+::\+Avatar\+Scalpel}}
+
+
+{\ttfamily \#include $<$avatarscalpel.\+h$>$}
+
+Inheritance diagram for ps\+:\+:elastic\+:\+:Avatar\+Scalpel\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classps_1_1elastic_1_1AvatarScalpel}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1elastic_1_1AvatarScalpel_a2e65c2453c121bec800f2b11acb60d7b}{}{\bfseries Avatar\+Scalpel} (\hyperlink{classps_1_1elastic_1_1CuttableMesh}{Cuttable\+Mesh} $\ast$tissue)\label{classps_1_1elastic_1_1AvatarScalpel_a2e65c2453c121bec800f2b11acb60d7b}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1AvatarScalpel_a76a06347e93bc6a7b3468ae6f9212db1}{}void {\bfseries init} ()\label{classps_1_1elastic_1_1AvatarScalpel_a76a06347e93bc6a7b3468ae6f9212db1}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1AvatarScalpel_aecf0e668fb5301ee45c169fd9aaed8e9}{}void {\bfseries draw} ()\label{classps_1_1elastic_1_1AvatarScalpel_aecf0e668fb5301ee45c169fd9aaed8e9}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1AvatarScalpel_a9e40e85b2cdbaceb1cfc1ed6436240ff}{}void {\bfseries on\+Translate} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&delta, const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&pos) override\label{classps_1_1elastic_1_1AvatarScalpel_a9e40e85b2cdbaceb1cfc1ed6436240ff}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1AvatarScalpel_a65f829ad9e630c99cb6370698782fb0c}{}void {\bfseries clear\+Cut\+Context} ()\label{classps_1_1elastic_1_1AvatarScalpel_a65f829ad9e630c99cb6370698782fb0c}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1elastic_1_1AvatarScalpel_ab2e43d4a992f701379724ff7dffbde35}{}bool {\bfseries m\+\_\+is\+Swept\+Quad\+Valid}\label{classps_1_1elastic_1_1AvatarScalpel_ab2e43d4a992f701379724ff7dffbde35}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1AvatarScalpel_af2654d1671a3769317072a86e2a4152e}{}\hyperlink{classps_1_1base_1_1AABB}{A\+A\+B\+B} {\bfseries m\+\_\+aabb\+Current}\label{classps_1_1elastic_1_1AvatarScalpel_af2654d1671a3769317072a86e2a4152e}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1AvatarScalpel_abba156dd6af6695d827ae042d5b33466}{}\hyperlink{classps_1_1scene_1_1SGMesh}{S\+G\+Mesh} {\bfseries m\+\_\+outline}\label{classps_1_1elastic_1_1AvatarScalpel_abba156dd6af6695d827ae042d5b33466}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1AvatarScalpel_a6b9e38d2000f71dc20d42c71bd34bd35}{}\hyperlink{classps_1_1base_1_1Vec3}{vec3f} {\bfseries m\+\_\+edgeref0}\label{classps_1_1elastic_1_1AvatarScalpel_a6b9e38d2000f71dc20d42c71bd34bd35}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1AvatarScalpel_ae09c71b1a8eb1bca9acbfad133be224a}{}\hyperlink{classps_1_1base_1_1Vec3}{vec3f} {\bfseries m\+\_\+edgeref1}\label{classps_1_1elastic_1_1AvatarScalpel_ae09c71b1a8eb1bca9acbfad133be224a}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1AvatarScalpel_a4f965eda4cc93346365879c5a724535e}{}vector$<$ \hyperlink{classps_1_1base_1_1Vec3}{vec3d} $>$ {\bfseries m\+\_\+v\+Cutting\+Path\+Edge0}\label{classps_1_1elastic_1_1AvatarScalpel_a4f965eda4cc93346365879c5a724535e}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1AvatarScalpel_a6978076ffd3b8008ef85f3f626d1dda9}{}vector$<$ \hyperlink{classps_1_1base_1_1Vec3}{vec3d} $>$ {\bfseries m\+\_\+v\+Cutting\+Path\+Edge1}\label{classps_1_1elastic_1_1AvatarScalpel_a6978076ffd3b8008ef85f3f626d1dda9}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1AvatarScalpel_a13ba4c4f954ab892a9a6ae9a09b45227}{}vector$<$ \hyperlink{classps_1_1base_1_1Vec3}{vec3d} $>$ {\bfseries m\+\_\+v\+Swept\+Quad}\label{classps_1_1elastic_1_1AvatarScalpel_a13ba4c4f954ab892a9a6ae9a09b45227}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1AvatarScalpel_a54525ce26101d8faf1af48e0335bedee}{}vector$<$ \hyperlink{classps_1_1base_1_1Vec3}{vec3d} $>$ {\bfseries m\+\_\+v\+Blade\+Segments}\label{classps_1_1elastic_1_1AvatarScalpel_a54525ce26101d8faf1af48e0335bedee}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Synopsis\+: Haptics Avatar guide 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/elastic/avatarscalpel.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/elastic/avatarscalpel.\+cpp\end{DoxyCompactItemize}

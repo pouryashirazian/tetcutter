@@ -1,0 +1,111 @@
+\hypertarget{classps_1_1scene_1_1SGTransform}{}\section{ps\+:\+:scene\+:\+:S\+G\+Transform Class Reference}
+\label{classps_1_1scene_1_1SGTransform}\index{ps\+::scene\+::\+S\+G\+Transform@{ps\+::scene\+::\+S\+G\+Transform}}
+
+
+{\ttfamily \#include $<$sgtransform.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_afaf5a87138dabd0aacac5545bfbcd2d2}{}{\bfseries S\+G\+Transform} (bool b\+Auto\+Update\+Backward=false)\label{classps_1_1scene_1_1SGTransform_afaf5a87138dabd0aacac5545bfbcd2d2}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_a7726860818c1d0f69ffae1bf198a82f7}{}{\bfseries S\+G\+Transform} (const \hyperlink{classps_1_1scene_1_1SGTransform}{S\+G\+Transform} \&other)\label{classps_1_1scene_1_1SGTransform_a7726860818c1d0f69ffae1bf198a82f7}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_a8d45f9b4735efffbd076d40c79a78e7a}{}void {\bfseries copy\+From} (const \hyperlink{classps_1_1scene_1_1SGTransform}{S\+G\+Transform} \&other)\label{classps_1_1scene_1_1SGTransform_a8d45f9b4735efffbd076d40c79a78e7a}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_adb066652059d4045d722fc6f61c6b87a}{}void {\bfseries scale} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&delta)\label{classps_1_1scene_1_1SGTransform_adb066652059d4045d722fc6f61c6b87a}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_aebad2680e9d8a356231721515e865201}{}void {\bfseries scale} (float sfactor)\label{classps_1_1scene_1_1SGTransform_aebad2680e9d8a356231721515e865201}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_a0875af7b739cec704217e420cfcf502d}{}void {\bfseries rotate} (const \hyperlink{classps_1_1base_1_1Quaternion}{quat} \&q)\label{classps_1_1scene_1_1SGTransform_a0875af7b739cec704217e420cfcf502d}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_a4c7191b65002f91c637627a76310b9e3}{}void {\bfseries rotate} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&axis, float deg)\label{classps_1_1scene_1_1SGTransform_a4c7191b65002f91c637627a76310b9e3}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_a9798fa4ae63a127867fab9dd5b3ad366}{}void {\bfseries translate} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&delta)\label{classps_1_1scene_1_1SGTransform_a9798fa4ae63a127867fab9dd5b3ad366}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_a16fbb4c47353c9f40a096bca94b2d1c7}{}\hyperlink{classps_1_1base_1_1Vec3}{vec3f} {\bfseries get\+Scale} () const \label{classps_1_1scene_1_1SGTransform_a16fbb4c47353c9f40a096bca94b2d1c7}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_a4a5a7c081d6f750bb197422ff9239d77}{}\hyperlink{classps_1_1base_1_1Vec3}{vec3f} {\bfseries get\+Translate} () const \label{classps_1_1scene_1_1SGTransform_a4a5a7c081d6f750bb197422ff9239d77}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_a3f1c5e9fb98c99b3f562664a1a0e6850}{}\hyperlink{classps_1_1base_1_1Quaternion}{quatf} {\bfseries get\+Rotate} () const \label{classps_1_1scene_1_1SGTransform_a3f1c5e9fb98c99b3f562664a1a0e6850}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_a1cd22a1ba9d5bb3b852e78ecb02a460a}{}void {\bfseries set\+Scale} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&s)\label{classps_1_1scene_1_1SGTransform_a1cd22a1ba9d5bb3b852e78ecb02a460a}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_a6cfac3d485986943a67934a526a267ff}{}void {\bfseries set\+Rotate} (const \hyperlink{classps_1_1base_1_1Quaternion}{quat} \&r)\label{classps_1_1scene_1_1SGTransform_a6cfac3d485986943a67934a526a267ff}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_af0eda3002b631332a12552bbf9a9281f}{}void {\bfseries set\+Translate} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&t)\label{classps_1_1scene_1_1SGTransform_af0eda3002b631332a12552bbf9a9281f}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_af1a72953319100d337d921b514a781c6}{}void {\bfseries reset} ()\label{classps_1_1scene_1_1SGTransform_af1a72953319100d337d921b514a781c6}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_a06cdc843c3586f5a868168240e9e81e9}{}void {\bfseries reset\+Scale} ()\label{classps_1_1scene_1_1SGTransform_a06cdc843c3586f5a868168240e9e81e9}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_a491961854ce69990d472dae731abd118}{}void {\bfseries reset\+Rotate} ()\label{classps_1_1scene_1_1SGTransform_a491961854ce69990d472dae731abd118}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_a9afd678be97106caad8cb4bc1b08e000}{}void {\bfseries reset\+Translate} ()\label{classps_1_1scene_1_1SGTransform_a9afd678be97106caad8cb4bc1b08e000}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_ac40db0862ee9db8478b95a48646ce97a}{}void {\bfseries sync\+Matrices} ()\label{classps_1_1scene_1_1SGTransform_ac40db0862ee9db8478b95a48646ce97a}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_a321d28a36fce724ce462cecfd5f1d766}{}void {\bfseries bind} ()\label{classps_1_1scene_1_1SGTransform_a321d28a36fce724ce462cecfd5f1d766}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_adbe7a48aab0c1cf68fae681424b36d7a}{}void {\bfseries unbind} ()\label{classps_1_1scene_1_1SGTransform_adbe7a48aab0c1cf68fae681424b36d7a}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_a21554e2c9a27bb33c2c3d8df11427e3f}{}const \hyperlink{classps_1_1base_1_1Matrix}{mat44f} \& {\bfseries forward} () const \label{classps_1_1scene_1_1SGTransform_a21554e2c9a27bb33c2c3d8df11427e3f}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_aac1fc79e200eccd14e783dc7c391eb68}{}const \hyperlink{classps_1_1base_1_1Matrix}{mat44f} \& {\bfseries backward} () const \label{classps_1_1scene_1_1SGTransform_aac1fc79e200eccd14e783dc7c391eb68}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_aed1ae3bec52aabe203bd21637d1789d2}{}\hyperlink{classps_1_1base_1_1Vec3}{vec3f} {\bfseries m\+\_\+translate}\label{classps_1_1scene_1_1SGTransform_aed1ae3bec52aabe203bd21637d1789d2}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_a4beac68f9c0c76ae4ca6bc48eb2845a8}{}\hyperlink{classps_1_1base_1_1Vec3}{vec3f} {\bfseries m\+\_\+scale}\label{classps_1_1scene_1_1SGTransform_a4beac68f9c0c76ae4ca6bc48eb2845a8}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_a1c802d8e248b05943273245c835e6736}{}\hyperlink{classps_1_1base_1_1Quaternion}{quatf} {\bfseries m\+\_\+rotate}\label{classps_1_1scene_1_1SGTransform_a1c802d8e248b05943273245c835e6736}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_ae676fffa86d6f107b0437fbaec777e58}{}\hyperlink{classps_1_1base_1_1Matrix}{mat44f} {\bfseries m\+\_\+mtx\+Forward}\label{classps_1_1scene_1_1SGTransform_ae676fffa86d6f107b0437fbaec777e58}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_a85627ceda297f9335a8bb8567f7808a6}{}\hyperlink{classps_1_1base_1_1Matrix}{mat44f} {\bfseries m\+\_\+mtx\+Backward}\label{classps_1_1scene_1_1SGTransform_a85627ceda297f9335a8bb8567f7808a6}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_a115c6333bdbbd4b1847b99d143b2f3bc}{}bool {\bfseries m\+\_\+auto\+Update}\label{classps_1_1scene_1_1SGTransform_a115c6333bdbbd4b1847b99d143b2f3bc}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGTransform_ae94ed6f4ed9e72598e44b2b6e09f9302}{}int {\bfseries m\+\_\+changes}\label{classps_1_1scene_1_1SGTransform_ae94ed6f4ed9e72598e44b2b6e09f9302}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+class representing transformation nodes in the scene graph. This will decrease memory foot print since a pointer will determine a scene node connection with a transformation node 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/scene/sgtransform.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/scene/sgtransform.\+cpp\end{DoxyCompactItemize}

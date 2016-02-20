@@ -1,0 +1,56 @@
+\hypertarget{classtbb_1_1internal_1_1mail__inbox}{}\section{tbb\+:\+:internal\+:\+:mail\+\_\+inbox Class Reference}
+\label{classtbb_1_1internal_1_1mail__inbox}\index{tbb\+::internal\+::mail\+\_\+inbox@{tbb\+::internal\+::mail\+\_\+inbox}}
+
+
+Class representing source of mail.  
+
+
+
+
+{\ttfamily \#include $<$mailbox.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1mail__inbox_a1bdd2891d8103e38dfc063e6977cfc7a}{}\hyperlink{classtbb_1_1internal_1_1mail__inbox_a1bdd2891d8103e38dfc063e6977cfc7a}{mail\+\_\+inbox} ()\label{classtbb_1_1internal_1_1mail__inbox_a1bdd2891d8103e38dfc063e6977cfc7a}
+
+\begin{DoxyCompactList}\small\item\em Construct unattached inbox. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1mail__inbox_a5db22ebed6cee417875881d6ee260231}{}void \hyperlink{classtbb_1_1internal_1_1mail__inbox_a5db22ebed6cee417875881d6ee260231}{attach} (\hyperlink{classtbb_1_1internal_1_1mail__outbox}{mail\+\_\+outbox} \&putter)\label{classtbb_1_1internal_1_1mail__inbox_a5db22ebed6cee417875881d6ee260231}
+
+\begin{DoxyCompactList}\small\item\em Attach inbox to a corresponding outbox. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1mail__inbox_ab4d587f455177aec5b07e4f1ee00440a}{}void \hyperlink{classtbb_1_1internal_1_1mail__inbox_ab4d587f455177aec5b07e4f1ee00440a}{detach} ()\label{classtbb_1_1internal_1_1mail__inbox_ab4d587f455177aec5b07e4f1ee00440a}
+
+\begin{DoxyCompactList}\small\item\em Detach inbox from its outbox. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1mail__inbox_a3f773a346ca9e41cad1085b246181f42}{}\hyperlink{structtbb_1_1internal_1_1task__proxy}{task\+\_\+proxy} $\ast$ \hyperlink{classtbb_1_1internal_1_1mail__inbox_a3f773a346ca9e41cad1085b246181f42}{pop} ()\label{classtbb_1_1internal_1_1mail__inbox_a3f773a346ca9e41cad1085b246181f42}
+
+\begin{DoxyCompactList}\small\item\em Get next piece of mail, or N\+U\+L\+L if mailbox is empty. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1mail__inbox_a74cbcc24b9babea092c0c96d77c8512d}{}bool \hyperlink{classtbb_1_1internal_1_1mail__inbox_a74cbcc24b9babea092c0c96d77c8512d}{empty} ()\label{classtbb_1_1internal_1_1mail__inbox_a74cbcc24b9babea092c0c96d77c8512d}
+
+\begin{DoxyCompactList}\small\item\em Return true if mailbox is empty. \end{DoxyCompactList}\item 
+void \hyperlink{classtbb_1_1internal_1_1mail__inbox_a08539a9bfc808963dfe6ab756bfd2d2d}{set\+\_\+is\+\_\+idle} (bool value)
+\begin{DoxyCompactList}\small\item\em Indicate whether thread that reads this mailbox is idle. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1mail__inbox_ad34c62cd7350fb87f1173ed7ccae7895}{}bool \hyperlink{classtbb_1_1internal_1_1mail__inbox_ad34c62cd7350fb87f1173ed7ccae7895}{is\+\_\+idle\+\_\+state} (bool value) const \label{classtbb_1_1internal_1_1mail__inbox_ad34c62cd7350fb87f1173ed7ccae7895}
+
+\begin{DoxyCompactList}\small\item\em Indicate whether thread that reads this mailbox is idle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing source of mail. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classtbb_1_1internal_1_1mail__inbox_a08539a9bfc808963dfe6ab756bfd2d2d}{}\index{tbb\+::internal\+::mail\+\_\+inbox@{tbb\+::internal\+::mail\+\_\+inbox}!set\+\_\+is\+\_\+idle@{set\+\_\+is\+\_\+idle}}
+\index{set\+\_\+is\+\_\+idle@{set\+\_\+is\+\_\+idle}!tbb\+::internal\+::mail\+\_\+inbox@{tbb\+::internal\+::mail\+\_\+inbox}}
+\subsubsection[{set\+\_\+is\+\_\+idle(bool value)}]{\setlength{\rightskip}{0pt plus 5cm}void tbb\+::internal\+::mail\+\_\+inbox\+::set\+\_\+is\+\_\+idle (
+\begin{DoxyParamCaption}
+\item[{bool}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1internal_1_1mail__inbox_a08539a9bfc808963dfe6ab756bfd2d2d}
+
+
+Indicate whether thread that reads this mailbox is idle. 
+
+Raises assertion failure if mailbox is redundantly marked as not idle. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/mailbox.\+h\end{DoxyCompactItemize}

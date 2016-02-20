@@ -1,0 +1,22 @@
+\hypertarget{group__native}{}\section{Native access}
+\label{group__native}\index{Native access@{Native access}}
+{\bfseries By using the native access functions you assert that you know what you\textquotesingle{}re doing and how to fix problems caused by using them. If you don\textquotesingle{}t, you shouldn\textquotesingle{}t be using them.}
+
+Before the inclusion of \hyperlink{glfw3native_8h_source}{glfw3native.\+h}, you must define exactly one window system A\+P\+I macro and exactly one context creation A\+P\+I macro. Failure to do this will cause a compile-\/time error.
+
+The available window A\+P\+I macros are\+:
+\begin{DoxyItemize}
+\item {\ttfamily G\+L\+F\+W\+\_\+\+E\+X\+P\+O\+S\+E\+\_\+\+N\+A\+T\+I\+V\+E\+\_\+\+W\+I\+N32}
+\item {\ttfamily G\+L\+F\+W\+\_\+\+E\+X\+P\+O\+S\+E\+\_\+\+N\+A\+T\+I\+V\+E\+\_\+\+C\+O\+C\+O\+A}
+\item {\ttfamily G\+L\+F\+W\+\_\+\+E\+X\+P\+O\+S\+E\+\_\+\+N\+A\+T\+I\+V\+E\+\_\+\+X11}
+\end{DoxyItemize}
+
+The available context A\+P\+I macros are\+:
+\begin{DoxyItemize}
+\item {\ttfamily G\+L\+F\+W\+\_\+\+E\+X\+P\+O\+S\+E\+\_\+\+N\+A\+T\+I\+V\+E\+\_\+\+W\+G\+L}
+\item {\ttfamily G\+L\+F\+W\+\_\+\+E\+X\+P\+O\+S\+E\+\_\+\+N\+A\+T\+I\+V\+E\+\_\+\+N\+S\+G\+L}
+\item {\ttfamily G\+L\+F\+W\+\_\+\+E\+X\+P\+O\+S\+E\+\_\+\+N\+A\+T\+I\+V\+E\+\_\+\+G\+L\+X}
+\item {\ttfamily G\+L\+F\+W\+\_\+\+E\+X\+P\+O\+S\+E\+\_\+\+N\+A\+T\+I\+V\+E\+\_\+\+E\+G\+L}
+\end{DoxyItemize}
+
+These macros select which of the native access functions that are declared and which platform-\/specific headers to include. It is then up your (by definition platform-\/specific) code to handle which of these should be defined. 

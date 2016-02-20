@@ -1,0 +1,136 @@
+\hypertarget{classLoki_1_1SmallObjAllocator}{}\section{Loki\+:\+:Small\+Obj\+Allocator Class Reference}
+\label{classLoki_1_1SmallObjAllocator}\index{Loki\+::\+Small\+Obj\+Allocator@{Loki\+::\+Small\+Obj\+Allocator}}
+
+
+{\ttfamily \#include $<$Small\+Obj.\+h$>$}
+
+Inheritance diagram for Loki\+:\+:Small\+Obj\+Allocator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.559888cm]{classLoki_1_1SmallObjAllocator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{classLoki_1_1SmallObjAllocator_aa41bb717d552cd0df57a941def7ec607}{Allocate} (std\+::size\+\_\+t size, bool do\+Throw)
+\item 
+void \hyperlink{classLoki_1_1SmallObjAllocator_a2b669733cfa9dd157603d13d979f8c1c}{Deallocate} (void $\ast$p, std\+::size\+\_\+t size)
+\item 
+void \hyperlink{classLoki_1_1SmallObjAllocator_a50406896d75a2591d4bd7dc53325e3d6}{Deallocate} (void $\ast$p)
+\item 
+\hypertarget{classLoki_1_1SmallObjAllocator_ae49e9de3fd7b2fd93676cc1d63299b0d}{}std\+::size\+\_\+t \hyperlink{classLoki_1_1SmallObjAllocator_ae49e9de3fd7b2fd93676cc1d63299b0d}{Get\+Max\+Object\+Size} () const \label{classLoki_1_1SmallObjAllocator_ae49e9de3fd7b2fd93676cc1d63299b0d}
+
+\begin{DoxyCompactList}\small\item\em Returns max \# of bytes which this can allocate. \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1SmallObjAllocator_ab1c8a2a3d7e9368ab59422ddd082105c}{}std\+::size\+\_\+t \hyperlink{classLoki_1_1SmallObjAllocator_ab1c8a2a3d7e9368ab59422ddd082105c}{Get\+Alignment} () const \label{classLoki_1_1SmallObjAllocator_ab1c8a2a3d7e9368ab59422ddd082105c}
+
+\begin{DoxyCompactList}\small\item\em Returns \# of bytes between allocation boundaries. \end{DoxyCompactList}\item 
+bool \hyperlink{classLoki_1_1SmallObjAllocator_a6b635664b20a6984303dabde86c8ac83}{Trim\+Excess\+Memory} (void)
+\item 
+bool \hyperlink{classLoki_1_1SmallObjAllocator_a2b7fbd5bf5fc56e45754abd2497ad18f}{Is\+Corrupt} (void) const 
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLoki_1_1SmallObjAllocator_a3d40b34b1a2d08a6bb9d9fa22ab5ce24}{Small\+Obj\+Allocator} (std\+::size\+\_\+t page\+Size, std\+::size\+\_\+t max\+Object\+Size, std\+::size\+\_\+t object\+Align\+Size)
+\item 
+\hyperlink{classLoki_1_1SmallObjAllocator_a0c861c4605844ee30dbe2a4f533fe2ae}{$\sim$\+Small\+Obj\+Allocator} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Manages pool of fixed-\/size allocators. Designed to be a non-\/templated base class of \hyperlink{classLoki_1_1AllocatorSingleton}{Allocator\+Singleton} so that implementation details can be safely hidden in the source code file. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classLoki_1_1SmallObjAllocator_a3d40b34b1a2d08a6bb9d9fa22ab5ce24}{}\index{Loki\+::\+Small\+Obj\+Allocator@{Loki\+::\+Small\+Obj\+Allocator}!Small\+Obj\+Allocator@{Small\+Obj\+Allocator}}
+\index{Small\+Obj\+Allocator@{Small\+Obj\+Allocator}!Loki\+::\+Small\+Obj\+Allocator@{Loki\+::\+Small\+Obj\+Allocator}}
+\subsubsection[{Small\+Obj\+Allocator(std\+::size\+\_\+t page\+Size, std\+::size\+\_\+t max\+Object\+Size, std\+::size\+\_\+t object\+Align\+Size)}]{\setlength{\rightskip}{0pt plus 5cm}Loki\+::\+Small\+Obj\+Allocator\+::\+Small\+Obj\+Allocator (
+\begin{DoxyParamCaption}
+\item[{std\+::size\+\_\+t}]{page\+Size, }
+\item[{std\+::size\+\_\+t}]{max\+Object\+Size, }
+\item[{std\+::size\+\_\+t}]{object\+Align\+Size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{classLoki_1_1SmallObjAllocator_a3d40b34b1a2d08a6bb9d9fa22ab5ce24}
+The only available constructor needs certain parameters in order to initialize all the \hyperlink{classLoki_1_1FixedAllocator}{Fixed\+Allocator}\textquotesingle{}s. This throws only if 
+\begin{DoxyParams}{Parameters}
+{\em page\+Size} & \# of bytes in a page of memory. \\
+\hline
+{\em max\+Object\+Size} & Max \# of bytes which this may allocate. \\
+\hline
+{\em object\+Align\+Size} & \# of bytes between alignment boundaries. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classLoki_1_1SmallObjAllocator_a0c861c4605844ee30dbe2a4f533fe2ae}{}\index{Loki\+::\+Small\+Obj\+Allocator@{Loki\+::\+Small\+Obj\+Allocator}!````~Small\+Obj\+Allocator@{$\sim$\+Small\+Obj\+Allocator}}
+\index{````~Small\+Obj\+Allocator@{$\sim$\+Small\+Obj\+Allocator}!Loki\+::\+Small\+Obj\+Allocator@{Loki\+::\+Small\+Obj\+Allocator}}
+\subsubsection[{$\sim$\+Small\+Obj\+Allocator(void)}]{\setlength{\rightskip}{0pt plus 5cm}Loki\+::\+Small\+Obj\+Allocator\+::$\sim$\+Small\+Obj\+Allocator (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{classLoki_1_1SmallObjAllocator_a0c861c4605844ee30dbe2a4f533fe2ae}
+Destructor releases all blocks, all Chunks, and \hyperlink{classLoki_1_1FixedAllocator}{Fixed\+Allocator}\textquotesingle{}s. Any outstanding blocks are unavailable, and should not be used after this destructor is called. The destructor is deliberately non-\/virtual because it is protected, not public. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classLoki_1_1SmallObjAllocator_aa41bb717d552cd0df57a941def7ec607}{}\index{Loki\+::\+Small\+Obj\+Allocator@{Loki\+::\+Small\+Obj\+Allocator}!Allocate@{Allocate}}
+\index{Allocate@{Allocate}!Loki\+::\+Small\+Obj\+Allocator@{Loki\+::\+Small\+Obj\+Allocator}}
+\subsubsection[{Allocate(std\+::size\+\_\+t size, bool do\+Throw)}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ Loki\+::\+Small\+Obj\+Allocator\+::\+Allocate (
+\begin{DoxyParamCaption}
+\item[{std\+::size\+\_\+t}]{size, }
+\item[{bool}]{do\+Throw}
+\end{DoxyParamCaption}
+)}\label{classLoki_1_1SmallObjAllocator_aa41bb717d552cd0df57a941def7ec607}
+Allocates a block of memory of requested size. Complexity is often constant-\/time, but might be O(\+C) where \hyperlink{classC}{C} is the number of Chunks in a \hyperlink{classLoki_1_1FixedAllocator}{Fixed\+Allocator}.
+
+\begin{DoxyParagraph}{Exception Safety Level}
+Provides either strong-\/exception safety, or no-\/throw exception-\/safety level depending upon do\+Throw parameter. The reason it provides two levels of exception safety is because it is used by both the nothrow and throwing new operators. The underlying implementation will never throw of its own accord, but this can decide to throw if it does not allocate. The only exception it should emit is std\+::bad\+\_\+alloc.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Allocation Failure}
+If it does not allocate, it will call Trim\+Excess\+Memory and attempt to allocate again, before it decides to throw or return N\+U\+L\+L. Many allocators loop through several new\+\_\+handler functions, and terminate if they can not allocate, but not this one. It only makes one attempt using its own implementation of the new\+\_\+handler, and then returns N\+U\+L\+L or throws so that the program can decide what to do at a higher level. (Side note\+: Even though the C++ Standard allows allocators and new\+\_\+handlers to terminate if they fail, the \hyperlink{namespaceLoki}{Loki} allocator does not do that since that policy is not polite to a host program.)
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+{\em size} & \# of bytes needed for allocation. \\
+\hline
+{\em do\+Throw} & True if this should throw if unable to allocate, false if it should provide no-\/throw exception safety level. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N\+U\+L\+L if nothing allocated and do\+Throw is false. Else the pointer to an available block of memory. 
+\end{DoxyReturn}
+\hypertarget{classLoki_1_1SmallObjAllocator_a2b669733cfa9dd157603d13d979f8c1c}{}\index{Loki\+::\+Small\+Obj\+Allocator@{Loki\+::\+Small\+Obj\+Allocator}!Deallocate@{Deallocate}}
+\index{Deallocate@{Deallocate}!Loki\+::\+Small\+Obj\+Allocator@{Loki\+::\+Small\+Obj\+Allocator}}
+\subsubsection[{Deallocate(void $\ast$p, std\+::size\+\_\+t size)}]{\setlength{\rightskip}{0pt plus 5cm}void Loki\+::\+Small\+Obj\+Allocator\+::\+Deallocate (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{p, }
+\item[{std\+::size\+\_\+t}]{size}
+\end{DoxyParamCaption}
+)}\label{classLoki_1_1SmallObjAllocator_a2b669733cfa9dd157603d13d979f8c1c}
+Deallocates a block of memory at a given place and of a specific size. Complexity is almost always constant-\/time, and is O(\+C) only if it has to search for which \hyperlink{classLoki_1_1Chunk}{Chunk} deallocates. This never throws. \hypertarget{classLoki_1_1SmallObjAllocator_a50406896d75a2591d4bd7dc53325e3d6}{}\index{Loki\+::\+Small\+Obj\+Allocator@{Loki\+::\+Small\+Obj\+Allocator}!Deallocate@{Deallocate}}
+\index{Deallocate@{Deallocate}!Loki\+::\+Small\+Obj\+Allocator@{Loki\+::\+Small\+Obj\+Allocator}}
+\subsubsection[{Deallocate(void $\ast$p)}]{\setlength{\rightskip}{0pt plus 5cm}void Loki\+::\+Small\+Obj\+Allocator\+::\+Deallocate (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{p}
+\end{DoxyParamCaption}
+)}\label{classLoki_1_1SmallObjAllocator_a50406896d75a2591d4bd7dc53325e3d6}
+Deallocates a block of memory at a given place but of unknown size size. Complexity is O(F + \hyperlink{classC}{C}) where F is the count of \hyperlink{classLoki_1_1FixedAllocator}{Fixed\+Allocator}\textquotesingle{}s in the pool, and \hyperlink{classC}{C} is the number of Chunks in all \hyperlink{classLoki_1_1FixedAllocator}{Fixed\+Allocator}\textquotesingle{}s. This does not throw exceptions. This overloaded version of Deallocate is called by the nothow delete operator -\/ which is called when the nothrow new operator is used, but a constructor throws an exception. \hypertarget{classLoki_1_1SmallObjAllocator_a2b7fbd5bf5fc56e45754abd2497ad18f}{}\index{Loki\+::\+Small\+Obj\+Allocator@{Loki\+::\+Small\+Obj\+Allocator}!Is\+Corrupt@{Is\+Corrupt}}
+\index{Is\+Corrupt@{Is\+Corrupt}!Loki\+::\+Small\+Obj\+Allocator@{Loki\+::\+Small\+Obj\+Allocator}}
+\subsubsection[{Is\+Corrupt(void) const }]{\setlength{\rightskip}{0pt plus 5cm}bool Loki\+::\+Small\+Obj\+Allocator\+::\+Is\+Corrupt (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}\label{classLoki_1_1SmallObjAllocator_a2b7fbd5bf5fc56e45754abd2497ad18f}
+Returns true if anything in implementation is corrupt. Complexity is O(F + \hyperlink{classC}{C} + \hyperlink{classB}{B}) where F is the count of \hyperlink{classLoki_1_1FixedAllocator}{Fixed\+Allocator}\textquotesingle{}s in the pool, \hyperlink{classC}{C} is the number of Chunks in all \hyperlink{classLoki_1_1FixedAllocator}{Fixed\+Allocator}\textquotesingle{}s, and \hyperlink{classB}{B} is the number of blocks in all Chunks. If it determines any data is corrupted, this will return true in release version, but assert in debug version at the line where it detects the corrupted data. If it does not detect any corrupted data, it returns false. \hypertarget{classLoki_1_1SmallObjAllocator_a6b635664b20a6984303dabde86c8ac83}{}\index{Loki\+::\+Small\+Obj\+Allocator@{Loki\+::\+Small\+Obj\+Allocator}!Trim\+Excess\+Memory@{Trim\+Excess\+Memory}}
+\index{Trim\+Excess\+Memory@{Trim\+Excess\+Memory}!Loki\+::\+Small\+Obj\+Allocator@{Loki\+::\+Small\+Obj\+Allocator}}
+\subsubsection[{Trim\+Excess\+Memory(void)}]{\setlength{\rightskip}{0pt plus 5cm}bool Loki\+::\+Small\+Obj\+Allocator\+::\+Trim\+Excess\+Memory (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{classLoki_1_1SmallObjAllocator_a6b635664b20a6984303dabde86c8ac83}
+Releases empty Chunks from memory. Complexity is O(F + \hyperlink{classC}{C}) where F is the count of \hyperlink{classLoki_1_1FixedAllocator}{Fixed\+Allocator}\textquotesingle{}s in the pool, and \hyperlink{classC}{C} is the number of Chunks in all \hyperlink{classLoki_1_1FixedAllocator}{Fixed\+Allocator}\textquotesingle{}s. This will never throw. This is called by Allocator\+Singleto\+::\+Clear\+Extra\+Memory, the new\+\_\+handler function for \hyperlink{namespaceLoki}{Loki}\textquotesingle{}s allocator, and is called internally when an allocation fails. \begin{DoxyReturn}{Returns}
+True if any memory released, or false if none released. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Small\+Obj.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/src/Small\+Obj.\+cpp\end{DoxyCompactItemize}

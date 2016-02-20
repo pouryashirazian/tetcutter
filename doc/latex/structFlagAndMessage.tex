@@ -1,0 +1,31 @@
+\hypertarget{structFlagAndMessage}{}\section{Flag\+And\+Message$<$ T, aligned $>$ Struct Template Reference}
+\label{structFlagAndMessage}\index{Flag\+And\+Message$<$ T, aligned $>$@{Flag\+And\+Message$<$ T, aligned $>$}}
+Inheritance diagram for Flag\+And\+Message$<$ T, aligned $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{structFlagAndMessage}
+\end{center}
+\end{figure}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structFlagAndMessage_a7ffa847ce28cf68db2d53a48607cb439}{}\hyperlink{structtbb_1_1atomic}{tbb\+::atomic}$<$ T $>$ \& \hyperlink{structFlagAndMessage_a7ffa847ce28cf68db2d53a48607cb439}{flag}\label{structFlagAndMessage_a7ffa847ce28cf68db2d53a48607cb439}
+
+\begin{DoxyCompactList}\small\item\em 0 if message not set yet, 1 if message is set. \end{DoxyCompactList}\item 
+char \hyperlink{structFlagAndMessage_a962e3cc5305335a14a58e005f1ea8ed3}{pad} \mbox{[}4096/sizeof(T)\mbox{]}
+\item 
+\hypertarget{structFlagAndMessage_a7fbf908980f3355243405d8c3cafb602}{}T \hyperlink{structFlagAndMessage_a7fbf908980f3355243405d8c3cafb602}{message}\label{structFlagAndMessage_a7fbf908980f3355243405d8c3cafb602}
+
+\begin{DoxyCompactList}\small\item\em Non-\/zero if message is ready. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{structFlagAndMessage_a962e3cc5305335a14a58e005f1ea8ed3}{}\index{Flag\+And\+Message@{Flag\+And\+Message}!pad@{pad}}
+\index{pad@{pad}!Flag\+And\+Message@{Flag\+And\+Message}}
+\subsubsection[{pad}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , bool aligned$>$ char {\bf Flag\+And\+Message}$<$ T, aligned $>$\+::pad\mbox{[}4096/sizeof(T)\mbox{]}}\label{structFlagAndMessage_a962e3cc5305335a14a58e005f1ea8ed3}
+Force flag and message to be on distinct cache lines for machines with cache line size $<$= 4096 bytes 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/test/test\+\_\+atomic.\+cpp\end{DoxyCompactItemize}

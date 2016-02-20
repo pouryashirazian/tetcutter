@@ -1,0 +1,34 @@
+\hypertarget{structinternal_1_1aligned__pair}{}\section{internal\+:\+:aligned\+\_\+pair$<$ T1, T2 $>$ Struct Template Reference}
+\label{structinternal_1_1aligned__pair}\index{internal\+::aligned\+\_\+pair$<$ T1, T2 $>$@{internal\+::aligned\+\_\+pair$<$ T1, T2 $>$}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structinternal_1_1aligned__pair_aeb7c5e7e13ddf240af1d5a37faa25d03}{}typedef \hyperlink{structinternal_1_1type__plus__align}{type\+\_\+plus\+\_\+align}$<$ T1, T2, 0 $>$ {\bfseries just\+\_\+pair}\label{structinternal_1_1aligned__pair_aeb7c5e7e13ddf240af1d5a37faa25d03}
+
+\item 
+\hypertarget{structinternal_1_1aligned__pair_acb5b24aa15e73098c05fdccfa57a5de2}{}typedef \hyperlink{structinternal_1_1type__plus__align}{type\+\_\+plus\+\_\+align}$<$ T1, T2, remainder $>$ {\bfseries type}\label{structinternal_1_1aligned__pair_acb5b24aa15e73098c05fdccfa57a5de2}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structinternal_1_1aligned__pair_a5831feac9838883d38f3bdc387dd73d4}{}static const size\+\_\+t {\bfseries t1\+\_\+align} = \hyperlink{structinternal_1_1alignment__of}{alignment\+\_\+of}$<$T1$>$\+::value\label{structinternal_1_1aligned__pair_a5831feac9838883d38f3bdc387dd73d4}
+
+\item 
+\hypertarget{structinternal_1_1aligned__pair_a24e12265ef478404ae850027e2dcd114}{}static const size\+\_\+t {\bfseries t2\+\_\+align} = \hyperlink{structinternal_1_1alignment__of}{alignment\+\_\+of}$<$T2$>$\+::value\label{structinternal_1_1aligned__pair_a24e12265ef478404ae850027e2dcd114}
+
+\item 
+\hypertarget{structinternal_1_1aligned__pair_aaebb8a825aa2ef90015ee6092e357f91}{}static const size\+\_\+t {\bfseries max\+\_\+align} = t1\+\_\+align $<$ t2\+\_\+align ? t2\+\_\+align \+: t1\+\_\+align\label{structinternal_1_1aligned__pair_aaebb8a825aa2ef90015ee6092e357f91}
+
+\item 
+\hypertarget{structinternal_1_1aligned__pair_ab0e8dd8f9e8e83023c94b2601d910e5c}{}static const size\+\_\+t {\bfseries extra\+\_\+bytes} = sizeof(\hyperlink{structinternal_1_1type__plus__align_3_01T1_00_01T2_00_010_01_4}{just\+\_\+pair}) \% max\+\_\+align\label{structinternal_1_1aligned__pair_ab0e8dd8f9e8e83023c94b2601d910e5c}
+
+\item 
+\hypertarget{structinternal_1_1aligned__pair_a970f4c0ec263c9cce73b803e53a68081}{}static const size\+\_\+t {\bfseries remainder} = extra\+\_\+bytes ? max\+\_\+align -\/ extra\+\_\+bytes \+: 0\label{structinternal_1_1aligned__pair_a970f4c0ec263c9cce73b803e53a68081}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/internal/\+\_\+flow\+\_\+graph\+\_\+types\+\_\+impl.\+h\end{DoxyCompactItemize}

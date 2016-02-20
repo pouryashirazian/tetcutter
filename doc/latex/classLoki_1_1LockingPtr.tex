@@ -1,0 +1,71 @@
+\hypertarget{classLoki_1_1LockingPtr}{}\section{Loki\+:\+:Locking\+Ptr$<$ Shared\+Object, Locking\+Policy, Const\+Policy $>$ Class Template Reference}
+\label{classLoki_1_1LockingPtr}\index{Loki\+::\+Locking\+Ptr$<$ Shared\+Object, Locking\+Policy, Const\+Policy $>$@{Loki\+::\+Locking\+Ptr$<$ Shared\+Object, Locking\+Policy, Const\+Policy $>$}}
+
+
+{\ttfamily \#include $<$Locking\+Ptr.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1LockingPtr_a63956c4e1bf0b4d1b159de16bb2c28b3}{}typedef Const\+Policy$<$ Shared\+Object $>$\+::Type {\bfseries Const\+Or\+Not\+Type}\label{classLoki_1_1LockingPtr_a63956c4e1bf0b4d1b159de16bb2c28b3}
+
+\item 
+\hypertarget{classLoki_1_1LockingPtr_ab7b6d661b1e302f1df07c6b77a148c6f}{}typedef std\+::pair$<$ volatile Const\+Or\+Not\+Type $\ast$, Locking\+Policy $\ast$ $>$ {\bfseries Pair}\label{classLoki_1_1LockingPtr_ab7b6d661b1e302f1df07c6b77a148c6f}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLoki_1_1LockingPtr_a9d430a6e7f83dfed1ed5f8111b6826ca}{Locking\+Ptr} (volatile Const\+Or\+Not\+Type \&\hyperlink{structobject}{object}, Locking\+Policy \&mutex)
+\item 
+\hyperlink{classLoki_1_1LockingPtr_ae4ae5d4ed12dbcac9fffd8241dd1cc2b}{Locking\+Ptr} (Pair lockpair)
+\item 
+\hypertarget{classLoki_1_1LockingPtr_a72ca595078f8f910966752d573267eed}{}\hyperlink{classLoki_1_1LockingPtr_a72ca595078f8f910966752d573267eed}{$\sim$\+Locking\+Ptr} ()\label{classLoki_1_1LockingPtr_a72ca595078f8f910966752d573267eed}
+
+\begin{DoxyCompactList}\small\item\em Destructor unlocks the mutex. \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1LockingPtr_a1afb02c9b36189cec222bb0fe5d49471}{}Const\+Or\+Not\+Type \& \hyperlink{classLoki_1_1LockingPtr_a1afb02c9b36189cec222bb0fe5d49471}{operator$\ast$} ()\label{classLoki_1_1LockingPtr_a1afb02c9b36189cec222bb0fe5d49471}
+
+\begin{DoxyCompactList}\small\item\em Star-\/operator dereferences pointer. \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1LockingPtr_ad717c6fad1cc209cfbd04afb68717824}{}Const\+Or\+Not\+Type $\ast$ \hyperlink{classLoki_1_1LockingPtr_ad717c6fad1cc209cfbd04afb68717824}{operator-\/$>$} ()\label{classLoki_1_1LockingPtr_ad717c6fad1cc209cfbd04afb68717824}
+
+\begin{DoxyCompactList}\small\item\em Point-\/operator returns pointer to object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Shared\+Object, typename Locking\+Policy = L\+O\+K\+I\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+M\+U\+T\+E\+X, template$<$ class $>$ class Const\+Policy = L\+O\+K\+I\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+O\+N\+S\+T\+N\+E\+S\+S$>$class Loki\+::\+Locking\+Ptr$<$ Shared\+Object, Locking\+Policy, Const\+Policy $>$}
+
+Locks a volatile object and casts away volatility so that the object can be safely used in a single-\/threaded region of code. Original version of \hyperlink{classLoki_1_1LockingPtr}{Locking\+Ptr} had only one template -\/ for the shared object, but not the mutex type. This version allows users to specify a the mutex type as a Locking\+Policy class. The only requirements for a Locking\+Policy class are to provide Lock and Unlock methods. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classLoki_1_1LockingPtr_a9d430a6e7f83dfed1ed5f8111b6826ca}{}\index{Loki\+::\+Locking\+Ptr@{Loki\+::\+Locking\+Ptr}!Locking\+Ptr@{Locking\+Ptr}}
+\index{Locking\+Ptr@{Locking\+Ptr}!Loki\+::\+Locking\+Ptr@{Loki\+::\+Locking\+Ptr}}
+\subsubsection[{Locking\+Ptr(volatile Const\+Or\+Not\+Type \&object, Locking\+Policy \&mutex)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Shared\+Object , typename Locking\+Policy  = L\+O\+K\+I\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+M\+U\+T\+E\+X, template$<$ class $>$ class Const\+Policy = L\+O\+K\+I\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+O\+N\+S\+T\+N\+E\+S\+S$>$ {\bf Loki\+::\+Locking\+Ptr}$<$ Shared\+Object, Locking\+Policy, Const\+Policy $>$\+::{\bf Locking\+Ptr} (
+\begin{DoxyParamCaption}
+\item[{volatile Const\+Or\+Not\+Type \&}]{object, }
+\item[{Locking\+Policy \&}]{mutex}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classLoki_1_1LockingPtr_a9d430a6e7f83dfed1ed5f8111b6826ca}
+Constructor locks mutex associated with an object. 
+\begin{DoxyParams}{Parameters}
+{\em object} & Reference to object. \\
+\hline
+{\em mutex} & \hyperlink{classLoki_1_1Mutex}{Mutex} used to control thread access to object. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classLoki_1_1LockingPtr_ae4ae5d4ed12dbcac9fffd8241dd1cc2b}{}\index{Loki\+::\+Locking\+Ptr@{Loki\+::\+Locking\+Ptr}!Locking\+Ptr@{Locking\+Ptr}}
+\index{Locking\+Ptr@{Locking\+Ptr}!Loki\+::\+Locking\+Ptr@{Loki\+::\+Locking\+Ptr}}
+\subsubsection[{Locking\+Ptr(\+Pair lockpair)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Shared\+Object , typename Locking\+Policy  = L\+O\+K\+I\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+M\+U\+T\+E\+X, template$<$ class $>$ class Const\+Policy = L\+O\+K\+I\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+O\+N\+S\+T\+N\+E\+S\+S$>$ {\bf Loki\+::\+Locking\+Ptr}$<$ Shared\+Object, Locking\+Policy, Const\+Policy $>$\+::{\bf Locking\+Ptr} (
+\begin{DoxyParamCaption}
+\item[{Pair}]{lockpair}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classLoki_1_1LockingPtr_ae4ae5d4ed12dbcac9fffd8241dd1cc2b}
+Constructor locks mutex associated with an object. 
+\begin{DoxyParams}{Parameters}
+{\em lockpair} & a std\+::pair of pointers to the object and the mutex \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Locking\+Ptr.\+h\end{DoxyCompactItemize}

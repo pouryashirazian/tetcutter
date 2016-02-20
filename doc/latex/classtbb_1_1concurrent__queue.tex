@@ -1,0 +1,166 @@
+\hypertarget{classtbb_1_1concurrent__queue}{}\section{tbb\+:\+:concurrent\+\_\+queue$<$ T $>$ Class Template Reference}
+\label{classtbb_1_1concurrent__queue}\index{tbb\+::concurrent\+\_\+queue$<$ T $>$@{tbb\+::concurrent\+\_\+queue$<$ T $>$}}
+
+
+\hyperlink{structA}{A} high-\/performance thread-\/safe queue.  
+
+
+
+
+{\ttfamily \#include $<$concurrent\+\_\+queue\+\_\+v2.\+h$>$}
+
+Inheritance diagram for tbb\+:\+:concurrent\+\_\+queue$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classtbb_1_1concurrent__queue}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1concurrent__queue_accd23aeb7ee44b6452f556406d7336b6}{}typedef T \hyperlink{classtbb_1_1concurrent__queue_accd23aeb7ee44b6452f556406d7336b6}{value\+\_\+type}\label{classtbb_1_1concurrent__queue_accd23aeb7ee44b6452f556406d7336b6}
+
+\begin{DoxyCompactList}\small\item\em Element type in the queue. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__queue_a71349c9f6c8b4ec9b0f8c9bfc66df11d}{}typedef T \& \hyperlink{classtbb_1_1concurrent__queue_a71349c9f6c8b4ec9b0f8c9bfc66df11d}{reference}\label{classtbb_1_1concurrent__queue_a71349c9f6c8b4ec9b0f8c9bfc66df11d}
+
+\begin{DoxyCompactList}\small\item\em Reference type. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__queue_a8d12cfefc091c8ca98192f6251318352}{}typedef const T \& \hyperlink{classtbb_1_1concurrent__queue_a8d12cfefc091c8ca98192f6251318352}{const\+\_\+reference}\label{classtbb_1_1concurrent__queue_a8d12cfefc091c8ca98192f6251318352}
+
+\begin{DoxyCompactList}\small\item\em Const reference type. \end{DoxyCompactList}\item 
+typedef std\+::ptrdiff\+\_\+t \hyperlink{classtbb_1_1concurrent__queue_aa697402bd9583bd4f26dfd3a912a39d1}{size\+\_\+type}
+\begin{DoxyCompactList}\small\item\em Integral type for representing size of the queue. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__queue_a6363fd8b2b950558641f44538a5897cf}{}typedef std\+::ptrdiff\+\_\+t \hyperlink{classtbb_1_1concurrent__queue_a6363fd8b2b950558641f44538a5897cf}{difference\+\_\+type}\label{classtbb_1_1concurrent__queue_a6363fd8b2b950558641f44538a5897cf}
+
+\begin{DoxyCompactList}\small\item\em Difference type for iterator. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__queue_aadcbe074063ef4985fc70a8aaed7dae5}{}typedef internal\+::concurrent\+\_\+queue\+\_\+iterator$<$ \hyperlink{classtbb_1_1concurrent__queue}{concurrent\+\_\+queue}, T $>$ {\bfseries iterator}\label{classtbb_1_1concurrent__queue_aadcbe074063ef4985fc70a8aaed7dae5}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__queue_a0f6a02c83112ca5c73317023be45f81a}{}typedef internal\+::concurrent\+\_\+queue\+\_\+iterator$<$ \hyperlink{classtbb_1_1concurrent__queue}{concurrent\+\_\+queue}, const T $>$ {\bfseries const\+\_\+iterator}\label{classtbb_1_1concurrent__queue_a0f6a02c83112ca5c73317023be45f81a}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1concurrent__queue_a970615986fb44ad820d77752e5ff6277}{}\hyperlink{classtbb_1_1concurrent__queue_a970615986fb44ad820d77752e5ff6277}{concurrent\+\_\+queue} ()\label{classtbb_1_1concurrent__queue_a970615986fb44ad820d77752e5ff6277}
+
+\begin{DoxyCompactList}\small\item\em Construct empty queue. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__queue_ad42649cd383dba2b259a216ccca07100}{}\hyperlink{classtbb_1_1concurrent__queue_ad42649cd383dba2b259a216ccca07100}{$\sim$concurrent\+\_\+queue} ()\label{classtbb_1_1concurrent__queue_ad42649cd383dba2b259a216ccca07100}
+
+\begin{DoxyCompactList}\small\item\em Destroy queue. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__queue_ac59b2f0ad661451162c594b535389f34}{}void \hyperlink{classtbb_1_1concurrent__queue_ac59b2f0ad661451162c594b535389f34}{push} (const T \&source)\label{classtbb_1_1concurrent__queue_ac59b2f0ad661451162c594b535389f34}
+
+\begin{DoxyCompactList}\small\item\em Enqueue an item at tail of queue. \end{DoxyCompactList}\item 
+void \hyperlink{classtbb_1_1concurrent__queue_aeef54c0906b144225ae492bd9d5a821c}{pop} (T \&destination)
+\begin{DoxyCompactList}\small\item\em Dequeue item from head of queue. \end{DoxyCompactList}\item 
+bool \hyperlink{classtbb_1_1concurrent__queue_ae532012dcef8ecb53f7760c537514614}{push\+\_\+if\+\_\+not\+\_\+full} (const T \&source)
+\begin{DoxyCompactList}\small\item\em Enqueue an item at tail of queue if queue is not already full. \end{DoxyCompactList}\item 
+bool \hyperlink{classtbb_1_1concurrent__queue_a396a1e250b0a7101f29fea41b6f25ed6}{pop\+\_\+if\+\_\+present} (T \&destination)
+\begin{DoxyCompactList}\small\item\em Attempt to dequeue an item from head of queue. \end{DoxyCompactList}\item 
+\hyperlink{classtbb_1_1concurrent__queue_aa697402bd9583bd4f26dfd3a912a39d1}{size\+\_\+type} \hyperlink{classtbb_1_1concurrent__queue_ac9737cf846c3fa6688414bb29c7b1e81}{size} () const 
+\begin{DoxyCompactList}\small\item\em Return number of pushes minus number of pops. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__queue_a6f00654db010c950b8441ba006d32045}{}bool \hyperlink{classtbb_1_1concurrent__queue_a6f00654db010c950b8441ba006d32045}{empty} () const \label{classtbb_1_1concurrent__queue_a6f00654db010c950b8441ba006d32045}
+
+\begin{DoxyCompactList}\small\item\em Equivalent to \hyperlink{classtbb_1_1concurrent__queue_ac9737cf846c3fa6688414bb29c7b1e81}{size()}$<$=0. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__queue_a7dee674e4226c53b5bd2de6d7f4c37b8}{}\hyperlink{classtbb_1_1concurrent__queue_aa697402bd9583bd4f26dfd3a912a39d1}{size\+\_\+type} \hyperlink{classtbb_1_1concurrent__queue_a7dee674e4226c53b5bd2de6d7f4c37b8}{capacity} () const \label{classtbb_1_1concurrent__queue_a7dee674e4226c53b5bd2de6d7f4c37b8}
+
+\begin{DoxyCompactList}\small\item\em Maximum number of allowed elements. \end{DoxyCompactList}\item 
+void \hyperlink{classtbb_1_1concurrent__queue_a5d23b68f71c633a79eb08610bb038922}{set\+\_\+capacity} (\hyperlink{classtbb_1_1concurrent__queue_aa697402bd9583bd4f26dfd3a912a39d1}{size\+\_\+type} new\+\_\+capacity)
+\begin{DoxyCompactList}\small\item\em Set the capacity. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__queue_af2e65e0aece2be3517cb3d4ba9244530}{}iterator {\bfseries begin} ()\label{classtbb_1_1concurrent__queue_af2e65e0aece2be3517cb3d4ba9244530}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__queue_a78e1d782a1b817c91c130e07493003b8}{}iterator {\bfseries end} ()\label{classtbb_1_1concurrent__queue_a78e1d782a1b817c91c130e07493003b8}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__queue_a7f1bb859d87c0193bf6ac228fb06a8a9}{}const\+\_\+iterator {\bfseries begin} () const \label{classtbb_1_1concurrent__queue_a7f1bb859d87c0193bf6ac228fb06a8a9}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__queue_aa704dbf9cea09dea8a51332c3e7e931c}{}const\+\_\+iterator {\bfseries end} () const \label{classtbb_1_1concurrent__queue_aa704dbf9cea09dea8a51332c3e7e931c}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1concurrent__queue_a1f5eec0de2e660ea5372d19393f0920b}{}{\footnotesize template$<$typename Container , typename Value $>$ }\\class {\bfseries internal\+::concurrent\+\_\+queue\+\_\+iterator}\label{classtbb_1_1concurrent__queue_a1f5eec0de2e660ea5372d19393f0920b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$class tbb\+::concurrent\+\_\+queue$<$ T $>$}
+
+\hyperlink{structA}{A} high-\/performance thread-\/safe queue. 
+
+Multiple threads may each push and pop concurrently. Assignment and copy construction are not allowed. 
+
+\subsection{Member Typedef Documentation}
+\hypertarget{classtbb_1_1concurrent__queue_aa697402bd9583bd4f26dfd3a912a39d1}{}\index{tbb\+::concurrent\+\_\+queue@{tbb\+::concurrent\+\_\+queue}!size\+\_\+type@{size\+\_\+type}}
+\index{size\+\_\+type@{size\+\_\+type}!tbb\+::concurrent\+\_\+queue@{tbb\+::concurrent\+\_\+queue}}
+\subsubsection[{size\+\_\+type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ typedef std\+::ptrdiff\+\_\+t {\bf tbb\+::concurrent\+\_\+queue}$<$ T $>$\+::{\bf size\+\_\+type}}\label{classtbb_1_1concurrent__queue_aa697402bd9583bd4f26dfd3a912a39d1}
+
+
+Integral type for representing size of the queue. 
+
+Note that the size\+\_\+type is a signed integral type. This is because the size can be negative if there are pending pops without corresponding pushes. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classtbb_1_1concurrent__queue_aeef54c0906b144225ae492bd9d5a821c}{}\index{tbb\+::concurrent\+\_\+queue@{tbb\+::concurrent\+\_\+queue}!pop@{pop}}
+\index{pop@{pop}!tbb\+::concurrent\+\_\+queue@{tbb\+::concurrent\+\_\+queue}}
+\subsubsection[{pop(\+T \&destination)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf tbb\+::concurrent\+\_\+queue}$<$ T $>$\+::pop (
+\begin{DoxyParamCaption}
+\item[{T \&}]{destination}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1concurrent__queue_aeef54c0906b144225ae492bd9d5a821c}
+
+
+Dequeue item from head of queue. 
+
+Block until an item becomes available, and then dequeue it. \hypertarget{classtbb_1_1concurrent__queue_a396a1e250b0a7101f29fea41b6f25ed6}{}\index{tbb\+::concurrent\+\_\+queue@{tbb\+::concurrent\+\_\+queue}!pop\+\_\+if\+\_\+present@{pop\+\_\+if\+\_\+present}}
+\index{pop\+\_\+if\+\_\+present@{pop\+\_\+if\+\_\+present}!tbb\+::concurrent\+\_\+queue@{tbb\+::concurrent\+\_\+queue}}
+\subsubsection[{pop\+\_\+if\+\_\+present(\+T \&destination)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf tbb\+::concurrent\+\_\+queue}$<$ T $>$\+::pop\+\_\+if\+\_\+present (
+\begin{DoxyParamCaption}
+\item[{T \&}]{destination}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1concurrent__queue_a396a1e250b0a7101f29fea41b6f25ed6}
+
+
+Attempt to dequeue an item from head of queue. 
+
+Does not wait for item to become available. Returns true if successful; false otherwise. \hypertarget{classtbb_1_1concurrent__queue_ae532012dcef8ecb53f7760c537514614}{}\index{tbb\+::concurrent\+\_\+queue@{tbb\+::concurrent\+\_\+queue}!push\+\_\+if\+\_\+not\+\_\+full@{push\+\_\+if\+\_\+not\+\_\+full}}
+\index{push\+\_\+if\+\_\+not\+\_\+full@{push\+\_\+if\+\_\+not\+\_\+full}!tbb\+::concurrent\+\_\+queue@{tbb\+::concurrent\+\_\+queue}}
+\subsubsection[{push\+\_\+if\+\_\+not\+\_\+full(const T \&source)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf tbb\+::concurrent\+\_\+queue}$<$ T $>$\+::push\+\_\+if\+\_\+not\+\_\+full (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1concurrent__queue_ae532012dcef8ecb53f7760c537514614}
+
+
+Enqueue an item at tail of queue if queue is not already full. 
+
+Does not wait for queue to become not full. Returns true if item is pushed; false if queue was already full. \hypertarget{classtbb_1_1concurrent__queue_a5d23b68f71c633a79eb08610bb038922}{}\index{tbb\+::concurrent\+\_\+queue@{tbb\+::concurrent\+\_\+queue}!set\+\_\+capacity@{set\+\_\+capacity}}
+\index{set\+\_\+capacity@{set\+\_\+capacity}!tbb\+::concurrent\+\_\+queue@{tbb\+::concurrent\+\_\+queue}}
+\subsubsection[{set\+\_\+capacity(size\+\_\+type new\+\_\+capacity)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf tbb\+::concurrent\+\_\+queue}$<$ T $>$\+::set\+\_\+capacity (
+\begin{DoxyParamCaption}
+\item[{{\bf size\+\_\+type}}]{new\+\_\+capacity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1concurrent__queue_a5d23b68f71c633a79eb08610bb038922}
+
+
+Set the capacity. 
+
+Setting the capacity to 0 causes subsequent push\+\_\+if\+\_\+not\+\_\+full operations to always fail, and subsequent push operations to block forever. \hypertarget{classtbb_1_1concurrent__queue_ac9737cf846c3fa6688414bb29c7b1e81}{}\index{tbb\+::concurrent\+\_\+queue@{tbb\+::concurrent\+\_\+queue}!size@{size}}
+\index{size@{size}!tbb\+::concurrent\+\_\+queue@{tbb\+::concurrent\+\_\+queue}}
+\subsubsection[{size() const }]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf size\+\_\+type} {\bf tbb\+::concurrent\+\_\+queue}$<$ T $>$\+::size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1concurrent__queue_ac9737cf846c3fa6688414bb29c7b1e81}
+
+
+Return number of pushes minus number of pops. 
+
+Note that the result can be negative if there are pops waiting for the corresponding pushes. The result can also exceed \hyperlink{classtbb_1_1concurrent__queue_a7dee674e4226c53b5bd2de6d7f4c37b8}{capacity()} if there are push operations in flight. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/old/concurrent\+\_\+queue\+\_\+v2.\+h\end{DoxyCompactItemize}

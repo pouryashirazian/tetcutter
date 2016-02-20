@@ -1,0 +1,86 @@
+\hypertarget{flow__graph_8h}{}\section{/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/flow\+\_\+graph.h File Reference}
+\label{flow__graph_8h}\index{/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/flow\+\_\+graph.\+h@{/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/flow\+\_\+graph.\+h}}
+
+
+The graph related classes and functions.  
+
+
+{\ttfamily \#include \char`\"{}tbb\+\_\+stddef.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}atomic.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}spin\+\_\+mutex.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}null\+\_\+mutex.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}spin\+\_\+rw\+\_\+mutex.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}null\+\_\+rw\+\_\+mutex.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}task.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}cache\+\_\+aligned\+\_\+allocator.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}tbb\+\_\+exception.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}internal/\+\_\+template\+\_\+helpers.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}internal/\+\_\+aggregator\+\_\+impl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}tbb\+\_\+profiling.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}compat/tuple\char`\"{}}\\*
+{\ttfamily \#include $<$list$>$}\\*
+{\ttfamily \#include $<$queue$>$}\\*
+{\ttfamily \#include \char`\"{}internal/\+\_\+flow\+\_\+graph\+\_\+trace\+\_\+impl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}internal/\+\_\+flow\+\_\+graph\+\_\+types\+\_\+impl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}internal/\+\_\+flow\+\_\+graph\+\_\+impl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}internal/\+\_\+flow\+\_\+graph\+\_\+node\+\_\+impl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}internal/\+\_\+flow\+\_\+graph\+\_\+join\+\_\+impl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}internal/\+\_\+flow\+\_\+graph\+\_\+indexer\+\_\+impl.\+h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classtbb_1_1flow_1_1interface7_1_1internal_1_1successor__cache}{tbb\+::flow\+::interface7\+::internal\+::successor\+\_\+cache$<$ T, M $>$}
+\item 
+class \hyperlink{classtbb_1_1flow_1_1interface7_1_1internal_1_1broadcast__cache}{tbb\+::flow\+::interface7\+::internal\+::broadcast\+\_\+cache$<$ T, M $>$}
+\item 
+class \hyperlink{classtbb_1_1flow_1_1interface7_1_1internal_1_1round__robin__cache}{tbb\+::flow\+::interface7\+::internal\+::round\+\_\+robin\+\_\+cache$<$ T, M $>$}
+\item 
+struct \hyperlink{structtbb_1_1flow_1_1interface7_1_1null__type}{tbb\+::flow\+::interface7\+::null\+\_\+type}
+\item 
+class \hyperlink{classtbb_1_1flow_1_1interface7_1_1continue__msg}{tbb\+::flow\+::interface7\+::continue\+\_\+msg}
+\begin{DoxyCompactList}\small\item\em An empty class used for messages that mean \char`\"{}\+I\textquotesingle{}m done\char`\"{}. \end{DoxyCompactList}\item 
+class \hyperlink{classtbb_1_1flow_1_1interface7_1_1sender}{tbb\+::flow\+::interface7\+::sender$<$ T $>$}
+\begin{DoxyCompactList}\small\item\em Pure virtual template class that defines a sender of messages of type T. \end{DoxyCompactList}\item 
+class \hyperlink{classtbb_1_1flow_1_1interface7_1_1receiver}{tbb\+::flow\+::interface7\+::receiver$<$ T $>$}
+\begin{DoxyCompactList}\small\item\em Pure virtual template class that defines a receiver of messages of type T. \end{DoxyCompactList}\item 
+class \hyperlink{classtbb_1_1flow_1_1interface7_1_1sender}{tbb\+::flow\+::interface7\+::sender$<$ T $>$}
+\begin{DoxyCompactList}\small\item\em Pure virtual template class that defines a sender of messages of type T. \end{DoxyCompactList}\item 
+class \hyperlink{classtbb_1_1flow_1_1interface7_1_1limiter__node}{tbb\+::flow\+::interface7\+::limiter\+\_\+node$<$ T $>$}
+\item 
+class \hyperlink{classtbb_1_1flow_1_1interface7_1_1run__and__put__task}{tbb\+::flow\+::interface7\+::run\+\_\+and\+\_\+put\+\_\+task$<$ R, B $>$}
+\item 
+class \hyperlink{classtbb_1_1flow_1_1interface7_1_1receiver}{tbb\+::flow\+::interface7\+::receiver$<$ T $>$}
+\begin{DoxyCompactList}\small\item\em Pure virtual template class that defines a receiver of messages of type T. \end{DoxyCompactList}\item 
+class \hyperlink{classtbb_1_1flow_1_1interface7_1_1continue__receiver}{tbb\+::flow\+::interface7\+::continue\+\_\+receiver}
+\begin{DoxyCompactList}\small\item\em \hyperlink{structBase}{Base} class for receivers of completion messages. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespacetbb}{tbb}
+\begin{DoxyCompactList}\small\item\em The namespace tbb contains all components of the library. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{flow__graph_8h_a8d4fa4ede2877cf02e132560511e2bfa}{}\#define {\bfseries F\+L\+O\+W\+\_\+\+S\+P\+A\+W\+N}(a)~tbb\+::task\+::spawn((a))\label{flow__graph_8h_a8d4fa4ede2877cf02e132560511e2bfa}
+
+\item 
+\hypertarget{flow__graph_8h_a3d7a01e65d4d280c1b0d45af42ccac91}{}\#define {\bfseries \+\_\+\+\_\+\+T\+B\+B\+\_\+\+P\+F\+G\+\_\+\+R\+E\+S\+E\+T\+\_\+\+A\+R\+G}(exp)~/$\ast$ nothing $\ast$/\label{flow__graph_8h_a3d7a01e65d4d280c1b0d45af42ccac91}
+
+\item 
+\hypertarget{flow__graph_8h_aa46d83e188646c81e5427375092fed51}{}\#define {\bfseries \+\_\+\+\_\+\+T\+B\+B\+\_\+\+C\+O\+M\+M\+A}~/$\ast$ nothing $\ast$/\label{flow__graph_8h_aa46d83e188646c81e5427375092fed51}
+
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespacetbb_1_1flow_a7bec4a3445fea3cd5974119730dea98f}{}enum {\bfseries concurrency} \{ {\bfseries unlimited} = 0, 
+{\bfseries serial} = 1
+ \}\label{namespacetbb_1_1flow_a7bec4a3445fea3cd5974119730dea98f}
+\begin{DoxyCompactList}\small\item\em An enumeration the provides the two most common concurrency levels\+: unlimited and serial. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The graph related classes and functions. 
+
+There are some applications that best express dependencies as messages passed between nodes in a graph. These messages may contain data or simply act as signals that a predecessors has completed. The graph class and its associated node classes can be used to express such applications. 

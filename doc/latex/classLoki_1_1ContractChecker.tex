@@ -1,0 +1,108 @@
+\hypertarget{classLoki_1_1ContractChecker}{}\section{Loki\+:\+:Contract\+Checker$<$ Host, Exception\+Policy $>$ Class Template Reference}
+\label{classLoki_1_1ContractChecker}\index{Loki\+::\+Contract\+Checker$<$ Host, Exception\+Policy $>$@{Loki\+::\+Contract\+Checker$<$ Host, Exception\+Policy $>$}}
+
+
+{\ttfamily \#include $<$Checker.\+h$>$}
+
+Inheritance diagram for Loki\+:\+:Contract\+Checker$<$ Host, Exception\+Policy $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLoki_1_1ContractChecker}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1ContractChecker_a3c78d586bc864909a56ad83c477ccf6b}{}typedef bool(Host\+::$\ast$ \hyperlink{classLoki_1_1ContractChecker_a3c78d586bc864909a56ad83c477ccf6b}{Validator}) (void) const \label{classLoki_1_1ContractChecker_a3c78d586bc864909a56ad83c477ccf6b}
+
+\begin{DoxyCompactList}\small\item\em Signature for the validation function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLoki_1_1ContractChecker_a47a88a788d4099204e3a49593e4ff2a2}{Contract\+Checker} (const Host $\ast$host, \hyperlink{structValidator}{Validator} validator, \hyperlink{structValidator}{Validator} pre=0, \hyperlink{structValidator}{Validator} post=0)
+\item 
+\hyperlink{classLoki_1_1ContractChecker_aac668398deabba5291b9025b4ac4eafd}{$\sim$\+Contract\+Checker} (void)
+\item 
+bool \hyperlink{classLoki_1_1ContractChecker_a812565f4dccc8d50be8f7b9c91841a51}{Check} (void) const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Host, template$<$ class $>$ class Exception\+Policy$>$class Loki\+::\+Contract\+Checker$<$ Host, Exception\+Policy $>$}
+
+This class determines if a function violated any class invariant, but it also determines if a function fulfills its contract with client code. In the \char`\"{}\+Design by Contract\char`\"{} paradigm, each function has certain pre-\/conditions and post-\/conditions which may differ from the class invariants. This asserts if a check for an invariant fails as well as if any pre-\/ or post-\/condition fails. It also demonstrate which exception safety level a function provides.
+
+\begin{DoxyParagraph}{Usage}
+
+\begin{DoxyEnumerate}
+\item Implement a function that checks each class invariant. The function must have the signature similar to the \hyperlink{structValidator}{Validator} type. Something like\+: \char`\"{}bool Host\+::\+Is\+Valid( void ) const;\char`\"{}
+\begin{DoxyItemize}
+\item The function should return true if everything is okay, but false if something is wrong.
+\item Or it could assert if anything is wrong.
+\item Ideally, it should be private.
+\end{DoxyItemize}
+\item Implement similar functions to check for pre-\/conditions and post-\/conditions. Functions which verify pre-\/conditions and post-\/conditions do not need to check all class invariants, just conditions specific to certain public functions in the host class.
+\item Declare some typedef\textquotesingle{}s inside the class declaration like these. Make one typedef for each exception policy you use. I typedef\textquotesingle{}ed the \hyperlink{classLoki_1_1CheckForNothing}{Check\+For\+Nothing} policy as Check\+Invariants because even if a function can\textquotesingle{}t provide either the no-\/throw nor the no-\/change policies, it should still make sure the object remains in a valid state.
+\begin{DoxyItemize}
+\item typedef \+::\+Loki\+::\+Contract\+Checker$<$ Host, \+::\+Loki\+::\+Check\+For\+No\+Throw  $>$ \hyperlink{classLoki_1_1CheckForNoThrow}{Check\+For\+No\+Throw};
+\item typedef \+::\+Loki\+::\+Contract\+Checker$<$ Host, \+::\+Loki\+::\+Check\+For\+No\+Change $>$ \hyperlink{classLoki_1_1CheckForNoChange}{Check\+For\+No\+Change};
+\item typedef \+::\+Loki\+::\+Contract\+Checker$<$ Host, \+::\+Loki\+::\+Check\+For\+Equality $>$ \hyperlink{classLoki_1_1CheckForEquality}{Check\+For\+Equality};
+\item typedef \+::\+Loki\+::\+Contract\+Checker$<$ Host, \+::\+Loki\+::\+Check\+For\+Nothing  $>$ Check\+Invariants;
+\end{DoxyItemize}
+\item Construct a checker near the top of each member function -\/ except in the validator member function. Pass the this pointer and the address of your validator function into the checker\textquotesingle{}s constructor. You may also pass in pointers to function which check pre-\/ and post-\/conditions.
+\begin{DoxyItemize}
+\item If the function never throws, then use the \hyperlink{classLoki_1_1CheckForNoThrow}{Check\+For\+No\+Throw} policy.
+\item If the function never changes any data members, then use \hyperlink{classLoki_1_1CheckForEquality}{Check\+For\+Equality} policy.
+\item If the function\textquotesingle{}s normal execution flow changes data, but must make sure data remains unchanged when any exceptions occur, then use the \hyperlink{classLoki_1_1CheckForNoChange}{Check\+For\+No\+Change} policy.
+\item Otherwise use the Check\+Invariants policy.
+\end{DoxyItemize}
+\item Recompile a debug version of your program, run the program and all the unit tests, and look for which assertions failed. 
+\end{DoxyEnumerate}
+\end{DoxyParagraph}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classLoki_1_1ContractChecker_a47a88a788d4099204e3a49593e4ff2a2}{}\index{Loki\+::\+Contract\+Checker@{Loki\+::\+Contract\+Checker}!Contract\+Checker@{Contract\+Checker}}
+\index{Contract\+Checker@{Contract\+Checker}!Loki\+::\+Contract\+Checker@{Loki\+::\+Contract\+Checker}}
+\subsubsection[{Contract\+Checker(const Host $\ast$host, Validator validator, Validator pre=0, Validator post=0)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Host , template$<$ class $>$ class Exception\+Policy$>$ {\bf Loki\+::\+Contract\+Checker}$<$ Host, Exception\+Policy $>$\+::{\bf Contract\+Checker} (
+\begin{DoxyParamCaption}
+\item[{const Host $\ast$}]{host, }
+\item[{{\bf Validator}}]{validator, }
+\item[{{\bf Validator}}]{pre = {\ttfamily 0}, }
+\item[{{\bf Validator}}]{post = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classLoki_1_1ContractChecker_a47a88a788d4099204e3a49593e4ff2a2}
+The constructor makes sure the host is valid at the time the checker was created, thus insuring the host object was not corrupt from the start. \begin{DoxyParagraph}{host Pointer to host object.}
+
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{validator Pointer to function that checks class invariants.}
+
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{pre Optional pointer to function that checks pre-\/conditions.}
+
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{post Optional pointer to function that checks post-\/conditions.}
+
+\end{DoxyParagraph}
+\hypertarget{classLoki_1_1ContractChecker_aac668398deabba5291b9025b4ac4eafd}{}\index{Loki\+::\+Contract\+Checker@{Loki\+::\+Contract\+Checker}!````~Contract\+Checker@{$\sim$\+Contract\+Checker}}
+\index{````~Contract\+Checker@{$\sim$\+Contract\+Checker}!Loki\+::\+Contract\+Checker@{Loki\+::\+Contract\+Checker}}
+\subsubsection[{$\sim$\+Contract\+Checker(void)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Host , template$<$ class $>$ class Exception\+Policy$>$ {\bf Loki\+::\+Contract\+Checker}$<$ Host, Exception\+Policy $>$\+::$\sim${\bf Contract\+Checker} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classLoki_1_1ContractChecker_aac668398deabba5291b9025b4ac4eafd}
+The destructor checks if any Host invariants failed, and then calls the Exception\+Policy\textquotesingle{}s \hyperlink{structCheck}{Check} function to determine what to do in case of an exception. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classLoki_1_1ContractChecker_a812565f4dccc8d50be8f7b9c91841a51}{}\index{Loki\+::\+Contract\+Checker@{Loki\+::\+Contract\+Checker}!Check@{Check}}
+\index{Check@{Check}!Loki\+::\+Contract\+Checker@{Loki\+::\+Contract\+Checker}}
+\subsubsection[{Check(void) const }]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Host , template$<$ class $>$ class Exception\+Policy$>$ bool {\bf Loki\+::\+Contract\+Checker}$<$ Host, Exception\+Policy $>$\+::{\bf Check} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classLoki_1_1ContractChecker_a812565f4dccc8d50be8f7b9c91841a51}
+This first checks the invariants for \hyperlink{classLoki_1_1ContractChecker}{Contract\+Checker}, and then calls the validator function for the host to make sure no class invariants were broken by the host within the Host\textquotesingle{}s member function body. The host member function can call \hyperlink{structCheck}{Check} directly to verify the object remains valid at any time. This does not care if the pre-\/ and post-\/condition validator pointers are null since a host class may pass in N\+U\+L\+L pointers for either to indicate the pre-\/conditions or post-\/conditions are the same as the overall class invariants. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/\hyperlink{Checker_8h}{Checker.\+h}\end{DoxyCompactItemize}

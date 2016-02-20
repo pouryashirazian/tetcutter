@@ -1,0 +1,64 @@
+\hypertarget{classstatic__shared__counting__allocator}{}\section{static\+\_\+shared\+\_\+counting\+\_\+allocator$<$ tag, base\+\_\+alloc\+\_\+t, count\+\_\+t $>$ Class Template Reference}
+\label{classstatic__shared__counting__allocator}\index{static\+\_\+shared\+\_\+counting\+\_\+allocator$<$ tag, base\+\_\+alloc\+\_\+t, count\+\_\+t $>$@{static\+\_\+shared\+\_\+counting\+\_\+allocator$<$ tag, base\+\_\+alloc\+\_\+t, count\+\_\+t $>$}}
+Inheritance diagram for static\+\_\+shared\+\_\+counting\+\_\+allocator$<$ tag, base\+\_\+alloc\+\_\+t, count\+\_\+t $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.485411cm]{classstatic__shared__counting__allocator}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structstatic__shared__counting__allocator_1_1rebind}{rebind}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstatic__shared__counting__allocator_a7db1e70b7c719f6081b5f87b4f0759d4}{}typedef base\+\_\+alloc\+\_\+t\+::pointer {\bfseries pointer}\label{classstatic__shared__counting__allocator_a7db1e70b7c719f6081b5f87b4f0759d4}
+
+\item 
+\hypertarget{classstatic__shared__counting__allocator_a190699786ae1521cc4c8e6447c2b84a8}{}typedef base\+\_\+alloc\+\_\+t\+::const\+\_\+pointer {\bfseries const\+\_\+pointer}\label{classstatic__shared__counting__allocator_a190699786ae1521cc4c8e6447c2b84a8}
+
+\item 
+\hypertarget{classstatic__shared__counting__allocator_ab772c85cde37958542a0adb0478a62b3}{}typedef base\+\_\+alloc\+\_\+t\+::reference {\bfseries reference}\label{classstatic__shared__counting__allocator_ab772c85cde37958542a0adb0478a62b3}
+
+\item 
+\hypertarget{classstatic__shared__counting__allocator_ade8fb226a1b7f71dae66d69e64cdfdcc}{}typedef base\+\_\+alloc\+\_\+t\+::const\+\_\+reference {\bfseries const\+\_\+reference}\label{classstatic__shared__counting__allocator_ade8fb226a1b7f71dae66d69e64cdfdcc}
+
+\item 
+\hypertarget{classstatic__shared__counting__allocator_a0f1b68fde91c8ecc2f5918799f216d3f}{}typedef base\+\_\+alloc\+\_\+t\+::value\+\_\+type {\bfseries value\+\_\+type}\label{classstatic__shared__counting__allocator_a0f1b68fde91c8ecc2f5918799f216d3f}
+
+\item 
+\hypertarget{classstatic__shared__counting__allocator_addaae0789f11482872f402ef046b2a35}{}typedef base\+\_\+alloc\+\_\+t\+::size\+\_\+type {\bfseries size\+\_\+type}\label{classstatic__shared__counting__allocator_addaae0789f11482872f402ef046b2a35}
+
+\item 
+\hypertarget{classstatic__shared__counting__allocator_a47fe243b55c48e297ea555b65ff14b0d}{}typedef base\+\_\+alloc\+\_\+t\+::difference\+\_\+type {\bfseries difference\+\_\+type}\label{classstatic__shared__counting__allocator_a47fe243b55c48e297ea555b65ff14b0d}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classstatic__shared__counting__allocator_a23679d0e75790e95a92dc5b87fe0d888}{}{\bfseries static\+\_\+shared\+\_\+counting\+\_\+allocator} (const base\+\_\+alloc\+\_\+t \&src)  throw ()\label{classstatic__shared__counting__allocator_a23679d0e75790e95a92dc5b87fe0d888}
+
+\item 
+\hypertarget{classstatic__shared__counting__allocator_a5f23180b4a2000fedca2330707c2ff7d}{}{\bfseries static\+\_\+shared\+\_\+counting\+\_\+allocator} (const \hyperlink{classstatic__shared__counting__allocator}{static\+\_\+shared\+\_\+counting\+\_\+allocator} \&src)  throw ()\label{classstatic__shared__counting__allocator_a5f23180b4a2000fedca2330707c2ff7d}
+
+\item 
+\hypertarget{classstatic__shared__counting__allocator_a9771256f4afedf2123963944d72705af}{}{\footnotesize template$<$typename U , typename C $>$ }\\{\bfseries static\+\_\+shared\+\_\+counting\+\_\+allocator} (const \hyperlink{classstatic__shared__counting__allocator}{static\+\_\+shared\+\_\+counting\+\_\+allocator}$<$ tag, U, \hyperlink{classC}{C} $>$ \&src)  throw ()\label{classstatic__shared__counting__allocator_a9771256f4afedf2123963944d72705af}
+
+\item 
+\hypertarget{classstatic__shared__counting__allocator_a8edc7d7f4737ecabd6bbf92df53c75fb}{}pointer {\bfseries allocate} (const size\+\_\+type n)\label{classstatic__shared__counting__allocator_a8edc7d7f4737ecabd6bbf92df53c75fb}
+
+\item 
+\hypertarget{classstatic__shared__counting__allocator_aa69cdddf28224c9574fab824710afd02}{}pointer {\bfseries allocate} (const size\+\_\+type n, const void $\ast$const)\label{classstatic__shared__counting__allocator_aa69cdddf28224c9574fab824710afd02}
+
+\item 
+\hypertarget{classstatic__shared__counting__allocator_a1ce10a48255dacf0421b4377f611897a}{}void {\bfseries deallocate} (const pointer ptr, const size\+\_\+type n)\label{classstatic__shared__counting__allocator_a1ce10a48255dacf0421b4377f611897a}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/test/harness\+\_\+allocator.\+h\end{DoxyCompactItemize}

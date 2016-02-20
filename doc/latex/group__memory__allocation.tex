@@ -1,0 +1,161 @@
+\hypertarget{group__memory__allocation}{}\section{Memory Allocation}
+\label{group__memory__allocation}\index{Memory Allocation@{Memory Allocation}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classtbb_1_1aligned__space}{tbb\+::aligned\+\_\+space$<$ T, N $>$}
+\begin{DoxyCompactList}\small\item\em Block of space aligned sufficiently to construct an array T with N elements. \end{DoxyCompactList}\item 
+struct \hyperlink{structtbb_1_1cache__aligned__allocator_1_1rebind}{tbb\+::cache\+\_\+aligned\+\_\+allocator$<$ T $>$\+::rebind$<$ U $>$}
+\item 
+class \hyperlink{classtbb_1_1cache__aligned__allocator}{tbb\+::cache\+\_\+aligned\+\_\+allocator$<$ T $>$}
+\begin{DoxyCompactList}\small\item\em Meets \char`\"{}allocator\char`\"{} requirements of I\+S\+O C++ Standard, Section 20.\+1.\+5. \end{DoxyCompactList}\item 
+struct \hyperlink{structtbb_1_1cache__aligned__allocator_3_01void_01_4_1_1rebind}{tbb\+::cache\+\_\+aligned\+\_\+allocator$<$ void $>$\+::rebind$<$ U $>$}
+\item 
+class \hyperlink{classtbb_1_1cache__aligned__allocator_3_01void_01_4}{tbb\+::cache\+\_\+aligned\+\_\+allocator$<$ void $>$}
+\begin{DoxyCompactList}\small\item\em Analogous to std\+::allocator$<$void$>$, as defined in I\+S\+O C++ Standard, Section 20.\+4.\+1. \end{DoxyCompactList}\item 
+struct \hyperlink{structtbb_1_1interface6_1_1memory__pool__allocator_1_1rebind}{tbb\+::interface6\+::memory\+\_\+pool\+\_\+allocator$<$ T, P $>$\+::rebind$<$ U $>$}
+\item 
+class \hyperlink{classtbb_1_1interface6_1_1memory__pool__allocator}{tbb\+::interface6\+::memory\+\_\+pool\+\_\+allocator$<$ T, P $>$}
+\begin{DoxyCompactList}\small\item\em Meets \char`\"{}allocator\char`\"{} requirements of I\+S\+O C++ Standard, Section 20.\+1.\+5. \end{DoxyCompactList}\item 
+struct \hyperlink{structtbb_1_1interface6_1_1memory__pool__allocator_3_01void_00_01P_01_4_1_1rebind}{tbb\+::interface6\+::memory\+\_\+pool\+\_\+allocator$<$ void, P $>$\+::rebind$<$ U $>$}
+\item 
+class \hyperlink{classtbb_1_1interface6_1_1memory__pool__allocator_3_01void_00_01P_01_4}{tbb\+::interface6\+::memory\+\_\+pool\+\_\+allocator$<$ void, P $>$}
+\begin{DoxyCompactList}\small\item\em Analogous to std\+::allocator$<$void$>$, as defined in I\+S\+O C++ Standard, Section 20.\+4.\+1. \end{DoxyCompactList}\item 
+struct \hyperlink{structtbb_1_1tbb__allocator_1_1rebind}{tbb\+::tbb\+\_\+allocator$<$ T $>$\+::rebind$<$ U $>$}
+\item 
+class \hyperlink{classtbb_1_1tbb__allocator}{tbb\+::tbb\+\_\+allocator$<$ T $>$}
+\begin{DoxyCompactList}\small\item\em Meets \char`\"{}allocator\char`\"{} requirements of I\+S\+O C++ Standard, Section 20.\+1.\+5. \end{DoxyCompactList}\item 
+struct \hyperlink{structtbb_1_1tbb__allocator_3_01void_01_4_1_1rebind}{tbb\+::tbb\+\_\+allocator$<$ void $>$\+::rebind$<$ U $>$}
+\item 
+class \hyperlink{classtbb_1_1tbb__allocator_3_01void_01_4}{tbb\+::tbb\+\_\+allocator$<$ void $>$}
+\begin{DoxyCompactList}\small\item\em Analogous to std\+::allocator$<$void$>$, as defined in I\+S\+O C++ Standard, Section 20.\+4.\+1. \end{DoxyCompactList}\item 
+struct \hyperlink{structtbb_1_1zero__allocator_1_1rebind}{tbb\+::zero\+\_\+allocator$<$ T, Allocator $>$\+::rebind$<$ U $>$}
+\item 
+class \hyperlink{classtbb_1_1zero__allocator}{tbb\+::zero\+\_\+allocator$<$ T, Allocator $>$}
+\begin{DoxyCompactList}\small\item\em Meets \char`\"{}allocator\char`\"{} requirements of I\+S\+O C++ Standard, Section 20.\+1.\+5. \end{DoxyCompactList}\item 
+struct \hyperlink{structtbb_1_1zero__allocator_3_01void_00_01Allocator_01_4_1_1rebind}{tbb\+::zero\+\_\+allocator$<$ void, Allocator $>$\+::rebind$<$ U $>$}
+\item 
+class \hyperlink{classtbb_1_1zero__allocator_3_01void_00_01Allocator_01_4}{tbb\+::zero\+\_\+allocator$<$ void, Allocator $>$}
+\begin{DoxyCompactList}\small\item\em Analogous to std\+::allocator$<$void$>$, as defined in I\+S\+O C++ Standard, Section 20.\+4.\+1. \end{DoxyCompactList}\item 
+class \hyperlink{classdebug__allocator_3_01void_00_01Allocator_01_4}{debug\+\_\+allocator$<$ void, Allocator $>$}
+\begin{DoxyCompactList}\small\item\em Analogous to std\+::allocator$<$void$>$, as defined in I\+S\+O C++ Standard, Section 20.\+4.\+1. \end{DoxyCompactList}\item 
+struct \hyperlink{structdebug__allocator_3_01void_00_01Allocator_01_4_1_1rebind}{debug\+\_\+allocator$<$ void, Allocator $>$\+::rebind$<$ U $>$}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$\+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C \hyperlink{group__memory__allocation_ga2a5bdc71439a70b20f2eadf6e1a489e1}{scalable\+\_\+malloc} (size\+\_\+t size)
+\item 
+void \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C \hyperlink{group__memory__allocation_ga2ad3952b8c4dd7d293e02ae18fc37b84}{scalable\+\_\+free} (void $\ast$ptr)
+\item 
+void $\ast$\+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C \hyperlink{group__memory__allocation_ga40d6e0bc19cdfa3005b2b935c62077a1}{scalable\+\_\+realloc} (void $\ast$ptr, size\+\_\+t size)
+\item 
+void $\ast$\+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C \hyperlink{group__memory__allocation_ga3b4ff39555cd9e929fce2958325cd8ea}{scalable\+\_\+calloc} (size\+\_\+t nobj, size\+\_\+t size)
+\item 
+int \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C \hyperlink{group__memory__allocation_gaf117b4994f719d539804da8dd115e28c}{scalable\+\_\+posix\+\_\+memalign} (void $\ast$$\ast$memptr, size\+\_\+t alignment, size\+\_\+t size)
+\item 
+void $\ast$\+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C \hyperlink{group__memory__allocation_ga903307de17bc1611515f8e6ae782a3d6}{scalable\+\_\+aligned\+\_\+malloc} (size\+\_\+t size, size\+\_\+t alignment)
+\item 
+void $\ast$\+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C \hyperlink{group__memory__allocation_gaa07391c54330b2e4dd1743ae9c9c4f2d}{scalable\+\_\+aligned\+\_\+realloc} (void $\ast$ptr, size\+\_\+t size, size\+\_\+t alignment)
+\item 
+void \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C \hyperlink{group__memory__allocation_gad9aa7595581a7bc5be193d7e034c8f61}{scalable\+\_\+aligned\+\_\+free} (void $\ast$ptr)
+\item 
+size\+\_\+t \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C \hyperlink{group__memory__allocation_ga2b718206e50acb6392b86e4877d98213}{scalable\+\_\+msize} (void $\ast$ptr)
+\item 
+int \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C \hyperlink{group__memory__allocation_ga7f5029970f72ebbffee896c46a23958e}{scalable\+\_\+allocation\+\_\+mode} (int param, intptr\+\_\+t value)
+\item 
+int \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C \hyperlink{group__memory__allocation_gabe5acd876b4d89bf89787c4e779c2518}{scalable\+\_\+allocation\+\_\+command} (int cmd, void $\ast$param)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\hypertarget{group__memory__allocation_gad9aa7595581a7bc5be193d7e034c8f61}{}\index{Memory Allocation@{Memory Allocation}!scalable\+\_\+aligned\+\_\+free@{scalable\+\_\+aligned\+\_\+free}}
+\index{scalable\+\_\+aligned\+\_\+free@{scalable\+\_\+aligned\+\_\+free}!Memory Allocation@{Memory Allocation}}
+\subsubsection[{scalable\+\_\+aligned\+\_\+free(void $\ast$ptr)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C scalable\+\_\+aligned\+\_\+free (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr}
+\end{DoxyParamCaption}
+)}\label{group__memory__allocation_gad9aa7595581a7bc5be193d7e034c8f61}
+The \char`\"{}\+\_\+aligned\+\_\+free\char`\"{} analogue. \hypertarget{group__memory__allocation_ga903307de17bc1611515f8e6ae782a3d6}{}\index{Memory Allocation@{Memory Allocation}!scalable\+\_\+aligned\+\_\+malloc@{scalable\+\_\+aligned\+\_\+malloc}}
+\index{scalable\+\_\+aligned\+\_\+malloc@{scalable\+\_\+aligned\+\_\+malloc}!Memory Allocation@{Memory Allocation}}
+\subsubsection[{scalable\+\_\+aligned\+\_\+malloc(size\+\_\+t size, size\+\_\+t alignment)}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C scalable\+\_\+aligned\+\_\+malloc (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+t}]{size, }
+\item[{size\+\_\+t}]{alignment}
+\end{DoxyParamCaption}
+)}\label{group__memory__allocation_ga903307de17bc1611515f8e6ae782a3d6}
+The \char`\"{}\+\_\+aligned\+\_\+malloc\char`\"{} analogue. \hypertarget{group__memory__allocation_gaa07391c54330b2e4dd1743ae9c9c4f2d}{}\index{Memory Allocation@{Memory Allocation}!scalable\+\_\+aligned\+\_\+realloc@{scalable\+\_\+aligned\+\_\+realloc}}
+\index{scalable\+\_\+aligned\+\_\+realloc@{scalable\+\_\+aligned\+\_\+realloc}!Memory Allocation@{Memory Allocation}}
+\subsubsection[{scalable\+\_\+aligned\+\_\+realloc(void $\ast$ptr, size\+\_\+t size, size\+\_\+t alignment)}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C scalable\+\_\+aligned\+\_\+realloc (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{size\+\_\+t}]{size, }
+\item[{size\+\_\+t}]{alignment}
+\end{DoxyParamCaption}
+)}\label{group__memory__allocation_gaa07391c54330b2e4dd1743ae9c9c4f2d}
+The \char`\"{}\+\_\+aligned\+\_\+realloc\char`\"{} analogue. \hypertarget{group__memory__allocation_gabe5acd876b4d89bf89787c4e779c2518}{}\index{Memory Allocation@{Memory Allocation}!scalable\+\_\+allocation\+\_\+command@{scalable\+\_\+allocation\+\_\+command}}
+\index{scalable\+\_\+allocation\+\_\+command@{scalable\+\_\+allocation\+\_\+command}!Memory Allocation@{Memory Allocation}}
+\subsubsection[{scalable\+\_\+allocation\+\_\+command(int cmd, void $\ast$param)}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C scalable\+\_\+allocation\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{int}]{cmd, }
+\item[{void $\ast$}]{param}
+\end{DoxyParamCaption}
+)}\label{group__memory__allocation_gabe5acd876b4d89bf89787c4e779c2518}
+Call T\+B\+B allocator-\/specific commands. \hypertarget{group__memory__allocation_ga7f5029970f72ebbffee896c46a23958e}{}\index{Memory Allocation@{Memory Allocation}!scalable\+\_\+allocation\+\_\+mode@{scalable\+\_\+allocation\+\_\+mode}}
+\index{scalable\+\_\+allocation\+\_\+mode@{scalable\+\_\+allocation\+\_\+mode}!Memory Allocation@{Memory Allocation}}
+\subsubsection[{scalable\+\_\+allocation\+\_\+mode(int param, intptr\+\_\+t value)}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C scalable\+\_\+allocation\+\_\+mode (
+\begin{DoxyParamCaption}
+\item[{int}]{param, }
+\item[{intptr\+\_\+t}]{value}
+\end{DoxyParamCaption}
+)}\label{group__memory__allocation_ga7f5029970f72ebbffee896c46a23958e}
+Set T\+B\+B allocator-\/specific allocation modes. \hypertarget{group__memory__allocation_ga3b4ff39555cd9e929fce2958325cd8ea}{}\index{Memory Allocation@{Memory Allocation}!scalable\+\_\+calloc@{scalable\+\_\+calloc}}
+\index{scalable\+\_\+calloc@{scalable\+\_\+calloc}!Memory Allocation@{Memory Allocation}}
+\subsubsection[{scalable\+\_\+calloc(size\+\_\+t nobj, size\+\_\+t size)}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C scalable\+\_\+calloc (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+t}]{nobj, }
+\item[{size\+\_\+t}]{size}
+\end{DoxyParamCaption}
+)}\label{group__memory__allocation_ga3b4ff39555cd9e929fce2958325cd8ea}
+The \char`\"{}calloc\char`\"{} analogue complementing scalable\+\_\+malloc. \hypertarget{group__memory__allocation_ga2ad3952b8c4dd7d293e02ae18fc37b84}{}\index{Memory Allocation@{Memory Allocation}!scalable\+\_\+free@{scalable\+\_\+free}}
+\index{scalable\+\_\+free@{scalable\+\_\+free}!Memory Allocation@{Memory Allocation}}
+\subsubsection[{scalable\+\_\+free(void $\ast$ptr)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C scalable\+\_\+free (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr}
+\end{DoxyParamCaption}
+)}\label{group__memory__allocation_ga2ad3952b8c4dd7d293e02ae18fc37b84}
+The \char`\"{}free\char`\"{} analogue to discard a previously allocated piece of memory. \hypertarget{group__memory__allocation_ga2a5bdc71439a70b20f2eadf6e1a489e1}{}\index{Memory Allocation@{Memory Allocation}!scalable\+\_\+malloc@{scalable\+\_\+malloc}}
+\index{scalable\+\_\+malloc@{scalable\+\_\+malloc}!Memory Allocation@{Memory Allocation}}
+\subsubsection[{scalable\+\_\+malloc(size\+\_\+t size)}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C scalable\+\_\+malloc (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+t}]{size}
+\end{DoxyParamCaption}
+)}\label{group__memory__allocation_ga2a5bdc71439a70b20f2eadf6e1a489e1}
+The \char`\"{}malloc\char`\"{} analogue to allocate block of memory of size bytes. \hypertarget{group__memory__allocation_ga2b718206e50acb6392b86e4877d98213}{}\index{Memory Allocation@{Memory Allocation}!scalable\+\_\+msize@{scalable\+\_\+msize}}
+\index{scalable\+\_\+msize@{scalable\+\_\+msize}!Memory Allocation@{Memory Allocation}}
+\subsubsection[{scalable\+\_\+msize(void $\ast$ptr)}]{\setlength{\rightskip}{0pt plus 5cm}size\+\_\+t \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C scalable\+\_\+msize (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr}
+\end{DoxyParamCaption}
+)}\label{group__memory__allocation_ga2b718206e50acb6392b86e4877d98213}
+The analogue of {\itshape msize/malloc\+\_\+size/malloc\+\_\+usable\+\_\+size. Returns the usable size of a memory block previously allocated by scalable}$\ast$, or 0 (zero) if ptr does not point to such a block. \hypertarget{group__memory__allocation_gaf117b4994f719d539804da8dd115e28c}{}\index{Memory Allocation@{Memory Allocation}!scalable\+\_\+posix\+\_\+memalign@{scalable\+\_\+posix\+\_\+memalign}}
+\index{scalable\+\_\+posix\+\_\+memalign@{scalable\+\_\+posix\+\_\+memalign}!Memory Allocation@{Memory Allocation}}
+\subsubsection[{scalable\+\_\+posix\+\_\+memalign(void $\ast$$\ast$memptr, size\+\_\+t alignment, size\+\_\+t size)}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C scalable\+\_\+posix\+\_\+memalign (
+\begin{DoxyParamCaption}
+\item[{void $\ast$$\ast$}]{memptr, }
+\item[{size\+\_\+t}]{alignment, }
+\item[{size\+\_\+t}]{size}
+\end{DoxyParamCaption}
+)}\label{group__memory__allocation_gaf117b4994f719d539804da8dd115e28c}
+The \char`\"{}posix\+\_\+memalign\char`\"{} analogue. \hypertarget{group__memory__allocation_ga40d6e0bc19cdfa3005b2b935c62077a1}{}\index{Memory Allocation@{Memory Allocation}!scalable\+\_\+realloc@{scalable\+\_\+realloc}}
+\index{scalable\+\_\+realloc@{scalable\+\_\+realloc}!Memory Allocation@{Memory Allocation}}
+\subsubsection[{scalable\+\_\+realloc(void $\ast$ptr, size\+\_\+t size)}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C scalable\+\_\+realloc (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{size\+\_\+t}]{size}
+\end{DoxyParamCaption}
+)}\label{group__memory__allocation_ga40d6e0bc19cdfa3005b2b935c62077a1}
+The \char`\"{}realloc\char`\"{} analogue complementing scalable\+\_\+malloc. 

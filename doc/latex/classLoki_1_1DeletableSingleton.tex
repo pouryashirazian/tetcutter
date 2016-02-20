@@ -1,0 +1,51 @@
+\hypertarget{classLoki_1_1DeletableSingleton}{}\section{Loki\+:\+:Deletable\+Singleton$<$ T $>$ Struct Template Reference}
+\label{classLoki_1_1DeletableSingleton}\index{Loki\+::\+Deletable\+Singleton$<$ T $>$@{Loki\+::\+Deletable\+Singleton$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Singleton.\+h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1DeletableSingleton_acdb434705832a8dec514cf4a56954cf0}{}static void {\bfseries Schedule\+Destruction} (T $\ast$, atexit\+\_\+pfn\+\_\+t p\+Fun)\label{classLoki_1_1DeletableSingleton_acdb434705832a8dec514cf4a56954cf0}
+
+\item 
+\hypertarget{classLoki_1_1DeletableSingleton_ac18984dfcb610ee1979cee691e163d9f}{}static void {\bfseries On\+Dead\+Reference} ()\label{classLoki_1_1DeletableSingleton_ac18984dfcb610ee1979cee691e163d9f}
+
+\item 
+\hypertarget{classLoki_1_1DeletableSingleton_a626c2dc57146f1aea6bf911682f8e3e9}{}static void \hyperlink{classLoki_1_1DeletableSingleton_a626c2dc57146f1aea6bf911682f8e3e9}{Graceful\+Delete} ()\label{classLoki_1_1DeletableSingleton_a626c2dc57146f1aea6bf911682f8e3e9}
+
+\begin{DoxyCompactList}\small\item\em delete singleton object manually \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1DeletableSingleton_ad6a37ac24c1f199967c4908ffdd6f729}{}static void {\bfseries atexit\+Callback} ()\label{classLoki_1_1DeletableSingleton_ad6a37ac24c1f199967c4908ffdd6f729}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1DeletableSingleton_a0d2bcad67762e4cc88e926386bfab002}{}static atexit\+\_\+pfn\+\_\+t {\bfseries deleter} = 0\label{classLoki_1_1DeletableSingleton_a0d2bcad67762e4cc88e926386bfab002}
+
+\item 
+\hypertarget{classLoki_1_1DeletableSingleton_a62fc02272ad280316f3e6fb27272994a}{}static bool {\bfseries is\+Dead} = true\label{classLoki_1_1DeletableSingleton_a62fc02272ad280316f3e6fb27272994a}
+
+\item 
+\hypertarget{classLoki_1_1DeletableSingleton_a5cec2ed562f3292accfa9468c37ea052}{}static bool {\bfseries need\+Callback} = true\label{classLoki_1_1DeletableSingleton_a5cec2ed562f3292accfa9468c37ea052}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$struct Loki\+::\+Deletable\+Singleton$<$ T $>$}
+
+\hyperlink{structA}{A} \hyperlink{classLoki_1_1DeletableSingleton}{Deletable\+Singleton} allows the instantiated singleton to be destroyed at any time. The singleton can be reinstantiated at any time, even during program termination. If the singleton exists when the program terminates, it will be automatically deleted.
+
+\begin{DoxyParagraph}{Usage\+: }
+The singleton can be deleted manually\+:
+\end{DoxyParagraph}
+\hyperlink{classLoki_1_1DeletableSingleton_a626c2dc57146f1aea6bf911682f8e3e9}{Deletable\+Singleton$<$\+My\+Class$>$\+::\+Graceful\+Delete()}; 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Singleton.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,61 @@
+\hypertarget{structtbb_1_1internal_1_1hash__map__segment__base}{}\section{tbb\+:\+:internal\+:\+:hash\+\_\+map\+\_\+segment\+\_\+base Struct Reference}
+\label{structtbb_1_1internal_1_1hash__map__segment__base}\index{tbb\+::internal\+::hash\+\_\+map\+\_\+segment\+\_\+base@{tbb\+::internal\+::hash\+\_\+map\+\_\+segment\+\_\+base}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structtbb_1_1internal_1_1hash__map__segment__base_a714559fc4d261c4d359c12e71610c51d}{}typedef \hyperlink{classtbb_1_1spin__rw__mutex}{spin\+\_\+rw\+\_\+mutex} {\bfseries segment\+\_\+mutex\+\_\+t}\label{structtbb_1_1internal_1_1hash__map__segment__base_a714559fc4d261c4d359c12e71610c51d}
+
+\item 
+\hypertarget{structtbb_1_1internal_1_1hash__map__segment__base_aab5635d0ca44cada2bea263ae1455134}{}typedef size\+\_\+t \hyperlink{structtbb_1_1internal_1_1hash__map__segment__base_aab5635d0ca44cada2bea263ae1455134}{hashcode\+\_\+t}\label{structtbb_1_1internal_1_1hash__map__segment__base_aab5635d0ca44cada2bea263ae1455134}
+
+\begin{DoxyCompactList}\small\item\em Type of a hash code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D \hyperlink{structtbb_1_1internal_1_1hash__map__segment__base_aec229c429c7015e08a30e714eb1a6d21}{internal\+\_\+grow\+\_\+predicate} () const 
+\begin{DoxyCompactList}\small\item\em True if my\+\_\+logical\+\_\+size$>$=my\+\_\+physical\+\_\+size. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structtbb_1_1internal_1_1hash__map__segment__base_a55f2618fb9d59805db6ff20672f428c3}{}\hyperlink{classtbb_1_1spin__rw__mutex}{segment\+\_\+mutex\+\_\+t} \hyperlink{structtbb_1_1internal_1_1hash__map__segment__base_a55f2618fb9d59805db6ff20672f428c3}{my\+\_\+mutex}\label{structtbb_1_1internal_1_1hash__map__segment__base_a55f2618fb9d59805db6ff20672f428c3}
+
+\begin{DoxyCompactList}\small\item\em Mutex that protects this segment. \end{DoxyCompactList}\item 
+\hypertarget{structtbb_1_1internal_1_1hash__map__segment__base_a0e4b89949822a54d69ce304f8d3bee38}{}\hyperlink{structtbb_1_1atomic}{atomic}$<$ size\+\_\+t $>$ {\bfseries my\+\_\+logical\+\_\+size}\label{structtbb_1_1internal_1_1hash__map__segment__base_a0e4b89949822a54d69ce304f8d3bee38}
+
+\item 
+size\+\_\+t \hyperlink{structtbb_1_1internal_1_1hash__map__segment__base_afa1386ff73d552bc07cf6b6398a66150}{my\+\_\+physical\+\_\+size}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structtbb_1_1internal_1_1hash__map__segment__base_a064a7838acc52c634186568e671b21fb}{}static const size\+\_\+t \hyperlink{structtbb_1_1internal_1_1hash__map__segment__base_a064a7838acc52c634186568e671b21fb}{n\+\_\+segment\+\_\+bits} = 6\label{structtbb_1_1internal_1_1hash__map__segment__base_a064a7838acc52c634186568e671b21fb}
+
+\begin{DoxyCompactList}\small\item\em Log2 of n\+\_\+segment. \end{DoxyCompactList}\item 
+\hypertarget{structtbb_1_1internal_1_1hash__map__segment__base_ac9eae8f9dd6b4c573283125a72b8cf53}{}static const size\+\_\+t \hyperlink{structtbb_1_1internal_1_1hash__map__segment__base_ac9eae8f9dd6b4c573283125a72b8cf53}{max\+\_\+physical\+\_\+size} = size\+\_\+t(1)$<$$<$(8$\ast$sizeof(\hyperlink{structtbb_1_1internal_1_1hash__map__segment__base_aab5635d0ca44cada2bea263ae1455134}{hashcode\+\_\+t})-\/\hyperlink{structtbb_1_1internal_1_1hash__map__segment__base_a064a7838acc52c634186568e671b21fb}{n\+\_\+segment\+\_\+bits})\label{structtbb_1_1internal_1_1hash__map__segment__base_ac9eae8f9dd6b4c573283125a72b8cf53}
+
+\begin{DoxyCompactList}\small\item\em Maximum size of array of chains. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{structtbb_1_1internal_1_1hash__map__segment__base_aec229c429c7015e08a30e714eb1a6d21}{}\index{tbb\+::internal\+::hash\+\_\+map\+\_\+segment\+\_\+base@{tbb\+::internal\+::hash\+\_\+map\+\_\+segment\+\_\+base}!internal\+\_\+grow\+\_\+predicate@{internal\+\_\+grow\+\_\+predicate}}
+\index{internal\+\_\+grow\+\_\+predicate@{internal\+\_\+grow\+\_\+predicate}!tbb\+::internal\+::hash\+\_\+map\+\_\+segment\+\_\+base@{tbb\+::internal\+::hash\+\_\+map\+\_\+segment\+\_\+base}}
+\subsubsection[{internal\+\_\+grow\+\_\+predicate() const }]{\setlength{\rightskip}{0pt plus 5cm}bool tbb\+::internal\+::hash\+\_\+map\+\_\+segment\+\_\+base\+::internal\+\_\+grow\+\_\+predicate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{structtbb_1_1internal_1_1hash__map__segment__base_aec229c429c7015e08a30e714eb1a6d21}
+
+
+True if my\+\_\+logical\+\_\+size$>$=my\+\_\+physical\+\_\+size. 
+
+Used to support Intel(\+R) \hyperlink{structThread}{Thread} \hyperlink{classChecker}{Checker}. 
+
+\subsection{Member Data Documentation}
+\hypertarget{structtbb_1_1internal_1_1hash__map__segment__base_afa1386ff73d552bc07cf6b6398a66150}{}\index{tbb\+::internal\+::hash\+\_\+map\+\_\+segment\+\_\+base@{tbb\+::internal\+::hash\+\_\+map\+\_\+segment\+\_\+base}!my\+\_\+physical\+\_\+size@{my\+\_\+physical\+\_\+size}}
+\index{my\+\_\+physical\+\_\+size@{my\+\_\+physical\+\_\+size}!tbb\+::internal\+::hash\+\_\+map\+\_\+segment\+\_\+base@{tbb\+::internal\+::hash\+\_\+map\+\_\+segment\+\_\+base}}
+\subsubsection[{my\+\_\+physical\+\_\+size}]{\setlength{\rightskip}{0pt plus 5cm}size\+\_\+t tbb\+::internal\+::hash\+\_\+map\+\_\+segment\+\_\+base\+::my\+\_\+physical\+\_\+size}\label{structtbb_1_1internal_1_1hash__map__segment__base_afa1386ff73d552bc07cf6b6398a66150}
+Always zero or a power of two 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/concurrent\+\_\+hash\+\_\+map.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,112 @@
+\hypertarget{classLoki_1_1TypeTraits}{}\section{Loki\+:\+:Type\+Traits$<$ T $>$ Class Template Reference}
+\label{classLoki_1_1TypeTraits}\index{Loki\+::\+Type\+Traits$<$ T $>$@{Loki\+::\+Type\+Traits$<$ T $>$}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1TypeTraits_a662c9846ed0942bc181801f0926244b5}{}enum \{ {\bfseries is\+Const} = Un\+Const$<$T$>$\+:\+:is\+Const
+ \}\label{classLoki_1_1TypeTraits_a662c9846ed0942bc181801f0926244b5}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_aa778e88c413af7b508cd4d4217529490}{}enum \{ {\bfseries is\+Volatile} = Un\+Volatile$<$T$>$\+:\+:is\+Volatile
+ \}\label{classLoki_1_1TypeTraits_aa778e88c413af7b508cd4d4217529490}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_a2b95b90f3a26704a686dd22126017baf}{}enum \{ {\bfseries is\+Reference} = Reference\+Traits$<$Unqualified\+Type$>$\+:\+:result
+ \}\label{classLoki_1_1TypeTraits_a2b95b90f3a26704a686dd22126017baf}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_a4bb54f0dedd1a2ce43e240552687f553}{}enum \{ {\bfseries is\+Function} = Function\+Pointer\+Traits$<$typename Private\+:\+:Add\+Pointer$<$T$>$\+:\+:Result $>$\+:\+:result
+ \}\label{classLoki_1_1TypeTraits_a4bb54f0dedd1a2ce43e240552687f553}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_a1d40c8797c42bf5bf2f3378f4dbd3b6b}{}enum \{ {\bfseries is\+Function\+Pointer}
+ \}\label{classLoki_1_1TypeTraits_a1d40c8797c42bf5bf2f3378f4dbd3b6b}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_a3c67d4745a6f5d37467fa7c60649f85a}{}enum \{ {\bfseries is\+Member\+Function\+Pointer}
+ \}\label{classLoki_1_1TypeTraits_a3c67d4745a6f5d37467fa7c60649f85a}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_ab214f27f0c5779266753bf98ee33ac0e}{}enum \{ {\bfseries is\+Member\+Pointer}
+ \}\label{classLoki_1_1TypeTraits_ab214f27f0c5779266753bf98ee33ac0e}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_a8fcb7ccb829176f25de6b56d1a7421a3}{}enum \{ {\bfseries is\+Pointer}
+ \}\label{classLoki_1_1TypeTraits_a8fcb7ccb829176f25de6b56d1a7421a3}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_a7f7f9921f22096915f6e6edda7368ecb}{}enum \{ {\bfseries is\+Std\+Unsigned\+Int}, 
+{\bfseries value} = 0
+ \}\label{classLoki_1_1TypeTraits_a7f7f9921f22096915f6e6edda7368ecb}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_adde865d5cb77e0fa59d9e5bb4dc86333}{}enum \{ {\bfseries is\+Std\+Signed\+Int}, 
+{\bfseries value} = 0
+ \}\label{classLoki_1_1TypeTraits_adde865d5cb77e0fa59d9e5bb4dc86333}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_aab01f465461e78464b7c34a5e4508a90}{}enum \{ {\bfseries is\+Std\+Integral}, 
+{\bfseries value} = 0
+ \}\label{classLoki_1_1TypeTraits_aab01f465461e78464b7c34a5e4508a90}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_aad6167968c8814afe5cde260f805b826}{}enum \{ {\bfseries is\+Std\+Float}, 
+{\bfseries value} = 0
+ \}\label{classLoki_1_1TypeTraits_aad6167968c8814afe5cde260f805b826}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_ac9ddcecafb80668b5bb37faee6e59fce}{}enum \{ {\bfseries is\+Std\+Arith} = is\+Std\+Integral $\vert$$\vert$ is\+Std\+Float
+ \}\label{classLoki_1_1TypeTraits_ac9ddcecafb80668b5bb37faee6e59fce}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_a28c8b68baf2c7ea811bf931987b87d41}{}enum \{ {\bfseries is\+Std\+Fundamental} = is\+Std\+Arith $\vert$$\vert$ is\+Std\+Float $\vert$$\vert$ Conversion$<$T, void$>$\+:\+:same\+Type
+ \}\label{classLoki_1_1TypeTraits_a28c8b68baf2c7ea811bf931987b87d41}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_aa8316623d4ebdba7517cc0c20debbcdb}{}enum \{ {\bfseries is\+Unsigned\+Int} = is\+Std\+Unsigned\+Int $\vert$$\vert$ Is\+Custom\+Unsigned\+Int$<$Unqualified\+Type$>$\+:\+:value
+ \}\label{classLoki_1_1TypeTraits_aa8316623d4ebdba7517cc0c20debbcdb}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_a71abd0e04dad19b4f776ad0a937833e5}{}enum \{ {\bfseries is\+Signed\+Int} = is\+Std\+Signed\+Int $\vert$$\vert$ Is\+Custom\+Signed\+Int$<$Unqualified\+Type$>$\+:\+:value
+ \}\label{classLoki_1_1TypeTraits_a71abd0e04dad19b4f776ad0a937833e5}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_a622c18c8a4eee89a29bf8fdbace8f499}{}enum \{ {\bfseries is\+Integral} = is\+Std\+Integral $\vert$$\vert$ is\+Unsigned\+Int $\vert$$\vert$ is\+Signed\+Int
+ \}\label{classLoki_1_1TypeTraits_a622c18c8a4eee89a29bf8fdbace8f499}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_a9c315e1a3040970d62dce73bc9698022}{}enum \{ {\bfseries is\+Float} = is\+Std\+Float $\vert$$\vert$ Is\+Custom\+Float$<$Unqualified\+Type$>$\+:\+:value
+ \}\label{classLoki_1_1TypeTraits_a9c315e1a3040970d62dce73bc9698022}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_a428ec5c2970b79366afedd79576280fd}{}enum \{ {\bfseries is\+Arith} = is\+Integral $\vert$$\vert$ is\+Float
+ \}\label{classLoki_1_1TypeTraits_a428ec5c2970b79366afedd79576280fd}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_a6f40b5a4b8ac6f57195241b6fd175fa6}{}enum \{ {\bfseries is\+Fundamental} = is\+Std\+Fundamental $\vert$$\vert$ is\+Arith
+ \}\label{classLoki_1_1TypeTraits_a6f40b5a4b8ac6f57195241b6fd175fa6}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_ad249cd5af1b44aaffa03b64ef3159379}{}typedef Un\+Const$<$ T $>$\+::Result {\bfseries Non\+Const\+Type}\label{classLoki_1_1TypeTraits_ad249cd5af1b44aaffa03b64ef3159379}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_a9f2171e886c8f6c9a048dc71b2c4cb45}{}typedef Un\+Volatile$<$ T $>$\+::Result {\bfseries Non\+Volatile\+Type}\label{classLoki_1_1TypeTraits_a9f2171e886c8f6c9a048dc71b2c4cb45}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_ab4a0da265760a5ca751f965eb3f2429b}{}typedef Un\+Volatile$<$ typename Un\+Const$<$ T $>$\+::Result $>$\+::Result {\bfseries Unqualified\+Type}\label{classLoki_1_1TypeTraits_ab4a0da265760a5ca751f965eb3f2429b}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_aefb4a0c695c324c399c5d48be57a9ea7}{}typedef Pointer\+Traits$<$ Unqualified\+Type $>$\+::\hyperlink{classLoki_1_1NullType}{Pointee\+Type} {\bfseries Pointee\+Type}\label{classLoki_1_1TypeTraits_aefb4a0c695c324c399c5d48be57a9ea7}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_ab1701f60e9aef13d81b6106d3c2bd541}{}typedef Reference\+Traits$<$ T $>$\+::Referred\+Type {\bfseries Referred\+Type}\label{classLoki_1_1TypeTraits_ab1701f60e9aef13d81b6106d3c2bd541}
+
+\item 
+\hypertarget{classLoki_1_1TypeTraits_a9f5d013df6ba95116d60b3da002beb4c}{}typedef \hyperlink{structLoki_1_1Select}{Select}$<$ is\+Std\+Arith$\vert$$\vert$is\+Pointer$\vert$$\vert$is\+Member\+Pointer, T, typename \hyperlink{structLoki_1_1Private_1_1AddParameterType}{Private\+::\+Add\+Parameter\+Type}$<$ T $>$\+::Result $>$\+::Result {\bfseries Parameter\+Type}\label{classLoki_1_1TypeTraits_a9f5d013df6ba95116d60b3da002beb4c}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Type\+Traits.\+h\end{DoxyCompactItemize}

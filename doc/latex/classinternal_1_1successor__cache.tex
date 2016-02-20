@@ -1,0 +1,72 @@
+\hypertarget{classinternal_1_1successor__cache}{}\section{internal\+:\+:successor\+\_\+cache$<$ T, M $>$ Class Template Reference}
+\label{classinternal_1_1successor__cache}\index{internal\+::successor\+\_\+cache$<$ T, M $>$@{internal\+::successor\+\_\+cache$<$ T, M $>$}}
+
+
+An abstract cache of successors.  
+
+
+
+
+{\ttfamily \#include $<$\+\_\+flow\+\_\+graph\+\_\+impl.\+h$>$}
+
+Inheritance diagram for internal\+:\+:successor\+\_\+cache$<$ T, M $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classinternal_1_1successor__cache}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1successor__cache_a974175c5639f94a7b57a2252b1623638}{}void {\bfseries set\+\_\+owner} (sender$<$ T $>$ $\ast$owner)\label{classinternal_1_1successor__cache_a974175c5639f94a7b57a2252b1623638}
+
+\item 
+\hypertarget{classinternal_1_1successor__cache_a9049807304fce490951d99945d6efc2f}{}void {\bfseries register\+\_\+successor} (receiver$<$ T $>$ \&r)\label{classinternal_1_1successor__cache_a9049807304fce490951d99945d6efc2f}
+
+\item 
+\hypertarget{classinternal_1_1successor__cache_af650b5673bad38008e1b81025999b752}{}void {\bfseries remove\+\_\+successor} (receiver$<$ T $>$ \&r)\label{classinternal_1_1successor__cache_af650b5673bad38008e1b81025999b752}
+
+\item 
+\hypertarget{classinternal_1_1successor__cache_ad8d68ac73eab5664ea6d1828eabab01a}{}bool {\bfseries empty} ()\label{classinternal_1_1successor__cache_ad8d68ac73eab5664ea6d1828eabab01a}
+
+\item 
+\hypertarget{classinternal_1_1successor__cache_a2a255683901a7e2b906bb7bf993efd3b}{}void {\bfseries clear} ()\label{classinternal_1_1successor__cache_a2a255683901a7e2b906bb7bf993efd3b}
+
+\item 
+\hypertarget{classinternal_1_1successor__cache_a93bb30d47c80702ad37455c8aaf7f346}{}virtual task $\ast$ {\bfseries try\+\_\+put\+\_\+task} (const T \&t)=0\label{classinternal_1_1successor__cache_a93bb30d47c80702ad37455c8aaf7f346}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1successor__cache_ab46c5d25a36903bb97dbd0450eaa9495}{}typedef M {\bfseries my\+\_\+mutex\+\_\+type}\label{classinternal_1_1successor__cache_ab46c5d25a36903bb97dbd0450eaa9495}
+
+\item 
+\hypertarget{classinternal_1_1successor__cache_a3053a64a1c19be55d20c44c729244e46}{}typedef receiver$<$ T $>$ $\ast$ {\bfseries pointer\+\_\+type}\label{classinternal_1_1successor__cache_a3053a64a1c19be55d20c44c729244e46}
+
+\item 
+\hypertarget{classinternal_1_1successor__cache_af39288ec23c78d9f3c5dd9ca42d156dc}{}typedef std\+::list$<$ pointer\+\_\+type $>$ {\bfseries my\+\_\+successors\+\_\+type}\label{classinternal_1_1successor__cache_af39288ec23c78d9f3c5dd9ca42d156dc}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1successor__cache_ab22e6f9a98ca50cc7a396e10341cbbbe}{}my\+\_\+mutex\+\_\+type {\bfseries my\+\_\+mutex}\label{classinternal_1_1successor__cache_ab22e6f9a98ca50cc7a396e10341cbbbe}
+
+\item 
+\hypertarget{classinternal_1_1successor__cache_a25f3f7c05554692fc45302da6a3c1a61}{}my\+\_\+successors\+\_\+type {\bfseries my\+\_\+successors}\label{classinternal_1_1successor__cache_a25f3f7c05554692fc45302da6a3c1a61}
+
+\item 
+\hypertarget{classinternal_1_1successor__cache_a8da00c2a5c270dfc7c51bfc010df8bab}{}sender$<$ T $>$ $\ast$ {\bfseries my\+\_\+owner}\label{classinternal_1_1successor__cache_a8da00c2a5c270dfc7c51bfc010df8bab}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename M = spin\+\_\+rw\+\_\+mutex$>$class internal\+::successor\+\_\+cache$<$ T, M $>$}
+
+An abstract cache of successors. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/internal/\+\_\+flow\+\_\+graph\+\_\+impl.\+h\end{DoxyCompactItemize}

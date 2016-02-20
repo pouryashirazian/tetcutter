@@ -1,0 +1,74 @@
+\hypertarget{classtbb_1_1blocked__range3d}{}\section{tbb\+:\+:blocked\+\_\+range3d$<$ Page\+Value, Row\+Value, Col\+Value $>$ Class Template Reference}
+\label{classtbb_1_1blocked__range3d}\index{tbb\+::blocked\+\_\+range3d$<$ Page\+Value, Row\+Value, Col\+Value $>$@{tbb\+::blocked\+\_\+range3d$<$ Page\+Value, Row\+Value, Col\+Value $>$}}
+
+
+\hyperlink{structA}{A} 3-\/dimensional range that models the Range concept.  
+
+
+
+
+{\ttfamily \#include $<$blocked\+\_\+range3d.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1blocked__range3d_a8cdc866378a12ce198da870d0439676f}{}typedef \hyperlink{classtbb_1_1blocked__range}{blocked\+\_\+range}$<$ Page\+Value $>$ \hyperlink{classtbb_1_1blocked__range3d_a8cdc866378a12ce198da870d0439676f}{page\+\_\+range\+\_\+type}\label{classtbb_1_1blocked__range3d_a8cdc866378a12ce198da870d0439676f}
+
+\begin{DoxyCompactList}\small\item\em Type for size of an iteration range. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1blocked__range3d_abe15e1e06f47809a477272f733a8abf8}{}typedef \hyperlink{classtbb_1_1blocked__range}{blocked\+\_\+range}$<$ Row\+Value $>$ {\bfseries row\+\_\+range\+\_\+type}\label{classtbb_1_1blocked__range3d_abe15e1e06f47809a477272f733a8abf8}
+
+\item 
+\hypertarget{classtbb_1_1blocked__range3d_ab3bffd5ffb14ad9897b1a9bf22980768}{}typedef \hyperlink{classtbb_1_1blocked__range}{blocked\+\_\+range}$<$ Col\+Value $>$ {\bfseries col\+\_\+range\+\_\+type}\label{classtbb_1_1blocked__range3d_ab3bffd5ffb14ad9897b1a9bf22980768}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1blocked__range3d_aa5159e07e2d601319eece538edb8add0}{}{\bfseries blocked\+\_\+range3d} (Page\+Value page\+\_\+begin, Page\+Value page\+\_\+end, Row\+Value row\+\_\+begin, Row\+Value row\+\_\+end, Col\+Value col\+\_\+begin, Col\+Value col\+\_\+end)\label{classtbb_1_1blocked__range3d_aa5159e07e2d601319eece538edb8add0}
+
+\item 
+\hypertarget{classtbb_1_1blocked__range3d_a671a22033260fa02734c5a1113dcf1ac}{}{\bfseries blocked\+\_\+range3d} (Page\+Value page\+\_\+begin, Page\+Value page\+\_\+end, typename \hyperlink{classtbb_1_1blocked__range_a89b300cecd9d617e4ee801c786756e55}{page\+\_\+range\+\_\+type\+::size\+\_\+type} page\+\_\+grainsize, Row\+Value row\+\_\+begin, Row\+Value row\+\_\+end, typename \hyperlink{classtbb_1_1blocked__range_a89b300cecd9d617e4ee801c786756e55}{row\+\_\+range\+\_\+type\+::size\+\_\+type} row\+\_\+grainsize, Col\+Value col\+\_\+begin, Col\+Value col\+\_\+end, typename \hyperlink{classtbb_1_1blocked__range_a89b300cecd9d617e4ee801c786756e55}{col\+\_\+range\+\_\+type\+::size\+\_\+type} col\+\_\+grainsize)\label{classtbb_1_1blocked__range3d_a671a22033260fa02734c5a1113dcf1ac}
+
+\item 
+\hypertarget{classtbb_1_1blocked__range3d_aea992e0cd3d105f964a633b1a0a1a05f}{}bool \hyperlink{classtbb_1_1blocked__range3d_aea992e0cd3d105f964a633b1a0a1a05f}{empty} () const \label{classtbb_1_1blocked__range3d_aea992e0cd3d105f964a633b1a0a1a05f}
+
+\begin{DoxyCompactList}\small\item\em True if range is empty. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1blocked__range3d_a0fce6bcae6269c37623c3a2cdbb8bcf0}{}bool \hyperlink{classtbb_1_1blocked__range3d_a0fce6bcae6269c37623c3a2cdbb8bcf0}{is\+\_\+divisible} () const \label{classtbb_1_1blocked__range3d_a0fce6bcae6269c37623c3a2cdbb8bcf0}
+
+\begin{DoxyCompactList}\small\item\em True if range is divisible into two pieces. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1blocked__range3d_a788ebedfb4a2eaa4bee11c2c967e0768}{}{\bfseries blocked\+\_\+range3d} (\hyperlink{classtbb_1_1blocked__range3d}{blocked\+\_\+range3d} \&r, split)\label{classtbb_1_1blocked__range3d_a788ebedfb4a2eaa4bee11c2c967e0768}
+
+\item 
+\hypertarget{classtbb_1_1blocked__range3d_a0e5fdb794ec7bfc5f21a59ddd466d8e0}{}{\bfseries blocked\+\_\+range3d} (\hyperlink{classtbb_1_1blocked__range3d}{blocked\+\_\+range3d} \&r, proportional\+\_\+split \&proportion)\label{classtbb_1_1blocked__range3d_a0e5fdb794ec7bfc5f21a59ddd466d8e0}
+
+\item 
+\hypertarget{classtbb_1_1blocked__range3d_ac83b305fb6dc5da50a4f6c4fdb551654}{}{\footnotesize template$<$typename Split $>$ }\\void {\bfseries do\+\_\+split} (\hyperlink{classtbb_1_1blocked__range3d}{blocked\+\_\+range3d} \&r, Split \&split\+\_\+obj)\label{classtbb_1_1blocked__range3d_ac83b305fb6dc5da50a4f6c4fdb551654}
+
+\item 
+\hypertarget{classtbb_1_1blocked__range3d_a5b794fd53ba92106aeafa4eed85731d4}{}const \hyperlink{classtbb_1_1blocked__range3d_a8cdc866378a12ce198da870d0439676f}{page\+\_\+range\+\_\+type} \& \hyperlink{classtbb_1_1blocked__range3d_a5b794fd53ba92106aeafa4eed85731d4}{pages} () const \label{classtbb_1_1blocked__range3d_a5b794fd53ba92106aeafa4eed85731d4}
+
+\begin{DoxyCompactList}\small\item\em The pages of the iteration space. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1blocked__range3d_aeac1def585af81467573f30ebb42cb4f}{}const \hyperlink{classtbb_1_1blocked__range}{row\+\_\+range\+\_\+type} \& \hyperlink{classtbb_1_1blocked__range3d_aeac1def585af81467573f30ebb42cb4f}{rows} () const \label{classtbb_1_1blocked__range3d_aeac1def585af81467573f30ebb42cb4f}
+
+\begin{DoxyCompactList}\small\item\em The rows of the iteration space. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1blocked__range3d_a308d7089a1d53ff26770a7040ed817cd}{}const \hyperlink{classtbb_1_1blocked__range}{col\+\_\+range\+\_\+type} \& \hyperlink{classtbb_1_1blocked__range3d_a308d7089a1d53ff26770a7040ed817cd}{cols} () const \label{classtbb_1_1blocked__range3d_a308d7089a1d53ff26770a7040ed817cd}
+
+\begin{DoxyCompactList}\small\item\em The columns of the iteration space. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1blocked__range3d_a5940c1bd6ba0e8184ef83dea0ae56884}{}static const bool \hyperlink{classtbb_1_1blocked__range3d_a5940c1bd6ba0e8184ef83dea0ae56884}{is\+\_\+splittable\+\_\+in\+\_\+proportion} = true\label{classtbb_1_1blocked__range3d_a5940c1bd6ba0e8184ef83dea0ae56884}
+
+\begin{DoxyCompactList}\small\item\em Static field to support proportional split. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Page\+Value, typename Row\+Value = Page\+Value, typename Col\+Value = Row\+Value$>$class tbb\+::blocked\+\_\+range3d$<$ Page\+Value, Row\+Value, Col\+Value $>$}
+
+\hyperlink{structA}{A} 3-\/dimensional range that models the Range concept. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/blocked\+\_\+range3d.\+h\end{DoxyCompactItemize}

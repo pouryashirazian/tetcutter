@@ -1,0 +1,89 @@
+\hypertarget{structThread}{}\section{Thread Class Reference}
+\label{structThread}\index{Thread@{Thread}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structThread_a8ede7df4c0d779fa21d1c66809ed8ba4}{}enum {\bfseries Status} \{ {\bfseries Dead} = 0, 
+{\bfseries Idle}, 
+{\bfseries Starting}, 
+{\bfseries Active}
+ \}\label{structThread_a8ede7df4c0d779fa21d1c66809ed8ba4}
+
+\item 
+\hypertarget{structThread_ab87d2aa8cc76167c2895f953bf412c70}{}typedef void $\ast$($\ast$ {\bfseries Call\+Function}) (void $\ast$)\label{structThread_ab87d2aa8cc76167c2895f953bf412c70}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structThread_afe5d05dac33d85530c7227592e85f2a5}{}bool {\bfseries Wait\+For\+Thread} (void) volatile\label{structThread_afe5d05dac33d85530c7227592e85f2a5}
+
+\item 
+\hypertarget{structThread_a566a2f7d6c00545f798a07128e32b781}{}Call\+Function {\bfseries Get\+Function} (void) const  volatile\label{structThread_a566a2f7d6c00545f798a07128e32b781}
+
+\item 
+\hypertarget{structThread_aa7e8fe968e580f70d9f72718e62913f9}{}void $\ast$ {\bfseries Get\+Parameter} (void) const  volatile\label{structThread_aa7e8fe968e580f70d9f72718e62913f9}
+
+\item 
+\hypertarget{structThread_a1eafba8f9ae6fdd94beee19edcf46e63}{}Status {\bfseries Get\+Status} (void) const  volatile\label{structThread_a1eafba8f9ae6fdd94beee19edcf46e63}
+
+\item 
+\hypertarget{structThread_af54b14ab505a11f515098acc20f5a2c6}{}const volatile \hyperlink{classThreadPool}{Thread\+Pool} $\ast$ {\bfseries Get\+Thread\+Pool} (void) const  volatile\label{structThread_af54b14ab505a11f515098acc20f5a2c6}
+
+\item 
+\hypertarget{structThread_ac32b85da1c59215ce291fdfdfa7481fe}{}volatile \hyperlink{classThreadPool}{Thread\+Pool} $\ast$ {\bfseries Get\+Thread\+Pool} (void) volatile\label{structThread_ac32b85da1c59215ce291fdfdfa7481fe}
+
+\item 
+\hypertarget{structThread_a1e50fa37e9eeda392bd9dc1c289d4a38}{}{\bfseries Thread} (Call\+Function func, void $\ast$parm)\label{structThread_a1e50fa37e9eeda392bd9dc1c289d4a38}
+
+\item 
+\hypertarget{structThread_a2fd01e8ca79c06a4505a6c4265bb1b3d}{}void {\bfseries Assign\+Task} (Call\+Function func, void $\ast$parm)\label{structThread_a2fd01e8ca79c06a4505a6c4265bb1b3d}
+
+\item 
+\hypertarget{structThread_a015734e2c5e94d78f27e485761a0912d}{}int {\bfseries Start} (void)\label{structThread_a015734e2c5e94d78f27e485761a0912d}
+
+\item 
+\hypertarget{structThread_a30fd271ad59d139fbb27f9c6ed42ff3a}{}int {\bfseries Wait\+For\+Thread} (void) const \label{structThread_a30fd271ad59d139fbb27f9c6ed42ff3a}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structThread_ab4a44c85ae6f3bf9703f5c4b540e74e9}{}static volatile \hyperlink{structThread}{Thread} $\ast$ {\bfseries Get\+Current\+Thread} (void)\label{structThread_ab4a44c85ae6f3bf9703f5c4b540e74e9}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structThread_a82a769d99f3c6c79b0f7e3f4fef31507}{}\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{G\+L\+F\+Wwindow} $\ast$ {\bfseries window}\label{structThread_a82a769d99f3c6c79b0f7e3f4fef31507}
+
+\item 
+\hypertarget{structThread_ab096b75dd1b840357dbc6ab584769aec}{}const char $\ast$ {\bfseries title}\label{structThread_ab096b75dd1b840357dbc6ab584769aec}
+
+\item 
+\hypertarget{structThread_a4378ca1b75c7424b00ae13f6f5d4c9e4}{}float {\bfseries r}\label{structThread_a4378ca1b75c7424b00ae13f6f5d4c9e4}
+
+\item 
+\hypertarget{structThread_aca5efe10d7cf224c065a76143f8c3f4e}{}float {\bfseries g}\label{structThread_aca5efe10d7cf224c065a76143f8c3f4e}
+
+\item 
+\hypertarget{structThread_a8fde7e82a29718b6d02c5dec160e5860}{}float {\bfseries b}\label{structThread_a8fde7e82a29718b6d02c5dec160e5860}
+
+\item 
+\hypertarget{structThread_a7240a3c3cd6343f6a9d6078b6bae6946}{}thrd\+\_\+t {\bfseries id}\label{structThread_a7240a3c3cd6343f6a9d6078b6bae6946}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structThread_a5d97748be7d69dcc44ef551ea35ef20f}{}class {\bfseries Thread\+Pool}\label{structThread_a5d97748be7d69dcc44ef551ea35ef20f}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/glfw-\/3.\+1.\+2/tests/threads.\+c\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/test/\+Smart\+Ptr/Lock\+Test.\+cpp\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/test/\+Level\+Mutex/Thread\+Pool.\+hpp\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/test/\+Level\+Mutex/Thread\+Pool.\+cpp\end{DoxyCompactItemize}

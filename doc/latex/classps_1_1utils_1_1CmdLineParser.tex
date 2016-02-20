@@ -1,0 +1,99 @@
+\hypertarget{classps_1_1utils_1_1CmdLineParser}{}\section{ps\+:\+:utils\+:\+:Cmd\+Line\+Parser Class Reference}
+\label{classps_1_1utils_1_1CmdLineParser}\index{ps\+::utils\+::\+Cmd\+Line\+Parser@{ps\+::utils\+::\+Cmd\+Line\+Parser}}
+
+
+{\ttfamily \#include $<$cmdlineparser.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classps_1_1utils_1_1CmdLineParser_1_1CmdSwitch}{Cmd\+Switch}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1utils_1_1CmdLineParser_a8167a43fc6b93e49aab170cc7189397d}{}bool {\bfseries add\+Switch} (const \hyperlink{classps_1_1utils_1_1CmdLineParser_1_1CmdSwitch}{Cmd\+Switch} \&s)\label{classps_1_1utils_1_1CmdLineParser_a8167a43fc6b93e49aab170cc7189397d}
+
+\item 
+\hypertarget{classps_1_1utils_1_1CmdLineParser_a97a17c25f257570a3d316cd5f5f48f01}{}bool {\bfseries add\+Switch} (const string \&name, const string \&shortcut, const string \&desc, const string \&default\+\_\+value=\char`\"{}\char`\"{}, bool istoggle=false)\label{classps_1_1utils_1_1CmdLineParser_a97a17c25f257570a3d316cd5f5f48f01}
+
+\item 
+bool \hyperlink{classps_1_1utils_1_1CmdLineParser_a20bf5b0d5bc797ccad37a08b7cca7a26}{set\+Default\+Key} (const char $\ast$key)
+\item 
+int \hyperlink{classps_1_1utils_1_1CmdLineParser_a3f665b3b1bde8f417809648d70390845}{parse} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\item 
+string \hyperlink{classps_1_1utils_1_1CmdLineParser_a5c39ac73b9ee3d312bef0f10db488cfb}{value} (const char $\ast$key)
+\item 
+\hypertarget{classps_1_1utils_1_1CmdLineParser_ae373b5a0d156b2a647c89fb98c68ed56}{}int {\bfseries value\+\_\+to\+\_\+int} (const char $\ast$key)\label{classps_1_1utils_1_1CmdLineParser_ae373b5a0d156b2a647c89fb98c68ed56}
+
+\item 
+\hypertarget{classps_1_1utils_1_1CmdLineParser_a925522c8f2711bf58dfca23125e37e9b}{}double {\bfseries value\+\_\+to\+\_\+double} (const char $\ast$key)\label{classps_1_1utils_1_1CmdLineParser_a925522c8f2711bf58dfca23125e37e9b}
+
+\item 
+bool \hyperlink{classps_1_1utils_1_1CmdLineParser_a4254b2a2312b6b6335cc8cb44dd185f1}{is\+Valid} (const char $\ast$key)
+\item 
+virtual void \hyperlink{classps_1_1utils_1_1CmdLineParser_a8619d5088b9532cc530198922f9bd253}{print\+Help} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classps_1_1utils_1_1CmdLineParser_1_1CmdSwitch}{Cmd\+Switch} $\ast$ \hyperlink{classps_1_1utils_1_1CmdLineParser_a2bd240e1eef347a201c955a50cc64dac}{get\+Cmd\+Switch} (const char $\ast$key)
+\item 
+\hypertarget{classps_1_1utils_1_1CmdLineParser_a6654e4f9d241476fe0ec62bd92ca71a8}{}bool {\bfseries token\+\_\+to\+\_\+fullkeyname} (const string \&token, string \&fullkey)\label{classps_1_1utils_1_1CmdLineParser_a6654e4f9d241476fe0ec62bd92ca71a8}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Synopsis\+: 1.\+Parses the command line passed in from the user and stores all enabled system options. 2.\+Prints help for the user if an option is not valid. 3.\+Stores options and provides a mechanism to read those options 
+
+\subsection{Member Function Documentation}
+\hypertarget{classps_1_1utils_1_1CmdLineParser_a2bd240e1eef347a201c955a50cc64dac}{}\index{ps\+::utils\+::\+Cmd\+Line\+Parser@{ps\+::utils\+::\+Cmd\+Line\+Parser}!get\+Cmd\+Switch@{get\+Cmd\+Switch}}
+\index{get\+Cmd\+Switch@{get\+Cmd\+Switch}!ps\+::utils\+::\+Cmd\+Line\+Parser@{ps\+::utils\+::\+Cmd\+Line\+Parser}}
+\subsubsection[{get\+Cmd\+Switch(const char $\ast$key)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Cmd\+Line\+Parser\+::\+Cmd\+Switch} $\ast$ ps\+::utils\+::\+Cmd\+Line\+Parser\+::get\+Cmd\+Switch (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{classps_1_1utils_1_1CmdLineParser_a2bd240e1eef347a201c955a50cc64dac}
+Retrieve command switch \hypertarget{classps_1_1utils_1_1CmdLineParser_a4254b2a2312b6b6335cc8cb44dd185f1}{}\index{ps\+::utils\+::\+Cmd\+Line\+Parser@{ps\+::utils\+::\+Cmd\+Line\+Parser}!is\+Valid@{is\+Valid}}
+\index{is\+Valid@{is\+Valid}!ps\+::utils\+::\+Cmd\+Line\+Parser@{ps\+::utils\+::\+Cmd\+Line\+Parser}}
+\subsubsection[{is\+Valid(const char $\ast$key)}]{\setlength{\rightskip}{0pt plus 5cm}bool ps\+::utils\+::\+Cmd\+Line\+Parser\+::is\+Valid (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\label{classps_1_1utils_1_1CmdLineParser_a4254b2a2312b6b6335cc8cb44dd185f1}
+Returns true if a valid value is supplied by user \hypertarget{classps_1_1utils_1_1CmdLineParser_a3f665b3b1bde8f417809648d70390845}{}\index{ps\+::utils\+::\+Cmd\+Line\+Parser@{ps\+::utils\+::\+Cmd\+Line\+Parser}!parse@{parse}}
+\index{parse@{parse}!ps\+::utils\+::\+Cmd\+Line\+Parser@{ps\+::utils\+::\+Cmd\+Line\+Parser}}
+\subsubsection[{parse(int argc, char $\ast$argv[])}]{\setlength{\rightskip}{0pt plus 5cm}int ps\+::utils\+::\+Cmd\+Line\+Parser\+::parse (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\label{classps_1_1utils_1_1CmdLineParser_a3f665b3b1bde8f417809648d70390845}
+parse and store command line \hypertarget{classps_1_1utils_1_1CmdLineParser_a8619d5088b9532cc530198922f9bd253}{}\index{ps\+::utils\+::\+Cmd\+Line\+Parser@{ps\+::utils\+::\+Cmd\+Line\+Parser}!print\+Help@{print\+Help}}
+\index{print\+Help@{print\+Help}!ps\+::utils\+::\+Cmd\+Line\+Parser@{ps\+::utils\+::\+Cmd\+Line\+Parser}}
+\subsubsection[{print\+Help()}]{\setlength{\rightskip}{0pt plus 5cm}void ps\+::utils\+::\+Cmd\+Line\+Parser\+::print\+Help (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classps_1_1utils_1_1CmdLineParser_a8619d5088b9532cc530198922f9bd253}
+prints the help menu in case the options are not correct. \hypertarget{classps_1_1utils_1_1CmdLineParser_a20bf5b0d5bc797ccad37a08b7cca7a26}{}\index{ps\+::utils\+::\+Cmd\+Line\+Parser@{ps\+::utils\+::\+Cmd\+Line\+Parser}!set\+Default\+Key@{set\+Default\+Key}}
+\index{set\+Default\+Key@{set\+Default\+Key}!ps\+::utils\+::\+Cmd\+Line\+Parser@{ps\+::utils\+::\+Cmd\+Line\+Parser}}
+\subsubsection[{set\+Default\+Key(const char $\ast$key)}]{\setlength{\rightskip}{0pt plus 5cm}bool ps\+::utils\+::\+Cmd\+Line\+Parser\+::set\+Default\+Key (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\label{classps_1_1utils_1_1CmdLineParser_a20bf5b0d5bc797ccad37a08b7cca7a26}
+sets default key to be able to read a 2 argumented call \hypertarget{classps_1_1utils_1_1CmdLineParser_a5c39ac73b9ee3d312bef0f10db488cfb}{}\index{ps\+::utils\+::\+Cmd\+Line\+Parser@{ps\+::utils\+::\+Cmd\+Line\+Parser}!value@{value}}
+\index{value@{value}!ps\+::utils\+::\+Cmd\+Line\+Parser@{ps\+::utils\+::\+Cmd\+Line\+Parser}}
+\subsubsection[{value(const char $\ast$key)}]{\setlength{\rightskip}{0pt plus 5cm}string ps\+::utils\+::\+Cmd\+Line\+Parser\+::value (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\label{classps_1_1utils_1_1CmdLineParser_a5c39ac73b9ee3d312bef0f10db488cfb}
+retrieve value using a key 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/base/cmdlineparser.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/base/cmdlineparser.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,48 @@
+\hypertarget{classLoki_1_1Pimpl}{}\section{Loki\+:\+:Pimpl$<$ T, Pointer $>$ Class Template Reference}
+\label{classLoki_1_1Pimpl}\index{Loki\+::\+Pimpl$<$ T, Pointer $>$@{Loki\+::\+Pimpl$<$ T, Pointer $>$}}
+
+
+{\ttfamily \#include $<$Pimpl.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1Pimpl_a6ef8111d61b6d3709d8115d8178c8549}{}typedef T {\bfseries Impl}\label{classLoki_1_1Pimpl_a6ef8111d61b6d3709d8115d8178c8549}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1Pimpl_aa954861b02538f823fa9c63dbe62f096}{}T $\ast$ {\bfseries operator-\/$>$} ()\label{classLoki_1_1Pimpl_aa954861b02538f823fa9c63dbe62f096}
+
+\item 
+\hypertarget{classLoki_1_1Pimpl_a2db5a89ac069f09042f17d5c9109fc43}{}T \& {\bfseries operator$\ast$} ()\label{classLoki_1_1Pimpl_a2db5a89ac069f09042f17d5c9109fc43}
+
+\item 
+\hypertarget{classLoki_1_1Pimpl_ac1345d40155cb9979741521a9c95282d}{}const T $\ast$ {\bfseries operator-\/$>$} () const \label{classLoki_1_1Pimpl_ac1345d40155cb9979741521a9c95282d}
+
+\item 
+\hypertarget{classLoki_1_1Pimpl_a4117838ba4777b52e717a4155404ea2d}{}const T \& {\bfseries operator$\ast$} () const \label{classLoki_1_1Pimpl_a4117838ba4777b52e717a4155404ea2d}
+
+\item 
+\hypertarget{classLoki_1_1Pimpl_ae4887f38f36feeb25cf1d9ed5e253a45}{}Pointer \& {\bfseries wrapped} ()\label{classLoki_1_1Pimpl_ae4887f38f36feeb25cf1d9ed5e253a45}
+
+\item 
+\hypertarget{classLoki_1_1Pimpl_a9ff98a6a8645f7e79055fe3a39e4f3cb}{}const Pointer \& {\bfseries wrapped} () const \label{classLoki_1_1Pimpl_a9ff98a6a8645f7e79055fe3a39e4f3cb}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T, typename Pointer = Const\+Prop\+Ptr$<$\+T$>$$>$class Loki\+::\+Pimpl$<$ T, Pointer $>$}
+
+Implements the \hyperlink{classLoki_1_1Pimpl}{Pimpl} idiom. It\textquotesingle{}s a wrapper for a smart pointer which automatically creates and deletes the implementation object and adds const propagation to the smart pointer.
+
+\begin{DoxyParagraph}{Usage}
+see test/\+Pimpl 
+\end{DoxyParagraph}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Pimpl.\+h\end{DoxyCompactItemize}

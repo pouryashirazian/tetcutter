@@ -1,0 +1,57 @@
+\hypertarget{classtbb_1_1queuing__rw__mutex}{}\section{tbb\+:\+:queuing\+\_\+rw\+\_\+mutex Class Reference}
+\label{classtbb_1_1queuing__rw__mutex}\index{tbb\+::queuing\+\_\+rw\+\_\+mutex@{tbb\+::queuing\+\_\+rw\+\_\+mutex}}
+
+
+Queuing reader-\/writer mutex with local-\/only spinning.  
+
+
+
+
+{\ttfamily \#include $<$queuing\+\_\+rw\+\_\+mutex.\+h$>$}
+
+Inheritance diagram for tbb\+:\+:queuing\+\_\+rw\+\_\+mutex\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classtbb_1_1queuing__rw__mutex}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classtbb_1_1queuing__rw__mutex_1_1scoped__lock}{scoped\+\_\+lock}
+\begin{DoxyCompactList}\small\item\em The scoped locking pattern. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1queuing__rw__mutex_a23de1ac415b6f54b778c8fd6ec6073e0}{}\hyperlink{classtbb_1_1queuing__rw__mutex_a23de1ac415b6f54b778c8fd6ec6073e0}{queuing\+\_\+rw\+\_\+mutex} ()\label{classtbb_1_1queuing__rw__mutex_a23de1ac415b6f54b778c8fd6ec6073e0}
+
+\begin{DoxyCompactList}\small\item\em Construct unacquired mutex. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1queuing__rw__mutex_ae67fe828d7e07222e7876ef9fd780fcc}{}\hyperlink{classtbb_1_1queuing__rw__mutex_ae67fe828d7e07222e7876ef9fd780fcc}{$\sim$queuing\+\_\+rw\+\_\+mutex} ()\label{classtbb_1_1queuing__rw__mutex_ae67fe828d7e07222e7876ef9fd780fcc}
+
+\begin{DoxyCompactList}\small\item\em Destructor asserts if the mutex is acquired, i.\+e. q\+\_\+tail is non-\/\+N\+U\+L\+L. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1queuing__rw__mutex_af0d7ca1c9b3aeb7d16baf16e0da3ce6a}{}void \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D {\bfseries internal\+\_\+construct} ()\label{classtbb_1_1queuing__rw__mutex_af0d7ca1c9b3aeb7d16baf16e0da3ce6a}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1queuing__rw__mutex_ae3dbfbf71bfa9c662a59688cd86bfbd7}{}static const bool {\bfseries is\+\_\+rw\+\_\+mutex} = true\label{classtbb_1_1queuing__rw__mutex_ae3dbfbf71bfa9c662a59688cd86bfbd7}
+
+\item 
+\hypertarget{classtbb_1_1queuing__rw__mutex_ae8c3ee1f5ab3af3954abeec1d165ea8e}{}static const bool {\bfseries is\+\_\+recursive\+\_\+mutex} = false\label{classtbb_1_1queuing__rw__mutex_ae8c3ee1f5ab3af3954abeec1d165ea8e}
+
+\item 
+\hypertarget{classtbb_1_1queuing__rw__mutex_a4704d512922b4b5d21c97901f9f7abd0}{}static const bool {\bfseries is\+\_\+fair\+\_\+mutex} = true\label{classtbb_1_1queuing__rw__mutex_a4704d512922b4b5d21c97901f9f7abd0}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Queuing reader-\/writer mutex with local-\/only spinning. 
+
+Adapted from Krieger, Stumm, et al. pseudocode at \href{http://www.eecg.toronto.edu/parallel/pubs_abs.html#Krieger_etal_ICPP93}{\tt http\+://www.\+eecg.\+toronto.\+edu/parallel/pubs\+\_\+abs.\+html\#\+Krieger\+\_\+etal\+\_\+\+I\+C\+P\+P93} 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/queuing\+\_\+rw\+\_\+mutex.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/queuing\+\_\+rw\+\_\+mutex.\+cpp\end{DoxyCompactItemize}

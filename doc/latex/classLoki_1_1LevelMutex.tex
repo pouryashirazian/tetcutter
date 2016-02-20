@@ -1,0 +1,199 @@
+\hypertarget{classLoki_1_1LevelMutex}{}\section{Loki\+:\+:Level\+Mutex$<$ Mutex\+Policy, Default\+Level, Error\+Policy, Wait\+Policy $>$ Class Template Reference}
+\label{classLoki_1_1LevelMutex}\index{Loki\+::\+Level\+Mutex$<$ Mutex\+Policy, Default\+Level, Error\+Policy, Wait\+Policy $>$@{Loki\+::\+Level\+Mutex$<$ Mutex\+Policy, Default\+Level, Error\+Policy, Wait\+Policy $>$}}
+
+
+{\ttfamily \#include $<$Level\+Mutex.\+h$>$}
+
+Inheritance diagram for Loki\+:\+:Level\+Mutex$<$ Mutex\+Policy, Default\+Level, Error\+Policy, Wait\+Policy $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLoki_1_1LevelMutex}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1LevelMutex_a4fdd142b6c6bd6a41d40d0b36e3973fa}{}typedef Error\+Policy {\bfseries E\+P}\label{classLoki_1_1LevelMutex_a4fdd142b6c6bd6a41d40d0b36e3973fa}
+
+\item 
+\hypertarget{classLoki_1_1LevelMutex_a57927b792966b9fb3559cfd9c9a0d427}{}typedef Wait\+Policy {\bfseries W\+P}\label{classLoki_1_1LevelMutex_a57927b792966b9fb3559cfd9c9a0d427}
+
+\item 
+\hypertarget{classLoki_1_1LevelMutex_aac7b7c64c9257dbf9bb22ab2bfb4b574}{}typedef Mutex\+Policy {\bfseries M\+P}\label{classLoki_1_1LevelMutex_aac7b7c64c9257dbf9bb22ab2bfb4b574}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLoki_1_1LevelMutex_ae770e4e5ec2fa120d016eb23b56d988b}{Level\+Mutex} (unsigned int level=Default\+Level)
+\item 
+\hypertarget{classLoki_1_1LevelMutex_ab1670bea535a28e439a991fad4056ec2}{}\hyperlink{classLoki_1_1LevelMutex_ab1670bea535a28e439a991fad4056ec2}{$\sim$\+Level\+Mutex} (void)\label{classLoki_1_1LevelMutex_ab1670bea535a28e439a991fad4056ec2}
+
+\begin{DoxyCompactList}\small\item\em The destructor. \end{DoxyCompactList}\item 
+const volatile Mutex\+Policy \& \hyperlink{classLoki_1_1LevelMutex_a2799e7ca714a24050c71e8cc390c1633}{Get\+Mutex\+Policy} (void) const  volatile
+\item 
+\hypertarget{classLoki_1_1LevelMutex_adeac5d6330bf7d9e2f7c09f535d34ebc}{}volatile Mutex\+Policy \& {\bfseries Get\+Mutex\+Policy} (void) volatile\label{classLoki_1_1LevelMutex_adeac5d6330bf7d9e2f7c09f535d34ebc}
+
+\item 
+\hypertarget{classLoki_1_1LevelMutex_a7e08f814fc4b086c762c49ff728526c1}{}const Mutex\+Policy \& {\bfseries Get\+Mutex\+Policy} (void) const \label{classLoki_1_1LevelMutex_a7e08f814fc4b086c762c49ff728526c1}
+
+\item 
+\hypertarget{classLoki_1_1LevelMutex_a63e42ca5b8ff8b54265acc75701abc07}{}Mutex\+Policy \& {\bfseries Get\+Mutex\+Policy} (void)\label{classLoki_1_1LevelMutex_a63e42ca5b8ff8b54265acc75701abc07}
+
+\item 
+virtual \hyperlink{classLoki_1_1MutexErrors_acd0eb6065ca303083d2e0229d7bff590}{Mutex\+Errors\+::\+Type} \hyperlink{classLoki_1_1LevelMutex_a042a7938dafd6f149cfd7da46478c0c9}{Try\+Lock} (void) volatile
+\item 
+virtual \hyperlink{classLoki_1_1MutexErrors_acd0eb6065ca303083d2e0229d7bff590}{Mutex\+Errors\+::\+Type} \hyperlink{classLoki_1_1LevelMutex_a95d3742db062548201986f482a9c9b9d}{Lock} (void) volatile
+\item 
+virtual \hyperlink{classLoki_1_1MutexErrors_acd0eb6065ca303083d2e0229d7bff590}{Mutex\+Errors\+::\+Type} \hyperlink{classLoki_1_1LevelMutex_ad4ac0c2a33ff3d98ec0a83f70ce145da}{Lock} (unsigned int milli\+Seconds) volatile
+\item 
+virtual \hyperlink{classLoki_1_1MutexErrors_acd0eb6065ca303083d2e0229d7bff590}{Mutex\+Errors\+::\+Type} \hyperlink{classLoki_1_1LevelMutex_a553a379257af57ceaef9ed48b0dc8b70}{Unlock} (void) volatile
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Mutex\+Policy, unsigned int Default\+Level, class Error\+Policy = \+::\+Loki\+::\+Throw\+On\+Bad\+Design\+Mutex\+Error, class Wait\+Policy = \+::\+Loki\+::\+No\+Mutex\+Wait$>$class Loki\+::\+Level\+Mutex$<$ Mutex\+Policy, Default\+Level, Error\+Policy, Wait\+Policy $>$}
+
+Levelized mutex class prevents deadlocks by requiring programs to lock mutexes in the same order, and unlock them in reverse order. This is accomplished by forcing each mutex to have a level and forcing code to lock mutexes with higher levels before locking mutexes at lower levels. If you want to lock several mutexes, they must be locked in decreasing order by level, or if they are all of the same level, then locked by \hyperlink{classLoki_1_1LevelMutexInfo_adde650eae1cad8b4723e68cdb9130283}{Level\+Mutex\+::\+Multi\+Lock}.
+
+\begin{DoxyParagraph}{Features}
+
+\begin{DoxyItemize}
+\item Immune\+: Very unlikely to deadlock since all mutexes are locked in the same order and unlocked in reverse order.
+\item Scalable\+: Can handle any number of mutexes.
+\item Efficient\+: Many operations occur in constant time, and most operations require no more than O(m) steps.
+\item Exception safe\+: All operations provide strong safety or don\textquotesingle{}t throw.
+\item Extendable\+: Can work with existing mutexes through policy-\/based design.
+\item Easily Extended\+: \hyperlink{classDerived}{Derived} classes only need to implement 5 functions and a mutex to get all the features of this class.
+\item Re-\/\+Entrant\+: Allows for re-\/entrancy even if mutexes in policy classes don\textquotesingle{}t.
+\item Cost-\/\+Free\+: No resource allocations occur in \hyperlink{classLoki_1_1LevelMutex}{Level\+Mutex} -\/ although user-\/defined policy classes may allocate resources.
+\item Compact\+: Each \hyperlink{classLoki_1_1LevelMutex}{Level\+Mutex} object is small.
+\item Portable\+: As long as your compiler and libraries can meet the requirements.
+\item Robust\+: Maintains data integrity even if exceptions occur in policy classes.
+\item Affording\+: Several functions provide information about a mutex which allows client code to easily choose correct actions.
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Requirements}
+
+\begin{DoxyItemize}
+\item Your compiler must allow for thread-\/specific data.
+\item You must have a threading or mutex library.
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Policy-\/\+Based Design}
+This class hosts 3 policies and a default level. The policy-\/based design allows users to write their own policies to extend the behaviors of \hyperlink{classLoki_1_1LevelMutex}{Level\+Mutex}. The paragraphs below say how to design a class for each policy.
+\begin{DoxyItemize}
+\item Mutex\+Policy The mutex policy class.
+\item default\+Level \hyperlink{structA}{A} level for existing client code that calls a default constructor.
+\item Error\+Policy How the mutex should handle error conditions.
+\item Wait\+Policy Whether a thread should wait, and how long in some internal loops.
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Mutex\+Policy}
+\hyperlink{structA}{A} policy class that wraps a low-\/level mutex. \hyperlink{namespaceLoki}{Loki} provides two policy classes for the actual mutex (\hyperlink{classLoki_1_1SpinLevelMutex}{Spin\+Level\+Mutex} and \hyperlink{classLoki_1_1SleepLevelMutex}{Sleep\+Level\+Mutex}), both of which wrap either pthreads or the Windows C\+R\+I\+T\+I\+C\+A\+L\+\_\+\+S\+E\+C\+T\+I\+O\+N. If you want to use a mutex mechanism besides one of those, then all you have to do is provide a class which wraps the mutex and implements these functions. explicit Spin\+Level\+Mutex( unsigned int level ); virtual $\sim$\+Spin\+Level\+Mutex( void ); virtual \hyperlink{classLoki_1_1MutexErrors_acd0eb6065ca303083d2e0229d7bff590}{Mutex\+Errors\+::\+Type} \hyperlink{classLoki_1_1LevelMutex_a95d3742db062548201986f482a9c9b9d}{Lock( void ) volatile}; virtual \hyperlink{classLoki_1_1MutexErrors_acd0eb6065ca303083d2e0229d7bff590}{Mutex\+Errors\+::\+Type} \hyperlink{classLoki_1_1LevelMutex_a042a7938dafd6f149cfd7da46478c0c9}{Try\+Lock( void ) volatile}; virtual \hyperlink{classLoki_1_1MutexErrors_acd0eb6065ca303083d2e0229d7bff590}{Mutex\+Errors\+::\+Type} \hyperlink{classLoki_1_1LevelMutex_a553a379257af57ceaef9ed48b0dc8b70}{Unlock( void ) volatile}; Indeed, since the base class does most of the work, and provides all the interace and functionality to client classes, a derived class has very few requirements. It only needs to implement a single constructor, the destructor, some virtual functions, and whatever data members it requires. You don\textquotesingle{}t actually need to declare those functions as virtual if the policy class is not a base or child class. In the parlance of design patterns, \hyperlink{classLoki_1_1LevelMutex}{Level\+Mutex} is a Template, and the Mutex\+Policy is a Strategy.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Default\+Level}
+The template class requires a default level to use inside the default constructor. Some existing code calls instantiates mutexes with a default constructor, so the mutex must know what level to use there. Please do not use zero or Unlocked\+Level as the default level.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Error\+Policy}
+This policy specifies how to handle error conditions. The mutexes can return errors, assert, or throw exceptions. I recommend that debug code use asserts, release code use exceptions, and unit-\/testing code just return errors. The error policy class only needs to implement one function\+: static \hyperlink{classLoki_1_1MutexErrors_acd0eb6065ca303083d2e0229d7bff590}{Mutex\+Errors\+::\+Type} Check\+Error( Mutex\+Errors\+::\+Type error, unsigned int level );
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Wait\+Policy}
+This states whether the mutex should wait within some tight internal loops, how the waiting is done, and for how long. \hyperlink{structA}{A} wait policy class could sleep, do nothing, check if other objects need attention, or check if the program received events or notices from the operating system. It only needs to implement one function\+: static void Wait( void );
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Per-\/\+Function Usage}
+If you implement a function with a static local mutex, then you have to insure the function is not called from a lower level via call-\/backs, virtual functions in interface classes. If the function does get called from a lower level, you are setting up a potential deadlock. \hyperlink{classLoki_1_1LevelMutex}{Level\+Mutex} will detect that by checking the current level and the local mutex\textquotesingle{}s level, so it will refuse to lock the local mutex.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Per-\/\+Object Usage}
+If you use a mutex as a data member of an object to protect that object, then I recommend specifying which functions are volatile and which are not, and then only use the mutex within the volatile functions. You may also want to provide accessor functions so that client code can lock and unlock the mutex either to allow for calling multiple operations without having to lock and unlock before and after each operation, or so they can lock it along with several other objects at the same level.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Per-\/\+Class Usage}
+If you make a static data member within a class, you can use that to lock any resources shared by those objects, or to require threads to act on only one object at a time. You may also want to provide static accessor functions so that client code can lock several other resources at the same level. 
+\end{DoxyParagraph}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classLoki_1_1LevelMutex_ae770e4e5ec2fa120d016eb23b56d988b}{}\index{Loki\+::\+Level\+Mutex@{Loki\+::\+Level\+Mutex}!Level\+Mutex@{Level\+Mutex}}
+\index{Level\+Mutex@{Level\+Mutex}!Loki\+::\+Level\+Mutex@{Loki\+::\+Level\+Mutex}}
+\subsubsection[{Level\+Mutex(unsigned int level=\+Default\+Level)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mutex\+Policy , unsigned int Default\+Level, class Error\+Policy  = \+::\+Loki\+::\+Throw\+On\+Bad\+Design\+Mutex\+Error, class Wait\+Policy  = \+::\+Loki\+::\+No\+Mutex\+Wait$>$ {\bf Loki\+::\+Level\+Mutex}$<$ Mutex\+Policy, Default\+Level, Error\+Policy, Wait\+Policy $>$\+::{\bf Level\+Mutex} (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{level = {\ttfamily DefaultLevel}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}\label{classLoki_1_1LevelMutex_ae770e4e5ec2fa120d016eb23b56d988b}
+This constructor allows callers to replace the default level with another value. It also acts as the default constructor for existing code which uses default construction for mutexes. This is the only time the Default\+Level template parameter gets used. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classLoki_1_1LevelMutex_a2799e7ca714a24050c71e8cc390c1633}{}\index{Loki\+::\+Level\+Mutex@{Loki\+::\+Level\+Mutex}!Get\+Mutex\+Policy@{Get\+Mutex\+Policy}}
+\index{Get\+Mutex\+Policy@{Get\+Mutex\+Policy}!Loki\+::\+Level\+Mutex@{Loki\+::\+Level\+Mutex}}
+\subsubsection[{Get\+Mutex\+Policy(void) const  volatile}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mutex\+Policy , unsigned int Default\+Level, class Error\+Policy  = \+::\+Loki\+::\+Throw\+On\+Bad\+Design\+Mutex\+Error, class Wait\+Policy  = \+::\+Loki\+::\+No\+Mutex\+Wait$>$ const volatile Mutex\+Policy\& {\bf Loki\+::\+Level\+Mutex}$<$ Mutex\+Policy, Default\+Level, Error\+Policy, Wait\+Policy $>$\+::Get\+Mutex\+Policy (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const volatile\hspace{0.3cm}{\ttfamily [inline]}}\label{classLoki_1_1LevelMutex_a2799e7ca714a24050c71e8cc390c1633}
+These functions allow callers to access the mutex in case they need to modify specific values in the Mutex\+Policy (e.\+g. -\/ sleep time, functors to call as tasks, etc...) There is one function for every combination of const and volatile qualifiers so callers get a reference to a Mutex\+Policy with the proper qualifiers. \hypertarget{classLoki_1_1LevelMutex_a95d3742db062548201986f482a9c9b9d}{}\index{Loki\+::\+Level\+Mutex@{Loki\+::\+Level\+Mutex}!Lock@{Lock}}
+\index{Lock@{Lock}!Loki\+::\+Level\+Mutex@{Loki\+::\+Level\+Mutex}}
+\subsubsection[{Lock(void) volatile}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mutex\+Policy , unsigned int Default\+Level, class Error\+Policy  = \+::\+Loki\+::\+Throw\+On\+Bad\+Design\+Mutex\+Error, class Wait\+Policy  = \+::\+Loki\+::\+No\+Mutex\+Wait$>$ virtual {\bf Mutex\+Errors\+::\+Type} {\bf Loki\+::\+Level\+Mutex}$<$ Mutex\+Policy, Default\+Level, Error\+Policy, Wait\+Policy $>$\+::Lock (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) volatile\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{classLoki_1_1LevelMutex_a95d3742db062548201986f482a9c9b9d}
+Blocking call will attempt to lock mutex and wait until it can lock. This may throw an exception if the lock failed or an error occurred -\/ if that is what the error policy specifies. \begin{DoxyReturn}{Returns}
+An error condition if any occurred, else Success. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classLoki_1_1LevelMutexInfo_ac0e21e08ee9974533a4da5008452bd04}{Loki\+::\+Level\+Mutex\+Info}.
+
+\hypertarget{classLoki_1_1LevelMutex_ad4ac0c2a33ff3d98ec0a83f70ce145da}{}\index{Loki\+::\+Level\+Mutex@{Loki\+::\+Level\+Mutex}!Lock@{Lock}}
+\index{Lock@{Lock}!Loki\+::\+Level\+Mutex@{Loki\+::\+Level\+Mutex}}
+\subsubsection[{Lock(unsigned int milli\+Seconds) volatile}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mutex\+Policy , unsigned int Default\+Level, class Error\+Policy  = \+::\+Loki\+::\+Throw\+On\+Bad\+Design\+Mutex\+Error, class Wait\+Policy  = \+::\+Loki\+::\+No\+Mutex\+Wait$>$ virtual {\bf Mutex\+Errors\+::\+Type} {\bf Loki\+::\+Level\+Mutex}$<$ Mutex\+Policy, Default\+Level, Error\+Policy, Wait\+Policy $>$\+::Lock (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{milli\+Seconds}
+\end{DoxyParamCaption}
+) volatile\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{classLoki_1_1LevelMutex_ad4ac0c2a33ff3d98ec0a83f70ce145da}
+Attempts to lock mutex, but only waits for a limited amount of time before it gives up. Will return quickly if an error occurs before any attempt to lock. This may throw an exception if the lock failed or an error occurred -\/ if that is what the error policy specifies. 
+\begin{DoxyParams}{Parameters}
+{\em milli\+Seconds} & How long to wait. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An error condition if any occurred, else Success. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classLoki_1_1LevelMutexInfo_a5782b9fd9734d95a38ff86ef9532c89b}{Loki\+::\+Level\+Mutex\+Info}.
+
+\hypertarget{classLoki_1_1LevelMutex_a042a7938dafd6f149cfd7da46478c0c9}{}\index{Loki\+::\+Level\+Mutex@{Loki\+::\+Level\+Mutex}!Try\+Lock@{Try\+Lock}}
+\index{Try\+Lock@{Try\+Lock}!Loki\+::\+Level\+Mutex@{Loki\+::\+Level\+Mutex}}
+\subsubsection[{Try\+Lock(void) volatile}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mutex\+Policy , unsigned int Default\+Level, class Error\+Policy  = \+::\+Loki\+::\+Throw\+On\+Bad\+Design\+Mutex\+Error, class Wait\+Policy  = \+::\+Loki\+::\+No\+Mutex\+Wait$>$ virtual {\bf Mutex\+Errors\+::\+Type} {\bf Loki\+::\+Level\+Mutex}$<$ Mutex\+Policy, Default\+Level, Error\+Policy, Wait\+Policy $>$\+::Try\+Lock (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) volatile\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{classLoki_1_1LevelMutex_a042a7938dafd6f149cfd7da46478c0c9}
+Tries to lock mutex, and returns immediately if mutex already locked by another thread. It will return immediately with a value of Already\+Locked if the mutex was locked by a different thread. It may throw an exception or assert when errors occur if the Error\+Policy class implements that behavior. \begin{DoxyReturn}{Returns}
+An error condition if any occurred, else Success. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classLoki_1_1LevelMutexInfo_a32f89bf087b932de0cdd1151116779b4}{Loki\+::\+Level\+Mutex\+Info}.
+
+\hypertarget{classLoki_1_1LevelMutex_a553a379257af57ceaef9ed48b0dc8b70}{}\index{Loki\+::\+Level\+Mutex@{Loki\+::\+Level\+Mutex}!Unlock@{Unlock}}
+\index{Unlock@{Unlock}!Loki\+::\+Level\+Mutex@{Loki\+::\+Level\+Mutex}}
+\subsubsection[{Unlock(void) volatile}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mutex\+Policy , unsigned int Default\+Level, class Error\+Policy  = \+::\+Loki\+::\+Throw\+On\+Bad\+Design\+Mutex\+Error, class Wait\+Policy  = \+::\+Loki\+::\+No\+Mutex\+Wait$>$ virtual {\bf Mutex\+Errors\+::\+Type} {\bf Loki\+::\+Level\+Mutex}$<$ Mutex\+Policy, Default\+Level, Error\+Policy, Wait\+Policy $>$\+::Unlock (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) volatile\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{classLoki_1_1LevelMutex_a553a379257af57ceaef9ed48b0dc8b70}
+Unlocks the mutex, or returns an error condition. This may throw an exception if the lock failed or an error occurred -\/ if that is what the error policy specifies. \begin{DoxyReturn}{Returns}
+An error condition if any occurred, else Success. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classLoki_1_1LevelMutexInfo_a01c9af5cb0f6870585b864b4557e9242}{Loki\+::\+Level\+Mutex\+Info}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/\hyperlink{LevelMutex_8h}{Level\+Mutex.\+h}\end{DoxyCompactItemize}

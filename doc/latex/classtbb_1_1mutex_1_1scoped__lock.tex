@@ -1,0 +1,55 @@
+\hypertarget{classtbb_1_1mutex_1_1scoped__lock}{}\section{tbb\+:\+:mutex\+:\+:scoped\+\_\+lock Class Reference}
+\label{classtbb_1_1mutex_1_1scoped__lock}\index{tbb\+::mutex\+::scoped\+\_\+lock@{tbb\+::mutex\+::scoped\+\_\+lock}}
+
+
+The scoped locking pattern.  
+
+
+
+
+{\ttfamily \#include $<$mutex.\+h$>$}
+
+Inheritance diagram for tbb\+:\+:mutex\+:\+:scoped\+\_\+lock\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classtbb_1_1mutex_1_1scoped__lock}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1mutex_1_1scoped__lock_a23122745ccd5fc2498fcbbd5ced09e06}{}\hyperlink{classtbb_1_1mutex_1_1scoped__lock_a23122745ccd5fc2498fcbbd5ced09e06}{scoped\+\_\+lock} ()\label{classtbb_1_1mutex_1_1scoped__lock_a23122745ccd5fc2498fcbbd5ced09e06}
+
+\begin{DoxyCompactList}\small\item\em Construct lock that has not acquired a mutex. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1mutex_1_1scoped__lock_ab7c2074543443824790433d3d6c3fece}{}\hyperlink{classtbb_1_1mutex_1_1scoped__lock_ab7c2074543443824790433d3d6c3fece}{scoped\+\_\+lock} (\hyperlink{classtbb_1_1mutex}{mutex} \&\hyperlink{classtbb_1_1mutex}{mutex})\label{classtbb_1_1mutex_1_1scoped__lock_ab7c2074543443824790433d3d6c3fece}
+
+\begin{DoxyCompactList}\small\item\em Acquire lock on given mutex. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1mutex_1_1scoped__lock_a08c399ee0bb9762039b29e570ec46fe9}{}\hyperlink{classtbb_1_1mutex_1_1scoped__lock_a08c399ee0bb9762039b29e570ec46fe9}{$\sim$scoped\+\_\+lock} ()\label{classtbb_1_1mutex_1_1scoped__lock_a08c399ee0bb9762039b29e570ec46fe9}
+
+\begin{DoxyCompactList}\small\item\em Release lock (if lock is held). \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1mutex_1_1scoped__lock_a9fce3e2e9f592315dc9c1ada72ae5e3c}{}void \hyperlink{classtbb_1_1mutex_1_1scoped__lock_a9fce3e2e9f592315dc9c1ada72ae5e3c}{acquire} (\hyperlink{classtbb_1_1mutex}{mutex} \&\hyperlink{classtbb_1_1mutex}{mutex})\label{classtbb_1_1mutex_1_1scoped__lock_a9fce3e2e9f592315dc9c1ada72ae5e3c}
+
+\begin{DoxyCompactList}\small\item\em Acquire lock on given mutex. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1mutex_1_1scoped__lock_a46f983371aa852d2427ce69f9a571f78}{}bool \hyperlink{classtbb_1_1mutex_1_1scoped__lock_a46f983371aa852d2427ce69f9a571f78}{try\+\_\+acquire} (\hyperlink{classtbb_1_1mutex}{mutex} \&\hyperlink{classtbb_1_1mutex}{mutex})\label{classtbb_1_1mutex_1_1scoped__lock_a46f983371aa852d2427ce69f9a571f78}
+
+\begin{DoxyCompactList}\small\item\em Try acquire lock on given mutex. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1mutex_1_1scoped__lock_a1a1590281ccca912229a689d920fd78a}{}void \hyperlink{classtbb_1_1mutex_1_1scoped__lock_a1a1590281ccca912229a689d920fd78a}{release} ()\label{classtbb_1_1mutex_1_1scoped__lock_a1a1590281ccca912229a689d920fd78a}
+
+\begin{DoxyCompactList}\small\item\em Release lock. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1mutex_1_1scoped__lock_a6f4535025b9df015e1a7d35f4e2bbee7}{}class {\bfseries mutex}\label{classtbb_1_1mutex_1_1scoped__lock_a6f4535025b9df015e1a7d35f4e2bbee7}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The scoped locking pattern. 
+
+It helps to avoid the common problem of forgetting to release lock. It also nicely provides the \char`\"{}node\char`\"{} for queuing locks. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/mutex.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/mutex.\+cpp\end{DoxyCompactItemize}

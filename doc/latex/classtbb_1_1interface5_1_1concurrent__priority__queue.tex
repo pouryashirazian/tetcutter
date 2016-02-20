@@ -1,0 +1,184 @@
+\hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue}{}\section{tbb\+:\+:interface5\+:\+:concurrent\+\_\+priority\+\_\+queue$<$ T, Compare, A $>$ Class Template Reference}
+\label{classtbb_1_1interface5_1_1concurrent__priority__queue}\index{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue$<$ T, Compare, A $>$@{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue$<$ T, Compare, A $>$}}
+
+
+Concurrent priority queue.  
+
+
+
+
+{\ttfamily \#include $<$concurrent\+\_\+priority\+\_\+queue.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue_a2c75d97ae429019363ab6fd1a872512e}{}typedef T \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a2c75d97ae429019363ab6fd1a872512e}{value\+\_\+type}\label{classtbb_1_1interface5_1_1concurrent__priority__queue_a2c75d97ae429019363ab6fd1a872512e}
+
+\begin{DoxyCompactList}\small\item\em Element type in the queue. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue_ae4b7ed2ddc8ec6cc910f935c9d299c7a}{}typedef T \& \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_ae4b7ed2ddc8ec6cc910f935c9d299c7a}{reference}\label{classtbb_1_1interface5_1_1concurrent__priority__queue_ae4b7ed2ddc8ec6cc910f935c9d299c7a}
+
+\begin{DoxyCompactList}\small\item\em Reference type. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue_a0bd617fe8e4657777e86f0ae15d8094f}{}typedef const T \& \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a0bd617fe8e4657777e86f0ae15d8094f}{const\+\_\+reference}\label{classtbb_1_1interface5_1_1concurrent__priority__queue_a0bd617fe8e4657777e86f0ae15d8094f}
+
+\begin{DoxyCompactList}\small\item\em Const reference type. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue_a7d3da9b47ec58e1c09e3550f702edcfc}{}typedef size\+\_\+t \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a7d3da9b47ec58e1c09e3550f702edcfc}{size\+\_\+type}\label{classtbb_1_1interface5_1_1concurrent__priority__queue_a7d3da9b47ec58e1c09e3550f702edcfc}
+
+\begin{DoxyCompactList}\small\item\em Integral type for representing size of the queue. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue_ae010b1fa9c0942504737228474b51a0b}{}typedef ptrdiff\+\_\+t \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_ae010b1fa9c0942504737228474b51a0b}{difference\+\_\+type}\label{classtbb_1_1interface5_1_1concurrent__priority__queue_ae010b1fa9c0942504737228474b51a0b}
+
+\begin{DoxyCompactList}\small\item\em Difference type for iterator. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue_a1d2cebf242fa83d88eebdc3ad6891fb1}{}typedef \hyperlink{structA}{A} \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a1d2cebf242fa83d88eebdc3ad6891fb1}{allocator\+\_\+type}\label{classtbb_1_1interface5_1_1concurrent__priority__queue_a1d2cebf242fa83d88eebdc3ad6891fb1}
+
+\begin{DoxyCompactList}\small\item\em Allocator type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue_a405be01bac4048f214797c287e2571a1}{}\hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a405be01bac4048f214797c287e2571a1}{concurrent\+\_\+priority\+\_\+queue} (const \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a1d2cebf242fa83d88eebdc3ad6891fb1}{allocator\+\_\+type} \&a=\hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a1d2cebf242fa83d88eebdc3ad6891fb1}{allocator\+\_\+type}())\label{classtbb_1_1interface5_1_1concurrent__priority__queue_a405be01bac4048f214797c287e2571a1}
+
+\begin{DoxyCompactList}\small\item\em Constructs a new \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue}{concurrent\+\_\+priority\+\_\+queue} with default capacity. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue_a43c3917ea8a19cf1fec947e29ad4ff3e}{}\hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a43c3917ea8a19cf1fec947e29ad4ff3e}{concurrent\+\_\+priority\+\_\+queue} (\hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a7d3da9b47ec58e1c09e3550f702edcfc}{size\+\_\+type} init\+\_\+capacity, const \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a1d2cebf242fa83d88eebdc3ad6891fb1}{allocator\+\_\+type} \&a=\hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a1d2cebf242fa83d88eebdc3ad6891fb1}{allocator\+\_\+type}())\label{classtbb_1_1interface5_1_1concurrent__priority__queue_a43c3917ea8a19cf1fec947e29ad4ff3e}
+
+\begin{DoxyCompactList}\small\item\em Constructs a new \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue}{concurrent\+\_\+priority\+\_\+queue} with init\+\_\+sz capacity. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue_a0cebee26cc0d00d4dcbb1c74e08029f7}{}{\footnotesize template$<$typename Input\+Iterator $>$ }\\\hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a0cebee26cc0d00d4dcbb1c74e08029f7}{concurrent\+\_\+priority\+\_\+queue} (Input\+Iterator begin, Input\+Iterator end, const \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a1d2cebf242fa83d88eebdc3ad6891fb1}{allocator\+\_\+type} \&a=\hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a1d2cebf242fa83d88eebdc3ad6891fb1}{allocator\+\_\+type}())\label{classtbb_1_1interface5_1_1concurrent__priority__queue_a0cebee26cc0d00d4dcbb1c74e08029f7}
+
+\begin{DoxyCompactList}\small\item\em \mbox{[}begin,end) constructor \end{DoxyCompactList}\item 
+\hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a332d26234f9c37a6b7ba269c648815d0}{concurrent\+\_\+priority\+\_\+queue} (const \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue}{concurrent\+\_\+priority\+\_\+queue} \&src)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_aa52cea369b6630699ee78cc42622be9d}{concurrent\+\_\+priority\+\_\+queue} (const \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue}{concurrent\+\_\+priority\+\_\+queue} \&src, const \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a1d2cebf242fa83d88eebdc3ad6891fb1}{allocator\+\_\+type} \&a)
+\begin{DoxyCompactList}\small\item\em Copy constructor with specific allocator. \end{DoxyCompactList}\item 
+\hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue}{concurrent\+\_\+priority\+\_\+queue} \& \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_ac0c3f41b10f04547f3438517c40cf8a5}{operator=} (const \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue}{concurrent\+\_\+priority\+\_\+queue} \&src)
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue_ac64c7b627708f0d6b2e5421fb0d49150}{}{\footnotesize template$<$typename Input\+Iterator $>$ }\\void \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_ac64c7b627708f0d6b2e5421fb0d49150}{assign} (Input\+Iterator begin, Input\+Iterator end)\label{classtbb_1_1interface5_1_1concurrent__priority__queue_ac64c7b627708f0d6b2e5421fb0d49150}
+
+\begin{DoxyCompactList}\small\item\em Assign the queue from \mbox{[}begin,end) range, not thread-\/safe. \end{DoxyCompactList}\item 
+bool \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a8dec2dd0e8b22af14f1753eaef1bf5eb}{empty} () const 
+\begin{DoxyCompactList}\small\item\em Returns true if empty, false otherwise. \end{DoxyCompactList}\item 
+\hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a7d3da9b47ec58e1c09e3550f702edcfc}{size\+\_\+type} \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a7d86ba200474b51ec99a6b917429c6bb}{size} () const 
+\begin{DoxyCompactList}\small\item\em Returns the current number of elements contained in the queue. \end{DoxyCompactList}\item 
+void \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a1bfa0e7269b3407d6bb5c706264d2406}{push} (\hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a0bd617fe8e4657777e86f0ae15d8094f}{const\+\_\+reference} elem)
+\begin{DoxyCompactList}\small\item\em Pushes elem onto the queue, increasing capacity of queue if necessary. \end{DoxyCompactList}\item 
+bool \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a954177b09e184cf3db47f1b180a7ef5e}{try\+\_\+pop} (\hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_ae4b7ed2ddc8ec6cc910f935c9d299c7a}{reference} elem)
+\begin{DoxyCompactList}\small\item\em Gets a reference to and removes highest priority element. \end{DoxyCompactList}\item 
+void \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a2459166998a4103880d603b237c429e6}{clear} ()
+\begin{DoxyCompactList}\small\item\em Clear the queue; not thread-\/safe. \end{DoxyCompactList}\item 
+void \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_aa6ee6d356e538b67a7cb4e242e6e36c9}{swap} (\hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue}{concurrent\+\_\+priority\+\_\+queue} \&q)
+\begin{DoxyCompactList}\small\item\em Swap this queue with another; not thread-\/safe. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue_a312e88e51246da4c516d35abbb30721a}{}\hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a1d2cebf242fa83d88eebdc3ad6891fb1}{allocator\+\_\+type} \hyperlink{classtbb_1_1interface5_1_1concurrent__priority__queue_a312e88e51246da4c516d35abbb30721a}{get\+\_\+allocator} () const \label{classtbb_1_1interface5_1_1concurrent__priority__queue_a312e88e51246da4c516d35abbb30721a}
+
+\begin{DoxyCompactList}\small\item\em Return allocator object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename Compare = std\+::less$<$\+T$>$, typename A = cache\+\_\+aligned\+\_\+allocator$<$\+T$>$$>$class tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue$<$ T, Compare, A $>$}
+
+Concurrent priority queue. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue_a332d26234f9c37a6b7ba269c648815d0}{}\index{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue@{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}!concurrent\+\_\+priority\+\_\+queue@{concurrent\+\_\+priority\+\_\+queue}}
+\index{concurrent\+\_\+priority\+\_\+queue@{concurrent\+\_\+priority\+\_\+queue}!tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue@{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}}
+\subsubsection[{concurrent\+\_\+priority\+\_\+queue(const concurrent\+\_\+priority\+\_\+queue \&src)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Compare  = std\+::less$<$\+T$>$, typename A  = cache\+\_\+aligned\+\_\+allocator$<$\+T$>$$>$ {\bf tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}$<$ T, Compare, {\bf A} $>$\+::{\bf concurrent\+\_\+priority\+\_\+queue} (
+\begin{DoxyParamCaption}
+\item[{const {\bf concurrent\+\_\+priority\+\_\+queue}$<$ T, Compare, {\bf A} $>$ \&}]{src}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}\label{classtbb_1_1interface5_1_1concurrent__priority__queue_a332d26234f9c37a6b7ba269c648815d0}
+
+
+Copy constructor. 
+
+This operation is unsafe if there are pending concurrent operations on the src queue. \hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue_aa52cea369b6630699ee78cc42622be9d}{}\index{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue@{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}!concurrent\+\_\+priority\+\_\+queue@{concurrent\+\_\+priority\+\_\+queue}}
+\index{concurrent\+\_\+priority\+\_\+queue@{concurrent\+\_\+priority\+\_\+queue}!tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue@{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}}
+\subsubsection[{concurrent\+\_\+priority\+\_\+queue(const concurrent\+\_\+priority\+\_\+queue \&src, const allocator\+\_\+type \&a)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Compare  = std\+::less$<$\+T$>$, typename A  = cache\+\_\+aligned\+\_\+allocator$<$\+T$>$$>$ {\bf tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}$<$ T, Compare, {\bf A} $>$\+::{\bf concurrent\+\_\+priority\+\_\+queue} (
+\begin{DoxyParamCaption}
+\item[{const {\bf concurrent\+\_\+priority\+\_\+queue}$<$ T, Compare, {\bf A} $>$ \&}]{src, }
+\item[{const {\bf allocator\+\_\+type} \&}]{a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1interface5_1_1concurrent__priority__queue_aa52cea369b6630699ee78cc42622be9d}
+
+
+Copy constructor with specific allocator. 
+
+This operation is unsafe if there are pending concurrent operations on the src queue. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue_a2459166998a4103880d603b237c429e6}{}\index{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue@{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}!clear@{clear}}
+\index{clear@{clear}!tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue@{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}}
+\subsubsection[{clear()}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Compare  = std\+::less$<$\+T$>$, typename A  = cache\+\_\+aligned\+\_\+allocator$<$\+T$>$$>$ void {\bf tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}$<$ T, Compare, {\bf A} $>$\+::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1interface5_1_1concurrent__priority__queue_a2459166998a4103880d603b237c429e6}
+
+
+Clear the queue; not thread-\/safe. 
+
+This operation is unsafe if there are pending concurrent operations on the queue. Resets size, effectively emptying queue; does not free space. May not clear elements added in pending operations. \hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue_a8dec2dd0e8b22af14f1753eaef1bf5eb}{}\index{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue@{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}!empty@{empty}}
+\index{empty@{empty}!tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue@{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}}
+\subsubsection[{empty() const }]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Compare  = std\+::less$<$\+T$>$, typename A  = cache\+\_\+aligned\+\_\+allocator$<$\+T$>$$>$ bool {\bf tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}$<$ T, Compare, {\bf A} $>$\+::empty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1interface5_1_1concurrent__priority__queue_a8dec2dd0e8b22af14f1753eaef1bf5eb}
+
+
+Returns true if empty, false otherwise. 
+
+Returned value may not reflect results of pending operations. This operation reads shared data and will trigger a race condition. \hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue_ac0c3f41b10f04547f3438517c40cf8a5}{}\index{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue@{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}!operator=@{operator=}}
+\index{operator=@{operator=}!tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue@{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}}
+\subsubsection[{operator=(const concurrent\+\_\+priority\+\_\+queue \&src)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Compare  = std\+::less$<$\+T$>$, typename A  = cache\+\_\+aligned\+\_\+allocator$<$\+T$>$$>$ {\bf concurrent\+\_\+priority\+\_\+queue}\& {\bf tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}$<$ T, Compare, {\bf A} $>$\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf concurrent\+\_\+priority\+\_\+queue}$<$ T, Compare, {\bf A} $>$ \&}]{src}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1interface5_1_1concurrent__priority__queue_ac0c3f41b10f04547f3438517c40cf8a5}
+
+
+Assignment operator. 
+
+This operation is unsafe if there are pending concurrent operations on the src queue. \hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue_a1bfa0e7269b3407d6bb5c706264d2406}{}\index{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue@{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}!push@{push}}
+\index{push@{push}!tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue@{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}}
+\subsubsection[{push(const\+\_\+reference elem)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Compare  = std\+::less$<$\+T$>$, typename A  = cache\+\_\+aligned\+\_\+allocator$<$\+T$>$$>$ void {\bf tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}$<$ T, Compare, {\bf A} $>$\+::push (
+\begin{DoxyParamCaption}
+\item[{{\bf const\+\_\+reference}}]{elem}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1interface5_1_1concurrent__priority__queue_a1bfa0e7269b3407d6bb5c706264d2406}
+
+
+Pushes elem onto the queue, increasing capacity of queue if necessary. 
+
+This operation can be safely used concurrently with other push, try\+\_\+pop or emplace operations. \hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue_a7d86ba200474b51ec99a6b917429c6bb}{}\index{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue@{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}!size@{size}}
+\index{size@{size}!tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue@{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}}
+\subsubsection[{size() const }]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Compare  = std\+::less$<$\+T$>$, typename A  = cache\+\_\+aligned\+\_\+allocator$<$\+T$>$$>$ {\bf size\+\_\+type} {\bf tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}$<$ T, Compare, {\bf A} $>$\+::size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1interface5_1_1concurrent__priority__queue_a7d86ba200474b51ec99a6b917429c6bb}
+
+
+Returns the current number of elements contained in the queue. 
+
+Returned value may not reflect results of pending operations. This operation reads shared data and will trigger a race condition. \hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue_aa6ee6d356e538b67a7cb4e242e6e36c9}{}\index{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue@{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}!swap@{swap}}
+\index{swap@{swap}!tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue@{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}}
+\subsubsection[{swap(concurrent\+\_\+priority\+\_\+queue \&q)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Compare  = std\+::less$<$\+T$>$, typename A  = cache\+\_\+aligned\+\_\+allocator$<$\+T$>$$>$ void {\bf tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}$<$ T, Compare, {\bf A} $>$\+::swap (
+\begin{DoxyParamCaption}
+\item[{{\bf concurrent\+\_\+priority\+\_\+queue}$<$ T, Compare, {\bf A} $>$ \&}]{q}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1interface5_1_1concurrent__priority__queue_aa6ee6d356e538b67a7cb4e242e6e36c9}
+
+
+Swap this queue with another; not thread-\/safe. 
+
+This operation is unsafe if there are pending concurrent operations on the queue. \hypertarget{classtbb_1_1interface5_1_1concurrent__priority__queue_a954177b09e184cf3db47f1b180a7ef5e}{}\index{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue@{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}!try\+\_\+pop@{try\+\_\+pop}}
+\index{try\+\_\+pop@{try\+\_\+pop}!tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue@{tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}}
+\subsubsection[{try\+\_\+pop(reference elem)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Compare  = std\+::less$<$\+T$>$, typename A  = cache\+\_\+aligned\+\_\+allocator$<$\+T$>$$>$ bool {\bf tbb\+::interface5\+::concurrent\+\_\+priority\+\_\+queue}$<$ T, Compare, {\bf A} $>$\+::try\+\_\+pop (
+\begin{DoxyParamCaption}
+\item[{{\bf reference}}]{elem}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1interface5_1_1concurrent__priority__queue_a954177b09e184cf3db47f1b180a7ef5e}
+
+
+Gets a reference to and removes highest priority element. 
+
+If a highest priority element was found, sets elem and returns true, otherwise returns false. This operation can be safely used concurrently with other push, try\+\_\+pop or emplace operations. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/concurrent\+\_\+priority\+\_\+queue.\+h\end{DoxyCompactItemize}

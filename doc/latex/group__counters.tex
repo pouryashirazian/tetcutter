@@ -1,0 +1,56 @@
+\hypertarget{group__counters}{}\section{Counters}
+\label{group__counters}\index{Counters@{Counters}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__counters_gaa4f0172a7816793aa8adb3bb02a9500d}{\+\_\+\+\_\+itt\+\_\+counter\+\_\+inc\+\_\+v3} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$name)
+\begin{DoxyCompactList}\small\item\em Increment a counter by one. The first call with a given name creates a counter by that name and sets its value to zero on every thread. Successive calls increment the counter value on the thread on which the call is issued. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__counters_gaff266e66512b9314d16b16c1e67ef1f1}{\+\_\+\+\_\+itt\+\_\+counter\+\_\+inc\+\_\+delta\+\_\+v3} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$name, unsigned long long delta)
+\begin{DoxyCompactList}\small\item\em Increment a counter by the value specified in delta. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Counters are user-\/defined objects with a monotonically increasing value. \hyperlink{structCounter}{Counter} values are 64-\/bit unsigned integers. \hyperlink{structCounter}{Counter} values are tracked per-\/thread. Counters have names that can be displayed in the tools. 
+
+\subsection{Function Documentation}
+\hypertarget{group__counters_gaff266e66512b9314d16b16c1e67ef1f1}{}\index{Counters@{Counters}!\+\_\+\+\_\+itt\+\_\+counter\+\_\+inc\+\_\+delta\+\_\+v3@{\+\_\+\+\_\+itt\+\_\+counter\+\_\+inc\+\_\+delta\+\_\+v3}}
+\index{\+\_\+\+\_\+itt\+\_\+counter\+\_\+inc\+\_\+delta\+\_\+v3@{\+\_\+\+\_\+itt\+\_\+counter\+\_\+inc\+\_\+delta\+\_\+v3}!Counters@{Counters}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+counter\+\_\+inc\+\_\+delta\+\_\+v3(const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$name, unsigned long long delta)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+counter\+\_\+inc\+\_\+delta\+\_\+v3 (
+\begin{DoxyParamCaption}
+\item[{const \+\_\+\+\_\+itt\+\_\+domain $\ast$}]{domain, }
+\item[{\+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$}]{name, }
+\item[{unsigned long long}]{delta}
+\end{DoxyParamCaption}
+)}\label{group__counters_gaff266e66512b9314d16b16c1e67ef1f1}
+
+
+Increment a counter by the value specified in delta. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em domain} & The domain controlling the call. \hyperlink{structCounter}{Counter} names are not domain specific. The domain argument is used only to enable or disable the A\+P\+I calls. \\
+\hline
+\mbox{\tt in}  & {\em name} & The name of the counter \\
+\hline
+\mbox{\tt in}  & {\em delta} & The amount by which to increment the counter \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__counters_gaa4f0172a7816793aa8adb3bb02a9500d}{}\index{Counters@{Counters}!\+\_\+\+\_\+itt\+\_\+counter\+\_\+inc\+\_\+v3@{\+\_\+\+\_\+itt\+\_\+counter\+\_\+inc\+\_\+v3}}
+\index{\+\_\+\+\_\+itt\+\_\+counter\+\_\+inc\+\_\+v3@{\+\_\+\+\_\+itt\+\_\+counter\+\_\+inc\+\_\+v3}!Counters@{Counters}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+counter\+\_\+inc\+\_\+v3(const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$name)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+counter\+\_\+inc\+\_\+v3 (
+\begin{DoxyParamCaption}
+\item[{const \+\_\+\+\_\+itt\+\_\+domain $\ast$}]{domain, }
+\item[{\+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$}]{name}
+\end{DoxyParamCaption}
+)}\label{group__counters_gaa4f0172a7816793aa8adb3bb02a9500d}
+
+
+Increment a counter by one. The first call with a given name creates a counter by that name and sets its value to zero on every thread. Successive calls increment the counter value on the thread on which the call is issued. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em domain} & The domain controlling the call. \hyperlink{structCounter}{Counter} names are not domain specific. The domain argument is used only to enable or disable the A\+P\+I calls. \\
+\hline
+\mbox{\tt in}  & {\em name} & The name of the counter \\
+\hline
+\end{DoxyParams}

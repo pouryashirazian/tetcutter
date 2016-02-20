@@ -1,0 +1,119 @@
+\hypertarget{group__sync}{}\section{Synchronization}
+\label{group__sync}\index{Synchronization@{Synchronization}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__sync_gaa2de2b08cecad1d567b5312c503ad217}{}\#define \hyperlink{group__sync_gaa2de2b08cecad1d567b5312c503ad217}{\+\_\+\+\_\+itt\+\_\+attr\+\_\+barrier}~1\label{group__sync_gaa2de2b08cecad1d567b5312c503ad217}
+
+\begin{DoxyCompactList}\small\item\em possible value of attribute argument for sync object type \end{DoxyCompactList}\item 
+\hypertarget{group__sync_ga8c78a4fc23e9e2ed0f3d19cd92c7a60d}{}\#define \hyperlink{group__sync_ga8c78a4fc23e9e2ed0f3d19cd92c7a60d}{\+\_\+\+\_\+itt\+\_\+attr\+\_\+mutex}~2\label{group__sync_ga8c78a4fc23e9e2ed0f3d19cd92c7a60d}
+
+\begin{DoxyCompactList}\small\item\em possible value of attribute argument for sync object type \end{DoxyCompactList}\item 
+\hypertarget{group__sync_gaa7e7aa1f544a4a08faee32b776d534b1}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+sync\+\_\+create}~\hyperlink{group__sync_ga243666487ff4b8904f1629fa15782af4}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+create\+A}\label{group__sync_gaa7e7aa1f544a4a08faee32b776d534b1}
+
+\item 
+\hypertarget{group__sync_gab7f1ba7abf5c98e0e0e0ea53d0e34661}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+sync\+\_\+create\+\_\+ptr}~\+\_\+\+\_\+itt\+\_\+sync\+\_\+create\+A\+\_\+ptr\label{group__sync_gab7f1ba7abf5c98e0e0e0ea53d0e34661}
+
+\item 
+\hypertarget{group__sync_gac8b1ff0b07abb7867832206f7de355ea}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+sync\+\_\+rename}~\hyperlink{group__sync_ga8e0ee60520e20d33f9dce510b978bb3b}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+rename\+A}\label{group__sync_gac8b1ff0b07abb7867832206f7de355ea}
+
+\item 
+\hypertarget{group__sync_ga1983a053576fe0172533423524e259b0}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+sync\+\_\+rename\+\_\+ptr}~\+\_\+\+\_\+itt\+\_\+sync\+\_\+rename\+A\+\_\+ptr\label{group__sync_ga1983a053576fe0172533423524e259b0}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__sync_ga243666487ff4b8904f1629fa15782af4}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+create\+A} (void $\ast$addr, const char $\ast$objtype, const char $\ast$objname, int attribute)
+\begin{DoxyCompactList}\small\item\em Name a synchronization object. \end{DoxyCompactList}\item 
+\hypertarget{group__sync_ga994a2467bd0fd12e7f32fb12ea4b525b}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+sync\+\_\+create\+W} (void $\ast$addr, const wchar\+\_\+t $\ast$objtype, const wchar\+\_\+t $\ast$objname, int attribute)\label{group__sync_ga994a2467bd0fd12e7f32fb12ea4b525b}
+
+\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__sync_ga8e0ee60520e20d33f9dce510b978bb3b}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+rename\+A} (void $\ast$addr, const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Rename a synchronization object. \end{DoxyCompactList}\item 
+\hypertarget{group__sync_gac31e3b71fb178b0732224de292847de9}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+sync\+\_\+rename\+W} (void $\ast$addr, const wchar\+\_\+t $\ast$name)\label{group__sync_gac31e3b71fb178b0732224de292847de9}
+
+\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__sync_ga7c1ea8b984f5f59e077c087a46b4708d}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+destroy} (void $\ast$addr)
+\begin{DoxyCompactList}\small\item\em Destroy a synchronization object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{group of functions is used for performance measurement tools}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__sync_ga27637e91541f997e5e9369a04f094721}{}void I\+T\+T\+A\+P\+I \hyperlink{group__sync_ga27637e91541f997e5e9369a04f094721}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+prepare} (void $\ast$addr)\label{group__sync_ga27637e91541f997e5e9369a04f094721}
+
+\begin{DoxyCompactList}\small\item\em Enter spin loop on user-\/defined sync object. \end{DoxyCompactList}\item 
+\hypertarget{group__sync_gadf4d915083aa5ab2193ef5d1b0987e01}{}void I\+T\+T\+A\+P\+I \hyperlink{group__sync_gadf4d915083aa5ab2193ef5d1b0987e01}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+cancel} (void $\ast$addr)\label{group__sync_gadf4d915083aa5ab2193ef5d1b0987e01}
+
+\begin{DoxyCompactList}\small\item\em Quit spin loop without acquiring spin object. \end{DoxyCompactList}\item 
+\hypertarget{group__sync_ga3a08077b82c93d544473e6155a1e66c6}{}void I\+T\+T\+A\+P\+I \hyperlink{group__sync_ga3a08077b82c93d544473e6155a1e66c6}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+acquired} (void $\ast$addr)\label{group__sync_ga3a08077b82c93d544473e6155a1e66c6}
+
+\begin{DoxyCompactList}\small\item\em Successful spin loop completion (sync object acquired) \end{DoxyCompactList}\item 
+\hypertarget{group__sync_gadde263abd14a8ff4b88edf8afd86f7a2}{}void I\+T\+T\+A\+P\+I \hyperlink{group__sync_gadde263abd14a8ff4b88edf8afd86f7a2}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+releasing} (void $\ast$addr)\label{group__sync_gadde263abd14a8ff4b88edf8afd86f7a2}
+
+\begin{DoxyCompactList}\small\item\em Start sync object releasing code. Is called before the lock release call. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Indicate user-\/written synchronization code 
+
+\subsection{Function Documentation}
+\hypertarget{group__sync_ga243666487ff4b8904f1629fa15782af4}{}\index{Synchronization@{Synchronization}!\+\_\+\+\_\+itt\+\_\+sync\+\_\+create\+A@{\+\_\+\+\_\+itt\+\_\+sync\+\_\+create\+A}}
+\index{\+\_\+\+\_\+itt\+\_\+sync\+\_\+create\+A@{\+\_\+\+\_\+itt\+\_\+sync\+\_\+create\+A}!Synchronization@{Synchronization}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+sync\+\_\+create\+A(void $\ast$addr, const char $\ast$objtype, const char $\ast$objname, int attribute)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+sync\+\_\+create\+A (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{addr, }
+\item[{const char $\ast$}]{objtype, }
+\item[{const char $\ast$}]{objname, }
+\item[{int}]{attribute}
+\end{DoxyParamCaption}
+)}\label{group__sync_ga243666487ff4b8904f1629fa15782af4}
+
+
+Name a synchronization object. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em addr} & Handle for the synchronization object. You should use a real address to uniquely identify the synchronization object. \\
+\hline
+\mbox{\tt in}  & {\em objtype} & null-\/terminated object type string. If N\+U\+L\+L is passed, the name will be \char`\"{}\+User Synchronization\char`\"{}. \\
+\hline
+\mbox{\tt in}  & {\em objname} & null-\/terminated object name string. If N\+U\+L\+L, no name will be assigned to the object. \\
+\hline
+\mbox{\tt in}  & {\em attribute} & one of \mbox{[}\hyperlink{group__sync_gaa2de2b08cecad1d567b5312c503ad217}{\+\_\+\+\_\+itt\+\_\+attr\+\_\+barrier}, \hyperlink{group__sync_ga8c78a4fc23e9e2ed0f3d19cd92c7a60d}{\+\_\+\+\_\+itt\+\_\+attr\+\_\+mutex}\mbox{]} \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__sync_ga7c1ea8b984f5f59e077c087a46b4708d}{}\index{Synchronization@{Synchronization}!\+\_\+\+\_\+itt\+\_\+sync\+\_\+destroy@{\+\_\+\+\_\+itt\+\_\+sync\+\_\+destroy}}
+\index{\+\_\+\+\_\+itt\+\_\+sync\+\_\+destroy@{\+\_\+\+\_\+itt\+\_\+sync\+\_\+destroy}!Synchronization@{Synchronization}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+sync\+\_\+destroy(void $\ast$addr)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+sync\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{addr}
+\end{DoxyParamCaption}
+)}\label{group__sync_ga7c1ea8b984f5f59e077c087a46b4708d}
+
+
+Destroy a synchronization object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & Handle for the synchronization object. \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__sync_ga8e0ee60520e20d33f9dce510b978bb3b}{}\index{Synchronization@{Synchronization}!\+\_\+\+\_\+itt\+\_\+sync\+\_\+rename\+A@{\+\_\+\+\_\+itt\+\_\+sync\+\_\+rename\+A}}
+\index{\+\_\+\+\_\+itt\+\_\+sync\+\_\+rename\+A@{\+\_\+\+\_\+itt\+\_\+sync\+\_\+rename\+A}!Synchronization@{Synchronization}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+sync\+\_\+rename\+A(void $\ast$addr, const char $\ast$name)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+sync\+\_\+rename\+A (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{addr, }
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}\label{group__sync_ga8e0ee60520e20d33f9dce510b978bb3b}
+
+
+Rename a synchronization object. 
+
+You can use the rename call to assign or reassign a name to a given synchronization object. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em addr} & handle for the synchronization object. \\
+\hline
+\mbox{\tt in}  & {\em name} & null-\/terminated object name string. \\
+\hline
+\end{DoxyParams}

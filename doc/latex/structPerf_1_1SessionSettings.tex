@@ -1,0 +1,44 @@
+\hypertarget{structPerf_1_1SessionSettings}{}\section{Perf\+:\+:Session\+Settings Struct Reference}
+\label{structPerf_1_1SessionSettings}\index{Perf\+::\+Session\+Settings@{Perf\+::\+Session\+Settings}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structPerf_1_1SessionSettings_a29b63699032848903e72d8834bca6eaf}{}{\bfseries Session\+Settings} (uintptr\+\_\+t opts=0, const char $\ast$res\+File=N\+U\+L\+L, const char $\ast$histogram=No\+Histogram)\label{structPerf_1_1SessionSettings_a29b63699032848903e72d8834bca6eaf}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structPerf_1_1SessionSettings_ad6fc0229d27cc7294dc74d1061f0ff3d}{}uintptr\+\_\+t \hyperlink{structPerf_1_1SessionSettings_ad6fc0229d27cc7294dc74d1061f0ff3d}{my\+\_\+opts}\label{structPerf_1_1SessionSettings_ad6fc0229d27cc7294dc74d1061f0ff3d}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{structA}{A} combination of Session\+Options flags. \end{DoxyCompactList}\item 
+const char $\ast$ \hyperlink{structPerf_1_1SessionSettings_a428bb34d80e45daadf7f0d755d273572}{my\+\_\+res\+File}
+\begin{DoxyCompactList}\small\item\em Name of a file to store performance results. \end{DoxyCompactList}\item 
+const char $\ast$ \hyperlink{structPerf_1_1SessionSettings_a48903a128e21238cf885e2766e2cb8bc}{my\+\_\+histogram\+Name}
+\begin{DoxyCompactList}\small\item\em Output destination for the histogram of individual run times in a series. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{structPerf_1_1SessionSettings_a48903a128e21238cf885e2766e2cb8bc}{}\index{Perf\+::\+Session\+Settings@{Perf\+::\+Session\+Settings}!my\+\_\+histogram\+Name@{my\+\_\+histogram\+Name}}
+\index{my\+\_\+histogram\+Name@{my\+\_\+histogram\+Name}!Perf\+::\+Session\+Settings@{Perf\+::\+Session\+Settings}}
+\subsubsection[{my\+\_\+histogram\+Name}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ Perf\+::\+Session\+Settings\+::my\+\_\+histogram\+Name}\label{structPerf_1_1SessionSettings_a48903a128e21238cf885e2766e2cb8bc}
+
+
+Output destination for the histogram of individual run times in a series. 
+
+If it is a string, the histogram is stored in a file with such name. If it is N\+U\+L\+L, the histogram is printed on the console. By default histograms are suppressed.
+
+The histogram is formatted as two column table\+: \char`\"{}time bucket start\char`\"{} \char`\"{}number of tests in this bucket\char`\"{}
+
+When this setting enables histogram generation, an individual test can override it by implementing Histogram\+Name method. \hypertarget{structPerf_1_1SessionSettings_a428bb34d80e45daadf7f0d755d273572}{}\index{Perf\+::\+Session\+Settings@{Perf\+::\+Session\+Settings}!my\+\_\+res\+File@{my\+\_\+res\+File}}
+\index{my\+\_\+res\+File@{my\+\_\+res\+File}!Perf\+::\+Session\+Settings@{Perf\+::\+Session\+Settings}}
+\subsubsection[{my\+\_\+res\+File}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ Perf\+::\+Session\+Settings\+::my\+\_\+res\+File}\label{structPerf_1_1SessionSettings_a428bb34d80e45daadf7f0d755d273572}
+
+
+Name of a file to store performance results. 
+
+These results are duplicates of what is printed on the console. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/perf/perf.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,37 @@
+\hypertarget{classtbb_1_1internal_1_1unpadded__mail__outbox}{}\section{tbb\+:\+:internal\+:\+:unpadded\+\_\+mail\+\_\+outbox Class Reference}
+\label{classtbb_1_1internal_1_1unpadded__mail__outbox}\index{tbb\+::internal\+::unpadded\+\_\+mail\+\_\+outbox@{tbb\+::internal\+::unpadded\+\_\+mail\+\_\+outbox}}
+
+
+Internal representation of \hyperlink{classtbb_1_1internal_1_1mail__outbox}{mail\+\_\+outbox}, without padding.  
+
+
+
+
+{\ttfamily \#include $<$mailbox.\+h$>$}
+
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1unpadded__mail__outbox_a5400264b86ed06e7988ce05676502649}{}typedef \hyperlink{structtbb_1_1internal_1_1task__proxy}{task\+\_\+proxy} $\ast$\+\_\+\+\_\+\+T\+B\+B\+\_\+atomic {\bfseries proxy\+\_\+ptr}\label{classtbb_1_1internal_1_1unpadded__mail__outbox_a5400264b86ed06e7988ce05676502649}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1unpadded__mail__outbox_a3ee26b23db3bff135fad3aa2aaa07c59}{}proxy\+\_\+ptr \hyperlink{classtbb_1_1internal_1_1unpadded__mail__outbox_a3ee26b23db3bff135fad3aa2aaa07c59}{my\+\_\+first}\label{classtbb_1_1internal_1_1unpadded__mail__outbox_a3ee26b23db3bff135fad3aa2aaa07c59}
+
+\begin{DoxyCompactList}\small\item\em Pointer to first \hyperlink{structtbb_1_1internal_1_1task__proxy}{task\+\_\+proxy} in mailbox, or N\+U\+L\+L if box is empty. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1unpadded__mail__outbox_a812639a0cd3bff371afd51922d80ed7b}{}proxy\+\_\+ptr $\ast$\+\_\+\+\_\+\+T\+B\+B\+\_\+atomic \hyperlink{classtbb_1_1internal_1_1unpadded__mail__outbox_a812639a0cd3bff371afd51922d80ed7b}{my\+\_\+last}\label{classtbb_1_1internal_1_1unpadded__mail__outbox_a812639a0cd3bff371afd51922d80ed7b}
+
+\begin{DoxyCompactList}\small\item\em Pointer to pointer that will point to next item in the queue. Never N\+U\+L\+L. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1unpadded__mail__outbox_ae34c49eefcf28e324fc0467202186686}{}bool \hyperlink{classtbb_1_1internal_1_1unpadded__mail__outbox_ae34c49eefcf28e324fc0467202186686}{my\+\_\+is\+\_\+idle}\label{classtbb_1_1internal_1_1unpadded__mail__outbox_ae34c49eefcf28e324fc0467202186686}
+
+\begin{DoxyCompactList}\small\item\em Owner of mailbox is not executing a task, and has drained its own task pool. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Internal representation of \hyperlink{classtbb_1_1internal_1_1mail__outbox}{mail\+\_\+outbox}, without padding. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/mailbox.\+h\end{DoxyCompactItemize}

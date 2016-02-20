@@ -1,0 +1,81 @@
+\hypertarget{classLoki_1_1SleepLevelMutex}{}\section{Loki\+:\+:Sleep\+Level\+Mutex Class Reference}
+\label{classLoki_1_1SleepLevelMutex}\index{Loki\+::\+Sleep\+Level\+Mutex@{Loki\+::\+Sleep\+Level\+Mutex}}
+
+
+{\ttfamily \#include $<$Level\+Mutex.\+h$>$}
+
+Inheritance diagram for Loki\+:\+:Sleep\+Level\+Mutex\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classLoki_1_1SleepLevelMutex}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLoki_1_1SleepLevelMutex_a89785c46dc2bde328e1908e25d6b747b}{Sleep\+Level\+Mutex} (unsigned int level)
+\item 
+\hypertarget{classLoki_1_1SleepLevelMutex_a843adc810a6eb218f88b5a49ab1ff595}{}{\bfseries Sleep\+Level\+Mutex} (unsigned int level, unsigned int sleep\+Time)\label{classLoki_1_1SleepLevelMutex_a843adc810a6eb218f88b5a49ab1ff595}
+
+\item 
+\hypertarget{classLoki_1_1SleepLevelMutex_a4c415349db989e7f2a8f2e02cbf9db88}{}virtual \hyperlink{classLoki_1_1SleepLevelMutex_a4c415349db989e7f2a8f2e02cbf9db88}{$\sim$\+Sleep\+Level\+Mutex} (void)\label{classLoki_1_1SleepLevelMutex_a4c415349db989e7f2a8f2e02cbf9db88}
+
+\begin{DoxyCompactList}\small\item\em Destructs the mutex. \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1SleepLevelMutex_a4d568e01ba25efc755de8a582db42d36}{}unsigned int {\bfseries Get\+Sleep\+Time} (void) const  volatile\label{classLoki_1_1SleepLevelMutex_a4d568e01ba25efc755de8a582db42d36}
+
+\item 
+\hypertarget{classLoki_1_1SleepLevelMutex_a0c4c85290c0f496a2e56bfd4dab963c7}{}void {\bfseries Set\+Sleep\+Time} (unsigned int sleep\+Time) volatile\label{classLoki_1_1SleepLevelMutex_a0c4c85290c0f496a2e56bfd4dab963c7}
+
+\item 
+virtual \hyperlink{classLoki_1_1MutexErrors_acd0eb6065ca303083d2e0229d7bff590}{Mutex\+Errors\+::\+Type} \hyperlink{classLoki_1_1SleepLevelMutex_ae0f17a3b7641466c7611f5921d0c95e6}{Lock} (void) volatile
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implements a sleeping loop to wait for the mutex to unlock.
+
+\begin{DoxyParagraph}{Purpose}
+Since this class puts the thread to sleep for short intervals, you can use this class for most of your mutexes. Especially for locking any high level resources where any one operation on the resouce consumes many C\+P\+U cycles. The purpose of this mutex is to reduce the number of C\+P\+U cycles spent in idle loops. All \hyperlink{classLoki_1_1SleepLevelMutex}{Sleep\+Level\+Mutex}\textquotesingle{}s should have higher levels than all your \hyperlink{classLoki_1_1SpinLevelMutex}{Spin\+Level\+Mutex}\textquotesingle{}s.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Dependence on Spin\+Level\+Mutex}
+This utilizes \hyperlink{classLoki_1_1SpinLevelMutex}{Spin\+Level\+Mutex} so it does not have to re-\/implement the Do\+Try\+Lock and Do\+Unlock functions the same way. All it really needs is a Do\+Lock function and the amount of time it should sleep if an attempt to lock a function fails. 
+\end{DoxyParagraph}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classLoki_1_1SleepLevelMutex_a89785c46dc2bde328e1908e25d6b747b}{}\index{Loki\+::\+Sleep\+Level\+Mutex@{Loki\+::\+Sleep\+Level\+Mutex}!Sleep\+Level\+Mutex@{Sleep\+Level\+Mutex}}
+\index{Sleep\+Level\+Mutex@{Sleep\+Level\+Mutex}!Loki\+::\+Sleep\+Level\+Mutex@{Loki\+::\+Sleep\+Level\+Mutex}}
+\subsubsection[{Sleep\+Level\+Mutex(unsigned int level)}]{\setlength{\rightskip}{0pt plus 5cm}Loki\+::\+Sleep\+Level\+Mutex\+::\+Sleep\+Level\+Mutex (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{level}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\label{classLoki_1_1SleepLevelMutex_a89785c46dc2bde328e1908e25d6b747b}
+Constructs a levelized mutex that puts threads to sleep while they wait for another thread to unlock the mutex. 
+\begin{DoxyParams}{Parameters}
+{\em level} & Level of this mutex. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classLoki_1_1SleepLevelMutex_ae0f17a3b7641466c7611f5921d0c95e6}{}\index{Loki\+::\+Sleep\+Level\+Mutex@{Loki\+::\+Sleep\+Level\+Mutex}!Lock@{Lock}}
+\index{Lock@{Lock}!Loki\+::\+Sleep\+Level\+Mutex@{Loki\+::\+Sleep\+Level\+Mutex}}
+\subsubsection[{Lock(void) volatile}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Mutex\+Errors\+::\+Type} Loki\+::\+Sleep\+Level\+Mutex\+::\+Lock (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) volatile\hspace{0.3cm}{\ttfamily [virtual]}}\label{classLoki_1_1SleepLevelMutex_ae0f17a3b7641466c7611f5921d0c95e6}
+Attempts to lock a mutex, and if it fails, then sleeps for a while before attempting again. 
+
+Reimplemented from \hyperlink{classLoki_1_1SpinLevelMutex}{Loki\+::\+Spin\+Level\+Mutex}.
+
+
+
+Reimplemented in \hyperlink{classExceptionTossingMutex_adece71b07180b983a301504b1417ff36}{Exception\+Tossing\+Mutex}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/\hyperlink{LevelMutex_8h}{Level\+Mutex.\+h}\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/src/\hyperlink{LevelMutex_8cpp}{Level\+Mutex.\+cpp}\end{DoxyCompactItemize}

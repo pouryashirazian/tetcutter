@@ -1,0 +1,45 @@
+\hypertarget{structWorkForCondVarTimedWait}{}\section{Work\+For\+Cond\+Var\+Timed\+Wait$<$ M $>$ Struct Template Reference}
+\label{structWorkForCondVarTimedWait}\index{Work\+For\+Cond\+Var\+Timed\+Wait$<$ M $>$@{Work\+For\+Cond\+Var\+Timed\+Wait$<$ M $>$}}
+Inheritance diagram for Work\+For\+Cond\+Var\+Timed\+Wait$<$ M $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{structWorkForCondVarTimedWait}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structWorkForCondVarTimedWait_a58384f3abeea7990e8efc5b86c7edb56}{}{\bfseries Work\+For\+Cond\+Var\+Timed\+Wait} (int n\+\_\+, condition\+\_\+variable \&cv\+\_\+, M \&mtx\+\_\+)\label{structWorkForCondVarTimedWait_a58384f3abeea7990e8efc5b86c7edb56}
+
+\item 
+void \hyperlink{structWorkForCondVarTimedWait_a3a8996af8ded061f03c7ae4c77615e6f}{operator()} (int tid) const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structWorkForCondVarTimedWait_a5d850c59cee3bbc32b970c51ab380b84}{}int {\bfseries nthread}\label{structWorkForCondVarTimedWait_a5d850c59cee3bbc32b970c51ab380b84}
+
+\item 
+\hypertarget{structWorkForCondVarTimedWait_ad0c6110b68158afaaace4ee33fa40b77}{}condition\+\_\+variable \& {\bfseries test\+\_\+cv}\label{structWorkForCondVarTimedWait_ad0c6110b68158afaaace4ee33fa40b77}
+
+\item 
+\hypertarget{structWorkForCondVarTimedWait_a015e3f2a4d24dd4e69e85df8b1964d0a}{}M \& {\bfseries my\+\_\+mtx}\label{structWorkForCondVarTimedWait_a015e3f2a4d24dd4e69e85df8b1964d0a}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{structWorkForCondVarTimedWait_a3a8996af8ded061f03c7ae4c77615e6f}{}\index{Work\+For\+Cond\+Var\+Timed\+Wait@{Work\+For\+Cond\+Var\+Timed\+Wait}!operator()@{operator()}}
+\index{operator()@{operator()}!Work\+For\+Cond\+Var\+Timed\+Wait@{Work\+For\+Cond\+Var\+Timed\+Wait}}
+\subsubsection[{operator()(int tid) const }]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename M $>$ void {\bf Work\+For\+Cond\+Var\+Timed\+Wait}$<$ M $>$\+::operator() (
+\begin{DoxyParamCaption}
+\item[{int}]{tid}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{structWorkForCondVarTimedWait_a3a8996af8ded061f03c7ae4c77615e6f}
+Some version of glibc return E\+I\+N\+V\+A\+L instead 0 when spurious wakeup occurs on pthread\+\_\+cond\+\_\+timedwait()
+
+Some version of glibc return E\+I\+N\+V\+A\+L instead 0 when spurious wakeup occurs on pthread\+\_\+cond\+\_\+timedwait() 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/test/test\+\_\+condition\+\_\+variable.\+h\end{DoxyCompactItemize}

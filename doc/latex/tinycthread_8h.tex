@@ -1,0 +1,547 @@
+\hypertarget{tinycthread_8h}{}\section{/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/glfw-\/3.1.2/deps/tinycthread.h File Reference}
+\label{tinycthread_8h}\index{/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/glfw-\/3.\+1.\+2/deps/tinycthread.\+h@{/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/glfw-\/3.\+1.\+2/deps/tinycthread.\+h}}
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include $<$pthread.\+h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{tinycthread_8h_a5ae43c395d15a661ba4877c72d8214ed}{}\#define {\bfseries \+\_\+\+T\+T\+H\+R\+E\+A\+D\+\_\+\+P\+O\+S\+I\+X\+\_\+}\label{tinycthread_8h_a5ae43c395d15a661ba4877c72d8214ed}
+
+\item 
+\hypertarget{tinycthread_8h_a7c27184597c6f4cb260d6b41aea5d9b8}{}\#define {\bfseries \+\_\+\+T\+T\+H\+R\+E\+A\+D\+\_\+\+P\+L\+A\+T\+F\+O\+R\+M\+\_\+\+D\+E\+F\+I\+N\+E\+D\+\_\+}\label{tinycthread_8h_a7c27184597c6f4cb260d6b41aea5d9b8}
+
+\item 
+\hypertarget{tinycthread_8h_a369266c24eacffb87046522897a570d5}{}\#define {\bfseries \+\_\+\+G\+N\+U\+\_\+\+S\+O\+U\+R\+C\+E}\label{tinycthread_8h_a369266c24eacffb87046522897a570d5}
+
+\item 
+\hypertarget{tinycthread_8h_a3024ccd4a9af5109d24e6c57565d74a1}{}\#define {\bfseries \+\_\+\+P\+O\+S\+I\+X\+\_\+\+C\+\_\+\+S\+O\+U\+R\+C\+E}~199309\+L\label{tinycthread_8h_a3024ccd4a9af5109d24e6c57565d74a1}
+
+\item 
+\hypertarget{tinycthread_8h_a78c99ffd76a7bb3c8c74db76207e9ab4}{}\#define {\bfseries \+\_\+\+X\+O\+P\+E\+N\+\_\+\+S\+O\+U\+R\+C\+E}~500\label{tinycthread_8h_a78c99ffd76a7bb3c8c74db76207e9ab4}
+
+\item 
+\hypertarget{tinycthread_8h_aa43107f3cb85397223bf6d40be480480}{}\#define {\bfseries T\+I\+M\+E\+\_\+\+U\+T\+C}~0\label{tinycthread_8h_aa43107f3cb85397223bf6d40be480480}
+
+\item 
+\#define \hyperlink{tinycthread_8h_a953f67c466c6b20cb8b45bae7322a4bb}{T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+A\+J\+O\+R}~1
+\item 
+\#define \hyperlink{tinycthread_8h_a4b0bb3afcfbecfad0a260c56a2600485}{T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+I\+N\+O\+R}~1
+\item 
+\#define \hyperlink{tinycthread_8h_a68b525cf21cb295d457f87c45ca45604}{T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N}~(\hyperlink{tinycthread_8h_a953f67c466c6b20cb8b45bae7322a4bb}{T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+A\+J\+O\+R} $\ast$ 100 + \hyperlink{tinycthread_8h_a4b0bb3afcfbecfad0a260c56a2600485}{T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+I\+N\+O\+R})
+\item 
+\#define \hyperlink{tinycthread_8h_a6ee13d5bcebab292dbc98e06c6cf9fe7}{\+\_\+\+Thread\+\_\+local}
+\item 
+\hypertarget{tinycthread_8h_a11de84b15b6b59861b4366a192aadd58}{}\#define {\bfseries T\+S\+S\+\_\+\+D\+T\+O\+R\+\_\+\+I\+T\+E\+R\+A\+T\+I\+O\+N\+S}~0\label{tinycthread_8h_a11de84b15b6b59861b4366a192aadd58}
+
+\item 
+\#define \hyperlink{tinycthread_8h_a0944e70c2ce4eed616f7bcfd604fba96}{thrd\+\_\+error}~0
+\item 
+\#define \hyperlink{tinycthread_8h_a6f15c94421801f7f6a4338653b9017dc}{thrd\+\_\+success}~1
+\item 
+\#define \hyperlink{tinycthread_8h_aec454a4baf61e6d518bbfb8768bd6a1f}{thrd\+\_\+timeout}~2
+\item 
+\#define \hyperlink{tinycthread_8h_a3c563aa25920a041d83d4019b113ab5d}{thrd\+\_\+busy}~3
+\item 
+\#define \hyperlink{tinycthread_8h_ad6010b6ba8c0508cef692f066b09e2ef}{thrd\+\_\+nomem}~4
+\item 
+\hypertarget{tinycthread_8h_af5ebc375e7a7dca3e9fdcc0bc338f201}{}\#define {\bfseries mtx\+\_\+plain}~1\label{tinycthread_8h_af5ebc375e7a7dca3e9fdcc0bc338f201}
+
+\item 
+\hypertarget{tinycthread_8h_adf070d6198d7c0419e5eed91db5ac223}{}\#define {\bfseries mtx\+\_\+timed}~2\label{tinycthread_8h_adf070d6198d7c0419e5eed91db5ac223}
+
+\item 
+\hypertarget{tinycthread_8h_a2334ad10806834ffe52feac22fc5c198}{}\#define {\bfseries mtx\+\_\+try}~4\label{tinycthread_8h_a2334ad10806834ffe52feac22fc5c198}
+
+\item 
+\hypertarget{tinycthread_8h_a23baf902554dba287faa32c646e35f61}{}\#define {\bfseries mtx\+\_\+recursive}~8\label{tinycthread_8h_a23baf902554dba287faa32c646e35f61}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{tinycthread_8h_ae653b263c1432a99c799cbf028bc65e2}{}typedef pthread\+\_\+mutex\+\_\+t {\bfseries mtx\+\_\+t}\label{tinycthread_8h_ae653b263c1432a99c799cbf028bc65e2}
+
+\item 
+\hypertarget{tinycthread_8h_aa5c55d7c9eb959c15c4d5b73c02e8a41}{}typedef pthread\+\_\+cond\+\_\+t {\bfseries cnd\+\_\+t}\label{tinycthread_8h_aa5c55d7c9eb959c15c4d5b73c02e8a41}
+
+\item 
+\hypertarget{tinycthread_8h_a40f328ffa956af453fe5c14704f88231}{}typedef pthread\+\_\+t {\bfseries thrd\+\_\+t}\label{tinycthread_8h_a40f328ffa956af453fe5c14704f88231}
+
+\item 
+typedef int($\ast$ \hyperlink{tinycthread_8h_ab26bdfa456502f8c483f45bb39ca7336}{thrd\+\_\+start\+\_\+t}) (void $\ast$arg)
+\item 
+\hypertarget{tinycthread_8h_a0475af0e9cd14ba35427de7c8c49dab1}{}typedef pthread\+\_\+key\+\_\+t {\bfseries tss\+\_\+t}\label{tinycthread_8h_a0475af0e9cd14ba35427de7c8c49dab1}
+
+\item 
+typedef void($\ast$ \hyperlink{tinycthread_8h_a7bd9f13e4169f842cbb831ea348049dd}{tss\+\_\+dtor\+\_\+t}) (void $\ast$val)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{tinycthread_8h_a89200caf0dc25fcc97df171d0034bff2}{mtx\+\_\+init} (mtx\+\_\+t $\ast$mtx, int type)
+\item 
+void \hyperlink{tinycthread_8h_ae8b3732298d1d316db6438b4c561c0dd}{mtx\+\_\+destroy} (mtx\+\_\+t $\ast$mtx)
+\item 
+int \hyperlink{tinycthread_8h_a8945984db67db8ee774872da64d0e424}{mtx\+\_\+lock} (mtx\+\_\+t $\ast$mtx)
+\item 
+int \hyperlink{tinycthread_8h_a98f9757dde089254735199ac738ff65f}{mtx\+\_\+timedlock} (mtx\+\_\+t $\ast$mtx, const struct timespec $\ast$ts)
+\item 
+int \hyperlink{tinycthread_8h_ac577690ddd48f5a1fdf3dc97881a2199}{mtx\+\_\+trylock} (mtx\+\_\+t $\ast$mtx)
+\item 
+int \hyperlink{tinycthread_8h_ae2fb1d2854461fa583017cc9b0bc6cca}{mtx\+\_\+unlock} (mtx\+\_\+t $\ast$mtx)
+\item 
+int \hyperlink{tinycthread_8h_a146f4cd218c2a2f770be14c1dee26d08}{cnd\+\_\+init} (cnd\+\_\+t $\ast$cond)
+\item 
+void \hyperlink{tinycthread_8h_aa925921fa9edc189f474ae10a23bcfd3}{cnd\+\_\+destroy} (cnd\+\_\+t $\ast$cond)
+\item 
+int \hyperlink{tinycthread_8h_af76e066715b1190d38a69da1c511e30f}{cnd\+\_\+signal} (cnd\+\_\+t $\ast$cond)
+\item 
+int \hyperlink{tinycthread_8h_a66228b340509733bdf529b93bca8df14}{cnd\+\_\+broadcast} (cnd\+\_\+t $\ast$cond)
+\item 
+int \hyperlink{tinycthread_8h_ac4dfb82fc3d92bb688cb07308af6a659}{cnd\+\_\+wait} (cnd\+\_\+t $\ast$cond, mtx\+\_\+t $\ast$mtx)
+\item 
+int \hyperlink{tinycthread_8h_a2bdc352d949424855c957b0d1916d443}{cnd\+\_\+timedwait} (cnd\+\_\+t $\ast$cond, mtx\+\_\+t $\ast$mtx, const struct timespec $\ast$ts)
+\item 
+int \hyperlink{tinycthread_8h_a1a52b6cd2d15cc6c4741d5124f85d183}{thrd\+\_\+create} (thrd\+\_\+t $\ast$thr, \hyperlink{tinycthread_8h_ab26bdfa456502f8c483f45bb39ca7336}{thrd\+\_\+start\+\_\+t} func, void $\ast$arg)
+\item 
+thrd\+\_\+t \hyperlink{tinycthread_8h_ab67b6f182a848d979155d03598325fa7}{thrd\+\_\+current} (void)
+\item 
+int \hyperlink{tinycthread_8h_ad5380997f9e32a31f802bdd9cb266902}{thrd\+\_\+detach} (thrd\+\_\+t thr)
+\item 
+int \hyperlink{tinycthread_8h_a153e65a389814ce51ad07791e42b2118}{thrd\+\_\+equal} (thrd\+\_\+t thr0, thrd\+\_\+t thr1)
+\item 
+void \hyperlink{tinycthread_8h_ae13e483223c39327e190e79e18f20b15}{thrd\+\_\+exit} (int res)
+\item 
+int \hyperlink{tinycthread_8h_aa2e83a544f49f74cf217a69a882b5d80}{thrd\+\_\+join} (thrd\+\_\+t thr, int $\ast$res)
+\item 
+int \hyperlink{tinycthread_8h_a58d00bd1fc0cc3c91d4c34d5faf117c3}{thrd\+\_\+sleep} (const struct timespec $\ast$time\+\_\+point, struct timespec $\ast$remaining)
+\item 
+void \hyperlink{tinycthread_8h_acbfb78346e6b76b23da1d2d8df03549a}{thrd\+\_\+yield} (void)
+\item 
+int \hyperlink{tinycthread_8h_a286fe7927e9af276a9cfdbc8b9eb08ad}{tss\+\_\+create} (tss\+\_\+t $\ast$key, \hyperlink{tinycthread_8h_a7bd9f13e4169f842cbb831ea348049dd}{tss\+\_\+dtor\+\_\+t} dtor)
+\item 
+void \hyperlink{tinycthread_8h_aecebbc66b206171d9381ba94528c6cb7}{tss\+\_\+delete} (tss\+\_\+t key)
+\item 
+void $\ast$ \hyperlink{tinycthread_8h_a183e71f731ed566a1d14b056606806f8}{tss\+\_\+get} (tss\+\_\+t key)
+\item 
+int \hyperlink{tinycthread_8h_a608e01c49b84a5ad4f085a9aedc6a680}{tss\+\_\+set} (tss\+\_\+t key, void $\ast$val)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{tinycthread_8h_a6ee13d5bcebab292dbc98e06c6cf9fe7}{}\index{tinycthread.\+h@{tinycthread.\+h}!\+\_\+\+Thread\+\_\+local@{\+\_\+\+Thread\+\_\+local}}
+\index{\+\_\+\+Thread\+\_\+local@{\+\_\+\+Thread\+\_\+local}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{\+\_\+\+Thread\+\_\+local}]{\setlength{\rightskip}{0pt plus 5cm}\#define \+\_\+\+Thread\+\_\+local}\label{tinycthread_8h_a6ee13d5bcebab292dbc98e06c6cf9fe7}
+\hyperlink{structThread}{Thread} local storage keyword. \hyperlink{structA}{A} variable that is declared with the {\ttfamily \+\_\+\+Thread\+\_\+local} keyword makes the value of the variable local to each thread (known as thread-\/local storage, or T\+L\+S). \hyperlink{classExample}{Example} usage\+: 
+\begin{DoxyCode}
+1 // This variable is local to each thread.
+2 \_Thread\_local int variable;
+\end{DoxyCode}
+ \begin{DoxyNote}{Note}
+The {\ttfamily \+\_\+\+Thread\+\_\+local} keyword is a macro that maps to the corresponding compiler directive (e.\+g. {\ttfamily \+\_\+\+\_\+declspec(thread)}). 
+
+This directive is currently not supported on Mac O\+S \hyperlink{structX}{X} (it will give a compiler error), since compile-\/time T\+L\+S is not supported in the Mac O\+S \hyperlink{structX}{X} executable format. Also, some older versions of Min\+G\+W (before G\+C\+C 4.\+x) do not support this directive. 
+\end{DoxyNote}
+\hypertarget{tinycthread_8h_a3c563aa25920a041d83d4019b113ab5d}{}\index{tinycthread.\+h@{tinycthread.\+h}!thrd\+\_\+busy@{thrd\+\_\+busy}}
+\index{thrd\+\_\+busy@{thrd\+\_\+busy}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{thrd\+\_\+busy}]{\setlength{\rightskip}{0pt plus 5cm}\#define thrd\+\_\+busy~3}\label{tinycthread_8h_a3c563aa25920a041d83d4019b113ab5d}
+The requested operation failed because a tesource requested by a test and return function is already in use \hypertarget{tinycthread_8h_a0944e70c2ce4eed616f7bcfd604fba96}{}\index{tinycthread.\+h@{tinycthread.\+h}!thrd\+\_\+error@{thrd\+\_\+error}}
+\index{thrd\+\_\+error@{thrd\+\_\+error}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{thrd\+\_\+error}]{\setlength{\rightskip}{0pt plus 5cm}\#define thrd\+\_\+error~0}\label{tinycthread_8h_a0944e70c2ce4eed616f7bcfd604fba96}
+The requested operation failed \hypertarget{tinycthread_8h_ad6010b6ba8c0508cef692f066b09e2ef}{}\index{tinycthread.\+h@{tinycthread.\+h}!thrd\+\_\+nomem@{thrd\+\_\+nomem}}
+\index{thrd\+\_\+nomem@{thrd\+\_\+nomem}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{thrd\+\_\+nomem}]{\setlength{\rightskip}{0pt plus 5cm}\#define thrd\+\_\+nomem~4}\label{tinycthread_8h_ad6010b6ba8c0508cef692f066b09e2ef}
+The requested operation failed because it was unable to allocate memory \hypertarget{tinycthread_8h_a6f15c94421801f7f6a4338653b9017dc}{}\index{tinycthread.\+h@{tinycthread.\+h}!thrd\+\_\+success@{thrd\+\_\+success}}
+\index{thrd\+\_\+success@{thrd\+\_\+success}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{thrd\+\_\+success}]{\setlength{\rightskip}{0pt plus 5cm}\#define thrd\+\_\+success~1}\label{tinycthread_8h_a6f15c94421801f7f6a4338653b9017dc}
+The requested operation succeeded \hypertarget{tinycthread_8h_aec454a4baf61e6d518bbfb8768bd6a1f}{}\index{tinycthread.\+h@{tinycthread.\+h}!thrd\+\_\+timeout@{thrd\+\_\+timeout}}
+\index{thrd\+\_\+timeout@{thrd\+\_\+timeout}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{thrd\+\_\+timeout}]{\setlength{\rightskip}{0pt plus 5cm}\#define thrd\+\_\+timeout~2}\label{tinycthread_8h_aec454a4baf61e6d518bbfb8768bd6a1f}
+The time specified in the call was reached without acquiring the requested resource \hypertarget{tinycthread_8h_a68b525cf21cb295d457f87c45ca45604}{}\index{tinycthread.\+h@{tinycthread.\+h}!T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N@{T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N}}
+\index{T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N@{T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N~({\bf T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+A\+J\+O\+R} $\ast$ 100 + {\bf T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+I\+N\+O\+R})}\label{tinycthread_8h_a68b525cf21cb295d457f87c45ca45604}
+Tiny\+C\+Thread version (full version). \hypertarget{tinycthread_8h_a953f67c466c6b20cb8b45bae7322a4bb}{}\index{tinycthread.\+h@{tinycthread.\+h}!T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+A\+J\+O\+R@{T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+A\+J\+O\+R}}
+\index{T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+A\+J\+O\+R@{T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+A\+J\+O\+R}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+A\+J\+O\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+A\+J\+O\+R~1}\label{tinycthread_8h_a953f67c466c6b20cb8b45bae7322a4bb}
+Tiny\+C\+Thread version (major number). \hypertarget{tinycthread_8h_a4b0bb3afcfbecfad0a260c56a2600485}{}\index{tinycthread.\+h@{tinycthread.\+h}!T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+I\+N\+O\+R@{T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+I\+N\+O\+R}}
+\index{T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+I\+N\+O\+R@{T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+I\+N\+O\+R}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+I\+N\+O\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+I\+N\+Y\+C\+T\+H\+R\+E\+A\+D\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+I\+N\+O\+R~1}\label{tinycthread_8h_a4b0bb3afcfbecfad0a260c56a2600485}
+Tiny\+C\+Thread version (minor number). 
+
+\subsection{Typedef Documentation}
+\hypertarget{tinycthread_8h_ab26bdfa456502f8c483f45bb39ca7336}{}\index{tinycthread.\+h@{tinycthread.\+h}!thrd\+\_\+start\+\_\+t@{thrd\+\_\+start\+\_\+t}}
+\index{thrd\+\_\+start\+\_\+t@{thrd\+\_\+start\+\_\+t}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{thrd\+\_\+start\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef int($\ast$ thrd\+\_\+start\+\_\+t) (void $\ast$arg)}\label{tinycthread_8h_ab26bdfa456502f8c483f45bb39ca7336}
+\hyperlink{structThread}{Thread} start function. Any thread that is started with the \hyperlink{tinycthread_8h_a1a52b6cd2d15cc6c4741d5124f85d183}{thrd\+\_\+create()} function must be started through a function of this type. 
+\begin{DoxyParams}{Parameters}
+{\em arg} & The thread argument (the {\ttfamily arg} argument of the corresponding \hyperlink{tinycthread_8h_a1a52b6cd2d15cc6c4741d5124f85d183}{thrd\+\_\+create()} call). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The thread return value, which can be obtained by another thread by using the \hyperlink{tinycthread_8h_aa2e83a544f49f74cf217a69a882b5d80}{thrd\+\_\+join()} function. 
+\end{DoxyReturn}
+\hypertarget{tinycthread_8h_a7bd9f13e4169f842cbb831ea348049dd}{}\index{tinycthread.\+h@{tinycthread.\+h}!tss\+\_\+dtor\+\_\+t@{tss\+\_\+dtor\+\_\+t}}
+\index{tss\+\_\+dtor\+\_\+t@{tss\+\_\+dtor\+\_\+t}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{tss\+\_\+dtor\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ tss\+\_\+dtor\+\_\+t) (void $\ast$val)}\label{tinycthread_8h_a7bd9f13e4169f842cbb831ea348049dd}
+Destructor function for a thread-\/specific storage. 
+\begin{DoxyParams}{Parameters}
+{\em val} & The value of the destructed thread-\/specific storage. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Function Documentation}
+\hypertarget{tinycthread_8h_a66228b340509733bdf529b93bca8df14}{}\index{tinycthread.\+h@{tinycthread.\+h}!cnd\+\_\+broadcast@{cnd\+\_\+broadcast}}
+\index{cnd\+\_\+broadcast@{cnd\+\_\+broadcast}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{cnd\+\_\+broadcast(cnd\+\_\+t $\ast$cond)}]{\setlength{\rightskip}{0pt plus 5cm}int cnd\+\_\+broadcast (
+\begin{DoxyParamCaption}
+\item[{cnd\+\_\+t $\ast$}]{cond}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_a66228b340509733bdf529b93bca8df14}
+Broadcast a condition variable. Unblocks all of the threads that are blocked on the given condition variable at the time of the call. If no threads are blocked on the condition variable at the time of the call, the function does nothing and return success. 
+\begin{DoxyParams}{Parameters}
+{\em cond} & \hyperlink{structA}{A} condition variable object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{tinycthread_8h_a6f15c94421801f7f6a4338653b9017dc}{thrd\+\_\+success} on success, or \hyperlink{tinycthread_8h_a0944e70c2ce4eed616f7bcfd604fba96}{thrd\+\_\+error} if the request could not be honored. 
+\end{DoxyReturn}
+\hypertarget{tinycthread_8h_aa925921fa9edc189f474ae10a23bcfd3}{}\index{tinycthread.\+h@{tinycthread.\+h}!cnd\+\_\+destroy@{cnd\+\_\+destroy}}
+\index{cnd\+\_\+destroy@{cnd\+\_\+destroy}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{cnd\+\_\+destroy(cnd\+\_\+t $\ast$cond)}]{\setlength{\rightskip}{0pt plus 5cm}void cnd\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{cnd\+\_\+t $\ast$}]{cond}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_aa925921fa9edc189f474ae10a23bcfd3}
+Release any resources used by the given condition variable. 
+\begin{DoxyParams}{Parameters}
+{\em cond} & \hyperlink{structA}{A} condition variable object. \\
+\hline
+\end{DoxyParams}
+\hypertarget{tinycthread_8h_a146f4cd218c2a2f770be14c1dee26d08}{}\index{tinycthread.\+h@{tinycthread.\+h}!cnd\+\_\+init@{cnd\+\_\+init}}
+\index{cnd\+\_\+init@{cnd\+\_\+init}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{cnd\+\_\+init(cnd\+\_\+t $\ast$cond)}]{\setlength{\rightskip}{0pt plus 5cm}int cnd\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{cnd\+\_\+t $\ast$}]{cond}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_a146f4cd218c2a2f770be14c1dee26d08}
+Create a condition variable object. 
+\begin{DoxyParams}{Parameters}
+{\em cond} & \hyperlink{structA}{A} condition variable object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{tinycthread_8h_a6f15c94421801f7f6a4338653b9017dc}{thrd\+\_\+success} on success, or \hyperlink{tinycthread_8h_a0944e70c2ce4eed616f7bcfd604fba96}{thrd\+\_\+error} if the request could not be honored. 
+\end{DoxyReturn}
+\hypertarget{tinycthread_8h_af76e066715b1190d38a69da1c511e30f}{}\index{tinycthread.\+h@{tinycthread.\+h}!cnd\+\_\+signal@{cnd\+\_\+signal}}
+\index{cnd\+\_\+signal@{cnd\+\_\+signal}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{cnd\+\_\+signal(cnd\+\_\+t $\ast$cond)}]{\setlength{\rightskip}{0pt plus 5cm}int cnd\+\_\+signal (
+\begin{DoxyParamCaption}
+\item[{cnd\+\_\+t $\ast$}]{cond}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_af76e066715b1190d38a69da1c511e30f}
+Signal a condition variable. Unblocks one of the threads that are blocked on the given condition variable at the time of the call. If no threads are blocked on the condition variable at the time of the call, the function does nothing and return success. 
+\begin{DoxyParams}{Parameters}
+{\em cond} & \hyperlink{structA}{A} condition variable object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{tinycthread_8h_a6f15c94421801f7f6a4338653b9017dc}{thrd\+\_\+success} on success, or \hyperlink{tinycthread_8h_a0944e70c2ce4eed616f7bcfd604fba96}{thrd\+\_\+error} if the request could not be honored. 
+\end{DoxyReturn}
+\hypertarget{tinycthread_8h_a2bdc352d949424855c957b0d1916d443}{}\index{tinycthread.\+h@{tinycthread.\+h}!cnd\+\_\+timedwait@{cnd\+\_\+timedwait}}
+\index{cnd\+\_\+timedwait@{cnd\+\_\+timedwait}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{cnd\+\_\+timedwait(cnd\+\_\+t $\ast$cond, mtx\+\_\+t $\ast$mtx, const struct timespec $\ast$ts)}]{\setlength{\rightskip}{0pt plus 5cm}int cnd\+\_\+timedwait (
+\begin{DoxyParamCaption}
+\item[{cnd\+\_\+t $\ast$}]{cond, }
+\item[{mtx\+\_\+t $\ast$}]{mtx, }
+\item[{const struct timespec $\ast$}]{ts}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_a2bdc352d949424855c957b0d1916d443}
+Wait for a condition variable to become signaled. The function atomically unlocks the given mutex and endeavors to block until the given condition variable is signaled by a call to cnd\+\_\+signal or to cnd\+\_\+broadcast, or until after the specified time. When the calling thread becomes unblocked it locks the mutex before it returns. 
+\begin{DoxyParams}{Parameters}
+{\em cond} & \hyperlink{structA}{A} condition variable object. \\
+\hline
+{\em mtx} & \hyperlink{structA}{A} mutex object. \\
+\hline
+{\em xt} & \hyperlink{structA}{A} point in time at which the request will time out (absolute time). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{tinycthread_8h_a6f15c94421801f7f6a4338653b9017dc}{thrd\+\_\+success} upon success, or \hyperlink{tinycthread_8h_aec454a4baf61e6d518bbfb8768bd6a1f}{thrd\+\_\+timeout} if the time specified in the call was reached without acquiring the requested resource, or \hyperlink{tinycthread_8h_a0944e70c2ce4eed616f7bcfd604fba96}{thrd\+\_\+error} if the request could not be honored. 
+\end{DoxyReturn}
+\hypertarget{tinycthread_8h_ac4dfb82fc3d92bb688cb07308af6a659}{}\index{tinycthread.\+h@{tinycthread.\+h}!cnd\+\_\+wait@{cnd\+\_\+wait}}
+\index{cnd\+\_\+wait@{cnd\+\_\+wait}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{cnd\+\_\+wait(cnd\+\_\+t $\ast$cond, mtx\+\_\+t $\ast$mtx)}]{\setlength{\rightskip}{0pt plus 5cm}int cnd\+\_\+wait (
+\begin{DoxyParamCaption}
+\item[{cnd\+\_\+t $\ast$}]{cond, }
+\item[{mtx\+\_\+t $\ast$}]{mtx}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_ac4dfb82fc3d92bb688cb07308af6a659}
+Wait for a condition variable to become signaled. The function atomically unlocks the given mutex and endeavors to block until the given condition variable is signaled by a call to cnd\+\_\+signal or to cnd\+\_\+broadcast. When the calling thread becomes unblocked it locks the mutex before it returns. 
+\begin{DoxyParams}{Parameters}
+{\em cond} & \hyperlink{structA}{A} condition variable object. \\
+\hline
+{\em mtx} & \hyperlink{structA}{A} mutex object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{tinycthread_8h_a6f15c94421801f7f6a4338653b9017dc}{thrd\+\_\+success} on success, or \hyperlink{tinycthread_8h_a0944e70c2ce4eed616f7bcfd604fba96}{thrd\+\_\+error} if the request could not be honored. 
+\end{DoxyReturn}
+\hypertarget{tinycthread_8h_ae8b3732298d1d316db6438b4c561c0dd}{}\index{tinycthread.\+h@{tinycthread.\+h}!mtx\+\_\+destroy@{mtx\+\_\+destroy}}
+\index{mtx\+\_\+destroy@{mtx\+\_\+destroy}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{mtx\+\_\+destroy(mtx\+\_\+t $\ast$mtx)}]{\setlength{\rightskip}{0pt plus 5cm}void mtx\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{mtx\+\_\+t $\ast$}]{mtx}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_ae8b3732298d1d316db6438b4c561c0dd}
+Release any resources used by the given mutex. 
+\begin{DoxyParams}{Parameters}
+{\em mtx} & \hyperlink{structA}{A} mutex object. \\
+\hline
+\end{DoxyParams}
+\hypertarget{tinycthread_8h_a89200caf0dc25fcc97df171d0034bff2}{}\index{tinycthread.\+h@{tinycthread.\+h}!mtx\+\_\+init@{mtx\+\_\+init}}
+\index{mtx\+\_\+init@{mtx\+\_\+init}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{mtx\+\_\+init(mtx\+\_\+t $\ast$mtx, int type)}]{\setlength{\rightskip}{0pt plus 5cm}int mtx\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{mtx\+\_\+t $\ast$}]{mtx, }
+\item[{int}]{type}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_a89200caf0dc25fcc97df171d0034bff2}
+Create a mutex object. 
+\begin{DoxyParams}{Parameters}
+{\em mtx} & \hyperlink{structA}{A} mutex object. \\
+\hline
+{\em type} & Bit-\/mask that must have one of the following six values\+: \begin{DoxyItemize}
+\item {\ttfamily mtx\+\_\+plain} for a simple non-\/recursive mutex \item {\ttfamily mtx\+\_\+timed} for a non-\/recursive mutex that supports timeout \item {\ttfamily mtx\+\_\+try} for a non-\/recursive mutex that supports test and return \item {\ttfamily mtx\+\_\+plain} $\vert$ {\ttfamily mtx\+\_\+recursive} (same as {\ttfamily mtx\+\_\+plain}, but recursive) \item {\ttfamily mtx\+\_\+timed} $\vert$ {\ttfamily mtx\+\_\+recursive} (same as {\ttfamily mtx\+\_\+timed}, but recursive) \item {\ttfamily mtx\+\_\+try} $\vert$ {\ttfamily mtx\+\_\+recursive} (same as {\ttfamily mtx\+\_\+try}, but recursive) \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{tinycthread_8h_a6f15c94421801f7f6a4338653b9017dc}{thrd\+\_\+success} on success, or \hyperlink{tinycthread_8h_a0944e70c2ce4eed616f7bcfd604fba96}{thrd\+\_\+error} if the request could not be honored. 
+\end{DoxyReturn}
+\hypertarget{tinycthread_8h_a8945984db67db8ee774872da64d0e424}{}\index{tinycthread.\+h@{tinycthread.\+h}!mtx\+\_\+lock@{mtx\+\_\+lock}}
+\index{mtx\+\_\+lock@{mtx\+\_\+lock}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{mtx\+\_\+lock(mtx\+\_\+t $\ast$mtx)}]{\setlength{\rightskip}{0pt plus 5cm}int mtx\+\_\+lock (
+\begin{DoxyParamCaption}
+\item[{mtx\+\_\+t $\ast$}]{mtx}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_a8945984db67db8ee774872da64d0e424}
+Lock the given mutex. Blocks until the given mutex can be locked. If the mutex is non-\/recursive, and the calling thread already has a lock on the mutex, this call will block forever. 
+\begin{DoxyParams}{Parameters}
+{\em mtx} & \hyperlink{structA}{A} mutex object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{tinycthread_8h_a6f15c94421801f7f6a4338653b9017dc}{thrd\+\_\+success} on success, or \hyperlink{tinycthread_8h_a0944e70c2ce4eed616f7bcfd604fba96}{thrd\+\_\+error} if the request could not be honored. 
+\end{DoxyReturn}
+\hypertarget{tinycthread_8h_a98f9757dde089254735199ac738ff65f}{}\index{tinycthread.\+h@{tinycthread.\+h}!mtx\+\_\+timedlock@{mtx\+\_\+timedlock}}
+\index{mtx\+\_\+timedlock@{mtx\+\_\+timedlock}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{mtx\+\_\+timedlock(mtx\+\_\+t $\ast$mtx, const struct timespec $\ast$ts)}]{\setlength{\rightskip}{0pt plus 5cm}int mtx\+\_\+timedlock (
+\begin{DoxyParamCaption}
+\item[{mtx\+\_\+t $\ast$}]{mtx, }
+\item[{const struct timespec $\ast$}]{ts}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_a98f9757dde089254735199ac738ff65f}
+N\+O\+T Y\+E\+T I\+M\+P\+L\+E\+M\+E\+N\+T\+E\+D. \hypertarget{tinycthread_8h_ac577690ddd48f5a1fdf3dc97881a2199}{}\index{tinycthread.\+h@{tinycthread.\+h}!mtx\+\_\+trylock@{mtx\+\_\+trylock}}
+\index{mtx\+\_\+trylock@{mtx\+\_\+trylock}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{mtx\+\_\+trylock(mtx\+\_\+t $\ast$mtx)}]{\setlength{\rightskip}{0pt plus 5cm}int mtx\+\_\+trylock (
+\begin{DoxyParamCaption}
+\item[{mtx\+\_\+t $\ast$}]{mtx}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_ac577690ddd48f5a1fdf3dc97881a2199}
+Try to lock the given mutex. The specified mutex shall support either test and return or timeout. If the mutex is already locked, the function returns without blocking. 
+\begin{DoxyParams}{Parameters}
+{\em mtx} & \hyperlink{structA}{A} mutex object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{tinycthread_8h_a6f15c94421801f7f6a4338653b9017dc}{thrd\+\_\+success} on success, or \hyperlink{tinycthread_8h_a3c563aa25920a041d83d4019b113ab5d}{thrd\+\_\+busy} if the resource requested is already in use, or \hyperlink{tinycthread_8h_a0944e70c2ce4eed616f7bcfd604fba96}{thrd\+\_\+error} if the request could not be honored. 
+\end{DoxyReturn}
+\hypertarget{tinycthread_8h_ae2fb1d2854461fa583017cc9b0bc6cca}{}\index{tinycthread.\+h@{tinycthread.\+h}!mtx\+\_\+unlock@{mtx\+\_\+unlock}}
+\index{mtx\+\_\+unlock@{mtx\+\_\+unlock}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{mtx\+\_\+unlock(mtx\+\_\+t $\ast$mtx)}]{\setlength{\rightskip}{0pt plus 5cm}int mtx\+\_\+unlock (
+\begin{DoxyParamCaption}
+\item[{mtx\+\_\+t $\ast$}]{mtx}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_ae2fb1d2854461fa583017cc9b0bc6cca}
+Unlock the given mutex. 
+\begin{DoxyParams}{Parameters}
+{\em mtx} & \hyperlink{structA}{A} mutex object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{tinycthread_8h_a6f15c94421801f7f6a4338653b9017dc}{thrd\+\_\+success} on success, or \hyperlink{tinycthread_8h_a0944e70c2ce4eed616f7bcfd604fba96}{thrd\+\_\+error} if the request could not be honored. 
+\end{DoxyReturn}
+\hypertarget{tinycthread_8h_a1a52b6cd2d15cc6c4741d5124f85d183}{}\index{tinycthread.\+h@{tinycthread.\+h}!thrd\+\_\+create@{thrd\+\_\+create}}
+\index{thrd\+\_\+create@{thrd\+\_\+create}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{thrd\+\_\+create(thrd\+\_\+t $\ast$thr, thrd\+\_\+start\+\_\+t func, void $\ast$arg)}]{\setlength{\rightskip}{0pt plus 5cm}int thrd\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{thrd\+\_\+t $\ast$}]{thr, }
+\item[{{\bf thrd\+\_\+start\+\_\+t}}]{func, }
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_a1a52b6cd2d15cc6c4741d5124f85d183}
+Create a new thread. 
+\begin{DoxyParams}{Parameters}
+{\em thr} & Identifier of the newly created thread. \\
+\hline
+{\em func} & \hyperlink{structA}{A} function pointer to the function that will be executed in the new thread. \\
+\hline
+{\em arg} & An argument to the thread function. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{tinycthread_8h_a6f15c94421801f7f6a4338653b9017dc}{thrd\+\_\+success} on success, or \hyperlink{tinycthread_8h_ad6010b6ba8c0508cef692f066b09e2ef}{thrd\+\_\+nomem} if no memory could be allocated for the thread requested, or \hyperlink{tinycthread_8h_a0944e70c2ce4eed616f7bcfd604fba96}{thrd\+\_\+error} if the request could not be honored. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+\hyperlink{structA}{A} thread’s identifier may be reused for a different thread once the original thread has exited and either been detached or joined to another thread. 
+\end{DoxyNote}
+\hypertarget{tinycthread_8h_ab67b6f182a848d979155d03598325fa7}{}\index{tinycthread.\+h@{tinycthread.\+h}!thrd\+\_\+current@{thrd\+\_\+current}}
+\index{thrd\+\_\+current@{thrd\+\_\+current}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{thrd\+\_\+current(void)}]{\setlength{\rightskip}{0pt plus 5cm}thrd\+\_\+t thrd\+\_\+current (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_ab67b6f182a848d979155d03598325fa7}
+Identify the calling thread. \begin{DoxyReturn}{Returns}
+The identifier of the calling thread. 
+\end{DoxyReturn}
+\hypertarget{tinycthread_8h_ad5380997f9e32a31f802bdd9cb266902}{}\index{tinycthread.\+h@{tinycthread.\+h}!thrd\+\_\+detach@{thrd\+\_\+detach}}
+\index{thrd\+\_\+detach@{thrd\+\_\+detach}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{thrd\+\_\+detach(thrd\+\_\+t thr)}]{\setlength{\rightskip}{0pt plus 5cm}int thrd\+\_\+detach (
+\begin{DoxyParamCaption}
+\item[{thrd\+\_\+t}]{thr}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_ad5380997f9e32a31f802bdd9cb266902}
+N\+O\+T Y\+E\+T I\+M\+P\+L\+E\+M\+E\+N\+T\+E\+D. \hypertarget{tinycthread_8h_a153e65a389814ce51ad07791e42b2118}{}\index{tinycthread.\+h@{tinycthread.\+h}!thrd\+\_\+equal@{thrd\+\_\+equal}}
+\index{thrd\+\_\+equal@{thrd\+\_\+equal}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{thrd\+\_\+equal(thrd\+\_\+t thr0, thrd\+\_\+t thr1)}]{\setlength{\rightskip}{0pt plus 5cm}int thrd\+\_\+equal (
+\begin{DoxyParamCaption}
+\item[{thrd\+\_\+t}]{thr0, }
+\item[{thrd\+\_\+t}]{thr1}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_a153e65a389814ce51ad07791e42b2118}
+Compare two thread identifiers. The function determines if two thread identifiers refer to the same thread. \begin{DoxyReturn}{Returns}
+Zero if the two thread identifiers refer to different threads. Otherwise a nonzero value is returned. 
+\end{DoxyReturn}
+\hypertarget{tinycthread_8h_ae13e483223c39327e190e79e18f20b15}{}\index{tinycthread.\+h@{tinycthread.\+h}!thrd\+\_\+exit@{thrd\+\_\+exit}}
+\index{thrd\+\_\+exit@{thrd\+\_\+exit}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{thrd\+\_\+exit(int res)}]{\setlength{\rightskip}{0pt plus 5cm}void thrd\+\_\+exit (
+\begin{DoxyParamCaption}
+\item[{int}]{res}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_ae13e483223c39327e190e79e18f20b15}
+Terminate execution of the calling thread. 
+\begin{DoxyParams}{Parameters}
+{\em res} & Result code of the calling thread. \\
+\hline
+\end{DoxyParams}
+\hypertarget{tinycthread_8h_aa2e83a544f49f74cf217a69a882b5d80}{}\index{tinycthread.\+h@{tinycthread.\+h}!thrd\+\_\+join@{thrd\+\_\+join}}
+\index{thrd\+\_\+join@{thrd\+\_\+join}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{thrd\+\_\+join(thrd\+\_\+t thr, int $\ast$res)}]{\setlength{\rightskip}{0pt plus 5cm}int thrd\+\_\+join (
+\begin{DoxyParamCaption}
+\item[{thrd\+\_\+t}]{thr, }
+\item[{int $\ast$}]{res}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_aa2e83a544f49f74cf217a69a882b5d80}
+Wait for a thread to terminate. The function joins the given thread with the current thread by blocking until the other thread has terminated. 
+\begin{DoxyParams}{Parameters}
+{\em thr} & The thread to join with. \\
+\hline
+{\em res} & If this pointer is not N\+U\+L\+L, the function will store the result code of the given thread in the integer pointed to by {\ttfamily res}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{tinycthread_8h_a6f15c94421801f7f6a4338653b9017dc}{thrd\+\_\+success} on success, or \hyperlink{tinycthread_8h_a0944e70c2ce4eed616f7bcfd604fba96}{thrd\+\_\+error} if the request could not be honored. 
+\end{DoxyReturn}
+\hypertarget{tinycthread_8h_a58d00bd1fc0cc3c91d4c34d5faf117c3}{}\index{tinycthread.\+h@{tinycthread.\+h}!thrd\+\_\+sleep@{thrd\+\_\+sleep}}
+\index{thrd\+\_\+sleep@{thrd\+\_\+sleep}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{thrd\+\_\+sleep(const struct timespec $\ast$time\+\_\+point, struct timespec $\ast$remaining)}]{\setlength{\rightskip}{0pt plus 5cm}int thrd\+\_\+sleep (
+\begin{DoxyParamCaption}
+\item[{const struct timespec $\ast$}]{time\+\_\+point, }
+\item[{struct timespec $\ast$}]{remaining}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_a58d00bd1fc0cc3c91d4c34d5faf117c3}
+Put the calling thread to sleep. Suspend execution of the calling thread. 
+\begin{DoxyParams}{Parameters}
+{\em time\+\_\+point} & \hyperlink{structA}{A} point in time at which the thread will resume (absolute time). \\
+\hline
+{\em remaining} & If non-\/\+N\+U\+L\+L, this parameter will hold the remaining time until time\+\_\+point upon return. This will typically be zero, but if the thread was woken up by a signal that is not ignored before time\+\_\+point was reached {\ttfamily remaining} will hold a positive time. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 (zero) on successful sleep, or -\/1 if an interrupt occurred. 
+\end{DoxyReturn}
+\hypertarget{tinycthread_8h_acbfb78346e6b76b23da1d2d8df03549a}{}\index{tinycthread.\+h@{tinycthread.\+h}!thrd\+\_\+yield@{thrd\+\_\+yield}}
+\index{thrd\+\_\+yield@{thrd\+\_\+yield}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{thrd\+\_\+yield(void)}]{\setlength{\rightskip}{0pt plus 5cm}void thrd\+\_\+yield (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_acbfb78346e6b76b23da1d2d8df03549a}
+Yield execution to another thread. Permit other threads to run, even if the current thread would ordinarily continue to run. \hypertarget{tinycthread_8h_a286fe7927e9af276a9cfdbc8b9eb08ad}{}\index{tinycthread.\+h@{tinycthread.\+h}!tss\+\_\+create@{tss\+\_\+create}}
+\index{tss\+\_\+create@{tss\+\_\+create}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{tss\+\_\+create(tss\+\_\+t $\ast$key, tss\+\_\+dtor\+\_\+t dtor)}]{\setlength{\rightskip}{0pt plus 5cm}int tss\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{tss\+\_\+t $\ast$}]{key, }
+\item[{{\bf tss\+\_\+dtor\+\_\+t}}]{dtor}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_a286fe7927e9af276a9cfdbc8b9eb08ad}
+Create a thread-\/specific storage. 
+\begin{DoxyParams}{Parameters}
+{\em key} & The unique key identifier that will be set if the function is successful. \\
+\hline
+{\em dtor} & Destructor function. This can be N\+U\+L\+L. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{tinycthread_8h_a6f15c94421801f7f6a4338653b9017dc}{thrd\+\_\+success} on success, or \hyperlink{tinycthread_8h_a0944e70c2ce4eed616f7bcfd604fba96}{thrd\+\_\+error} if the request could not be honored. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The destructor function is not supported under Windows. If {\ttfamily dtor} is not N\+U\+L\+L when calling this function under Windows, the function will fail and return \hyperlink{tinycthread_8h_a0944e70c2ce4eed616f7bcfd604fba96}{thrd\+\_\+error}. 
+\end{DoxyNote}
+\hypertarget{tinycthread_8h_aecebbc66b206171d9381ba94528c6cb7}{}\index{tinycthread.\+h@{tinycthread.\+h}!tss\+\_\+delete@{tss\+\_\+delete}}
+\index{tss\+\_\+delete@{tss\+\_\+delete}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{tss\+\_\+delete(tss\+\_\+t key)}]{\setlength{\rightskip}{0pt plus 5cm}void tss\+\_\+delete (
+\begin{DoxyParamCaption}
+\item[{tss\+\_\+t}]{key}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_aecebbc66b206171d9381ba94528c6cb7}
+Delete a thread-\/specific storage. The function releases any resources used by the given thread-\/specific storage. 
+\begin{DoxyParams}{Parameters}
+{\em key} & The key that shall be deleted. \\
+\hline
+\end{DoxyParams}
+\hypertarget{tinycthread_8h_a183e71f731ed566a1d14b056606806f8}{}\index{tinycthread.\+h@{tinycthread.\+h}!tss\+\_\+get@{tss\+\_\+get}}
+\index{tss\+\_\+get@{tss\+\_\+get}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{tss\+\_\+get(tss\+\_\+t key)}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ tss\+\_\+get (
+\begin{DoxyParamCaption}
+\item[{tss\+\_\+t}]{key}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_a183e71f731ed566a1d14b056606806f8}
+Get the value for a thread-\/specific storage. 
+\begin{DoxyParams}{Parameters}
+{\em key} & The thread-\/specific storage identifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value for the current thread held in the given thread-\/specific storage. 
+\end{DoxyReturn}
+\hypertarget{tinycthread_8h_a608e01c49b84a5ad4f085a9aedc6a680}{}\index{tinycthread.\+h@{tinycthread.\+h}!tss\+\_\+set@{tss\+\_\+set}}
+\index{tss\+\_\+set@{tss\+\_\+set}!tinycthread.\+h@{tinycthread.\+h}}
+\subsubsection[{tss\+\_\+set(tss\+\_\+t key, void $\ast$val)}]{\setlength{\rightskip}{0pt plus 5cm}int tss\+\_\+set (
+\begin{DoxyParamCaption}
+\item[{tss\+\_\+t}]{key, }
+\item[{void $\ast$}]{val}
+\end{DoxyParamCaption}
+)}\label{tinycthread_8h_a608e01c49b84a5ad4f085a9aedc6a680}
+Set the value for a thread-\/specific storage. 
+\begin{DoxyParams}{Parameters}
+{\em key} & The thread-\/specific storage identifier. \\
+\hline
+{\em val} & The value of the thread-\/specific storage to set for the current thread. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{tinycthread_8h_a6f15c94421801f7f6a4338653b9017dc}{thrd\+\_\+success} on success, or \hyperlink{tinycthread_8h_a0944e70c2ce4eed616f7bcfd604fba96}{thrd\+\_\+error} if the request could not be honored. 
+\end{DoxyReturn}

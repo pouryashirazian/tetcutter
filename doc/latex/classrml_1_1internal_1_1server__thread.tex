@@ -1,0 +1,88 @@
+\hypertarget{classrml_1_1internal_1_1server__thread}{}\section{rml\+:\+:internal\+:\+:server\+\_\+thread Class Reference}
+\label{classrml_1_1internal_1_1server__thread}\index{rml\+::internal\+::server\+\_\+thread@{rml\+::internal\+::server\+\_\+thread}}
+
+
+Per thread information.  
+
+
+Inheritance diagram for rml\+:\+:internal\+:\+:server\+\_\+thread\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrml_1_1internal_1_1server__thread}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrml_1_1internal_1_1server__thread_a10e03c6181f78a147e6ff2194894b310}{}thread\+\_\+state\+\_\+t \hyperlink{classrml_1_1internal_1_1server__thread_a10e03c6181f78a147e6ff2194894b310}{read\+\_\+state} () const \label{classrml_1_1internal_1_1server__thread_a10e03c6181f78a147e6ff2194894b310}
+
+\begin{DoxyCompactList}\small\item\em Read the thread state. \end{DoxyCompactList}\item 
+\hypertarget{classrml_1_1internal_1_1server__thread_a5accc222b0d0857b253e010141466ac8}{}thread\+\_\+state\+\_\+t \hyperlink{classrml_1_1internal_1_1server__thread_a5accc222b0d0857b253e010141466ac8}{read\+\_\+extra\+\_\+state} () const \label{classrml_1_1internal_1_1server__thread_a5accc222b0d0857b253e010141466ac8}
+
+\begin{DoxyCompactList}\small\item\em Read the tbb-\/specific extra thread state. \end{DoxyCompactList}\item 
+\hypertarget{classrml_1_1internal_1_1server__thread_a0135b2871e6dedf3713ccc569896a786}{}void \hyperlink{classrml_1_1internal_1_1server__thread_a0135b2871e6dedf3713ccc569896a786}{launch} (size\+\_\+t stack\+\_\+size)\label{classrml_1_1internal_1_1server__thread_a0135b2871e6dedf3713ccc569896a786}
+
+\begin{DoxyCompactList}\small\item\em Launch a thread that is bound to $\ast$this. \end{DoxyCompactList}\item 
+bool \hyperlink{classrml_1_1internal_1_1server__thread_aa0be5031e71c0c2cf3a2998ddb386d37}{wakeup} (thread\+\_\+state\+\_\+t to, thread\+\_\+state\+\_\+t from)
+\begin{DoxyCompactList}\small\item\em Attempt to wakeup a thread. \end{DoxyCompactList}\item 
+bool \hyperlink{classrml_1_1internal_1_1server__thread_adbad2307bea52ab492350db05c37ac33}{try\+\_\+grab\+\_\+for} (thread\+\_\+state\+\_\+t s)
+\begin{DoxyCompactList}\small\item\em Attempt to enslave a thread for Open\+M\+P/\+T\+B\+B. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrml_1_1internal_1_1server__thread_af538de46210035d51ed5b77b1cc30007}{}\hyperlink{classrml_1_1internal_1_1thread__monitor}{thread\+\_\+monitor} {\bfseries monitor}\label{classrml_1_1internal_1_1server__thread_af538de46210035d51ed5b77b1cc30007}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrml_1_1internal_1_1server__thread_aaaf376618c914d70fbb2419523962de3}{}class {\bfseries thread\+\_\+map}\label{classrml_1_1internal_1_1server__thread_aaaf376618c914d70fbb2419523962de3}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1server__thread_a3dc721d9f3fd72f194311a7591098f1d}{}{\footnotesize template$<$typename Server , typename Client $>$ }\\class {\bfseries generic\+\_\+connection}\label{classrml_1_1internal_1_1server__thread_a3dc721d9f3fd72f194311a7591098f1d}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1server__thread_aa6932b3a74b7975c9aab46274122ae03}{}class {\bfseries tbb\+\_\+connection\+\_\+v2}\label{classrml_1_1internal_1_1server__thread_aa6932b3a74b7975c9aab46274122ae03}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1server__thread_a8f6cf095e58cca2d0855ceae6b6d0969}{}class {\bfseries omp\+\_\+connection\+\_\+v2}\label{classrml_1_1internal_1_1server__thread_a8f6cf095e58cca2d0855ceae6b6d0969}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Per thread information. 
+
+\hyperlink{classrml_1_1internal_1_1ref__count}{ref\+\_\+count} holds number of clients that are using this, plus 1 if a host thread owns this instance. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrml_1_1internal_1_1server__thread_adbad2307bea52ab492350db05c37ac33}{}\index{rml\+::internal\+::server\+\_\+thread@{rml\+::internal\+::server\+\_\+thread}!try\+\_\+grab\+\_\+for@{try\+\_\+grab\+\_\+for}}
+\index{try\+\_\+grab\+\_\+for@{try\+\_\+grab\+\_\+for}!rml\+::internal\+::server\+\_\+thread@{rml\+::internal\+::server\+\_\+thread}}
+\subsubsection[{try\+\_\+grab\+\_\+for(thread\+\_\+state\+\_\+t s)}]{\setlength{\rightskip}{0pt plus 5cm}bool rml\+::internal\+::server\+\_\+thread\+::try\+\_\+grab\+\_\+for (
+\begin{DoxyParamCaption}
+\item[{thread\+\_\+state\+\_\+t}]{s}
+\end{DoxyParamCaption}
+)}\label{classrml_1_1internal_1_1server__thread_adbad2307bea52ab492350db05c37ac33}
+
+
+Attempt to enslave a thread for Open\+M\+P/\+T\+B\+B. 
+
+Attempt to change a thread\textquotesingle{}s state to ts\+\_\+omp\+\_\+busy, and waking it up if necessary.
+
+Returns true if state is successfully changed. \textquotesingle{}s\textquotesingle{} takes either ts\+\_\+omp\+\_\+busy or ts\+\_\+tbb\+\_\+busy \hypertarget{classrml_1_1internal_1_1server__thread_aa0be5031e71c0c2cf3a2998ddb386d37}{}\index{rml\+::internal\+::server\+\_\+thread@{rml\+::internal\+::server\+\_\+thread}!wakeup@{wakeup}}
+\index{wakeup@{wakeup}!rml\+::internal\+::server\+\_\+thread@{rml\+::internal\+::server\+\_\+thread}}
+\subsubsection[{wakeup(thread\+\_\+state\+\_\+t to, thread\+\_\+state\+\_\+t from)}]{\setlength{\rightskip}{0pt plus 5cm}bool rml\+::internal\+::server\+\_\+thread\+::wakeup (
+\begin{DoxyParamCaption}
+\item[{thread\+\_\+state\+\_\+t}]{to, }
+\item[{thread\+\_\+state\+\_\+t}]{from}
+\end{DoxyParamCaption}
+)}\label{classrml_1_1internal_1_1server__thread_aa0be5031e71c0c2cf3a2998ddb386d37}
+
+
+Attempt to wakeup a thread. 
+
+The value \char`\"{}to\char`\"{} is the new state for the thread, if it was woken up. Returns true if thread was woken up, false otherwise. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/rml/server/rml\+\_\+server.\+cpp\end{DoxyCompactItemize}

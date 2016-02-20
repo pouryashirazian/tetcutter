@@ -1,0 +1,95 @@
+\hypertarget{classtbb_1_1spin__mutex}{}\section{tbb\+:\+:spin\+\_\+mutex Class Reference}
+\label{classtbb_1_1spin__mutex}\index{tbb\+::spin\+\_\+mutex@{tbb\+::spin\+\_\+mutex}}
+
+
+\hyperlink{structA}{A} lock that occupies a single byte.  
+
+
+
+
+{\ttfamily \#include $<$spin\+\_\+mutex.\+h$>$}
+
+Inheritance diagram for tbb\+:\+:spin\+\_\+mutex\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classtbb_1_1spin__mutex}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classtbb_1_1spin__mutex_1_1scoped__lock}{scoped\+\_\+lock}
+\begin{DoxyCompactList}\small\item\em Represents acquisition of a mutex. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtbb_1_1spin__mutex_a6c96196965bf7df426311d282ad3c378}{spin\+\_\+mutex} ()
+\begin{DoxyCompactList}\small\item\em Construct unacquired lock. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1spin__mutex_a477d58c9b6c05bea717ded179d23b465}{}void \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D \hyperlink{classtbb_1_1spin__mutex_a477d58c9b6c05bea717ded179d23b465}{internal\+\_\+construct} ()\label{classtbb_1_1spin__mutex_a477d58c9b6c05bea717ded179d23b465}
+
+\begin{DoxyCompactList}\small\item\em Internal constructor with I\+T\+T instrumentation. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1spin__mutex_a8957e40b0781192419d01d28e5205ec4}{}void \hyperlink{classtbb_1_1spin__mutex_a8957e40b0781192419d01d28e5205ec4}{lock} ()\label{classtbb_1_1spin__mutex_a8957e40b0781192419d01d28e5205ec4}
+
+\begin{DoxyCompactList}\small\item\em Acquire lock. \end{DoxyCompactList}\item 
+bool \hyperlink{classtbb_1_1spin__mutex_a003ffb196d22bf22ca22142338b7eeab}{try\+\_\+lock} ()
+\begin{DoxyCompactList}\small\item\em Try acquiring lock (non-\/blocking) \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1spin__mutex_adfcf8fe840aa73c08c2cadd570fd48fd}{}void \hyperlink{classtbb_1_1spin__mutex_adfcf8fe840aa73c08c2cadd570fd48fd}{unlock} ()\label{classtbb_1_1spin__mutex_adfcf8fe840aa73c08c2cadd570fd48fd}
+
+\begin{DoxyCompactList}\small\item\em Release lock. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1spin__mutex_a7c3354db4bd5cc81bccee9f249abb9e8}{}static const bool {\bfseries is\+\_\+rw\+\_\+mutex} = false\label{classtbb_1_1spin__mutex_a7c3354db4bd5cc81bccee9f249abb9e8}
+
+\item 
+\hypertarget{classtbb_1_1spin__mutex_a0cae048c5dc5deffe75464e4a3a2b752}{}static const bool {\bfseries is\+\_\+recursive\+\_\+mutex} = false\label{classtbb_1_1spin__mutex_a0cae048c5dc5deffe75464e4a3a2b752}
+
+\item 
+\hypertarget{classtbb_1_1spin__mutex_ad00ec9a97f34c9160300950b36deac3e}{}static const bool {\bfseries is\+\_\+fair\+\_\+mutex} = false\label{classtbb_1_1spin__mutex_ad00ec9a97f34c9160300950b36deac3e}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1spin__mutex_afcf922650b2fd9d76b7b939d8511bbd8}{}class {\bfseries scoped\+\_\+lock}\label{classtbb_1_1spin__mutex_afcf922650b2fd9d76b7b939d8511bbd8}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{structA}{A} lock that occupies a single byte. 
+
+\hyperlink{structA}{A} \hyperlink{classtbb_1_1spin__mutex}{spin\+\_\+mutex} is a spin mutex that fits in a single byte. It should be used only for locking short critical sections (typically less than 20 instructions) when fairness is not an issue. If zero-\/initialized, the mutex is considered unheld. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classtbb_1_1spin__mutex_a6c96196965bf7df426311d282ad3c378}{}\index{tbb\+::spin\+\_\+mutex@{tbb\+::spin\+\_\+mutex}!spin\+\_\+mutex@{spin\+\_\+mutex}}
+\index{spin\+\_\+mutex@{spin\+\_\+mutex}!tbb\+::spin\+\_\+mutex@{tbb\+::spin\+\_\+mutex}}
+\subsubsection[{spin\+\_\+mutex()}]{\setlength{\rightskip}{0pt plus 5cm}tbb\+::spin\+\_\+mutex\+::spin\+\_\+mutex (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1spin__mutex_a6c96196965bf7df426311d282ad3c378}
+
+
+Construct unacquired lock. 
+
+Equivalent to zero-\/initialization of $\ast$this. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classtbb_1_1spin__mutex_a003ffb196d22bf22ca22142338b7eeab}{}\index{tbb\+::spin\+\_\+mutex@{tbb\+::spin\+\_\+mutex}!try\+\_\+lock@{try\+\_\+lock}}
+\index{try\+\_\+lock@{try\+\_\+lock}!tbb\+::spin\+\_\+mutex@{tbb\+::spin\+\_\+mutex}}
+\subsubsection[{try\+\_\+lock()}]{\setlength{\rightskip}{0pt plus 5cm}bool tbb\+::spin\+\_\+mutex\+::try\+\_\+lock (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1spin__mutex_a003ffb196d22bf22ca22142338b7eeab}
+
+
+Try acquiring lock (non-\/blocking) 
+
+Return true if lock acquired; false otherwise. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/spin\+\_\+mutex.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/spin\+\_\+mutex.\+cpp\end{DoxyCompactItemize}

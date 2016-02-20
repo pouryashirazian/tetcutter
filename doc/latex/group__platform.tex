@@ -1,0 +1,1614 @@
+\hypertarget{group__platform}{}\section{Platform interface}
+\label{group__platform}\index{Platform interface@{Platform interface}}
+
+
+The interface implemented by the platform-\/specific code.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{group__platform_gaaed0c9f6d4944cc993516fa1fe112101}{\+\_\+glfw\+Platform\+Init} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the platform-\/specific part of the library. \end{DoxyCompactList}\item 
+\hypertarget{group__platform_ga7a957eb71af07a553a88382f860a5fdc}{}void \hyperlink{group__platform_ga7a957eb71af07a553a88382f860a5fdc}{\+\_\+glfw\+Platform\+Terminate} (void)\label{group__platform_ga7a957eb71af07a553a88382f860a5fdc}
+
+\begin{DoxyCompactList}\small\item\em Terminates the platform-\/specific part of the library. \end{DoxyCompactList}\item 
+const char $\ast$ \hyperlink{group__platform_ga4cfd5b7d5ee93f3953056de86efc254c}{\+\_\+glfw\+Platform\+Get\+Version\+String} (void)
+\begin{DoxyCompactList}\small\item\em Returns a string describing the compile-\/time configuration. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_gae5cf9708c6bae74f899eb62d29b7908a}{\+\_\+glfw\+Platform\+Get\+Cursor\+Pos} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window, double $\ast$xpos, double $\ast$ypos)
+\begin{DoxyCompactList}\small\item\em Retrieves the position of the cursor relative to the client area of the window. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_ga710177640b2ec4ca911527ff47348d18}{\+\_\+glfw\+Platform\+Set\+Cursor\+Pos} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window, double xpos, double ypos)
+\begin{DoxyCompactList}\small\item\em Sets the position of the cursor, relative to the client area of the window. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_ga21c2ffaf0606d63c62b99e1326befe79}{\+\_\+glfw\+Platform\+Apply\+Cursor\+Mode} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window)
+\begin{DoxyCompactList}\small\item\em Applies the cursor mode of the specified window to the system. \end{DoxyCompactList}\item 
+\hyperlink{struct__GLFWmonitor}{\+\_\+\+G\+L\+F\+Wmonitor} $\ast$$\ast$ \hyperlink{group__platform_ga13e1120bde080e163979e037486ffa87}{\+\_\+glfw\+Platform\+Get\+Monitors} (int $\ast$count)
+\begin{DoxyCompactList}\small\item\em Returns the currently connected monitors. \end{DoxyCompactList}\item 
+G\+Lboolean \hyperlink{group__platform_ga98093cf2b1d26ac6fe6bf1d101f46466}{\+\_\+glfw\+Platform\+Is\+Same\+Monitor} (\hyperlink{struct__GLFWmonitor}{\+\_\+\+G\+L\+F\+Wmonitor} $\ast$first, \hyperlink{struct__GLFWmonitor}{\+\_\+\+G\+L\+F\+Wmonitor} $\ast$second)
+\begin{DoxyCompactList}\small\item\em Checks whether two monitor objects represent the same monitor. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_gac3047b94f0248b06b160f08992939796}{\+\_\+glfw\+Platform\+Get\+Monitor\+Pos} (\hyperlink{struct__GLFWmonitor}{\+\_\+\+G\+L\+F\+Wmonitor} $\ast$monitor, int $\ast$xpos, int $\ast$ypos)
+\begin{DoxyCompactList}\small\item\em Returns the position of the monitor\textquotesingle{}s viewport on the virtual screen. \end{DoxyCompactList}\item 
+\hyperlink{structGLFWvidmode}{G\+L\+F\+Wvidmode} $\ast$ \hyperlink{group__platform_ga471526b59a2aa3ecc70bdf0163fa6a8c}{\+\_\+glfw\+Platform\+Get\+Video\+Modes} (\hyperlink{struct__GLFWmonitor}{\+\_\+\+G\+L\+F\+Wmonitor} $\ast$monitor, int $\ast$count)
+\begin{DoxyCompactList}\small\item\em Returns the available video modes for the specified monitor. \end{DoxyCompactList}\item 
+\hypertarget{group__platform_gab8336e546a783459b673772b591ffacd}{}void {\bfseries \+\_\+glfw\+Platform\+Get\+Video\+Mode} (\hyperlink{struct__GLFWmonitor}{\+\_\+\+G\+L\+F\+Wmonitor} $\ast$monitor, \hyperlink{structGLFWvidmode}{G\+L\+F\+Wvidmode} $\ast$mode)\label{group__platform_gab8336e546a783459b673772b591ffacd}
+
+\item 
+void \hyperlink{group__platform_ga8b200c0ce0ac89e118ba1fe502c58c81}{\+\_\+glfw\+Platform\+Get\+Gamma\+Ramp} (\hyperlink{struct__GLFWmonitor}{\+\_\+\+G\+L\+F\+Wmonitor} $\ast$monitor, \hyperlink{structGLFWgammaramp}{G\+L\+F\+Wgammaramp} $\ast$ramp)
+\begin{DoxyCompactList}\small\item\em Returns the current gamma ramp for the specified monitor. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_gabcaf1fc34700bd62b558caccce3ab45b}{\+\_\+glfw\+Platform\+Set\+Gamma\+Ramp} (\hyperlink{struct__GLFWmonitor}{\+\_\+\+G\+L\+F\+Wmonitor} $\ast$monitor, const \hyperlink{structGLFWgammaramp}{G\+L\+F\+Wgammaramp} $\ast$ramp)
+\begin{DoxyCompactList}\small\item\em Sets the current gamma ramp for the specified monitor. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_gabf3b7b168b64bb1abbfc17e93d0c5014}{\+\_\+glfw\+Platform\+Set\+Clipboard\+String} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window, const char $\ast$string)
+\begin{DoxyCompactList}\small\item\em Sets the clipboard to the specified string. \end{DoxyCompactList}\item 
+const char $\ast$ \hyperlink{group__platform_ga8a498c1b06756ed10baed476e2b0ffc5}{\+\_\+glfw\+Platform\+Get\+Clipboard\+String} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window)
+\begin{DoxyCompactList}\small\item\em Returns the contents of the clipboard as a string. \end{DoxyCompactList}\item 
+int \hyperlink{group__platform_ga022d0cd34e122cef768f557c755fec9c}{\+\_\+glfw\+Platform\+Joystick\+Present} (int joy)
+\begin{DoxyCompactList}\small\item\em Returns whether the specified joystick is present. \end{DoxyCompactList}\item 
+const float $\ast$ \hyperlink{group__platform_ga40a4d841bb3764d04f7ec9c7390de702}{\+\_\+glfw\+Platform\+Get\+Joystick\+Axes} (int joy, int $\ast$count)
+\begin{DoxyCompactList}\small\item\em Returns the values of all axes of the specified joystick. \end{DoxyCompactList}\item 
+const unsigned char $\ast$ \hyperlink{group__platform_gafc09b5bd02e6f98873117ca6f86d0fe6}{\+\_\+glfw\+Platform\+Get\+Joystick\+Buttons} (int joy, int $\ast$count)
+\begin{DoxyCompactList}\small\item\em Returns the state of all buttons of the specified joystick. \end{DoxyCompactList}\item 
+const char $\ast$ \hyperlink{group__platform_ga2e41c4ab4eeb7e437bbb9dce58b16f27}{\+\_\+glfw\+Platform\+Get\+Joystick\+Name} (int joy)
+\begin{DoxyCompactList}\small\item\em Returns the name of the specified joystick. \end{DoxyCompactList}\item 
+double \hyperlink{group__platform_ga42528913973ea604994212d17d80a67b}{\+\_\+glfw\+Platform\+Get\+Time} (void)
+\begin{DoxyCompactList}\small\item\em Returns the value of the G\+L\+F\+W timer. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_ga3ec7765724b69e6e75a855e2363c298c}{\+\_\+glfw\+Platform\+Set\+Time} (double time)
+\begin{DoxyCompactList}\small\item\em Sets the G\+L\+F\+W timer. \end{DoxyCompactList}\item 
+\hypertarget{group__platform_gad7f9fd053009c1add7335c8ef4f94d4f}{}int {\bfseries \+\_\+glfw\+Platform\+Create\+Window} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window, const \hyperlink{struct__GLFWwndconfig}{\+\_\+\+G\+L\+F\+Wwndconfig} $\ast$wndconfig, const \hyperlink{struct__GLFWctxconfig}{\+\_\+\+G\+L\+F\+Wctxconfig} $\ast$ctxconfig, const \hyperlink{struct__GLFWfbconfig}{\+\_\+\+G\+L\+F\+Wfbconfig} $\ast$fbconfig)\label{group__platform_gad7f9fd053009c1add7335c8ef4f94d4f}
+
+\item 
+\hypertarget{group__platform_ga89f7ad4aa22c7f523ab39db732314119}{}void {\bfseries \+\_\+glfw\+Platform\+Destroy\+Window} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window)\label{group__platform_ga89f7ad4aa22c7f523ab39db732314119}
+
+\item 
+void \hyperlink{group__platform_gaed22dd224adc359c8aee05e1f7ccd92b}{\+\_\+glfw\+Platform\+Set\+Window\+Title} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window, const char $\ast$title)
+\begin{DoxyCompactList}\small\item\em Sets the title of the specified window. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_ga6b1b18b535ef2d5619e3e1bd811a1abf}{\+\_\+glfw\+Platform\+Get\+Window\+Pos} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window, int $\ast$xpos, int $\ast$ypos)
+\begin{DoxyCompactList}\small\item\em Retrieves the position of the client area of the specified window. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_ga0934dc13a91c13e63e4ad615c23be628}{\+\_\+glfw\+Platform\+Set\+Window\+Pos} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window, int xpos, int ypos)
+\begin{DoxyCompactList}\small\item\em Sets the position of the client area of the specified window. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_ga553e9df9260702f74ddb6e4e9ca43493}{\+\_\+glfw\+Platform\+Get\+Window\+Size} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window, int $\ast$width, int $\ast$height)
+\begin{DoxyCompactList}\small\item\em Retrieves the size of the client area of the specified window. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_ga29ba7669f18179be6e7df88f9891db89}{\+\_\+glfw\+Platform\+Set\+Window\+Size} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window, int width, int height)
+\begin{DoxyCompactList}\small\item\em Sets the size of the client area of the specified window. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_ga46182dc3273499b6cf8cb3deb7da2964}{\+\_\+glfw\+Platform\+Get\+Framebuffer\+Size} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window, int $\ast$width, int $\ast$height)
+\begin{DoxyCompactList}\small\item\em Retrieves the size of the framebuffer of the specified window. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_ga5dbdea593f2ce9dcc0c83bb5f318d598}{\+\_\+glfw\+Platform\+Get\+Window\+Frame\+Size} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window, int $\ast$left, int $\ast$top, int $\ast$right, int $\ast$bottom)
+\begin{DoxyCompactList}\small\item\em Retrieves the size of the frame of the window. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_ga2573aaf669aa4467fd3273dc24630be2}{\+\_\+glfw\+Platform\+Iconify\+Window} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window)
+\begin{DoxyCompactList}\small\item\em Iconifies the specified window. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_ga7d70bc903e5c7b565bdb8fe795348c1d}{\+\_\+glfw\+Platform\+Restore\+Window} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window)
+\begin{DoxyCompactList}\small\item\em Restores the specified window. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_gabc4c51c7c430fab92aec7797734f44a7}{\+\_\+glfw\+Platform\+Show\+Window} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window)
+\begin{DoxyCompactList}\small\item\em Makes the specified window visible. \end{DoxyCompactList}\item 
+\hypertarget{group__platform_ga3c4f24ce5024f55a1f89a6aac534589f}{}void {\bfseries \+\_\+glfw\+Platform\+Unhide\+Window} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window)\label{group__platform_ga3c4f24ce5024f55a1f89a6aac534589f}
+
+\item 
+void \hyperlink{group__platform_ga903498be431ea21170c4ea1b80791204}{\+\_\+glfw\+Platform\+Hide\+Window} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window)
+\begin{DoxyCompactList}\small\item\em Hides the specified window. \end{DoxyCompactList}\item 
+\hypertarget{group__platform_gac239b1980772ae5c5f1b1f683b1aa1ea}{}int \hyperlink{group__platform_gac239b1980772ae5c5f1b1f683b1aa1ea}{\+\_\+glfw\+Platform\+Window\+Focused} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window)\label{group__platform_gac239b1980772ae5c5f1b1f683b1aa1ea}
+
+\begin{DoxyCompactList}\small\item\em Returns whether the window is focused. \end{DoxyCompactList}\item 
+\hypertarget{group__platform_ga1c55b62c3e61ce1e238fc339a712bc93}{}int \hyperlink{group__platform_ga1c55b62c3e61ce1e238fc339a712bc93}{\+\_\+glfw\+Platform\+Window\+Iconified} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window)\label{group__platform_ga1c55b62c3e61ce1e238fc339a712bc93}
+
+\begin{DoxyCompactList}\small\item\em Returns whether the window is iconified. \end{DoxyCompactList}\item 
+\hypertarget{group__platform_ga4d6dcb902a778ac7a805172ac3955135}{}int \hyperlink{group__platform_ga4d6dcb902a778ac7a805172ac3955135}{\+\_\+glfw\+Platform\+Window\+Visible} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window)\label{group__platform_ga4d6dcb902a778ac7a805172ac3955135}
+
+\begin{DoxyCompactList}\small\item\em Returns whether the window is visible. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_ga3b129633a113e1d2bc159af038629dda}{\+\_\+glfw\+Platform\+Poll\+Events} (void)
+\begin{DoxyCompactList}\small\item\em Processes all pending events. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_ga2d4fd289ab03927d5856d8eb69977b9a}{\+\_\+glfw\+Platform\+Wait\+Events} (void)
+\begin{DoxyCompactList}\small\item\em Waits until events are queued and processes them. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_gac41dc1cf7dba6a7ce5f5903ffce9cf88}{\+\_\+glfw\+Platform\+Post\+Empty\+Event} (void)
+\begin{DoxyCompactList}\small\item\em Posts an empty event to the event queue. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_ga561ebc478ae1ed15b5551fafcdf3526a}{\+\_\+glfw\+Platform\+Make\+Context\+Current} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window)
+\begin{DoxyCompactList}\small\item\em Makes the context of the specified window current for the calling thread. \end{DoxyCompactList}\item 
+\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$ \hyperlink{group__platform_ga5729dba637d75f8e80b477c01a609284}{\+\_\+glfw\+Platform\+Get\+Current\+Context} (void)
+\begin{DoxyCompactList}\small\item\em Returns the window whose context is current on the calling thread. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_gaed52d436a3a5510e4bd252cbf5c76302}{\+\_\+glfw\+Platform\+Swap\+Buffers} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window)
+\begin{DoxyCompactList}\small\item\em Swaps the front and back buffers of the specified window. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_ga06af35966bc5ea06f59cae87aca6c075}{\+\_\+glfw\+Platform\+Swap\+Interval} (int interval)
+\begin{DoxyCompactList}\small\item\em Sets the swap interval for the current context. \end{DoxyCompactList}\item 
+int \hyperlink{group__platform_ga6d3f2eb832d7f6b428d634051c9fd9c3}{\+\_\+glfw\+Platform\+Extension\+Supported} (const char $\ast$extension)
+\begin{DoxyCompactList}\small\item\em Returns whether the specified extension is available. \end{DoxyCompactList}\item 
+\hyperlink{group__context_ga3d47c2d2fbe0be9c505d0e04e91a133c}{G\+L\+F\+Wglproc} \hyperlink{group__platform_gaad7519aa101fae555c4bfe0f34f412a2}{\+\_\+glfw\+Platform\+Get\+Proc\+Address} (const char $\ast$procname)
+\begin{DoxyCompactList}\small\item\em Returns the address of the specified function for the current context. \end{DoxyCompactList}\item 
+int \hyperlink{group__platform_ga38c3eff1120388b2e8cbfe1579518a42}{\+\_\+glfw\+Platform\+Create\+Cursor} (\hyperlink{struct__GLFWcursor}{\+\_\+\+G\+L\+F\+Wcursor} $\ast$cursor, const \hyperlink{structGLFWimage}{G\+L\+F\+Wimage} $\ast$image, int xhot, int yhot)
+\begin{DoxyCompactList}\small\item\em Creates a custom cursor. \end{DoxyCompactList}\item 
+int \hyperlink{group__platform_gacc56a6e4f2450bc5e3abf681ccdf9b9e}{\+\_\+glfw\+Platform\+Create\+Standard\+Cursor} (\hyperlink{struct__GLFWcursor}{\+\_\+\+G\+L\+F\+Wcursor} $\ast$cursor, int shape)
+\begin{DoxyCompactList}\small\item\em Creates a cursor with a standard shape. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_ga7505834ffe07386df151a191ce4677b9}{\+\_\+glfw\+Platform\+Destroy\+Cursor} (\hyperlink{struct__GLFWcursor}{\+\_\+\+G\+L\+F\+Wcursor} $\ast$cursor)
+\begin{DoxyCompactList}\small\item\em Destroys a cursor. \end{DoxyCompactList}\item 
+void \hyperlink{group__platform_ga52276580374c999cf4babdd49270afa9}{\+\_\+glfw\+Platform\+Set\+Cursor} (\hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$window, \hyperlink{struct__GLFWcursor}{\+\_\+\+G\+L\+F\+Wcursor} $\ast$cursor)
+\begin{DoxyCompactList}\small\item\em Sets the cursor for the window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The interface implemented by the platform-\/specific code. 
+
+The platform A\+P\+I is the interface exposed by the platform-\/specific code for each platform and is called by the shared code of the public A\+P\+I It mirrors the public A\+P\+I except it uses objects instead of handles. 
+
+\subsection{Function Documentation}
+\hypertarget{group__platform_ga21c2ffaf0606d63c62b99e1326befe79}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Apply\+Cursor\+Mode@{\+\_\+glfw\+Platform\+Apply\+Cursor\+Mode}}
+\index{\+\_\+glfw\+Platform\+Apply\+Cursor\+Mode@{\+\_\+glfw\+Platform\+Apply\+Cursor\+Mode}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Apply\+Cursor\+Mode(\+\_\+\+G\+L\+F\+Wwindow $\ast$window)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Apply\+Cursor\+Mode (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wwindow} $\ast$}]{window}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga21c2ffaf0606d63c62b99e1326befe79}
+
+
+Applies the cursor mode of the specified window to the system. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window whose cursor mode to apply. \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__platform_ga38c3eff1120388b2e8cbfe1579518a42}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Create\+Cursor@{\+\_\+glfw\+Platform\+Create\+Cursor}}
+\index{\+\_\+glfw\+Platform\+Create\+Cursor@{\+\_\+glfw\+Platform\+Create\+Cursor}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Create\+Cursor(\+\_\+\+G\+L\+F\+Wcursor $\ast$cursor, const G\+L\+F\+Wimage $\ast$image, int xhot, int yhot)}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+glfw\+Platform\+Create\+Cursor (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wcursor} $\ast$}]{cursor, }
+\item[{const {\bf G\+L\+F\+Wimage} $\ast$}]{image, }
+\item[{int}]{xhot, }
+\item[{int}]{yhot}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga38c3eff1120388b2e8cbfe1579518a42}
+
+
+Creates a custom cursor. 
+
+Creates a new custom cursor image that can be set for a window with \hyperlink{group__input_gafaf103cea2f43530cff7de4e01126a4f}{glfw\+Set\+Cursor}. The cursor can be destroyed with \hyperlink{group__input_ga27556b7122117bc1bbb4bb3cc003ea43}{glfw\+Destroy\+Cursor}. Any remaining cursors are destroyed by \hyperlink{group__init_gafd90e6fd4819ea9e22e5e739519a6504}{glfw\+Terminate}.
+
+The pixels are 32-\/bit, little-\/endian, non-\/premultiplied R\+G\+B\+A, i.\+e. eight bits per channel. They are arranged canonically as packed sequential rows, starting from the top-\/left corner.
+
+The cursor hotspot is specified in pixels, relative to the upper-\/left corner of the cursor image. Like all other coordinate systems in G\+L\+F\+W, the X-\/axis points to the right and the Y-\/axis points down.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em image} & The desired cursor image. \\
+\hline
+\mbox{\tt in}  & {\em xhot} & The desired x-\/coordinate, in pixels, of the cursor hotspot. \\
+\hline
+\mbox{\tt in}  & {\em yhot} & The desired y-\/coordinate, in pixels, of the cursor hotspot.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The handle of the created cursor, or {\ttfamily N\+U\+L\+L} if an error occurred.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Pointer Lifetime}
+The specified image data is copied before this function returns.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Reentrancy}
+This function may not be called from a callback.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+cursor\+\_\+object 
+
+\hyperlink{group__input_ga27556b7122117bc1bbb4bb3cc003ea43}{glfw\+Destroy\+Cursor} 
+
+\hyperlink{group__input_ga969dd87ad2ddbf3e1086cc40f235eed1}{glfw\+Create\+Standard\+Cursor}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+1. 
+\end{DoxySince}
+\hypertarget{group__platform_gacc56a6e4f2450bc5e3abf681ccdf9b9e}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Create\+Standard\+Cursor@{\+\_\+glfw\+Platform\+Create\+Standard\+Cursor}}
+\index{\+\_\+glfw\+Platform\+Create\+Standard\+Cursor@{\+\_\+glfw\+Platform\+Create\+Standard\+Cursor}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Create\+Standard\+Cursor(\+\_\+\+G\+L\+F\+Wcursor $\ast$cursor, int shape)}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+glfw\+Platform\+Create\+Standard\+Cursor (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wcursor} $\ast$}]{cursor, }
+\item[{int}]{shape}
+\end{DoxyParamCaption}
+)}\label{group__platform_gacc56a6e4f2450bc5e3abf681ccdf9b9e}
+
+
+Creates a cursor with a standard shape. 
+
+Returns a cursor with a \hyperlink{group__shapes}{standard shape}, that can be set for a window with \hyperlink{group__input_gafaf103cea2f43530cff7de4e01126a4f}{glfw\+Set\+Cursor}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em shape} & One of the \hyperlink{group__shapes}{standard shapes}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{structA}{A} new cursor ready to use or {\ttfamily N\+U\+L\+L} if an error occurred.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Reentrancy}
+This function may not be called from a callback.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+cursor\+\_\+object 
+
+\hyperlink{group__input_gac0f0f691f2d110f9acfb4bfe07f1216c}{glfw\+Create\+Cursor}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+1. 
+\end{DoxySince}
+\hypertarget{group__platform_ga7505834ffe07386df151a191ce4677b9}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Destroy\+Cursor@{\+\_\+glfw\+Platform\+Destroy\+Cursor}}
+\index{\+\_\+glfw\+Platform\+Destroy\+Cursor@{\+\_\+glfw\+Platform\+Destroy\+Cursor}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Destroy\+Cursor(\+\_\+\+G\+L\+F\+Wcursor $\ast$cursor)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Destroy\+Cursor (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wcursor} $\ast$}]{cursor}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga7505834ffe07386df151a191ce4677b9}
+
+
+Destroys a cursor. 
+
+This function destroys a cursor previously created with \hyperlink{group__input_gac0f0f691f2d110f9acfb4bfe07f1216c}{glfw\+Create\+Cursor}. Any remaining cursors will be destroyed by \hyperlink{group__init_gafd90e6fd4819ea9e22e5e739519a6504}{glfw\+Terminate}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cursor} & The cursor object to destroy.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Reentrancy}
+This function may not be called from a callback.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+cursor\+\_\+object 
+
+\hyperlink{group__input_gac0f0f691f2d110f9acfb4bfe07f1216c}{glfw\+Create\+Cursor}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+1. 
+\end{DoxySince}
+\hypertarget{group__platform_ga6d3f2eb832d7f6b428d634051c9fd9c3}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Extension\+Supported@{\+\_\+glfw\+Platform\+Extension\+Supported}}
+\index{\+\_\+glfw\+Platform\+Extension\+Supported@{\+\_\+glfw\+Platform\+Extension\+Supported}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Extension\+Supported(const char $\ast$extension)}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+glfw\+Platform\+Extension\+Supported (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{extension}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga6d3f2eb832d7f6b428d634051c9fd9c3}
+
+
+Returns whether the specified extension is available. 
+
+This function returns whether the specified client A\+P\+I extension is supported by the current Open\+G\+L or Open\+G\+L E\+S context. It searches both for Open\+G\+L and Open\+G\+L E\+S extension and platform-\/specific context creation A\+P\+I extensions.
+
+\hyperlink{structA}{A} context must be current on the calling thread. Calling this function without a current context will cause a \hyperlink{group__errors_gaa8290386e9528ccb9e42a3a4e16fc0d0}{G\+L\+F\+W\+\_\+\+N\+O\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T} error.
+
+As this functions retrieves and searches one or more extension strings each call, it is recommended that you cache its results if it is going to be used frequently. The extension strings will not change during the lifetime of a context, so there is no danger in doing this.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em extension} & The A\+S\+C\+I\+I encoded name of the extension. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily G\+L\+\_\+\+T\+R\+U\+E} if the extension is available, or {\ttfamily G\+L\+\_\+\+F\+A\+L\+S\+E} otherwise.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+context\+\_\+glext 
+
+\hyperlink{group__context_ga0e8af175218929615c16e74938c10f2a}{glfw\+Get\+Proc\+Address}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 1.\+0. 
+\end{DoxySince}
+\hypertarget{group__platform_ga8a498c1b06756ed10baed476e2b0ffc5}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Get\+Clipboard\+String@{\+\_\+glfw\+Platform\+Get\+Clipboard\+String}}
+\index{\+\_\+glfw\+Platform\+Get\+Clipboard\+String@{\+\_\+glfw\+Platform\+Get\+Clipboard\+String}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Get\+Clipboard\+String(\+\_\+\+G\+L\+F\+Wwindow $\ast$window)}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ \+\_\+glfw\+Platform\+Get\+Clipboard\+String (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wwindow} $\ast$}]{window}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga8a498c1b06756ed10baed476e2b0ffc5}
+
+
+Returns the contents of the clipboard as a string. 
+
+This function returns the contents of the system clipboard, if it contains or is convertible to a U\+T\+F-\/8 encoded string. If the clipboard is empty or if its contents cannot be converted, {\ttfamily N\+U\+L\+L} is returned and a \hyperlink{group__errors_ga196e125ef261d94184e2b55c05762f14}{G\+L\+F\+W\+\_\+\+F\+O\+R\+M\+A\+T\+\_\+\+U\+N\+A\+V\+A\+I\+L\+A\+B\+L\+E} error is generated.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window that will request the clipboard contents. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The contents of the clipboard as a U\+T\+F-\/8 encoded string, or {\ttfamily N\+U\+L\+L} if an error occurred.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Pointer Lifetime}
+The returned string is allocated and freed by G\+L\+F\+W. You should not free it yourself. It is valid until the next call to \hyperlink{group__input_ga3ac90c8bbaf0b46063bb02b574f3b6f7}{glfw\+Get\+Clipboard\+String} or \hyperlink{group__input_ga7a580309bbc185a0459c3559021d2fd7}{glfw\+Set\+Clipboard\+String}, or until the library is terminated.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+clipboard 
+
+\hyperlink{group__input_ga7a580309bbc185a0459c3559021d2fd7}{glfw\+Set\+Clipboard\+String}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0.
+\end{DoxySince}
+\begin{DoxyNote}{Note}
+The returned string must be valid until the next call to \hyperlink{group__platform_ga8a498c1b06756ed10baed476e2b0ffc5}{\+\_\+glfw\+Platform\+Get\+Clipboard\+String} or \hyperlink{group__platform_gabf3b7b168b64bb1abbfc17e93d0c5014}{\+\_\+glfw\+Platform\+Set\+Clipboard\+String}. 
+\end{DoxyNote}
+\hypertarget{group__platform_ga5729dba637d75f8e80b477c01a609284}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Get\+Current\+Context@{\+\_\+glfw\+Platform\+Get\+Current\+Context}}
+\index{\+\_\+glfw\+Platform\+Get\+Current\+Context@{\+\_\+glfw\+Platform\+Get\+Current\+Context}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Get\+Current\+Context(void)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \+\_\+\+G\+L\+F\+Wwindow}$\ast$ \+\_\+glfw\+Platform\+Get\+Current\+Context (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga5729dba637d75f8e80b477c01a609284}
+
+
+Returns the window whose context is current on the calling thread. 
+
+This function returns the window whose Open\+G\+L or Open\+G\+L E\+S context is current on the calling thread.
+
+\begin{DoxyReturn}{Returns}
+The window whose context is current, or {\ttfamily N\+U\+L\+L} if no window\textquotesingle{}s context is current.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+context\+\_\+current 
+
+\hyperlink{group__context_gafd76c93e15ec8b0b90506a9936a46185}{glfw\+Make\+Context\+Current}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. 
+\end{DoxySince}
+\hypertarget{group__platform_gae5cf9708c6bae74f899eb62d29b7908a}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Get\+Cursor\+Pos@{\+\_\+glfw\+Platform\+Get\+Cursor\+Pos}}
+\index{\+\_\+glfw\+Platform\+Get\+Cursor\+Pos@{\+\_\+glfw\+Platform\+Get\+Cursor\+Pos}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Get\+Cursor\+Pos(\+\_\+\+G\+L\+F\+Wwindow $\ast$window, double $\ast$xpos, double $\ast$ypos)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Get\+Cursor\+Pos (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{double $\ast$}]{xpos, }
+\item[{double $\ast$}]{ypos}
+\end{DoxyParamCaption}
+)}\label{group__platform_gae5cf9708c6bae74f899eb62d29b7908a}
+
+
+Retrieves the position of the cursor relative to the client area of the window. 
+
+This function returns the position of the cursor, in screen coordinates, relative to the upper-\/left corner of the client area of the specified window.
+
+If the cursor is disabled (with {\ttfamily G\+L\+F\+W\+\_\+\+C\+U\+R\+S\+O\+R\+\_\+\+D\+I\+S\+A\+B\+L\+E\+D}) then the cursor position is unbounded and limited only by the minimum and maximum values of a {\ttfamily double}.
+
+The coordinate can be converted to their integer equivalents with the {\ttfamily floor} function. Casting directly to an integer type works for positive coordinates, but fails for negative ones.
+
+Any or all of the position arguments may be {\ttfamily N\+U\+L\+L}. If an error occurs, all non-\/{\ttfamily N\+U\+L\+L} position arguments will be set to zero.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The desired window. \\
+\hline
+\mbox{\tt out}  & {\em xpos} & Where to store the cursor x-\/coordinate, relative to the left edge of the client area, or {\ttfamily N\+U\+L\+L}. \\
+\hline
+\mbox{\tt out}  & {\em ypos} & Where to store the cursor y-\/coordinate, relative to the to top edge of the client area, or {\ttfamily N\+U\+L\+L}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+cursor\+\_\+pos 
+
+\hyperlink{group__input_gaaf152cc93418acb0ba342e3f4af922bc}{glfw\+Set\+Cursor\+Pos}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. Replaces {\ttfamily glfw\+Get\+Mouse\+Pos}. 
+\end{DoxySince}
+\hypertarget{group__platform_ga46182dc3273499b6cf8cb3deb7da2964}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Get\+Framebuffer\+Size@{\+\_\+glfw\+Platform\+Get\+Framebuffer\+Size}}
+\index{\+\_\+glfw\+Platform\+Get\+Framebuffer\+Size@{\+\_\+glfw\+Platform\+Get\+Framebuffer\+Size}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Get\+Framebuffer\+Size(\+\_\+\+G\+L\+F\+Wwindow $\ast$window, int $\ast$width, int $\ast$height)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Get\+Framebuffer\+Size (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{int $\ast$}]{width, }
+\item[{int $\ast$}]{height}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga46182dc3273499b6cf8cb3deb7da2964}
+
+
+Retrieves the size of the framebuffer of the specified window. 
+
+This function retrieves the size, in pixels, of the framebuffer of the specified window. If you wish to retrieve the size of the window in screen coordinates, see \hyperlink{group__window_ga7feb769ebb3f3d21579b5a3fb07be76e}{glfw\+Get\+Window\+Size}.
+
+Any or all of the size arguments may be {\ttfamily N\+U\+L\+L}. If an error occurs, all non-\/{\ttfamily N\+U\+L\+L} size arguments will be set to zero.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window whose framebuffer to query. \\
+\hline
+\mbox{\tt out}  & {\em width} & Where to store the width, in pixels, of the framebuffer, or {\ttfamily N\+U\+L\+L}. \\
+\hline
+\mbox{\tt out}  & {\em height} & Where to store the height, in pixels, of the framebuffer, or {\ttfamily N\+U\+L\+L}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+window\+\_\+fbsize 
+
+\hyperlink{group__window_gad766bcdb4465f9c6c62e5d8ca7cfba56}{glfw\+Set\+Framebuffer\+Size\+Callback}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. 
+\end{DoxySince}
+\hypertarget{group__platform_ga8b200c0ce0ac89e118ba1fe502c58c81}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Get\+Gamma\+Ramp@{\+\_\+glfw\+Platform\+Get\+Gamma\+Ramp}}
+\index{\+\_\+glfw\+Platform\+Get\+Gamma\+Ramp@{\+\_\+glfw\+Platform\+Get\+Gamma\+Ramp}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Get\+Gamma\+Ramp(\+\_\+\+G\+L\+F\+Wmonitor $\ast$monitor, G\+L\+F\+Wgammaramp $\ast$ramp)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Get\+Gamma\+Ramp (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wmonitor} $\ast$}]{monitor, }
+\item[{{\bf G\+L\+F\+Wgammaramp} $\ast$}]{ramp}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga8b200c0ce0ac89e118ba1fe502c58c81}
+
+
+Returns the current gamma ramp for the specified monitor. 
+
+This function returns the current gamma ramp of the specified monitor.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em monitor} & The monitor to query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The current gamma ramp, or {\ttfamily N\+U\+L\+L} if an error occurred.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Pointer Lifetime}
+The returned structure and its arrays are allocated and freed by G\+L\+F\+W. You should not free them yourself. They are valid until the specified monitor is disconnected, this function is called again for that monitor or the library is terminated.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+monitor\+\_\+gamma
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. 
+\end{DoxySince}
+\hypertarget{group__platform_ga40a4d841bb3764d04f7ec9c7390de702}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Get\+Joystick\+Axes@{\+\_\+glfw\+Platform\+Get\+Joystick\+Axes}}
+\index{\+\_\+glfw\+Platform\+Get\+Joystick\+Axes@{\+\_\+glfw\+Platform\+Get\+Joystick\+Axes}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Get\+Joystick\+Axes(int joy, int $\ast$count)}]{\setlength{\rightskip}{0pt plus 5cm}const float$\ast$ \+\_\+glfw\+Platform\+Get\+Joystick\+Axes (
+\begin{DoxyParamCaption}
+\item[{int}]{joy, }
+\item[{int $\ast$}]{count}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga40a4d841bb3764d04f7ec9c7390de702}
+
+
+Returns the values of all axes of the specified joystick. 
+
+This function returns the values of all axes of the specified joystick. Each element in the array is a value between -\/1.\+0 and 1.\+0.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em joy} & The \hyperlink{group__joysticks}{joystick} to query. \\
+\hline
+\mbox{\tt out}  & {\em count} & Where to store the number of axis values in the returned array. This is set to zero if an error occurred. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An array of axis values, or {\ttfamily N\+U\+L\+L} if the joystick is not present.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Pointer Lifetime}
+The returned array is allocated and freed by G\+L\+F\+W. You should not free it yourself. It is valid until the specified joystick is disconnected, this function is called again for that joystick or the library is terminated.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+joystick\+\_\+axis
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. Replaces {\ttfamily glfw\+Get\+Joystick\+Pos}. 
+\end{DoxySince}
+\hypertarget{group__platform_gafc09b5bd02e6f98873117ca6f86d0fe6}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Get\+Joystick\+Buttons@{\+\_\+glfw\+Platform\+Get\+Joystick\+Buttons}}
+\index{\+\_\+glfw\+Platform\+Get\+Joystick\+Buttons@{\+\_\+glfw\+Platform\+Get\+Joystick\+Buttons}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Get\+Joystick\+Buttons(int joy, int $\ast$count)}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned char$\ast$ \+\_\+glfw\+Platform\+Get\+Joystick\+Buttons (
+\begin{DoxyParamCaption}
+\item[{int}]{joy, }
+\item[{int $\ast$}]{count}
+\end{DoxyParamCaption}
+)}\label{group__platform_gafc09b5bd02e6f98873117ca6f86d0fe6}
+
+
+Returns the state of all buttons of the specified joystick. 
+
+This function returns the state of all buttons of the specified joystick. Each element in the array is either {\ttfamily G\+L\+F\+W\+\_\+\+P\+R\+E\+S\+S} or {\ttfamily G\+L\+F\+W\+\_\+\+R\+E\+L\+E\+A\+S\+E}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em joy} & The \hyperlink{group__joysticks}{joystick} to query. \\
+\hline
+\mbox{\tt out}  & {\em count} & Where to store the number of button states in the returned array. This is set to zero if an error occurred. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An array of button states, or {\ttfamily N\+U\+L\+L} if the joystick is not present.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Pointer Lifetime}
+The returned array is allocated and freed by G\+L\+F\+W. You should not free it yourself. It is valid until the specified joystick is disconnected, this function is called again for that joystick or the library is terminated.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+joystick\+\_\+button
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 2.\+2.
+\end{DoxySince}
+\begin{DoxyParagraph}{}
+{\bfseries G\+L\+F\+W 3\+:} Changed to return a dynamic array. 
+\end{DoxyParagraph}
+\hypertarget{group__platform_ga2e41c4ab4eeb7e437bbb9dce58b16f27}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Get\+Joystick\+Name@{\+\_\+glfw\+Platform\+Get\+Joystick\+Name}}
+\index{\+\_\+glfw\+Platform\+Get\+Joystick\+Name@{\+\_\+glfw\+Platform\+Get\+Joystick\+Name}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Get\+Joystick\+Name(int joy)}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ \+\_\+glfw\+Platform\+Get\+Joystick\+Name (
+\begin{DoxyParamCaption}
+\item[{int}]{joy}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga2e41c4ab4eeb7e437bbb9dce58b16f27}
+
+
+Returns the name of the specified joystick. 
+
+This function returns the name, encoded as U\+T\+F-\/8, of the specified joystick. The returned string is allocated and freed by G\+L\+F\+W. You should not free it yourself.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em joy} & The \hyperlink{group__joysticks}{joystick} to query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The U\+T\+F-\/8 encoded name of the joystick, or {\ttfamily N\+U\+L\+L} if the joystick is not present.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Pointer Lifetime}
+The returned string is allocated and freed by G\+L\+F\+W. You should not free it yourself. It is valid until the specified joystick is disconnected, this function is called again for that joystick or the library is terminated.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+joystick\+\_\+name
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. 
+\end{DoxySince}
+\hypertarget{group__platform_gac3047b94f0248b06b160f08992939796}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Get\+Monitor\+Pos@{\+\_\+glfw\+Platform\+Get\+Monitor\+Pos}}
+\index{\+\_\+glfw\+Platform\+Get\+Monitor\+Pos@{\+\_\+glfw\+Platform\+Get\+Monitor\+Pos}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Get\+Monitor\+Pos(\+\_\+\+G\+L\+F\+Wmonitor $\ast$monitor, int $\ast$xpos, int $\ast$ypos)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Get\+Monitor\+Pos (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wmonitor} $\ast$}]{monitor, }
+\item[{int $\ast$}]{xpos, }
+\item[{int $\ast$}]{ypos}
+\end{DoxyParamCaption}
+)}\label{group__platform_gac3047b94f0248b06b160f08992939796}
+
+
+Returns the position of the monitor\textquotesingle{}s viewport on the virtual screen. 
+
+This function returns the position, in screen coordinates, of the upper-\/left corner of the specified monitor.
+
+Any or all of the position arguments may be {\ttfamily N\+U\+L\+L}. If an error occurs, all non-\/{\ttfamily N\+U\+L\+L} position arguments will be set to zero.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em monitor} & The monitor to query. \\
+\hline
+\mbox{\tt out}  & {\em xpos} & Where to store the monitor x-\/coordinate, or {\ttfamily N\+U\+L\+L}. \\
+\hline
+\mbox{\tt out}  & {\em ypos} & Where to store the monitor y-\/coordinate, or {\ttfamily N\+U\+L\+L}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+monitor\+\_\+properties
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. 
+\end{DoxySince}
+\hypertarget{group__platform_ga13e1120bde080e163979e037486ffa87}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Get\+Monitors@{\+\_\+glfw\+Platform\+Get\+Monitors}}
+\index{\+\_\+glfw\+Platform\+Get\+Monitors@{\+\_\+glfw\+Platform\+Get\+Monitors}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Get\+Monitors(int $\ast$count)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \+\_\+\+G\+L\+F\+Wmonitor}$\ast$$\ast$ \+\_\+glfw\+Platform\+Get\+Monitors (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{count}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga13e1120bde080e163979e037486ffa87}
+
+
+Returns the currently connected monitors. 
+
+This function returns an array of handles for all currently connected monitors. The primary monitor is always first in the returned array. If no monitors were found, this function returns {\ttfamily N\+U\+L\+L}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em count} & Where to store the number of monitors in the returned array. This is set to zero if an error occurred. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An array of monitor handles, or {\ttfamily N\+U\+L\+L} if no monitors were found or if an error occurred.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Pointer Lifetime}
+The returned array is allocated and freed by G\+L\+F\+W. You should not free it yourself. It is guaranteed to be valid only until the monitor configuration changes or the library is terminated.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+monitor\+\_\+monitors 
+
+monitor\+\_\+event 
+
+\hyperlink{group__monitor_ga59ea49f377fe701dd76764183e64d9f4}{glfw\+Get\+Primary\+Monitor}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. 
+\end{DoxySince}
+\hypertarget{group__platform_gaad7519aa101fae555c4bfe0f34f412a2}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Get\+Proc\+Address@{\+\_\+glfw\+Platform\+Get\+Proc\+Address}}
+\index{\+\_\+glfw\+Platform\+Get\+Proc\+Address@{\+\_\+glfw\+Platform\+Get\+Proc\+Address}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Get\+Proc\+Address(const char $\ast$procname)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+L\+F\+Wglproc} \+\_\+glfw\+Platform\+Get\+Proc\+Address (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{procname}
+\end{DoxyParamCaption}
+)}\label{group__platform_gaad7519aa101fae555c4bfe0f34f412a2}
+
+
+Returns the address of the specified function for the current context. 
+
+This function returns the address of the specified core or extension function, if it is supported by the current context.
+
+\hyperlink{structA}{A} context must be current on the calling thread. Calling this function without a current context will cause a \hyperlink{group__errors_gaa8290386e9528ccb9e42a3a4e16fc0d0}{G\+L\+F\+W\+\_\+\+N\+O\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T} error.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em procname} & The A\+S\+C\+I\+I encoded name of the function. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The address of the function, or {\ttfamily N\+U\+L\+L} if an \mbox{[}error\mbox{]}(error\+\_\+handling) occurred.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The address of a given function is not guaranteed to be the same between contexts.
+
+This function may return a non-\/{\ttfamily N\+U\+L\+L} address despite the associated version or extension not being available. Always check the context version or extension string first.
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Pointer Lifetime}
+The returned function pointer is valid until the context is destroyed or the library is terminated.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+context\+\_\+glext 
+
+\hyperlink{group__context_ga9a28c712d35f9e43534e1d03b051c04c}{glfw\+Extension\+Supported}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 1.\+0. 
+\end{DoxySince}
+\hypertarget{group__platform_ga42528913973ea604994212d17d80a67b}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Get\+Time@{\+\_\+glfw\+Platform\+Get\+Time}}
+\index{\+\_\+glfw\+Platform\+Get\+Time@{\+\_\+glfw\+Platform\+Get\+Time}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Get\+Time(void)}]{\setlength{\rightskip}{0pt plus 5cm}double \+\_\+glfw\+Platform\+Get\+Time (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga42528913973ea604994212d17d80a67b}
+
+
+Returns the value of the G\+L\+F\+W timer. 
+
+This function returns the value of the G\+L\+F\+W timer. Unless the timer has been set using \hyperlink{group__input_ga94360a3628a09f32708f83cc3fa48590}{glfw\+Set\+Time}, the timer measures time elapsed since G\+L\+F\+W was initialized.
+
+The resolution of the timer is system dependent, but is usually on the order of a few micro-\/ or nanoseconds. It uses the highest-\/resolution monotonic time source on each supported platform.
+
+\begin{DoxyReturn}{Returns}
+The current value, in seconds, or zero if an error occurred.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread. Access is not synchronized.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+time
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 1.\+0. 
+\end{DoxySince}
+\hypertarget{group__platform_ga4cfd5b7d5ee93f3953056de86efc254c}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Get\+Version\+String@{\+\_\+glfw\+Platform\+Get\+Version\+String}}
+\index{\+\_\+glfw\+Platform\+Get\+Version\+String@{\+\_\+glfw\+Platform\+Get\+Version\+String}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Get\+Version\+String(void)}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ \+\_\+glfw\+Platform\+Get\+Version\+String (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga4cfd5b7d5ee93f3953056de86efc254c}
+
+
+Returns a string describing the compile-\/time configuration. 
+
+This function returns the compile-\/time generated version string of the G\+L\+F\+W library binary. It describes the version, platform, compiler and any platform-\/specific compile-\/time options.
+
+{\bfseries Do not use the version string} to parse the G\+L\+F\+W library version. The \hyperlink{group__init_ga2402c7824ac0194c13722790ff9559ff}{glfw\+Get\+Version} function already provides the version of the running library binary.
+
+This function always succeeds.
+
+\begin{DoxyReturn}{Returns}
+The G\+L\+F\+W version string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This function may be called before \hyperlink{group__init_gab41771f0215a2e0afb4cf1cf98082d40}{glfw\+Init}.
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Pointer Lifetime}
+The returned string is static and compile-\/time generated.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+intro\+\_\+version 
+
+\hyperlink{group__init_ga2402c7824ac0194c13722790ff9559ff}{glfw\+Get\+Version}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0.
+\end{DoxySince}
+\begin{DoxyNote}{Note}
+The returned string must be available for the duration of the program.
+
+The returned string must not change for the duration of the program. 
+\end{DoxyNote}
+\hypertarget{group__platform_ga471526b59a2aa3ecc70bdf0163fa6a8c}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Get\+Video\+Modes@{\+\_\+glfw\+Platform\+Get\+Video\+Modes}}
+\index{\+\_\+glfw\+Platform\+Get\+Video\+Modes@{\+\_\+glfw\+Platform\+Get\+Video\+Modes}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Get\+Video\+Modes(\+\_\+\+G\+L\+F\+Wmonitor $\ast$monitor, int $\ast$count)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+L\+F\+Wvidmode}$\ast$ \+\_\+glfw\+Platform\+Get\+Video\+Modes (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wmonitor} $\ast$}]{monitor, }
+\item[{int $\ast$}]{count}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga471526b59a2aa3ecc70bdf0163fa6a8c}
+
+
+Returns the available video modes for the specified monitor. 
+
+This function returns an array of all video modes supported by the specified monitor. The returned array is sorted in ascending order, first by color bit depth (the sum of all channel depths) and then by resolution area (the product of width and height).
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em monitor} & The monitor to query. \\
+\hline
+\mbox{\tt out}  & {\em count} & Where to store the number of video modes in the returned array. This is set to zero if an error occurred. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An array of video modes, or {\ttfamily N\+U\+L\+L} if an error occurred.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Pointer Lifetime}
+The returned array is allocated and freed by G\+L\+F\+W. You should not free it yourself. It is valid until the specified monitor is disconnected, this function is called again for that monitor or the library is terminated.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+monitor\+\_\+modes 
+
+\hyperlink{group__monitor_gac234b63ec525c70d7e18ac84aca088c6}{glfw\+Get\+Video\+Mode}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 1.\+0.
+\end{DoxySince}
+\begin{DoxyParagraph}{}
+{\bfseries G\+L\+F\+W 3\+:} Changed to return an array of modes for a specific monitor. 
+\end{DoxyParagraph}
+\hypertarget{group__platform_ga5dbdea593f2ce9dcc0c83bb5f318d598}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Get\+Window\+Frame\+Size@{\+\_\+glfw\+Platform\+Get\+Window\+Frame\+Size}}
+\index{\+\_\+glfw\+Platform\+Get\+Window\+Frame\+Size@{\+\_\+glfw\+Platform\+Get\+Window\+Frame\+Size}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Get\+Window\+Frame\+Size(\+\_\+\+G\+L\+F\+Wwindow $\ast$window, int $\ast$left, int $\ast$top, int $\ast$right, int $\ast$bottom)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Get\+Window\+Frame\+Size (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{int $\ast$}]{left, }
+\item[{int $\ast$}]{top, }
+\item[{int $\ast$}]{right, }
+\item[{int $\ast$}]{bottom}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga5dbdea593f2ce9dcc0c83bb5f318d598}
+
+
+Retrieves the size of the frame of the window. 
+
+This function retrieves the size, in screen coordinates, of each edge of the frame of the specified window. This size includes the title bar, if the window has one. The size of the frame may vary depending on the window-\/related hints used to create it.
+
+Because this function retrieves the size of each window frame edge and not the offset along a particular coordinate axis, the retrieved values will always be zero or positive.
+
+Any or all of the size arguments may be {\ttfamily N\+U\+L\+L}. If an error occurs, all non-\/{\ttfamily N\+U\+L\+L} size arguments will be set to zero.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window whose frame size to query. \\
+\hline
+\mbox{\tt out}  & {\em left} & Where to store the size, in screen coordinates, of the left edge of the window frame, or {\ttfamily N\+U\+L\+L}. \\
+\hline
+\mbox{\tt out}  & {\em top} & Where to store the size, in screen coordinates, of the top edge of the window frame, or {\ttfamily N\+U\+L\+L}. \\
+\hline
+\mbox{\tt out}  & {\em right} & Where to store the size, in screen coordinates, of the right edge of the window frame, or {\ttfamily N\+U\+L\+L}. \\
+\hline
+\mbox{\tt out}  & {\em bottom} & Where to store the size, in screen coordinates, of the bottom edge of the window frame, or {\ttfamily N\+U\+L\+L}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+window\+\_\+size
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+1. 
+\end{DoxySince}
+\hypertarget{group__platform_ga6b1b18b535ef2d5619e3e1bd811a1abf}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Get\+Window\+Pos@{\+\_\+glfw\+Platform\+Get\+Window\+Pos}}
+\index{\+\_\+glfw\+Platform\+Get\+Window\+Pos@{\+\_\+glfw\+Platform\+Get\+Window\+Pos}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Get\+Window\+Pos(\+\_\+\+G\+L\+F\+Wwindow $\ast$window, int $\ast$xpos, int $\ast$ypos)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Get\+Window\+Pos (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{int $\ast$}]{xpos, }
+\item[{int $\ast$}]{ypos}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga6b1b18b535ef2d5619e3e1bd811a1abf}
+
+
+Retrieves the position of the client area of the specified window. 
+
+This function retrieves the position, in screen coordinates, of the upper-\/left corner of the client area of the specified window.
+
+Any or all of the position arguments may be {\ttfamily N\+U\+L\+L}. If an error occurs, all non-\/{\ttfamily N\+U\+L\+L} position arguments will be set to zero.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window to query. \\
+\hline
+\mbox{\tt out}  & {\em xpos} & Where to store the x-\/coordinate of the upper-\/left corner of the client area, or {\ttfamily N\+U\+L\+L}. \\
+\hline
+\mbox{\tt out}  & {\em ypos} & Where to store the y-\/coordinate of the upper-\/left corner of the client area, or {\ttfamily N\+U\+L\+L}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+window\+\_\+pos 
+
+\hyperlink{group__window_ga0dc8d880a0d87be16d3ea8114561f6f0}{glfw\+Set\+Window\+Pos}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. 
+\end{DoxySince}
+\hypertarget{group__platform_ga553e9df9260702f74ddb6e4e9ca43493}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Get\+Window\+Size@{\+\_\+glfw\+Platform\+Get\+Window\+Size}}
+\index{\+\_\+glfw\+Platform\+Get\+Window\+Size@{\+\_\+glfw\+Platform\+Get\+Window\+Size}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Get\+Window\+Size(\+\_\+\+G\+L\+F\+Wwindow $\ast$window, int $\ast$width, int $\ast$height)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Get\+Window\+Size (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{int $\ast$}]{width, }
+\item[{int $\ast$}]{height}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga553e9df9260702f74ddb6e4e9ca43493}
+
+
+Retrieves the size of the client area of the specified window. 
+
+This function retrieves the size, in screen coordinates, of the client area of the specified window. If you wish to retrieve the size of the framebuffer of the window in pixels, see \hyperlink{group__window_gaf7d17f3534b4b6dc9a6f905e3a240b7e}{glfw\+Get\+Framebuffer\+Size}.
+
+Any or all of the size arguments may be {\ttfamily N\+U\+L\+L}. If an error occurs, all non-\/{\ttfamily N\+U\+L\+L} size arguments will be set to zero.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window whose size to retrieve. \\
+\hline
+\mbox{\tt out}  & {\em width} & Where to store the width, in screen coordinates, of the client area, or {\ttfamily N\+U\+L\+L}. \\
+\hline
+\mbox{\tt out}  & {\em height} & Where to store the height, in screen coordinates, of the client area, or {\ttfamily N\+U\+L\+L}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+window\+\_\+size 
+
+\hyperlink{group__window_gae54d1f4915ded15e267ddd3f41496cd2}{glfw\+Set\+Window\+Size}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 1.\+0.
+\end{DoxySince}
+\begin{DoxyParagraph}{}
+{\bfseries G\+L\+F\+W 3\+:} Added window handle parameter. 
+\end{DoxyParagraph}
+\hypertarget{group__platform_ga903498be431ea21170c4ea1b80791204}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Hide\+Window@{\+\_\+glfw\+Platform\+Hide\+Window}}
+\index{\+\_\+glfw\+Platform\+Hide\+Window@{\+\_\+glfw\+Platform\+Hide\+Window}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Hide\+Window(\+\_\+\+G\+L\+F\+Wwindow $\ast$window)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Hide\+Window (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wwindow} $\ast$}]{window}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga903498be431ea21170c4ea1b80791204}
+
+
+Hides the specified window. 
+
+This function hides the specified window if it was previously visible. If the window is already hidden or is in full screen mode, this function does nothing.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window to hide.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+window\+\_\+hide 
+
+\hyperlink{group__window_ga7945bcdff9e5e058cf36505d6873ed8c}{glfw\+Show\+Window}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. 
+\end{DoxySince}
+\hypertarget{group__platform_ga2573aaf669aa4467fd3273dc24630be2}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Iconify\+Window@{\+\_\+glfw\+Platform\+Iconify\+Window}}
+\index{\+\_\+glfw\+Platform\+Iconify\+Window@{\+\_\+glfw\+Platform\+Iconify\+Window}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Iconify\+Window(\+\_\+\+G\+L\+F\+Wwindow $\ast$window)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Iconify\+Window (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wwindow} $\ast$}]{window}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga2573aaf669aa4467fd3273dc24630be2}
+
+
+Iconifies the specified window. 
+
+This function iconifies (minimizes) the specified window if it was previously restored. If the window is already iconified, this function does nothing.
+
+If the specified window is a full screen window, the original monitor resolution is restored until the window is restored.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window to iconify.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+window\+\_\+iconify 
+
+\hyperlink{group__window_ga1e29caf0b819f578b04db52fff17256c}{glfw\+Restore\+Window}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 2.\+1.
+\end{DoxySince}
+\begin{DoxyParagraph}{}
+{\bfseries G\+L\+F\+W 3\+:} Added window handle parameter. 
+\end{DoxyParagraph}
+\hypertarget{group__platform_gaaed0c9f6d4944cc993516fa1fe112101}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Init@{\+\_\+glfw\+Platform\+Init}}
+\index{\+\_\+glfw\+Platform\+Init@{\+\_\+glfw\+Platform\+Init}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Init(void)}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+glfw\+Platform\+Init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{group__platform_gaaed0c9f6d4944cc993516fa1fe112101}
+
+
+Initializes the platform-\/specific part of the library. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily G\+L\+\_\+\+T\+R\+U\+E} if successful, or {\ttfamily G\+L\+\_\+\+F\+A\+L\+S\+E} if an error occurred. 
+\end{DoxyReturn}
+\hypertarget{group__platform_ga98093cf2b1d26ac6fe6bf1d101f46466}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Is\+Same\+Monitor@{\+\_\+glfw\+Platform\+Is\+Same\+Monitor}}
+\index{\+\_\+glfw\+Platform\+Is\+Same\+Monitor@{\+\_\+glfw\+Platform\+Is\+Same\+Monitor}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Is\+Same\+Monitor(\+\_\+\+G\+L\+F\+Wmonitor $\ast$first, \+\_\+\+G\+L\+F\+Wmonitor $\ast$second)}]{\setlength{\rightskip}{0pt plus 5cm}G\+Lboolean \+\_\+glfw\+Platform\+Is\+Same\+Monitor (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wmonitor} $\ast$}]{first, }
+\item[{{\bf \+\_\+\+G\+L\+F\+Wmonitor} $\ast$}]{second}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga98093cf2b1d26ac6fe6bf1d101f46466}
+
+
+Checks whether two monitor objects represent the same monitor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & The first monitor. \\
+\hline
+\mbox{\tt in}  & {\em second} & The second monitor. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily G\+L\+\_\+\+T\+R\+U\+E} if the monitor objects represent the same monitor, or {\ttfamily G\+L\+\_\+\+F\+A\+L\+S\+E} otherwise. 
+\end{DoxyReturn}
+\hypertarget{group__platform_ga022d0cd34e122cef768f557c755fec9c}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Joystick\+Present@{\+\_\+glfw\+Platform\+Joystick\+Present}}
+\index{\+\_\+glfw\+Platform\+Joystick\+Present@{\+\_\+glfw\+Platform\+Joystick\+Present}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Joystick\+Present(int joy)}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+glfw\+Platform\+Joystick\+Present (
+\begin{DoxyParamCaption}
+\item[{int}]{joy}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga022d0cd34e122cef768f557c755fec9c}
+
+
+Returns whether the specified joystick is present. 
+
+This function returns whether the specified joystick is present.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em joy} & The \hyperlink{group__joysticks}{joystick} to query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily G\+L\+\_\+\+T\+R\+U\+E} if the joystick is present, or {\ttfamily G\+L\+\_\+\+F\+A\+L\+S\+E} otherwise.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+joystick
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. Replaces {\ttfamily glfw\+Get\+Joystick\+Param}. 
+\end{DoxySince}
+\hypertarget{group__platform_ga561ebc478ae1ed15b5551fafcdf3526a}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Make\+Context\+Current@{\+\_\+glfw\+Platform\+Make\+Context\+Current}}
+\index{\+\_\+glfw\+Platform\+Make\+Context\+Current@{\+\_\+glfw\+Platform\+Make\+Context\+Current}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Make\+Context\+Current(\+\_\+\+G\+L\+F\+Wwindow $\ast$window)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Make\+Context\+Current (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wwindow} $\ast$}]{window}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga561ebc478ae1ed15b5551fafcdf3526a}
+
+
+Makes the context of the specified window current for the calling thread. 
+
+This function makes the Open\+G\+L or Open\+G\+L E\+S context of the specified window current on the calling thread. \hyperlink{structA}{A} context can only be made current on a single thread at a time and each thread can have only a single current context at a time.
+
+By default, making a context non-\/current implicitly forces a pipeline flush. On machines that support {\ttfamily G\+L\+\_\+\+K\+H\+R\+\_\+context\+\_\+flush\+\_\+control}, you can control whether a context performs this flush by setting the G\+L\+F\+W\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+R\+E\+L\+E\+A\+S\+E\+\_\+\+B\+E\+H\+A\+V\+I\+O\+R window hint.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window whose context to make current, or {\ttfamily N\+U\+L\+L} to detach the current context.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+context\+\_\+current 
+
+\hyperlink{group__context_gac28d98c655377d81a516bf5ef90780c8}{glfw\+Get\+Current\+Context}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. 
+\end{DoxySince}
+\hypertarget{group__platform_ga3b129633a113e1d2bc159af038629dda}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Poll\+Events@{\+\_\+glfw\+Platform\+Poll\+Events}}
+\index{\+\_\+glfw\+Platform\+Poll\+Events@{\+\_\+glfw\+Platform\+Poll\+Events}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Poll\+Events(void)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Poll\+Events (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga3b129633a113e1d2bc159af038629dda}
+
+
+Processes all pending events. 
+
+This function processes only those events that are already in the event queue and then returns immediately. Processing events will cause the window and input callbacks associated with those events to be called.
+
+On some platforms, a window move, resize or menu operation will cause event processing to block. This is due to how event processing is designed on those platforms. You can use the window refresh callback to redraw the contents of your window when necessary during such operations.
+
+On some platforms, certain events are sent directly to the application without going through the event queue, causing callbacks to be called outside of a call to one of the event processing functions.
+
+Event processing is not required for joystick input to work.
+
+\begin{DoxyParagraph}{Reentrancy}
+This function may not be called from a callback.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+events 
+
+\hyperlink{group__window_ga6e042d05823c11e11c7339b81a237738}{glfw\+Wait\+Events}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 1.\+0. 
+\end{DoxySince}
+\hypertarget{group__platform_gac41dc1cf7dba6a7ce5f5903ffce9cf88}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Post\+Empty\+Event@{\+\_\+glfw\+Platform\+Post\+Empty\+Event}}
+\index{\+\_\+glfw\+Platform\+Post\+Empty\+Event@{\+\_\+glfw\+Platform\+Post\+Empty\+Event}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Post\+Empty\+Event(void)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Post\+Empty\+Event (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{group__platform_gac41dc1cf7dba6a7ce5f5903ffce9cf88}
+
+
+Posts an empty event to the event queue. 
+
+This function posts an empty event from the current thread to the event queue, causing \hyperlink{group__window_ga6e042d05823c11e11c7339b81a237738}{glfw\+Wait\+Events} to return.
+
+If no windows exist, this function returns immediately. For synchronization of threads in applications that do not create windows, use your threading library of choice.
+
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+events 
+
+\hyperlink{group__window_ga6e042d05823c11e11c7339b81a237738}{glfw\+Wait\+Events}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+1. 
+\end{DoxySince}
+\hypertarget{group__platform_ga7d70bc903e5c7b565bdb8fe795348c1d}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Restore\+Window@{\+\_\+glfw\+Platform\+Restore\+Window}}
+\index{\+\_\+glfw\+Platform\+Restore\+Window@{\+\_\+glfw\+Platform\+Restore\+Window}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Restore\+Window(\+\_\+\+G\+L\+F\+Wwindow $\ast$window)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Restore\+Window (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wwindow} $\ast$}]{window}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga7d70bc903e5c7b565bdb8fe795348c1d}
+
+
+Restores the specified window. 
+
+This function restores the specified window if it was previously iconified (minimized). If the window is already restored, this function does nothing.
+
+If the specified window is a full screen window, the resolution chosen for the window is restored on the selected monitor.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window to restore.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+window\+\_\+iconify 
+
+\hyperlink{group__window_ga24274e3c6ecd44e11fec5e6b66e4d7f3}{glfw\+Iconify\+Window}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 2.\+1.
+\end{DoxySince}
+\begin{DoxyParagraph}{}
+{\bfseries G\+L\+F\+W 3\+:} Added window handle parameter. 
+\end{DoxyParagraph}
+\hypertarget{group__platform_gabf3b7b168b64bb1abbfc17e93d0c5014}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Set\+Clipboard\+String@{\+\_\+glfw\+Platform\+Set\+Clipboard\+String}}
+\index{\+\_\+glfw\+Platform\+Set\+Clipboard\+String@{\+\_\+glfw\+Platform\+Set\+Clipboard\+String}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Set\+Clipboard\+String(\+\_\+\+G\+L\+F\+Wwindow $\ast$window, const char $\ast$string)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Set\+Clipboard\+String (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{const char $\ast$}]{string}
+\end{DoxyParamCaption}
+)}\label{group__platform_gabf3b7b168b64bb1abbfc17e93d0c5014}
+
+
+Sets the clipboard to the specified string. 
+
+This function sets the system clipboard to the specified, U\+T\+F-\/8 encoded string.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window that will own the clipboard contents. \\
+\hline
+\mbox{\tt in}  & {\em string} & \hyperlink{structA}{A} U\+T\+F-\/8 encoded string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Pointer Lifetime}
+The specified string is copied before this function returns.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+clipboard 
+
+\hyperlink{group__input_ga3ac90c8bbaf0b46063bb02b574f3b6f7}{glfw\+Get\+Clipboard\+String}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. 
+\end{DoxySince}
+\hypertarget{group__platform_ga52276580374c999cf4babdd49270afa9}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Set\+Cursor@{\+\_\+glfw\+Platform\+Set\+Cursor}}
+\index{\+\_\+glfw\+Platform\+Set\+Cursor@{\+\_\+glfw\+Platform\+Set\+Cursor}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Set\+Cursor(\+\_\+\+G\+L\+F\+Wwindow $\ast$window, \+\_\+\+G\+L\+F\+Wcursor $\ast$cursor)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Set\+Cursor (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{{\bf \+\_\+\+G\+L\+F\+Wcursor} $\ast$}]{cursor}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga52276580374c999cf4babdd49270afa9}
+
+
+Sets the cursor for the window. 
+
+This function sets the cursor image to be used when the cursor is over the client area of the specified window. The set cursor will only be visible when the cursor mode of the window is {\ttfamily G\+L\+F\+W\+\_\+\+C\+U\+R\+S\+O\+R\+\_\+\+N\+O\+R\+M\+A\+L}.
+
+On some platforms, the set cursor may not be visible unless the window also has input focus.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window to set the cursor for. \\
+\hline
+\mbox{\tt in}  & {\em cursor} & The cursor to set, or {\ttfamily N\+U\+L\+L} to switch back to the default arrow cursor.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+cursor\+\_\+object
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+1. 
+\end{DoxySince}
+\hypertarget{group__platform_ga710177640b2ec4ca911527ff47348d18}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Set\+Cursor\+Pos@{\+\_\+glfw\+Platform\+Set\+Cursor\+Pos}}
+\index{\+\_\+glfw\+Platform\+Set\+Cursor\+Pos@{\+\_\+glfw\+Platform\+Set\+Cursor\+Pos}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Set\+Cursor\+Pos(\+\_\+\+G\+L\+F\+Wwindow $\ast$window, double xpos, double ypos)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Set\+Cursor\+Pos (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{double}]{xpos, }
+\item[{double}]{ypos}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga710177640b2ec4ca911527ff47348d18}
+
+
+Sets the position of the cursor, relative to the client area of the window. 
+
+This function sets the position, in screen coordinates, of the cursor relative to the upper-\/left corner of the client area of the specified window. The window must have input focus. If the window does not have input focus when this function is called, it fails silently.
+
+{\bfseries Do not use this function} to implement things like camera controls. G\+L\+F\+W already provides the {\ttfamily G\+L\+F\+W\+\_\+\+C\+U\+R\+S\+O\+R\+\_\+\+D\+I\+S\+A\+B\+L\+E\+D} cursor mode that hides the cursor, transparently re-\/centers it and provides unconstrained cursor motion. See \hyperlink{group__input_gae1eb729d2dd91dc33fd60e150a6e1684}{glfw\+Set\+Input\+Mode} for more information.
+
+If the cursor mode is {\ttfamily G\+L\+F\+W\+\_\+\+C\+U\+R\+S\+O\+R\+\_\+\+D\+I\+S\+A\+B\+L\+E\+D} then the cursor position is unconstrained and limited only by the minimum and maximum values of a {\ttfamily double}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The desired window. \\
+\hline
+\mbox{\tt in}  & {\em xpos} & The desired x-\/coordinate, relative to the left edge of the client area. \\
+\hline
+\mbox{\tt in}  & {\em ypos} & The desired y-\/coordinate, relative to the top edge of the client area.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+{\bfseries X11\+:} Due to the asynchronous nature of X11, it may take a moment for the window focus event to arrive. This means you may not be able to set the cursor position directly after window creation.
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+cursor\+\_\+pos 
+
+\hyperlink{group__input_gad289438eb7cf53d11eca685373f44105}{glfw\+Get\+Cursor\+Pos}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. Replaces {\ttfamily glfw\+Set\+Mouse\+Pos}. 
+\end{DoxySince}
+\hypertarget{group__platform_gabcaf1fc34700bd62b558caccce3ab45b}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Set\+Gamma\+Ramp@{\+\_\+glfw\+Platform\+Set\+Gamma\+Ramp}}
+\index{\+\_\+glfw\+Platform\+Set\+Gamma\+Ramp@{\+\_\+glfw\+Platform\+Set\+Gamma\+Ramp}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Set\+Gamma\+Ramp(\+\_\+\+G\+L\+F\+Wmonitor $\ast$monitor, const G\+L\+F\+Wgammaramp $\ast$ramp)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Set\+Gamma\+Ramp (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wmonitor} $\ast$}]{monitor, }
+\item[{const {\bf G\+L\+F\+Wgammaramp} $\ast$}]{ramp}
+\end{DoxyParamCaption}
+)}\label{group__platform_gabcaf1fc34700bd62b558caccce3ab45b}
+
+
+Sets the current gamma ramp for the specified monitor. 
+
+This function sets the current gamma ramp for the specified monitor. The original gamma ramp for that monitor is saved by G\+L\+F\+W the first time this function is called and is restored by \hyperlink{group__init_gafd90e6fd4819ea9e22e5e739519a6504}{glfw\+Terminate}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em monitor} & The monitor whose gamma ramp to set. \\
+\hline
+\mbox{\tt in}  & {\em ramp} & The gamma ramp to use.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+Gamma ramp sizes other than 256 are not supported by all platforms or graphics hardware.
+
+{\bfseries Windows\+:} The gamma ramp size must be 256.
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Pointer Lifetime}
+The specified gamma ramp is copied before this function returns.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+monitor\+\_\+gamma
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. 
+\end{DoxySince}
+\hypertarget{group__platform_ga3ec7765724b69e6e75a855e2363c298c}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Set\+Time@{\+\_\+glfw\+Platform\+Set\+Time}}
+\index{\+\_\+glfw\+Platform\+Set\+Time@{\+\_\+glfw\+Platform\+Set\+Time}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Set\+Time(double time)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Set\+Time (
+\begin{DoxyParamCaption}
+\item[{double}]{time}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga3ec7765724b69e6e75a855e2363c298c}
+
+
+Sets the G\+L\+F\+W timer. 
+
+This function sets the value of the G\+L\+F\+W timer. It then continues to count up from that value. The value must be a positive finite number less than or equal to 18446744073.\+0, which is approximately 584.\+5 years.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em time} & The new value, in seconds.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+The upper limit of the timer is calculated as floor((2\textsuperscript{64} -\/ 1) / 10\textsuperscript{9}) and is due to implementations storing nanoseconds in 64 bits. The limit may be increased in the future.
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+time
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 2.\+2. 
+\end{DoxySince}
+\hypertarget{group__platform_ga0934dc13a91c13e63e4ad615c23be628}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Set\+Window\+Pos@{\+\_\+glfw\+Platform\+Set\+Window\+Pos}}
+\index{\+\_\+glfw\+Platform\+Set\+Window\+Pos@{\+\_\+glfw\+Platform\+Set\+Window\+Pos}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Set\+Window\+Pos(\+\_\+\+G\+L\+F\+Wwindow $\ast$window, int xpos, int ypos)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Set\+Window\+Pos (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{int}]{xpos, }
+\item[{int}]{ypos}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga0934dc13a91c13e63e4ad615c23be628}
+
+
+Sets the position of the client area of the specified window. 
+
+This function sets the position, in screen coordinates, of the upper-\/left corner of the client area of the specified windowed mode window. If the window is a full screen window, this function does nothing.
+
+{\bfseries Do not use this function} to move an already visible window unless you have very good reasons for doing so, as it will confuse and annoy the user.
+
+The window manager may put limits on what positions are allowed. G\+L\+F\+W cannot and should not override these limits.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window to query. \\
+\hline
+\mbox{\tt in}  & {\em xpos} & The x-\/coordinate of the upper-\/left corner of the client area. \\
+\hline
+\mbox{\tt in}  & {\em ypos} & The y-\/coordinate of the upper-\/left corner of the client area.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+window\+\_\+pos 
+
+\hyperlink{group__window_ga0076a8591ef7494d359730cf2250b45b}{glfw\+Get\+Window\+Pos}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 1.\+0.
+\end{DoxySince}
+\begin{DoxyParagraph}{}
+{\bfseries G\+L\+F\+W 3\+:} Added window handle parameter. 
+\end{DoxyParagraph}
+\hypertarget{group__platform_ga29ba7669f18179be6e7df88f9891db89}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Set\+Window\+Size@{\+\_\+glfw\+Platform\+Set\+Window\+Size}}
+\index{\+\_\+glfw\+Platform\+Set\+Window\+Size@{\+\_\+glfw\+Platform\+Set\+Window\+Size}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Set\+Window\+Size(\+\_\+\+G\+L\+F\+Wwindow $\ast$window, int width, int height)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Set\+Window\+Size (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{int}]{width, }
+\item[{int}]{height}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga29ba7669f18179be6e7df88f9891db89}
+
+
+Sets the size of the client area of the specified window. 
+
+This function sets the size, in screen coordinates, of the client area of the specified window.
+
+For full screen windows, this function selects and switches to the resolution closest to the specified size, without affecting the window\textquotesingle{}s context. As the context is unaffected, the bit depths of the framebuffer remain unchanged.
+
+The window manager may put limits on what sizes are allowed. G\+L\+F\+W cannot and should not override these limits.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window to resize. \\
+\hline
+\mbox{\tt in}  & {\em width} & The desired width of the specified window. \\
+\hline
+\mbox{\tt in}  & {\em height} & The desired height of the specified window.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+window\+\_\+size 
+
+\hyperlink{group__window_ga7feb769ebb3f3d21579b5a3fb07be76e}{glfw\+Get\+Window\+Size}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 1.\+0.
+\end{DoxySince}
+\begin{DoxyParagraph}{}
+{\bfseries G\+L\+F\+W 3\+:} Added window handle parameter. 
+\end{DoxyParagraph}
+\hypertarget{group__platform_gaed22dd224adc359c8aee05e1f7ccd92b}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Set\+Window\+Title@{\+\_\+glfw\+Platform\+Set\+Window\+Title}}
+\index{\+\_\+glfw\+Platform\+Set\+Window\+Title@{\+\_\+glfw\+Platform\+Set\+Window\+Title}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Set\+Window\+Title(\+\_\+\+G\+L\+F\+Wwindow $\ast$window, const char $\ast$title)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Set\+Window\+Title (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wwindow} $\ast$}]{window, }
+\item[{const char $\ast$}]{title}
+\end{DoxyParamCaption}
+)}\label{group__platform_gaed22dd224adc359c8aee05e1f7ccd92b}
+
+
+Sets the title of the specified window. 
+
+This function sets the window title, encoded as U\+T\+F-\/8, of the specified window.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window whose title to change. \\
+\hline
+\mbox{\tt in}  & {\em title} & The U\+T\+F-\/8 encoded window title.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+{\bfseries O\+S \hyperlink{structX}{X}\+:} The window title will not be updated until the next time you process events.
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+window\+\_\+title
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 1.\+0.
+\end{DoxySince}
+\begin{DoxyParagraph}{}
+{\bfseries G\+L\+F\+W 3\+:} Added window handle parameter. 
+\end{DoxyParagraph}
+\hypertarget{group__platform_gabc4c51c7c430fab92aec7797734f44a7}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Show\+Window@{\+\_\+glfw\+Platform\+Show\+Window}}
+\index{\+\_\+glfw\+Platform\+Show\+Window@{\+\_\+glfw\+Platform\+Show\+Window}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Show\+Window(\+\_\+\+G\+L\+F\+Wwindow $\ast$window)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Show\+Window (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wwindow} $\ast$}]{window}
+\end{DoxyParamCaption}
+)}\label{group__platform_gabc4c51c7c430fab92aec7797734f44a7}
+
+
+Makes the specified window visible. 
+
+This function makes the specified window visible if it was previously hidden. If the window is already visible or is in full screen mode, this function does nothing.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window to make visible.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+window\+\_\+hide 
+
+\hyperlink{group__window_gaa17e287d521544bdeceafa09ac036e20}{glfw\+Hide\+Window}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 3.\+0. 
+\end{DoxySince}
+\hypertarget{group__platform_gaed52d436a3a5510e4bd252cbf5c76302}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Swap\+Buffers@{\+\_\+glfw\+Platform\+Swap\+Buffers}}
+\index{\+\_\+glfw\+Platform\+Swap\+Buffers@{\+\_\+glfw\+Platform\+Swap\+Buffers}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Swap\+Buffers(\+\_\+\+G\+L\+F\+Wwindow $\ast$window)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Swap\+Buffers (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+G\+L\+F\+Wwindow} $\ast$}]{window}
+\end{DoxyParamCaption}
+)}\label{group__platform_gaed52d436a3a5510e4bd252cbf5c76302}
+
+
+Swaps the front and back buffers of the specified window. 
+
+This function swaps the front and back buffers of the specified window. If the swap interval is greater than zero, the G\+P\+U driver waits the specified number of screen updates before swapping the buffers.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em window} & The window whose buffers to swap.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+buffer\+\_\+swap 
+
+\hyperlink{group__context_ga12a595c06947cec4967c6e1f14210a8a}{glfw\+Swap\+Interval}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 1.\+0.
+\end{DoxySince}
+\begin{DoxyParagraph}{}
+{\bfseries G\+L\+F\+W 3\+:} Added window handle parameter. 
+\end{DoxyParagraph}
+\hypertarget{group__platform_ga06af35966bc5ea06f59cae87aca6c075}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Swap\+Interval@{\+\_\+glfw\+Platform\+Swap\+Interval}}
+\index{\+\_\+glfw\+Platform\+Swap\+Interval@{\+\_\+glfw\+Platform\+Swap\+Interval}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Swap\+Interval(int interval)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Swap\+Interval (
+\begin{DoxyParamCaption}
+\item[{int}]{interval}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga06af35966bc5ea06f59cae87aca6c075}
+
+
+Sets the swap interval for the current context. 
+
+This function sets the swap interval for the current context, i.\+e. the number of screen updates to wait from the time \hyperlink{group__window_gafb827800eedbfcbc97b1e5408df668d7}{glfw\+Swap\+Buffers} was called before swapping the buffers and returning. This is sometimes called {\itshape vertical synchronization}, {\itshape vertical retrace synchronization} or just {\itshape vsync}.
+
+Contexts that support either of the {\ttfamily W\+G\+L\+\_\+\+E\+X\+T\+\_\+swap\+\_\+control\+\_\+tear} and {\ttfamily G\+L\+X\+\_\+\+E\+X\+T\+\_\+swap\+\_\+control\+\_\+tear} extensions also accept negative swap intervals, which allow the driver to swap even if a frame arrives a little bit late. You can check for the presence of these extensions using \hyperlink{group__context_ga9a28c712d35f9e43534e1d03b051c04c}{glfw\+Extension\+Supported}. For more information about swap tearing, see the extension specifications.
+
+\hyperlink{structA}{A} context must be current on the calling thread. Calling this function without a current context will cause a \hyperlink{group__errors_gaa8290386e9528ccb9e42a3a4e16fc0d0}{G\+L\+F\+W\+\_\+\+N\+O\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T} error.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em interval} & The minimum number of screen updates to wait for until the buffers are swapped by \hyperlink{group__window_gafb827800eedbfcbc97b1e5408df668d7}{glfw\+Swap\+Buffers}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+This function is not called during context creation, leaving the swap interval set to whatever is the default on that platform. This is done because some swap interval extensions used by G\+L\+F\+W do not allow the swap interval to be reset to zero once it has been set to a non-\/zero value.
+
+Some G\+P\+U drivers do not honor the requested swap interval, either because of a user setting that overrides the application\textquotesingle{}s request or due to bugs in the driver.
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+buffer\+\_\+swap 
+
+\hyperlink{group__window_gafb827800eedbfcbc97b1e5408df668d7}{glfw\+Swap\+Buffers}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 1.\+0. 
+\end{DoxySince}
+\hypertarget{group__platform_ga2d4fd289ab03927d5856d8eb69977b9a}{}\index{Platform interface@{Platform interface}!\+\_\+glfw\+Platform\+Wait\+Events@{\+\_\+glfw\+Platform\+Wait\+Events}}
+\index{\+\_\+glfw\+Platform\+Wait\+Events@{\+\_\+glfw\+Platform\+Wait\+Events}!Platform interface@{Platform interface}}
+\subsubsection[{\+\_\+glfw\+Platform\+Wait\+Events(void)}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+glfw\+Platform\+Wait\+Events (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{group__platform_ga2d4fd289ab03927d5856d8eb69977b9a}
+
+
+Waits until events are queued and processes them. 
+
+This function puts the calling thread to sleep until at least one event is available in the event queue. Once one or more events are available, it behaves exactly like \hyperlink{group__window_ga872d16e4c77f58c0436f356255920cfc}{glfw\+Poll\+Events}, i.\+e. the events in the queue are processed and the function then returns immediately. Processing events will cause the window and input callbacks associated with those events to be called.
+
+Since not all events are associated with callbacks, this function may return without a callback having been called even if you are monitoring all callbacks.
+
+On some platforms, a window move, resize or menu operation will cause event processing to block. This is due to how event processing is designed on those platforms. You can use the window refresh callback to redraw the contents of your window when necessary during such operations.
+
+On some platforms, certain callbacks may be called outside of a call to one of the event processing functions.
+
+If no windows exist, this function returns immediately. For synchronization of threads in applications that do not create windows, use your threading library of choice.
+
+Event processing is not required for joystick input to work.
+
+\begin{DoxyParagraph}{Reentrancy}
+This function may not be called from a callback.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may only be called from the main thread.
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+events 
+
+\hyperlink{group__window_ga872d16e4c77f58c0436f356255920cfc}{glfw\+Poll\+Events}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Added in G\+L\+F\+W 2.\+5. 
+\end{DoxySince}

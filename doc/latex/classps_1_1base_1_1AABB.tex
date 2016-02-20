@@ -1,0 +1,68 @@
+\hypertarget{classps_1_1base_1_1AABB}{}\section{ps\+:\+:base\+:\+:A\+A\+B\+B Class Reference}
+\label{classps_1_1base_1_1AABB}\index{ps\+::base\+::\+A\+A\+B\+B@{ps\+::base\+::\+A\+A\+B\+B}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1base_1_1AABB_a4abe0e2a95ad2c3b12457cc9b0f83239}{}{\bfseries A\+A\+B\+B} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3} \&lo, const \hyperlink{classps_1_1base_1_1Vec3}{vec3} \&hi)\label{classps_1_1base_1_1AABB_a4abe0e2a95ad2c3b12457cc9b0f83239}
+
+\item 
+\hypertarget{classps_1_1base_1_1AABB_a3c29d0908f8e0de2bb0c940abd1ad597}{}void {\bfseries set} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3} \&lo, const \hyperlink{classps_1_1base_1_1Vec3}{vec3} \&hi)\label{classps_1_1base_1_1AABB_a3c29d0908f8e0de2bb0c940abd1ad597}
+
+\item 
+\hypertarget{classps_1_1base_1_1AABB_a1283f56b8991b9c9b0f106f7799e75f7}{}\hyperlink{classps_1_1base_1_1Vec3}{vec3} {\bfseries bounds} (int idx) const \label{classps_1_1base_1_1AABB_a1283f56b8991b9c9b0f106f7799e75f7}
+
+\item 
+\hypertarget{classps_1_1base_1_1AABB_ab5e504286a222c6fb8b9b13a74b1054c}{}bool {\bfseries is\+Valid} () const \label{classps_1_1base_1_1AABB_ab5e504286a222c6fb8b9b13a74b1054c}
+
+\item 
+\hypertarget{classps_1_1base_1_1AABB_a05a4bfffe188d066d5e873b3103e7c0e}{}bool {\bfseries contains} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3} \&p) const \label{classps_1_1base_1_1AABB_a05a4bfffe188d066d5e873b3103e7c0e}
+
+\item 
+\hypertarget{classps_1_1base_1_1AABB_a72dd61c8c70df720936068b99e2f20ab}{}bool {\bfseries intersect} (const \hyperlink{classps_1_1base_1_1AABB}{A\+A\+B\+B} \&rhs) const \label{classps_1_1base_1_1AABB_a72dd61c8c70df720936068b99e2f20ab}
+
+\item 
+\hypertarget{classps_1_1base_1_1AABB_addf7a0a3a1e808b00da21ed2ca05ca21}{}bool {\bfseries intersect} (const \hyperlink{classps_1_1base_1_1Ray}{Ray} \&ray, const \hyperlink{classps_1_1base_1_1Interval}{Range} \&t, \hyperlink{classps_1_1base_1_1Interval}{Range} \&hit) const \label{classps_1_1base_1_1AABB_addf7a0a3a1e808b00da21ed2ca05ca21}
+
+\item 
+\hypertarget{classps_1_1base_1_1AABB_ad1a26b813b04c38b66990c3c9ae95498}{}bool {\bfseries intersect} (const \hyperlink{classps_1_1base_1_1Ray}{Ray} \&ray, float t0, float t1) const \label{classps_1_1base_1_1AABB_ad1a26b813b04c38b66990c3c9ae95498}
+
+\item 
+\hypertarget{classps_1_1base_1_1AABB_a7ff5cdac8ad71f886314427621880692}{}\hyperlink{classps_1_1base_1_1AABB}{A\+A\+B\+B} {\bfseries united} (const \hyperlink{classps_1_1base_1_1AABB}{A\+A\+B\+B} \&rhs) const \label{classps_1_1base_1_1AABB_a7ff5cdac8ad71f886314427621880692}
+
+\item 
+\hypertarget{classps_1_1base_1_1AABB_a6e0a8b1cd74335409764c0ad668e3672}{}void {\bfseries translate} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3} \&d)\label{classps_1_1base_1_1AABB_a6e0a8b1cd74335409764c0ad668e3672}
+
+\item 
+\hypertarget{classps_1_1base_1_1AABB_a04e2a65274fe57893554ab750bcb6c42}{}void {\bfseries transform} (const \hyperlink{classps_1_1base_1_1Matrix}{mat44f} \&mtx)\label{classps_1_1base_1_1AABB_a04e2a65274fe57893554ab750bcb6c42}
+
+\item 
+\hypertarget{classps_1_1base_1_1AABB_a2cfeba4f0ea377a81d4836599faae23e}{}\hyperlink{classps_1_1base_1_1Vec3}{vec3f} {\bfseries lower} () const \label{classps_1_1base_1_1AABB_a2cfeba4f0ea377a81d4836599faae23e}
+
+\item 
+\hypertarget{classps_1_1base_1_1AABB_ae9b8e09364a05b36fc994cfd78186a25}{}\hyperlink{classps_1_1base_1_1Vec3}{vec3f} {\bfseries upper} () const \label{classps_1_1base_1_1AABB_ae9b8e09364a05b36fc994cfd78186a25}
+
+\item 
+\hypertarget{classps_1_1base_1_1AABB_a178a579406abb3aa4461b376445a5b17}{}void {\bfseries expand} (float d)\label{classps_1_1base_1_1AABB_a178a579406abb3aa4461b376445a5b17}
+
+\item 
+\hypertarget{classps_1_1base_1_1AABB_a343c4d7ff970f350511defb7b4beb0d5}{}\hyperlink{classps_1_1base_1_1Vec3}{vec3f} {\bfseries extent} () const \label{classps_1_1base_1_1AABB_a343c4d7ff970f350511defb7b4beb0d5}
+
+\item 
+\hypertarget{classps_1_1base_1_1AABB_a3b3b4c49b9449c4bff38c48918cbda5e}{}\hyperlink{classps_1_1base_1_1Vec3}{vec3f} {\bfseries center} () const \label{classps_1_1base_1_1AABB_a3b3b4c49b9449c4bff38c48918cbda5e}
+
+\item 
+\hypertarget{classps_1_1base_1_1AABB_afbda9a65280ca8e2a230b9803bccaf6f}{}void {\bfseries get\+Vertices} (vector$<$ \hyperlink{classps_1_1base_1_1Vec3}{vec3f} $>$ \&vertices) const \label{classps_1_1base_1_1AABB_afbda9a65280ca8e2a230b9803bccaf6f}
+
+\item 
+\hypertarget{classps_1_1base_1_1AABB_a004a216a39db123302c8bfb6a2bd19f9}{}void {\bfseries print} () const \label{classps_1_1base_1_1AABB_a004a216a39db123302c8bfb6a2bd19f9}
+
+\item 
+\hypertarget{classps_1_1base_1_1AABB_ad7fea866d8dac83fbf3080ec65bf2c9c}{}\hyperlink{classps_1_1base_1_1AABB}{A\+A\+B\+B} {\bfseries operator=} (const \hyperlink{classps_1_1base_1_1AABB}{A\+A\+B\+B} \&other)\label{classps_1_1base_1_1AABB_ad7fea866d8dac83fbf3080ec65bf2c9c}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/base/aabb.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/base/aabb.\+cpp\end{DoxyCompactItemize}

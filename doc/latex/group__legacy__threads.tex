@@ -1,0 +1,60 @@
+\hypertarget{group__legacy__threads}{}\section{Threads}
+\label{group__legacy__threads}\index{Threads@{Threads}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__legacy__threads_ga01a4106860d96c6d77c31b3e35e7c5ac}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+thr\+\_\+name\+\_\+set}~\hyperlink{group__legacy__threads_gabca4e69158b6ce29fcc0378616ac316a}{\+\_\+\+\_\+itt\+\_\+thr\+\_\+name\+\_\+set\+A}\label{group__legacy__threads_ga01a4106860d96c6d77c31b3e35e7c5ac}
+
+\item 
+\hypertarget{group__legacy__threads_gaa3690d1b081fe1b2e6b47778f51a2904}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+thr\+\_\+name\+\_\+set\+\_\+ptr}~\+\_\+\+\_\+itt\+\_\+thr\+\_\+name\+\_\+set\+A\+\_\+ptr\label{group__legacy__threads_gaa3690d1b081fe1b2e6b47778f51a2904}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int L\+I\+B\+I\+T\+T\+A\+P\+I \hyperlink{group__legacy__threads_gabca4e69158b6ce29fcc0378616ac316a}{\+\_\+\+\_\+itt\+\_\+thr\+\_\+name\+\_\+set\+A} (const char $\ast$name, int namelen)
+\begin{DoxyCompactList}\small\item\em Set name to be associated with thread in analysis G\+U\+I. \end{DoxyCompactList}\item 
+\hypertarget{group__legacy__threads_ga6106bca8a2390f16d3c404f32fa5aa9d}{}int L\+I\+B\+I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+thr\+\_\+name\+\_\+set\+W} (const wchar\+\_\+t $\ast$name, int namelen)\label{group__legacy__threads_ga6106bca8a2390f16d3c404f32fa5aa9d}
+
+\item 
+void L\+I\+B\+I\+T\+T\+A\+P\+I \hyperlink{group__legacy__threads_gae17553b2bca44e1d2e4696fc69a06abf}{\+\_\+\+\_\+itt\+\_\+thr\+\_\+ignore} (void)
+\begin{DoxyCompactList}\small\item\em Mark current thread as ignored from this point on, for the duration of its existence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Threads group \begin{DoxyWarning}{Warning}
+Legacy A\+P\+I 
+\end{DoxyWarning}
+
+
+\subsection{Function Documentation}
+\hypertarget{group__legacy__threads_gae17553b2bca44e1d2e4696fc69a06abf}{}\index{Threads@{Threads}!\+\_\+\+\_\+itt\+\_\+thr\+\_\+ignore@{\+\_\+\+\_\+itt\+\_\+thr\+\_\+ignore}}
+\index{\+\_\+\+\_\+itt\+\_\+thr\+\_\+ignore@{\+\_\+\+\_\+itt\+\_\+thr\+\_\+ignore}!Threads@{Threads}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+thr\+\_\+ignore(void)}]{\setlength{\rightskip}{0pt plus 5cm}void L\+I\+B\+I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+thr\+\_\+ignore (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{group__legacy__threads_gae17553b2bca44e1d2e4696fc69a06abf}
+
+
+Mark current thread as ignored from this point on, for the duration of its existence. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000007}{Deprecated}]Legacy A\+P\+I \end{DoxyRefDesc}
+\hypertarget{group__legacy__threads_gabca4e69158b6ce29fcc0378616ac316a}{}\index{Threads@{Threads}!\+\_\+\+\_\+itt\+\_\+thr\+\_\+name\+\_\+set\+A@{\+\_\+\+\_\+itt\+\_\+thr\+\_\+name\+\_\+set\+A}}
+\index{\+\_\+\+\_\+itt\+\_\+thr\+\_\+name\+\_\+set\+A@{\+\_\+\+\_\+itt\+\_\+thr\+\_\+name\+\_\+set\+A}!Threads@{Threads}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+thr\+\_\+name\+\_\+set\+A(const char $\ast$name, int namelen)}]{\setlength{\rightskip}{0pt plus 5cm}int L\+I\+B\+I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+thr\+\_\+name\+\_\+set\+A (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name, }
+\item[{int}]{namelen}
+\end{DoxyParamCaption}
+)}\label{group__legacy__threads_gabca4e69158b6ce29fcc0378616ac316a}
+
+
+Set name to be associated with thread in analysis G\+U\+I. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000006}{Deprecated}]Legacy A\+P\+I \end{DoxyRefDesc}
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+itt\+\_\+err upon failure (name or namelen being null,name and namelen mismatched) 
+\end{DoxyReturn}

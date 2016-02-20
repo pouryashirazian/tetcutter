@@ -1,0 +1,75 @@
+\hypertarget{classinternal_1_1join__node__base}{}\section{internal\+:\+:join\+\_\+node\+\_\+base$<$ J\+P, Input\+Tuple, Output\+Tuple $>$ Class Template Reference}
+\label{classinternal_1_1join__node__base}\index{internal\+::join\+\_\+node\+\_\+base$<$ J\+P, Input\+Tuple, Output\+Tuple $>$@{internal\+::join\+\_\+node\+\_\+base$<$ J\+P, Input\+Tuple, Output\+Tuple $>$}}
+
+
+\hyperlink{classinternal_1_1join__node__base}{join\+\_\+node\+\_\+base}  
+
+
+
+
+{\ttfamily \#include $<$\+\_\+flow\+\_\+graph\+\_\+join\+\_\+impl.\+h$>$}
+
+Inheritance diagram for internal\+:\+:join\+\_\+node\+\_\+base$<$ J\+P, Input\+Tuple, Output\+Tuple $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.697095cm]{classinternal_1_1join__node__base}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1join__node__base_a27cb31f4381df2fbadadbd8aa093e68a}{}typedef Output\+Tuple {\bfseries output\+\_\+type}\label{classinternal_1_1join__node__base_a27cb31f4381df2fbadadbd8aa093e68a}
+
+\item 
+\hypertarget{classinternal_1_1join__node__base_ab21d43f2706ec239e1c865d4fa071659}{}typedef receiver$<$ output\+\_\+type $>$ {\bfseries successor\+\_\+type}\label{classinternal_1_1join__node__base_ab21d43f2706ec239e1c865d4fa071659}
+
+\item 
+\hypertarget{classinternal_1_1join__node__base_af8118626f35837ec9ac89a2fbdd9aee6}{}typedef \hyperlink{classinternal_1_1join__node__FE}{join\+\_\+node\+\_\+\+F\+E}$<$ J\+P, Input\+Tuple, Output\+Tuple $>$ {\bfseries input\+\_\+ports\+\_\+type}\label{classinternal_1_1join__node__base_af8118626f35837ec9ac89a2fbdd9aee6}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1join__node__base_ac9c4d8758fb2dda3f10885c59685f579}{}{\bfseries join\+\_\+node\+\_\+base} (graph \&g)\label{classinternal_1_1join__node__base_ac9c4d8758fb2dda3f10885c59685f579}
+
+\item 
+\hypertarget{classinternal_1_1join__node__base_a3e9f46aed8b67c564de2bbdd3ef1a02f}{}{\bfseries join\+\_\+node\+\_\+base} (const \hyperlink{classinternal_1_1join__node__base}{join\+\_\+node\+\_\+base} \&other)\label{classinternal_1_1join__node__base_a3e9f46aed8b67c564de2bbdd3ef1a02f}
+
+\item 
+\hypertarget{classinternal_1_1join__node__base_a56c76c779bacd3cdb6e8f8f401aeb36e}{}{\footnotesize template$<$typename Function\+Tuple $>$ }\\{\bfseries join\+\_\+node\+\_\+base} (graph \&g, Function\+Tuple f)\label{classinternal_1_1join__node__base_a56c76c779bacd3cdb6e8f8f401aeb36e}
+
+\item 
+\hypertarget{classinternal_1_1join__node__base_a9d8077d9b3159f013aa1ad3644f04ba5}{}bool {\bfseries register\+\_\+successor} (successor\+\_\+type \&r)\label{classinternal_1_1join__node__base_a9d8077d9b3159f013aa1ad3644f04ba5}
+
+\item 
+\hypertarget{classinternal_1_1join__node__base_a2f3a578539a4adc57cbd968c7158da5d}{}bool {\bfseries remove\+\_\+successor} (successor\+\_\+type \&r)\label{classinternal_1_1join__node__base_a2f3a578539a4adc57cbd968c7158da5d}
+
+\item 
+\hypertarget{classinternal_1_1join__node__base_ae6e98332ef9f5707e9e28fb4701792c7}{}bool {\bfseries try\+\_\+get} (output\+\_\+type \&v)\label{classinternal_1_1join__node__base_ae6e98332ef9f5707e9e28fb4701792c7}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1join__node__base_a1734e7beffd1dc8aab762a74127a17bd}{}void {\bfseries reset} (\+\_\+\+\_\+\+T\+B\+B\+\_\+\+P\+F\+G\+\_\+\+R\+E\+S\+E\+T\+\_\+\+A\+R\+G(reset\+\_\+flags f))\label{classinternal_1_1join__node__base_a1734e7beffd1dc8aab762a74127a17bd}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1join__node__base_a6f2ee756c40232c8e349e1430e4c5c31}{}class {\bfseries internal\+::aggregating\+\_\+functor$<$ my\+\_\+class, join\+\_\+node\+\_\+base\+\_\+operation $>$}\label{classinternal_1_1join__node__base_a6f2ee756c40232c8e349e1430e4c5c31}
+
+\item 
+\hypertarget{classinternal_1_1join__node__base_a827e19a3db812b973b8d6650a9629a50}{}class {\bfseries forward\+\_\+task\+\_\+bypass$<$ join\+\_\+node\+\_\+base$<$ J\+P, Input\+Tuple, Output\+Tuple $>$ $>$}\label{classinternal_1_1join__node__base_a827e19a3db812b973b8d6650a9629a50}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$graph\+\_\+buffer\+\_\+policy J\+P, typename Input\+Tuple, typename Output\+Tuple$>$class internal\+::join\+\_\+node\+\_\+base$<$ J\+P, Input\+Tuple, Output\+Tuple $>$}
+
+\hyperlink{classinternal_1_1join__node__base}{join\+\_\+node\+\_\+base} 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/internal/\+\_\+flow\+\_\+graph\+\_\+join\+\_\+impl.\+h\end{DoxyCompactItemize}

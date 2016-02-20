@@ -1,0 +1,249 @@
+\hypertarget{classps_1_1scene_1_1Geometry}{}\section{ps\+:\+:scene\+:\+:Geometry Class Reference}
+\label{classps_1_1scene_1_1Geometry}\index{ps\+::scene\+::\+Geometry@{ps\+::scene\+::\+Geometry}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a2d4f58b106041e3a758086577366aa9e}{}{\bfseries Geometry} (const \hyperlink{classps_1_1scene_1_1Geometry}{Geometry} \&other)\label{classps_1_1scene_1_1Geometry_a2d4f58b106041e3a758086577366aa9e}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_af119f2be0cff8974051dfca0371b11bc}{}{\bfseries Geometry} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&str\+File\+Path)\label{classps_1_1scene_1_1Geometry_af119f2be0cff8974051dfca0371b11bc}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a82f44380754747b70333fa1f8bb6f320}{}void {\bfseries init} ()\label{classps_1_1scene_1_1Geometry_a82f44380754747b70333fa1f8bb6f320}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a9bfe3529ee6f25c12fbf87606b03ebab}{}void {\bfseries init} (int step\+Vertex, int step\+Color, int step\+Tex\+Coords, ps\+::opengl\+::\+G\+L\+Face\+Type face\+Mode=ft\+Triangles)\label{classps_1_1scene_1_1Geometry_a9bfe3529ee6f25c12fbf87606b03ebab}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a47cb57a90830d8e1982430174442c641}{}bool {\bfseries is\+Compatible} (const \hyperlink{classps_1_1scene_1_1Geometry}{Geometry} \&other) const \label{classps_1_1scene_1_1Geometry_a47cb57a90830d8e1982430174442c641}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a649e3aa04db6c185fed04c29d4e9a0ca}{}int {\bfseries count\+Vertices} () const \label{classps_1_1scene_1_1Geometry_a649e3aa04db6c185fed04c29d4e9a0ca}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a7f2f57051355459e6058794e99791336}{}int {\bfseries count\+Color} () const \label{classps_1_1scene_1_1Geometry_a7f2f57051355459e6058794e99791336}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_adaf21771528e432d7d49501d0cb6e562}{}int {\bfseries count\+Tex\+Coords} () const \label{classps_1_1scene_1_1Geometry_adaf21771528e432d7d49501d0cb6e562}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a3ff0a8b4a7413a0d090032e8b0ee60b4}{}int {\bfseries count\+Normals} () const \label{classps_1_1scene_1_1Geometry_a3ff0a8b4a7413a0d090032e8b0ee60b4}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a21f6c67afbdc6d325d6158e3e593c3a1}{}int {\bfseries count\+Faces} () const \label{classps_1_1scene_1_1Geometry_a21f6c67afbdc6d325d6158e3e593c3a1}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a0b31979b990126792a93e61205f2f2c4}{}int {\bfseries get\+Vertex\+Step} () const \label{classps_1_1scene_1_1Geometry_a0b31979b990126792a93e61205f2f2c4}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a6e4b43ed9010359f119faa807a278731}{}int {\bfseries get\+Color\+Step} () const \label{classps_1_1scene_1_1Geometry_a6e4b43ed9010359f119faa807a278731}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a296f6df4ff99976c6a5222f18977a7b4}{}int {\bfseries get\+Tex\+Coord\+Step} () const \label{classps_1_1scene_1_1Geometry_a296f6df4ff99976c6a5222f18977a7b4}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_add26b3367413eb76182715262437cfce}{}int {\bfseries get\+Face\+Step} () const \label{classps_1_1scene_1_1Geometry_add26b3367413eb76182715262437cfce}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a5090a568778348417dca5fe5e8459bb2}{}G\+L\+Face\+Type {\bfseries get\+Face\+Mode} () const \label{classps_1_1scene_1_1Geometry_a5090a568778348417dca5fe5e8459bb2}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a06ecdb03a5103deba6dadf178e13203a}{}\hyperlink{classps_1_1base_1_1Vec3}{vec3f} {\bfseries vertex\+At} (int index) const \label{classps_1_1scene_1_1Geometry_a06ecdb03a5103deba6dadf178e13203a}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_ad8c85379124d147cebd3ce69615535ed}{}\hyperlink{classps_1_1base_1_1Vec4}{vec4f} {\bfseries color\+At} (int index) const \label{classps_1_1scene_1_1Geometry_ad8c85379124d147cebd3ce69615535ed}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_ad119e6a4850a56e93a2cd7c360a8be6d}{}\hyperlink{classps_1_1base_1_1Vec2}{vec2f} {\bfseries texcoord\+At} (int index) const \label{classps_1_1scene_1_1Geometry_ad119e6a4850a56e93a2cd7c360a8be6d}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a555d8d4442de50a13306307156986de7}{}\hyperlink{classps_1_1base_1_1Vec3}{vec3f} {\bfseries normal\+At} (int index) const \label{classps_1_1scene_1_1Geometry_a555d8d4442de50a13306307156986de7}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a4e4991f3059757475f26481dd205ea75}{}\hyperlink{classps_1_1base_1_1Vec3}{vec3u32} {\bfseries triangle\+At} (int index) const \label{classps_1_1scene_1_1Geometry_a4e4991f3059757475f26481dd205ea75}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_aee4a0196a95f8372fa693954aba9a959}{}\hyperlink{classps_1_1base_1_1Vec4}{vec4u32} {\bfseries quad\+At} (int index) const \label{classps_1_1scene_1_1Geometry_aee4a0196a95f8372fa693954aba9a959}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a83cea61981c2767004582263dc808288}{}void {\bfseries set\+Vertex} (int index, const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&v)\label{classps_1_1scene_1_1Geometry_a83cea61981c2767004582263dc808288}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a7be917968faf6256ddf2f9b1f7206c51}{}const vector$<$ float $>$ \& {\bfseries vertices} () const \label{classps_1_1scene_1_1Geometry_a7be917968faf6256ddf2f9b1f7206c51}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a7e12d02f26ea2ac9fe8d710a0ef50382}{}const vector$<$ float $>$ \& {\bfseries colors} () const \label{classps_1_1scene_1_1Geometry_a7e12d02f26ea2ac9fe8d710a0ef50382}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_aac26873703c9b6239763edd0db900c48}{}const vector$<$ float $>$ \& {\bfseries texcoords} () const \label{classps_1_1scene_1_1Geometry_aac26873703c9b6239763edd0db900c48}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a69a5afa92fe0dc9089479238feb9e005}{}const vector$<$ float $>$ \& {\bfseries normals} () const \label{classps_1_1scene_1_1Geometry_a69a5afa92fe0dc9089479238feb9e005}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_aaa74d9df99e92547553b65f73f6650cc}{}const vector$<$ U32 $>$ \& {\bfseries indices} () const \label{classps_1_1scene_1_1Geometry_aaa74d9df99e92547553b65f73f6650cc}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_ac189febdbd60df86a1f2270d920cb6ad}{}vector$<$ float $>$ \& {\bfseries vertices} ()\label{classps_1_1scene_1_1Geometry_ac189febdbd60df86a1f2270d920cb6ad}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_adedd00b50942ed1f4033be80a1e2587f}{}vector$<$ float $>$ \& {\bfseries colors} ()\label{classps_1_1scene_1_1Geometry_adedd00b50942ed1f4033be80a1e2587f}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a53d77248569cc8dd01dd6389315d2dd9}{}vector$<$ float $>$ \& {\bfseries texcoords} ()\label{classps_1_1scene_1_1Geometry_a53d77248569cc8dd01dd6389315d2dd9}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a806ba6c18509dbe3c07ed6cd585ebed5}{}vector$<$ float $>$ \& {\bfseries normals} ()\label{classps_1_1scene_1_1Geometry_a806ba6c18509dbe3c07ed6cd585ebed5}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_acb3c84aaf54910396d59f0d3a6ebf51c}{}vector$<$ U32 $>$ \& {\bfseries indices} ()\label{classps_1_1scene_1_1Geometry_acb3c84aaf54910396d59f0d3a6ebf51c}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a1b0f3d342512b7b98946392ad010034f}{}bool {\bfseries add\+Vertex} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&v)\label{classps_1_1scene_1_1Geometry_a1b0f3d342512b7b98946392ad010034f}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a4077b2edc4b78af20ed5cf4316e513e6}{}bool {\bfseries add\+Color} (const \hyperlink{classps_1_1base_1_1Vec4}{vec4f} \&c)\label{classps_1_1scene_1_1Geometry_a4077b2edc4b78af20ed5cf4316e513e6}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a8272fa2d8c2ef87de8624272da019ca5}{}bool {\bfseries add\+Tex\+Coord} (float t)\label{classps_1_1scene_1_1Geometry_a8272fa2d8c2ef87de8624272da019ca5}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a64ec7b280cd43ebecd94a9282e9ec875}{}bool {\bfseries add\+Tex\+Coord} (const \hyperlink{classps_1_1base_1_1Vec2}{vec2f} \&t)\label{classps_1_1scene_1_1Geometry_a64ec7b280cd43ebecd94a9282e9ec875}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a3573bc0a577cfde0d0af21e2ed2a3de1}{}bool {\bfseries add\+Tex\+Coord} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&t)\label{classps_1_1scene_1_1Geometry_a3573bc0a577cfde0d0af21e2ed2a3de1}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a247bd8f84d43b77bf180ba093991ee3d}{}void {\bfseries add\+Normal} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&n)\label{classps_1_1scene_1_1Geometry_a247bd8f84d43b77bf180ba093991ee3d}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a537a223546ac2ef6839453c1a143d49f}{}bool {\bfseries add\+Triangle} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3u32} \&f)\label{classps_1_1scene_1_1Geometry_a537a223546ac2ef6839453c1a143d49f}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_ac1e4ff204129c151ef34c17ea81d320e}{}bool {\bfseries add\+Quad} (const \hyperlink{classps_1_1base_1_1Vec4}{vec4u32} \&f)\label{classps_1_1scene_1_1Geometry_ac1e4ff204129c151ef34c17ea81d320e}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a5b2efd93099a82f875a2397e72efb1ba}{}void {\bfseries extrude} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&v)\label{classps_1_1scene_1_1Geometry_a5b2efd93099a82f875a2397e72efb1ba}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_ac1440ef0e4aec89e9a106803a8d2c8ce}{}void {\bfseries transform} (const \hyperlink{classps_1_1base_1_1Matrix}{mat44f} \&m)\label{classps_1_1scene_1_1Geometry_ac1440ef0e4aec89e9a106803a8d2c8ce}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a4a5837a775c3c462968aa1246b1d3dd4}{}bool {\bfseries add\+Vertex\+Attribs} (const vector$<$ float $>$ \&arr\+Attribs, int step=3, G\+L\+Buffer\+Type attrib\+Kind=gbt\+Position)\label{classps_1_1scene_1_1Geometry_a4a5837a775c3c462968aa1246b1d3dd4}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a971e48f7d21975c9d9fb3bb33eebff61}{}void {\bfseries add\+Per\+Vertex\+Color} (const \hyperlink{classps_1_1base_1_1Vec4}{vec4f} \&color, U32 ct\+Vertices=0)\label{classps_1_1scene_1_1Geometry_a971e48f7d21975c9d9fb3bb33eebff61}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a9446984e251746380d5d937b3f9c8c66}{}bool {\bfseries add\+Face\+Indices} (const vector$<$ U32 $>$ \&arr\+Index, ps\+::opengl\+::\+G\+L\+Face\+Type face\+Mode=ft\+Triangles)\label{classps_1_1scene_1_1Geometry_a9446984e251746380d5d937b3f9c8c66}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a2da64558da7dc7c30105a412d89844a9}{}bool {\bfseries compute\+Normals\+From\+Faces} ()\label{classps_1_1scene_1_1Geometry_a2da64558da7dc7c30105a412d89844a9}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_ab38a57abecb8385ce93457a2b8747ea1}{}void {\bfseries clear\+Buffer} (G\+L\+Buffer\+Type btype)\label{classps_1_1scene_1_1Geometry_ab38a57abecb8385ce93457a2b8747ea1}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_ae42cbd9fb650f1117c8c6a9ceb2e9132}{}bool {\bfseries add\+Line} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&start, const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&end)\label{classps_1_1scene_1_1Geometry_ae42cbd9fb650f1117c8c6a9ceb2e9132}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a1f5252fb223fa253fddb1f5b242ba198}{}bool {\bfseries add\+Lines} (const vector$<$ \hyperlink{classps_1_1base_1_1Vec3}{vec3f} $>$ \&vertices)\label{classps_1_1scene_1_1Geometry_a1f5252fb223fa253fddb1f5b242ba198}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a41c90f08b712b9109047283f702618d7}{}bool {\bfseries add\+Circle2\+D} (int sectors, float radius=1.\+0f, const vec3f \&o=vec3f(0, 0, 0))\label{classps_1_1scene_1_1Geometry_a41c90f08b712b9109047283f702618d7}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a0a0a565babb0dc53cd93e6190b8cc5d1}{}bool {\bfseries add\+Circle3\+D} (int sectors, float radius=1.\+0f, const vec3f \&o=vec3f(0, 0, 0))\label{classps_1_1scene_1_1Geometry_a0a0a565babb0dc53cd93e6190b8cc5d1}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_ad13940852a3241a186c3bdaaa230d0f7}{}bool {\bfseries add\+Cone} (int sectors, float radius=1.\+0f, float width=1.\+0f, const vec3f \&o=vec3f(0, 0, 0))\label{classps_1_1scene_1_1Geometry_ad13940852a3241a186c3bdaaa230d0f7}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a76be3b4e69cc804537919b0c1fde78b7}{}void {\bfseries add\+Cube} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&lower, const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&upper)\label{classps_1_1scene_1_1Geometry_a76be3b4e69cc804537919b0c1fde78b7}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_ae91b7f0e9dbacf75a155dd22243d5475}{}void {\bfseries add\+Cube} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&center, float side)\label{classps_1_1scene_1_1Geometry_ae91b7f0e9dbacf75a155dd22243d5475}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_ab75767952a0dca9d0161882ebd642d75}{}void {\bfseries add\+Sphere} (float radius=1.\+0f, int hseg=8, int vseg=8)\label{classps_1_1scene_1_1Geometry_ab75767952a0dca9d0161882ebd642d75}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a68187bda9650b5f12a50404300dbc85a}{}void {\bfseries add\+Cylinder} (float radius, float height, int sectors, bool base=true, bool roof=true)\label{classps_1_1scene_1_1Geometry_a68187bda9650b5f12a50404300dbc85a}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a18786c70964eb9533aabea2ce2002db9}{}void {\bfseries add\+Tetrahedra} (\hyperlink{classps_1_1base_1_1Vec3}{vec3f} v\mbox{[}4\mbox{]})\label{classps_1_1scene_1_1Geometry_a18786c70964eb9533aabea2ce2002db9}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_af5ca854d61987b909706795e80c6d354}{}void {\bfseries add\+Tetrahedra} (const vector$<$ float $>$ \&vertices, const vector$<$ U32 $>$ \&tets)\label{classps_1_1scene_1_1Geometry_af5ca854d61987b909706795e80c6d354}
+
+\item 
+bool \hyperlink{classps_1_1scene_1_1Geometry_ac43ea1de489b810baf386094f1900324}{add\+Ring\+Strip\+Around\+X\+Axis} (int sectors, float radius, float thickness, const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&origin)
+\item 
+bool \hyperlink{classps_1_1scene_1_1Geometry_af87d017d6d893342c956c9757100b4b4}{add\+Disc} (int sectors, int xsections, float radius, float thickness, const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&o=\hyperlink{classps_1_1base_1_1Vec3}{vec3f}(0, 0, 0))
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a789daa85947087c0f18c3cc1bf3f9b44}{}bool {\bfseries check\+Indices} () const \label{classps_1_1scene_1_1Geometry_a789daa85947087c0f18c3cc1bf3f9b44}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a338342fe4822f8417b15ced15ee05aa0}{}\hyperlink{classps_1_1base_1_1AABB}{A\+A\+B\+B} {\bfseries aabb} () const \label{classps_1_1scene_1_1Geometry_a338342fe4822f8417b15ced15ee05aa0}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_afd7fd6c6fa3fa5bad250c2a4e58a2567}{}bool {\bfseries copy\+From} (const \hyperlink{classps_1_1scene_1_1Geometry}{Geometry} \&other)\label{classps_1_1scene_1_1Geometry_afd7fd6c6fa3fa5bad250c2a4e58a2567}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a4d0267516367ea59f30e8b6ffdb34b46}{}bool {\bfseries append\+From} (const \hyperlink{classps_1_1scene_1_1Geometry}{Geometry} \&other)\label{classps_1_1scene_1_1Geometry_a4d0267516367ea59f30e8b6ffdb34b46}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a4a6d0254f3577b1d980969ae7a446898}{}bool {\bfseries read} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&str\+File\+Path)\label{classps_1_1scene_1_1Geometry_a4a6d0254f3577b1d980969ae7a446898}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_af566f04872e05cc1d25538e42d12ab5c}{}bool {\bfseries write} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&str\+File\+Path) const \label{classps_1_1scene_1_1Geometry_af566f04872e05cc1d25538e42d12ab5c}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_af3b2f797e03d1e270ef27c401af6a38f}{}bool {\bfseries read\+Obj} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&str\+File\+Path)\label{classps_1_1scene_1_1Geometry_af3b2f797e03d1e270ef27c401af6a38f}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_aaa508ea83d9c52a13b9da5cfb552899e}{}bool {\bfseries write\+Obj} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&str\+File\+Path) const \label{classps_1_1scene_1_1Geometry_aaa508ea83d9c52a13b9da5cfb552899e}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_aaa533b5ce841b233c687826e65ee9e72}{}\hyperlink{classps_1_1scene_1_1Geometry}{Geometry} \& {\bfseries operator=} (const \hyperlink{classps_1_1scene_1_1Geometry}{Geometry} \&other)\label{classps_1_1scene_1_1Geometry_aaa533b5ce841b233c687826e65ee9e72}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a40f16014af7b1c1dd4b9999c159cfcce}{}\hyperlink{classps_1_1scene_1_1Geometry}{Geometry} {\bfseries operator+} (const \hyperlink{classps_1_1scene_1_1Geometry}{Geometry} \&other) const \label{classps_1_1scene_1_1Geometry_a40f16014af7b1c1dd4b9999c159cfcce}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1scene_1_1Geometry_a5c8446bd7ba7765e032d1e1033d07ff6}{}void {\bfseries cleanup} ()\label{classps_1_1scene_1_1Geometry_a5c8446bd7ba7765e032d1e1033d07ff6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classps_1_1scene_1_1Geometry_af87d017d6d893342c956c9757100b4b4}{}\index{ps\+::scene\+::\+Geometry@{ps\+::scene\+::\+Geometry}!add\+Disc@{add\+Disc}}
+\index{add\+Disc@{add\+Disc}!ps\+::scene\+::\+Geometry@{ps\+::scene\+::\+Geometry}}
+\subsubsection[{add\+Disc(int sectors, int xsections, float radius, float thickness, const vec3f \&o=vec3f(0, 0, 0))}]{\setlength{\rightskip}{0pt plus 5cm}bool Geometry\+::add\+Disc (
+\begin{DoxyParamCaption}
+\item[{int}]{sectors, }
+\item[{int}]{xsections, }
+\item[{float}]{radius, }
+\item[{float}]{thickness, }
+\item[{const {\bf vec3f} \&}]{o = {\ttfamily {\bf vec3f}(0,0,0)}}
+\end{DoxyParamCaption}
+)}\label{classps_1_1scene_1_1Geometry_af87d017d6d893342c956c9757100b4b4}
+Add a disc to the geometry \hypertarget{classps_1_1scene_1_1Geometry_ac43ea1de489b810baf386094f1900324}{}\index{ps\+::scene\+::\+Geometry@{ps\+::scene\+::\+Geometry}!add\+Ring\+Strip\+Around\+X\+Axis@{add\+Ring\+Strip\+Around\+X\+Axis}}
+\index{add\+Ring\+Strip\+Around\+X\+Axis@{add\+Ring\+Strip\+Around\+X\+Axis}!ps\+::scene\+::\+Geometry@{ps\+::scene\+::\+Geometry}}
+\subsubsection[{add\+Ring\+Strip\+Around\+X\+Axis(int sectors, float radius, float thickness, const vec3f \&origin)}]{\setlength{\rightskip}{0pt plus 5cm}bool Geometry\+::add\+Ring\+Strip\+Around\+X\+Axis (
+\begin{DoxyParamCaption}
+\item[{int}]{sectors, }
+\item[{float}]{radius, }
+\item[{float}]{thickness, }
+\item[{const {\bf vec3f} \&}]{origin}
+\end{DoxyParamCaption}
+)}\label{classps_1_1scene_1_1Geometry_ac43ea1de489b810baf386094f1900324}
+Add a ring to the geometry 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/scene/geometry.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/scene/geometry.\+cpp\end{DoxyCompactItemize}

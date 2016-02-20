@@ -1,0 +1,41 @@
+\hypertarget{classLoki_1_1FollowIntoDeath}{}\section{Loki\+:\+:Follow\+Into\+Death Class Reference}
+\label{classLoki_1_1FollowIntoDeath}\index{Loki\+::\+Follow\+Into\+Death@{Loki\+::\+Follow\+Into\+Death}}
+
+
+{\ttfamily \#include $<$Singleton.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structLoki_1_1FollowIntoDeath_1_1AfterMaster}{After\+Master}
+\item 
+struct \hyperlink{structLoki_1_1FollowIntoDeath_1_1With}{With}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Lifetime policyfor the \hyperlink{classLoki_1_1SingletonHolder}{Singleton\+Holder} tempalte. Followers will die after the master dies Followers will not die, if
+\begin{DoxyItemize}
+\item master never dies (\hyperlink{structLoki_1_1NoDestroy}{No\+Destroy} policy)
+\item master never created
+\item master dies not in the function registered with atexit
+\item master dies not by a call of a the atexit registerd function (\hyperlink{classLoki_1_1DeletableSingleton_a626c2dc57146f1aea6bf911682f8e3e9}{Deletable\+Singleton\+::\+Graceful\+Delete})
+\end{DoxyItemize}
+
+\begin{DoxyParagraph}{Usage\+:}
+
+\end{DoxyParagraph}
+Lifetimes of the master and the follower singletons, e.\+g. with a M and a F class\+: 
+\begin{DoxyCode}
+SingletonHolder< M , FollowIntoDeath::With<DefaultLifetime>::AsMasterLifetime > MasterSingleton; 
+\end{DoxyCode}
+ 
+\begin{DoxyCode}
+SingletonHolder< F , CreateUsingNew, FollowIntoDeath::AfterMaster< MasterSingleton >::IsDestroyed > 
+      \hyperlink{classFollowerSingleton}{FollowerSingleton} 
+\end{DoxyCode}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Singleton.\+h\end{DoxyCompactItemize}

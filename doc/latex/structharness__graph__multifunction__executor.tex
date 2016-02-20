@@ -1,0 +1,67 @@
+\hypertarget{structharness__graph__multifunction__executor}{}\section{harness\+\_\+graph\+\_\+multifunction\+\_\+executor$<$ Input\+Type, Output\+Tuple $>$ Struct Template Reference}
+\label{structharness__graph__multifunction__executor}\index{harness\+\_\+graph\+\_\+multifunction\+\_\+executor$<$ Input\+Type, Output\+Tuple $>$@{harness\+\_\+graph\+\_\+multifunction\+\_\+executor$<$ Input\+Type, Output\+Tuple $>$}}
+
+
+\hyperlink{structA}{A} multifunction executor that accepts Input\+Type and has only one Output of Output\+Type.  
+
+
+
+
+{\ttfamily \#include $<$harness\+\_\+graph.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structharness__graph__multifunction__executor_1_1mutex__holder}{mutex\+\_\+holder}
+\item 
+struct \hyperlink{structharness__graph__multifunction__executor_1_1tfunctor}{tfunctor}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structharness__graph__multifunction__executor_aba4d89577f59d4cc5f485aabde3b494e}{}typedef tbb\+::flow\+::multifunction\+\_\+node$<$ Input\+Type, Output\+Tuple $>$\+::output\+\_\+ports\+\_\+type {\bfseries ports\+\_\+type}\label{structharness__graph__multifunction__executor_aba4d89577f59d4cc5f485aabde3b494e}
+
+\item 
+\hypertarget{structharness__graph__multifunction__executor_a9778fe18f160b30462f2c5464d04597c}{}typedef tbb\+::flow\+::tuple\+\_\+element$<$ 0, Output\+Tuple $>$\+::type {\bfseries Output\+Type}\label{structharness__graph__multifunction__executor_a9778fe18f160b30462f2c5464d04597c}
+
+\item 
+\hypertarget{structharness__graph__multifunction__executor_a8a8b20c5f99325e51e8c28b0e960c3b7}{}typedef void($\ast$ {\bfseries mfunction\+\_\+ptr\+\_\+type}) (const Input\+Type \&v, ports\+\_\+type \&p)\label{structharness__graph__multifunction__executor_a8a8b20c5f99325e51e8c28b0e960c3b7}
+
+\item 
+\hypertarget{structharness__graph__multifunction__executor_a1767461c4605f17b8f8d5e0a92fd2262}{}typedef \hyperlink{structharness__graph__multifunction__executor_1_1tfunctor}{tfunctor}$<$ \hyperlink{classtbb_1_1null__rw__mutex}{tbb\+::null\+\_\+rw\+\_\+mutex} $>$ {\bfseries functor}\label{structharness__graph__multifunction__executor_a1767461c4605f17b8f8d5e0a92fd2262}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structharness__graph__multifunction__executor_a4e901a06738818182fb95f23a2e51be1}{}static void {\bfseries func} (const Input\+Type \&v, ports\+\_\+type \&p)\label{structharness__graph__multifunction__executor_a4e901a06738818182fb95f23a2e51be1}
+
+\item 
+\hypertarget{structharness__graph__multifunction__executor_a8e20acb2bcf840b92b474eceb8b554fe}{}{\footnotesize template$<$typename R\+W $>$ }\\static void {\bfseries tfunc} (const Input\+Type \&v, ports\+\_\+type \&p)\label{structharness__graph__multifunction__executor_a8e20acb2bcf840b92b474eceb8b554fe}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structharness__graph__multifunction__executor_af2d49f6708c2d727007c8d00760841ca}{}static mfunction\+\_\+ptr\+\_\+type {\bfseries fptr} = \hyperlink{structharness__graph__default__multifunction__functor}{harness\+\_\+graph\+\_\+default\+\_\+multifunction\+\_\+functor}$<$ Input\+Type, Output\+Tuple $>$\+::construct\label{structharness__graph__multifunction__executor_af2d49f6708c2d727007c8d00760841ca}
+
+\item 
+\hypertarget{structharness__graph__multifunction__executor_af69f5f69d66b3cd3f1a480692d1e2738}{}static \hyperlink{structtbb_1_1atomic}{tbb\+::atomic}$<$ size\+\_\+t $>$ {\bfseries execute\+\_\+count}\label{structharness__graph__multifunction__executor_af69f5f69d66b3cd3f1a480692d1e2738}
+
+\item 
+\hypertarget{structharness__graph__multifunction__executor_add22a2004a9a811636e462b5264cb821}{}static \hyperlink{structtbb_1_1atomic}{tbb\+::atomic}$<$ size\+\_\+t $>$ {\bfseries current\+\_\+executors}\label{structharness__graph__multifunction__executor_add22a2004a9a811636e462b5264cb821}
+
+\item 
+\hypertarget{structharness__graph__multifunction__executor_a23040aed77c5344015af3e7432b68fed}{}static size\+\_\+t {\bfseries max\+\_\+executors} = 0\label{structharness__graph__multifunction__executor_a23040aed77c5344015af3e7432b68fed}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Input\+Type, typename Output\+Tuple$>$struct harness\+\_\+graph\+\_\+multifunction\+\_\+executor$<$ Input\+Type, Output\+Tuple $>$}
+
+\hyperlink{structA}{A} multifunction executor that accepts Input\+Type and has only one Output of Output\+Type. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/test/harness\+\_\+graph.\+h\end{DoxyCompactItemize}

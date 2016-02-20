@@ -1,0 +1,52 @@
+\hypertarget{structtbb_1_1internal_1_1scheduler__state}{}\section{tbb\+:\+:internal\+:\+:scheduler\+\_\+state Struct Reference}
+\label{structtbb_1_1internal_1_1scheduler__state}\index{tbb\+::internal\+::scheduler\+\_\+state@{tbb\+::internal\+::scheduler\+\_\+state}}
+Inheritance diagram for tbb\+:\+:internal\+:\+:scheduler\+\_\+state\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{structtbb_1_1internal_1_1scheduler__state}
+\end{center}
+\end{figure}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structtbb_1_1internal_1_1scheduler__state_a35aa72cfdda3b500e908925a3d6da747}{}size\+\_\+t \hyperlink{structtbb_1_1internal_1_1scheduler__state_a35aa72cfdda3b500e908925a3d6da747}{my\+\_\+arena\+\_\+index}\label{structtbb_1_1internal_1_1scheduler__state_a35aa72cfdda3b500e908925a3d6da747}
+
+\begin{DoxyCompactList}\small\item\em Index of the arena slot the scheduler occupies now, or occupied last time. \end{DoxyCompactList}\item 
+\hypertarget{structtbb_1_1internal_1_1scheduler__state_a6f2fdcecd347bf767e89fda580545c1a}{}\hyperlink{structtbb_1_1internal_1_1arena__slot}{arena\+\_\+slot} $\ast$ \hyperlink{structtbb_1_1internal_1_1scheduler__state_a6f2fdcecd347bf767e89fda580545c1a}{my\+\_\+arena\+\_\+slot}\label{structtbb_1_1internal_1_1scheduler__state_a6f2fdcecd347bf767e89fda580545c1a}
+
+\begin{DoxyCompactList}\small\item\em Pointer to the slot in the arena we own at the moment. \end{DoxyCompactList}\item 
+\hypertarget{structtbb_1_1internal_1_1scheduler__state_a6b830853cb0386a2b8744d4c7dff3a80}{}\hyperlink{classtbb_1_1internal_1_1arena}{arena} $\ast$ \hyperlink{structtbb_1_1internal_1_1scheduler__state_a6b830853cb0386a2b8744d4c7dff3a80}{my\+\_\+arena}\label{structtbb_1_1internal_1_1scheduler__state_a6b830853cb0386a2b8744d4c7dff3a80}
+
+\begin{DoxyCompactList}\small\item\em The arena that I own (if master) or am servicing at the moment (if worker) \end{DoxyCompactList}\item 
+\hypertarget{structtbb_1_1internal_1_1scheduler__state_aac9af4d8baddbbc2af433e11297be8a5}{}task $\ast$ \hyperlink{structtbb_1_1internal_1_1scheduler__state_aac9af4d8baddbbc2af433e11297be8a5}{my\+\_\+innermost\+\_\+running\+\_\+task}\label{structtbb_1_1internal_1_1scheduler__state_aac9af4d8baddbbc2af433e11297be8a5}
+
+\begin{DoxyCompactList}\small\item\em Innermost task whose task\+::execute() is running. \end{DoxyCompactList}\item 
+task $\ast$ \hyperlink{structtbb_1_1internal_1_1scheduler__state_a65d38ed67db424dde8e838e333b09a34}{my\+\_\+dispatching\+\_\+task}
+\begin{DoxyCompactList}\small\item\em Task, in the context of which the current T\+B\+B dispatch loop is running. \end{DoxyCompactList}\item 
+\hypertarget{structtbb_1_1internal_1_1scheduler__state_a5b120ea3121cd82f578eef2c1319f9fe}{}\hyperlink{classtbb_1_1internal_1_1mail__inbox}{mail\+\_\+inbox} {\bfseries my\+\_\+inbox}\label{structtbb_1_1internal_1_1scheduler__state_a5b120ea3121cd82f578eef2c1319f9fe}
+
+\item 
+affinity\+\_\+id \hyperlink{structtbb_1_1internal_1_1scheduler__state_a3a635bad42d492013d4a06d1af0c452b}{my\+\_\+affinity\+\_\+id}
+\begin{DoxyCompactList}\small\item\em The mailbox id assigned to this scheduler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{structtbb_1_1internal_1_1scheduler__state_a3a635bad42d492013d4a06d1af0c452b}{}\index{tbb\+::internal\+::scheduler\+\_\+state@{tbb\+::internal\+::scheduler\+\_\+state}!my\+\_\+affinity\+\_\+id@{my\+\_\+affinity\+\_\+id}}
+\index{my\+\_\+affinity\+\_\+id@{my\+\_\+affinity\+\_\+id}!tbb\+::internal\+::scheduler\+\_\+state@{tbb\+::internal\+::scheduler\+\_\+state}}
+\subsubsection[{my\+\_\+affinity\+\_\+id}]{\setlength{\rightskip}{0pt plus 5cm}affinity\+\_\+id tbb\+::internal\+::scheduler\+\_\+state\+::my\+\_\+affinity\+\_\+id}\label{structtbb_1_1internal_1_1scheduler__state_a3a635bad42d492013d4a06d1af0c452b}
+
+
+The mailbox id assigned to this scheduler. 
+
+The id is assigned upon first entry into the arena. T\+O\+D\+O\+: how are id\textquotesingle{}s being garbage collected? T\+O\+D\+O\+: master thread may enter arena and leave and then reenter. We want to give it the same affinity\+\_\+id upon reentry, if practical. \hypertarget{structtbb_1_1internal_1_1scheduler__state_a65d38ed67db424dde8e838e333b09a34}{}\index{tbb\+::internal\+::scheduler\+\_\+state@{tbb\+::internal\+::scheduler\+\_\+state}!my\+\_\+dispatching\+\_\+task@{my\+\_\+dispatching\+\_\+task}}
+\index{my\+\_\+dispatching\+\_\+task@{my\+\_\+dispatching\+\_\+task}!tbb\+::internal\+::scheduler\+\_\+state@{tbb\+::internal\+::scheduler\+\_\+state}}
+\subsubsection[{my\+\_\+dispatching\+\_\+task}]{\setlength{\rightskip}{0pt plus 5cm}task$\ast$ tbb\+::internal\+::scheduler\+\_\+state\+::my\+\_\+dispatching\+\_\+task}\label{structtbb_1_1internal_1_1scheduler__state_a65d38ed67db424dde8e838e333b09a34}
+
+
+Task, in the context of which the current T\+B\+B dispatch loop is running. 
+
+Outside of or in the outermost dispatch loop (not in a nested call to wait\+\_\+for\+\_\+all) it is my\+\_\+dummy\+\_\+task for master threads, and N\+U\+L\+L for workers. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/scheduler.\+h\end{DoxyCompactItemize}

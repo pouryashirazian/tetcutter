@@ -1,0 +1,427 @@
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler}{}\section{tbb\+:\+:internal\+:\+:generic\+\_\+scheduler Class Reference}
+\label{classtbb_1_1internal_1_1generic__scheduler}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+
+
+\hyperlink{structWork}{Work} stealing task scheduler.  
+
+
+
+
+{\ttfamily \#include $<$scheduler.\+h$>$}
+
+Inheritance diagram for tbb\+:\+:internal\+:\+:generic\+\_\+scheduler\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.830065cm]{classtbb_1_1internal_1_1generic__scheduler}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a951545fe41835b1ca58bf6418aebfb69}{}bool {\bfseries in\+\_\+arena} () const \label{classtbb_1_1internal_1_1generic__scheduler_a951545fe41835b1ca58bf6418aebfb69}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a228932018abdf86ec504ffc055bf6188}{}bool {\bfseries is\+\_\+local\+\_\+task\+\_\+pool\+\_\+quiescent} () const \label{classtbb_1_1internal_1_1generic__scheduler_a228932018abdf86ec504ffc055bf6188}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a1b5b30c44c0a0a0d6fa6548fead0f879}{}bool {\bfseries is\+\_\+quiescent\+\_\+local\+\_\+task\+\_\+pool\+\_\+empty} () const \label{classtbb_1_1internal_1_1generic__scheduler_a1b5b30c44c0a0a0d6fa6548fead0f879}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a41fe4dd6cf0d0bd7db3440ff1f5e70ff}{}bool {\bfseries is\+\_\+quiescent\+\_\+local\+\_\+task\+\_\+pool\+\_\+reset} () const \label{classtbb_1_1internal_1_1generic__scheduler_a41fe4dd6cf0d0bd7db3440ff1f5e70ff}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a5ab89891d3c1e3209cffced8bf93b124}{}void {\bfseries attach\+\_\+mailbox} (affinity\+\_\+id id)\label{classtbb_1_1internal_1_1generic__scheduler_a5ab89891d3c1e3209cffced8bf93b124}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_afd799eae7903abc75b7a7aafd36e20db}{}void \hyperlink{classtbb_1_1internal_1_1generic__scheduler_afd799eae7903abc75b7a7aafd36e20db}{init\+\_\+stack\+\_\+info} ()\label{classtbb_1_1internal_1_1generic__scheduler_afd799eae7903abc75b7a7aafd36e20db}
+
+\begin{DoxyCompactList}\small\item\em Sets up the data necessary for the stealing limiting heuristics. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a1c00f465a90ee09a240d1f81de5f635b}{}bool \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a1c00f465a90ee09a240d1f81de5f635b}{can\+\_\+steal} ()\label{classtbb_1_1internal_1_1generic__scheduler_a1c00f465a90ee09a240d1f81de5f635b}
+
+\begin{DoxyCompactList}\small\item\em Returns true if stealing is allowed. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a6e93c1283fad6f681e6d0f0f50cf515a}{}void \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a6e93c1283fad6f681e6d0f0f50cf515a}{do\+\_\+enter\+\_\+arena} ()\label{classtbb_1_1internal_1_1generic__scheduler_a6e93c1283fad6f681e6d0f0f50cf515a}
+
+\begin{DoxyCompactList}\small\item\em Actions common to enter\+\_\+arena and try\+\_\+enter\+\_\+arena. \end{DoxyCompactList}\item 
+void \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a28b7abb0919184fb3a19b3e865a11dcc}{enter\+\_\+arena} ()
+\begin{DoxyCompactList}\small\item\em Used by workers to enter the arena. \end{DoxyCompactList}\item 
+void \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a2e07b903e093bff04e8d9de4fdbab70f}{leave\+\_\+arena} ()
+\begin{DoxyCompactList}\small\item\em Leave the arena. \end{DoxyCompactList}\item 
+void \hyperlink{classtbb_1_1internal_1_1generic__scheduler_ae28f8ec4bb8dab580d3452d58a84ebbe}{reset\+\_\+deque\+\_\+and\+\_\+leave\+\_\+arena} (bool locked)
+\begin{DoxyCompactList}\small\item\em Resets head and tail indices to 0, and leaves arena. \end{DoxyCompactList}\item 
+task $\ast$$\ast$ \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a28bc27fa6c9a0cea424ced83b9f020ac}{lock\+\_\+task\+\_\+pool} (\hyperlink{structtbb_1_1internal_1_1arena__slot}{arena\+\_\+slot} $\ast$victim\+\_\+arena\+\_\+slot) const 
+\begin{DoxyCompactList}\small\item\em Locks victim\textquotesingle{}s task pool, and returns pointer to it. The pointer can be N\+U\+L\+L. \end{DoxyCompactList}\item 
+void \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a5d6340b7bd950b0492e970ff62433198}{unlock\+\_\+task\+\_\+pool} (\hyperlink{structtbb_1_1internal_1_1arena__slot}{arena\+\_\+slot} $\ast$victim\+\_\+arena\+\_\+slot, task $\ast$$\ast$victim\+\_\+task\+\_\+pool) const 
+\begin{DoxyCompactList}\small\item\em Unlocks victim\textquotesingle{}s task pool. \end{DoxyCompactList}\item 
+void \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a6e2af1d0f7af34dee87a5b207d498f59}{acquire\+\_\+task\+\_\+pool} () const 
+\begin{DoxyCompactList}\small\item\em Locks the local task pool. \end{DoxyCompactList}\item 
+void \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a24dd9ef31d1f73ea2fadcc35df6d9d21}{release\+\_\+task\+\_\+pool} () const 
+\begin{DoxyCompactList}\small\item\em Unlocks the local task pool. \end{DoxyCompactList}\item 
+task $\ast$ \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a8a62642cb4b1ba391b8d3b9a00dca541}{prepare\+\_\+for\+\_\+spawning} (task $\ast$t)
+\begin{DoxyCompactList}\small\item\em Checks if t is affinitized to another thread, and if so, bundles it as proxy. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a7f7d3a75d44d62525c8b31c32917d242}{}void \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a7f7d3a75d44d62525c8b31c32917d242}{commit\+\_\+spawned\+\_\+tasks} (size\+\_\+t new\+\_\+tail)\label{classtbb_1_1internal_1_1generic__scheduler_a7f7d3a75d44d62525c8b31c32917d242}
+
+\begin{DoxyCompactList}\small\item\em Makes newly spawned tasks visible to thieves. \end{DoxyCompactList}\item 
+void \hyperlink{classtbb_1_1internal_1_1generic__scheduler_aecf34e6a9902af76bbbeab1fd3851df8}{commit\+\_\+relocated\+\_\+tasks} (size\+\_\+t new\+\_\+tail)
+\begin{DoxyCompactList}\small\item\em Makes relocated tasks visible to thieves and releases the local task pool. \end{DoxyCompactList}\item 
+task $\ast$ \hyperlink{classtbb_1_1internal_1_1generic__scheduler_aded85ba71063b16621ee006bdc32404a}{get\+\_\+task} ()
+\begin{DoxyCompactList}\small\item\em Get a task from the local pool. \end{DoxyCompactList}\item 
+task $\ast$ \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a3f3459e061761c342966531ea291f1c3}{get\+\_\+mailbox\+\_\+task} ()
+\begin{DoxyCompactList}\small\item\em Attempt to get a task from the mailbox. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_ab220458d93ee750e02a045c20ce5483d}{}task $\ast$ \hyperlink{classtbb_1_1internal_1_1generic__scheduler_ab220458d93ee750e02a045c20ce5483d}{steal\+\_\+task} (\hyperlink{structtbb_1_1internal_1_1arena__slot}{arena\+\_\+slot} \&victim\+\_\+arena\+\_\+slot)\label{classtbb_1_1internal_1_1generic__scheduler_ab220458d93ee750e02a045c20ce5483d}
+
+\begin{DoxyCompactList}\small\item\em Steal task from another scheduler\textquotesingle{}s ready pool. \end{DoxyCompactList}\item 
+size\+\_\+t \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a0460616fb84af745b12688927ff1bb7d}{prepare\+\_\+task\+\_\+pool} (size\+\_\+t n)
+\begin{DoxyCompactList}\small\item\em Makes sure that the task pool can accommodate at least n more elements. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a4fce89a2413f0f02e05c048a0a148081}{}void \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a4fce89a2413f0f02e05c048a0a148081}{cleanup\+\_\+master} ()\label{classtbb_1_1internal_1_1generic__scheduler_a4fce89a2413f0f02e05c048a0a148081}
+
+\begin{DoxyCompactList}\small\item\em Perform necessary cleanup when a master thread stops using T\+B\+B. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a08edecb9bd9ef648bada9fb5b1febeec}{}void {\bfseries assert\+\_\+task\+\_\+pool\+\_\+valid} () const \label{classtbb_1_1internal_1_1generic__scheduler_a08edecb9bd9ef648bada9fb5b1febeec}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a1a08aff3876258352d0042703abffeed}{}void {\bfseries spawn} (task \&first, task $\ast$\&next)\label{classtbb_1_1internal_1_1generic__scheduler_a1a08aff3876258352d0042703abffeed}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_ab2396d7d9f7338d838e9ef3c9cad963e}{}void {\bfseries spawn\+\_\+root\+\_\+and\+\_\+wait} (task \&first, task $\ast$\&next)\label{classtbb_1_1internal_1_1generic__scheduler_ab2396d7d9f7338d838e9ef3c9cad963e}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a6cdf48713a00843b7b51977c8ffc77a9}{}void {\bfseries enqueue} (task \&, void $\ast$reserved)\label{classtbb_1_1internal_1_1generic__scheduler_a6cdf48713a00843b7b51977c8ffc77a9}
+
+\item 
+void \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a1abff4996f1d77c35f30aaa31b9d6084}{local\+\_\+spawn} (task \&first, task $\ast$\&next)
+\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_aa976700664443eb85675f0eb91812400}{}void {\bfseries local\+\_\+spawn\+\_\+root\+\_\+and\+\_\+wait} (task \&first, task $\ast$\&next)\label{classtbb_1_1internal_1_1generic__scheduler_aa976700664443eb85675f0eb91812400}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a509997dbb9b97ad2cca0a3af76c04e90}{}virtual void {\bfseries local\+\_\+wait\+\_\+for\+\_\+all} (task \&parent, task $\ast$child)=0\label{classtbb_1_1internal_1_1generic__scheduler_a509997dbb9b97ad2cca0a3af76c04e90}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a66e6dd672693eb34cd6fd46ed7a7c6a6}{}void \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a66e6dd672693eb34cd6fd46ed7a7c6a6}{free\+\_\+scheduler} ()\label{classtbb_1_1internal_1_1generic__scheduler_a66e6dd672693eb34cd6fd46ed7a7c6a6}
+
+\begin{DoxyCompactList}\small\item\em Destroy and deallocate this scheduler object. \end{DoxyCompactList}\item 
+task \& \hyperlink{classtbb_1_1internal_1_1generic__scheduler_aa0d316e9f3063c6b57fa21e0716d4d77}{allocate\+\_\+task} (size\+\_\+t number\+\_\+of\+\_\+bytes, \+\_\+\+\_\+\+T\+B\+B\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+A\+R\+G(task $\ast$parent, task\+\_\+group\+\_\+context $\ast$context))
+\begin{DoxyCompactList}\small\item\em Allocate task object, either from the heap or a free list. \end{DoxyCompactList}\item 
+{\footnotesize template$<$free\+\_\+task\+\_\+hint h$>$ }\\void \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a12dd37171af77214add72a973e6b71ba}{free\+\_\+task} (task \&t)
+\begin{DoxyCompactList}\small\item\em Put task on free list. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_ad965858a5e7cb5574926d8d1692063b5}{}void \hyperlink{classtbb_1_1internal_1_1generic__scheduler_ad965858a5e7cb5574926d8d1692063b5}{deallocate\+\_\+task} (task \&t)\label{classtbb_1_1internal_1_1generic__scheduler_ad965858a5e7cb5574926d8d1692063b5}
+
+\begin{DoxyCompactList}\small\item\em Return task object to the memory allocator. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_af64d15a434f12a7fbfd46910813ea59f}{}bool \hyperlink{classtbb_1_1internal_1_1generic__scheduler_af64d15a434f12a7fbfd46910813ea59f}{is\+\_\+worker} ()\label{classtbb_1_1internal_1_1generic__scheduler_af64d15a434f12a7fbfd46910813ea59f}
+
+\begin{DoxyCompactList}\small\item\em True if running on a worker thread, false otherwise. \end{DoxyCompactList}\item 
+bool \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a84fe7450cc14ca226340cf8bffd379c7}{master\+\_\+outermost\+\_\+level} () const 
+\begin{DoxyCompactList}\small\item\em True if the scheduler is on the outermost dispatch level in a master thread. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a4e7eff5365d63114c100e0a490e04884}{}bool \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a4e7eff5365d63114c100e0a490e04884}{worker\+\_\+outermost\+\_\+level} () const \label{classtbb_1_1internal_1_1generic__scheduler_a4e7eff5365d63114c100e0a490e04884}
+
+\begin{DoxyCompactList}\small\item\em True if the scheduler is on the outermost dispatch level in a worker thread. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_ad75b9adc115cb49cde7aa4878a186d0a}{}unsigned \hyperlink{classtbb_1_1internal_1_1generic__scheduler_ad75b9adc115cb49cde7aa4878a186d0a}{number\+\_\+of\+\_\+workers\+\_\+in\+\_\+my\+\_\+arena} ()\label{classtbb_1_1internal_1_1generic__scheduler_ad75b9adc115cb49cde7aa4878a186d0a}
+
+\begin{DoxyCompactList}\small\item\em Returns number of worker threads in the arena this thread belongs to. \end{DoxyCompactList}\item 
+virtual task $\ast$ \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a11895552b22a769d2cd40b9e7c090d9b}{receive\+\_\+or\+\_\+steal\+\_\+task} (\+\_\+\+\_\+\+T\+B\+B\+\_\+atomic reference\+\_\+count \&completion\+\_\+ref\+\_\+count)=0
+\begin{DoxyCompactList}\small\item\em Try getting a task from other threads (via mailbox, stealing, F\+I\+F\+O queue, orphans adoption). \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a720c816c0253fe199e4583cd24090e9b}{}void \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a720c816c0253fe199e4583cd24090e9b}{free\+\_\+nonlocal\+\_\+small\+\_\+task} (task \&t)\label{classtbb_1_1internal_1_1generic__scheduler_a720c816c0253fe199e4583cd24090e9b}
+
+\begin{DoxyCompactList}\small\item\em Free a small task t that that was allocated by a different scheduler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a33519b4cf710f8c46129672f79fb6ec4}{}static bool {\bfseries is\+\_\+version\+\_\+3\+\_\+task} (task \&t)\label{classtbb_1_1internal_1_1generic__scheduler_a33519b4cf710f8c46129672f79fb6ec4}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a868812dd8d875a225a6f589fdbaafe54}{}static bool \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a868812dd8d875a225a6f589fdbaafe54}{is\+\_\+proxy} (const task \&t)\label{classtbb_1_1internal_1_1generic__scheduler_a868812dd8d875a225a6f589fdbaafe54}
+
+\begin{DoxyCompactList}\small\item\em True if t is a \hyperlink{structtbb_1_1internal_1_1task__proxy}{task\+\_\+proxy}. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a579b3f1a35f3e9042af02cbcc6a20d2f}{}static \hyperlink{classtbb_1_1internal_1_1generic__scheduler}{generic\+\_\+scheduler} $\ast$ \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a579b3f1a35f3e9042af02cbcc6a20d2f}{create\+\_\+master} (\hyperlink{classtbb_1_1internal_1_1arena}{arena} \&a)\label{classtbb_1_1internal_1_1generic__scheduler_a579b3f1a35f3e9042af02cbcc6a20d2f}
+
+\begin{DoxyCompactList}\small\item\em Initialize a scheduler for a master thread. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_aec1108924834fb3c3e1bc0d2142bccb0}{}static \hyperlink{classtbb_1_1internal_1_1generic__scheduler}{generic\+\_\+scheduler} $\ast$ \hyperlink{classtbb_1_1internal_1_1generic__scheduler_aec1108924834fb3c3e1bc0d2142bccb0}{create\+\_\+worker} (\hyperlink{classtbb_1_1internal_1_1market}{market} \&m, size\+\_\+t index)\label{classtbb_1_1internal_1_1generic__scheduler_aec1108924834fb3c3e1bc0d2142bccb0}
+
+\begin{DoxyCompactList}\small\item\em Initialize a scheduler for a worker thread. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_ae6a0b659589202963562cbdb23465807}{}static void \hyperlink{classtbb_1_1internal_1_1generic__scheduler_ae6a0b659589202963562cbdb23465807}{cleanup\+\_\+worker} (void $\ast$arg, bool worker)\label{classtbb_1_1internal_1_1generic__scheduler_ae6a0b659589202963562cbdb23465807}
+
+\begin{DoxyCompactList}\small\item\em Perform necessary cleanup when a worker thread finishes. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_abb580929e3e34d6da1728e6fee8b6979}{}static task $\ast$ \hyperlink{classtbb_1_1internal_1_1generic__scheduler_abb580929e3e34d6da1728e6fee8b6979}{plugged\+\_\+return\+\_\+list} ()\label{classtbb_1_1internal_1_1generic__scheduler_abb580929e3e34d6da1728e6fee8b6979}
+
+\begin{DoxyCompactList}\small\item\em Special value used to mark my\+\_\+return\+\_\+list as not taking any more entries. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_ade9f23ce97db8725a9c3718e76aa682d}{}uintptr\+\_\+t \hyperlink{classtbb_1_1internal_1_1generic__scheduler_ade9f23ce97db8725a9c3718e76aa682d}{my\+\_\+stealing\+\_\+threshold}\label{classtbb_1_1internal_1_1generic__scheduler_ade9f23ce97db8725a9c3718e76aa682d}
+
+\begin{DoxyCompactList}\small\item\em Position in the call stack specifying its maximal filling when stealing is still allowed. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_ac652e4a610353888a31352e678955e1b}{}\hyperlink{classtbb_1_1internal_1_1market}{market} $\ast$ \hyperlink{classtbb_1_1internal_1_1generic__scheduler_ac652e4a610353888a31352e678955e1b}{my\+\_\+market}\label{classtbb_1_1internal_1_1generic__scheduler_ac652e4a610353888a31352e678955e1b}
+
+\begin{DoxyCompactList}\small\item\em The market I am in. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_aee56a8b51b71d3f96f9c8cacf00fe845}{}\hyperlink{classtbb_1_1internal_1_1FastRandom}{Fast\+Random} \hyperlink{classtbb_1_1internal_1_1generic__scheduler_aee56a8b51b71d3f96f9c8cacf00fe845}{my\+\_\+random}\label{classtbb_1_1internal_1_1generic__scheduler_aee56a8b51b71d3f96f9c8cacf00fe845}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classRandom}{Random} number generator used for picking a random victim from which to steal. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a52ed26dede8410a72f37bce24cb26239}{}task $\ast$ \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a52ed26dede8410a72f37bce24cb26239}{my\+\_\+free\+\_\+list}\label{classtbb_1_1internal_1_1generic__scheduler_a52ed26dede8410a72f37bce24cb26239}
+
+\begin{DoxyCompactList}\small\item\em Free list of small tasks that can be reused. \end{DoxyCompactList}\item 
+task $\ast$ \hyperlink{classtbb_1_1internal_1_1generic__scheduler_abc495d5b077a2ef1b05e15e820555d90}{my\+\_\+dummy\+\_\+task}
+\begin{DoxyCompactList}\small\item\em Fake root task created by slave threads. \end{DoxyCompactList}\item 
+long \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a8cf8d776a439320e1e001381cf5d4ad7}{my\+\_\+ref\+\_\+count}
+\begin{DoxyCompactList}\small\item\em Reference count for scheduler. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_afb5b021643394b6d3f743bea9cb5e2bd}{}bool \hyperlink{classtbb_1_1internal_1_1generic__scheduler_afb5b021643394b6d3f743bea9cb5e2bd}{my\+\_\+auto\+\_\+initialized}\label{classtbb_1_1internal_1_1generic__scheduler_afb5b021643394b6d3f743bea9cb5e2bd}
+
+\begin{DoxyCompactList}\small\item\em True if $\ast$this was created by automatic T\+B\+B initialization. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a4bd421a07fae7a1c9e3fa49e005bb513}{}\+\_\+\+\_\+\+T\+B\+B\+\_\+atomic intptr\+\_\+t \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a4bd421a07fae7a1c9e3fa49e005bb513}{my\+\_\+small\+\_\+task\+\_\+count}\label{classtbb_1_1internal_1_1generic__scheduler_a4bd421a07fae7a1c9e3fa49e005bb513}
+
+\begin{DoxyCompactList}\small\item\em Number of small tasks that have been allocated by this scheduler. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_ab5777a002f8b7b3a72cb7fc4a477fb29}{}task $\ast$ \hyperlink{classtbb_1_1internal_1_1generic__scheduler_ab5777a002f8b7b3a72cb7fc4a477fb29}{my\+\_\+return\+\_\+list}\label{classtbb_1_1internal_1_1generic__scheduler_ab5777a002f8b7b3a72cb7fc4a477fb29}
+
+\begin{DoxyCompactList}\small\item\em List of small tasks that have been returned to this scheduler by other schedulers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_afbb75edc69c2ed1bcbf70098ca24a523}{}static const size\+\_\+t \hyperlink{classtbb_1_1internal_1_1generic__scheduler_afbb75edc69c2ed1bcbf70098ca24a523}{quick\+\_\+task\+\_\+size} = 256-\/task\+\_\+prefix\+\_\+reservation\+\_\+size\label{classtbb_1_1internal_1_1generic__scheduler_afbb75edc69c2ed1bcbf70098ca24a523}
+
+\begin{DoxyCompactList}\small\item\em If sizeof(task) is $<$=quick\+\_\+task\+\_\+size, it is handled on a free list instead of malloc\textquotesingle{}d. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_afae85a4245c85c65c3cd51e63125f23e}{}static const size\+\_\+t {\bfseries null\+\_\+arena\+\_\+index} = $\sim$size\+\_\+t(0)\label{classtbb_1_1internal_1_1generic__scheduler_afae85a4245c85c65c3cd51e63125f23e}
+
+\item 
+static const size\+\_\+t \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a1190ee0529a9280846bd50c4f50c8398}{min\+\_\+task\+\_\+pool\+\_\+size} = 64
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a6c2780fc1313fbd5c63c0ccee780d2e3}{}{\bfseries generic\+\_\+scheduler} (\hyperlink{classtbb_1_1internal_1_1arena}{arena} $\ast$, size\+\_\+t index)\label{classtbb_1_1internal_1_1generic__scheduler_a6c2780fc1313fbd5c63c0ccee780d2e3}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a276a67d14225fdfbb225cc85299850e3}{}{\footnotesize template$<$typename Scheduler\+Traits $>$ }\\class {\bfseries custom\+\_\+scheduler}\label{classtbb_1_1internal_1_1generic__scheduler_a276a67d14225fdfbb225cc85299850e3}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{structWork}{Work} stealing task scheduler. 
+
+None of the fields here are ever read or written by threads other than the thread that creates the instance.
+
+Class \hyperlink{classtbb_1_1internal_1_1generic__scheduler}{generic\+\_\+scheduler} is an abstract base class that contains most of the scheduler, except for tweaks specific to processors and tools (e.\+g. V\+Tune). The derived template class custom\+\_\+scheduler$<$\+Scheduler\+Traits$>$ fills in the tweaks. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a6e2af1d0f7af34dee87a5b207d498f59}{}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}!acquire\+\_\+task\+\_\+pool@{acquire\+\_\+task\+\_\+pool}}
+\index{acquire\+\_\+task\+\_\+pool@{acquire\+\_\+task\+\_\+pool}!tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+\subsubsection[{acquire\+\_\+task\+\_\+pool() const }]{\setlength{\rightskip}{0pt plus 5cm}void tbb\+::internal\+::generic\+\_\+scheduler\+::acquire\+\_\+task\+\_\+pool (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1internal_1_1generic__scheduler_a6e2af1d0f7af34dee87a5b207d498f59}
+
+
+Locks the local task pool. 
+
+Garbles my\+\_\+arena\+\_\+slot-\/$>$task\+\_\+pool for the duration of the lock. Requires correctly set my\+\_\+arena\+\_\+slot-\/$>$task\+\_\+pool\+\_\+ptr.
+
+A\+T\+T\+E\+N\+T\+I\+O\+N\+: This method is mostly the same as \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a28bc27fa6c9a0cea424ced83b9f020ac}{generic\+\_\+scheduler\+::lock\+\_\+task\+\_\+pool()}, with a little different logic of slot state checks (slot is either locked or points to our task pool). Thus if either of them is changed, consider changing the counterpart as well. \hypertarget{classtbb_1_1internal_1_1generic__scheduler_aa0d316e9f3063c6b57fa21e0716d4d77}{}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}!allocate\+\_\+task@{allocate\+\_\+task}}
+\index{allocate\+\_\+task@{allocate\+\_\+task}!tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+\subsubsection[{allocate\+\_\+task(size\+\_\+t number\+\_\+of\+\_\+bytes, \+\_\+\+\_\+\+T\+B\+B\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+A\+R\+G(task $\ast$parent, task\+\_\+group\+\_\+context $\ast$context))}]{\setlength{\rightskip}{0pt plus 5cm}task \& tbb\+::internal\+::generic\+\_\+scheduler\+::allocate\+\_\+task (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+t}]{number\+\_\+of\+\_\+bytes, }
+\item[{\+\_\+\+\_\+\+T\+B\+B\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+A\+R\+G(task $\ast$parent, task\+\_\+group\+\_\+context $\ast$context)}]{}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1internal_1_1generic__scheduler_aa0d316e9f3063c6b57fa21e0716d4d77}
+
+
+Allocate task object, either from the heap or a free list. 
+
+Returns uninitialized task object with initialized prefix. \hypertarget{classtbb_1_1internal_1_1generic__scheduler_aecf34e6a9902af76bbbeab1fd3851df8}{}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}!commit\+\_\+relocated\+\_\+tasks@{commit\+\_\+relocated\+\_\+tasks}}
+\index{commit\+\_\+relocated\+\_\+tasks@{commit\+\_\+relocated\+\_\+tasks}!tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+\subsubsection[{commit\+\_\+relocated\+\_\+tasks(size\+\_\+t new\+\_\+tail)}]{\setlength{\rightskip}{0pt plus 5cm}void tbb\+::internal\+::generic\+\_\+scheduler\+::commit\+\_\+relocated\+\_\+tasks (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+t}]{new\+\_\+tail}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1internal_1_1generic__scheduler_aecf34e6a9902af76bbbeab1fd3851df8}
+
+
+Makes relocated tasks visible to thieves and releases the local task pool. 
+
+Obviously, the task pool must be locked when calling this method. \hypertarget{classtbb_1_1internal_1_1generic__scheduler_a28b7abb0919184fb3a19b3e865a11dcc}{}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}!enter\+\_\+arena@{enter\+\_\+arena}}
+\index{enter\+\_\+arena@{enter\+\_\+arena}!tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+\subsubsection[{enter\+\_\+arena()}]{\setlength{\rightskip}{0pt plus 5cm}void tbb\+::internal\+::generic\+\_\+scheduler\+::enter\+\_\+arena (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1internal_1_1generic__scheduler_a28b7abb0919184fb3a19b3e865a11dcc}
+
+
+Used by workers to enter the arena. 
+
+Does not lock the task pool in case if arena slot has been successfully grabbed. \hypertarget{classtbb_1_1internal_1_1generic__scheduler_a12dd37171af77214add72a973e6b71ba}{}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}!free\+\_\+task@{free\+\_\+task}}
+\index{free\+\_\+task@{free\+\_\+task}!tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+\subsubsection[{free\+\_\+task(task \&t)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$free\+\_\+task\+\_\+hint hint$>$ void tbb\+::internal\+::generic\+\_\+scheduler\+::free\+\_\+task (
+\begin{DoxyParamCaption}
+\item[{task \&}]{t}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1internal_1_1generic__scheduler_a12dd37171af77214add72a973e6b71ba}
+
+
+Put task on free list. 
+
+Does not call destructor. \hypertarget{classtbb_1_1internal_1_1generic__scheduler_a3f3459e061761c342966531ea291f1c3}{}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}!get\+\_\+mailbox\+\_\+task@{get\+\_\+mailbox\+\_\+task}}
+\index{get\+\_\+mailbox\+\_\+task@{get\+\_\+mailbox\+\_\+task}!tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+\subsubsection[{get\+\_\+mailbox\+\_\+task()}]{\setlength{\rightskip}{0pt plus 5cm}task $\ast$ tbb\+::internal\+::generic\+\_\+scheduler\+::get\+\_\+mailbox\+\_\+task (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1internal_1_1generic__scheduler_a3f3459e061761c342966531ea291f1c3}
+
+
+Attempt to get a task from the mailbox. 
+
+Gets a task only if it has not been executed by its sender or a thief that has stolen it from the sender\textquotesingle{}s task pool. Otherwise returns N\+U\+L\+L.
+
+This method is intended to be used only by the thread extracting the proxy from its mailbox. (In contrast to local task pool, mailbox can be read only by its owner). \hypertarget{classtbb_1_1internal_1_1generic__scheduler_aded85ba71063b16621ee006bdc32404a}{}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}!get\+\_\+task@{get\+\_\+task}}
+\index{get\+\_\+task@{get\+\_\+task}!tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+\subsubsection[{get\+\_\+task()}]{\setlength{\rightskip}{0pt plus 5cm}task $\ast$ tbb\+::internal\+::generic\+\_\+scheduler\+::get\+\_\+task (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1internal_1_1generic__scheduler_aded85ba71063b16621ee006bdc32404a}
+
+
+Get a task from the local pool. 
+
+Called only by the pool owner. Returns the pointer to the task or N\+U\+L\+L if the pool is empty. In the latter case compacts the pool. \hypertarget{classtbb_1_1internal_1_1generic__scheduler_a2e07b903e093bff04e8d9de4fdbab70f}{}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}!leave\+\_\+arena@{leave\+\_\+arena}}
+\index{leave\+\_\+arena@{leave\+\_\+arena}!tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+\subsubsection[{leave\+\_\+arena()}]{\setlength{\rightskip}{0pt plus 5cm}void tbb\+::internal\+::generic\+\_\+scheduler\+::leave\+\_\+arena (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1internal_1_1generic__scheduler_a2e07b903e093bff04e8d9de4fdbab70f}
+
+
+Leave the arena. 
+
+Leaving arena automatically releases the task pool if it is locked. \hypertarget{classtbb_1_1internal_1_1generic__scheduler_a1abff4996f1d77c35f30aaa31b9d6084}{}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}!local\+\_\+spawn@{local\+\_\+spawn}}
+\index{local\+\_\+spawn@{local\+\_\+spawn}!tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+\subsubsection[{local\+\_\+spawn(task \&first, task $\ast$\&next)}]{\setlength{\rightskip}{0pt plus 5cm}void tbb\+::internal\+::generic\+\_\+scheduler\+::local\+\_\+spawn (
+\begin{DoxyParamCaption}
+\item[{task \&}]{first, }
+\item[{task $\ast$\&}]{next}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1internal_1_1generic__scheduler_a1abff4996f1d77c35f30aaa31b9d6084}
+Conceptually, this method should be a member of class scheduler. But doing so would force us to publish class scheduler in the headers. \hypertarget{classtbb_1_1internal_1_1generic__scheduler_a28bc27fa6c9a0cea424ced83b9f020ac}{}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}!lock\+\_\+task\+\_\+pool@{lock\+\_\+task\+\_\+pool}}
+\index{lock\+\_\+task\+\_\+pool@{lock\+\_\+task\+\_\+pool}!tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+\subsubsection[{lock\+\_\+task\+\_\+pool(arena\+\_\+slot $\ast$victim\+\_\+arena\+\_\+slot) const }]{\setlength{\rightskip}{0pt plus 5cm}task $\ast$$\ast$ tbb\+::internal\+::generic\+\_\+scheduler\+::lock\+\_\+task\+\_\+pool (
+\begin{DoxyParamCaption}
+\item[{{\bf arena\+\_\+slot} $\ast$}]{victim\+\_\+arena\+\_\+slot}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1internal_1_1generic__scheduler_a28bc27fa6c9a0cea424ced83b9f020ac}
+
+
+Locks victim\textquotesingle{}s task pool, and returns pointer to it. The pointer can be N\+U\+L\+L. 
+
+Garbles victim\+\_\+arena\+\_\+slot-\/$>$task\+\_\+pool for the duration of the lock.
+
+A\+T\+T\+E\+N\+T\+I\+O\+N\+: This method is mostly the same as \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a6e2af1d0f7af34dee87a5b207d498f59}{generic\+\_\+scheduler\+::acquire\+\_\+task\+\_\+pool()}, with a little different logic of slot state checks (slot can be empty, locked or point to any task pool other than ours, and asynchronous transitions between all these states are possible). Thus if any of them is changed, consider changing the counterpart as well \hypertarget{classtbb_1_1internal_1_1generic__scheduler_a84fe7450cc14ca226340cf8bffd379c7}{}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}!master\+\_\+outermost\+\_\+level@{master\+\_\+outermost\+\_\+level}}
+\index{master\+\_\+outermost\+\_\+level@{master\+\_\+outermost\+\_\+level}!tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+\subsubsection[{master\+\_\+outermost\+\_\+level() const }]{\setlength{\rightskip}{0pt plus 5cm}bool tbb\+::internal\+::generic\+\_\+scheduler\+::master\+\_\+outermost\+\_\+level (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1internal_1_1generic__scheduler_a84fe7450cc14ca226340cf8bffd379c7}
+
+
+True if the scheduler is on the outermost dispatch level in a master thread. 
+
+Returns true when this scheduler instance is associated with an application thread, and is not executing any T\+B\+B task. This includes being in a T\+B\+B dispatch loop (one of wait\+\_\+for\+\_\+all methods) invoked directly from that thread. \hypertarget{classtbb_1_1internal_1_1generic__scheduler_a8a62642cb4b1ba391b8d3b9a00dca541}{}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}!prepare\+\_\+for\+\_\+spawning@{prepare\+\_\+for\+\_\+spawning}}
+\index{prepare\+\_\+for\+\_\+spawning@{prepare\+\_\+for\+\_\+spawning}!tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+\subsubsection[{prepare\+\_\+for\+\_\+spawning(task $\ast$t)}]{\setlength{\rightskip}{0pt plus 5cm}task $\ast$ tbb\+::internal\+::generic\+\_\+scheduler\+::prepare\+\_\+for\+\_\+spawning (
+\begin{DoxyParamCaption}
+\item[{task $\ast$}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1internal_1_1generic__scheduler_a8a62642cb4b1ba391b8d3b9a00dca541}
+
+
+Checks if t is affinitized to another thread, and if so, bundles it as proxy. 
+
+Returns either t or proxy containing t. \hypertarget{classtbb_1_1internal_1_1generic__scheduler_a0460616fb84af745b12688927ff1bb7d}{}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}!prepare\+\_\+task\+\_\+pool@{prepare\+\_\+task\+\_\+pool}}
+\index{prepare\+\_\+task\+\_\+pool@{prepare\+\_\+task\+\_\+pool}!tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+\subsubsection[{prepare\+\_\+task\+\_\+pool(size\+\_\+t n)}]{\setlength{\rightskip}{0pt plus 5cm}size\+\_\+t tbb\+::internal\+::generic\+\_\+scheduler\+::prepare\+\_\+task\+\_\+pool (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+t}]{n}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1internal_1_1generic__scheduler_a0460616fb84af745b12688927ff1bb7d}
+
+
+Makes sure that the task pool can accommodate at least n more elements. 
+
+If necessary relocates existing task pointers or grows the ready task deque. Returns (possible updated) tail index (not accounting for n). \hypertarget{classtbb_1_1internal_1_1generic__scheduler_a11895552b22a769d2cd40b9e7c090d9b}{}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}!receive\+\_\+or\+\_\+steal\+\_\+task@{receive\+\_\+or\+\_\+steal\+\_\+task}}
+\index{receive\+\_\+or\+\_\+steal\+\_\+task@{receive\+\_\+or\+\_\+steal\+\_\+task}!tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+\subsubsection[{receive\+\_\+or\+\_\+steal\+\_\+task(\+\_\+\+\_\+\+T\+B\+B\+\_\+atomic reference\+\_\+count \&completion\+\_\+ref\+\_\+count)=0}]{\setlength{\rightskip}{0pt plus 5cm}virtual task$\ast$ tbb\+::internal\+::generic\+\_\+scheduler\+::receive\+\_\+or\+\_\+steal\+\_\+task (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+\_\+\+T\+B\+B\+\_\+atomic reference\+\_\+count \&}]{completion\+\_\+ref\+\_\+count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classtbb_1_1internal_1_1generic__scheduler_a11895552b22a769d2cd40b9e7c090d9b}
+
+
+Try getting a task from other threads (via mailbox, stealing, F\+I\+F\+O queue, orphans adoption). 
+
+Returns obtained task or N\+U\+L\+L if all attempts fail. 
+
+Implemented in \hyperlink{classtbb_1_1internal_1_1custom__scheduler_a71b54b3854eb6961a7b09678450dd470}{tbb\+::internal\+::custom\+\_\+scheduler$<$ Scheduler\+Traits $>$}.
+
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a24dd9ef31d1f73ea2fadcc35df6d9d21}{}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}!release\+\_\+task\+\_\+pool@{release\+\_\+task\+\_\+pool}}
+\index{release\+\_\+task\+\_\+pool@{release\+\_\+task\+\_\+pool}!tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+\subsubsection[{release\+\_\+task\+\_\+pool() const }]{\setlength{\rightskip}{0pt plus 5cm}void tbb\+::internal\+::generic\+\_\+scheduler\+::release\+\_\+task\+\_\+pool (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1internal_1_1generic__scheduler_a24dd9ef31d1f73ea2fadcc35df6d9d21}
+
+
+Unlocks the local task pool. 
+
+Restores my\+\_\+arena\+\_\+slot-\/$>$task\+\_\+pool munged by acquire\+\_\+task\+\_\+pool. Requires correctly set my\+\_\+arena\+\_\+slot-\/$>$task\+\_\+pool\+\_\+ptr. \hypertarget{classtbb_1_1internal_1_1generic__scheduler_ae28f8ec4bb8dab580d3452d58a84ebbe}{}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}!reset\+\_\+deque\+\_\+and\+\_\+leave\+\_\+arena@{reset\+\_\+deque\+\_\+and\+\_\+leave\+\_\+arena}}
+\index{reset\+\_\+deque\+\_\+and\+\_\+leave\+\_\+arena@{reset\+\_\+deque\+\_\+and\+\_\+leave\+\_\+arena}!tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+\subsubsection[{reset\+\_\+deque\+\_\+and\+\_\+leave\+\_\+arena(bool locked)}]{\setlength{\rightskip}{0pt plus 5cm}void tbb\+::internal\+::generic\+\_\+scheduler\+::reset\+\_\+deque\+\_\+and\+\_\+leave\+\_\+arena (
+\begin{DoxyParamCaption}
+\item[{bool}]{locked}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1internal_1_1generic__scheduler_ae28f8ec4bb8dab580d3452d58a84ebbe}
+
+
+Resets head and tail indices to 0, and leaves arena. 
+
+Argument specifies whether the task pool is currently locked by the owner (via acquire\+\_\+task\+\_\+pool). \hypertarget{classtbb_1_1internal_1_1generic__scheduler_a5d6340b7bd950b0492e970ff62433198}{}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}!unlock\+\_\+task\+\_\+pool@{unlock\+\_\+task\+\_\+pool}}
+\index{unlock\+\_\+task\+\_\+pool@{unlock\+\_\+task\+\_\+pool}!tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+\subsubsection[{unlock\+\_\+task\+\_\+pool(arena\+\_\+slot $\ast$victim\+\_\+arena\+\_\+slot, task $\ast$$\ast$victim\+\_\+task\+\_\+pool) const }]{\setlength{\rightskip}{0pt plus 5cm}void tbb\+::internal\+::generic\+\_\+scheduler\+::unlock\+\_\+task\+\_\+pool (
+\begin{DoxyParamCaption}
+\item[{{\bf arena\+\_\+slot} $\ast$}]{victim\+\_\+arena\+\_\+slot, }
+\item[{task $\ast$$\ast$}]{victim\+\_\+task\+\_\+pool}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1internal_1_1generic__scheduler_a5d6340b7bd950b0492e970ff62433198}
+
+
+Unlocks victim\textquotesingle{}s task pool. 
+
+Restores victim\+\_\+arena\+\_\+slot-\/$>$task\+\_\+pool munged by lock\+\_\+task\+\_\+pool. 
+
+\subsection{Member Data Documentation}
+\hypertarget{classtbb_1_1internal_1_1generic__scheduler_a1190ee0529a9280846bd50c4f50c8398}{}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}!min\+\_\+task\+\_\+pool\+\_\+size@{min\+\_\+task\+\_\+pool\+\_\+size}}
+\index{min\+\_\+task\+\_\+pool\+\_\+size@{min\+\_\+task\+\_\+pool\+\_\+size}!tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+\subsubsection[{min\+\_\+task\+\_\+pool\+\_\+size}]{\setlength{\rightskip}{0pt plus 5cm}const size\+\_\+t tbb\+::internal\+::generic\+\_\+scheduler\+::min\+\_\+task\+\_\+pool\+\_\+size = 64\hspace{0.3cm}{\ttfamily [static]}}\label{classtbb_1_1internal_1_1generic__scheduler_a1190ee0529a9280846bd50c4f50c8398}
+Initial size of the task deque sufficient to serve without reallocation 4 nested parallel\+\_\+for calls with iteration space of 65535 grains each. \hypertarget{classtbb_1_1internal_1_1generic__scheduler_abc495d5b077a2ef1b05e15e820555d90}{}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}!my\+\_\+dummy\+\_\+task@{my\+\_\+dummy\+\_\+task}}
+\index{my\+\_\+dummy\+\_\+task@{my\+\_\+dummy\+\_\+task}!tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+\subsubsection[{my\+\_\+dummy\+\_\+task}]{\setlength{\rightskip}{0pt plus 5cm}task$\ast$ tbb\+::internal\+::generic\+\_\+scheduler\+::my\+\_\+dummy\+\_\+task}\label{classtbb_1_1internal_1_1generic__scheduler_abc495d5b077a2ef1b05e15e820555d90}
+
+
+Fake root task created by slave threads. 
+
+The task is used as the \char`\"{}parent\char`\"{} argument to method wait\+\_\+for\+\_\+all. \hypertarget{classtbb_1_1internal_1_1generic__scheduler_a8cf8d776a439320e1e001381cf5d4ad7}{}\index{tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}!my\+\_\+ref\+\_\+count@{my\+\_\+ref\+\_\+count}}
+\index{my\+\_\+ref\+\_\+count@{my\+\_\+ref\+\_\+count}!tbb\+::internal\+::generic\+\_\+scheduler@{tbb\+::internal\+::generic\+\_\+scheduler}}
+\subsubsection[{my\+\_\+ref\+\_\+count}]{\setlength{\rightskip}{0pt plus 5cm}long tbb\+::internal\+::generic\+\_\+scheduler\+::my\+\_\+ref\+\_\+count}\label{classtbb_1_1internal_1_1generic__scheduler_a8cf8d776a439320e1e001381cf5d4ad7}
+
+
+Reference count for scheduler. 
+
+Number of \hyperlink{classtbb_1_1task__scheduler__init}{task\+\_\+scheduler\+\_\+init} objects that point to this scheduler 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/scheduler.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/scheduler.\+cpp\end{DoxyCompactItemize}

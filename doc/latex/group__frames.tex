@@ -1,0 +1,113 @@
+\hypertarget{group__frames}{}\section{Frames}
+\label{group__frames}\index{Frames@{Frames}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__frames_ga0f3e51aaf74b13975eec5f29533cc442}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+frame\+\_\+create}~\hyperlink{group__frames_ga8b106f002c9f1ed6e17d5833e8200ff0}{\+\_\+\+\_\+itt\+\_\+frame\+\_\+create\+A}\label{group__frames_ga0f3e51aaf74b13975eec5f29533cc442}
+
+\item 
+\hypertarget{group__frames_ga45e4c9f633e550e222d510aef5616283}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+frame\+\_\+create\+\_\+ptr}~\+\_\+\+\_\+itt\+\_\+frame\+\_\+create\+A\+\_\+ptr\label{group__frames_ga45e4c9f633e550e222d510aef5616283}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__frames_gad1b74516ce88dc28bff032244625c7c2}{}typedef struct \+\_\+\+\_\+itt\+\_\+frame\+\_\+t $\ast$ \hyperlink{group__frames_gad1b74516ce88dc28bff032244625c7c2}{\+\_\+\+\_\+itt\+\_\+frame}\label{group__frames_gad1b74516ce88dc28bff032244625c7c2}
+
+\begin{DoxyCompactList}\small\item\em opaque structure for frame identification \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__frames_ga093acc1a6ba76656835ddf17776d7ff3}{\+\_\+\+\_\+itt\+\_\+frame\+\_\+begin\+\_\+v3} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id $\ast$id)
+\begin{DoxyCompactList}\small\item\em Begin a frame instance. Successive calls to \+\_\+\+\_\+itt\+\_\+frame\+\_\+begin with the same I\+D are ignored until a call to \+\_\+\+\_\+itt\+\_\+frame\+\_\+end with the same I\+D. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__frames_ga04806851f8db36359587c111defde4e3}{\+\_\+\+\_\+itt\+\_\+frame\+\_\+end\+\_\+v3} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id $\ast$id)
+\begin{DoxyCompactList}\small\item\em End a frame instance. The first call to \+\_\+\+\_\+itt\+\_\+frame\+\_\+end with a given I\+D ends the frame. Successive calls with the same I\+D are ignored, as are calls that do not have a matching \+\_\+\+\_\+itt\+\_\+frame\+\_\+begin call. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__frames_ga18b8adc466f67480f699e5caa1889b81}{\+\_\+\+\_\+itt\+\_\+frame\+\_\+submit\+\_\+v3} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id $\ast$id, \+\_\+\+\_\+itt\+\_\+timestamp begin, \+\_\+\+\_\+itt\+\_\+timestamp end)
+\begin{DoxyCompactList}\small\item\em Submits a frame instance. Successive calls to \+\_\+\+\_\+itt\+\_\+frame\+\_\+begin or \+\_\+\+\_\+itt\+\_\+frame\+\_\+submit with the same I\+D are ignored until a call to \+\_\+\+\_\+itt\+\_\+frame\+\_\+end or \+\_\+\+\_\+itt\+\_\+frame\+\_\+submit with the same I\+D. Passing special \+\_\+\+\_\+itt\+\_\+timestamp\+\_\+none value as \char`\"{}end\char`\"{} argument means take the current timestamp as the end timestamp. \end{DoxyCompactList}\item 
+\hypertarget{group__frames_ga8b106f002c9f1ed6e17d5833e8200ff0}{}\hyperlink{group__frames_gad1b74516ce88dc28bff032244625c7c2}{\+\_\+\+\_\+itt\+\_\+frame} I\+T\+T\+A\+P\+I \hyperlink{group__frames_ga8b106f002c9f1ed6e17d5833e8200ff0}{\+\_\+\+\_\+itt\+\_\+frame\+\_\+create\+A} (const char $\ast$domain)\label{group__frames_ga8b106f002c9f1ed6e17d5833e8200ff0}
+
+\begin{DoxyCompactList}\small\item\em Create a global frame with given domain. \end{DoxyCompactList}\item 
+\hypertarget{group__frames_gafced67ce3fdb934507bafaedca2c4ed4}{}\hyperlink{group__frames_gad1b74516ce88dc28bff032244625c7c2}{\+\_\+\+\_\+itt\+\_\+frame} I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+frame\+\_\+create\+W} (const wchar\+\_\+t $\ast$domain)\label{group__frames_gafced67ce3fdb934507bafaedca2c4ed4}
+
+\item 
+\hypertarget{group__frames_ga270e37da31aa32c8e2fbd0b71247e774}{}void I\+T\+T\+A\+P\+I \hyperlink{group__frames_ga270e37da31aa32c8e2fbd0b71247e774}{\+\_\+\+\_\+itt\+\_\+frame\+\_\+begin} (\hyperlink{group__frames_gad1b74516ce88dc28bff032244625c7c2}{\+\_\+\+\_\+itt\+\_\+frame} frame)\label{group__frames_ga270e37da31aa32c8e2fbd0b71247e774}
+
+\begin{DoxyCompactList}\small\item\em Record an frame begin occurrence. \end{DoxyCompactList}\item 
+\hypertarget{group__frames_ga2f91556b78eae2fc509127af8db2aba5}{}void I\+T\+T\+A\+P\+I \hyperlink{group__frames_ga2f91556b78eae2fc509127af8db2aba5}{\+\_\+\+\_\+itt\+\_\+frame\+\_\+end} (\hyperlink{group__frames_gad1b74516ce88dc28bff032244625c7c2}{\+\_\+\+\_\+itt\+\_\+frame} frame)\label{group__frames_ga2f91556b78eae2fc509127af8db2aba5}
+
+\begin{DoxyCompactList}\small\item\em Record an frame end occurrence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Frames are similar to regions, but are intended to be easier to use and to implement. In particular\+:
+\begin{DoxyItemize}
+\item Frames always represent periods of elapsed time
+\item By default, frames have no nesting relationships
+\end{DoxyItemize}
+
+Frames group 
+
+\subsection{Function Documentation}
+\hypertarget{group__frames_ga093acc1a6ba76656835ddf17776d7ff3}{}\index{Frames@{Frames}!\+\_\+\+\_\+itt\+\_\+frame\+\_\+begin\+\_\+v3@{\+\_\+\+\_\+itt\+\_\+frame\+\_\+begin\+\_\+v3}}
+\index{\+\_\+\+\_\+itt\+\_\+frame\+\_\+begin\+\_\+v3@{\+\_\+\+\_\+itt\+\_\+frame\+\_\+begin\+\_\+v3}!Frames@{Frames}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+frame\+\_\+begin\+\_\+v3(const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id $\ast$id)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+frame\+\_\+begin\+\_\+v3 (
+\begin{DoxyParamCaption}
+\item[{const \+\_\+\+\_\+itt\+\_\+domain $\ast$}]{domain, }
+\item[{\+\_\+\+\_\+itt\+\_\+id $\ast$}]{id}
+\end{DoxyParamCaption}
+)}\label{group__frames_ga093acc1a6ba76656835ddf17776d7ff3}
+
+
+Begin a frame instance. Successive calls to \+\_\+\+\_\+itt\+\_\+frame\+\_\+begin with the same I\+D are ignored until a call to \+\_\+\+\_\+itt\+\_\+frame\+\_\+end with the same I\+D. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em domain} & The domain for this frame instance \\
+\hline
+\mbox{\tt in}  & {\em id} & The instance I\+D for this frame instance or N\+U\+L\+L \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__frames_ga04806851f8db36359587c111defde4e3}{}\index{Frames@{Frames}!\+\_\+\+\_\+itt\+\_\+frame\+\_\+end\+\_\+v3@{\+\_\+\+\_\+itt\+\_\+frame\+\_\+end\+\_\+v3}}
+\index{\+\_\+\+\_\+itt\+\_\+frame\+\_\+end\+\_\+v3@{\+\_\+\+\_\+itt\+\_\+frame\+\_\+end\+\_\+v3}!Frames@{Frames}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+frame\+\_\+end\+\_\+v3(const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id $\ast$id)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+frame\+\_\+end\+\_\+v3 (
+\begin{DoxyParamCaption}
+\item[{const \+\_\+\+\_\+itt\+\_\+domain $\ast$}]{domain, }
+\item[{\+\_\+\+\_\+itt\+\_\+id $\ast$}]{id}
+\end{DoxyParamCaption}
+)}\label{group__frames_ga04806851f8db36359587c111defde4e3}
+
+
+End a frame instance. The first call to \+\_\+\+\_\+itt\+\_\+frame\+\_\+end with a given I\+D ends the frame. Successive calls with the same I\+D are ignored, as are calls that do not have a matching \+\_\+\+\_\+itt\+\_\+frame\+\_\+begin call. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em domain} & The domain for this frame instance \\
+\hline
+\mbox{\tt in}  & {\em id} & The instance I\+D for this frame instance or N\+U\+L\+L for current \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__frames_ga18b8adc466f67480f699e5caa1889b81}{}\index{Frames@{Frames}!\+\_\+\+\_\+itt\+\_\+frame\+\_\+submit\+\_\+v3@{\+\_\+\+\_\+itt\+\_\+frame\+\_\+submit\+\_\+v3}}
+\index{\+\_\+\+\_\+itt\+\_\+frame\+\_\+submit\+\_\+v3@{\+\_\+\+\_\+itt\+\_\+frame\+\_\+submit\+\_\+v3}!Frames@{Frames}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+frame\+\_\+submit\+\_\+v3(const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id $\ast$id, \+\_\+\+\_\+itt\+\_\+timestamp begin, \+\_\+\+\_\+itt\+\_\+timestamp end)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+frame\+\_\+submit\+\_\+v3 (
+\begin{DoxyParamCaption}
+\item[{const \+\_\+\+\_\+itt\+\_\+domain $\ast$}]{domain, }
+\item[{\+\_\+\+\_\+itt\+\_\+id $\ast$}]{id, }
+\item[{\+\_\+\+\_\+itt\+\_\+timestamp}]{begin, }
+\item[{\+\_\+\+\_\+itt\+\_\+timestamp}]{end}
+\end{DoxyParamCaption}
+)}\label{group__frames_ga18b8adc466f67480f699e5caa1889b81}
+
+
+Submits a frame instance. Successive calls to \+\_\+\+\_\+itt\+\_\+frame\+\_\+begin or \+\_\+\+\_\+itt\+\_\+frame\+\_\+submit with the same I\+D are ignored until a call to \+\_\+\+\_\+itt\+\_\+frame\+\_\+end or \+\_\+\+\_\+itt\+\_\+frame\+\_\+submit with the same I\+D. Passing special \+\_\+\+\_\+itt\+\_\+timestamp\+\_\+none value as \char`\"{}end\char`\"{} argument means take the current timestamp as the end timestamp. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em domain} & The domain for this frame instance \\
+\hline
+\mbox{\tt in}  & {\em id} & The instance I\+D for this frame instance or N\+U\+L\+L \\
+\hline
+\mbox{\tt in}  & {\em begin} & Timestamp of the beggining of the frame \\
+\hline
+\mbox{\tt in}  & {\em end} & Timestamp of the end of the frame \\
+\hline
+\end{DoxyParams}

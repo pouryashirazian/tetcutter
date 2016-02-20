@@ -1,0 +1,69 @@
+\hypertarget{classinternal_1_1node__cache}{}\section{internal\+:\+:node\+\_\+cache$<$ T, M $>$ Class Template Reference}
+\label{classinternal_1_1node__cache}\index{internal\+::node\+\_\+cache$<$ T, M $>$@{internal\+::node\+\_\+cache$<$ T, M $>$}}
+
+
+\hyperlink{structA}{A} \hyperlink{classinternal_1_1node__cache}{node\+\_\+cache} maintains a std\+::queue of elements of type T. Each operation is protected by a lock.  
+
+
+
+
+{\ttfamily \#include $<$\+\_\+flow\+\_\+graph\+\_\+impl.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1node__cache_ab15071138f28f5fcdfd5f3d10c218d1a}{}typedef size\+\_\+t {\bfseries size\+\_\+type}\label{classinternal_1_1node__cache_ab15071138f28f5fcdfd5f3d10c218d1a}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1node__cache_a4c8e536637870d47b3cf0b99ccb3f497}{}bool {\bfseries empty} ()\label{classinternal_1_1node__cache_a4c8e536637870d47b3cf0b99ccb3f497}
+
+\item 
+\hypertarget{classinternal_1_1node__cache_ae6c8b74005e34d084ad32e3dd8c0f8e4}{}void {\bfseries add} (T \&n)\label{classinternal_1_1node__cache_ae6c8b74005e34d084ad32e3dd8c0f8e4}
+
+\item 
+\hypertarget{classinternal_1_1node__cache_aeaaf9116532e4c368f3a26076703ef73}{}void {\bfseries remove} (T \&n)\label{classinternal_1_1node__cache_aeaaf9116532e4c368f3a26076703ef73}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1node__cache_a4010ded01a11f7df358531fbefb024f2}{}typedef M {\bfseries my\+\_\+mutex\+\_\+type}\label{classinternal_1_1node__cache_a4010ded01a11f7df358531fbefb024f2}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1node__cache_aaeb97ee69e8bc4e26246d2bddf0e1d93}{}bool {\bfseries internal\+\_\+empty} ()\label{classinternal_1_1node__cache_aaeb97ee69e8bc4e26246d2bddf0e1d93}
+
+\item 
+\hypertarget{classinternal_1_1node__cache_ad947424ec09375bc57277cd7f721691b}{}size\+\_\+type {\bfseries internal\+\_\+size} ()\label{classinternal_1_1node__cache_ad947424ec09375bc57277cd7f721691b}
+
+\item 
+\hypertarget{classinternal_1_1node__cache_a8fd5c5a1c88b70cd41a805279db889c7}{}void {\bfseries internal\+\_\+push} (T \&n)\label{classinternal_1_1node__cache_a8fd5c5a1c88b70cd41a805279db889c7}
+
+\item 
+\hypertarget{classinternal_1_1node__cache_a0af53d2a937ec7130299576a9e1cdb81}{}T \& {\bfseries internal\+\_\+pop} ()\label{classinternal_1_1node__cache_a0af53d2a937ec7130299576a9e1cdb81}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1node__cache_a484a42dc5f3a2cedeb0b5624f2e61eff}{}my\+\_\+mutex\+\_\+type {\bfseries my\+\_\+mutex}\label{classinternal_1_1node__cache_a484a42dc5f3a2cedeb0b5624f2e61eff}
+
+\item 
+\hypertarget{classinternal_1_1node__cache_a624b48b6aa7de59af1ad3bc03dd91661}{}std\+::queue$<$ T $\ast$ $>$ {\bfseries my\+\_\+q}\label{classinternal_1_1node__cache_a624b48b6aa7de59af1ad3bc03dd91661}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename M = spin\+\_\+mutex$>$class internal\+::node\+\_\+cache$<$ T, M $>$}
+
+\hyperlink{structA}{A} \hyperlink{classinternal_1_1node__cache}{node\+\_\+cache} maintains a std\+::queue of elements of type T. Each operation is protected by a lock. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/internal/\+\_\+flow\+\_\+graph\+\_\+impl.\+h\end{DoxyCompactItemize}

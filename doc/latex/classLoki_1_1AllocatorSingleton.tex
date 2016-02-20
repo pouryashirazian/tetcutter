@@ -1,0 +1,74 @@
+\hypertarget{classLoki_1_1AllocatorSingleton}{}\section{Loki\+:\+:Allocator\+Singleton$<$ Threading\+Model, chunk\+Size, max\+Small\+Object\+Size, object\+Align\+Size, Lifetime\+Policy, Mutex\+Policy $>$ Class Template Reference}
+\label{classLoki_1_1AllocatorSingleton}\index{Loki\+::\+Allocator\+Singleton$<$ Threading\+Model, chunk\+Size, max\+Small\+Object\+Size, object\+Align\+Size, Lifetime\+Policy, Mutex\+Policy $>$@{Loki\+::\+Allocator\+Singleton$<$ Threading\+Model, chunk\+Size, max\+Small\+Object\+Size, object\+Align\+Size, Lifetime\+Policy, Mutex\+Policy $>$}}
+
+
+{\ttfamily \#include $<$Small\+Obj.\+h$>$}
+
+Inheritance diagram for Loki\+:\+:Allocator\+Singleton$<$ Threading\+Model, chunk\+Size, max\+Small\+Object\+Size, object\+Align\+Size, Lifetime\+Policy, Mutex\+Policy $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.559888cm]{classLoki_1_1AllocatorSingleton}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1AllocatorSingleton_a47fa2a9f8348fc8ce749221f7bfa7245}{}typedef \hyperlink{classLoki_1_1AllocatorSingleton}{Allocator\+Singleton}$<$ Threading\+Model, chunk\+Size, max\+Small\+Object\+Size, object\+Align\+Size, Lifetime\+Policy $>$ \hyperlink{classLoki_1_1AllocatorSingleton_a47fa2a9f8348fc8ce749221f7bfa7245}{My\+Allocator}\label{classLoki_1_1AllocatorSingleton_a47fa2a9f8348fc8ce749221f7bfa7245}
+
+\begin{DoxyCompactList}\small\item\em Defines type of allocator. \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1AllocatorSingleton_ac9fde708e2ee0bf990c3eaa34422ca25}{}typedef Threading\+Model$<$ \hyperlink{classLoki_1_1AllocatorSingleton_a47fa2a9f8348fc8ce749221f7bfa7245}{My\+Allocator}, Mutex\+Policy $>$ \hyperlink{classLoki_1_1AllocatorSingleton_ac9fde708e2ee0bf990c3eaa34422ca25}{My\+Threading\+Model}\label{classLoki_1_1AllocatorSingleton_ac9fde708e2ee0bf990c3eaa34422ca25}
+
+\begin{DoxyCompactList}\small\item\em Defines type for thread-\/safety locking mechanism. \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1AllocatorSingleton_a74b23f8327ce4f3d795aa20240deb99e}{}typedef \hyperlink{classLoki_1_1SingletonHolder}{Loki\+::\+Singleton\+Holder}$<$ \hyperlink{classLoki_1_1AllocatorSingleton_a47fa2a9f8348fc8ce749221f7bfa7245}{My\+Allocator}, \hyperlink{structLoki_1_1CreateStatic}{Loki\+::\+Create\+Static}, Lifetime\+Policy, Threading\+Model $>$ \hyperlink{classLoki_1_1AllocatorSingleton_a74b23f8327ce4f3d795aa20240deb99e}{My\+Allocator\+Singleton}\label{classLoki_1_1AllocatorSingleton_a74b23f8327ce4f3d795aa20240deb99e}
+
+\begin{DoxyCompactList}\small\item\em Defines singleton made from allocator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1AllocatorSingleton_ac1ce92a825643f114d555fea170e2a99}{}\hyperlink{classLoki_1_1AllocatorSingleton_ac1ce92a825643f114d555fea170e2a99}{Allocator\+Singleton} ()\label{classLoki_1_1AllocatorSingleton_ac1ce92a825643f114d555fea170e2a99}
+
+\begin{DoxyCompactList}\small\item\em The default constructor is not meant to be called directly. \end{DoxyCompactList}\item 
+\hypertarget{classLoki_1_1AllocatorSingleton_af4248c104f7c04f4dbef16543083be53}{}\hyperlink{classLoki_1_1AllocatorSingleton_af4248c104f7c04f4dbef16543083be53}{$\sim$\+Allocator\+Singleton} (void)\label{classLoki_1_1AllocatorSingleton_af4248c104f7c04f4dbef16543083be53}
+
+\begin{DoxyCompactList}\small\item\em The destructor is not meant to be called directly. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1AllocatorSingleton_a0de7839b1e888e11ff44bc50b78ca7d7}{}static \hyperlink{classLoki_1_1AllocatorSingleton}{Allocator\+Singleton} \& \hyperlink{classLoki_1_1AllocatorSingleton_a0de7839b1e888e11ff44bc50b78ca7d7}{Instance} (void)\label{classLoki_1_1AllocatorSingleton_a0de7839b1e888e11ff44bc50b78ca7d7}
+
+\begin{DoxyCompactList}\small\item\em Returns reference to the singleton. \end{DoxyCompactList}\item 
+static void \hyperlink{classLoki_1_1AllocatorSingleton_a082b4ba1c6574c5bed916c55ecf46e82}{Clear\+Extra\+Memory} (void)
+\item 
+static bool \hyperlink{classLoki_1_1AllocatorSingleton_a033978d127f16d2da0fd79d31ee75713}{Is\+Corrupted} (void)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$template$<$ class, class $>$ class Threading\+Model = L\+O\+K\+I\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+T\+H\+R\+E\+A\+D\+I\+N\+G\+\_\+\+N\+O\+\_\+\+O\+B\+J\+\_\+\+L\+E\+V\+E\+L, std\+::size\+\_\+t chunk\+Size = L\+O\+K\+I\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+H\+U\+N\+K\+\_\+\+S\+I\+Z\+E, std\+::size\+\_\+t max\+Small\+Object\+Size = L\+O\+K\+I\+\_\+\+M\+A\+X\+\_\+\+S\+M\+A\+L\+L\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+S\+I\+Z\+E, std\+::size\+\_\+t object\+Align\+Size = L\+O\+K\+I\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+A\+L\+I\+G\+N\+M\+E\+N\+T, template$<$ class $>$ class Lifetime\+Policy = L\+O\+K\+I\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+S\+M\+A\+L\+L\+O\+B\+J\+\_\+\+L\+I\+F\+E\+T\+I\+M\+E, class Mutex\+Policy = L\+O\+K\+I\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+M\+U\+T\+E\+X$>$class Loki\+::\+Allocator\+Singleton$<$ Threading\+Model, chunk\+Size, max\+Small\+Object\+Size, object\+Align\+Size, Lifetime\+Policy, Mutex\+Policy $>$}
+
+This template class is derived from \hyperlink{classLoki_1_1SmallObjAllocator}{Small\+Obj\+Allocator} in order to pass template arguments into it, and still have a default constructor for the singleton. Each instance is a unique combination of all the template parameters, and hence is singleton only with respect to those parameters. The template parameters have default values and the class has typedefs identical to both \hyperlink{classLoki_1_1SmallObject}{Small\+Object} and \hyperlink{classLoki_1_1SmallValueObject}{Small\+Value\+Object} so that this class can be used directly instead of going through \hyperlink{classLoki_1_1SmallObject}{Small\+Object} or \hyperlink{classLoki_1_1SmallValueObject}{Small\+Value\+Object}. That design feature allows clients to use the new\+\_\+handler without having the name of the new\+\_\+handler function show up in classes derived from \hyperlink{classLoki_1_1SmallObject}{Small\+Object} or \hyperlink{classLoki_1_1SmallValueObject}{Small\+Value\+Object}. Thus, the only functions in the allocator which show up in \hyperlink{classLoki_1_1SmallObject}{Small\+Object} or \hyperlink{classLoki_1_1SmallValueObject}{Small\+Value\+Object} inheritance hierarchies are the new and delete operators. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classLoki_1_1AllocatorSingleton_a082b4ba1c6574c5bed916c55ecf46e82}{}\index{Loki\+::\+Allocator\+Singleton@{Loki\+::\+Allocator\+Singleton}!Clear\+Extra\+Memory@{Clear\+Extra\+Memory}}
+\index{Clear\+Extra\+Memory@{Clear\+Extra\+Memory}!Loki\+::\+Allocator\+Singleton@{Loki\+::\+Allocator\+Singleton}}
+\subsubsection[{Clear\+Extra\+Memory(void)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ class, class $>$ class T, std\+::size\+\_\+t C, std\+::size\+\_\+t M, std\+::size\+\_\+t O, template$<$ class $>$ class L, class X $>$ void {\bf Loki\+::\+Allocator\+Singleton}$<$ T, {\bf C}, M, O, L, {\bf X} $>$\+::Clear\+Extra\+Memory (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classLoki_1_1AllocatorSingleton_a082b4ba1c6574c5bed916c55ecf46e82}
+Clears any excess memory used by the allocator. Complexity is O(F + \hyperlink{classC}{C}) where F is the count of \hyperlink{classLoki_1_1FixedAllocator}{Fixed\+Allocator}\textquotesingle{}s in the pool, and \hyperlink{classC}{C} is the number of Chunks in all \hyperlink{classLoki_1_1FixedAllocator}{Fixed\+Allocator}\textquotesingle{}s. This never throws. \begin{DoxyNote}{Note}
+This function can be used as a new\+\_\+handler when \hyperlink{namespaceLoki}{Loki} and other memory allocators can no longer allocate. Although the C++ Standard allows new\+\_\+handler functions to terminate the program when they can not release any memory, this will not do so. 
+\end{DoxyNote}
+\hypertarget{classLoki_1_1AllocatorSingleton_a033978d127f16d2da0fd79d31ee75713}{}\index{Loki\+::\+Allocator\+Singleton@{Loki\+::\+Allocator\+Singleton}!Is\+Corrupted@{Is\+Corrupted}}
+\index{Is\+Corrupted@{Is\+Corrupted}!Loki\+::\+Allocator\+Singleton@{Loki\+::\+Allocator\+Singleton}}
+\subsubsection[{Is\+Corrupted(void)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ class, class $>$ class T, std\+::size\+\_\+t C, std\+::size\+\_\+t M, std\+::size\+\_\+t O, template$<$ class $>$ class L, class X $>$ bool {\bf Loki\+::\+Allocator\+Singleton}$<$ T, {\bf C}, M, O, L, {\bf X} $>$\+::Is\+Corrupted (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classLoki_1_1AllocatorSingleton_a033978d127f16d2da0fd79d31ee75713}
+Returns true if anything in implementation is corrupt. Complexity is O(F + \hyperlink{classC}{C} + \hyperlink{classB}{B}) where F is the count of \hyperlink{classLoki_1_1FixedAllocator}{Fixed\+Allocator}\textquotesingle{}s in the pool, \hyperlink{classC}{C} is the number of Chunks in all \hyperlink{classLoki_1_1FixedAllocator}{Fixed\+Allocator}\textquotesingle{}s, and \hyperlink{classB}{B} is the number of blocks in all Chunks. If it determines any data is corrupted, this will return true in release version, but assert in debug version at the line where it detects the corrupted data. If it does not detect any corrupted data, it returns false. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Small\+Obj.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,63 @@
+\hypertarget{classmallocator}{}\section{mallocator$<$ T $>$ Class Template Reference}
+\label{classmallocator}\index{mallocator$<$ T $>$@{mallocator$<$ T $>$}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmallocator_1_1rebind}{rebind}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classmallocator_aa92b951ebd7f747f7e97c51af305e5bc}{}typedef T {\bfseries value\+\_\+type}\label{classmallocator_aa92b951ebd7f747f7e97c51af305e5bc}
+
+\item 
+\hypertarget{classmallocator_a8bcf8d9d0264f17f970c643f897e0568}{}typedef value\+\_\+type $\ast$ {\bfseries pointer}\label{classmallocator_a8bcf8d9d0264f17f970c643f897e0568}
+
+\item 
+\hypertarget{classmallocator_a3b2561c9c6110281d4f56e37f371cb85}{}typedef const value\+\_\+type $\ast$ {\bfseries const\+\_\+pointer}\label{classmallocator_a3b2561c9c6110281d4f56e37f371cb85}
+
+\item 
+\hypertarget{classmallocator_a1e691aae1210d7d0240a487640651be7}{}typedef value\+\_\+type \& {\bfseries reference}\label{classmallocator_a1e691aae1210d7d0240a487640651be7}
+
+\item 
+\hypertarget{classmallocator_a39becf0d8f0652db8cd8e8590298ab63}{}typedef const value\+\_\+type \& {\bfseries const\+\_\+reference}\label{classmallocator_a39becf0d8f0652db8cd8e8590298ab63}
+
+\item 
+\hypertarget{classmallocator_a1f0163e71f684ca31e1a2789ad86fd0e}{}typedef std\+::size\+\_\+t {\bfseries size\+\_\+type}\label{classmallocator_a1f0163e71f684ca31e1a2789ad86fd0e}
+
+\item 
+\hypertarget{classmallocator_abe4088213e5324862f9ade948471b7a4}{}typedef int {\bfseries difference\+\_\+type}\label{classmallocator_abe4088213e5324862f9ade948471b7a4}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classmallocator_affbaaa59e20b4d7a25c2a803515947c2}{}{\bfseries mallocator} (const \hyperlink{classmallocator}{mallocator} \&)\label{classmallocator_affbaaa59e20b4d7a25c2a803515947c2}
+
+\item 
+\hypertarget{classmallocator_ae5998072e05ff38d8d99e934af2a0ce5}{}pointer {\bfseries address} (reference x) const \label{classmallocator_ae5998072e05ff38d8d99e934af2a0ce5}
+
+\item 
+\hypertarget{classmallocator_af69a976e6e3f22942e27efc84aa3bd72}{}const\+\_\+pointer {\bfseries address} (const\+\_\+reference x) const \label{classmallocator_af69a976e6e3f22942e27efc84aa3bd72}
+
+\item 
+\hypertarget{classmallocator_a6f015ccd8074eb965ccd77ca3f805811}{}pointer {\bfseries allocate} (size\+\_\+type n, const\+\_\+pointer=0)\label{classmallocator_a6f015ccd8074eb965ccd77ca3f805811}
+
+\item 
+\hypertarget{classmallocator_a5d15671f1cb53e6c9d28c318db74ede8}{}void {\bfseries deallocate} (pointer p, size\+\_\+type)\label{classmallocator_a5d15671f1cb53e6c9d28c318db74ede8}
+
+\item 
+\hypertarget{classmallocator_aac226d0fb39780ebec085feae5453637}{}size\+\_\+type {\bfseries max\+\_\+size} () const \label{classmallocator_aac226d0fb39780ebec085feae5453637}
+
+\item 
+\hypertarget{classmallocator_a365013f06905ba9caec790070ca32116}{}void {\bfseries construct} (pointer p, const value\+\_\+type \&x)\label{classmallocator_a365013f06905ba9caec790070ca32116}
+
+\item 
+\hypertarget{classmallocator_ac1e3ca0506b8ea9e0af1c3057537aa67}{}void {\bfseries destroy} (pointer p)\label{classmallocator_ac1e3ca0506b8ea9e0af1c3057537aa67}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/flex/flex\+\_\+string\+\_\+shell.\+h\end{DoxyCompactItemize}

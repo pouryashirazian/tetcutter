@@ -1,0 +1,16 @@
+\hypertarget{classLoki_1_1LevelMutexInfo_1_1Checker}{}\section{Loki\+:\+:Level\+Mutex\+Info\+:\+:Checker Class Reference}
+\label{classLoki_1_1LevelMutexInfo_1_1Checker}\index{Loki\+::\+Level\+Mutex\+Info\+::\+Checker@{Loki\+::\+Level\+Mutex\+Info\+::\+Checker}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1LevelMutexInfo_1_1Checker_a6f9ea9304ed3c44caf6e8553b77bd21c}{}{\bfseries Checker} (const volatile \hyperlink{classLoki_1_1LevelMutexInfo}{Level\+Mutex\+Info} $\ast$mutex)\label{classLoki_1_1LevelMutexInfo_1_1Checker_a6f9ea9304ed3c44caf6e8553b77bd21c}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+check on mutex to insure no class invariants were violated inside any member function. This class only gets used in debug builds, and any instance of it gets optimized away in release builds. \hyperlink{structA}{A} checker is created inside many of member functions so that it\textquotesingle{}s destructor gets called when the function exits. It determines if any class invariants were violated during the function call. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/\hyperlink{LevelMutex_8h}{Level\+Mutex.\+h}\end{DoxyCompactItemize}

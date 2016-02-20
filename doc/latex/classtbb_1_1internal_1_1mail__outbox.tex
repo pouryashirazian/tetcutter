@@ -1,0 +1,74 @@
+\hypertarget{classtbb_1_1internal_1_1mail__outbox}{}\section{tbb\+:\+:internal\+:\+:mail\+\_\+outbox Class Reference}
+\label{classtbb_1_1internal_1_1mail__outbox}\index{tbb\+::internal\+::mail\+\_\+outbox@{tbb\+::internal\+::mail\+\_\+outbox}}
+
+
+Class representing where mail is put.  
+
+
+
+
+{\ttfamily \#include $<$mailbox.\+h$>$}
+
+Inheritance diagram for tbb\+:\+:internal\+:\+:mail\+\_\+outbox\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classtbb_1_1internal_1_1mail__outbox}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classtbb_1_1internal_1_1mail__outbox_a611892d31c67b4b4c9381abddefde238}{push} (\hyperlink{structtbb_1_1internal_1_1task__proxy}{task\+\_\+proxy} \&t)
+\begin{DoxyCompactList}\small\item\em Push \hyperlink{structtbb_1_1internal_1_1task__proxy}{task\+\_\+proxy} onto the mailbox queue of another thread. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1mail__outbox_aa4b26c4528a742391d358e22d7493763}{}bool \hyperlink{classtbb_1_1internal_1_1mail__outbox_aa4b26c4528a742391d358e22d7493763}{empty} ()\label{classtbb_1_1internal_1_1mail__outbox_aa4b26c4528a742391d358e22d7493763}
+
+\begin{DoxyCompactList}\small\item\em Return true if mailbox is empty. \end{DoxyCompactList}\item 
+void \hyperlink{classtbb_1_1internal_1_1mail__outbox_af6072a4a688633e6e754cf93f541e2cb}{construct} ()
+\begin{DoxyCompactList}\small\item\em Construct $\ast$this as a mailbox from zeroed memory. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1mail__outbox_af2367d906b2272e9ed1ea77055782144}{}intptr\+\_\+t \hyperlink{classtbb_1_1internal_1_1mail__outbox_af2367d906b2272e9ed1ea77055782144}{drain} ()\label{classtbb_1_1internal_1_1mail__outbox_af2367d906b2272e9ed1ea77055782144}
+
+\begin{DoxyCompactList}\small\item\em Drain the mailbox. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1mail__outbox_acaf8c50736e4d27b6755f006f1a5a38e}{}bool \hyperlink{classtbb_1_1internal_1_1mail__outbox_acaf8c50736e4d27b6755f006f1a5a38e}{recipient\+\_\+is\+\_\+idle} ()\label{classtbb_1_1internal_1_1mail__outbox_acaf8c50736e4d27b6755f006f1a5a38e}
+
+\begin{DoxyCompactList}\small\item\em True if thread that owns this mailbox is looking for work. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1mail__outbox_a0e354c091ffa6f396e6368b46f9397d6}{}class {\bfseries mail\+\_\+inbox}\label{classtbb_1_1internal_1_1mail__outbox_a0e354c091ffa6f396e6368b46f9397d6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing where mail is put. 
+
+Padded to occupy a cache line. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classtbb_1_1internal_1_1mail__outbox_af6072a4a688633e6e754cf93f541e2cb}{}\index{tbb\+::internal\+::mail\+\_\+outbox@{tbb\+::internal\+::mail\+\_\+outbox}!construct@{construct}}
+\index{construct@{construct}!tbb\+::internal\+::mail\+\_\+outbox@{tbb\+::internal\+::mail\+\_\+outbox}}
+\subsubsection[{construct()}]{\setlength{\rightskip}{0pt plus 5cm}void tbb\+::internal\+::mail\+\_\+outbox\+::construct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1internal_1_1mail__outbox_af6072a4a688633e6e754cf93f541e2cb}
+
+
+Construct $\ast$this as a mailbox from zeroed memory. 
+
+Raise assertion if $\ast$this is not previously zeroed, or sizeof(this) is wrong. This method is provided instead of a full constructor since we know the object will be constructed in zeroed memory. \hypertarget{classtbb_1_1internal_1_1mail__outbox_a611892d31c67b4b4c9381abddefde238}{}\index{tbb\+::internal\+::mail\+\_\+outbox@{tbb\+::internal\+::mail\+\_\+outbox}!push@{push}}
+\index{push@{push}!tbb\+::internal\+::mail\+\_\+outbox@{tbb\+::internal\+::mail\+\_\+outbox}}
+\subsubsection[{push(task\+\_\+proxy \&t)}]{\setlength{\rightskip}{0pt plus 5cm}void tbb\+::internal\+::mail\+\_\+outbox\+::push (
+\begin{DoxyParamCaption}
+\item[{{\bf task\+\_\+proxy} \&}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1internal_1_1mail__outbox_a611892d31c67b4b4c9381abddefde238}
+
+
+Push \hyperlink{structtbb_1_1internal_1_1task__proxy}{task\+\_\+proxy} onto the mailbox queue of another thread. 
+
+Implementation is wait-\/free. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/mailbox.\+h\end{DoxyCompactItemize}

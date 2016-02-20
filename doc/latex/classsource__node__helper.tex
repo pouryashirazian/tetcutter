@@ -1,0 +1,77 @@
+\hypertarget{classsource__node__helper}{}\section{source\+\_\+node\+\_\+helper$<$ E\+L\+E\+M, I\+N\+T $>$ Class Template Reference}
+\label{classsource__node__helper}\index{source\+\_\+node\+\_\+helper$<$ E\+L\+E\+M, I\+N\+T $>$@{source\+\_\+node\+\_\+helper$<$ E\+L\+E\+M, I\+N\+T $>$}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classsource__node__helper_af8af587a7f5335fb5a2fbedaa8d50e2c}{}typedef I\+N\+T {\bfseries indexer\+\_\+node\+\_\+type}\label{classsource__node__helper_af8af587a7f5335fb5a2fbedaa8d50e2c}
+
+\item 
+\hypertarget{classsource__node__helper_a6ce1a17a13b4073b9230fc16d5b84806}{}typedef indexer\+\_\+node\+\_\+type\+::output\+\_\+type {\bfseries T\+T}\label{classsource__node__helper_a6ce1a17a13b4073b9230fc16d5b84806}
+
+\item 
+\hypertarget{classsource__node__helper_ab34f2edf570e7ef3b818d223fcd9226c}{}typedef tbb\+::flow\+::tuple\+\_\+element$<$ E\+L\+E\+M-\/1, typename I\+N\+T\+::tuple\+\_\+types $>$\+::type {\bfseries I\+T}\label{classsource__node__helper_ab34f2edf570e7ef3b818d223fcd9226c}
+
+\item 
+\hypertarget{classsource__node__helper_a6d10073fdfda6c2c25eccf3786aa1ee8}{}typedef tbb\+::flow\+::source\+\_\+node$<$ I\+T $>$ {\bfseries my\+\_\+source\+\_\+node\+\_\+type}\label{classsource__node__helper_a6d10073fdfda6c2c25eccf3786aa1ee8}
+
+\item 
+\hypertarget{classsource__node__helper_a89c771b6a5746f94e136fe6255c353a0}{}typedef J\+N\+T {\bfseries join\+\_\+node\+\_\+type}\label{classsource__node__helper_a89c771b6a5746f94e136fe6255c353a0}
+
+\item 
+\hypertarget{classsource__node__helper_aae50778abcc62a4f69e8d061a3b39973}{}typedef tbb\+::flow\+::join\+\_\+node$<$ tbb\+::flow\+::tuple$<$ int, tbb\+::flow\+::continue\+\_\+msg $>$, tbb\+::flow\+::reserving $>$ {\bfseries input\+\_\+join\+\_\+type}\label{classsource__node__helper_aae50778abcc62a4f69e8d061a3b39973}
+
+\item 
+\hypertarget{classsource__node__helper_a9b5578441cef2c7ce89871c0d70b1914}{}typedef join\+\_\+node\+\_\+type\+::output\+\_\+type {\bfseries T\+T}\label{classsource__node__helper_a9b5578441cef2c7ce89871c0d70b1914}
+
+\item 
+\hypertarget{classsource__node__helper_a74a5baccce23fbc0c28e0d5aa3816540}{}typedef tbb\+::flow\+::tuple\+\_\+element$<$ E\+L\+E\+M-\/1, T\+T $>$\+::type {\bfseries I\+T}\label{classsource__node__helper_a74a5baccce23fbc0c28e0d5aa3816540}
+
+\item 
+\hypertarget{classsource__node__helper_a6d10073fdfda6c2c25eccf3786aa1ee8}{}typedef tbb\+::flow\+::source\+\_\+node$<$ I\+T $>$ {\bfseries my\+\_\+source\+\_\+node\+\_\+type}\label{classsource__node__helper_a6d10073fdfda6c2c25eccf3786aa1ee8}
+
+\item 
+\hypertarget{classsource__node__helper_afb8d4f77738bb3b865e179cf195866e2}{}typedef tbb\+::flow\+::function\+\_\+node$<$ tbb\+::flow\+::tuple$<$ int, tbb\+::flow\+::continue\+\_\+msg $>$, I\+T $>$ {\bfseries my\+\_\+recirc\+\_\+function\+\_\+type}\label{classsource__node__helper_afb8d4f77738bb3b865e179cf195866e2}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classsource__node__helper_acd485a15168012021c5f1eae898773dd}{}static void {\bfseries print\+\_\+remark} ()\label{classsource__node__helper_acd485a15168012021c5f1eae898773dd}
+
+\item 
+\hypertarget{classsource__node__helper_a9bdc75b7ce56fbd971f97ba228b8ebc9}{}static void {\bfseries add\+\_\+source\+\_\+nodes} (indexer\+\_\+node\+\_\+type \&my\+\_\+indexer, tbb\+::flow\+::graph \&g, int n\+Inputs)\label{classsource__node__helper_a9bdc75b7ce56fbd971f97ba228b8ebc9}
+
+\item 
+\hypertarget{classsource__node__helper_aabe07bbbc68b7223358f10ed502da2d8}{}static void {\bfseries check\+\_\+value} (T\+T \&v)\label{classsource__node__helper_aabe07bbbc68b7223358f10ed502da2d8}
+
+\item 
+\hypertarget{classsource__node__helper_adc4fd75b8aa03d9ae48c3c805a1528bf}{}static void {\bfseries remove\+\_\+source\+\_\+nodes} (indexer\+\_\+node\+\_\+type \&my\+\_\+indexer, int n\+Inputs)\label{classsource__node__helper_adc4fd75b8aa03d9ae48c3c805a1528bf}
+
+\item 
+\hypertarget{classsource__node__helper_afd032162ee7d918997731c9740459f08}{}static void {\bfseries print\+\_\+remark} (const char $\ast$str)\label{classsource__node__helper_afd032162ee7d918997731c9740459f08}
+
+\item 
+\hypertarget{classsource__node__helper_a50577ffd0342530d74ce9f8f317cc22c}{}static void {\bfseries add\+\_\+source\+\_\+nodes} (join\+\_\+node\+\_\+type \&my\+\_\+join, tbb\+::flow\+::graph \&g, int n\+Inputs)\label{classsource__node__helper_a50577ffd0342530d74ce9f8f317cc22c}
+
+\item 
+\hypertarget{classsource__node__helper_ab4cd8f45b300296f99590d26873ae4f9}{}static void {\bfseries add\+\_\+recirc\+\_\+func\+\_\+nodes} (join\+\_\+node\+\_\+type \&my\+\_\+join, input\+\_\+join\+\_\+type \&my\+\_\+input, tbb\+::flow\+::graph \&g)\label{classsource__node__helper_ab4cd8f45b300296f99590d26873ae4f9}
+
+\item 
+\hypertarget{classsource__node__helper_a758219d3f7ec5b824b994cfc9aca4047}{}static void {\bfseries only\+\_\+check\+\_\+value} (const int i, const T\+T \&v)\label{classsource__node__helper_a758219d3f7ec5b824b994cfc9aca4047}
+
+\item 
+\hypertarget{classsource__node__helper_ab74d5cc0a3d9566a8905b8d4a399f359}{}static void {\bfseries check\+\_\+value} (int i, T\+T \&v, bool is\+\_\+serial)\label{classsource__node__helper_ab74d5cc0a3d9566a8905b8d4a399f359}
+
+\item 
+\hypertarget{classsource__node__helper_af9702b87100a7cd871ed7bb168496872}{}static void {\bfseries remove\+\_\+source\+\_\+nodes} (join\+\_\+node\+\_\+type \&my\+\_\+join, int n\+Inputs)\label{classsource__node__helper_af9702b87100a7cd871ed7bb168496872}
+
+\item 
+\hypertarget{classsource__node__helper_a5c6c003aabd2d1ff5ee11eead8c68846}{}static void {\bfseries remove\+\_\+recirc\+\_\+func\+\_\+nodes} (join\+\_\+node\+\_\+type \&my\+\_\+join, input\+\_\+join\+\_\+type \&my\+\_\+input)\label{classsource__node__helper_a5c6c003aabd2d1ff5ee11eead8c68846}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/test/test\+\_\+indexer\+\_\+node.\+cpp\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/test/test\+\_\+join\+\_\+node.\+cpp\end{DoxyCompactItemize}

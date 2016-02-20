@@ -1,0 +1,42 @@
+\hypertarget{structtbb_1_1internal_1_1task__info}{}\section{tbb\+:\+:internal\+:\+:task\+\_\+info Struct Reference}
+\label{structtbb_1_1internal_1_1task__info}\index{tbb\+::internal\+::task\+\_\+info@{tbb\+::internal\+::task\+\_\+info}}
+
+
+This structure is used to store task information in a input buffer.  
+
+
+Inheritance diagram for tbb\+:\+:internal\+:\+:task\+\_\+info\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{structtbb_1_1internal_1_1task__info}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structtbb_1_1internal_1_1task__info_ab3f3113f09c5c37a656a3ed027f0f239}{}void \hyperlink{structtbb_1_1internal_1_1task__info_ab3f3113f09c5c37a656a3ed027f0f239}{reset} ()\label{structtbb_1_1internal_1_1task__info_ab3f3113f09c5c37a656a3ed027f0f239}
+
+\begin{DoxyCompactList}\small\item\em Set to initial state (no object, no token) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structtbb_1_1internal_1_1task__info_a94abc643b8e23875f7ad89a3d704c475}{}void $\ast$ {\bfseries my\+\_\+object}\label{structtbb_1_1internal_1_1task__info_a94abc643b8e23875f7ad89a3d704c475}
+
+\item 
+\hypertarget{structtbb_1_1internal_1_1task__info_a03b589fe28e8c0be09c3f252689fce7c}{}Token \hyperlink{structtbb_1_1internal_1_1task__info_a03b589fe28e8c0be09c3f252689fce7c}{my\+\_\+token}\label{structtbb_1_1internal_1_1task__info_a03b589fe28e8c0be09c3f252689fce7c}
+
+\begin{DoxyCompactList}\small\item\em Invalid unless a task went through an ordered stage. \end{DoxyCompactList}\item 
+\hypertarget{structtbb_1_1internal_1_1task__info_a74673a74641dd77f3e9219506bc771d4}{}bool \hyperlink{structtbb_1_1internal_1_1task__info_a74673a74641dd77f3e9219506bc771d4}{my\+\_\+token\+\_\+ready}\label{structtbb_1_1internal_1_1task__info_a74673a74641dd77f3e9219506bc771d4}
+
+\begin{DoxyCompactList}\small\item\em False until my\+\_\+token is set. \end{DoxyCompactList}\item 
+\hypertarget{structtbb_1_1internal_1_1task__info_a730e4979c4ea260b07ccc9174dbb42cd}{}bool \hyperlink{structtbb_1_1internal_1_1task__info_a730e4979c4ea260b07ccc9174dbb42cd}{is\+\_\+valid}\label{structtbb_1_1internal_1_1task__info_a730e4979c4ea260b07ccc9174dbb42cd}
+
+\begin{DoxyCompactList}\small\item\em True if my\+\_\+object is valid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This structure is used to store task information in a input buffer. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/pipeline.\+cpp\end{DoxyCompactItemize}

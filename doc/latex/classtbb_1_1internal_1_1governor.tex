@@ -1,0 +1,109 @@
+\hypertarget{classtbb_1_1internal_1_1governor}{}\section{tbb\+:\+:internal\+:\+:governor Class Reference}
+\label{classtbb_1_1internal_1_1governor}\index{tbb\+::internal\+::governor@{tbb\+::internal\+::governor}}
+
+
+The class handles access to the single instance of market, and to T\+L\+S to keep scheduler instances.  
+
+
+
+
+{\ttfamily \#include $<$governor.\+h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1governor_a87ef607c22c347eb97ddafa4384b4f1d}{}static unsigned {\bfseries default\+\_\+num\+\_\+threads} ()\label{classtbb_1_1internal_1_1governor_a87ef607c22c347eb97ddafa4384b4f1d}
+
+\item 
+static \hyperlink{classtbb_1_1internal_1_1generic__scheduler}{generic\+\_\+scheduler} $\ast$ \hyperlink{classtbb_1_1internal_1_1governor_a5fcb171581a0f79f7370cdda26f84309}{init\+\_\+scheduler} (unsigned num\+\_\+threads, stack\+\_\+size\+\_\+type stack\+\_\+size, bool auto\+\_\+init=false)
+\begin{DoxyCompactList}\small\item\em Processes scheduler initialization request (possibly nested) in a master thread. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1governor_a25a3099a4252bc220e64bebff64bf8ed}{}static void \hyperlink{classtbb_1_1internal_1_1governor_a25a3099a4252bc220e64bebff64bf8ed}{terminate\+\_\+scheduler} (\hyperlink{classtbb_1_1internal_1_1generic__scheduler}{generic\+\_\+scheduler} $\ast$s, const \hyperlink{classtbb_1_1task__scheduler__init}{task\+\_\+scheduler\+\_\+init} $\ast$tsi\+\_\+ptr)\label{classtbb_1_1internal_1_1governor_a25a3099a4252bc220e64bebff64bf8ed}
+
+\begin{DoxyCompactList}\small\item\em Processes scheduler termination request (possibly nested) in a master thread. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1governor_ab6b7ba04ea2b541819b659219fc42ae7}{}static void \hyperlink{classtbb_1_1internal_1_1governor_ab6b7ba04ea2b541819b659219fc42ae7}{sign\+\_\+on} (\hyperlink{classtbb_1_1internal_1_1generic__scheduler}{generic\+\_\+scheduler} $\ast$s)\label{classtbb_1_1internal_1_1governor_ab6b7ba04ea2b541819b659219fc42ae7}
+
+\begin{DoxyCompactList}\small\item\em Register T\+B\+B scheduler instance in thread-\/local storage. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1governor_a46a6d847486220d3eab529c78bd883ed}{}static void \hyperlink{classtbb_1_1internal_1_1governor_a46a6d847486220d3eab529c78bd883ed}{sign\+\_\+off} (\hyperlink{classtbb_1_1internal_1_1generic__scheduler}{generic\+\_\+scheduler} $\ast$s)\label{classtbb_1_1internal_1_1governor_a46a6d847486220d3eab529c78bd883ed}
+
+\begin{DoxyCompactList}\small\item\em Unregister T\+B\+B scheduler instance from thread-\/local storage. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1governor_a051887474589f34ffab66e5c2602ccf2}{}static bool \hyperlink{classtbb_1_1internal_1_1governor_a051887474589f34ffab66e5c2602ccf2}{is\+\_\+set} (\hyperlink{classtbb_1_1internal_1_1generic__scheduler}{generic\+\_\+scheduler} $\ast$s)\label{classtbb_1_1internal_1_1governor_a051887474589f34ffab66e5c2602ccf2}
+
+\begin{DoxyCompactList}\small\item\em Used to check validity of the local scheduler T\+L\+S contents. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1governor_a1d703dd39300b259f99c5440db8b8895}{}static void \hyperlink{classtbb_1_1internal_1_1governor_a1d703dd39300b259f99c5440db8b8895}{assume\+\_\+scheduler} (\hyperlink{classtbb_1_1internal_1_1generic__scheduler}{generic\+\_\+scheduler} $\ast$s)\label{classtbb_1_1internal_1_1governor_a1d703dd39300b259f99c5440db8b8895}
+
+\begin{DoxyCompactList}\small\item\em Temporarily set T\+L\+S slot to the given scheduler. \end{DoxyCompactList}\item 
+static \hyperlink{classtbb_1_1internal_1_1generic__scheduler}{generic\+\_\+scheduler} $\ast$ \hyperlink{classtbb_1_1internal_1_1governor_af2d5dff302cbba60bcf7becbdce2ade9}{local\+\_\+scheduler} ()
+\begin{DoxyCompactList}\small\item\em Obtain the thread-\/local instance of the T\+B\+B scheduler. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1governor_a1ee92969cca6e52c74ce6534bca69cb7}{}static \hyperlink{classtbb_1_1internal_1_1generic__scheduler}{generic\+\_\+scheduler} $\ast$ {\bfseries local\+\_\+scheduler\+\_\+if\+\_\+initialized} ()\label{classtbb_1_1internal_1_1governor_a1ee92969cca6e52c74ce6534bca69cb7}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1governor_a6af77e18ae7d56899162c01ee982deef}{}static void \hyperlink{classtbb_1_1internal_1_1governor_a6af77e18ae7d56899162c01ee982deef}{terminate\+\_\+auto\+\_\+initialized\+\_\+scheduler} ()\label{classtbb_1_1internal_1_1governor_a6af77e18ae7d56899162c01ee982deef}
+
+\begin{DoxyCompactList}\small\item\em Undo automatic initialization if necessary; call when a thread exits. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1governor_a4e8e2653fee2983f5be742e3b038c2bf}{}static void {\bfseries print\+\_\+version\+\_\+info} ()\label{classtbb_1_1internal_1_1governor_a4e8e2653fee2983f5be742e3b038c2bf}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1governor_adf4717664956deaf011e3bb939ed2e66}{}static void {\bfseries initialize\+\_\+rml\+\_\+factory} ()\label{classtbb_1_1internal_1_1governor_adf4717664956deaf011e3bb939ed2e66}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1governor_a7ab08454c18a8b08ebed67c0c4cd2a69}{}static bool {\bfseries needs\+Wait\+Workers} ()\label{classtbb_1_1internal_1_1governor_a7ab08454c18a8b08ebed67c0c4cd2a69}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1governor_a43c19dfa41213a92de3da1d0841cbf5a}{}static bool {\bfseries does\+\_\+client\+\_\+join\+\_\+workers} (const \hyperlink{classtbb_1_1internal_1_1rml_1_1tbb__client}{tbb\+::internal\+::rml\+::tbb\+\_\+client} \&client)\label{classtbb_1_1internal_1_1governor_a43c19dfa41213a92de3da1d0841cbf5a}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1governor_a686499843bf07d2bd8e730b3711041cd}{}static void \hyperlink{classtbb_1_1internal_1_1governor_a686499843bf07d2bd8e730b3711041cd}{set\+Blocking\+Terminate} (const \hyperlink{classtbb_1_1task__scheduler__init}{task\+\_\+scheduler\+\_\+init} $\ast$tsi)\label{classtbb_1_1internal_1_1governor_a686499843bf07d2bd8e730b3711041cd}
+
+\begin{DoxyCompactList}\small\item\em Must be called before init\+\_\+scheduler. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1governor_a583d8d669aa0be3f3146334dd0385302}{}static bool {\bfseries speculation\+\_\+enabled} ()\label{classtbb_1_1internal_1_1governor_a583d8d669aa0be3f3146334dd0385302}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1governor_aa7a1062e8562dc605494cf9f519f48b8}{}class {\bfseries \+\_\+\+\_\+\+T\+B\+B\+\_\+\+Init\+Once}\label{classtbb_1_1internal_1_1governor_aa7a1062e8562dc605494cf9f519f48b8}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1governor_ad285005b97c0c084157a6be5e6e0f2ee}{}class {\bfseries market}\label{classtbb_1_1internal_1_1governor_ad285005b97c0c084157a6be5e6e0f2ee}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The class handles access to the single instance of market, and to T\+L\+S to keep scheduler instances. 
+
+It also supports automatic on-\/demand initialization of the T\+B\+B scheduler. The class contains only static data members and methods. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classtbb_1_1internal_1_1governor_a5fcb171581a0f79f7370cdda26f84309}{}\index{tbb\+::internal\+::governor@{tbb\+::internal\+::governor}!init\+\_\+scheduler@{init\+\_\+scheduler}}
+\index{init\+\_\+scheduler@{init\+\_\+scheduler}!tbb\+::internal\+::governor@{tbb\+::internal\+::governor}}
+\subsubsection[{init\+\_\+scheduler(unsigned num\+\_\+threads, stack\+\_\+size\+\_\+type stack\+\_\+size, bool auto\+\_\+init=false)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf generic\+\_\+scheduler} $\ast$ tbb\+::internal\+::governor\+::init\+\_\+scheduler (
+\begin{DoxyParamCaption}
+\item[{unsigned}]{num\+\_\+threads, }
+\item[{stack\+\_\+size\+\_\+type}]{stack\+\_\+size, }
+\item[{bool}]{auto\+\_\+init = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classtbb_1_1internal_1_1governor_a5fcb171581a0f79f7370cdda26f84309}
+
+
+Processes scheduler initialization request (possibly nested) in a master thread. 
+
+If necessary creates new instance of arena and/or local scheduler. The auto\+\_\+init argument specifies if the call is due to automatic initialization. \hypertarget{classtbb_1_1internal_1_1governor_af2d5dff302cbba60bcf7becbdce2ade9}{}\index{tbb\+::internal\+::governor@{tbb\+::internal\+::governor}!local\+\_\+scheduler@{local\+\_\+scheduler}}
+\index{local\+\_\+scheduler@{local\+\_\+scheduler}!tbb\+::internal\+::governor@{tbb\+::internal\+::governor}}
+\subsubsection[{local\+\_\+scheduler()}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf generic\+\_\+scheduler}$\ast$ tbb\+::internal\+::governor\+::local\+\_\+scheduler (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{classtbb_1_1internal_1_1governor_af2d5dff302cbba60bcf7becbdce2ade9}
+
+
+Obtain the thread-\/local instance of the T\+B\+B scheduler. 
+
+If the scheduler has not been initialized yet, initialization is done automatically. Note that auto-\/initialized scheduler instance is destroyed only when its thread terminates. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/governor.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/governor.\+cpp\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/market.\+cpp\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/tbb\+\_\+main.\+cpp\end{DoxyCompactItemize}

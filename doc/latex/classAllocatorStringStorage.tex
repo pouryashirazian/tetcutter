@@ -1,0 +1,91 @@
+\hypertarget{classAllocatorStringStorage}{}\section{Allocator\+String\+Storage$<$ E, A $>$ Class Template Reference}
+\label{classAllocatorStringStorage}\index{Allocator\+String\+Storage$<$ E, A $>$@{Allocator\+String\+Storage$<$ E, A $>$}}
+Inheritance diagram for Allocator\+String\+Storage$<$ E, A $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classAllocatorStringStorage}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classAllocatorStringStorage_afe4d57372168f5504578b10aefdbb051}{}typedef E {\bfseries value\+\_\+type}\label{classAllocatorStringStorage_afe4d57372168f5504578b10aefdbb051}
+
+\item 
+\hypertarget{classAllocatorStringStorage_a9bef419c6a181673f0b556cd26b858d0}{}typedef \hyperlink{structA}{A} {\bfseries allocator\+\_\+type}\label{classAllocatorStringStorage_a9bef419c6a181673f0b556cd26b858d0}
+
+\item 
+\hypertarget{classAllocatorStringStorage_a4ddb1c8b31388ef3c0186bd9b5d454d0}{}typedef A\+::pointer {\bfseries iterator}\label{classAllocatorStringStorage_a4ddb1c8b31388ef3c0186bd9b5d454d0}
+
+\item 
+\hypertarget{classAllocatorStringStorage_ad7519e066d027616d6d7a1c221416c7e}{}typedef A\+::const\+\_\+pointer {\bfseries const\+\_\+iterator}\label{classAllocatorStringStorage_ad7519e066d027616d6d7a1c221416c7e}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classAllocatorStringStorage_a7bf47560b83ff3aa708678880a0f76b9}{}{\bfseries Allocator\+String\+Storage} (const \hyperlink{classAllocatorStringStorage}{Allocator\+String\+Storage} \&rhs)\label{classAllocatorStringStorage_a7bf47560b83ff3aa708678880a0f76b9}
+
+\item 
+\hypertarget{classAllocatorStringStorage_a9c57359c882762b99a16856bb2a2c003}{}{\bfseries Allocator\+String\+Storage} (const \hyperlink{classAllocatorStringStorage}{Allocator\+String\+Storage} \&s, flex\+\_\+string\+\_\+details\+::\+Shallow)\label{classAllocatorStringStorage_a9c57359c882762b99a16856bb2a2c003}
+
+\item 
+\hypertarget{classAllocatorStringStorage_a46bd13180f48f9544557ac0ee257d421}{}{\bfseries Allocator\+String\+Storage} (const \hyperlink{structA}{A} \&a)\label{classAllocatorStringStorage_a46bd13180f48f9544557ac0ee257d421}
+
+\item 
+\hypertarget{classAllocatorStringStorage_ad1b0e53aa7753bf1b4bd9bea9dd63b55}{}{\bfseries Allocator\+String\+Storage} (const E $\ast$s, size\+\_\+type len, const \hyperlink{structA}{A} \&a)\label{classAllocatorStringStorage_ad1b0e53aa7753bf1b4bd9bea9dd63b55}
+
+\item 
+\hypertarget{classAllocatorStringStorage_a7ea9ad4f9ea8445feadbd51c610c62fa}{}{\bfseries Allocator\+String\+Storage} (size\+\_\+type len, E c, const \hyperlink{structA}{A} \&a)\label{classAllocatorStringStorage_a7ea9ad4f9ea8445feadbd51c610c62fa}
+
+\item 
+\hypertarget{classAllocatorStringStorage_a93f38a341535c46278f590561fcf75f6}{}\hyperlink{classAllocatorStringStorage}{Allocator\+String\+Storage} \& {\bfseries operator=} (const \hyperlink{classAllocatorStringStorage}{Allocator\+String\+Storage} \&rhs)\label{classAllocatorStringStorage_a93f38a341535c46278f590561fcf75f6}
+
+\item 
+\hypertarget{classAllocatorStringStorage_aae01e5c36e752d0a2f0cf389ee6b88b1}{}iterator {\bfseries begin} ()\label{classAllocatorStringStorage_aae01e5c36e752d0a2f0cf389ee6b88b1}
+
+\item 
+\hypertarget{classAllocatorStringStorage_a6046de590fcdec09f355f57300df8a11}{}const\+\_\+iterator {\bfseries begin} () const \label{classAllocatorStringStorage_a6046de590fcdec09f355f57300df8a11}
+
+\item 
+\hypertarget{classAllocatorStringStorage_a289f90e125f9787d0645405bf74bb201}{}iterator {\bfseries end} ()\label{classAllocatorStringStorage_a289f90e125f9787d0645405bf74bb201}
+
+\item 
+\hypertarget{classAllocatorStringStorage_a9409bc3727477a898bc5bed4aad3b464}{}const\+\_\+iterator {\bfseries end} () const \label{classAllocatorStringStorage_a9409bc3727477a898bc5bed4aad3b464}
+
+\item 
+\hypertarget{classAllocatorStringStorage_a6203336a62366076f037e4469bb3bd0c}{}size\+\_\+type {\bfseries size} () const \label{classAllocatorStringStorage_a6203336a62366076f037e4469bb3bd0c}
+
+\item 
+\hypertarget{classAllocatorStringStorage_a301a5da239cbb3fb7422d26f58c8b8ae}{}size\+\_\+type {\bfseries max\+\_\+size} () const \label{classAllocatorStringStorage_a301a5da239cbb3fb7422d26f58c8b8ae}
+
+\item 
+\hypertarget{classAllocatorStringStorage_aa4d469033d41a0b5eba74f638fe69fb4}{}size\+\_\+type {\bfseries capacity} () const \label{classAllocatorStringStorage_aa4d469033d41a0b5eba74f638fe69fb4}
+
+\item 
+\hypertarget{classAllocatorStringStorage_abc05d0725beaeed74a16a487bb9d9be1}{}void {\bfseries resize} (size\+\_\+type n, E c)\label{classAllocatorStringStorage_abc05d0725beaeed74a16a487bb9d9be1}
+
+\item 
+\hypertarget{classAllocatorStringStorage_a2bc87d68b9fb22708f750af02251d9e5}{}void {\bfseries reserve} (size\+\_\+type res\+\_\+arg)\label{classAllocatorStringStorage_a2bc87d68b9fb22708f750af02251d9e5}
+
+\item 
+\hypertarget{classAllocatorStringStorage_aadf0ccbbdfaf9cec012ac99f370d4f65}{}{\footnotesize template$<$class Forward\+Iterator $>$ }\\void {\bfseries append} (Forward\+Iterator b, Forward\+Iterator e)\label{classAllocatorStringStorage_aadf0ccbbdfaf9cec012ac99f370d4f65}
+
+\item 
+\hypertarget{classAllocatorStringStorage_a39e2135b565f3984f4aba7c49b5908c2}{}void {\bfseries swap} (\hyperlink{classAllocatorStringStorage}{Allocator\+String\+Storage} \&rhs)\label{classAllocatorStringStorage_a39e2135b565f3984f4aba7c49b5908c2}
+
+\item 
+\hypertarget{classAllocatorStringStorage_ac4b99016b8ae1e57f41d56862dc9f893}{}const E $\ast$ {\bfseries c\+\_\+str} () const \label{classAllocatorStringStorage_ac4b99016b8ae1e57f41d56862dc9f893}
+
+\item 
+\hypertarget{classAllocatorStringStorage_a9fe18e9efa5b7105d36fad83ea01a5b6}{}const E $\ast$ {\bfseries data} () const \label{classAllocatorStringStorage_a9fe18e9efa5b7105d36fad83ea01a5b6}
+
+\item 
+\hypertarget{classAllocatorStringStorage_a062bf251d7a7da0bdee4e39d52fe3ad2}{}\hyperlink{structA}{A} {\bfseries get\+\_\+allocator} () const \label{classAllocatorStringStorage_a062bf251d7a7da0bdee4e39d52fe3ad2}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/flex/allocatorstringstorage.\+h\end{DoxyCompactItemize}

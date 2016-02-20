@@ -1,0 +1,72 @@
+\hypertarget{structharness__counting__sender}{}\section{harness\+\_\+counting\+\_\+sender$<$ T $>$ Struct Template Reference}
+\label{structharness__counting__sender}\index{harness\+\_\+counting\+\_\+sender$<$ T $>$@{harness\+\_\+counting\+\_\+sender$<$ T $>$}}
+
+
+Counts the number of puts received.  
+
+
+
+
+{\ttfamily \#include $<$harness\+\_\+graph.\+h$>$}
+
+Inheritance diagram for harness\+\_\+counting\+\_\+sender$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{structharness__counting__sender}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structharness__counting__sender_a851985838084349c06aed2cf883e3f8b}{}typedef tbb\+::flow\+::receiver$<$ T $>$ {\bfseries successor\+\_\+type}\label{structharness__counting__sender_a851985838084349c06aed2cf883e3f8b}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structharness__counting__sender_a81ed0e41dd400629cfe35b195d24a1dc}{}{\bfseries harness\+\_\+counting\+\_\+sender} (size\+\_\+t limit)\label{structharness__counting__sender_a81ed0e41dd400629cfe35b195d24a1dc}
+
+\item 
+\hypertarget{structharness__counting__sender_a30584d64385152fabf6559ad687ed447}{}bool {\bfseries register\+\_\+successor} (successor\+\_\+type \&r)\label{structharness__counting__sender_a30584d64385152fabf6559ad687ed447}
+
+\item 
+\hypertarget{structharness__counting__sender_a2771329509d72ca42e93694e8802c415}{}bool {\bfseries remove\+\_\+successor} (successor\+\_\+type \&r)\label{structharness__counting__sender_a2771329509d72ca42e93694e8802c415}
+
+\item 
+\hypertarget{structharness__counting__sender_a783867b30c65cdd280f51b99eec7dcf2}{}bool {\bfseries try\+\_\+get} (T \&v)\label{structharness__counting__sender_a783867b30c65cdd280f51b99eec7dcf2}
+
+\item 
+\hypertarget{structharness__counting__sender_afac56be0e014c8276714f61840a22ac0}{}bool {\bfseries try\+\_\+put\+\_\+once} ()\label{structharness__counting__sender_afac56be0e014c8276714f61840a22ac0}
+
+\item 
+\hypertarget{structharness__counting__sender_afa17253c96f035c450d33281c4e8fc66}{}void {\bfseries try\+\_\+put\+\_\+until\+\_\+false} ()\label{structharness__counting__sender_afa17253c96f035c450d33281c4e8fc66}
+
+\item 
+\hypertarget{structharness__counting__sender_a9e9a671123c7d8156b9634ae4ba04e54}{}void {\bfseries try\+\_\+put\+\_\+until\+\_\+limit} ()\label{structharness__counting__sender_a9e9a671123c7d8156b9634ae4ba04e54}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structharness__counting__sender_a3675486ad2d706e8a94c544f343bf2bc}{}\hyperlink{structtbb_1_1atomic}{tbb\+::atomic}$<$ successor\+\_\+type $\ast$ $>$ {\bfseries my\+\_\+receiver}\label{structharness__counting__sender_a3675486ad2d706e8a94c544f343bf2bc}
+
+\item 
+\hypertarget{structharness__counting__sender_ab56684e3e1651d590d3f80df141b86c0}{}\hyperlink{structtbb_1_1atomic}{tbb\+::atomic}$<$ size\+\_\+t $>$ {\bfseries my\+\_\+count}\label{structharness__counting__sender_ab56684e3e1651d590d3f80df141b86c0}
+
+\item 
+\hypertarget{structharness__counting__sender_a11384c3161f511b23e4680801a9733e0}{}\hyperlink{structtbb_1_1atomic}{tbb\+::atomic}$<$ size\+\_\+t $>$ {\bfseries my\+\_\+received}\label{structharness__counting__sender_a11384c3161f511b23e4680801a9733e0}
+
+\item 
+\hypertarget{structharness__counting__sender_a44005b4fd5333d2dfee7bba98c153855}{}size\+\_\+t {\bfseries my\+\_\+limit}\label{structharness__counting__sender_a44005b4fd5333d2dfee7bba98c153855}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$struct harness\+\_\+counting\+\_\+sender$<$ T $>$}
+
+Counts the number of puts received. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/test/harness\+\_\+graph.\+h\end{DoxyCompactItemize}

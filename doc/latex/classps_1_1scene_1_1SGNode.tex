@@ -1,0 +1,119 @@
+\hypertarget{classps_1_1scene_1_1SGNode}{}\section{ps\+:\+:scene\+:\+:S\+G\+Node Class Reference}
+\label{classps_1_1scene_1_1SGNode}\index{ps\+::scene\+::\+S\+G\+Node@{ps\+::scene\+::\+S\+G\+Node}}
+
+
+The Scene\+Node class is an element in the scenegraph can have effect and transformation associated with.  
+
+
+
+
+{\ttfamily \#include $<$sgnode.\+h$>$}
+
+Inheritance diagram for ps\+:\+:scene\+:\+:S\+G\+Node\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.447028cm]{classps_1_1scene_1_1SGNode}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_a0d163b007bfe81737ecca9136817d0ee}{}{\bfseries S\+G\+Node} (const string \&name, bool visible=true)\label{classps_1_1scene_1_1SGNode_a0d163b007bfe81737ecca9136817d0ee}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_a6e75d7d271c4a97084561a01b1861061}{}virtual void {\bfseries draw} ()=0\label{classps_1_1scene_1_1SGNode_a6e75d7d271c4a97084561a01b1861061}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_a0d3ba806dc24ec372352f72b3eb1cd1d}{}virtual void {\bfseries draw\+B\+Box} () const \label{classps_1_1scene_1_1SGNode_a0d3ba806dc24ec372352f72b3eb1cd1d}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_a098937b04b4eb9ca87e592406c103c5b}{}virtual void {\bfseries timestep} ()\label{classps_1_1scene_1_1SGNode_a098937b04b4eb9ca87e592406c103c5b}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_a77853b8d93bc3aa8d38ef2ca74cb953f}{}void {\bfseries set\+A\+A\+B\+B} (const \hyperlink{classps_1_1base_1_1AABB}{A\+A\+B\+B} \&box)\label{classps_1_1scene_1_1SGNode_a77853b8d93bc3aa8d38ef2ca74cb953f}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_ab400b91c61a9f06439fa5681f9184736}{}virtual \hyperlink{classps_1_1base_1_1AABB}{A\+A\+B\+B} {\bfseries aabb} () const \label{classps_1_1scene_1_1SGNode_ab400b91c61a9f06439fa5681f9184736}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_af5efe8ab82d5a51cb5175f8bb56a5a15}{}virtual int {\bfseries intersect} (const \hyperlink{classps_1_1base_1_1Ray}{Ray} \&r)\label{classps_1_1scene_1_1SGNode_af5efe8ab82d5a51cb5175f8bb56a5a15}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_a778d3daa84907e37f48e600fb0cc5301}{}string {\bfseries name} () const \label{classps_1_1scene_1_1SGNode_a778d3daa84907e37f48e600fb0cc5301}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_a663dff07124b0ab20870a33b4c393e6e}{}void {\bfseries set\+Name} (const string \&name)\label{classps_1_1scene_1_1SGNode_a663dff07124b0ab20870a33b4c393e6e}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_a313af13aad934c6f61c05c0cc76f0514}{}bool {\bfseries is\+Visible} () const \label{classps_1_1scene_1_1SGNode_a313af13aad934c6f61c05c0cc76f0514}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_a729e7c8652b68af6a1daa9bc7c49461c}{}void {\bfseries set\+Visible} (bool visible)\label{classps_1_1scene_1_1SGNode_a729e7c8652b68af6a1daa9bc7c49461c}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_ad887fe4547b56e8a18664e6755ee6460}{}bool {\bfseries is\+Animate} () const \label{classps_1_1scene_1_1SGNode_ad887fe4547b56e8a18664e6755ee6460}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_ab7556b1a929ec8430af765570df35b86}{}void {\bfseries set\+Animate} (bool animate)\label{classps_1_1scene_1_1SGNode_ab7556b1a929ec8430af765570df35b86}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_a90d373c716ad744b3314741383df156d}{}bool {\bfseries is\+Selected} () const \label{classps_1_1scene_1_1SGNode_a90d373c716ad744b3314741383df156d}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_a646ecc45f3317fcb8327f4d6879f00d4}{}void {\bfseries set\+Selected} (bool selected)\label{classps_1_1scene_1_1SGNode_a646ecc45f3317fcb8327f4d6879f00d4}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_a37b24105ff1343f7bd4a3cbf803dd06e}{}Smart\+Ptr\+S\+G\+Effect {\bfseries effect} () const \label{classps_1_1scene_1_1SGNode_a37b24105ff1343f7bd4a3cbf803dd06e}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_a68ca301dfa5ab6d390ca462fbba605e8}{}void {\bfseries set\+Effect} (const Smart\+Ptr\+S\+G\+Effect \&sp\+Effect)\label{classps_1_1scene_1_1SGNode_a68ca301dfa5ab6d390ca462fbba605e8}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_ab0423fcc76b2dd09bb63c841961660b2}{}Smart\+Ptr\+S\+G\+Transform {\bfseries transform} () const \label{classps_1_1scene_1_1SGNode_ab0423fcc76b2dd09bb63c841961660b2}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_add7bf24c519c2d8bacdb2d1e845091b9}{}void {\bfseries set\+Transform} (const Smart\+Ptr\+S\+G\+Transform \&rhs)\label{classps_1_1scene_1_1SGNode_add7bf24c519c2d8bacdb2d1e845091b9}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_ae6e30d330b583ea8d896b684f2250ea3}{}void {\bfseries reset\+Transform} ()\label{classps_1_1scene_1_1SGNode_ae6e30d330b583ea8d896b684f2250ea3}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_abe81619307d1ad4a16e6c3c629e114b8}{}bool {\bfseries read} ()\label{classps_1_1scene_1_1SGNode_abe81619307d1ad4a16e6c3c629e114b8}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_a3f4c5597ed44a634681a871d267a36f7}{}bool {\bfseries write} ()\label{classps_1_1scene_1_1SGNode_a3f4c5597ed44a634681a871d267a36f7}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_a6f34ae5f7e3e364a097f38052e312d14}{}\hyperlink{classps_1_1base_1_1AABB}{A\+A\+B\+B} {\bfseries m\+\_\+aabb}\label{classps_1_1scene_1_1SGNode_a6f34ae5f7e3e364a097f38052e312d14}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_ab138751ca18f8c4abbd659131510987f}{}string {\bfseries m\+\_\+name}\label{classps_1_1scene_1_1SGNode_ab138751ca18f8c4abbd659131510987f}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_acf56b812a560048ac80c5b8af5e83554}{}bool {\bfseries m\+\_\+visible}\label{classps_1_1scene_1_1SGNode_acf56b812a560048ac80c5b8af5e83554}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_a2ce4ff6c162645183409a6c9a7130c00}{}bool {\bfseries m\+\_\+animate}\label{classps_1_1scene_1_1SGNode_a2ce4ff6c162645183409a6c9a7130c00}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_a6596ed2743cf693a8707ff61a03203e8}{}bool {\bfseries m\+\_\+selected}\label{classps_1_1scene_1_1SGNode_a6596ed2743cf693a8707ff61a03203e8}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_a4a7f4fc053955264adcafe62903ae94e}{}std\+::shared\+\_\+ptr$<$ \hyperlink{classps_1_1scene_1_1SGEffect}{S\+G\+Effect} $>$ {\bfseries m\+\_\+sp\+Effect}\label{classps_1_1scene_1_1SGNode_a4a7f4fc053955264adcafe62903ae94e}
+
+\item 
+\hypertarget{classps_1_1scene_1_1SGNode_ac3ee6a415828679621309e0a8db3f0e8}{}std\+::shared\+\_\+ptr$<$ \hyperlink{classps_1_1scene_1_1SGTransform}{S\+G\+Transform} $>$ {\bfseries m\+\_\+sp\+Transform}\label{classps_1_1scene_1_1SGNode_ac3ee6a415828679621309e0a8db3f0e8}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The Scene\+Node class is an element in the scenegraph can have effect and transformation associated with. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/scene/sgnode.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/scene/sgnode.\+cpp\end{DoxyCompactItemize}

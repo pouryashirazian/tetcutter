@@ -1,0 +1,39 @@
+\hypertarget{classLoki_1_1SingletonHolder}{}\section{Loki\+:\+:Singleton\+Holder$<$ T, Creation\+Policy, Lifetime\+Policy, Threading\+Model, Mutex\+Policy $>$ Class Template Reference}
+\label{classLoki_1_1SingletonHolder}\index{Loki\+::\+Singleton\+Holder$<$ T, Creation\+Policy, Lifetime\+Policy, Threading\+Model, Mutex\+Policy $>$@{Loki\+::\+Singleton\+Holder$<$ T, Creation\+Policy, Lifetime\+Policy, Threading\+Model, Mutex\+Policy $>$}}
+
+
+{\ttfamily \#include $<$Singleton.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1SingletonHolder_a90400cb32897f9942958bece12165136}{}typedef T \hyperlink{classLoki_1_1SingletonHolder_a90400cb32897f9942958bece12165136}{Object\+Type}\label{classLoki_1_1SingletonHolder_a90400cb32897f9942958bece12165136}
+
+\begin{DoxyCompactList}\small\item\em Type of the singleton object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLoki_1_1SingletonHolder_a43e4ea5cb6291a8bb14eb7cdc2bcb7bf}{}static T \& \hyperlink{classLoki_1_1SingletonHolder_a43e4ea5cb6291a8bb14eb7cdc2bcb7bf}{Instance} ()\label{classLoki_1_1SingletonHolder_a43e4ea5cb6291a8bb14eb7cdc2bcb7bf}
+
+\begin{DoxyCompactList}\small\item\em Returns a reference to singleton object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T, template$<$ class $>$ class Creation\+Policy = Create\+Using\+New, template$<$ class $>$ class Lifetime\+Policy = Default\+Lifetime, template$<$ class, class $>$ class Threading\+Model = L\+O\+K\+I\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+T\+H\+R\+E\+A\+D\+I\+N\+G\+\_\+\+N\+O\+\_\+\+O\+B\+J\+\_\+\+L\+E\+V\+E\+L, class Mutex\+Policy = L\+O\+K\+I\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+M\+U\+T\+E\+X$>$class Loki\+::\+Singleton\+Holder$<$ T, Creation\+Policy, Lifetime\+Policy, Threading\+Model, Mutex\+Policy $>$}
+
+Provides \hyperlink{classLoki_1_1Singleton}{Singleton} amenities for a type T To protect that type from spurious instantiations, you have to protect it yourself.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Creation\+Policy} & Creation policy, default\+: \hyperlink{structLoki_1_1CreateUsingNew}{Create\+Using\+New} \\
+\hline
+{\em Lifetime\+Policy} & Lifetime policy, default\+: \hyperlink{structLoki_1_1DefaultLifetime}{Default\+Lifetime}, \\
+\hline
+{\em Threading\+Model} & Threading policy, default\+: L\+O\+K\+I\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+T\+H\+R\+E\+A\+D\+I\+N\+G\+\_\+\+N\+O\+\_\+\+O\+B\+J\+\_\+\+L\+E\+V\+E\+L \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Singleton.\+h\end{DoxyCompactItemize}

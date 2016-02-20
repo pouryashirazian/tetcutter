@@ -1,0 +1,63 @@
+\hypertarget{structharness__mapped__receiver}{}\section{harness\+\_\+mapped\+\_\+receiver$<$ T $>$ Struct Template Reference}
+\label{structharness__mapped__receiver}\index{harness\+\_\+mapped\+\_\+receiver$<$ T $>$@{harness\+\_\+mapped\+\_\+receiver$<$ T $>$}}
+
+
+Counts the number of puts received.  
+
+
+
+
+{\ttfamily \#include $<$harness\+\_\+graph.\+h$>$}
+
+Inheritance diagram for harness\+\_\+mapped\+\_\+receiver$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{structharness__mapped__receiver}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structharness__mapped__receiver_af7581a6f98d140b4d704e857f3993aa1}{}typedef tbb\+::concurrent\+\_\+unordered\+\_\+map$<$ T, \hyperlink{structtbb_1_1atomic}{tbb\+::atomic}$<$ size\+\_\+t $>$ $>$ {\bfseries map\+\_\+type}\label{structharness__mapped__receiver_af7581a6f98d140b4d704e857f3993aa1}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structharness__mapped__receiver_a2a9cf0be0b8460ab0c170caab114408d}{}void {\bfseries initialize\+\_\+map} (const T \&m, size\+\_\+t c)\label{structharness__mapped__receiver_a2a9cf0be0b8460ab0c170caab114408d}
+
+\item 
+\hypertarget{structharness__mapped__receiver_a38220dd5ec06644199cc5e37bd70296f}{}tbb\+::task $\ast$ {\bfseries try\+\_\+put\+\_\+task} (const T \&t)\label{structharness__mapped__receiver_a38220dd5ec06644199cc5e37bd70296f}
+
+\item 
+\hypertarget{structharness__mapped__receiver_ab968af1265fa735944c23ef33f937580}{}void {\bfseries validate} ()\label{structharness__mapped__receiver_ab968af1265fa735944c23ef33f937580}
+
+\item 
+\hypertarget{structharness__mapped__receiver_a9c7642aad9b9fd0af7ff4d8f608928d1}{}void {\bfseries reset\+\_\+receiver} ()\label{structharness__mapped__receiver_a9c7642aad9b9fd0af7ff4d8f608928d1}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structharness__mapped__receiver_a635b2b62fa469c6d3f0e985b49d2daab}{}\hyperlink{structtbb_1_1atomic}{tbb\+::atomic}$<$ size\+\_\+t $>$ {\bfseries my\+\_\+count}\label{structharness__mapped__receiver_a635b2b62fa469c6d3f0e985b49d2daab}
+
+\item 
+\hypertarget{structharness__mapped__receiver_a2b70063e4d0dbf671f7b2caa1406a305}{}T {\bfseries max\+\_\+value}\label{structharness__mapped__receiver_a2b70063e4d0dbf671f7b2caa1406a305}
+
+\item 
+\hypertarget{structharness__mapped__receiver_ac13c6ae19702298159c11df7041a9de0}{}size\+\_\+t {\bfseries num\+\_\+copies}\label{structharness__mapped__receiver_ac13c6ae19702298159c11df7041a9de0}
+
+\item 
+\hypertarget{structharness__mapped__receiver_a06317e3c8de4ff6b01f975c8f2573f0e}{}map\+\_\+type $\ast$ {\bfseries my\+\_\+map}\label{structharness__mapped__receiver_a06317e3c8de4ff6b01f975c8f2573f0e}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$struct harness\+\_\+mapped\+\_\+receiver$<$ T $>$}
+
+Counts the number of puts received. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/test/harness\+\_\+graph.\+h\end{DoxyCompactItemize}

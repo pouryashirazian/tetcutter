@@ -1,0 +1,22 @@
+\hypertarget{structLoki_1_1Forbidden__conversion}{}\section{Loki\+:\+:Forbidden\+\_\+conversion$<$ typename $>$ Struct Template Reference}
+\label{structLoki_1_1Forbidden__conversion}\index{Loki\+::\+Forbidden\+\_\+conversion$<$ typename $>$@{Loki\+::\+Forbidden\+\_\+conversion$<$ typename $>$}}
+
+
+{\ttfamily \#include $<$Safe\+Bits.\+h$>$}
+
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename$>$struct Loki\+::\+Forbidden\+\_\+conversion$<$ typename $>$}
+
+\begin{DoxyParagraph}{Non-\/\+Templated Initialization.}
+Not all compilers support template member functions where the template arguments are not deduced but explicitly specified. For these broken compilers, a non-\/template make\+\_\+bit\+\_\+const() function is provided instead of the template one. The only downside is that instead of compile-\/time checking of the index argument, it does runtime checking. 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Forbidding Conversions.}
+This incomplete type prevents compilers from instantiating templates for type conversions which should not happen. This incomplete type must be a template\+: if the type is incomplete at the point of template definition, the template is illegal (although the standard allows compilers to accept or reject such code, §14.6/, so some compilers will not issue diagnostics unless template is instantiated). The standard-\/compliant way is to defer binding to the point of instantiation by making the incomplete type itself a template. 
+\end{DoxyParagraph}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/include/loki/Safe\+Bits.\+h\end{DoxyCompactItemize}

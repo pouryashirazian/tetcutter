@@ -1,0 +1,537 @@
+\hypertarget{classtbb_1_1concurrent__vector}{}\section{tbb\+:\+:concurrent\+\_\+vector$<$ T $>$ Class Template Reference}
+\label{classtbb_1_1concurrent__vector}\index{tbb\+::concurrent\+\_\+vector$<$ T $>$@{tbb\+::concurrent\+\_\+vector$<$ T $>$}}
+
+
+Concurrent vector container.  
+
+
+
+
+{\ttfamily \#include $<$concurrent\+\_\+vector.\+h$>$}
+
+Inheritance diagram for tbb\+:\+:concurrent\+\_\+vector$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.866667cm]{classtbb_1_1concurrent__vector}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_a3c7cfa676613fd96c89f2e4c7c8135ea}{}typedef internal\+::concurrent\+\_\+vector\+\_\+base\+\_\+v3\+::size\+\_\+type {\bfseries size\+\_\+type}\label{classtbb_1_1concurrent__vector_a3c7cfa676613fd96c89f2e4c7c8135ea}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_a78223f304e2fdb0f6cebcc282a1a1589}{}typedef internal\+::allocator\+\_\+base$<$ T, \hyperlink{structA}{A} $>$\+::allocator\+\_\+type {\bfseries allocator\+\_\+type}\label{classtbb_1_1concurrent__vector_a78223f304e2fdb0f6cebcc282a1a1589}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_ab003d639b66a437b93a432dfa8d5019d}{}typedef T {\bfseries value\+\_\+type}\label{classtbb_1_1concurrent__vector_ab003d639b66a437b93a432dfa8d5019d}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_a6a98de52958f58ff7519a8ced40ce0b8}{}typedef ptrdiff\+\_\+t {\bfseries difference\+\_\+type}\label{classtbb_1_1concurrent__vector_a6a98de52958f58ff7519a8ced40ce0b8}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_a8fa7c28f1260fe6726ec6c845754d429}{}typedef T \& {\bfseries reference}\label{classtbb_1_1concurrent__vector_a8fa7c28f1260fe6726ec6c845754d429}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_a32b8a750f2692c1fc5a3d9995400277b}{}typedef const T \& {\bfseries const\+\_\+reference}\label{classtbb_1_1concurrent__vector_a32b8a750f2692c1fc5a3d9995400277b}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_a88fd88a03e5ac2e2338107cac6d62272}{}typedef T $\ast$ {\bfseries pointer}\label{classtbb_1_1concurrent__vector_a88fd88a03e5ac2e2338107cac6d62272}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_a4aef6c777fe61fb85708f5e276498c6e}{}typedef const T $\ast$ {\bfseries const\+\_\+pointer}\label{classtbb_1_1concurrent__vector_a4aef6c777fe61fb85708f5e276498c6e}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_a1d8a0e7add13ae70d1f0193cd2c64b91}{}typedef internal\+::vector\+\_\+iterator$<$ \hyperlink{classtbb_1_1concurrent__vector}{concurrent\+\_\+vector}, T $>$ {\bfseries iterator}\label{classtbb_1_1concurrent__vector_a1d8a0e7add13ae70d1f0193cd2c64b91}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_ad0c6fa6c0bc90835d96de2aad2351ed6}{}typedef internal\+::vector\+\_\+iterator$<$ \hyperlink{classtbb_1_1concurrent__vector}{concurrent\+\_\+vector}, const T $>$ {\bfseries const\+\_\+iterator}\label{classtbb_1_1concurrent__vector_ad0c6fa6c0bc90835d96de2aad2351ed6}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_a3312c530fa816ebee6693b27ab4bc983}{}typedef std\+::reverse\+\_\+iterator$<$ iterator $>$ {\bfseries reverse\+\_\+iterator}\label{classtbb_1_1concurrent__vector_a3312c530fa816ebee6693b27ab4bc983}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_aff6be5a78f8959dc548fdc7b1876cbff}{}typedef std\+::reverse\+\_\+iterator$<$ const\+\_\+iterator $>$ {\bfseries const\+\_\+reverse\+\_\+iterator}\label{classtbb_1_1concurrent__vector_aff6be5a78f8959dc548fdc7b1876cbff}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_a7aedde01d4998b65c4fdb36ea4c9b9ce}{}typedef generic\+\_\+range\+\_\+type$<$ iterator $>$ {\bfseries range\+\_\+type}\label{classtbb_1_1concurrent__vector_a7aedde01d4998b65c4fdb36ea4c9b9ce}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_af2f8e0834cbaf80e43bad6be140a03c1}{}typedef generic\+\_\+range\+\_\+type$<$ const\+\_\+iterator $>$ {\bfseries const\+\_\+range\+\_\+type}\label{classtbb_1_1concurrent__vector_af2f8e0834cbaf80e43bad6be140a03c1}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_a8fa7c28f1260fe6726ec6c845754d429}{}typedef T \& {\bfseries reference}\label{classtbb_1_1concurrent__vector_a8fa7c28f1260fe6726ec6c845754d429}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_a32b8a750f2692c1fc5a3d9995400277b}{}typedef const T \& {\bfseries const\+\_\+reference}\label{classtbb_1_1concurrent__vector_a32b8a750f2692c1fc5a3d9995400277b}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_ab003d639b66a437b93a432dfa8d5019d}{}typedef T {\bfseries value\+\_\+type}\label{classtbb_1_1concurrent__vector_ab003d639b66a437b93a432dfa8d5019d}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_a6a98de52958f58ff7519a8ced40ce0b8}{}typedef ptrdiff\+\_\+t {\bfseries difference\+\_\+type}\label{classtbb_1_1concurrent__vector_a6a98de52958f58ff7519a8ced40ce0b8}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_a1d8a0e7add13ae70d1f0193cd2c64b91}{}typedef internal\+::vector\+\_\+iterator$<$ \hyperlink{classtbb_1_1concurrent__vector}{concurrent\+\_\+vector}, T $>$ {\bfseries iterator}\label{classtbb_1_1concurrent__vector_a1d8a0e7add13ae70d1f0193cd2c64b91}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_ad0c6fa6c0bc90835d96de2aad2351ed6}{}typedef internal\+::vector\+\_\+iterator$<$ \hyperlink{classtbb_1_1concurrent__vector}{concurrent\+\_\+vector}, const T $>$ {\bfseries const\+\_\+iterator}\label{classtbb_1_1concurrent__vector_ad0c6fa6c0bc90835d96de2aad2351ed6}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_a3312c530fa816ebee6693b27ab4bc983}{}typedef std\+::reverse\+\_\+iterator$<$ iterator $>$ {\bfseries reverse\+\_\+iterator}\label{classtbb_1_1concurrent__vector_a3312c530fa816ebee6693b27ab4bc983}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_aff6be5a78f8959dc548fdc7b1876cbff}{}typedef std\+::reverse\+\_\+iterator$<$ const\+\_\+iterator $>$ {\bfseries const\+\_\+reverse\+\_\+iterator}\label{classtbb_1_1concurrent__vector_aff6be5a78f8959dc548fdc7b1876cbff}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_a7aedde01d4998b65c4fdb36ea4c9b9ce}{}typedef generic\+\_\+range\+\_\+type$<$ iterator $>$ {\bfseries range\+\_\+type}\label{classtbb_1_1concurrent__vector_a7aedde01d4998b65c4fdb36ea4c9b9ce}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_af2f8e0834cbaf80e43bad6be140a03c1}{}typedef generic\+\_\+range\+\_\+type$<$ const\+\_\+iterator $>$ {\bfseries const\+\_\+range\+\_\+type}\label{classtbb_1_1concurrent__vector_af2f8e0834cbaf80e43bad6be140a03c1}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_af063f99de453079891c5a9e7e04ac633}{}\hyperlink{classtbb_1_1concurrent__vector_af063f99de453079891c5a9e7e04ac633}{concurrent\+\_\+vector} (const allocator\+\_\+type \&a=allocator\+\_\+type())\label{classtbb_1_1concurrent__vector_af063f99de453079891c5a9e7e04ac633}
+
+\begin{DoxyCompactList}\small\item\em Construct empty vector. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a4b3346a8f1f904be6d83447b38684fbe}{}\hyperlink{classtbb_1_1concurrent__vector_a4b3346a8f1f904be6d83447b38684fbe}{concurrent\+\_\+vector} (const \hyperlink{classtbb_1_1concurrent__vector}{concurrent\+\_\+vector} \&\hyperlink{structvector}{vector}, const allocator\+\_\+type \&a=allocator\+\_\+type())\label{classtbb_1_1concurrent__vector_a4b3346a8f1f904be6d83447b38684fbe}
+
+\begin{DoxyCompactList}\small\item\em Copying constructor. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_ad6e96b766551ebe441e2b1bb7ea32abe}{}{\footnotesize template$<$class M $>$ }\\\hyperlink{classtbb_1_1concurrent__vector_ad6e96b766551ebe441e2b1bb7ea32abe}{concurrent\+\_\+vector} (const \hyperlink{classtbb_1_1concurrent__vector}{concurrent\+\_\+vector}$<$ T, M $>$ \&\hyperlink{structvector}{vector}, const allocator\+\_\+type \&a=allocator\+\_\+type())\label{classtbb_1_1concurrent__vector_ad6e96b766551ebe441e2b1bb7ea32abe}
+
+\begin{DoxyCompactList}\small\item\em Copying constructor for vector with different allocator type. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a2ec1559f644381afec01494544994811}{}\hyperlink{classtbb_1_1concurrent__vector_a2ec1559f644381afec01494544994811}{concurrent\+\_\+vector} (size\+\_\+type n)\label{classtbb_1_1concurrent__vector_a2ec1559f644381afec01494544994811}
+
+\begin{DoxyCompactList}\small\item\em Construction with initial size specified by argument n. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a9eec9e1f70f4c6512c28c0b13448ed7d}{}\hyperlink{classtbb_1_1concurrent__vector_a9eec9e1f70f4c6512c28c0b13448ed7d}{concurrent\+\_\+vector} (size\+\_\+type n, const\+\_\+reference t, const allocator\+\_\+type \&a=allocator\+\_\+type())\label{classtbb_1_1concurrent__vector_a9eec9e1f70f4c6512c28c0b13448ed7d}
+
+\begin{DoxyCompactList}\small\item\em Construction with initial size specified by argument n, initialization by copying of t, and given allocator instance. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_adbec959c61dad09836e8e296c80fbd6f}{}{\footnotesize template$<$class I $>$ }\\\hyperlink{classtbb_1_1concurrent__vector_adbec959c61dad09836e8e296c80fbd6f}{concurrent\+\_\+vector} (I first, I last, const allocator\+\_\+type \&a=allocator\+\_\+type())\label{classtbb_1_1concurrent__vector_adbec959c61dad09836e8e296c80fbd6f}
+
+\begin{DoxyCompactList}\small\item\em Construction with copying iteration range and given allocator instance. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a61eb15b454034c9ec9c912dd0dd2ad4b}{}\hyperlink{classtbb_1_1concurrent__vector}{concurrent\+\_\+vector} \& \hyperlink{classtbb_1_1concurrent__vector_a61eb15b454034c9ec9c912dd0dd2ad4b}{operator=} (const \hyperlink{classtbb_1_1concurrent__vector}{concurrent\+\_\+vector} \&\hyperlink{structvector}{vector})\label{classtbb_1_1concurrent__vector_a61eb15b454034c9ec9c912dd0dd2ad4b}
+
+\begin{DoxyCompactList}\small\item\em Assignment. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a166ef89ae2fbb4879487ecc8627f2fca}{}{\footnotesize template$<$class M $>$ }\\\hyperlink{classtbb_1_1concurrent__vector}{concurrent\+\_\+vector} \& \hyperlink{classtbb_1_1concurrent__vector_a166ef89ae2fbb4879487ecc8627f2fca}{operator=} (const \hyperlink{classtbb_1_1concurrent__vector}{concurrent\+\_\+vector}$<$ T, M $>$ \&\hyperlink{structvector}{vector})\label{classtbb_1_1concurrent__vector_a166ef89ae2fbb4879487ecc8627f2fca}
+
+\begin{DoxyCompactList}\small\item\em Assignment for vector with different allocator type. \end{DoxyCompactList}\item 
+iterator \hyperlink{classtbb_1_1concurrent__vector_af0b44ba95fafde1b92148a2ef4a5568d}{grow\+\_\+by} (size\+\_\+type delta)
+\begin{DoxyCompactList}\small\item\em Grow by \char`\"{}delta\char`\"{} elements. \end{DoxyCompactList}\item 
+iterator \hyperlink{classtbb_1_1concurrent__vector_abba25587a5705b02568d0212071f0799}{grow\+\_\+by} (size\+\_\+type delta, const\+\_\+reference t)
+\begin{DoxyCompactList}\small\item\em Grow by \char`\"{}delta\char`\"{} elements using copying constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename I $>$ }\\iterator \hyperlink{classtbb_1_1concurrent__vector_a229978f56ee9bcb8fe721587385d62a9}{grow\+\_\+by} (I first, I last)
+\item 
+iterator \hyperlink{classtbb_1_1concurrent__vector_a0318df2adb8e0a9c0af964ca7659e1d6}{grow\+\_\+to\+\_\+at\+\_\+least} (size\+\_\+type n)
+\begin{DoxyCompactList}\small\item\em Append minimal sequence of elements such that \hyperlink{classtbb_1_1concurrent__vector_a6cac13e24ff09a230f543ff5f523ee7c}{size()}$>$=n. \end{DoxyCompactList}\item 
+iterator \hyperlink{classtbb_1_1concurrent__vector_a69b4780920c11bd372c77cb8f240b009}{grow\+\_\+to\+\_\+at\+\_\+least} (size\+\_\+type n, const\+\_\+reference t)
+\item 
+iterator \hyperlink{classtbb_1_1concurrent__vector_a74722c89e45bd3291eea34575daf4f39}{push\+\_\+back} (const\+\_\+reference item)
+\begin{DoxyCompactList}\small\item\em Push item. \end{DoxyCompactList}\item 
+reference \hyperlink{classtbb_1_1concurrent__vector_ac70975c8f71b9f8acbda50188c5b4f5d}{operator\mbox{[}$\,$\mbox{]}} (size\+\_\+type index)
+\begin{DoxyCompactList}\small\item\em Get reference to element at given index. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_ab233686fd3c55cdca599dbb35171fabe}{}const\+\_\+reference \hyperlink{classtbb_1_1concurrent__vector_ab233686fd3c55cdca599dbb35171fabe}{operator\mbox{[}$\,$\mbox{]}} (size\+\_\+type index) const \label{classtbb_1_1concurrent__vector_ab233686fd3c55cdca599dbb35171fabe}
+
+\begin{DoxyCompactList}\small\item\em Get const reference to element at given index. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a0e47a4c0a8fe53465b7c4a744601a755}{}reference \hyperlink{classtbb_1_1concurrent__vector_a0e47a4c0a8fe53465b7c4a744601a755}{at} (size\+\_\+type index)\label{classtbb_1_1concurrent__vector_a0e47a4c0a8fe53465b7c4a744601a755}
+
+\begin{DoxyCompactList}\small\item\em Get reference to element at given index. Throws exceptions on errors. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a5e155eeafe2bf2a8d7d0297024c0d161}{}const\+\_\+reference \hyperlink{classtbb_1_1concurrent__vector_a5e155eeafe2bf2a8d7d0297024c0d161}{at} (size\+\_\+type index) const \label{classtbb_1_1concurrent__vector_a5e155eeafe2bf2a8d7d0297024c0d161}
+
+\begin{DoxyCompactList}\small\item\em Get const reference to element at given index. Throws exceptions on errors. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a6c6a75852f0619ae3ed382673abf4055}{}range\+\_\+type \hyperlink{classtbb_1_1concurrent__vector_a6c6a75852f0619ae3ed382673abf4055}{range} (size\+\_\+t grainsize=1)\label{classtbb_1_1concurrent__vector_a6c6a75852f0619ae3ed382673abf4055}
+
+\begin{DoxyCompactList}\small\item\em Get range for iterating with parallel algorithms. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_af9f4b6010310b4e6780ed77384f74e85}{}const\+\_\+range\+\_\+type \hyperlink{classtbb_1_1concurrent__vector_af9f4b6010310b4e6780ed77384f74e85}{range} (size\+\_\+t grainsize=1) const \label{classtbb_1_1concurrent__vector_af9f4b6010310b4e6780ed77384f74e85}
+
+\begin{DoxyCompactList}\small\item\em Get const range for iterating with parallel algorithms. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a6cac13e24ff09a230f543ff5f523ee7c}{}size\+\_\+type \hyperlink{classtbb_1_1concurrent__vector_a6cac13e24ff09a230f543ff5f523ee7c}{size} () const \label{classtbb_1_1concurrent__vector_a6cac13e24ff09a230f543ff5f523ee7c}
+
+\begin{DoxyCompactList}\small\item\em Return size of vector. It may include elements under construction. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a3747f2cbd9fc6033f34a6fc8ef6b932b}{}bool \hyperlink{classtbb_1_1concurrent__vector_a3747f2cbd9fc6033f34a6fc8ef6b932b}{empty} () const \label{classtbb_1_1concurrent__vector_a3747f2cbd9fc6033f34a6fc8ef6b932b}
+
+\begin{DoxyCompactList}\small\item\em Return false if vector is not empty or has elements under construction at least. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_ac0d13882cdbc4d838b383979749cd2f6}{}size\+\_\+type \hyperlink{classtbb_1_1concurrent__vector_ac0d13882cdbc4d838b383979749cd2f6}{capacity} () const \label{classtbb_1_1concurrent__vector_ac0d13882cdbc4d838b383979749cd2f6}
+
+\begin{DoxyCompactList}\small\item\em Maximum size to which array can grow without allocating more memory. Concurrent allocations are not included in the value. \end{DoxyCompactList}\item 
+void \hyperlink{classtbb_1_1concurrent__vector_a24af110c649d48c1edaa3a55b2063bbd}{reserve} (size\+\_\+type n)
+\begin{DoxyCompactList}\small\item\em Allocate enough space to grow to size n without having to allocate more memory later. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a5dcd05ac1bb8e7e1caea51fd45fa9f92}{}void \hyperlink{classtbb_1_1concurrent__vector_a5dcd05ac1bb8e7e1caea51fd45fa9f92}{resize} (size\+\_\+type n)\label{classtbb_1_1concurrent__vector_a5dcd05ac1bb8e7e1caea51fd45fa9f92}
+
+\begin{DoxyCompactList}\small\item\em Resize the vector. Not thread-\/safe. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a75df26643ed706f5b1e509d6673dfcd7}{}void \hyperlink{classtbb_1_1concurrent__vector_a75df26643ed706f5b1e509d6673dfcd7}{resize} (size\+\_\+type n, const\+\_\+reference t)\label{classtbb_1_1concurrent__vector_a75df26643ed706f5b1e509d6673dfcd7}
+
+\begin{DoxyCompactList}\small\item\em Resize the vector, copy t for new elements. Not thread-\/safe. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_aba805b5225ad3399550f78ea15e51e93}{}void \hyperlink{classtbb_1_1concurrent__vector_aba805b5225ad3399550f78ea15e51e93}{shrink\+\_\+to\+\_\+fit} ()\label{classtbb_1_1concurrent__vector_aba805b5225ad3399550f78ea15e51e93}
+
+\begin{DoxyCompactList}\small\item\em Optimize memory usage and fragmentation. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_acca0f16367501f4c51981abfaeda7c0b}{}size\+\_\+type \hyperlink{classtbb_1_1concurrent__vector_acca0f16367501f4c51981abfaeda7c0b}{max\+\_\+size} () const \label{classtbb_1_1concurrent__vector_acca0f16367501f4c51981abfaeda7c0b}
+
+\begin{DoxyCompactList}\small\item\em Upper bound on argument to reserve. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a2914571ae4553453e3046132bd1dc4ec}{}iterator \hyperlink{classtbb_1_1concurrent__vector_a2914571ae4553453e3046132bd1dc4ec}{begin} ()\label{classtbb_1_1concurrent__vector_a2914571ae4553453e3046132bd1dc4ec}
+
+\begin{DoxyCompactList}\small\item\em start iterator \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a2103c324fe1195d57778df2b4df2a427}{}iterator \hyperlink{classtbb_1_1concurrent__vector_a2103c324fe1195d57778df2b4df2a427}{end} ()\label{classtbb_1_1concurrent__vector_a2103c324fe1195d57778df2b4df2a427}
+
+\begin{DoxyCompactList}\small\item\em end iterator \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_aa4339915512950e809abdc71164570f9}{}const\+\_\+iterator \hyperlink{classtbb_1_1concurrent__vector_aa4339915512950e809abdc71164570f9}{begin} () const \label{classtbb_1_1concurrent__vector_aa4339915512950e809abdc71164570f9}
+
+\begin{DoxyCompactList}\small\item\em start const iterator \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_ad91509b4585928abc7eac70e9b239eab}{}const\+\_\+iterator \hyperlink{classtbb_1_1concurrent__vector_ad91509b4585928abc7eac70e9b239eab}{end} () const \label{classtbb_1_1concurrent__vector_ad91509b4585928abc7eac70e9b239eab}
+
+\begin{DoxyCompactList}\small\item\em end const iterator \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a48303f66c24aa51180dfccc5ba9204e9}{}const\+\_\+iterator \hyperlink{classtbb_1_1concurrent__vector_a48303f66c24aa51180dfccc5ba9204e9}{cbegin} () const \label{classtbb_1_1concurrent__vector_a48303f66c24aa51180dfccc5ba9204e9}
+
+\begin{DoxyCompactList}\small\item\em start const iterator \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a7b74c637f3b1af25de96eccee6c4ecd8}{}const\+\_\+iterator \hyperlink{classtbb_1_1concurrent__vector_a7b74c637f3b1af25de96eccee6c4ecd8}{cend} () const \label{classtbb_1_1concurrent__vector_a7b74c637f3b1af25de96eccee6c4ecd8}
+
+\begin{DoxyCompactList}\small\item\em end const iterator \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a73bc5d939d0438330beca9f8391e6405}{}reverse\+\_\+iterator \hyperlink{classtbb_1_1concurrent__vector_a73bc5d939d0438330beca9f8391e6405}{rbegin} ()\label{classtbb_1_1concurrent__vector_a73bc5d939d0438330beca9f8391e6405}
+
+\begin{DoxyCompactList}\small\item\em reverse start iterator \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_ab47823891cbd0fa88ae8a7f9912aa7c6}{}reverse\+\_\+iterator \hyperlink{classtbb_1_1concurrent__vector_ab47823891cbd0fa88ae8a7f9912aa7c6}{rend} ()\label{classtbb_1_1concurrent__vector_ab47823891cbd0fa88ae8a7f9912aa7c6}
+
+\begin{DoxyCompactList}\small\item\em reverse end iterator \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_ab49b41b70054da3d278de0a4e75dc2f4}{}const\+\_\+reverse\+\_\+iterator \hyperlink{classtbb_1_1concurrent__vector_ab49b41b70054da3d278de0a4e75dc2f4}{rbegin} () const \label{classtbb_1_1concurrent__vector_ab49b41b70054da3d278de0a4e75dc2f4}
+
+\begin{DoxyCompactList}\small\item\em reverse start const iterator \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_aaa47ddf4383a4d5fe9d748eaa7d57e43}{}const\+\_\+reverse\+\_\+iterator \hyperlink{classtbb_1_1concurrent__vector_aaa47ddf4383a4d5fe9d748eaa7d57e43}{rend} () const \label{classtbb_1_1concurrent__vector_aaa47ddf4383a4d5fe9d748eaa7d57e43}
+
+\begin{DoxyCompactList}\small\item\em reverse end const iterator \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a348edc78beb15542938c773f5a614728}{}const\+\_\+reverse\+\_\+iterator \hyperlink{classtbb_1_1concurrent__vector_a348edc78beb15542938c773f5a614728}{crbegin} () const \label{classtbb_1_1concurrent__vector_a348edc78beb15542938c773f5a614728}
+
+\begin{DoxyCompactList}\small\item\em reverse start const iterator \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a9cb42e9b6e538042e9d3026ae66b750b}{}const\+\_\+reverse\+\_\+iterator \hyperlink{classtbb_1_1concurrent__vector_a9cb42e9b6e538042e9d3026ae66b750b}{crend} () const \label{classtbb_1_1concurrent__vector_a9cb42e9b6e538042e9d3026ae66b750b}
+
+\begin{DoxyCompactList}\small\item\em reverse end const iterator \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a973f46ac6e6b9563988aa7efab553630}{}reference \hyperlink{classtbb_1_1concurrent__vector_a973f46ac6e6b9563988aa7efab553630}{front} ()\label{classtbb_1_1concurrent__vector_a973f46ac6e6b9563988aa7efab553630}
+
+\begin{DoxyCompactList}\small\item\em the first item \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a8fdef8cb75cfa456995c1d5f0ed4f13c}{}const\+\_\+reference \hyperlink{classtbb_1_1concurrent__vector_a8fdef8cb75cfa456995c1d5f0ed4f13c}{front} () const \label{classtbb_1_1concurrent__vector_a8fdef8cb75cfa456995c1d5f0ed4f13c}
+
+\begin{DoxyCompactList}\small\item\em the first item const \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a151715638a6fa55054afa4fd500a0283}{}reference \hyperlink{classtbb_1_1concurrent__vector_a151715638a6fa55054afa4fd500a0283}{back} ()\label{classtbb_1_1concurrent__vector_a151715638a6fa55054afa4fd500a0283}
+
+\begin{DoxyCompactList}\small\item\em the last item \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a37314415672c42215de382478c5024ab}{}const\+\_\+reference \hyperlink{classtbb_1_1concurrent__vector_a37314415672c42215de382478c5024ab}{back} () const \label{classtbb_1_1concurrent__vector_a37314415672c42215de382478c5024ab}
+
+\begin{DoxyCompactList}\small\item\em the last item const \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_affc6f3b47d228af31d9bee5cead70e8d}{}allocator\+\_\+type \hyperlink{classtbb_1_1concurrent__vector_affc6f3b47d228af31d9bee5cead70e8d}{get\+\_\+allocator} () const \label{classtbb_1_1concurrent__vector_affc6f3b47d228af31d9bee5cead70e8d}
+
+\begin{DoxyCompactList}\small\item\em return allocator object \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a6faee8d72aa6659a71450bb770cc7a9a}{}void \hyperlink{classtbb_1_1concurrent__vector_a6faee8d72aa6659a71450bb770cc7a9a}{assign} (size\+\_\+type n, const\+\_\+reference t)\label{classtbb_1_1concurrent__vector_a6faee8d72aa6659a71450bb770cc7a9a}
+
+\begin{DoxyCompactList}\small\item\em assign n items by copying t item \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_adf58471bc5f57b801d887e34ddf72033}{}{\footnotesize template$<$class I $>$ }\\void \hyperlink{classtbb_1_1concurrent__vector_adf58471bc5f57b801d887e34ddf72033}{assign} (I first, I last)\label{classtbb_1_1concurrent__vector_adf58471bc5f57b801d887e34ddf72033}
+
+\begin{DoxyCompactList}\small\item\em assign range \mbox{[}first, last) \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_ad2d9ddd0aae0dde02ce80fb66a8496f9}{}void \hyperlink{classtbb_1_1concurrent__vector_ad2d9ddd0aae0dde02ce80fb66a8496f9}{swap} (\hyperlink{classtbb_1_1concurrent__vector}{concurrent\+\_\+vector} \&\hyperlink{structvector}{vector})\label{classtbb_1_1concurrent__vector_ad2d9ddd0aae0dde02ce80fb66a8496f9}
+
+\begin{DoxyCompactList}\small\item\em swap two instances \end{DoxyCompactList}\item 
+void \hyperlink{classtbb_1_1concurrent__vector_a1f3916a3e461f24710bb87ce40debf1c}{clear} ()
+\begin{DoxyCompactList}\small\item\em Clear container while keeping memory allocated. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_ac2290bb646044670b1808418210ddcf8}{}\hyperlink{classtbb_1_1concurrent__vector_ac2290bb646044670b1808418210ddcf8}{$\sim$concurrent\+\_\+vector} ()\label{classtbb_1_1concurrent__vector_ac2290bb646044670b1808418210ddcf8}
+
+\begin{DoxyCompactList}\small\item\em Clear and destroy vector. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_ae0382aeff4cb962f93d67e25cca13c92}{}const internal\+::concurrent\+\_\+vector\+\_\+base\+\_\+v3 \& {\bfseries internal\+\_\+vector\+\_\+base} () const \label{classtbb_1_1concurrent__vector_ae0382aeff4cb962f93d67e25cca13c92}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_af978f34536e3ef6977dfb25b58678982}{}\hyperlink{classtbb_1_1concurrent__vector_af978f34536e3ef6977dfb25b58678982}{concurrent\+\_\+vector} ()\label{classtbb_1_1concurrent__vector_af978f34536e3ef6977dfb25b58678982}
+
+\begin{DoxyCompactList}\small\item\em Construct empty vector. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a3be0cedce204c8035feed42cdb981db8}{}\hyperlink{classtbb_1_1concurrent__vector_a3be0cedce204c8035feed42cdb981db8}{concurrent\+\_\+vector} (const \hyperlink{classtbb_1_1concurrent__vector}{concurrent\+\_\+vector} \&\hyperlink{structvector}{vector})\label{classtbb_1_1concurrent__vector_a3be0cedce204c8035feed42cdb981db8}
+
+\begin{DoxyCompactList}\small\item\em Copy a vector. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a61eb15b454034c9ec9c912dd0dd2ad4b}{}\hyperlink{classtbb_1_1concurrent__vector}{concurrent\+\_\+vector} \& \hyperlink{classtbb_1_1concurrent__vector_a61eb15b454034c9ec9c912dd0dd2ad4b}{operator=} (const \hyperlink{classtbb_1_1concurrent__vector}{concurrent\+\_\+vector} \&\hyperlink{structvector}{vector})\label{classtbb_1_1concurrent__vector_a61eb15b454034c9ec9c912dd0dd2ad4b}
+
+\begin{DoxyCompactList}\small\item\em Assignment. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_ac2290bb646044670b1808418210ddcf8}{}\hyperlink{classtbb_1_1concurrent__vector_ac2290bb646044670b1808418210ddcf8}{$\sim$concurrent\+\_\+vector} ()\label{classtbb_1_1concurrent__vector_ac2290bb646044670b1808418210ddcf8}
+
+\begin{DoxyCompactList}\small\item\em Clear and destroy vector. \end{DoxyCompactList}\item 
+size\+\_\+type \hyperlink{classtbb_1_1concurrent__vector_ae1fb39ffbfa1650cecfbc3aafcecfc8b}{grow\+\_\+by} (size\+\_\+type delta)
+\begin{DoxyCompactList}\small\item\em Grow by \char`\"{}delta\char`\"{} elements. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a34c9b4206eb6574a1e752450fb60deba}{}void \hyperlink{classtbb_1_1concurrent__vector_a34c9b4206eb6574a1e752450fb60deba}{grow\+\_\+to\+\_\+at\+\_\+least} (size\+\_\+type n)\label{classtbb_1_1concurrent__vector_a34c9b4206eb6574a1e752450fb60deba}
+
+\begin{DoxyCompactList}\small\item\em Grow array until it has at least n elements. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a9bd8ef8940a16f9f0a4a8582e9ac5ca4}{}size\+\_\+type \hyperlink{classtbb_1_1concurrent__vector_a9bd8ef8940a16f9f0a4a8582e9ac5ca4}{push\+\_\+back} (const\+\_\+reference item)\label{classtbb_1_1concurrent__vector_a9bd8ef8940a16f9f0a4a8582e9ac5ca4}
+
+\begin{DoxyCompactList}\small\item\em Push item. \end{DoxyCompactList}\item 
+reference \hyperlink{classtbb_1_1concurrent__vector_ac70975c8f71b9f8acbda50188c5b4f5d}{operator\mbox{[}$\,$\mbox{]}} (size\+\_\+type index)
+\begin{DoxyCompactList}\small\item\em Get reference to element at given index. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_ab233686fd3c55cdca599dbb35171fabe}{}const\+\_\+reference \hyperlink{classtbb_1_1concurrent__vector_ab233686fd3c55cdca599dbb35171fabe}{operator\mbox{[}$\,$\mbox{]}} (size\+\_\+type index) const \label{classtbb_1_1concurrent__vector_ab233686fd3c55cdca599dbb35171fabe}
+
+\begin{DoxyCompactList}\small\item\em Get const reference to element at given index. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a2914571ae4553453e3046132bd1dc4ec}{}iterator {\bfseries begin} ()\label{classtbb_1_1concurrent__vector_a2914571ae4553453e3046132bd1dc4ec}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_a2103c324fe1195d57778df2b4df2a427}{}iterator {\bfseries end} ()\label{classtbb_1_1concurrent__vector_a2103c324fe1195d57778df2b4df2a427}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_aa4339915512950e809abdc71164570f9}{}const\+\_\+iterator {\bfseries begin} () const \label{classtbb_1_1concurrent__vector_aa4339915512950e809abdc71164570f9}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_ad91509b4585928abc7eac70e9b239eab}{}const\+\_\+iterator {\bfseries end} () const \label{classtbb_1_1concurrent__vector_ad91509b4585928abc7eac70e9b239eab}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_a73bc5d939d0438330beca9f8391e6405}{}reverse\+\_\+iterator {\bfseries rbegin} ()\label{classtbb_1_1concurrent__vector_a73bc5d939d0438330beca9f8391e6405}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_ab47823891cbd0fa88ae8a7f9912aa7c6}{}reverse\+\_\+iterator {\bfseries rend} ()\label{classtbb_1_1concurrent__vector_ab47823891cbd0fa88ae8a7f9912aa7c6}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_ab49b41b70054da3d278de0a4e75dc2f4}{}const\+\_\+reverse\+\_\+iterator {\bfseries rbegin} () const \label{classtbb_1_1concurrent__vector_ab49b41b70054da3d278de0a4e75dc2f4}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_aaa47ddf4383a4d5fe9d748eaa7d57e43}{}const\+\_\+reverse\+\_\+iterator {\bfseries rend} () const \label{classtbb_1_1concurrent__vector_aaa47ddf4383a4d5fe9d748eaa7d57e43}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_a6c6a75852f0619ae3ed382673abf4055}{}range\+\_\+type \hyperlink{classtbb_1_1concurrent__vector_a6c6a75852f0619ae3ed382673abf4055}{range} (size\+\_\+t grainsize=1)\label{classtbb_1_1concurrent__vector_a6c6a75852f0619ae3ed382673abf4055}
+
+\begin{DoxyCompactList}\small\item\em Get range to use with parallel algorithms. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_af9f4b6010310b4e6780ed77384f74e85}{}const\+\_\+range\+\_\+type \hyperlink{classtbb_1_1concurrent__vector_af9f4b6010310b4e6780ed77384f74e85}{range} (size\+\_\+t grainsize=1) const \label{classtbb_1_1concurrent__vector_af9f4b6010310b4e6780ed77384f74e85}
+
+\begin{DoxyCompactList}\small\item\em Get const range for iterating with parallel algorithms. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a6cac13e24ff09a230f543ff5f523ee7c}{}size\+\_\+type \hyperlink{classtbb_1_1concurrent__vector_a6cac13e24ff09a230f543ff5f523ee7c}{size} () const \label{classtbb_1_1concurrent__vector_a6cac13e24ff09a230f543ff5f523ee7c}
+
+\begin{DoxyCompactList}\small\item\em Return size of vector. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a3747f2cbd9fc6033f34a6fc8ef6b932b}{}bool \hyperlink{classtbb_1_1concurrent__vector_a3747f2cbd9fc6033f34a6fc8ef6b932b}{empty} () const \label{classtbb_1_1concurrent__vector_a3747f2cbd9fc6033f34a6fc8ef6b932b}
+
+\begin{DoxyCompactList}\small\item\em Return false if vector is not empty. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_ac0d13882cdbc4d838b383979749cd2f6}{}size\+\_\+type \hyperlink{classtbb_1_1concurrent__vector_ac0d13882cdbc4d838b383979749cd2f6}{capacity} () const \label{classtbb_1_1concurrent__vector_ac0d13882cdbc4d838b383979749cd2f6}
+
+\begin{DoxyCompactList}\small\item\em Maximum size to which array can grow without allocating more memory. \end{DoxyCompactList}\item 
+void \hyperlink{classtbb_1_1concurrent__vector_a24af110c649d48c1edaa3a55b2063bbd}{reserve} (size\+\_\+type n)
+\begin{DoxyCompactList}\small\item\em Allocate enough space to grow to size n without having to allocate more memory later. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_acca0f16367501f4c51981abfaeda7c0b}{}size\+\_\+type \hyperlink{classtbb_1_1concurrent__vector_acca0f16367501f4c51981abfaeda7c0b}{max\+\_\+size} () const \label{classtbb_1_1concurrent__vector_acca0f16367501f4c51981abfaeda7c0b}
+
+\begin{DoxyCompactList}\small\item\em Upper bound on argument to reserve. \end{DoxyCompactList}\item 
+void \hyperlink{classtbb_1_1concurrent__vector_a1f3916a3e461f24710bb87ce40debf1c}{clear} ()
+\begin{DoxyCompactList}\small\item\em Not thread safe. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1concurrent__vector_a1e708880f8da676ffa8c6fb199723f01}{}{\footnotesize template$<$typename I $>$ }\\void {\bfseries copy\+\_\+range} (void $\ast$dst, const void $\ast$p\+\_\+type\+\_\+erased\+\_\+iterator, size\+\_\+type n)\label{classtbb_1_1concurrent__vector_a1e708880f8da676ffa8c6fb199723f01}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_a134b00c8dd9200b9e45fe81919c66b11}{}{\footnotesize template$<$typename C , typename U $>$ }\\class {\bfseries internal\+::vector\+\_\+iterator}\label{classtbb_1_1concurrent__vector_a134b00c8dd9200b9e45fe81919c66b11}
+
+\item 
+\hypertarget{classtbb_1_1concurrent__vector_ae53cf11dd10c5b9b0ffcc0572a3ea22b}{}{\footnotesize template$<$typename C , typename U $>$ }\\class {\bfseries internal\+::vector\+\_\+iterator}\label{classtbb_1_1concurrent__vector_ae53cf11dd10c5b9b0ffcc0572a3ea22b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$class tbb\+::concurrent\+\_\+vector$<$ T $>$}
+
+Concurrent vector container. 
+
+Concurrent vector.
+
+\hyperlink{classtbb_1_1concurrent__vector}{concurrent\+\_\+vector} is a container having the following main properties\+:
+\begin{DoxyItemize}
+\item It provides random indexed access to its elements. The index of the first element is 0.
+\item It ensures safe concurrent growing its size (different threads can safely append new elements).
+\item Adding new elements does not invalidate existing iterators and does not change indices of existing items.
+\end{DoxyItemize}
+
+\begin{DoxyParagraph}{Compatibility}
+The class meets all Container Requirements and Reversible Container Requirements from C++ Standard (See I\+S\+O/\+I\+E\+C 14882\+:2003(E), clause 23.\+1). But it doesn\textquotesingle{}t meet Sequence Requirements due to absence of insert() and erase() methods.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Exception Safety}
+Methods working with memory allocation and/or new elements construction can throw an exception if allocator fails to allocate memory or element\textquotesingle{}s default constructor throws one. Concurrent vector\textquotesingle{}s element of type T must conform to the following requirements\+:
+\begin{DoxyItemize}
+\item Throwing an exception is forbidden for destructor of T.
+\item Default constructor of T must not throw an exception O\+R its non-\/virtual destructor must safely work when its object memory is zero-\/initialized.
+\end{DoxyItemize}Otherwise, the program\textquotesingle{}s behavior is undefined. 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+If an exception happens inside growth or assignment operation, an instance of the vector becomes invalid unless it is stated otherwise in the method documentation. Invalid state means\+:
+\begin{DoxyItemize}
+\item There are no guarantees that all items were initialized by a constructor. The rest of items is zero-\/filled, including item where exception happens.
+\item An invalid vector instance cannot be repaired; it is unable to grow anymore.
+\item Size and capacity reported by the vector are incorrect, and calculated as if the failed operation were successful.
+\item Attempt to access not allocated elements using operator\mbox{[}\mbox{]} or iterators results in access violation or segmentation fault exception, and in case of using \hyperlink{classtbb_1_1concurrent__vector_a0e47a4c0a8fe53465b7c4a744601a755}{at()} method a C++ exception is thrown.
+\end{DoxyItemize}If a concurrent grow operation successfully completes, all the elements it has added to the vector will remain valid and accessible even if one of subsequent grow operations fails.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Fragmentation}
+Unlike an S\+T\+L vector, a \hyperlink{classtbb_1_1concurrent__vector}{concurrent\+\_\+vector} does not move existing elements if it needs to allocate more memory. The container is divided into a series of contiguous arrays of elements. The first reservation, growth, or assignment operation determines the size of the first array. Using small number of elements as initial size incurs fragmentation that may increase element access time. Internal layout can be optimized by method compact() that merges several smaller arrays into one solid.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Changes since T\+B\+B 2.1}
+
+\begin{DoxyItemize}
+\item Fixed guarantees of \hyperlink{classtbb_1_1concurrent__vector_a6cac13e24ff09a230f543ff5f523ee7c}{concurrent\+\_\+vector\+::size()} and \hyperlink{classtbb_1_1concurrent__vector_a0318df2adb8e0a9c0af964ca7659e1d6}{grow\+\_\+to\+\_\+at\+\_\+least()} methods to assure elements are allocated.
+\item Methods \hyperlink{classtbb_1_1concurrent__vector_a2103c324fe1195d57778df2b4df2a427}{end()}/rbegin()/back() are partly thread-\/safe since they use \hyperlink{classtbb_1_1concurrent__vector_a6cac13e24ff09a230f543ff5f523ee7c}{size()} to get the end of vector
+\item Added \hyperlink{classtbb_1_1concurrent__vector_a5dcd05ac1bb8e7e1caea51fd45fa9f92}{resize()} methods (not thread-\/safe)
+\item Added cbegin/cend/crbegin/crend methods
+\item Changed return type of methods grow$\ast$ and push\+\_\+back to iterator
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Changes since T\+B\+B 2.0}
+
+\begin{DoxyItemize}
+\item Implemented exception-\/safety guarantees
+\item Added template argument for allocator
+\item Added allocator argument in constructors
+\item Faster index calculation
+\item First growth call specifies a number of segments to be merged in the first allocation.
+\item Fixed memory blow up for swarm of vector\textquotesingle{}s instances of small size
+\item Added \hyperlink{classtbb_1_1concurrent__vector_abba25587a5705b02568d0212071f0799}{grow\+\_\+by(size\+\_\+type n, const\+\_\+reference t)} growth using copying constructor to init new items.
+\item Added S\+T\+L-\/like constructors.
+\item Added operators ==, $<$ and derivatives
+\item Added \hyperlink{classtbb_1_1concurrent__vector_a0e47a4c0a8fe53465b7c4a744601a755}{at()} method, approved for using after an exception was thrown inside the vector
+\item Added \hyperlink{classtbb_1_1concurrent__vector_affc6f3b47d228af31d9bee5cead70e8d}{get\+\_\+allocator()} method.
+\item Added \hyperlink{classtbb_1_1concurrent__vector_a6faee8d72aa6659a71450bb770cc7a9a}{assign()} methods
+\item Added compact() method to defragment first segments
+\item Added \hyperlink{classtbb_1_1concurrent__vector_ad2d9ddd0aae0dde02ce80fb66a8496f9}{swap()} method
+\item \hyperlink{classtbb_1_1concurrent__vector_a6c6a75852f0619ae3ed382673abf4055}{range()} defaults on grainsize = 1 supporting auto grainsize algorithms.
+\end{DoxyItemize}
+\end{DoxyParagraph}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classtbb_1_1concurrent__vector_a1f3916a3e461f24710bb87ce40debf1c}{}\index{tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}!clear@{clear}}
+\index{clear@{clear}!tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}}
+\subsubsection[{clear()}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf tbb\+::concurrent\+\_\+vector}$<$ T $>$\+::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1concurrent__vector_a1f3916a3e461f24710bb87ce40debf1c}
+
+
+Not thread safe. 
+
+Does not change capacity. \hypertarget{classtbb_1_1concurrent__vector_a1f3916a3e461f24710bb87ce40debf1c}{}\index{tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}!clear@{clear}}
+\index{clear@{clear}!tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}}
+\subsubsection[{clear()}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf tbb\+::concurrent\+\_\+vector}$<$ T $>$\+::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1concurrent__vector_a1f3916a3e461f24710bb87ce40debf1c}
+
+
+Clear container while keeping memory allocated. 
+
+To free up the memory, use in conjunction with method compact(). Not thread safe \hypertarget{classtbb_1_1concurrent__vector_ae1fb39ffbfa1650cecfbc3aafcecfc8b}{}\index{tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}!grow\+\_\+by@{grow\+\_\+by}}
+\index{grow\+\_\+by@{grow\+\_\+by}!tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}}
+\subsubsection[{grow\+\_\+by(size\+\_\+type delta)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ size\+\_\+type {\bf tbb\+::concurrent\+\_\+vector}$<$ T $>$\+::grow\+\_\+by (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+type}]{delta}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1concurrent__vector_ae1fb39ffbfa1650cecfbc3aafcecfc8b}
+
+
+Grow by \char`\"{}delta\char`\"{} elements. 
+
+Returns old size. \hypertarget{classtbb_1_1concurrent__vector_af0b44ba95fafde1b92148a2ef4a5568d}{}\index{tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}!grow\+\_\+by@{grow\+\_\+by}}
+\index{grow\+\_\+by@{grow\+\_\+by}!tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}}
+\subsubsection[{grow\+\_\+by(size\+\_\+type delta)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ iterator {\bf tbb\+::concurrent\+\_\+vector}$<$ T $>$\+::grow\+\_\+by (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+type}]{delta}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1concurrent__vector_af0b44ba95fafde1b92148a2ef4a5568d}
+
+
+Grow by \char`\"{}delta\char`\"{} elements. 
+
+Returns iterator pointing to the first new element. \hypertarget{classtbb_1_1concurrent__vector_abba25587a5705b02568d0212071f0799}{}\index{tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}!grow\+\_\+by@{grow\+\_\+by}}
+\index{grow\+\_\+by@{grow\+\_\+by}!tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}}
+\subsubsection[{grow\+\_\+by(size\+\_\+type delta, const\+\_\+reference t)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ iterator {\bf tbb\+::concurrent\+\_\+vector}$<$ T $>$\+::grow\+\_\+by (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+type}]{delta, }
+\item[{const\+\_\+reference}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1concurrent__vector_abba25587a5705b02568d0212071f0799}
+
+
+Grow by \char`\"{}delta\char`\"{} elements using copying constructor. 
+
+Returns iterator pointing to the first new element. \hypertarget{classtbb_1_1concurrent__vector_a229978f56ee9bcb8fe721587385d62a9}{}\index{tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}!grow\+\_\+by@{grow\+\_\+by}}
+\index{grow\+\_\+by@{grow\+\_\+by}!tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}}
+\subsubsection[{grow\+\_\+by(\+I first, I last)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ template$<$typename I $>$ iterator {\bf tbb\+::concurrent\+\_\+vector}$<$ T $>$\+::grow\+\_\+by (
+\begin{DoxyParamCaption}
+\item[{I}]{first, }
+\item[{I}]{last}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1concurrent__vector_a229978f56ee9bcb8fe721587385d62a9}
+Returns iterator pointing to the first new element. \hypertarget{classtbb_1_1concurrent__vector_a0318df2adb8e0a9c0af964ca7659e1d6}{}\index{tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}!grow\+\_\+to\+\_\+at\+\_\+least@{grow\+\_\+to\+\_\+at\+\_\+least}}
+\index{grow\+\_\+to\+\_\+at\+\_\+least@{grow\+\_\+to\+\_\+at\+\_\+least}!tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}}
+\subsubsection[{grow\+\_\+to\+\_\+at\+\_\+least(size\+\_\+type n)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ iterator {\bf tbb\+::concurrent\+\_\+vector}$<$ T $>$\+::grow\+\_\+to\+\_\+at\+\_\+least (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+type}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1concurrent__vector_a0318df2adb8e0a9c0af964ca7659e1d6}
+
+
+Append minimal sequence of elements such that \hyperlink{classtbb_1_1concurrent__vector_a6cac13e24ff09a230f543ff5f523ee7c}{size()}$>$=n. 
+
+The new elements are default constructed. Blocks until all elements in range \mbox{[}0..n) are allocated. May return while other elements are being constructed by other threads. Returns iterator that points to beginning of appended sequence. If no elements were appended, returns iterator pointing to nth element. \hypertarget{classtbb_1_1concurrent__vector_a69b4780920c11bd372c77cb8f240b009}{}\index{tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}!grow\+\_\+to\+\_\+at\+\_\+least@{grow\+\_\+to\+\_\+at\+\_\+least}}
+\index{grow\+\_\+to\+\_\+at\+\_\+least@{grow\+\_\+to\+\_\+at\+\_\+least}!tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}}
+\subsubsection[{grow\+\_\+to\+\_\+at\+\_\+least(size\+\_\+type n, const\+\_\+reference t)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ iterator {\bf tbb\+::concurrent\+\_\+vector}$<$ T $>$\+::grow\+\_\+to\+\_\+at\+\_\+least (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+type}]{n, }
+\item[{const\+\_\+reference}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1concurrent__vector_a69b4780920c11bd372c77cb8f240b009}
+Analogous to \hyperlink{classtbb_1_1concurrent__vector_a0318df2adb8e0a9c0af964ca7659e1d6}{grow\+\_\+to\+\_\+at\+\_\+least( size\+\_\+type n )} with exception that the new elements are initialized by copying of t instead of default construction. \hypertarget{classtbb_1_1concurrent__vector_ac70975c8f71b9f8acbda50188c5b4f5d}{}\index{tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}}
+\subsubsection[{operator[](size\+\_\+type index)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ reference {\bf tbb\+::concurrent\+\_\+vector}$<$ T $>$\+::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+type}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1concurrent__vector_ac70975c8f71b9f8acbda50188c5b4f5d}
+
+
+Get reference to element at given index. 
+
+This method is thread-\/safe for concurrent reads, and also while growing the vector, as long as the calling thread has checked that index$<$\hyperlink{classtbb_1_1concurrent__vector_a6cac13e24ff09a230f543ff5f523ee7c}{size()}. \hypertarget{classtbb_1_1concurrent__vector_ac70975c8f71b9f8acbda50188c5b4f5d}{}\index{tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}}
+\subsubsection[{operator[](size\+\_\+type index)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ reference {\bf tbb\+::concurrent\+\_\+vector}$<$ T $>$\+::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+type}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1concurrent__vector_ac70975c8f71b9f8acbda50188c5b4f5d}
+
+
+Get reference to element at given index. 
+
+This method is thread-\/safe for concurrent reads, and also while growing the vector, as long as the calling thread has checked that index $<$ \hyperlink{classtbb_1_1concurrent__vector_a6cac13e24ff09a230f543ff5f523ee7c}{size()}. \hypertarget{classtbb_1_1concurrent__vector_a74722c89e45bd3291eea34575daf4f39}{}\index{tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}!push\+\_\+back@{push\+\_\+back}}
+\index{push\+\_\+back@{push\+\_\+back}!tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}}
+\subsubsection[{push\+\_\+back(const\+\_\+reference item)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ iterator {\bf tbb\+::concurrent\+\_\+vector}$<$ T $>$\+::push\+\_\+back (
+\begin{DoxyParamCaption}
+\item[{const\+\_\+reference}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1concurrent__vector_a74722c89e45bd3291eea34575daf4f39}
+
+
+Push item. 
+
+Returns iterator pointing to the new element. \hypertarget{classtbb_1_1concurrent__vector_a24af110c649d48c1edaa3a55b2063bbd}{}\index{tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}!reserve@{reserve}}
+\index{reserve@{reserve}!tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}}
+\subsubsection[{reserve(size\+\_\+type n)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf tbb\+::concurrent\+\_\+vector}$<$ T $>$\+::reserve (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+type}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1concurrent__vector_a24af110c649d48c1edaa3a55b2063bbd}
+
+
+Allocate enough space to grow to size n without having to allocate more memory later. 
+
+Like most of the methods provided for S\+T\+L compatibility, this method is {\itshape not} thread safe. The capacity afterwards may be bigger than the requested reservation. \hypertarget{classtbb_1_1concurrent__vector_a24af110c649d48c1edaa3a55b2063bbd}{}\index{tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}!reserve@{reserve}}
+\index{reserve@{reserve}!tbb\+::concurrent\+\_\+vector@{tbb\+::concurrent\+\_\+vector}}
+\subsubsection[{reserve(size\+\_\+type n)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf tbb\+::concurrent\+\_\+vector}$<$ T $>$\+::reserve (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+type}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1concurrent__vector_a24af110c649d48c1edaa3a55b2063bbd}
+
+
+Allocate enough space to grow to size n without having to allocate more memory later. 
+
+Like most of the methods provided for S\+T\+L compatibility, this method is {\itshape not} thread safe. The capacity afterwards may be bigger than the requested reservation. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/concurrent\+\_\+vector.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/old/concurrent\+\_\+vector\+\_\+v2.\+h\end{DoxyCompactItemize}

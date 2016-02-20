@@ -1,0 +1,126 @@
+\hypertarget{struct__GLFWwindow}{}\section{\+\_\+\+G\+L\+F\+Wwindow Struct Reference}
+\label{struct__GLFWwindow}\index{\+\_\+\+G\+L\+F\+Wwindow@{\+\_\+\+G\+L\+F\+Wwindow}}
+
+
+Window and context structure.  
+
+
+
+
+{\ttfamily \#include $<$internal.\+h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct__GLFWwindow_a674e806bf860fcda279cae810be554c3}{}struct \hyperlink{struct__GLFWwindow}{\+\_\+\+G\+L\+F\+Wwindow} $\ast$ {\bfseries next}\label{struct__GLFWwindow_a674e806bf860fcda279cae810be554c3}
+
+\item 
+\hypertarget{struct__GLFWwindow_acec6fcd56126dd56e00d14fd104ccf89}{}G\+Lboolean {\bfseries resizable}\label{struct__GLFWwindow_acec6fcd56126dd56e00d14fd104ccf89}
+
+\item 
+\hypertarget{struct__GLFWwindow_a7b54f5dbcc28fc4f9ea408cc52a8937a}{}G\+Lboolean {\bfseries decorated}\label{struct__GLFWwindow_a7b54f5dbcc28fc4f9ea408cc52a8937a}
+
+\item 
+\hypertarget{struct__GLFWwindow_a67d51bd54983ff4350f34e6a12c26c6f}{}G\+Lboolean {\bfseries auto\+Iconify}\label{struct__GLFWwindow_a67d51bd54983ff4350f34e6a12c26c6f}
+
+\item 
+\hypertarget{struct__GLFWwindow_a42992f7ae37e47fb2da73270debed833}{}G\+Lboolean {\bfseries floating}\label{struct__GLFWwindow_a42992f7ae37e47fb2da73270debed833}
+
+\item 
+\hypertarget{struct__GLFWwindow_a07c95af336c3fc1c4e57a25ea252fe09}{}G\+Lboolean {\bfseries closed}\label{struct__GLFWwindow_a07c95af336c3fc1c4e57a25ea252fe09}
+
+\item 
+\hypertarget{struct__GLFWwindow_ad04a9c0d5b0fd2146d1fd8b2ac99c120}{}void $\ast$ {\bfseries user\+Pointer}\label{struct__GLFWwindow_ad04a9c0d5b0fd2146d1fd8b2ac99c120}
+
+\item 
+\hypertarget{struct__GLFWwindow_a1045f1b6e36bf8632ac6e21a878c0ff7}{}\hyperlink{structGLFWvidmode}{G\+L\+F\+Wvidmode} {\bfseries video\+Mode}\label{struct__GLFWwindow_a1045f1b6e36bf8632ac6e21a878c0ff7}
+
+\item 
+\hypertarget{struct__GLFWwindow_a5e224ffa31032ad59906f92ea9a2d72f}{}\hyperlink{struct__GLFWmonitor}{\+\_\+\+G\+L\+F\+Wmonitor} $\ast$ {\bfseries monitor}\label{struct__GLFWwindow_a5e224ffa31032ad59906f92ea9a2d72f}
+
+\item 
+\hypertarget{struct__GLFWwindow_af0cb2966e8fafc49734d358773adf08d}{}\hyperlink{struct__GLFWcursor}{\+\_\+\+G\+L\+F\+Wcursor} $\ast$ {\bfseries cursor}\label{struct__GLFWwindow_af0cb2966e8fafc49734d358773adf08d}
+
+\item 
+\hypertarget{struct__GLFWwindow_ae513483acc6b74dc576b2b48a21f6599}{}G\+Lboolean {\bfseries sticky\+Keys}\label{struct__GLFWwindow_ae513483acc6b74dc576b2b48a21f6599}
+
+\item 
+\hypertarget{struct__GLFWwindow_a68a3c2123db9ada8fb33b43f4af7880c}{}G\+Lboolean {\bfseries sticky\+Mouse\+Buttons}\label{struct__GLFWwindow_a68a3c2123db9ada8fb33b43f4af7880c}
+
+\item 
+\hypertarget{struct__GLFWwindow_abc9a35e94411eeb3ba068edf263211ae}{}double {\bfseries cursor\+Pos\+X}\label{struct__GLFWwindow_abc9a35e94411eeb3ba068edf263211ae}
+
+\item 
+\hypertarget{struct__GLFWwindow_acaba7ed785260e0b02767f3ca94b1084}{}double {\bfseries cursor\+Pos\+Y}\label{struct__GLFWwindow_acaba7ed785260e0b02767f3ca94b1084}
+
+\item 
+\hypertarget{struct__GLFWwindow_a41835e55f4b1acfc155bee3441f771b6}{}int {\bfseries cursor\+Mode}\label{struct__GLFWwindow_a41835e55f4b1acfc155bee3441f771b6}
+
+\item 
+\hypertarget{struct__GLFWwindow_a46621a2d26782d04d5756d6a89cb64ec}{}char {\bfseries mouse\+Buttons} \mbox{[}G\+L\+F\+W\+\_\+\+M\+O\+U\+S\+E\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+L\+A\+S\+T+1\mbox{]}\label{struct__GLFWwindow_a46621a2d26782d04d5756d6a89cb64ec}
+
+\item 
+\hypertarget{struct__GLFWwindow_ae24e65fe890037e48cff20066dd02c85}{}char {\bfseries keys} \mbox{[}G\+L\+F\+W\+\_\+\+K\+E\+Y\+\_\+\+L\+A\+S\+T+1\mbox{]}\label{struct__GLFWwindow_ae24e65fe890037e48cff20066dd02c85}
+
+\item 
+\hypertarget{struct__GLFWwindow_a52222772c43bcddd17e49a84a5623518}{}\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>int {\bfseries api}\\
+\>int {\bfseries major}\\
+\>int {\bfseries minor}\\
+\>int {\bfseries revision}\\
+\>GLboolean {\bfseries forward}\\
+\>GLboolean {\bfseries debug}\\
+\>int {\bfseries profile}\\
+\>int {\bfseries robustness}\\
+\>int {\bfseries release}\\
+\} {\bfseries context}\label{struct__GLFWwindow_a52222772c43bcddd17e49a84a5623518}
+\\
+
+\end{tabbing}\item 
+\hypertarget{struct__GLFWwindow_ace9ba37acf0a6d6b868e9723dc3d26b3}{}P\+F\+N\+G\+L\+G\+E\+T\+I\+N\+T\+E\+G\+E\+R\+V\+P\+R\+O\+C {\bfseries Get\+Integerv}\label{struct__GLFWwindow_ace9ba37acf0a6d6b868e9723dc3d26b3}
+
+\item 
+\hypertarget{struct__GLFWwindow_ad61be7ad47b55ed7637e98eb811c8896}{}P\+F\+N\+G\+L\+G\+E\+T\+S\+T\+R\+I\+N\+G\+P\+R\+O\+C {\bfseries Get\+String}\label{struct__GLFWwindow_ad61be7ad47b55ed7637e98eb811c8896}
+
+\item 
+\hypertarget{struct__GLFWwindow_a4e77e4a234200f48c73f18de0d0ec53e}{}P\+F\+N\+G\+L\+C\+L\+E\+A\+R\+P\+R\+O\+C {\bfseries Clear}\label{struct__GLFWwindow_a4e77e4a234200f48c73f18de0d0ec53e}
+
+\item 
+\hypertarget{struct__GLFWwindow_aeedfd79e9879dd3de6576c4ecb86727e}{}\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>\hyperlink{group__window_gafd8db81fdb0e850549dc6bace5ed697a}{GLFWwindowposfun} {\bfseries pos}\\
+\>\hyperlink{group__window_gae49ee6ebc03fa2da024b89943a331355}{GLFWwindowsizefun} {\bfseries size}\\
+\>\hyperlink{group__window_ga93e7c2555bd837f4ed8b20f76cada72e}{GLFWwindowclosefun} {\bfseries close}\\
+\>\hyperlink{group__window_ga7a56f9e0227e2cd9470d80d919032e08}{GLFWwindowrefreshfun} {\bfseries refresh}\\
+\>\hyperlink{group__window_ga58be2061828dd35080bb438405d3a7e2}{GLFWwindowfocusfun} {\bfseries focus}\\
+\>\hyperlink{group__window_gad2d4e4c3d28b1242e742e8268b9528af}{GLFWwindowiconifyfun} {\bfseries iconify}\\
+\>\hyperlink{group__window_ga3e218ef9ff826129c55a7d5f6971a285}{GLFWframebuffersizefun} {\bfseries fbsize}\\
+\>\hyperlink{group__input_ga39893a4a7e7c3239c98d29c9e084350c}{GLFWmousebuttonfun} {\bfseries mouseButton}\\
+\>\hyperlink{group__input_ga4cfad918fa836f09541e7b9acd36686c}{GLFWcursorposfun} {\bfseries cursorPos}\\
+\>\hyperlink{group__input_ga51ab436c41eeaed6db5a0c9403b1c840}{GLFWcursorenterfun} {\bfseries cursorEnter}\\
+\>\hyperlink{group__input_ga4687e2199c60a18a8dd1da532e6d75c9}{GLFWscrollfun} {\bfseries scroll}\\
+\>\hyperlink{group__input_ga0192a232a41e4e82948217c8ba94fdfd}{GLFWkeyfun} {\bfseries key}\\
+\>\hyperlink{group__input_gabf24451c7ceb1952bc02b17a0d5c3e5f}{GLFWcharfun} {\bfseries character}\\
+\>\hyperlink{group__input_gae36fb6897d2b7df9b128900c8ce9c507}{GLFWcharmodsfun} {\bfseries charmods}\\
+\>\hyperlink{group__input_gab71f4ca80b651462852e601caf308c4a}{GLFWdropfun} {\bfseries drop}\\
+\} {\bfseries callbacks}\label{struct__GLFWwindow_aeedfd79e9879dd3de6576c4ecb86727e}
+\\
+
+\end{tabbing}\item 
+\hypertarget{struct__GLFWwindow_a111e66654cecdfc6395ec2458bdb4387}{}{\bfseries \+\_\+\+G\+L\+F\+W\+\_\+\+P\+L\+A\+T\+F\+O\+R\+M\+\_\+\+W\+I\+N\+D\+O\+W\+\_\+\+S\+T\+A\+T\+E}\label{struct__GLFWwindow_a111e66654cecdfc6395ec2458bdb4387}
+
+\item 
+\hypertarget{struct__GLFWwindow_aace6fa43962d3cf0d435e742a7b3ff7d}{}{\bfseries \+\_\+\+G\+L\+F\+W\+\_\+\+P\+L\+A\+T\+F\+O\+R\+M\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+S\+T\+A\+T\+E}\label{struct__GLFWwindow_aace6fa43962d3cf0d435e742a7b3ff7d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Window and context structure. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/glfw-\/3.\+1.\+2/src/internal.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,21 @@
+\hypertarget{group__LongevityLifetimeGroup}{}\section{Longevity\+Lifetime}
+\label{group__LongevityLifetimeGroup}\index{Longevity\+Lifetime@{Longevity\+Lifetime}}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespaceLongevityLifetime}{Longevity\+Lifetime}
+\begin{DoxyCompactList}\small\item\em In this namespace are special lifetime policies to manage lifetime dependencies. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{classLoki_1_1LongevityLifetime_1_1SingletonFixedLongevity}{Loki\+::\+Longevity\+Lifetime\+::\+Singleton\+Fixed\+Longevity$<$ Longevity, T $>$}
+\item 
+struct \hyperlink{structLoki_1_1LongevityLifetime_1_1DieLast}{Loki\+::\+Longevity\+Lifetime\+::\+Die\+Last$<$ T $>$}
+\begin{DoxyCompactList}\small\item\em Longest possible \hyperlink{classLoki_1_1SingletonWithLongevity}{Singleton\+With\+Longevity} lifetime\+: 0x\+F\+F\+F\+F\+F\+F\+F\+F. \end{DoxyCompactList}\item 
+struct \hyperlink{structLoki_1_1LongevityLifetime_1_1DieDirectlyBeforeLast}{Loki\+::\+Longevity\+Lifetime\+::\+Die\+Directly\+Before\+Last$<$ T $>$}
+\begin{DoxyCompactList}\small\item\em Lifetime is a one less than \hyperlink{structLoki_1_1LongevityLifetime_1_1DieLast}{Die\+Last}\+: 0x\+F\+F\+F\+F\+F\+F\+F\+F-\/1. \end{DoxyCompactList}\item 
+struct \hyperlink{structLoki_1_1LongevityLifetime_1_1DieFirst}{Loki\+::\+Longevity\+Lifetime\+::\+Die\+First$<$ T $>$}
+\begin{DoxyCompactList}\small\item\em Shortest possible \hyperlink{classLoki_1_1SingletonWithLongevity}{Singleton\+With\+Longevity} lifetime\+: 0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}

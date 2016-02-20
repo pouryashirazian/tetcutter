@@ -1,0 +1,61 @@
+\hypertarget{classinternal_1_1predecessor__cache}{}\section{internal\+:\+:predecessor\+\_\+cache$<$ T, M $>$ Class Template Reference}
+\label{classinternal_1_1predecessor__cache}\index{internal\+::predecessor\+\_\+cache$<$ T, M $>$@{internal\+::predecessor\+\_\+cache$<$ T, M $>$}}
+
+
+\hyperlink{structA}{A} cache of predecessors that only supports try\+\_\+get.  
+
+
+
+
+{\ttfamily \#include $<$\+\_\+flow\+\_\+graph\+\_\+impl.\+h$>$}
+
+Inheritance diagram for internal\+:\+:predecessor\+\_\+cache$<$ T, M $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classinternal_1_1predecessor__cache}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1predecessor__cache_a66a305c8eacba759434293408846b042}{}typedef M {\bfseries my\+\_\+mutex\+\_\+type}\label{classinternal_1_1predecessor__cache_a66a305c8eacba759434293408846b042}
+
+\item 
+\hypertarget{classinternal_1_1predecessor__cache_a33e5ada3a1c4982feb05e29b213e6d85}{}typedef T {\bfseries output\+\_\+type}\label{classinternal_1_1predecessor__cache_a33e5ada3a1c4982feb05e29b213e6d85}
+
+\item 
+\hypertarget{classinternal_1_1predecessor__cache_a27ca568c7506123ec763fffd3cb50b12}{}typedef sender$<$ output\+\_\+type $>$ {\bfseries predecessor\+\_\+type}\label{classinternal_1_1predecessor__cache_a27ca568c7506123ec763fffd3cb50b12}
+
+\item 
+\hypertarget{classinternal_1_1predecessor__cache_a458b4d176b3e3c903192346245d99359}{}typedef receiver$<$ output\+\_\+type $>$ {\bfseries successor\+\_\+type}\label{classinternal_1_1predecessor__cache_a458b4d176b3e3c903192346245d99359}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1predecessor__cache_ae5178fd7e909b2f4466fed7d0e267dbb}{}void {\bfseries set\+\_\+owner} (successor\+\_\+type $\ast$owner)\label{classinternal_1_1predecessor__cache_ae5178fd7e909b2f4466fed7d0e267dbb}
+
+\item 
+\hypertarget{classinternal_1_1predecessor__cache_a5e55ce0bcbb697c63fd211364ad306d1}{}bool {\bfseries get\+\_\+item} (output\+\_\+type \&v)\label{classinternal_1_1predecessor__cache_a5e55ce0bcbb697c63fd211364ad306d1}
+
+\item 
+\hypertarget{classinternal_1_1predecessor__cache_a71810a16953585ee9246a28e7f2b5e7c}{}void {\bfseries reset} (\+\_\+\+\_\+\+T\+B\+B\+\_\+\+P\+F\+G\+\_\+\+R\+E\+S\+E\+T\+\_\+\+A\+R\+G(reset\+\_\+flags f))\label{classinternal_1_1predecessor__cache_a71810a16953585ee9246a28e7f2b5e7c}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1predecessor__cache_ac5c21dea1ad5499bb5877b5a5a06247d}{}successor\+\_\+type $\ast$ {\bfseries my\+\_\+owner}\label{classinternal_1_1predecessor__cache_ac5c21dea1ad5499bb5877b5a5a06247d}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename M = spin\+\_\+mutex$>$class internal\+::predecessor\+\_\+cache$<$ T, M $>$}
+
+\hyperlink{structA}{A} cache of predecessors that only supports try\+\_\+get. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/internal/\+\_\+flow\+\_\+graph\+\_\+impl.\+h\end{DoxyCompactItemize}

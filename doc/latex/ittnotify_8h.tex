@@ -1,0 +1,707 @@
+\hypertarget{ittnotify_8h}{}\section{/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/tools\+\_\+api/ittnotify.h File Reference}
+\label{ittnotify_8h}\index{/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/tools\+\_\+api/ittnotify.\+h@{/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/tools\+\_\+api/ittnotify.\+h}}
+
+
+Public \hyperlink{classUser}{User} A\+P\+I functions and types.  
+
+
+{\ttfamily \#include $<$stdarg.\+h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__threads_gac8113cf8708e0d665fc9448a3e49c201}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+thread\+\_\+set\+\_\+name}~\hyperlink{group__threads_ga9e8c213f65e14aef25280ed07df6c5e2}{\+\_\+\+\_\+itt\+\_\+thread\+\_\+set\+\_\+name\+A}\label{group__threads_gac8113cf8708e0d665fc9448a3e49c201}
+
+\item 
+\hypertarget{group__threads_ga995f602e830faca49bd119f4a1fe51d9}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+thread\+\_\+set\+\_\+name\+\_\+ptr}~\+\_\+\+\_\+itt\+\_\+thread\+\_\+set\+\_\+name\+A\+\_\+ptr\label{group__threads_ga995f602e830faca49bd119f4a1fe51d9}
+
+\item 
+\hypertarget{group__sync_gaa2de2b08cecad1d567b5312c503ad217}{}\#define \hyperlink{group__sync_gaa2de2b08cecad1d567b5312c503ad217}{\+\_\+\+\_\+itt\+\_\+attr\+\_\+barrier}~1\label{group__sync_gaa2de2b08cecad1d567b5312c503ad217}
+
+\begin{DoxyCompactList}\small\item\em possible value of attribute argument for sync object type \end{DoxyCompactList}\item 
+\hypertarget{group__sync_ga8c78a4fc23e9e2ed0f3d19cd92c7a60d}{}\#define \hyperlink{group__sync_ga8c78a4fc23e9e2ed0f3d19cd92c7a60d}{\+\_\+\+\_\+itt\+\_\+attr\+\_\+mutex}~2\label{group__sync_ga8c78a4fc23e9e2ed0f3d19cd92c7a60d}
+
+\begin{DoxyCompactList}\small\item\em possible value of attribute argument for sync object type \end{DoxyCompactList}\item 
+\hypertarget{group__sync_gaa7e7aa1f544a4a08faee32b776d534b1}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+sync\+\_\+create}~\hyperlink{group__sync_ga243666487ff4b8904f1629fa15782af4}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+create\+A}\label{group__sync_gaa7e7aa1f544a4a08faee32b776d534b1}
+
+\item 
+\hypertarget{group__sync_gab7f1ba7abf5c98e0e0e0ea53d0e34661}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+sync\+\_\+create\+\_\+ptr}~\+\_\+\+\_\+itt\+\_\+sync\+\_\+create\+A\+\_\+ptr\label{group__sync_gab7f1ba7abf5c98e0e0e0ea53d0e34661}
+
+\item 
+\hypertarget{group__sync_gac8b1ff0b07abb7867832206f7de355ea}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+sync\+\_\+rename}~\hyperlink{group__sync_ga8e0ee60520e20d33f9dce510b978bb3b}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+rename\+A}\label{group__sync_gac8b1ff0b07abb7867832206f7de355ea}
+
+\item 
+\hypertarget{group__sync_ga1983a053576fe0172533423524e259b0}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+sync\+\_\+rename\+\_\+ptr}~\+\_\+\+\_\+itt\+\_\+sync\+\_\+rename\+A\+\_\+ptr\label{group__sync_ga1983a053576fe0172533423524e259b0}
+
+\item 
+\hypertarget{group__heap_gaee7be7751f527b329c003ab6b448c3b3}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+heap\+\_\+function\+\_\+create}~\hyperlink{group__heap_gabbde8e9d232ceaf48c90adad4c1ce233}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+function\+\_\+create\+A}\label{group__heap_gaee7be7751f527b329c003ab6b448c3b3}
+
+\item 
+\hypertarget{group__heap_gaa1e210ca1b3c31b5ee21996a2d9ed5d7}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+heap\+\_\+function\+\_\+create\+\_\+ptr}~\+\_\+\+\_\+itt\+\_\+heap\+\_\+function\+\_\+create\+A\+\_\+ptr\label{group__heap_gaa1e210ca1b3c31b5ee21996a2d9ed5d7}
+
+\item 
+\#define \hyperlink{group__heap_gaaa7b9ac40d4b4111561778090c52ec40}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+leaks}
+\begin{DoxyCompactList}\small\item\em Specify the type of heap detection/reporting to modify. \end{DoxyCompactList}\item 
+\hypertarget{group__heap_ga2cc49fdf479eba77b24b8ab3d507c5cd}{}\#define \hyperlink{group__heap_ga2cc49fdf479eba77b24b8ab3d507c5cd}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+growth}\label{group__heap_ga2cc49fdf479eba77b24b8ab3d507c5cd}
+
+\begin{DoxyCompactList}\small\item\em Report on memory growth. \end{DoxyCompactList}\item 
+\hypertarget{group__domains_gaaca2154ec24d785edec256a9296220a4}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+domain\+\_\+create}~\hyperlink{group__domains_gae8d5e8af6425224626841526000e2ca2}{\+\_\+\+\_\+itt\+\_\+domain\+\_\+create\+A}\label{group__domains_gaaca2154ec24d785edec256a9296220a4}
+
+\item 
+\hypertarget{group__domains_gaf24d68da0ebd8a2773bb4a7d3875df14}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+domain\+\_\+create\+\_\+ptr}~\+\_\+\+\_\+itt\+\_\+domain\+\_\+create\+A\+\_\+ptr\label{group__domains_gaf24d68da0ebd8a2773bb4a7d3875df14}
+
+\item 
+\hypertarget{group__handless_ga0a723522866c77dbe13ace2d32ee429c}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create}~\hyperlink{group__handless_ga353ab13a4b9325ded923c1c951f6f849}{\+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create\+A}\label{group__handless_ga0a723522866c77dbe13ace2d32ee429c}
+
+\item 
+\hypertarget{group__handless_ga4af0e0826a5b33bf0d9ed25746419936}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create\+\_\+ptr}~\+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create\+A\+\_\+ptr\label{group__handless_ga4af0e0826a5b33bf0d9ed25746419936}
+
+\item 
+\hypertarget{group__metadata_gabd5fb0265c614e638f36fb465c372e8d}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+metadata\+\_\+str\+\_\+add}~\hyperlink{group__metadata_ga1c0cbd4717ce08bf6a83fc84bf0a58e2}{\+\_\+\+\_\+itt\+\_\+metadata\+\_\+str\+\_\+add\+A}\label{group__metadata_gabd5fb0265c614e638f36fb465c372e8d}
+
+\item 
+\hypertarget{group__metadata_ga8ebe7302eaf9f291ede62e0f49c846ce}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+metadata\+\_\+str\+\_\+add\+\_\+ptr}~\+\_\+\+\_\+itt\+\_\+metadata\+\_\+str\+\_\+add\+A\+\_\+ptr\label{group__metadata_ga8ebe7302eaf9f291ede62e0f49c846ce}
+
+\item 
+\hypertarget{group__metadata_gad1d57296dfdaf252ba36eedc7954bd20}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+metadata\+\_\+str\+\_\+add\+\_\+with\+\_\+scope}~\hyperlink{group__metadata_ga4c53d5ec2eebfd017f3867239750a0ec}{\+\_\+\+\_\+itt\+\_\+metadata\+\_\+str\+\_\+add\+\_\+with\+\_\+scope\+A}\label{group__metadata_gad1d57296dfdaf252ba36eedc7954bd20}
+
+\item 
+\hypertarget{group__metadata_gab7da5c687a7bd71d3206bfb1bfcf0e91}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+metadata\+\_\+str\+\_\+add\+\_\+with\+\_\+scope\+\_\+ptr}~\+\_\+\+\_\+itt\+\_\+metadata\+\_\+str\+\_\+add\+\_\+with\+\_\+scope\+A\+\_\+ptr\label{group__metadata_gab7da5c687a7bd71d3206bfb1bfcf0e91}
+
+\item 
+\hypertarget{group__arrays_gaeb4215c9a934c515c6607dd9420e0413}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+av\+\_\+save}~\hyperlink{group__arrays_ga36a1b96487c316dfa1d773fb5bf5e8af}{\+\_\+\+\_\+itt\+\_\+av\+\_\+save\+A}\label{group__arrays_gaeb4215c9a934c515c6607dd9420e0413}
+
+\item 
+\hypertarget{group__arrays_gab86c8591bc2869f08484d8a792d47b14}{}\#define {\bfseries \+\_\+\+\_\+itt\+\_\+av\+\_\+save\+\_\+ptr}~\+\_\+\+\_\+itt\+\_\+av\+\_\+save\+A\+\_\+ptr\label{group__arrays_gab86c8591bc2869f08484d8a792d47b14}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__model_ga920087b18ed59a70239461b5295cc26e}{}typedef void $\ast$ \hyperlink{group__model_ga920087b18ed59a70239461b5295cc26e}{\+\_\+\+\_\+itt\+\_\+model\+\_\+site}\label{group__model_ga920087b18ed59a70239461b5295cc26e}
+
+\begin{DoxyCompactList}\small\item\em handle for lexical site \end{DoxyCompactList}\item 
+\hypertarget{group__model_gaa037f000a165fb7fc2c73b97b31491f1}{}typedef void $\ast$ \hyperlink{group__model_gaa037f000a165fb7fc2c73b97b31491f1}{\+\_\+\+\_\+itt\+\_\+model\+\_\+site\+\_\+instance}\label{group__model_gaa037f000a165fb7fc2c73b97b31491f1}
+
+\begin{DoxyCompactList}\small\item\em handle for dynamic instance \end{DoxyCompactList}\item 
+\hypertarget{group__model_ga96b1dc87978dfc08d2f7740f9d3d2196}{}typedef void $\ast$ \hyperlink{group__model_ga96b1dc87978dfc08d2f7740f9d3d2196}{\+\_\+\+\_\+itt\+\_\+model\+\_\+task}\label{group__model_ga96b1dc87978dfc08d2f7740f9d3d2196}
+
+\begin{DoxyCompactList}\small\item\em handle for lexical site \end{DoxyCompactList}\item 
+\hypertarget{group__model_ga649e02ad732b5bfc895a239353d09588}{}typedef void $\ast$ \hyperlink{group__model_ga649e02ad732b5bfc895a239353d09588}{\+\_\+\+\_\+itt\+\_\+model\+\_\+task\+\_\+instance}\label{group__model_ga649e02ad732b5bfc895a239353d09588}
+
+\begin{DoxyCompactList}\small\item\em handle for dynamic instance \end{DoxyCompactList}\item 
+\hypertarget{group__heap_ga3907115617c96d09c646554d1a386bdf}{}typedef void $\ast$ {\bfseries \+\_\+\+\_\+itt\+\_\+heap\+\_\+function}\label{group__heap_ga3907115617c96d09c646554d1a386bdf}
+
+\item 
+\hypertarget{ittnotify_8h_a24b24f31754aa2b35710e0b1eb33250b}{}typedef enum \hyperlink{ittnotify_8h_a37a50a9e33ca219fac37bbdd6e4c0e10}{\+\_\+\+\_\+\+\_\+itt\+\_\+track\+\_\+type} \hyperlink{ittnotify_8h_a24b24f31754aa2b35710e0b1eb33250b}{\+\_\+\+\_\+itt\+\_\+track\+\_\+type}\label{ittnotify_8h_a24b24f31754aa2b35710e0b1eb33250b}
+
+\begin{DoxyCompactList}\small\item\em Placeholder for custom track types. Currently, \char`\"{}normal\char`\"{} custom track is the only available track type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__model_ga1202045d9271afd9f59f323a9fe30622}{}enum \hyperlink{group__model_ga1202045d9271afd9f59f323a9fe30622}{\+\_\+\+\_\+itt\+\_\+model\+\_\+disable} \{ {\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+disable\+\_\+observation}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+disable\+\_\+collection}
+ \}\label{group__model_ga1202045d9271afd9f59f323a9fe30622}
+\begin{DoxyCompactList}\small\item\em Enumerator for the disable methods. \end{DoxyCompactList}
+\item 
+\hypertarget{group__markers_ga9712c6a992a435d4d134e7164f609f04}{}enum \hyperlink{group__markers_ga9712c6a992a435d4d134e7164f609f04}{\+\_\+\+\_\+itt\+\_\+scope} \{ \\*
+{\bfseries \+\_\+\+\_\+itt\+\_\+scope\+\_\+unknown} = 0, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+scope\+\_\+global}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+scope\+\_\+track\+\_\+group}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+scope\+\_\+track}, 
+\\*
+{\bfseries \+\_\+\+\_\+itt\+\_\+scope\+\_\+task}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+scope\+\_\+marker}
+ \}\label{group__markers_ga9712c6a992a435d4d134e7164f609f04}
+\begin{DoxyCompactList}\small\item\em Describes the scope of an event object in the trace. \end{DoxyCompactList}
+\item 
+enum \hyperlink{group__metadata_ga906320efadd24c37fc2ee021e880a673}{\+\_\+\+\_\+itt\+\_\+metadata\+\_\+type} \{ \\*
+{\bfseries \+\_\+\+\_\+itt\+\_\+metadata\+\_\+unknown} = 0, 
+\hyperlink{group__metadata_gga906320efadd24c37fc2ee021e880a673a33754465ee8a15fc38270050a8f1eb03}{\+\_\+\+\_\+itt\+\_\+metadata\+\_\+u64}, 
+\hyperlink{group__metadata_gga906320efadd24c37fc2ee021e880a673a2ea9b3d3305f3c79899bf2a6cc28c387}{\+\_\+\+\_\+itt\+\_\+metadata\+\_\+s64}, 
+\hyperlink{group__metadata_gga906320efadd24c37fc2ee021e880a673aeb76f9ad9507657f720070824421d440}{\+\_\+\+\_\+itt\+\_\+metadata\+\_\+u32}, 
+\\*
+\hyperlink{group__metadata_gga906320efadd24c37fc2ee021e880a673a9d216a6e79c71de0fd411517a91a68c8}{\+\_\+\+\_\+itt\+\_\+metadata\+\_\+s32}, 
+\hyperlink{group__metadata_gga906320efadd24c37fc2ee021e880a673a87743b7100995bca6b0677d05be50c62}{\+\_\+\+\_\+itt\+\_\+metadata\+\_\+u16}, 
+\hyperlink{group__metadata_gga906320efadd24c37fc2ee021e880a673a3b3b5d18018461f2c27775dcf1421573}{\+\_\+\+\_\+itt\+\_\+metadata\+\_\+s16}, 
+\hyperlink{group__metadata_gga906320efadd24c37fc2ee021e880a673a115d51bb4ac36b09afd93959c2758ff5}{\+\_\+\+\_\+itt\+\_\+metadata\+\_\+float}, 
+\\*
+\hyperlink{group__metadata_gga906320efadd24c37fc2ee021e880a673a01778ca21a498d0835db181289c605a3}{\+\_\+\+\_\+itt\+\_\+metadata\+\_\+double}
+ \}\begin{DoxyCompactList}\small\item\em describes the type of metadata \end{DoxyCompactList}
+\item 
+enum \hyperlink{group__relations_ga2f588e0d778ac0cca7cc0b64cfb1bdca}{\+\_\+\+\_\+itt\+\_\+relation} \{ \\*
+{\bfseries \+\_\+\+\_\+itt\+\_\+relation\+\_\+is\+\_\+unknown} = 0, 
+\hyperlink{group__relations_gga2f588e0d778ac0cca7cc0b64cfb1bdcaa04baff009ada30040481b41a79f4f593}{\+\_\+\+\_\+itt\+\_\+relation\+\_\+is\+\_\+dependent\+\_\+on}, 
+\hyperlink{group__relations_gga2f588e0d778ac0cca7cc0b64cfb1bdcaab47399cff08b5c6b90fd5db7d06f46c2}{\+\_\+\+\_\+itt\+\_\+relation\+\_\+is\+\_\+sibling\+\_\+of}, 
+\hyperlink{group__relations_gga2f588e0d778ac0cca7cc0b64cfb1bdcaa157629a13cd4b3fda5a0ebaab75fe707}{\+\_\+\+\_\+itt\+\_\+relation\+\_\+is\+\_\+parent\+\_\+of}, 
+\\*
+\hyperlink{group__relations_gga2f588e0d778ac0cca7cc0b64cfb1bdcaa1e41b50db9c794d31bdcd594993b4b6f}{\+\_\+\+\_\+itt\+\_\+relation\+\_\+is\+\_\+continuation\+\_\+of}, 
+\hyperlink{group__relations_gga2f588e0d778ac0cca7cc0b64cfb1bdcaa0996403dd9c42c69163e2c6321d5cf37}{\+\_\+\+\_\+itt\+\_\+relation\+\_\+is\+\_\+child\+\_\+of}, 
+\hyperlink{group__relations_gga2f588e0d778ac0cca7cc0b64cfb1bdcaa4d343a796c9e120c638b451d9ce7c001}{\+\_\+\+\_\+itt\+\_\+relation\+\_\+is\+\_\+continued\+\_\+by}, 
+\hyperlink{group__relations_gga2f588e0d778ac0cca7cc0b64cfb1bdcaae91984fad33dfb746f08f0db95df3279}{\+\_\+\+\_\+itt\+\_\+relation\+\_\+is\+\_\+predecessor\+\_\+to}
+ \}\begin{DoxyCompactList}\small\item\em The kind of relation between two instances is specified by the enumerated type \+\_\+\+\_\+itt\+\_\+relation. Relations between instances can be added with an A\+P\+I call. The relation A\+P\+I uses instance I\+Ds. Relations can be added before or after the actual instances are created and persist independently of the instances. This is the motivation for having different lifetimes for instance I\+Ds and the actual instances. \end{DoxyCompactList}
+\item 
+\hypertarget{ittnotify_8h_a37a50a9e33ca219fac37bbdd6e4c0e10}{}enum \hyperlink{ittnotify_8h_a37a50a9e33ca219fac37bbdd6e4c0e10}{\+\_\+\+\_\+\+\_\+itt\+\_\+track\+\_\+type} \{ {\bfseries \+\_\+\+\_\+itt\+\_\+track\+\_\+type\+\_\+normal} = 0
+ \}\label{ittnotify_8h_a37a50a9e33ca219fac37bbdd6e4c0e10}
+\begin{DoxyCompactList}\small\item\em Placeholder for custom track types. Currently, \char`\"{}normal\char`\"{} custom track is the only available track type. \end{DoxyCompactList}
+\item 
+\hypertarget{group__arrays_ga5bd7ba5314d3404b24bf164e87fb3635}{}enum \hyperlink{group__arrays_ga5bd7ba5314d3404b24bf164e87fb3635}{\+\_\+\+\_\+itt\+\_\+av\+\_\+data\+\_\+type} \{ \\*
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+first} = 0, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+char} = 0, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+uchar}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+int16}, 
+\\*
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+uint16}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+int32}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+uint32}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+int64}, 
+\\*
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+uint64}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+float}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+double}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+e\+\_\+last} = \+\_\+\+\_\+itt\+\_\+e\+\_\+double
+ \}\label{group__arrays_ga5bd7ba5314d3404b24bf164e87fb3635}
+\begin{DoxyCompactList}\small\item\em Defines types of arrays data (for C/\+C++ intrinsic types) \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__threads_ga9e8c213f65e14aef25280ed07df6c5e2}{\+\_\+\+\_\+itt\+\_\+thread\+\_\+set\+\_\+name\+A} (const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Sets thread name of calling thread. \end{DoxyCompactList}\item 
+\hypertarget{group__threads_gad5d4b8808f625466329f1145e80eb4be}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+thread\+\_\+set\+\_\+name\+W} (const wchar\+\_\+t $\ast$name)\label{group__threads_gad5d4b8808f625466329f1145e80eb4be}
+
+\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__sync_ga243666487ff4b8904f1629fa15782af4}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+create\+A} (void $\ast$addr, const char $\ast$objtype, const char $\ast$objname, int attribute)
+\begin{DoxyCompactList}\small\item\em Name a synchronization object. \end{DoxyCompactList}\item 
+\hypertarget{group__sync_ga994a2467bd0fd12e7f32fb12ea4b525b}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+sync\+\_\+create\+W} (void $\ast$addr, const wchar\+\_\+t $\ast$objtype, const wchar\+\_\+t $\ast$objname, int attribute)\label{group__sync_ga994a2467bd0fd12e7f32fb12ea4b525b}
+
+\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__sync_ga8e0ee60520e20d33f9dce510b978bb3b}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+rename\+A} (void $\ast$addr, const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Rename a synchronization object. \end{DoxyCompactList}\item 
+\hypertarget{group__sync_gac31e3b71fb178b0732224de292847de9}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+sync\+\_\+rename\+W} (void $\ast$addr, const wchar\+\_\+t $\ast$name)\label{group__sync_gac31e3b71fb178b0732224de292847de9}
+
+\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__sync_ga7c1ea8b984f5f59e077c087a46b4708d}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+destroy} (void $\ast$addr)
+\begin{DoxyCompactList}\small\item\em Destroy a synchronization object. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__model_gaa3168df03ab6c8a28c0534fb26dc48c5}{\+\_\+\+\_\+itt\+\_\+model\+\_\+site\+\_\+begin} (\hyperlink{group__model_ga920087b18ed59a70239461b5295cc26e}{\+\_\+\+\_\+itt\+\_\+model\+\_\+site} $\ast$site, \hyperlink{group__model_gaa037f000a165fb7fc2c73b97b31491f1}{\+\_\+\+\_\+itt\+\_\+model\+\_\+site\+\_\+instance} $\ast$instance, const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em A\+N\+N\+O\+T\+A\+T\+E\+\_\+\+S\+I\+T\+E\+\_\+\+B\+E\+G\+I\+N/\+A\+N\+N\+O\+T\+A\+T\+E\+\_\+\+S\+I\+T\+E\+\_\+\+E\+N\+D support. \end{DoxyCompactList}\item 
+\hypertarget{group__model_ga1a2a8393f594d8998c2d5022154ae605}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+site\+\_\+begin\+W} (const wchar\+\_\+t $\ast$name)\label{group__model_ga1a2a8393f594d8998c2d5022154ae605}
+
+\item 
+\hypertarget{group__model_ga5a0b72caf3a67067e456675d357104f4}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+site\+\_\+begin\+A} (const char $\ast$name)\label{group__model_ga5a0b72caf3a67067e456675d357104f4}
+
+\item 
+\hypertarget{group__model_ga4a35497abdc2fbfeb77bb375f7a6d8dc}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+site\+\_\+begin\+A\+L} (const char $\ast$name, size\+\_\+t site\+Name\+Len)\label{group__model_ga4a35497abdc2fbfeb77bb375f7a6d8dc}
+
+\item 
+\hypertarget{group__model_ga979718d663efa6f9250fdb892a7e8e08}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+site\+\_\+end} (\hyperlink{group__model_ga920087b18ed59a70239461b5295cc26e}{\+\_\+\+\_\+itt\+\_\+model\+\_\+site} $\ast$site, \hyperlink{group__model_gaa037f000a165fb7fc2c73b97b31491f1}{\+\_\+\+\_\+itt\+\_\+model\+\_\+site\+\_\+instance} $\ast$instance)\label{group__model_ga979718d663efa6f9250fdb892a7e8e08}
+
+\item 
+\hypertarget{group__model_ga427f7c1c6bfaf06cd6d895e066451bf9}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+site\+\_\+end\+\_\+2} (void)\label{group__model_ga427f7c1c6bfaf06cd6d895e066451bf9}
+
+\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__model_ga5ed326c42962f58017287e207bda47c1}{\+\_\+\+\_\+itt\+\_\+model\+\_\+task\+\_\+begin} (\hyperlink{group__model_ga96b1dc87978dfc08d2f7740f9d3d2196}{\+\_\+\+\_\+itt\+\_\+model\+\_\+task} $\ast$task, \hyperlink{group__model_ga649e02ad732b5bfc895a239353d09588}{\+\_\+\+\_\+itt\+\_\+model\+\_\+task\+\_\+instance} $\ast$instance, const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em A\+N\+N\+O\+T\+A\+T\+E\+\_\+\+T\+A\+S\+K\+\_\+\+B\+E\+G\+I\+N/\+A\+N\+N\+O\+T\+A\+T\+E\+\_\+\+T\+A\+S\+K\+\_\+\+E\+N\+D support. \end{DoxyCompactList}\item 
+\hypertarget{group__model_gaf1d8632bde2bef71d4fc01a5b0ebd76f}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+task\+\_\+begin\+W} (const wchar\+\_\+t $\ast$name)\label{group__model_gaf1d8632bde2bef71d4fc01a5b0ebd76f}
+
+\item 
+\hypertarget{group__model_gace3b1a76c4b0e2a3d3ef546c1ee1814e}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+iteration\+\_\+task\+W} (const wchar\+\_\+t $\ast$name)\label{group__model_gace3b1a76c4b0e2a3d3ef546c1ee1814e}
+
+\item 
+\hypertarget{group__model_gad2ba1c00072ec87b59c66cf77c9bdcc3}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+task\+\_\+begin\+A} (const char $\ast$name)\label{group__model_gad2ba1c00072ec87b59c66cf77c9bdcc3}
+
+\item 
+\hypertarget{group__model_ga63fb5d6e81b9e9fc7632778fcd23dcc4}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+task\+\_\+begin\+A\+L} (const char $\ast$name, size\+\_\+t task\+Name\+Len)\label{group__model_ga63fb5d6e81b9e9fc7632778fcd23dcc4}
+
+\item 
+\hypertarget{group__model_gabbd738c639cccc13b9c2cf6919ceb9d2}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+iteration\+\_\+task\+A} (const char $\ast$name)\label{group__model_gabbd738c639cccc13b9c2cf6919ceb9d2}
+
+\item 
+\hypertarget{group__model_ga41daab15af2f1133454d2640ff305d51}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+iteration\+\_\+task\+A\+L} (const char $\ast$name, size\+\_\+t task\+Name\+Len)\label{group__model_ga41daab15af2f1133454d2640ff305d51}
+
+\item 
+\hypertarget{group__model_ga2feec792701efd0cd53ea7dfb2d8a2a2}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+task\+\_\+end} (\hyperlink{group__model_ga96b1dc87978dfc08d2f7740f9d3d2196}{\+\_\+\+\_\+itt\+\_\+model\+\_\+task} $\ast$task, \hyperlink{group__model_ga649e02ad732b5bfc895a239353d09588}{\+\_\+\+\_\+itt\+\_\+model\+\_\+task\+\_\+instance} $\ast$instance)\label{group__model_ga2feec792701efd0cd53ea7dfb2d8a2a2}
+
+\item 
+\hypertarget{group__model_ga8cf5327f38fb174cb59b648f17e417a9}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+task\+\_\+end\+\_\+2} (void)\label{group__model_ga8cf5327f38fb174cb59b648f17e417a9}
+
+\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__model_ga36976a311ffa90e59ec5b9122bd79963}{\+\_\+\+\_\+itt\+\_\+model\+\_\+lock\+\_\+acquire} (void $\ast$lock)
+\begin{DoxyCompactList}\small\item\em A\+N\+N\+O\+T\+A\+T\+E\+\_\+\+L\+O\+C\+K\+\_\+\+A\+C\+Q\+U\+I\+R\+E/\+A\+N\+N\+O\+T\+A\+T\+E\+\_\+\+L\+O\+C\+K\+\_\+\+R\+E\+L\+E\+A\+S\+E support. \end{DoxyCompactList}\item 
+\hypertarget{group__model_gaee0795006c12172e0726bbe1b052b64d}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+lock\+\_\+acquire\+\_\+2} (void $\ast$lock)\label{group__model_gaee0795006c12172e0726bbe1b052b64d}
+
+\item 
+\hypertarget{group__model_ga57b59ce957b207bd68bbe1a40ff43e72}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+lock\+\_\+release} (void $\ast$lock)\label{group__model_ga57b59ce957b207bd68bbe1a40ff43e72}
+
+\item 
+\hypertarget{group__model_gaa3c9a6278f8e680ba60394dae6f2c725}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+lock\+\_\+release\+\_\+2} (void $\ast$lock)\label{group__model_gaa3c9a6278f8e680ba60394dae6f2c725}
+
+\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__model_gae05bef073667cfa3d5713103a5256e27}{\+\_\+\+\_\+itt\+\_\+model\+\_\+record\+\_\+allocation} (void $\ast$addr, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em A\+N\+N\+O\+T\+A\+T\+E\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+O\+N/\+A\+N\+N\+O\+T\+A\+T\+E\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+D\+E\+A\+L\+L\+O\+C\+A\+T\+I\+O\+N support. \end{DoxyCompactList}\item 
+\hypertarget{group__model_ga02ec434226d34bd3776173025af69283}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+record\+\_\+deallocation} (void $\ast$addr)\label{group__model_ga02ec434226d34bd3776173025af69283}
+
+\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__model_gaf8d22f3fc7e8c30ff185735852ff728f}{\+\_\+\+\_\+itt\+\_\+model\+\_\+induction\+\_\+uses} (void $\ast$addr, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em A\+N\+N\+O\+T\+A\+T\+E\+\_\+\+I\+N\+D\+U\+C\+T\+I\+O\+N\+\_\+\+U\+S\+E\+S support. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__model_ga49bb058451c4b6b44ff26f1d5ee9b2cc}{\+\_\+\+\_\+itt\+\_\+model\+\_\+reduction\+\_\+uses} (void $\ast$addr, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em A\+N\+N\+O\+T\+A\+T\+E\+\_\+\+R\+E\+D\+U\+C\+T\+I\+O\+N\+\_\+\+U\+S\+E\+S support. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__model_ga54ad5dad8921751223d07ac65c651d9b}{\+\_\+\+\_\+itt\+\_\+model\+\_\+observe\+\_\+uses} (void $\ast$addr, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em A\+N\+N\+O\+T\+A\+T\+E\+\_\+\+O\+B\+S\+E\+R\+V\+E\+\_\+\+U\+S\+E\+S support. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__model_ga5233fcd88ce2279d95bbc02c0bc1419b}{\+\_\+\+\_\+itt\+\_\+model\+\_\+clear\+\_\+uses} (void $\ast$addr)
+\begin{DoxyCompactList}\small\item\em A\+N\+N\+O\+T\+A\+T\+E\+\_\+\+C\+L\+E\+A\+R\+\_\+\+U\+S\+E\+S support. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__model_ga8b1f02078fd0d9c95c18b2f51a2020db}{\+\_\+\+\_\+itt\+\_\+model\+\_\+disable\+\_\+push} (\hyperlink{group__model_ga1202045d9271afd9f59f323a9fe30622}{\+\_\+\+\_\+itt\+\_\+model\+\_\+disable} x)
+\begin{DoxyCompactList}\small\item\em A\+N\+N\+O\+T\+A\+T\+E\+\_\+\+D\+I\+S\+A\+B\+L\+E\+\_\+$\ast$\+\_\+\+P\+U\+S\+H/\+A\+N\+N\+O\+T\+A\+T\+E\+\_\+\+D\+I\+S\+A\+B\+L\+E\+\_\+$\ast$\+\_\+\+P\+O\+P support. \end{DoxyCompactList}\item 
+\hypertarget{group__model_gae0fa340a8815b1e4d29d7e8c59fa652a}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+disable\+\_\+pop} (void)\label{group__model_gae0fa340a8815b1e4d29d7e8c59fa652a}
+
+\item 
+\hypertarget{group__model_gac165f33832cb92943a702e083fc4f637}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+model\+\_\+aggregate\+\_\+task} (size\+\_\+t x)\label{group__model_gac165f33832cb92943a702e083fc4f637}
+
+\item 
+\+\_\+\+\_\+itt\+\_\+heap\+\_\+function I\+T\+T\+A\+P\+I \hyperlink{group__heap_gabbde8e9d232ceaf48c90adad4c1ce233}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+function\+\_\+create\+A} (const char $\ast$name, const char $\ast$domain)
+\begin{DoxyCompactList}\small\item\em Create an identification for heap function. \end{DoxyCompactList}\item 
+\hypertarget{group__heap_ga90fea265a5509cd00e053d9b0d0ba020}{}\+\_\+\+\_\+itt\+\_\+heap\+\_\+function I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+heap\+\_\+function\+\_\+create\+W} (const wchar\+\_\+t $\ast$name, const wchar\+\_\+t $\ast$domain)\label{group__heap_ga90fea265a5509cd00e053d9b0d0ba020}
+
+\item 
+\hypertarget{group__heap_gaf925d76e7660314a9f5bc10420053d28}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_gaf925d76e7660314a9f5bc10420053d28}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+allocate\+\_\+begin} (\+\_\+\+\_\+itt\+\_\+heap\+\_\+function h, size\+\_\+t size, int initialized)\label{group__heap_gaf925d76e7660314a9f5bc10420053d28}
+
+\begin{DoxyCompactList}\small\item\em Record an allocation begin occurrence. \end{DoxyCompactList}\item 
+\hypertarget{group__heap_ga28f07d01cc3333fa5e98531585a1b5d0}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_ga28f07d01cc3333fa5e98531585a1b5d0}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+allocate\+\_\+end} (\+\_\+\+\_\+itt\+\_\+heap\+\_\+function h, void $\ast$$\ast$addr, size\+\_\+t size, int initialized)\label{group__heap_ga28f07d01cc3333fa5e98531585a1b5d0}
+
+\begin{DoxyCompactList}\small\item\em Record an allocation end occurrence. \end{DoxyCompactList}\item 
+\hypertarget{group__heap_ga37cf3971eb7a4ffdcb2ec4a29c97ef7d}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_ga37cf3971eb7a4ffdcb2ec4a29c97ef7d}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+free\+\_\+begin} (\+\_\+\+\_\+itt\+\_\+heap\+\_\+function h, void $\ast$addr)\label{group__heap_ga37cf3971eb7a4ffdcb2ec4a29c97ef7d}
+
+\begin{DoxyCompactList}\small\item\em Record an free begin occurrence. \end{DoxyCompactList}\item 
+\hypertarget{group__heap_gaf7f76cc500828981b9b785292a974c0b}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_gaf7f76cc500828981b9b785292a974c0b}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+free\+\_\+end} (\+\_\+\+\_\+itt\+\_\+heap\+\_\+function h, void $\ast$addr)\label{group__heap_gaf7f76cc500828981b9b785292a974c0b}
+
+\begin{DoxyCompactList}\small\item\em Record an free end occurrence. \end{DoxyCompactList}\item 
+\hypertarget{group__heap_gae25ce7c1240c935198ce4652ae8048fd}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_gae25ce7c1240c935198ce4652ae8048fd}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+reallocate\+\_\+begin} (\+\_\+\+\_\+itt\+\_\+heap\+\_\+function h, void $\ast$addr, size\+\_\+t new\+\_\+size, int initialized)\label{group__heap_gae25ce7c1240c935198ce4652ae8048fd}
+
+\begin{DoxyCompactList}\small\item\em Record an reallocation begin occurrence. \end{DoxyCompactList}\item 
+\hypertarget{group__heap_gaf9533c88db849c2e7e898083b2eb40c7}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_gaf9533c88db849c2e7e898083b2eb40c7}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+reallocate\+\_\+end} (\+\_\+\+\_\+itt\+\_\+heap\+\_\+function h, void $\ast$addr, void $\ast$$\ast$new\+\_\+addr, size\+\_\+t new\+\_\+size, int initialized)\label{group__heap_gaf9533c88db849c2e7e898083b2eb40c7}
+
+\begin{DoxyCompactList}\small\item\em Record an reallocation end occurrence. \end{DoxyCompactList}\item 
+\hypertarget{group__heap_gac199e6db97784bf770736cb2ecbe39fe}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_gac199e6db97784bf770736cb2ecbe39fe}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+internal\+\_\+access\+\_\+begin} (void)\label{group__heap_gac199e6db97784bf770736cb2ecbe39fe}
+
+\begin{DoxyCompactList}\small\item\em internal access begin \end{DoxyCompactList}\item 
+\hypertarget{group__heap_ga2e8dbae7f1fb1c93cc50b4549e2ec91f}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_ga2e8dbae7f1fb1c93cc50b4549e2ec91f}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+internal\+\_\+access\+\_\+end} (void)\label{group__heap_ga2e8dbae7f1fb1c93cc50b4549e2ec91f}
+
+\begin{DoxyCompactList}\small\item\em internal access end \end{DoxyCompactList}\item 
+\hypertarget{group__heap_ga3e449ab4b9c0cab883f23f74e70db5fb}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_ga3e449ab4b9c0cab883f23f74e70db5fb}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+record\+\_\+memory\+\_\+growth\+\_\+begin} (void)\label{group__heap_ga3e449ab4b9c0cab883f23f74e70db5fb}
+
+\begin{DoxyCompactList}\small\item\em record memory growth begin \end{DoxyCompactList}\item 
+\hypertarget{group__heap_ga4127abefaf89ca2c2a76c70dc0d7e124}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_ga4127abefaf89ca2c2a76c70dc0d7e124}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+record\+\_\+memory\+\_\+growth\+\_\+end} (void)\label{group__heap_ga4127abefaf89ca2c2a76c70dc0d7e124}
+
+\begin{DoxyCompactList}\small\item\em record memory growth end \end{DoxyCompactList}\item 
+\hypertarget{group__heap_gae980b97cc0134229a27c1b6263def28c}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_gae980b97cc0134229a27c1b6263def28c}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+reset\+\_\+detection} (unsigned int reset\+\_\+mask)\label{group__heap_gae980b97cc0134229a27c1b6263def28c}
+
+\begin{DoxyCompactList}\small\item\em heap reset detection \end{DoxyCompactList}\item 
+\hypertarget{group__heap_ga8de33699cca1b37a8309d8047124174e}{}void I\+T\+T\+A\+P\+I \hyperlink{group__heap_ga8de33699cca1b37a8309d8047124174e}{\+\_\+\+\_\+itt\+\_\+heap\+\_\+record} (unsigned int record\+\_\+mask)\label{group__heap_ga8de33699cca1b37a8309d8047124174e}
+
+\begin{DoxyCompactList}\small\item\em report \end{DoxyCompactList}\item 
+\+\_\+\+\_\+itt\+\_\+domain $\ast$I\+T\+T\+A\+P\+I \hyperlink{group__domains_gae8d5e8af6425224626841526000e2ca2}{\+\_\+\+\_\+itt\+\_\+domain\+\_\+create\+A} (const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Create a domain. Create domain using some domain name\+: the U\+R\+I naming style is recommended. Because the set of domains is expected to be static over the application\textquotesingle{}s execution time, there is no mechanism to destroy a domain. Any domain can be accessed by any thread in the process, regardless of which thread created the domain. This call is thread-\/safe. \end{DoxyCompactList}\item 
+\hypertarget{group__domains_gad53a1a711a2ceaaee028f64296c89a25}{}\+\_\+\+\_\+itt\+\_\+domain $\ast$I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+domain\+\_\+create\+W} (const wchar\+\_\+t $\ast$name)\label{group__domains_gad53a1a711a2ceaaee028f64296c89a25}
+
+\item 
+I\+T\+T\+\_\+\+I\+N\+L\+I\+N\+E \+\_\+\+\_\+itt\+\_\+id I\+T\+T\+A\+P\+I \hyperlink{group__ids_ga3a34add1c1ff5133f68e87a6f21ce8cb}{\+\_\+\+\_\+itt\+\_\+id\+\_\+make} (void $\ast$addr, unsigned long long extra) I\+T\+T\+\_\+\+I\+N\+L\+I\+N\+E\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E
+\begin{DoxyCompactList}\small\item\em \hyperlink{structA}{A} convenience function is provided to create an I\+D without domain control. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__ids_ga935dd3611e942563fb60db1ccee453c7}{\+\_\+\+\_\+itt\+\_\+id\+\_\+create} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id id)
+\begin{DoxyCompactList}\small\item\em Create an instance of identifier. This establishes the beginning of the lifetime of an instance of the given I\+D in the trace. Once this lifetime starts, the I\+D can be used to tag named entity instances in calls such as \+\_\+\+\_\+itt\+\_\+task\+\_\+begin, and to specify relationships among identified named entity instances, using the \hyperlink{group__relations}{Relations} A\+P\+Is. Instance I\+Ds are not domain specific! \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__ids_ga9b1b0ac6c1084ae77b22708886f468a5}{\+\_\+\+\_\+itt\+\_\+id\+\_\+destroy} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id id)
+\begin{DoxyCompactList}\small\item\em Destroy an instance of identifier. This ends the lifetime of the current instance of the given I\+D value in the trace. Any relationships that are established after this lifetime ends are invalid. This call must be performed before the given I\+D value can be reused for a different named entity instance. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$I\+T\+T\+A\+P\+I \hyperlink{group__handless_ga353ab13a4b9325ded923c1c951f6f849}{\+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create\+A} (const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Create a string handle. Create and return handle value that can be associated with a string. Consecutive calls to \+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create with the same name return the same value. Because the set of string handles is expected to remain static during the application\textquotesingle{}s execution time, there is no mechanism to destroy a string handle. Any string handle can be accessed by any thread in the process, regardless of which thread created the string handle. This call is thread-\/safe. \end{DoxyCompactList}\item 
+\hypertarget{group__handless_ga01b031a1ec465e650ccfacae18a3c121}{}\+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+string\+\_\+handle\+\_\+create\+W} (const wchar\+\_\+t $\ast$name)\label{group__handless_ga01b031a1ec465e650ccfacae18a3c121}
+
+\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__frames_ga093acc1a6ba76656835ddf17776d7ff3}{\+\_\+\+\_\+itt\+\_\+frame\+\_\+begin\+\_\+v3} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id $\ast$id)
+\begin{DoxyCompactList}\small\item\em Begin a frame instance. Successive calls to \+\_\+\+\_\+itt\+\_\+frame\+\_\+begin with the same I\+D are ignored until a call to \+\_\+\+\_\+itt\+\_\+frame\+\_\+end with the same I\+D. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__frames_ga04806851f8db36359587c111defde4e3}{\+\_\+\+\_\+itt\+\_\+frame\+\_\+end\+\_\+v3} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id $\ast$id)
+\begin{DoxyCompactList}\small\item\em End a frame instance. The first call to \+\_\+\+\_\+itt\+\_\+frame\+\_\+end with a given I\+D ends the frame. Successive calls with the same I\+D are ignored, as are calls that do not have a matching \+\_\+\+\_\+itt\+\_\+frame\+\_\+begin call. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__frames_ga18b8adc466f67480f699e5caa1889b81}{\+\_\+\+\_\+itt\+\_\+frame\+\_\+submit\+\_\+v3} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id $\ast$id, \+\_\+\+\_\+itt\+\_\+timestamp begin, \+\_\+\+\_\+itt\+\_\+timestamp end)
+\begin{DoxyCompactList}\small\item\em Submits a frame instance. Successive calls to \+\_\+\+\_\+itt\+\_\+frame\+\_\+begin or \+\_\+\+\_\+itt\+\_\+frame\+\_\+submit with the same I\+D are ignored until a call to \+\_\+\+\_\+itt\+\_\+frame\+\_\+end or \+\_\+\+\_\+itt\+\_\+frame\+\_\+submit with the same I\+D. Passing special \+\_\+\+\_\+itt\+\_\+timestamp\+\_\+none value as \char`\"{}end\char`\"{} argument means take the current timestamp as the end timestamp. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__taskgroup_ga5c4023b7351855c963b5ce2ee5a2388f}{\+\_\+\+\_\+itt\+\_\+task\+\_\+group} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id id, \+\_\+\+\_\+itt\+\_\+id parentid, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$name)
+\begin{DoxyCompactList}\small\item\em Denotes a task\+\_\+group instance. Successive calls to \+\_\+\+\_\+itt\+\_\+task\+\_\+group with the same I\+D are ignored. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__tasks_ga2560be40a32fb564081db7197cca4e1b}{\+\_\+\+\_\+itt\+\_\+task\+\_\+begin} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id taskid, \+\_\+\+\_\+itt\+\_\+id parentid, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$name)
+\begin{DoxyCompactList}\small\item\em Begin a task instance. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__tasks_gaa1cb092474a9aff3d6cba7b4aebb2760}{\+\_\+\+\_\+itt\+\_\+task\+\_\+begin\+\_\+fn} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id taskid, \+\_\+\+\_\+itt\+\_\+id parentid, void $\ast$fn)
+\begin{DoxyCompactList}\small\item\em Begin a task instance. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__tasks_ga087423f93ad4646ff5207e7851d6fa61}{\+\_\+\+\_\+itt\+\_\+task\+\_\+end} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain)
+\begin{DoxyCompactList}\small\item\em End the current task instance. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__counters_gaa4f0172a7816793aa8adb3bb02a9500d}{\+\_\+\+\_\+itt\+\_\+counter\+\_\+inc\+\_\+v3} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$name)
+\begin{DoxyCompactList}\small\item\em Increment a counter by one. The first call with a given name creates a counter by that name and sets its value to zero on every thread. Successive calls increment the counter value on the thread on which the call is issued. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__counters_gaff266e66512b9314d16b16c1e67ef1f1}{\+\_\+\+\_\+itt\+\_\+counter\+\_\+inc\+\_\+delta\+\_\+v3} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$name, unsigned long long delta)
+\begin{DoxyCompactList}\small\item\em Increment a counter by the value specified in delta. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__markers_gaf5bb17e236d525fa8a84d66d62259503}{\+\_\+\+\_\+itt\+\_\+marker} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id id, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$name, \hyperlink{group__markers_ga9712c6a992a435d4d134e7164f609f04}{\+\_\+\+\_\+itt\+\_\+scope} scope)
+\begin{DoxyCompactList}\small\item\em Create a marker instance. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__metadata_ga1acb78b07e5c93582ee1974bf8073038}{\+\_\+\+\_\+itt\+\_\+metadata\+\_\+add} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id id, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$key, \hyperlink{group__metadata_ga906320efadd24c37fc2ee021e880a673}{\+\_\+\+\_\+itt\+\_\+metadata\+\_\+type} type, size\+\_\+t count, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Add metadata to an instance of a named entity. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__metadata_ga1c0cbd4717ce08bf6a83fc84bf0a58e2}{\+\_\+\+\_\+itt\+\_\+metadata\+\_\+str\+\_\+add\+A} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id id, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$key, const char $\ast$data, size\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Add string metadata to an instance of a named entity. \end{DoxyCompactList}\item 
+\hypertarget{group__metadata_ga53baf7d63f0b91a61d4b7ea9c8a6f09d}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+metadata\+\_\+str\+\_\+add\+W} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id id, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$key, const wchar\+\_\+t $\ast$data, size\+\_\+t length)\label{group__metadata_ga53baf7d63f0b91a61d4b7ea9c8a6f09d}
+
+\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__metadata_ga281377e05c2aaa34124be44d4f32d6aa}{\+\_\+\+\_\+itt\+\_\+metadata\+\_\+add\+\_\+with\+\_\+scope} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \hyperlink{group__markers_ga9712c6a992a435d4d134e7164f609f04}{\+\_\+\+\_\+itt\+\_\+scope} scope, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$key, \hyperlink{group__metadata_ga906320efadd24c37fc2ee021e880a673}{\+\_\+\+\_\+itt\+\_\+metadata\+\_\+type} type, size\+\_\+t count, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Add metadata to an instance of a named entity. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__metadata_ga4c53d5ec2eebfd017f3867239750a0ec}{\+\_\+\+\_\+itt\+\_\+metadata\+\_\+str\+\_\+add\+\_\+with\+\_\+scope\+A} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \hyperlink{group__markers_ga9712c6a992a435d4d134e7164f609f04}{\+\_\+\+\_\+itt\+\_\+scope} scope, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$key, const char $\ast$data, size\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Add string metadata to an instance of a named entity. \end{DoxyCompactList}\item 
+\hypertarget{group__metadata_ga2bd3d1d2de57df7483d7d5b8324e23e0}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+metadata\+\_\+str\+\_\+add\+\_\+with\+\_\+scope\+W} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \hyperlink{group__markers_ga9712c6a992a435d4d134e7164f609f04}{\+\_\+\+\_\+itt\+\_\+scope} scope, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$key, const wchar\+\_\+t $\ast$data, size\+\_\+t length)\label{group__metadata_ga2bd3d1d2de57df7483d7d5b8324e23e0}
+
+\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__relations_ga74908fac2ada0681fe88bf47b30ecf86}{\+\_\+\+\_\+itt\+\_\+relation\+\_\+add\+\_\+to\+\_\+current} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \hyperlink{group__relations_ga2f588e0d778ac0cca7cc0b64cfb1bdca}{\+\_\+\+\_\+itt\+\_\+relation} relation, \+\_\+\+\_\+itt\+\_\+id tail)
+\begin{DoxyCompactList}\small\item\em Add a relation to the current task instance. The current task instance is the head of the relation. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__relations_gaa92212e121a2b80f71af099fc492b136}{\+\_\+\+\_\+itt\+\_\+relation\+\_\+add} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+id head, \hyperlink{group__relations_ga2f588e0d778ac0cca7cc0b64cfb1bdca}{\+\_\+\+\_\+itt\+\_\+relation} relation, \+\_\+\+\_\+itt\+\_\+id tail)
+\begin{DoxyCompactList}\small\item\em Add a relation between two instance identifiers. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$I\+T\+T\+A\+P\+I \hyperlink{ittnotify_8h_a9b43b2b5df0afc5f33e56fa3d9459db7}{\+\_\+\+\_\+itt\+\_\+clock\+\_\+domain\+\_\+create} (\+\_\+\+\_\+itt\+\_\+get\+\_\+clock\+\_\+info\+\_\+fn fn, void $\ast$fn\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Create a clock domain. Certain applications require the capability to trace their application using a clock domain different than the C\+P\+U, for instance the instrumentation of events that occur on a G\+P\+U. Because the set of domains is expected to be static over the application\textquotesingle{}s execution time, there is no mechanism to destroy a domain. Any domain can be accessed by any thread in the process, regardless of which thread created the domain. This call is thread-\/safe. \end{DoxyCompactList}\item 
+\hypertarget{ittnotify_8h_a3b8e520bcac713db8ee89d76dc2fc645}{}void I\+T\+T\+A\+P\+I \hyperlink{ittnotify_8h_a3b8e520bcac713db8ee89d76dc2fc645}{\+\_\+\+\_\+itt\+\_\+clock\+\_\+domain\+\_\+reset} (void)\label{ittnotify_8h_a3b8e520bcac713db8ee89d76dc2fc645}
+
+\begin{DoxyCompactList}\small\item\em Recalculate clock domains frequences and clock base timestamps. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{ittnotify_8h_afbd766ebcc7667cd8f9d2cc2871d4ac9}{\+\_\+\+\_\+itt\+\_\+id\+\_\+create\+\_\+ex} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$clock\+\_\+domain, unsigned long long timestamp, \+\_\+\+\_\+itt\+\_\+id id)
+\begin{DoxyCompactList}\small\item\em Create an instance of identifier. This establishes the beginning of the lifetime of an instance of the given I\+D in the trace. Once this lifetime starts, the I\+D can be used to tag named entity instances in calls such as \+\_\+\+\_\+itt\+\_\+task\+\_\+begin, and to specify relationships among identified named entity instances, using the \hyperlink{group__relations}{Relations} A\+P\+Is. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{ittnotify_8h_a3824d9ffac3a0dd01d717dfdf14d0566}{\+\_\+\+\_\+itt\+\_\+id\+\_\+destroy\+\_\+ex} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$clock\+\_\+domain, unsigned long long timestamp, \+\_\+\+\_\+itt\+\_\+id id)
+\begin{DoxyCompactList}\small\item\em Destroy an instance of identifier. This ends the lifetime of the current instance of the given I\+D value in the trace. Any relationships that are established after this lifetime ends are invalid. This call must be performed before the given I\+D value can be reused for a different named entity instance. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{ittnotify_8h_a461b30270c804e0e68022d55d0259518}{\+\_\+\+\_\+itt\+\_\+task\+\_\+begin\+\_\+ex} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$clock\+\_\+domain, unsigned long long timestamp, \+\_\+\+\_\+itt\+\_\+id taskid, \+\_\+\+\_\+itt\+\_\+id parentid, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$name)
+\begin{DoxyCompactList}\small\item\em Begin a task instance. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{ittnotify_8h_abcb2c2f077c17fe4789f063d4e9d6a6e}{\+\_\+\+\_\+itt\+\_\+task\+\_\+begin\+\_\+fn\+\_\+ex} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$clock\+\_\+domain, unsigned long long timestamp, \+\_\+\+\_\+itt\+\_\+id taskid, \+\_\+\+\_\+itt\+\_\+id parentid, void $\ast$fn)
+\begin{DoxyCompactList}\small\item\em Begin a task instance. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{ittnotify_8h_a5b4b66f3aac29a11508c1e4db54c0286}{\+\_\+\+\_\+itt\+\_\+task\+\_\+end\+\_\+ex} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$clock\+\_\+domain, unsigned long long timestamp)
+\begin{DoxyCompactList}\small\item\em End the current task instance. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__markers_gad4d64549f975be3321d5bf6e7666311e}{\+\_\+\+\_\+itt\+\_\+marker\+\_\+ex} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$clock\+\_\+domain, unsigned long long timestamp, \+\_\+\+\_\+itt\+\_\+id id, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$name, \hyperlink{group__markers_ga9712c6a992a435d4d134e7164f609f04}{\+\_\+\+\_\+itt\+\_\+scope} scope)
+\begin{DoxyCompactList}\small\item\em Create a marker instance. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{ittnotify_8h_a7485b5ea6f1eaa8a0335c8083ebecec7}{\+\_\+\+\_\+itt\+\_\+relation\+\_\+add\+\_\+to\+\_\+current\+\_\+ex} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$clock\+\_\+domain, unsigned long long timestamp, \hyperlink{group__relations_ga2f588e0d778ac0cca7cc0b64cfb1bdca}{\+\_\+\+\_\+itt\+\_\+relation} relation, \+\_\+\+\_\+itt\+\_\+id tail)
+\begin{DoxyCompactList}\small\item\em Add a relation to the current task instance. The current task instance is the head of the relation. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{ittnotify_8h_a9e15040b5f6e8a5cdda948b77c16f951}{\+\_\+\+\_\+itt\+\_\+relation\+\_\+add\+\_\+ex} (const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$clock\+\_\+domain, unsigned long long timestamp, \+\_\+\+\_\+itt\+\_\+id head, \hyperlink{group__relations_ga2f588e0d778ac0cca7cc0b64cfb1bdca}{\+\_\+\+\_\+itt\+\_\+relation} relation, \+\_\+\+\_\+itt\+\_\+id tail)
+\begin{DoxyCompactList}\small\item\em Add a relation between two instance identifiers. \end{DoxyCompactList}\item 
+\hypertarget{ittnotify_8h_a61fdd1a646be23a6319e3a10619c6ec8}{}\+\_\+\+\_\+itt\+\_\+track\+\_\+group $\ast$I\+T\+T\+A\+P\+I \hyperlink{ittnotify_8h_a61fdd1a646be23a6319e3a10619c6ec8}{\+\_\+\+\_\+itt\+\_\+track\+\_\+group\+\_\+create} (\+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$name, \+\_\+\+\_\+itt\+\_\+track\+\_\+group\+\_\+type track\+\_\+group\+\_\+type)\label{ittnotify_8h_a61fdd1a646be23a6319e3a10619c6ec8}
+
+\begin{DoxyCompactList}\small\item\em Create logical track group. \end{DoxyCompactList}\item 
+\hypertarget{ittnotify_8h_aff1c2cb21e51ca1cb0b5635822c86fa9}{}\+\_\+\+\_\+itt\+\_\+track $\ast$I\+T\+T\+A\+P\+I \hyperlink{ittnotify_8h_aff1c2cb21e51ca1cb0b5635822c86fa9}{\+\_\+\+\_\+itt\+\_\+track\+\_\+create} (\+\_\+\+\_\+itt\+\_\+track\+\_\+group $\ast$track\+\_\+group, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$name, \hyperlink{ittnotify_8h_a24b24f31754aa2b35710e0b1eb33250b}{\+\_\+\+\_\+itt\+\_\+track\+\_\+type} track\+\_\+type)\label{ittnotify_8h_aff1c2cb21e51ca1cb0b5635822c86fa9}
+
+\begin{DoxyCompactList}\small\item\em Create logical track. \end{DoxyCompactList}\item 
+\hypertarget{ittnotify_8h_abc8343dba6ae639ef7475c26e312a1a0}{}void I\+T\+T\+A\+P\+I \hyperlink{ittnotify_8h_abc8343dba6ae639ef7475c26e312a1a0}{\+\_\+\+\_\+itt\+\_\+set\+\_\+track} (\+\_\+\+\_\+itt\+\_\+track $\ast$track)\label{ittnotify_8h_abc8343dba6ae639ef7475c26e312a1a0}
+
+\begin{DoxyCompactList}\small\item\em Set the logical track. \end{DoxyCompactList}\item 
+int L\+I\+B\+I\+T\+T\+A\+P\+I \hyperlink{ittnotify_8h_aa8d6914227075c6a03e18a17e0d0749c}{\+\_\+\+\_\+itt\+\_\+event\+\_\+start} (\hyperlink{group__legacy__events_gaf3abb988e507916595fa4a13f5a524e4}{\+\_\+\+\_\+itt\+\_\+event} \hyperlink{classevent}{event})
+\begin{DoxyCompactList}\small\item\em Record an event occurrence. \end{DoxyCompactList}\item 
+int L\+I\+B\+I\+T\+T\+A\+P\+I \hyperlink{ittnotify_8h_a652d494fbcc6c727e15cfb60af679816}{\+\_\+\+\_\+itt\+\_\+event\+\_\+end} (\hyperlink{group__legacy__events_gaf3abb988e507916595fa4a13f5a524e4}{\+\_\+\+\_\+itt\+\_\+event} \hyperlink{classevent}{event})
+\begin{DoxyCompactList}\small\item\em Record an event end occurrence. \end{DoxyCompactList}\item 
+int I\+T\+T\+A\+P\+I \hyperlink{group__arrays_ga36a1b96487c316dfa1d773fb5bf5e8af}{\+\_\+\+\_\+itt\+\_\+av\+\_\+save\+A} (void $\ast$data, int rank, const int $\ast$dimensions, int type, const char $\ast$file\+Path, int column\+Order)
+\begin{DoxyCompactList}\small\item\em Save an array data to a file. Output format is defined by the file extension. The csv and bmp formats are supported (bmp -\/ for 2-\/dimensional array only). \end{DoxyCompactList}\item 
+\hypertarget{group__arrays_ga06b495bcd228c1d087d07363fe60b350}{}int I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+av\+\_\+save\+W} (void $\ast$data, int rank, const int $\ast$dimensions, int type, const wchar\+\_\+t $\ast$file\+Path, int column\+Order)\label{group__arrays_ga06b495bcd228c1d087d07363fe60b350}
+
+\item 
+\hypertarget{group__arrays_ga478fa1e11418e7ef53beddf9eac9f07d}{}void I\+T\+T\+A\+P\+I {\bfseries \+\_\+\+\_\+itt\+\_\+enable\+\_\+attach} (void)\label{group__arrays_ga478fa1e11418e7ef53beddf9eac9f07d}
+
+\end{DoxyCompactItemize}
+\begin{Indent}{\bf group of functions is used for performance measurement tools}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__sync_ga27637e91541f997e5e9369a04f094721}{}void I\+T\+T\+A\+P\+I \hyperlink{group__sync_ga27637e91541f997e5e9369a04f094721}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+prepare} (void $\ast$addr)\label{group__sync_ga27637e91541f997e5e9369a04f094721}
+
+\begin{DoxyCompactList}\small\item\em Enter spin loop on user-\/defined sync object. \end{DoxyCompactList}\item 
+\hypertarget{group__sync_gadf4d915083aa5ab2193ef5d1b0987e01}{}void I\+T\+T\+A\+P\+I \hyperlink{group__sync_gadf4d915083aa5ab2193ef5d1b0987e01}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+cancel} (void $\ast$addr)\label{group__sync_gadf4d915083aa5ab2193ef5d1b0987e01}
+
+\begin{DoxyCompactList}\small\item\em Quit spin loop without acquiring spin object. \end{DoxyCompactList}\item 
+\hypertarget{group__sync_ga3a08077b82c93d544473e6155a1e66c6}{}void I\+T\+T\+A\+P\+I \hyperlink{group__sync_ga3a08077b82c93d544473e6155a1e66c6}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+acquired} (void $\ast$addr)\label{group__sync_ga3a08077b82c93d544473e6155a1e66c6}
+
+\begin{DoxyCompactList}\small\item\em Successful spin loop completion (sync object acquired) \end{DoxyCompactList}\item 
+\hypertarget{group__sync_gadde263abd14a8ff4b88edf8afd86f7a2}{}void I\+T\+T\+A\+P\+I \hyperlink{group__sync_gadde263abd14a8ff4b88edf8afd86f7a2}{\+\_\+\+\_\+itt\+\_\+sync\+\_\+releasing} (void $\ast$addr)\label{group__sync_gadde263abd14a8ff4b88edf8afd86f7a2}
+
+\begin{DoxyCompactList}\small\item\em Start sync object releasing code. Is called before the lock release call. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf group of functions is used for correctness checking tools}\par
+\begin{DoxyCompactItemize}
+\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__legacy_ga529918590edeef71ffbe8c6692b7019c}{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+prepare} (void $\ast$addr)
+\begin{DoxyCompactList}\small\item\em Fast synchronization which does no require spinning. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__legacy_ga196fcb16865c3f9a316148fa620f7e13}{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+cancel} (void $\ast$addr)
+\begin{DoxyCompactList}\small\item\em Fast synchronization which does no require spinning. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__legacy_ga538018fcdc9be04929e3fdcaf444e3be}{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+acquired} (void $\ast$addr)
+\begin{DoxyCompactList}\small\item\em Fast synchronization which does no require spinning. \end{DoxyCompactList}\item 
+void I\+T\+T\+A\+P\+I \hyperlink{group__legacy_ga67e0e05bdecc21673acecf207372b307}{\+\_\+\+\_\+itt\+\_\+fsync\+\_\+releasing} (void $\ast$addr)
+\begin{DoxyCompactList}\small\item\em Fast synchronization which does no require spinning. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{group of functions used for error suppression in correctness tools}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__suppress_ga3900b5fa67bc34ea6d9cd9f13626c7a8}{}\#define \hyperlink{group__suppress_ga3900b5fa67bc34ea6d9cd9f13626c7a8}{\+\_\+\+\_\+itt\+\_\+suppress\+\_\+all\+\_\+errors}\label{group__suppress_ga3900b5fa67bc34ea6d9cd9f13626c7a8}
+
+\begin{DoxyCompactList}\small\item\em possible value for suppression mask \end{DoxyCompactList}\item 
+\hypertarget{group__suppress_gaef282c38d1dd1bdd62faa58a59936f34}{}\#define \hyperlink{group__suppress_gaef282c38d1dd1bdd62faa58a59936f34}{\+\_\+\+\_\+itt\+\_\+suppress\+\_\+threading\+\_\+errors}\label{group__suppress_gaef282c38d1dd1bdd62faa58a59936f34}
+
+\begin{DoxyCompactList}\small\item\em possible value for suppression mask (suppresses errors from threading analysis) \end{DoxyCompactList}\item 
+\hypertarget{group__suppress_gacb8880266f3c9716e202a9a6b1e0fa63}{}\#define \hyperlink{group__suppress_gacb8880266f3c9716e202a9a6b1e0fa63}{\+\_\+\+\_\+itt\+\_\+suppress\+\_\+memory\+\_\+errors}\label{group__suppress_gacb8880266f3c9716e202a9a6b1e0fa63}
+
+\begin{DoxyCompactList}\small\item\em possible value for suppression mask (suppresses errors from memory analysis) \end{DoxyCompactList}\item 
+\hypertarget{group__suppress_ga2f22a362ce18331383ba16fea9d9b94d}{}enum {\bfseries \+\_\+\+\_\+itt\+\_\+suppress\+\_\+mode} \{ {\bfseries \+\_\+\+\_\+itt\+\_\+unsuppress\+\_\+range}, 
+{\bfseries \+\_\+\+\_\+itt\+\_\+suppress\+\_\+range}
+ \}\label{group__suppress_ga2f22a362ce18331383ba16fea9d9b94d}
+
+\item 
+\hypertarget{group__suppress_ga63fa4a192bd1e53599c2e58fe4527b5a}{}typedef enum \+\_\+\+\_\+itt\+\_\+suppress\+\_\+mode {\bfseries \+\_\+\+\_\+itt\+\_\+suppress\+\_\+mode\+\_\+t}\label{group__suppress_ga63fa4a192bd1e53599c2e58fe4527b5a}
+
+\item 
+\hypertarget{group__suppress_gaee6d74a43f8ae7e60b397e103d973946}{}void I\+T\+T\+A\+P\+I \hyperlink{group__suppress_gaee6d74a43f8ae7e60b397e103d973946}{\+\_\+\+\_\+itt\+\_\+suppress\+\_\+push} (unsigned int mask)\label{group__suppress_gaee6d74a43f8ae7e60b397e103d973946}
+
+\begin{DoxyCompactList}\small\item\em Start suppressing errors identified in mask on this thread. \end{DoxyCompactList}\item 
+\hypertarget{group__suppress_ga5036bae7bba4aac6b63795f1566d7fc2}{}void I\+T\+T\+A\+P\+I \hyperlink{group__suppress_ga5036bae7bba4aac6b63795f1566d7fc2}{\+\_\+\+\_\+itt\+\_\+suppress\+\_\+pop} (void)\label{group__suppress_ga5036bae7bba4aac6b63795f1566d7fc2}
+
+\begin{DoxyCompactList}\small\item\em Undo the effects of the matching call to \+\_\+\+\_\+itt\+\_\+suppress\+\_\+push. \end{DoxyCompactList}\item 
+\hypertarget{group__suppress_gad71a60677f91afc54978e840170a71fd}{}void I\+T\+T\+A\+P\+I \hyperlink{group__suppress_gad71a60677f91afc54978e840170a71fd}{\+\_\+\+\_\+itt\+\_\+suppress\+\_\+mark\+\_\+range} (\+\_\+\+\_\+itt\+\_\+suppress\+\_\+mode\+\_\+t mode, unsigned int mask, void $\ast$address, size\+\_\+t size)\label{group__suppress_gad71a60677f91afc54978e840170a71fd}
+
+\begin{DoxyCompactList}\small\item\em Mark a range of memory for error suppression or unsuppression for error types included in mask. \end{DoxyCompactList}\item 
+\hypertarget{group__suppress_gacfd9cea63c4b07bb44215785ec882583}{}void I\+T\+T\+A\+P\+I \hyperlink{group__suppress_gacfd9cea63c4b07bb44215785ec882583}{\+\_\+\+\_\+itt\+\_\+suppress\+\_\+clear\+\_\+range} (\+\_\+\+\_\+itt\+\_\+suppress\+\_\+mode\+\_\+t mode, unsigned int mask, void $\ast$address, size\+\_\+t size)\label{group__suppress_gacfd9cea63c4b07bb44215785ec882583}
+
+\begin{DoxyCompactList}\small\item\em Undo the effect of a matching call to \+\_\+\+\_\+itt\+\_\+suppress\+\_\+mark\+\_\+range. If not matching call is found, nothing is changed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Public \hyperlink{classUser}{User} A\+P\+I functions and types. 
+
+
+
+\subsection{Function Documentation}
+\hypertarget{ittnotify_8h_a9b43b2b5df0afc5f33e56fa3d9459db7}{}\index{ittnotify.\+h@{ittnotify.\+h}!\+\_\+\+\_\+itt\+\_\+clock\+\_\+domain\+\_\+create@{\+\_\+\+\_\+itt\+\_\+clock\+\_\+domain\+\_\+create}}
+\index{\+\_\+\+\_\+itt\+\_\+clock\+\_\+domain\+\_\+create@{\+\_\+\+\_\+itt\+\_\+clock\+\_\+domain\+\_\+create}!ittnotify.\+h@{ittnotify.\+h}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+clock\+\_\+domain\+\_\+create(\+\_\+\+\_\+itt\+\_\+get\+\_\+clock\+\_\+info\+\_\+fn fn, void $\ast$fn\+\_\+data)}]{\setlength{\rightskip}{0pt plus 5cm}\+\_\+\+\_\+itt\+\_\+clock\+\_\+domain$\ast$ I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+clock\+\_\+domain\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+\_\+itt\+\_\+get\+\_\+clock\+\_\+info\+\_\+fn}]{fn, }
+\item[{void $\ast$}]{fn\+\_\+data}
+\end{DoxyParamCaption}
+)}\label{ittnotify_8h_a9b43b2b5df0afc5f33e56fa3d9459db7}
+
+
+Create a clock domain. Certain applications require the capability to trace their application using a clock domain different than the C\+P\+U, for instance the instrumentation of events that occur on a G\+P\+U. Because the set of domains is expected to be static over the application\textquotesingle{}s execution time, there is no mechanism to destroy a domain. Any domain can be accessed by any thread in the process, regardless of which thread created the domain. This call is thread-\/safe. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em fn} & \hyperlink{structA}{A} pointer to a callback function which retrieves alternative C\+P\+U timestamps \\
+\hline
+\mbox{\tt in}  & {\em fn\+\_\+data} & Argument for a callback function; may be N\+U\+L\+L \\
+\hline
+\end{DoxyParams}
+\hypertarget{ittnotify_8h_a652d494fbcc6c727e15cfb60af679816}{}\index{ittnotify.\+h@{ittnotify.\+h}!\+\_\+\+\_\+itt\+\_\+event\+\_\+end@{\+\_\+\+\_\+itt\+\_\+event\+\_\+end}}
+\index{\+\_\+\+\_\+itt\+\_\+event\+\_\+end@{\+\_\+\+\_\+itt\+\_\+event\+\_\+end}!ittnotify.\+h@{ittnotify.\+h}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+event\+\_\+end(\+\_\+\+\_\+itt\+\_\+event event)}]{\setlength{\rightskip}{0pt plus 5cm}int L\+I\+B\+I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+event\+\_\+end (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+\_\+itt\+\_\+event}}]{event}
+\end{DoxyParamCaption}
+)}\label{ittnotify_8h_a652d494fbcc6c727e15cfb60af679816}
+
+
+Record an event end occurrence. 
+
+\begin{DoxyNote}{Note}
+It is optional if events do not have durations. 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+itt\+\_\+err upon failure (invalid event id/user event feature not enabled) 
+\end{DoxyReturn}
+\hypertarget{ittnotify_8h_aa8d6914227075c6a03e18a17e0d0749c}{}\index{ittnotify.\+h@{ittnotify.\+h}!\+\_\+\+\_\+itt\+\_\+event\+\_\+start@{\+\_\+\+\_\+itt\+\_\+event\+\_\+start}}
+\index{\+\_\+\+\_\+itt\+\_\+event\+\_\+start@{\+\_\+\+\_\+itt\+\_\+event\+\_\+start}!ittnotify.\+h@{ittnotify.\+h}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+event\+\_\+start(\+\_\+\+\_\+itt\+\_\+event event)}]{\setlength{\rightskip}{0pt plus 5cm}int L\+I\+B\+I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+event\+\_\+start (
+\begin{DoxyParamCaption}
+\item[{{\bf \+\_\+\+\_\+itt\+\_\+event}}]{event}
+\end{DoxyParamCaption}
+)}\label{ittnotify_8h_aa8d6914227075c6a03e18a17e0d0749c}
+
+
+Record an event occurrence. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+itt\+\_\+err upon failure (invalid event id/user event feature not enabled) 
+\end{DoxyReturn}
+\hypertarget{ittnotify_8h_afbd766ebcc7667cd8f9d2cc2871d4ac9}{}\index{ittnotify.\+h@{ittnotify.\+h}!\+\_\+\+\_\+itt\+\_\+id\+\_\+create\+\_\+ex@{\+\_\+\+\_\+itt\+\_\+id\+\_\+create\+\_\+ex}}
+\index{\+\_\+\+\_\+itt\+\_\+id\+\_\+create\+\_\+ex@{\+\_\+\+\_\+itt\+\_\+id\+\_\+create\+\_\+ex}!ittnotify.\+h@{ittnotify.\+h}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+id\+\_\+create\+\_\+ex(const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$clock\+\_\+domain, unsigned long long timestamp, \+\_\+\+\_\+itt\+\_\+id id)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+id\+\_\+create\+\_\+ex (
+\begin{DoxyParamCaption}
+\item[{const \+\_\+\+\_\+itt\+\_\+domain $\ast$}]{domain, }
+\item[{\+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$}]{clock\+\_\+domain, }
+\item[{unsigned long long}]{timestamp, }
+\item[{\+\_\+\+\_\+itt\+\_\+id}]{id}
+\end{DoxyParamCaption}
+)}\label{ittnotify_8h_afbd766ebcc7667cd8f9d2cc2871d4ac9}
+
+
+Create an instance of identifier. This establishes the beginning of the lifetime of an instance of the given I\+D in the trace. Once this lifetime starts, the I\+D can be used to tag named entity instances in calls such as \+\_\+\+\_\+itt\+\_\+task\+\_\+begin, and to specify relationships among identified named entity instances, using the \hyperlink{group__relations}{Relations} A\+P\+Is. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em domain} & The domain controlling the execution of this call. \\
+\hline
+\mbox{\tt in}  & {\em clock\+\_\+domain} & The clock domain controlling the execution of this call. \\
+\hline
+\mbox{\tt in}  & {\em timestamp} & The user defined timestamp. \\
+\hline
+\mbox{\tt in}  & {\em id} & The I\+D to create. \\
+\hline
+\end{DoxyParams}
+\hypertarget{ittnotify_8h_a3824d9ffac3a0dd01d717dfdf14d0566}{}\index{ittnotify.\+h@{ittnotify.\+h}!\+\_\+\+\_\+itt\+\_\+id\+\_\+destroy\+\_\+ex@{\+\_\+\+\_\+itt\+\_\+id\+\_\+destroy\+\_\+ex}}
+\index{\+\_\+\+\_\+itt\+\_\+id\+\_\+destroy\+\_\+ex@{\+\_\+\+\_\+itt\+\_\+id\+\_\+destroy\+\_\+ex}!ittnotify.\+h@{ittnotify.\+h}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+id\+\_\+destroy\+\_\+ex(const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$clock\+\_\+domain, unsigned long long timestamp, \+\_\+\+\_\+itt\+\_\+id id)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+id\+\_\+destroy\+\_\+ex (
+\begin{DoxyParamCaption}
+\item[{const \+\_\+\+\_\+itt\+\_\+domain $\ast$}]{domain, }
+\item[{\+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$}]{clock\+\_\+domain, }
+\item[{unsigned long long}]{timestamp, }
+\item[{\+\_\+\+\_\+itt\+\_\+id}]{id}
+\end{DoxyParamCaption}
+)}\label{ittnotify_8h_a3824d9ffac3a0dd01d717dfdf14d0566}
+
+
+Destroy an instance of identifier. This ends the lifetime of the current instance of the given I\+D value in the trace. Any relationships that are established after this lifetime ends are invalid. This call must be performed before the given I\+D value can be reused for a different named entity instance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em domain} & The domain controlling the execution of this call. \\
+\hline
+\mbox{\tt in}  & {\em clock\+\_\+domain} & The clock domain controlling the execution of this call. \\
+\hline
+\mbox{\tt in}  & {\em timestamp} & The user defined timestamp. \\
+\hline
+\mbox{\tt in}  & {\em id} & The I\+D to destroy. \\
+\hline
+\end{DoxyParams}
+\hypertarget{ittnotify_8h_a9e15040b5f6e8a5cdda948b77c16f951}{}\index{ittnotify.\+h@{ittnotify.\+h}!\+\_\+\+\_\+itt\+\_\+relation\+\_\+add\+\_\+ex@{\+\_\+\+\_\+itt\+\_\+relation\+\_\+add\+\_\+ex}}
+\index{\+\_\+\+\_\+itt\+\_\+relation\+\_\+add\+\_\+ex@{\+\_\+\+\_\+itt\+\_\+relation\+\_\+add\+\_\+ex}!ittnotify.\+h@{ittnotify.\+h}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+relation\+\_\+add\+\_\+ex(const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$clock\+\_\+domain, unsigned long long timestamp, \+\_\+\+\_\+itt\+\_\+id head, \+\_\+\+\_\+itt\+\_\+relation relation, \+\_\+\+\_\+itt\+\_\+id tail)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+relation\+\_\+add\+\_\+ex (
+\begin{DoxyParamCaption}
+\item[{const \+\_\+\+\_\+itt\+\_\+domain $\ast$}]{domain, }
+\item[{\+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$}]{clock\+\_\+domain, }
+\item[{unsigned long long}]{timestamp, }
+\item[{\+\_\+\+\_\+itt\+\_\+id}]{head, }
+\item[{{\bf \+\_\+\+\_\+itt\+\_\+relation}}]{relation, }
+\item[{\+\_\+\+\_\+itt\+\_\+id}]{tail}
+\end{DoxyParamCaption}
+)}\label{ittnotify_8h_a9e15040b5f6e8a5cdda948b77c16f951}
+
+
+Add a relation between two instance identifiers. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em domain} & The domain controlling this call \\
+\hline
+\mbox{\tt in}  & {\em clock\+\_\+domain} & The clock domain controlling the execution of this call. \\
+\hline
+\mbox{\tt in}  & {\em timestamp} & The user defined timestamp. \\
+\hline
+\mbox{\tt in}  & {\em head} & The I\+D for the head of the relation \\
+\hline
+\mbox{\tt in}  & {\em relation} & The kind of relation \\
+\hline
+\mbox{\tt in}  & {\em tail} & The I\+D for the tail of the relation \\
+\hline
+\end{DoxyParams}
+\hypertarget{ittnotify_8h_a7485b5ea6f1eaa8a0335c8083ebecec7}{}\index{ittnotify.\+h@{ittnotify.\+h}!\+\_\+\+\_\+itt\+\_\+relation\+\_\+add\+\_\+to\+\_\+current\+\_\+ex@{\+\_\+\+\_\+itt\+\_\+relation\+\_\+add\+\_\+to\+\_\+current\+\_\+ex}}
+\index{\+\_\+\+\_\+itt\+\_\+relation\+\_\+add\+\_\+to\+\_\+current\+\_\+ex@{\+\_\+\+\_\+itt\+\_\+relation\+\_\+add\+\_\+to\+\_\+current\+\_\+ex}!ittnotify.\+h@{ittnotify.\+h}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+relation\+\_\+add\+\_\+to\+\_\+current\+\_\+ex(const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$clock\+\_\+domain, unsigned long long timestamp, \+\_\+\+\_\+itt\+\_\+relation relation, \+\_\+\+\_\+itt\+\_\+id tail)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+relation\+\_\+add\+\_\+to\+\_\+current\+\_\+ex (
+\begin{DoxyParamCaption}
+\item[{const \+\_\+\+\_\+itt\+\_\+domain $\ast$}]{domain, }
+\item[{\+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$}]{clock\+\_\+domain, }
+\item[{unsigned long long}]{timestamp, }
+\item[{{\bf \+\_\+\+\_\+itt\+\_\+relation}}]{relation, }
+\item[{\+\_\+\+\_\+itt\+\_\+id}]{tail}
+\end{DoxyParamCaption}
+)}\label{ittnotify_8h_a7485b5ea6f1eaa8a0335c8083ebecec7}
+
+
+Add a relation to the current task instance. The current task instance is the head of the relation. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em domain} & The domain controlling this call \\
+\hline
+\mbox{\tt in}  & {\em clock\+\_\+domain} & The clock domain controlling the execution of this call. \\
+\hline
+\mbox{\tt in}  & {\em timestamp} & The user defined timestamp. \\
+\hline
+\mbox{\tt in}  & {\em relation} & The kind of relation \\
+\hline
+\mbox{\tt in}  & {\em tail} & The I\+D for the tail of the relation \\
+\hline
+\end{DoxyParams}
+\hypertarget{ittnotify_8h_a461b30270c804e0e68022d55d0259518}{}\index{ittnotify.\+h@{ittnotify.\+h}!\+\_\+\+\_\+itt\+\_\+task\+\_\+begin\+\_\+ex@{\+\_\+\+\_\+itt\+\_\+task\+\_\+begin\+\_\+ex}}
+\index{\+\_\+\+\_\+itt\+\_\+task\+\_\+begin\+\_\+ex@{\+\_\+\+\_\+itt\+\_\+task\+\_\+begin\+\_\+ex}!ittnotify.\+h@{ittnotify.\+h}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+task\+\_\+begin\+\_\+ex(const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$clock\+\_\+domain, unsigned long long timestamp, \+\_\+\+\_\+itt\+\_\+id taskid, \+\_\+\+\_\+itt\+\_\+id parentid, \+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$name)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+task\+\_\+begin\+\_\+ex (
+\begin{DoxyParamCaption}
+\item[{const \+\_\+\+\_\+itt\+\_\+domain $\ast$}]{domain, }
+\item[{\+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$}]{clock\+\_\+domain, }
+\item[{unsigned long long}]{timestamp, }
+\item[{\+\_\+\+\_\+itt\+\_\+id}]{taskid, }
+\item[{\+\_\+\+\_\+itt\+\_\+id}]{parentid, }
+\item[{\+\_\+\+\_\+itt\+\_\+string\+\_\+handle $\ast$}]{name}
+\end{DoxyParamCaption}
+)}\label{ittnotify_8h_a461b30270c804e0e68022d55d0259518}
+
+
+Begin a task instance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em domain} & The domain for this task \\
+\hline
+\mbox{\tt in}  & {\em clock\+\_\+domain} & The clock domain controlling the execution of this call. \\
+\hline
+\mbox{\tt in}  & {\em timestamp} & The user defined timestamp. \\
+\hline
+\mbox{\tt in}  & {\em taskid} & The instance I\+D for this task instance, or \+\_\+\+\_\+itt\+\_\+null \\
+\hline
+\mbox{\tt in}  & {\em parentid} & The parent instance to which this task instance belongs, or \+\_\+\+\_\+itt\+\_\+null \\
+\hline
+\mbox{\tt in}  & {\em name} & The name of this task \\
+\hline
+\end{DoxyParams}
+\hypertarget{ittnotify_8h_abcb2c2f077c17fe4789f063d4e9d6a6e}{}\index{ittnotify.\+h@{ittnotify.\+h}!\+\_\+\+\_\+itt\+\_\+task\+\_\+begin\+\_\+fn\+\_\+ex@{\+\_\+\+\_\+itt\+\_\+task\+\_\+begin\+\_\+fn\+\_\+ex}}
+\index{\+\_\+\+\_\+itt\+\_\+task\+\_\+begin\+\_\+fn\+\_\+ex@{\+\_\+\+\_\+itt\+\_\+task\+\_\+begin\+\_\+fn\+\_\+ex}!ittnotify.\+h@{ittnotify.\+h}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+task\+\_\+begin\+\_\+fn\+\_\+ex(const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$clock\+\_\+domain, unsigned long long timestamp, \+\_\+\+\_\+itt\+\_\+id taskid, \+\_\+\+\_\+itt\+\_\+id parentid, void $\ast$fn)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+task\+\_\+begin\+\_\+fn\+\_\+ex (
+\begin{DoxyParamCaption}
+\item[{const \+\_\+\+\_\+itt\+\_\+domain $\ast$}]{domain, }
+\item[{\+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$}]{clock\+\_\+domain, }
+\item[{unsigned long long}]{timestamp, }
+\item[{\+\_\+\+\_\+itt\+\_\+id}]{taskid, }
+\item[{\+\_\+\+\_\+itt\+\_\+id}]{parentid, }
+\item[{void $\ast$}]{fn}
+\end{DoxyParamCaption}
+)}\label{ittnotify_8h_abcb2c2f077c17fe4789f063d4e9d6a6e}
+
+
+Begin a task instance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em domain} & The domain for this task \\
+\hline
+\mbox{\tt in}  & {\em clock\+\_\+domain} & The clock domain controlling the execution of this call. \\
+\hline
+\mbox{\tt in}  & {\em timestamp} & The user defined timestamp. \\
+\hline
+\mbox{\tt in}  & {\em taskid} & The identifier for this task instance, or \+\_\+\+\_\+itt\+\_\+null \\
+\hline
+\mbox{\tt in}  & {\em parentid} & The parent of this task, or \+\_\+\+\_\+itt\+\_\+null \\
+\hline
+\mbox{\tt in}  & {\em fn} & The pointer to the function you are tracing \\
+\hline
+\end{DoxyParams}
+\hypertarget{ittnotify_8h_a5b4b66f3aac29a11508c1e4db54c0286}{}\index{ittnotify.\+h@{ittnotify.\+h}!\+\_\+\+\_\+itt\+\_\+task\+\_\+end\+\_\+ex@{\+\_\+\+\_\+itt\+\_\+task\+\_\+end\+\_\+ex}}
+\index{\+\_\+\+\_\+itt\+\_\+task\+\_\+end\+\_\+ex@{\+\_\+\+\_\+itt\+\_\+task\+\_\+end\+\_\+ex}!ittnotify.\+h@{ittnotify.\+h}}
+\subsubsection[{\+\_\+\+\_\+itt\+\_\+task\+\_\+end\+\_\+ex(const \+\_\+\+\_\+itt\+\_\+domain $\ast$domain, \+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$clock\+\_\+domain, unsigned long long timestamp)}]{\setlength{\rightskip}{0pt plus 5cm}void I\+T\+T\+A\+P\+I \+\_\+\+\_\+itt\+\_\+task\+\_\+end\+\_\+ex (
+\begin{DoxyParamCaption}
+\item[{const \+\_\+\+\_\+itt\+\_\+domain $\ast$}]{domain, }
+\item[{\+\_\+\+\_\+itt\+\_\+clock\+\_\+domain $\ast$}]{clock\+\_\+domain, }
+\item[{unsigned long long}]{timestamp}
+\end{DoxyParamCaption}
+)}\label{ittnotify_8h_a5b4b66f3aac29a11508c1e4db54c0286}
+
+
+End the current task instance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em domain} & The domain for this task \\
+\hline
+\mbox{\tt in}  & {\em clock\+\_\+domain} & The clock domain controlling the execution of this call. \\
+\hline
+\mbox{\tt in}  & {\em timestamp} & The user defined timestamp. \\
+\hline
+\end{DoxyParams}

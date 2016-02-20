@@ -1,0 +1,79 @@
+\hypertarget{classinternal_1_1indexer__node__base}{}\section{internal\+:\+:indexer\+\_\+node\+\_\+base$<$ Input\+Tuple, Output\+Type, Struct\+Types $>$ Class Template Reference}
+\label{classinternal_1_1indexer__node__base}\index{internal\+::indexer\+\_\+node\+\_\+base$<$ Input\+Tuple, Output\+Type, Struct\+Types $>$@{internal\+::indexer\+\_\+node\+\_\+base$<$ Input\+Tuple, Output\+Type, Struct\+Types $>$}}
+
+
+\hyperlink{classinternal_1_1indexer__node__base}{indexer\+\_\+node\+\_\+base}  
+
+
+
+
+{\ttfamily \#include $<$\+\_\+flow\+\_\+graph\+\_\+indexer\+\_\+impl.\+h$>$}
+
+Inheritance diagram for internal\+:\+:indexer\+\_\+node\+\_\+base$<$ Input\+Tuple, Output\+Type, Struct\+Types $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.362530cm]{classinternal_1_1indexer__node__base}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1indexer__node__base_a123574b541135589d9ffaf9806926510}{}typedef Output\+Type {\bfseries output\+\_\+type}\label{classinternal_1_1indexer__node__base_a123574b541135589d9ffaf9806926510}
+
+\item 
+\hypertarget{classinternal_1_1indexer__node__base_a0ed4edb17cc20e1052a6618db0bf8d2f}{}typedef Struct\+Types {\bfseries tuple\+\_\+types}\label{classinternal_1_1indexer__node__base_a0ed4edb17cc20e1052a6618db0bf8d2f}
+
+\item 
+\hypertarget{classinternal_1_1indexer__node__base_a4bc4239024bf233b3293ff0508ae43f3}{}typedef receiver$<$ output\+\_\+type $>$ {\bfseries successor\+\_\+type}\label{classinternal_1_1indexer__node__base_a4bc4239024bf233b3293ff0508ae43f3}
+
+\item 
+\hypertarget{classinternal_1_1indexer__node__base_ae68ca39f2a5719e45e1b28e814826800}{}typedef \hyperlink{classinternal_1_1indexer__node__FE}{indexer\+\_\+node\+\_\+\+F\+E}$<$ Input\+Tuple, output\+\_\+type, Struct\+Types $>$ {\bfseries input\+\_\+ports\+\_\+type}\label{classinternal_1_1indexer__node__base_ae68ca39f2a5719e45e1b28e814826800}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1indexer__node__base_a1f3b722678fb36523c81d239b67e5073}{}{\bfseries indexer\+\_\+node\+\_\+base} (graph \&g)\label{classinternal_1_1indexer__node__base_a1f3b722678fb36523c81d239b67e5073}
+
+\item 
+\hypertarget{classinternal_1_1indexer__node__base_a00dd91667d720ffbcf8acd22c92cccc6}{}{\bfseries indexer\+\_\+node\+\_\+base} (const \hyperlink{classinternal_1_1indexer__node__base}{indexer\+\_\+node\+\_\+base} \&other)\label{classinternal_1_1indexer__node__base_a00dd91667d720ffbcf8acd22c92cccc6}
+
+\item 
+\hypertarget{classinternal_1_1indexer__node__base_ae0e2c8740a1c9950b8a884a432d4de08}{}bool {\bfseries register\+\_\+successor} (successor\+\_\+type \&r)\label{classinternal_1_1indexer__node__base_ae0e2c8740a1c9950b8a884a432d4de08}
+
+\item 
+\hypertarget{classinternal_1_1indexer__node__base_a668d3b1565143a8e1ae8acfdae87bab9}{}bool {\bfseries remove\+\_\+successor} (successor\+\_\+type \&r)\label{classinternal_1_1indexer__node__base_a668d3b1565143a8e1ae8acfdae87bab9}
+
+\item 
+\hypertarget{classinternal_1_1indexer__node__base_aed57a4ba91e54c57f6420612a917e850}{}task $\ast$ {\bfseries try\+\_\+put\+\_\+task} (output\+\_\+type const $\ast$v)\label{classinternal_1_1indexer__node__base_aed57a4ba91e54c57f6420612a917e850}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1indexer__node__base_a642ff1e797d943ccb99a8afdbb1b73b1}{}static const size\+\_\+t {\bfseries N} = tbb\+::flow\+::tuple\+\_\+size$<$Input\+Tuple$>$\+::value\label{classinternal_1_1indexer__node__base_a642ff1e797d943ccb99a8afdbb1b73b1}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1indexer__node__base_a217e47f48fdf607efa9d564830b0a77c}{}void {\bfseries reset} (\+\_\+\+\_\+\+T\+B\+B\+\_\+\+P\+F\+G\+\_\+\+R\+E\+S\+E\+T\+\_\+\+A\+R\+G(reset\+\_\+flags f))\label{classinternal_1_1indexer__node__base_a217e47f48fdf607efa9d564830b0a77c}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classinternal_1_1indexer__node__base_ab0e08e0b59a5d5e7a3f53169f159a68b}{}class {\bfseries internal\+::aggregating\+\_\+functor$<$ my\+\_\+class, indexer\+\_\+node\+\_\+base\+\_\+operation $>$}\label{classinternal_1_1indexer__node__base_ab0e08e0b59a5d5e7a3f53169f159a68b}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Input\+Tuple, typename Output\+Type, typename Struct\+Types$>$class internal\+::indexer\+\_\+node\+\_\+base$<$ Input\+Tuple, Output\+Type, Struct\+Types $>$}
+
+\hyperlink{classinternal_1_1indexer__node__base}{indexer\+\_\+node\+\_\+base} 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/internal/\+\_\+flow\+\_\+graph\+\_\+indexer\+\_\+impl.\+h\end{DoxyCompactItemize}

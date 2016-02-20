@@ -1,0 +1,194 @@
+\hypertarget{classtbb_1_1filter}{}\section{tbb\+:\+:filter Class Reference}
+\label{classtbb_1_1filter}\index{tbb\+::filter@{tbb\+::filter}}
+
+
+\hyperlink{structA}{A} stage in a pipeline.  
+
+
+
+
+{\ttfamily \#include $<$pipeline.\+h$>$}
+
+Inheritance diagram for tbb\+:\+:filter\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.091503cm]{classtbb_1_1filter}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classtbb_1_1filter_a8145c736bafcf0b401d50bf1a1df9125}{mode} \{ \hyperlink{classtbb_1_1filter_a8145c736bafcf0b401d50bf1a1df9125a2604b539ec56a2d9ea6234a39f3d872a}{parallel} = current\+\_\+version $\vert$ filter\+\_\+is\+\_\+out\+\_\+of\+\_\+order, 
+\hyperlink{classtbb_1_1filter_a8145c736bafcf0b401d50bf1a1df9125a9bac158682f44168d98270c556b3a635}{serial\+\_\+in\+\_\+order} = current\+\_\+version $\vert$ filter\+\_\+is\+\_\+serial, 
+\hyperlink{classtbb_1_1filter_a8145c736bafcf0b401d50bf1a1df9125ad83029eabf74f69cd459092e0c7f8639}{serial\+\_\+out\+\_\+of\+\_\+order} = current\+\_\+version $\vert$ filter\+\_\+is\+\_\+serial $\vert$ filter\+\_\+is\+\_\+out\+\_\+of\+\_\+order, 
+\hyperlink{classtbb_1_1filter_a8145c736bafcf0b401d50bf1a1df9125a979bc85071cfc4704b06fcf0364e6df3}{serial} = serial\+\_\+in\+\_\+order
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1filter_a6efb96f4660820fc6d47f9f480c07d35}{}bool \hyperlink{classtbb_1_1filter_a6efb96f4660820fc6d47f9f480c07d35}{is\+\_\+serial} () const \label{classtbb_1_1filter_a6efb96f4660820fc6d47f9f480c07d35}
+
+\begin{DoxyCompactList}\small\item\em True if filter is serial. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1filter_ace53ff32ffb066e52c44f439c9150a05}{}bool \hyperlink{classtbb_1_1filter_ace53ff32ffb066e52c44f439c9150a05}{is\+\_\+ordered} () const \label{classtbb_1_1filter_ace53ff32ffb066e52c44f439c9150a05}
+
+\begin{DoxyCompactList}\small\item\em True if filter must receive stream in order. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1filter_aa3a4a81d3130c3749ada365387023623}{}bool \hyperlink{classtbb_1_1filter_aa3a4a81d3130c3749ada365387023623}{is\+\_\+bound} () const \label{classtbb_1_1filter_aa3a4a81d3130c3749ada365387023623}
+
+\begin{DoxyCompactList}\small\item\em True if filter is thread-\/bound. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1filter_aeb5fbff6b01a85e0c74c8976b6f761de}{}bool \hyperlink{classtbb_1_1filter_aeb5fbff6b01a85e0c74c8976b6f761de}{object\+\_\+may\+\_\+be\+\_\+null} ()\label{classtbb_1_1filter_aeb5fbff6b01a85e0c74c8976b6f761de}
+
+\begin{DoxyCompactList}\small\item\em true if an input filter can emit null \end{DoxyCompactList}\item 
+virtual void $\ast$ \hyperlink{classtbb_1_1filter_a04b442ece10fd08f98d098ed5d0cbe35}{operator()} (void $\ast$item)=0
+\begin{DoxyCompactList}\small\item\em Operate on an item from the input stream, and return item for output stream. \end{DoxyCompactList}\item 
+virtual \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D \hyperlink{classtbb_1_1filter_a73337fb0e69db82e7c5025e0297ebac5}{$\sim$filter} ()
+\begin{DoxyCompactList}\small\item\em Destroy filter. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classtbb_1_1filter_a7f48cc9951e3cf7389e4c39d8b76e8ac}{finalize} (void $\ast$)
+\begin{DoxyCompactList}\small\item\em Destroys item if pipeline was cancelled. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1filter_ae651887a41bbff4e0f5c7108f6c01d48}{}{\bfseries filter} (bool is\+\_\+serial\+\_\+)\label{classtbb_1_1filter_ae651887a41bbff4e0f5c7108f6c01d48}
+
+\item 
+\hypertarget{classtbb_1_1filter_a1cf46b6eb3b93fa0dc9864dc72ae4c1d}{}{\bfseries filter} (\hyperlink{classtbb_1_1filter_a8145c736bafcf0b401d50bf1a1df9125}{mode} filter\+\_\+mode)\label{classtbb_1_1filter_a1cf46b6eb3b93fa0dc9864dc72ae4c1d}
+
+\item 
+\hypertarget{classtbb_1_1filter_abf8ab6ab2e341422a0372e9fa03073db}{}void \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D {\bfseries set\+\_\+end\+\_\+of\+\_\+input} ()\label{classtbb_1_1filter_abf8ab6ab2e341422a0372e9fa03073db}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1filter_ae9dab2e01b0963b341ab04b59eec1475}{}static const unsigned char \hyperlink{classtbb_1_1filter_ae9dab2e01b0963b341ab04b59eec1475}{filter\+\_\+is\+\_\+serial} = 0x1\label{classtbb_1_1filter_ae9dab2e01b0963b341ab04b59eec1475}
+
+\begin{DoxyCompactList}\small\item\em The lowest bit 0 is for parallel vs. serial. \end{DoxyCompactList}\item 
+static const unsigned char \hyperlink{classtbb_1_1filter_a091fcf6abc79edfa5c8bf01f742e2392}{filter\+\_\+is\+\_\+out\+\_\+of\+\_\+order} = 0x1$<$$<$4
+\begin{DoxyCompactList}\small\item\em 4th bit distinguishes ordered vs unordered filters. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1filter_a1382f216bd094064a18eb48ecc43c86b}{}static const unsigned char \hyperlink{classtbb_1_1filter_a1382f216bd094064a18eb48ecc43c86b}{filter\+\_\+is\+\_\+bound} = 0x1$<$$<$5\label{classtbb_1_1filter_a1382f216bd094064a18eb48ecc43c86b}
+
+\begin{DoxyCompactList}\small\item\em 5th bit distinguishes thread-\/bound and regular filters. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1filter_a6645ec56872b6ba2056dcaa467e292f7}{}static const unsigned char \hyperlink{classtbb_1_1filter_a6645ec56872b6ba2056dcaa467e292f7}{filter\+\_\+may\+\_\+emit\+\_\+null} = 0x1$<$$<$6\label{classtbb_1_1filter_a6645ec56872b6ba2056dcaa467e292f7}
+
+\begin{DoxyCompactList}\small\item\em 6th bit marks input filters emitting small objects \end{DoxyCompactList}\item 
+static const unsigned char \hyperlink{classtbb_1_1filter_aab9689e23a96c6c9bf1c8caae74d92ee}{exact\+\_\+exception\+\_\+propagation}
+\begin{DoxyCompactList}\small\item\em 7th bit defines exception propagation mode expected by the application. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1filter_a4d3b423bb04f15b3c66183ed45899591}{}static const unsigned char {\bfseries current\+\_\+version} = \+\_\+\+\_\+\+T\+B\+B\+\_\+\+P\+I\+P\+E\+L\+I\+N\+E\+\_\+\+V\+E\+R\+S\+I\+O\+N(5)\label{classtbb_1_1filter_a4d3b423bb04f15b3c66183ed45899591}
+
+\item 
+\hypertarget{classtbb_1_1filter_a8d0e7e5e2fd9141b71c1073f6609df91}{}static const unsigned char {\bfseries version\+\_\+mask} = 0x7$<$$<$1\label{classtbb_1_1filter_a8d0e7e5e2fd9141b71c1073f6609df91}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1filter_a88bd11ed4d74f6de43a7d3b0bc05f2c3}{}class {\bfseries internal\+::stage\+\_\+task}\label{classtbb_1_1filter_a88bd11ed4d74f6de43a7d3b0bc05f2c3}
+
+\item 
+\hypertarget{classtbb_1_1filter_aa6f9dcf41617866d7bf0e72d8efc11e7}{}class {\bfseries internal\+::pipeline\+\_\+root\+\_\+task}\label{classtbb_1_1filter_aa6f9dcf41617866d7bf0e72d8efc11e7}
+
+\item 
+\hypertarget{classtbb_1_1filter_a687d6d86bc5e18eb1d32acf3f6e7bd9f}{}class {\bfseries pipeline}\label{classtbb_1_1filter_a687d6d86bc5e18eb1d32acf3f6e7bd9f}
+
+\item 
+\hypertarget{classtbb_1_1filter_ab4463cf8612c362ee109224e45fad104}{}class {\bfseries thread\+\_\+bound\+\_\+filter}\label{classtbb_1_1filter_ab4463cf8612c362ee109224e45fad104}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{structA}{A} stage in a pipeline. 
+
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{classtbb_1_1filter_a8145c736bafcf0b401d50bf1a1df9125}{}\index{tbb\+::filter@{tbb\+::filter}!mode@{mode}}
+\index{mode@{mode}!tbb\+::filter@{tbb\+::filter}}
+\subsubsection[{mode}]{\setlength{\rightskip}{0pt plus 5cm}enum tbb\+::filter\+::mode}\label{classtbb_1_1filter_a8145c736bafcf0b401d50bf1a1df9125}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{parallel@{parallel}!tbb\+::filter@{tbb\+::filter}}\index{tbb\+::filter@{tbb\+::filter}!parallel@{parallel}}\item[{\em 
+\hypertarget{classtbb_1_1filter_a8145c736bafcf0b401d50bf1a1df9125a2604b539ec56a2d9ea6234a39f3d872a}{}parallel\label{classtbb_1_1filter_a8145c736bafcf0b401d50bf1a1df9125a2604b539ec56a2d9ea6234a39f3d872a}
+}]processes multiple items in parallel and in no particular order \index{serial\+\_\+in\+\_\+order@{serial\+\_\+in\+\_\+order}!tbb\+::filter@{tbb\+::filter}}\index{tbb\+::filter@{tbb\+::filter}!serial\+\_\+in\+\_\+order@{serial\+\_\+in\+\_\+order}}\item[{\em 
+\hypertarget{classtbb_1_1filter_a8145c736bafcf0b401d50bf1a1df9125a9bac158682f44168d98270c556b3a635}{}serial\+\_\+in\+\_\+order\label{classtbb_1_1filter_a8145c736bafcf0b401d50bf1a1df9125a9bac158682f44168d98270c556b3a635}
+}]processes items one at a time; all such filters process items in the same order \index{serial\+\_\+out\+\_\+of\+\_\+order@{serial\+\_\+out\+\_\+of\+\_\+order}!tbb\+::filter@{tbb\+::filter}}\index{tbb\+::filter@{tbb\+::filter}!serial\+\_\+out\+\_\+of\+\_\+order@{serial\+\_\+out\+\_\+of\+\_\+order}}\item[{\em 
+\hypertarget{classtbb_1_1filter_a8145c736bafcf0b401d50bf1a1df9125ad83029eabf74f69cd459092e0c7f8639}{}serial\+\_\+out\+\_\+of\+\_\+order\label{classtbb_1_1filter_a8145c736bafcf0b401d50bf1a1df9125ad83029eabf74f69cd459092e0c7f8639}
+}]processes items one at a time and in no particular order \index{serial@{serial}!tbb\+::filter@{tbb\+::filter}}\index{tbb\+::filter@{tbb\+::filter}!serial@{serial}}\item[{\em 
+\hypertarget{classtbb_1_1filter_a8145c736bafcf0b401d50bf1a1df9125a979bc85071cfc4704b06fcf0364e6df3}{}serial\label{classtbb_1_1filter_a8145c736bafcf0b401d50bf1a1df9125a979bc85071cfc4704b06fcf0364e6df3}
+}]\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000001}{Deprecated}]use serial\+\_\+in\+\_\+order instead \end{DoxyRefDesc}
+\end{description}
+\end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classtbb_1_1filter_a73337fb0e69db82e7c5025e0297ebac5}{}\index{tbb\+::filter@{tbb\+::filter}!````~filter@{$\sim$filter}}
+\index{````~filter@{$\sim$filter}!tbb\+::filter@{tbb\+::filter}}
+\subsubsection[{$\sim$filter()}]{\setlength{\rightskip}{0pt plus 5cm}filter\+::$\sim$filter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classtbb_1_1filter_a73337fb0e69db82e7c5025e0297ebac5}
+
+
+Destroy filter. 
+
+If the filter was added to a pipeline, the pipeline must be destroyed first. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classtbb_1_1filter_a7f48cc9951e3cf7389e4c39d8b76e8ac}{}\index{tbb\+::filter@{tbb\+::filter}!finalize@{finalize}}
+\index{finalize@{finalize}!tbb\+::filter@{tbb\+::filter}}
+\subsubsection[{finalize(void $\ast$)}]{\setlength{\rightskip}{0pt plus 5cm}virtual void tbb\+::filter\+::finalize (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{classtbb_1_1filter_a7f48cc9951e3cf7389e4c39d8b76e8ac}
+
+
+Destroys item if pipeline was cancelled. 
+
+Required to prevent memory leaks. Note it can be called concurrently even for serial filters. \hypertarget{classtbb_1_1filter_a04b442ece10fd08f98d098ed5d0cbe35}{}\index{tbb\+::filter@{tbb\+::filter}!operator()@{operator()}}
+\index{operator()@{operator()}!tbb\+::filter@{tbb\+::filter}}
+\subsubsection[{operator()(void $\ast$item)=0}]{\setlength{\rightskip}{0pt plus 5cm}virtual void$\ast$ tbb\+::filter\+::operator() (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classtbb_1_1filter_a04b442ece10fd08f98d098ed5d0cbe35}
+
+
+Operate on an item from the input stream, and return item for output stream. 
+
+Returns N\+U\+L\+L if filter is a sink. 
+
+Implemented in \hyperlink{classMultiplyFilter_a04297d3dfd7e83c01cc0279a684b952a}{Multiply\+Filter}, \hyperlink{classInputFilter_a8b26e42b9414aabad06853540772f771}{Input\+Filter$<$ T $>$}, \hyperlink{classMyOutputFilter_a6102b27306e4bd5e55264b9c1fdee497}{My\+Output\+Filter}, \hyperlink{classMyTransformFilter_ae34e365ac37e83f71607e75c46a847de}{My\+Transform\+Filter}, \hyperlink{classBaseFilter_a603a4b099a76e84d427fcf89e4cf91a0}{Base\+Filter$<$ T $>$}, and \hyperlink{classBaseFilter_a603a4b099a76e84d427fcf89e4cf91a0}{Base\+Filter$<$ T $>$}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classtbb_1_1filter_aab9689e23a96c6c9bf1c8caae74d92ee}{}\index{tbb\+::filter@{tbb\+::filter}!exact\+\_\+exception\+\_\+propagation@{exact\+\_\+exception\+\_\+propagation}}
+\index{exact\+\_\+exception\+\_\+propagation@{exact\+\_\+exception\+\_\+propagation}!tbb\+::filter@{tbb\+::filter}}
+\subsubsection[{exact\+\_\+exception\+\_\+propagation}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned char tbb\+::filter\+::exact\+\_\+exception\+\_\+propagation\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}\label{classtbb_1_1filter_aab9689e23a96c6c9bf1c8caae74d92ee}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+
+            0x0
+\end{DoxyCode}
+
+
+7th bit defines exception propagation mode expected by the application. 
+
+\hypertarget{classtbb_1_1filter_a091fcf6abc79edfa5c8bf01f742e2392}{}\index{tbb\+::filter@{tbb\+::filter}!filter\+\_\+is\+\_\+out\+\_\+of\+\_\+order@{filter\+\_\+is\+\_\+out\+\_\+of\+\_\+order}}
+\index{filter\+\_\+is\+\_\+out\+\_\+of\+\_\+order@{filter\+\_\+is\+\_\+out\+\_\+of\+\_\+order}!tbb\+::filter@{tbb\+::filter}}
+\subsubsection[{filter\+\_\+is\+\_\+out\+\_\+of\+\_\+order}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned char tbb\+::filter\+::filter\+\_\+is\+\_\+out\+\_\+of\+\_\+order = 0x1$<$$<$4\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}\label{classtbb_1_1filter_a091fcf6abc79edfa5c8bf01f742e2392}
+
+
+4th bit distinguishes ordered vs unordered filters. 
+
+The bit was not set for parallel filters in T\+B\+B 2.\+1 and earlier, but \hyperlink{classtbb_1_1filter_ace53ff32ffb066e52c44f439c9150a05}{is\+\_\+ordered()} function always treats parallel filters as out of order. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/pipeline.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/pipeline.\+cpp\end{DoxyCompactItemize}

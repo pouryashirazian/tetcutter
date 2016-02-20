@@ -1,0 +1,498 @@
+\hypertarget{classps_1_1elastic_1_1VolMesh}{}\section{ps\+:\+:elastic\+:\+:Vol\+Mesh Class Reference}
+\label{classps_1_1elastic_1_1VolMesh}\index{ps\+::elastic\+::\+Vol\+Mesh@{ps\+::elastic\+::\+Vol\+Mesh}}
+Inheritance diagram for ps\+:\+:elastic\+:\+:Vol\+Mesh\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classps_1_1elastic_1_1VolMesh}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a8010471b44f64a1fe41ed63ff34a8305}{}enum {\bfseries Topology\+Event} \{ {\bfseries te\+Added}, 
+{\bfseries te\+Removed}, 
+{\bfseries te\+Updated}
+ \}\label{classps_1_1elastic_1_1VolMesh_a8010471b44f64a1fe41ed63ff34a8305}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ae90aa791da6481aa8dc6ec612c2c3d49}{}enum {\bfseries Error\+Codes} \{ \\*
+{\bfseries err\+\_\+op\+\_\+failed} = -\/1, 
+{\bfseries err\+\_\+elem\+\_\+not\+\_\+found} = -\/2, 
+{\bfseries err\+\_\+face\+\_\+not\+\_\+found} = -\/3, 
+{\bfseries err\+\_\+edge\+\_\+not\+\_\+found} = -\/4, 
+\\*
+{\bfseries err\+\_\+node\+\_\+not\+\_\+found} = -\/5
+ \}\label{classps_1_1elastic_1_1VolMesh_ae90aa791da6481aa8dc6ec612c2c3d49}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a2f2e69c7d7143e28ffcc4e06d90eda64}{}typedef std\+::function$<$ void(\hyperlink{classps_1_1elastic_1_1NODE}{N\+O\+D\+E}, U32 handle, Topology\+Event event)$>$ {\bfseries On\+Node\+Event}\label{classps_1_1elastic_1_1VolMesh_a2f2e69c7d7143e28ffcc4e06d90eda64}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_addf9d9903c724cee6cd52e91fa5eeab2}{}typedef std\+::function$<$ void(\hyperlink{classps_1_1elastic_1_1EDGE}{E\+D\+G\+E}, U32 handle, Topology\+Event event)$>$ {\bfseries On\+Edge\+Event}\label{classps_1_1elastic_1_1VolMesh_addf9d9903c724cee6cd52e91fa5eeab2}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ac159aebf39215c8db149130b0bc2dd4d}{}typedef std\+::function$<$ void(\hyperlink{classps_1_1elastic_1_1FACE}{F\+A\+C\+E}, U32 handle, Topology\+Event event)$>$ {\bfseries On\+Face\+Event}\label{classps_1_1elastic_1_1VolMesh_ac159aebf39215c8db149130b0bc2dd4d}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a32e38574a3f9c8aa259669becffb689d}{}typedef std\+::function$<$ void(\hyperlink{classps_1_1elastic_1_1CELL}{C\+E\+L\+L}, U32 handle, Topology\+Event event)$>$ {\bfseries On\+Cell\+Event}\label{classps_1_1elastic_1_1VolMesh_a32e38574a3f9c8aa259669becffb689d}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ae6c4090f52d629275bafec3b28b82a72}{}{\bfseries Vol\+Mesh} (const \hyperlink{classps_1_1elastic_1_1VolMesh}{Vol\+Mesh} \&other)\label{classps_1_1elastic_1_1VolMesh_ae6c4090f52d629275bafec3b28b82a72}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a47f2518a104c2fd21038fd6293c5df4b}{}{\bfseries Vol\+Mesh} (U32 ct\+Vertices, double $\ast$vertices, U32 ct\+Elements, U32 $\ast$elements)\label{classps_1_1elastic_1_1VolMesh_a47f2518a104c2fd21038fd6293c5df4b}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a5d354fc8ecc1cf49eaabf54d47ffaf4f}{}{\bfseries Vol\+Mesh} (const vector$<$ double $>$ \&vertices, const vector$<$ U32 $>$ \&elements)\label{classps_1_1elastic_1_1VolMesh_a5d354fc8ecc1cf49eaabf54d47ffaf4f}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ae7e26e6519d1e2db5d5bbf58cb402906}{}void {\bfseries set\+On\+Node\+Event\+Callback} (On\+Node\+Event f)\label{classps_1_1elastic_1_1VolMesh_ae7e26e6519d1e2db5d5bbf58cb402906}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a38dde82b129ee0361b07162da7f9b60b}{}void {\bfseries set\+On\+Edge\+Event\+Callback} (On\+Edge\+Event f)\label{classps_1_1elastic_1_1VolMesh_a38dde82b129ee0361b07162da7f9b60b}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a96b1b84565c4c6b0224cc4d9ad738c90}{}void {\bfseries set\+On\+Face\+Event\+Callback} (On\+Face\+Event f)\label{classps_1_1elastic_1_1VolMesh_a96b1b84565c4c6b0224cc4d9ad738c90}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a4a72cb08f525cc838b474add44cb253b}{}void {\bfseries set\+On\+Elem\+Event\+Callback} (On\+Cell\+Event f)\label{classps_1_1elastic_1_1VolMesh_a4a72cb08f525cc838b474add44cb253b}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_af0f695203df44322ab5d064d5b6f8b7e}{}bool {\bfseries setup} (const vector$<$ double $>$ \&vertices, const vector$<$ U32 $>$ \&elements)\label{classps_1_1elastic_1_1VolMesh_af0f695203df44322ab5d064d5b6f8b7e}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a22ec69f1fafb6470f4c86077aa785edc}{}bool {\bfseries setup} (U32 ct\+Vertices, const double $\ast$vertices, U32 ct\+Elements, const U32 $\ast$elements)\label{classps_1_1elastic_1_1VolMesh_a22ec69f1fafb6470f4c86077aa785edc}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ab5e7fad7fda1a51dc0e4f304dd4aa0ce}{}void {\bfseries cleanup} ()\label{classps_1_1elastic_1_1VolMesh_ab5e7fad7fda1a51dc0e4f304dd4aa0ce}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_af749229a655b38582d9028c3cfbf394d}{}void {\bfseries print\+Node\+Info} () const \label{classps_1_1elastic_1_1VolMesh_af749229a655b38582d9028c3cfbf394d}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a32ca6c1d68d66f6cb1bde8f753ef24c1}{}void {\bfseries print\+Edge\+Info} () const \label{classps_1_1elastic_1_1VolMesh_a32ca6c1d68d66f6cb1bde8f753ef24c1}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ad22385def9a3182c478ea67c8ae85f37}{}void {\bfseries print\+Face\+Info} () const \label{classps_1_1elastic_1_1VolMesh_ad22385def9a3182c478ea67c8ae85f37}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a8ea54db807acc94c891ef91a677d0a00}{}void {\bfseries print\+Cell\+Info} () const \label{classps_1_1elastic_1_1VolMesh_a8ea54db807acc94c891ef91a677d0a00}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a75d8e756fdd5fcb664e352562ed37082}{}void {\bfseries print\+Info} () const \label{classps_1_1elastic_1_1VolMesh_a75d8e756fdd5fcb664e352562ed37082}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a8d8067f52b058c47f562362b030683e4}{}double {\bfseries compute\+Cell\+Determinant} (U32 idx\+Cell) const \label{classps_1_1elastic_1_1VolMesh_a8d8067f52b058c47f562362b030683e4}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a2322935cc39ca160d81afc85a07bb33d}{}double {\bfseries compute\+Cell\+Volume} (U32 idx\+Cell) const \label{classps_1_1elastic_1_1VolMesh_a2322935cc39ca160d81afc85a07bb33d}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_af88b84f3c6a36015fd4d1b5b60a4f4b4}{}\hyperlink{classps_1_1base_1_1Vec3}{vec3d} {\bfseries compute\+Cell\+Centroid} (U32 idx\+Cell) const \label{classps_1_1elastic_1_1VolMesh_af88b84f3c6a36015fd4d1b5b60a4f4b4}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a799683f49aec6c0e6e70bc68f5e8a0b0}{}double {\bfseries compute\+Aspect\+Ratio} (U32 idx\+Cell) const \label{classps_1_1elastic_1_1VolMesh_a799683f49aec6c0e6e70bc68f5e8a0b0}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a1194410e557361559a0eb7ebde0270ee}{}double {\bfseries compute\+Inscribed\+Radius} (U32 idx\+Cell) const \label{classps_1_1elastic_1_1VolMesh_a1194410e557361559a0eb7ebde0270ee}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a9fdeddee8f948341861529a085be4299}{}double {\bfseries compute\+Circumscribed\+Radius} (U32 idx\+Cell) const \label{classps_1_1elastic_1_1VolMesh_a9fdeddee8f948341861529a085be4299}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a5f67ac6f5c6f41fb6e5725f34b94a333}{}U32 {\bfseries remove\+Zero\+Volume\+Cells} ()\label{classps_1_1elastic_1_1VolMesh_a5f67ac6f5c6f41fb6e5725f34b94a333}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_adaf7ed1e46557f71b6d0c48c135303ff}{}bool {\bfseries is\+Cell\+Index} (U32 i) const \label{classps_1_1elastic_1_1VolMesh_adaf7ed1e46557f71b6d0c48c135303ff}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a24b73ef10efd1651eecf0a3431007083}{}bool {\bfseries is\+Face\+Index} (U32 i) const \label{classps_1_1elastic_1_1VolMesh_a24b73ef10efd1651eecf0a3431007083}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ae6d58ecf7f59e28da21b6eeb4b0afc57}{}bool {\bfseries is\+Edge\+Index} (U32 i) const \label{classps_1_1elastic_1_1VolMesh_ae6d58ecf7f59e28da21b6eeb4b0afc57}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_acd4c370c20e0ab70e70439dac1ecb1e0}{}bool {\bfseries is\+Node\+Index} (U32 i) const \label{classps_1_1elastic_1_1VolMesh_acd4c370c20e0ab70e70439dac1ecb1e0}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ac7d3a6447c0c5eba8dcd829139bbc5f3}{}bool {\bfseries get\+Face\+Nodes} (U32 idx\+Face, U32(\&nodes)\mbox{[}3\mbox{]}) const \label{classps_1_1elastic_1_1VolMesh_ac7d3a6447c0c5eba8dcd829139bbc5f3}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a2cd4059bf1f21093e860e54fddb2d774}{}bool {\bfseries is\+Node\+Of\+Cell} (U32 idx\+Node, U32 idx\+Cell) const \label{classps_1_1elastic_1_1VolMesh_a2cd4059bf1f21093e860e54fddb2d774}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_adf5932ab9ad4eeb93efb67d7b9f88fd4}{}bool {\bfseries is\+Edge\+Of\+Cell} (U32 idx\+Edge, U32 idx\+Cell) const \label{classps_1_1elastic_1_1VolMesh_adf5932ab9ad4eeb93efb67d7b9f88fd4}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a7d6a48de77e1687a75a2eab90b14437b}{}\hyperlink{classps_1_1elastic_1_1CELL}{C\+E\+L\+L} \& {\bfseries cell\+At} (U32 i)\label{classps_1_1elastic_1_1VolMesh_a7d6a48de77e1687a75a2eab90b14437b}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a7376563ee2f5887b9abe72a6afc2a188}{}\hyperlink{classps_1_1elastic_1_1FACE}{F\+A\+C\+E} \& {\bfseries face\+At} (U32 i)\label{classps_1_1elastic_1_1VolMesh_a7376563ee2f5887b9abe72a6afc2a188}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_aeefd7f308c72b311d72c90b9e727a881}{}\hyperlink{classps_1_1elastic_1_1NODE}{N\+O\+D\+E} \& {\bfseries node\+At} (U32 i)\label{classps_1_1elastic_1_1VolMesh_aeefd7f308c72b311d72c90b9e727a881}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a21aadad5b2eb050b15f7b888cd577a00}{}\hyperlink{classps_1_1elastic_1_1EDGE}{E\+D\+G\+E} \& {\bfseries edge\+At} (U32 i)\label{classps_1_1elastic_1_1VolMesh_a21aadad5b2eb050b15f7b888cd577a00}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a8137affa13e3d75ed81c4045ae217b46}{}const \hyperlink{classps_1_1elastic_1_1CELL}{C\+E\+L\+L} \& {\bfseries const\+\_\+cell\+At\+\_\+} (const \hyperlink{classps_1_1elastic_1_1CellLink}{Cell\+Link} \&i) const \label{classps_1_1elastic_1_1VolMesh_a8137affa13e3d75ed81c4045ae217b46}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ace864f6a203698245debe23200074416}{}const \hyperlink{classps_1_1elastic_1_1CELL}{C\+E\+L\+L} \& {\bfseries const\+\_\+cell\+At} (U32 i) const \label{classps_1_1elastic_1_1VolMesh_ace864f6a203698245debe23200074416}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a719c366ad18b765f99101f162e4f8bc6}{}const \hyperlink{classps_1_1elastic_1_1FACE}{F\+A\+C\+E} \& {\bfseries const\+\_\+face\+At} (U32 i) const \label{classps_1_1elastic_1_1VolMesh_a719c366ad18b765f99101f162e4f8bc6}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ac94ac2764ce91974d76cd8cd77aea98c}{}const \hyperlink{classps_1_1elastic_1_1NODE}{N\+O\+D\+E} \& {\bfseries const\+\_\+node\+At} (U32 i) const \label{classps_1_1elastic_1_1VolMesh_ac94ac2764ce91974d76cd8cd77aea98c}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a27f8c12d7d11316183814e769f51bb86}{}const \hyperlink{classps_1_1elastic_1_1EDGE}{E\+D\+G\+E} \& {\bfseries const\+\_\+edge\+At} (U32 i) const \label{classps_1_1elastic_1_1VolMesh_a27f8c12d7d11316183814e769f51bb86}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a5dc6de26ea5b4ebc87628102cad24e0b}{}U32 {\bfseries count\+Cells} () const \label{classps_1_1elastic_1_1VolMesh_a5dc6de26ea5b4ebc87628102cad24e0b}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a4f3d740a8230a435a7a106db1fe5bd36}{}U32 {\bfseries count\+Faces} () const \label{classps_1_1elastic_1_1VolMesh_a4f3d740a8230a435a7a106db1fe5bd36}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a25b7d0c9ce6b0548eee74ed91f818ac8}{}U32 {\bfseries count\+Edges} () const \label{classps_1_1elastic_1_1VolMesh_a25b7d0c9ce6b0548eee74ed91f818ac8}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a9fa32f9e91357742d46a26904905ff00}{}U32 {\bfseries count\+Nodes} () const \label{classps_1_1elastic_1_1VolMesh_a9fa32f9e91357742d46a26904905ff00}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a3563d3a1ad60de33565059eec9d31fd0}{}U32 {\bfseries count\+Incident\+Cells} (U32 idx\+Face) const \label{classps_1_1elastic_1_1VolMesh_a3563d3a1ad60de33565059eec9d31fd0}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a8952131069dcf8c966e0d257708a8679}{}U32 {\bfseries count\+Incident\+Faces} (U32 idx\+Edge) const \label{classps_1_1elastic_1_1VolMesh_a8952131069dcf8c966e0d257708a8679}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a7caf2554abe121c2afb761facc784364}{}U32 {\bfseries count\+Incident\+Edges} (U32 idx\+Node) const \label{classps_1_1elastic_1_1VolMesh_a7caf2554abe121c2afb761facc784364}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ae9f65f3caa6d8079dd2af8f87e165fa0}{}bool {\bfseries edge\+\_\+exists} (U32 from, U32 to)\label{classps_1_1elastic_1_1VolMesh_ae9f65f3caa6d8079dd2af8f87e165fa0}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a81b08888ae16c8bfc6e0a600045911a6}{}U32 {\bfseries edge\+\_\+handle} (U32 from, U32 to)\label{classps_1_1elastic_1_1VolMesh_a81b08888ae16c8bfc6e0a600045911a6}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a693b256705ed37a34c376a6d8ee64077}{}U32 {\bfseries edge\+\_\+from\+\_\+node} (U32 idx\+Edge) const \label{classps_1_1elastic_1_1VolMesh_a693b256705ed37a34c376a6d8ee64077}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a44b29ea290f6ccde40c9915a332194c2}{}U32 {\bfseries edge\+\_\+to\+\_\+node} (U32 idx\+Edge) const \label{classps_1_1elastic_1_1VolMesh_a44b29ea290f6ccde40c9915a332194c2}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_af388dbb76bd8a002001dfb6ed84cb9b3}{}U32 {\bfseries get\+\_\+node\+\_\+neighbors} (U32 idx\+Node, vector$<$ U32 $>$ \&nbors) const \label{classps_1_1elastic_1_1VolMesh_af388dbb76bd8a002001dfb6ed84cb9b3}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ab089dca62b3a7fe26f925d9fe3dd6672}{}void {\bfseries displace} (U32 count\+Degrees\+Of\+Freedom, const double $\ast$u)\label{classps_1_1elastic_1_1VolMesh_ab089dca62b3a7fe26f925d9fe3dd6672}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a02cf4f39e82f844d1280245e1ebcab83}{}U32 {\bfseries insert\+\_\+node} (const \hyperlink{classps_1_1elastic_1_1NODE}{N\+O\+D\+E} \&n)\label{classps_1_1elastic_1_1VolMesh_a02cf4f39e82f844d1280245e1ebcab83}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a5d73955fe15e4e1311ba58d7de64bc14}{}U32 {\bfseries insert\+\_\+edge} (const \hyperlink{classps_1_1elastic_1_1EDGE}{E\+D\+G\+E} \&e)\label{classps_1_1elastic_1_1VolMesh_a5d73955fe15e4e1311ba58d7de64bc14}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a48b3ba9227d5bb8734007d30e69fa254}{}U32 {\bfseries insert\+\_\+face} (U32 nodes\mbox{[}3\mbox{]})\label{classps_1_1elastic_1_1VolMesh_a48b3ba9227d5bb8734007d30e69fa254}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a62787fea4fe6e77eaf880a51c6ae50e2}{}bool {\bfseries insert\+\_\+cell} (const \hyperlink{classps_1_1elastic_1_1CELL}{C\+E\+L\+L} \&cell)\label{classps_1_1elastic_1_1VolMesh_a62787fea4fe6e77eaf880a51c6ae50e2}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ac875d4e69c1367bb9af3bb0de67141a5}{}bool {\bfseries insert\+\_\+cell} (U32 nodes\mbox{[}4\mbox{]})\label{classps_1_1elastic_1_1VolMesh_ac875d4e69c1367bb9af3bb0de67141a5}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a8677786b8f15d5012a2a5c8cf5c99e73}{}void {\bfseries set\+\_\+edge} (U32 idx\+Edge, U32 from, U32 to)\label{classps_1_1elastic_1_1VolMesh_a8677786b8f15d5012a2a5c8cf5c99e73}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ae6b152eca45ca7a1331345a1429b93a1}{}void {\bfseries set\+\_\+face} (U32 idx\+Face, U32 edges\mbox{[}3\mbox{]})\label{classps_1_1elastic_1_1VolMesh_ae6b152eca45ca7a1331345a1429b93a1}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a116c78d4b6e25d725c8ffa6346686f36}{}int {\bfseries get\+\_\+disjoint\+\_\+parts} (vector$<$ vector$<$ U32 $>$$>$ \&cellgroups)\label{classps_1_1elastic_1_1VolMesh_a116c78d4b6e25d725c8ffa6346686f36}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a738d968a386c0f098d9f080d1b508306}{}void {\bfseries print\+Parts} ()\label{classps_1_1elastic_1_1VolMesh_a738d968a386c0f098d9f080d1b508306}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ad1320533258c88bc9bbd92c019e1872f}{}void {\bfseries schedule\+\_\+remove\+\_\+cell} (U32 idx\+Cell)\label{classps_1_1elastic_1_1VolMesh_ad1320533258c88bc9bbd92c019e1872f}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_aa9d69b01b41d133ff7f3041fc9c05ece}{}void {\bfseries remove\+\_\+cell} (U32 idx\+Cell)\label{classps_1_1elastic_1_1VolMesh_aa9d69b01b41d133ff7f3041fc9c05ece}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a263a2a1505154aaa2bb2ebce3b50dc98}{}void {\bfseries remove\+\_\+face} (U32 idx\+Face)\label{classps_1_1elastic_1_1VolMesh_a263a2a1505154aaa2bb2ebce3b50dc98}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_afdd3edf9cb3474951122beec3896f7d2}{}void {\bfseries remove\+\_\+edge} (U32 idx\+Edge)\label{classps_1_1elastic_1_1VolMesh_afdd3edf9cb3474951122beec3896f7d2}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a4f5b66732b5343ac3845e6638b557491}{}void {\bfseries remove\+\_\+node} (U32 idx\+Node)\label{classps_1_1elastic_1_1VolMesh_a4f5b66732b5343ac3845e6638b557491}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ab165c26790cfc1a4e2260ccecae93ff0}{}{\footnotesize template$<$class Container\+T $>$ }\\void {\bfseries remove\+\_\+cells} (const Container\+T \&cells)\label{classps_1_1elastic_1_1VolMesh_ab165c26790cfc1a4e2260ccecae93ff0}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ac42ae75f8d206a2f483c8a268cf98c8b}{}{\footnotesize template$<$class Container\+T $>$ }\\void {\bfseries remove\+\_\+faces} (const Container\+T \&faces)\label{classps_1_1elastic_1_1VolMesh_ac42ae75f8d206a2f483c8a268cf98c8b}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a8929becd264cb9ded00c74c536a8cf26}{}{\footnotesize template$<$class Container\+T $>$ }\\void {\bfseries remove\+\_\+edges} (const Container\+T \&edges)\label{classps_1_1elastic_1_1VolMesh_a8929becd264cb9ded00c74c536a8cf26}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_af8aae2ff9d1031e8d4306bd4cdce9e82}{}{\footnotesize template$<$class Container\+T $>$ }\\void {\bfseries remove\+\_\+nodes} (const Container\+T \&nodes)\label{classps_1_1elastic_1_1VolMesh_af8aae2ff9d1031e8d4306bd4cdce9e82}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a9c540723cbf4c7bea9af0f45ab84ee68}{}void {\bfseries garbage\+\_\+collection} ()\label{classps_1_1elastic_1_1VolMesh_a9c540723cbf4c7bea9af0f45ab84ee68}
+
+\item 
+bool \hyperlink{classps_1_1elastic_1_1VolMesh_a842ed44f9368421b32524b057cee2b58}{cut\+\_\+edge} (int idx\+Edge, double distance, U32 $\ast$pout\+Index\+N\+P0=N\+U\+L\+L, U32 $\ast$pout\+Index\+N\+P1=N\+U\+L\+L)
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a9f2ddb6b25e1b608fb7ff37dbcf71009}{}int {\bfseries get\+Node\+Incident\+Edges} (U32 idx\+Node, vector$<$ U32 $>$ \&incident\+Edges) const \label{classps_1_1elastic_1_1VolMesh_a9f2ddb6b25e1b608fb7ff37dbcf71009}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a3bbd2d1170bca105b0bed88d4023e795}{}int {\bfseries get\+Node\+Incident\+Nodes} (U32 idx\+Node, vector$<$ U32 $>$ \&incident\+Nodes) const \label{classps_1_1elastic_1_1VolMesh_a3bbd2d1170bca105b0bed88d4023e795}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a1c77dd15d2adc50e1c63507e7369880f}{}bool {\bfseries get\+Cell\+Faces\+Expensive} (U32 idx\+Cell, U32(\&faces)\mbox{[}4\mbox{]})\label{classps_1_1elastic_1_1VolMesh_a1c77dd15d2adc50e1c63507e7369880f}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a656608a0c79e22cc0735d0060e0da3e1}{}bool {\bfseries get\+Cell\+Edges\+Expensive} (U32 idx\+Cell, U32(\&edges)\mbox{[}6\mbox{]})\label{classps_1_1elastic_1_1VolMesh_a656608a0c79e22cc0735d0060e0da3e1}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a3f90d8aaf6d2a78dc795c64e14f5f251}{}void {\bfseries set\+Elem\+To\+Show} (U32 elem=I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+D\+E\+X)\label{classps_1_1elastic_1_1VolMesh_a3f90d8aaf6d2a78dc795c64e14f5f251}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a6afa5a0a0d179a42bd92b7fc6abfd4c1}{}U32 {\bfseries get\+Elem\+To\+Show} () const \label{classps_1_1elastic_1_1VolMesh_a6afa5a0a0d179a42bd92b7fc6abfd4c1}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ae423b20d80615e4c48b14133ac06b4c7}{}void {\bfseries set\+Node\+To\+Show} (U32 idx\+Node=I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+D\+E\+X)\label{classps_1_1elastic_1_1VolMesh_ae423b20d80615e4c48b14133ac06b4c7}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_aebd1d9e8d715d747218bc82f05d2beac}{}U32 {\bfseries get\+Node\+To\+Show} () const \label{classps_1_1elastic_1_1VolMesh_aebd1d9e8d715d747218bc82f05d2beac}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_adb03f406b1622d57049b4e83194cab50}{}void {\bfseries set\+Flag\+Draw\+Wire\+Frame} (bool draw\+Wire\+Frame)\label{classps_1_1elastic_1_1VolMesh_adb03f406b1622d57049b4e83194cab50}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a8c3fde2f947e739db79303cf1bb373fb}{}bool {\bfseries get\+Flag\+Draw\+Wire\+Frame} () const \label{classps_1_1elastic_1_1VolMesh_a8c3fde2f947e739db79303cf1bb373fb}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_af7d3b4ce18468c34cee2744313f9f7f3}{}void {\bfseries set\+Flag\+Draw\+Nodes} (bool draw\+Nodes)\label{classps_1_1elastic_1_1VolMesh_af7d3b4ce18468c34cee2744313f9f7f3}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a4b6d0d1392097bb3614942ad31ad9db5}{}bool {\bfseries get\+Flag\+Draw\+Nodes} () const \label{classps_1_1elastic_1_1VolMesh_a4b6d0d1392097bb3614942ad31ad9db5}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ac1b42580f896ad58c076e0a326ff38a4}{}void {\bfseries set\+Flag\+Filter\+Out\+Flat\+Cells} (bool flag)\label{classps_1_1elastic_1_1VolMesh_ac1b42580f896ad58c076e0a326ff38a4}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a649a2c0ee8725e248383b2db9b763e31}{}bool {\bfseries get\+Flag\+Filter\+Out\+Flat\+Cells} () const \label{classps_1_1elastic_1_1VolMesh_a649a2c0ee8725e248383b2db9b763e31}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a5970a04c412bad03c25486514fef2dc1}{}\hyperlink{classps_1_1base_1_1Color}{Color} {\bfseries get\+Color} () const \label{classps_1_1elastic_1_1VolMesh_a5970a04c412bad03c25486514fef2dc1}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_aeb013656c4952cf4351e1f0303dae8a4}{}void {\bfseries set\+Color} (const \hyperlink{classps_1_1base_1_1Color}{Color} \&c)\label{classps_1_1elastic_1_1VolMesh_aeb013656c4952cf4351e1f0303dae8a4}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ad8e58758dc76e01c9a92d45fec545a09}{}void {\bfseries draw} ()\label{classps_1_1elastic_1_1VolMesh_ad8e58758dc76e01c9a92d45fec545a09}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_aa8b6f71abb3b6e7a0cff29ac22ada02a}{}void {\bfseries draw\+Element} (U32 i) const \label{classps_1_1elastic_1_1VolMesh_aa8b6f71abb3b6e7a0cff29ac22ada02a}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a40bedb0cb685045f536fe523eac8f7a3}{}\hyperlink{classps_1_1base_1_1AABB}{A\+A\+B\+B} {\bfseries compute\+A\+A\+B\+B} ()\label{classps_1_1elastic_1_1VolMesh_a40bedb0cb685045f536fe523eac8f7a3}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a97ff3111e9d6cb683f5ebce64abc84bf}{}int {\bfseries select\+Node} (const \hyperlink{classps_1_1base_1_1Ray}{Ray} \&ray) const \label{classps_1_1elastic_1_1VolMesh_a97ff3111e9d6cb683f5ebce64abc84bf}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_aa78fbef753134fb6b13962b5db60ae7b}{}bool {\bfseries verbose} () const \label{classps_1_1elastic_1_1VolMesh_aa78fbef753134fb6b13962b5db60ae7b}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a35ee920238424a53b34407dea46f6ab6}{}void {\bfseries set\+Verbose} (bool b)\label{classps_1_1elastic_1_1VolMesh_a35ee920238424a53b34407dea46f6ab6}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_af2c0768be3acb734df082712d6dd70ce}{}static double {\bfseries Compute\+Circumscribed\+Radius} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3d} v\mbox{[}4\mbox{]})\label{classps_1_1elastic_1_1VolMesh_af2c0768be3acb734df082712d6dd70ce}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a5ee3dad4afc9eeb54d890ea6462cb8e7}{}static double {\bfseries Compute\+Cell\+Determinant} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3d} v\mbox{[}4\mbox{]})\label{classps_1_1elastic_1_1VolMesh_a5ee3dad4afc9eeb54d890ea6462cb8e7}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a790bef93bef6986d7d0e5e50a10bb348}{}static double {\bfseries Compute\+Cell\+Volume} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3d} v\mbox{[}4\mbox{]})\label{classps_1_1elastic_1_1VolMesh_a790bef93bef6986d7d0e5e50a10bb348}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a20f60f24dd56a38318528ddff20a91de}{}static const U32 {\bfseries I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+D\+E\+X} = -\/1\label{classps_1_1elastic_1_1VolMesh_a20f60f24dd56a38318528ddff20a91de}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_aee7e3fe8936e4704c38aa7407bb0abf5}{}typedef std\+::map$<$ \hyperlink{classps_1_1elastic_1_1EdgeKey}{Edge\+Key}, U32 $>$\+::iterator {\bfseries M\+A\+P\+H\+E\+D\+G\+E\+I\+N\+D\+E\+X\+I\+T\+E\+R}\label{classps_1_1elastic_1_1VolMesh_aee7e3fe8936e4704c38aa7407bb0abf5}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ae1ecbb97b86bf07bd1a9cfe176b912d5}{}typedef std\+::map$<$ \hyperlink{classps_1_1elastic_1_1EdgeKey}{Edge\+Key}, U32 $>$\+::const\+\_\+iterator {\bfseries M\+A\+P\+H\+E\+D\+G\+E\+I\+N\+D\+E\+X\+C\+O\+N\+S\+T\+I\+T\+E\+R}\label{classps_1_1elastic_1_1VolMesh_ae1ecbb97b86bf07bd1a9cfe176b912d5}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_abb320bf8584333cca98e316b8d5ad27d}{}void {\bfseries init} ()\label{classps_1_1elastic_1_1VolMesh_abb320bf8584333cca98e316b8d5ad27d}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a759d2e1cf8ba362be411646bfabc389e}{}bool {\bfseries insert\+Edge\+Index\+To\+Map} (U32 from, U32 to, U32 idx\+Edge)\label{classps_1_1elastic_1_1VolMesh_a759d2e1cf8ba362be411646bfabc389e}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_aed8c037e96e3874e05af24e49dfd2746}{}bool {\bfseries remove\+Edge\+Index\+From\+Map} (U32 from, U32 to)\label{classps_1_1elastic_1_1VolMesh_aed8c037e96e3874e05af24e49dfd2746}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a277fde736ee27c4b6f8fdfbade377b77}{}\hyperlink{classps_1_1elastic_1_1EdgeKey}{Edge\+Key} {\bfseries compute\+Edge\+Key} (U32 idx\+Edge) const \label{classps_1_1elastic_1_1VolMesh_a277fde736ee27c4b6f8fdfbade377b77}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ae49c6f62434562e514c8c7b2bfe222d8}{}bool {\bfseries face\+\_\+exists\+\_\+by\+\_\+edges} (U32 edges\mbox{[}3\mbox{]}) const \label{classps_1_1elastic_1_1VolMesh_ae49c6f62434562e514c8c7b2bfe222d8}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a0203f03caae4eec5e116a23837090fe9}{}bool {\bfseries face\+\_\+exists\+\_\+by\+\_\+nodes} (U32 nodes\mbox{[}3\mbox{]})\label{classps_1_1elastic_1_1VolMesh_a0203f03caae4eec5e116a23837090fe9}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a4826f5ca02656c317bb5743885ec33ed}{}U32 {\bfseries face\+\_\+handle\+\_\+by\+\_\+edges} (U32 edges\mbox{[}3\mbox{]}) const \label{classps_1_1elastic_1_1VolMesh_a4826f5ca02656c317bb5743885ec33ed}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ae96ac686b704e333495b469874feabe0}{}U32 {\bfseries face\+\_\+handle\+\_\+by\+\_\+nodes} (U32 nodes\mbox{[}3\mbox{]})\label{classps_1_1elastic_1_1VolMesh_ae96ac686b704e333495b469874feabe0}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a7014b6c276e42bbeac0a9448ccf4d646}{}{\footnotesize template$<$class Container\+T $>$ }\\int {\bfseries get\+\_\+incident\+\_\+cells} (const Container\+T \&in\+\_\+faces, set$<$ U32 $>$ \&out\+\_\+cells) const \label{classps_1_1elastic_1_1VolMesh_a7014b6c276e42bbeac0a9448ccf4d646}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a179baac43bb17ed6649a97a24a6046ae}{}{\footnotesize template$<$class Container\+T $>$ }\\int {\bfseries get\+\_\+incident\+\_\+faces} (const Container\+T \&in\+\_\+edges, set$<$ U32 $>$ \&out\+\_\+faces) const \label{classps_1_1elastic_1_1VolMesh_a179baac43bb17ed6649a97a24a6046ae}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a9883a2d3dc5c6ff11a695ffd969c8c0d}{}{\footnotesize template$<$class Container\+T $>$ }\\int {\bfseries get\+\_\+incident\+\_\+edges} (const Container\+T \&in\+\_\+nodes, set$<$ U32 $>$ \&out\+\_\+edges) const \label{classps_1_1elastic_1_1VolMesh_a9883a2d3dc5c6ff11a695ffd969c8c0d}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ad0a4b9e354728e2f5a6f7b48e4b04bf5}{}bool {\bfseries test\+\_\+cell\+\_\+topology} (U32 idx\+Cell)\label{classps_1_1elastic_1_1VolMesh_ad0a4b9e354728e2f5a6f7b48e4b04bf5}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a86aa2fd8fe0b8549a686da18f1c8c3b9}{}bool {\bfseries test\+\_\+cells\+\_\+topology} ()\label{classps_1_1elastic_1_1VolMesh_a86aa2fd8fe0b8549a686da18f1c8c3b9}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_aa752e76ab675865d94241d0331ae4afe}{}bool {\bfseries test\+\_\+incident\+\_\+edges} ()\label{classps_1_1elastic_1_1VolMesh_aa752e76ab675865d94241d0331ae4afe}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a455742cfc630ca08fb685f77c6ab6747}{}bool {\bfseries test\+\_\+incident\+\_\+faces} () const \label{classps_1_1elastic_1_1VolMesh_a455742cfc630ca08fb685f77c6ab6747}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a9bc4f2b019fd887cf021baab0b03e9b2}{}bool {\bfseries test\+\_\+incident\+\_\+cells} () const \label{classps_1_1elastic_1_1VolMesh_a9bc4f2b019fd887cf021baab0b03e9b2}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a157fd4f7bd24dcc94bf21b51a7286c9b}{}bool {\bfseries test\+\_\+incidents} ()\label{classps_1_1elastic_1_1VolMesh_a157fd4f7bd24dcc94bf21b51a7286c9b}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_afdfce53c88c09bde6783aa5e79f291bf}{}\hyperlink{classps_1_1base_1_1AABB}{A\+A\+B\+B} {\bfseries compute\+Nodal\+A\+A\+B\+B} () const \label{classps_1_1elastic_1_1VolMesh_afdfce53c88c09bde6783aa5e79f291bf}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_aa853df8d3a0435de40233469434eea69}{}void {\bfseries remove\+\_\+cell\+\_\+core} (U32 idx\+Cell)\label{classps_1_1elastic_1_1VolMesh_aa853df8d3a0435de40233469434eea69}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a04ea38a26a251e4baf8ad4d72da7bfa1}{}void {\bfseries remove\+\_\+face\+\_\+core} (U32 idx\+Face)\label{classps_1_1elastic_1_1VolMesh_a04ea38a26a251e4baf8ad4d72da7bfa1}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a29f4316ae30eb6758891d6e3cb74b771}{}void {\bfseries remove\+\_\+edge\+\_\+core} (U32 idx\+Edge)\label{classps_1_1elastic_1_1VolMesh_a29f4316ae30eb6758891d6e3cb74b771}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a9cd4febbd7cf8c10a34fd493ec4960a7}{}void {\bfseries remove\+\_\+node\+\_\+core} (U32 idx\+Node)\label{classps_1_1elastic_1_1VolMesh_a9cd4febbd7cf8c10a34fd493ec4960a7}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a9dd85ec6f1b3094de5e793a137d9e702}{}U32 {\bfseries m\+\_\+elem\+To\+Show}\label{classps_1_1elastic_1_1VolMesh_a9dd85ec6f1b3094de5e793a137d9e702}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a0894ac35582e8cb020093a5a70f363db}{}U32 {\bfseries m\+\_\+node\+To\+Show}\label{classps_1_1elastic_1_1VolMesh_a0894ac35582e8cb020093a5a70f363db}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a1ba86f2a9c19e73147d32d98c5503be4}{}bool {\bfseries m\+\_\+verbose}\label{classps_1_1elastic_1_1VolMesh_a1ba86f2a9c19e73147d32d98c5503be4}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a5dcd718e4185c4f47928062177e67676}{}bool {\bfseries m\+\_\+flag\+Draw\+Wire\+Frame\+Mesh}\label{classps_1_1elastic_1_1VolMesh_a5dcd718e4185c4f47928062177e67676}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a8a3cd08b75a8ade705cb8a9f1b401292}{}bool {\bfseries m\+\_\+flag\+Draw\+Nodes}\label{classps_1_1elastic_1_1VolMesh_a8a3cd08b75a8ade705cb8a9f1b401292}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_afe59538f6681859cc18baf130688c7c1}{}bool {\bfseries m\+\_\+flag\+Filter\+Out\+Flat\+Cells}\label{classps_1_1elastic_1_1VolMesh_afe59538f6681859cc18baf130688c7c1}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a2a7c269ce78564a37885a9e3f5565650}{}\hyperlink{classps_1_1base_1_1Color}{Color} {\bfseries m\+\_\+color}\label{classps_1_1elastic_1_1VolMesh_a2a7c269ce78564a37885a9e3f5565650}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a7d352ef748521ced66e9ec007c82ad52}{}On\+Node\+Event {\bfseries m\+\_\+f\+On\+Node\+Event}\label{classps_1_1elastic_1_1VolMesh_a7d352ef748521ced66e9ec007c82ad52}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_aae4b75ed2b6e579113facf9651cba55e}{}On\+Edge\+Event {\bfseries m\+\_\+f\+On\+Edge\+Event}\label{classps_1_1elastic_1_1VolMesh_aae4b75ed2b6e579113facf9651cba55e}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a2586742c1c69d289fb03a5760048a198}{}On\+Face\+Event {\bfseries m\+\_\+f\+On\+Face\+Event}\label{classps_1_1elastic_1_1VolMesh_a2586742c1c69d289fb03a5760048a198}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a147ceb73a33f31ca4205d7f74866b5ed}{}On\+Cell\+Event {\bfseries m\+\_\+f\+On\+Element\+Event}\label{classps_1_1elastic_1_1VolMesh_a147ceb73a33f31ca4205d7f74866b5ed}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a5055d98d4124c7f8fccbe503a2152354}{}vector$<$ \hyperlink{classps_1_1elastic_1_1CELL}{C\+E\+L\+L} $>$ {\bfseries m\+\_\+v\+Cells}\label{classps_1_1elastic_1_1VolMesh_a5055d98d4124c7f8fccbe503a2152354}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a466ed1e2d8ede1b420b48494e8394efa}{}vector$<$ \hyperlink{classps_1_1elastic_1_1FACE}{F\+A\+C\+E} $>$ {\bfseries m\+\_\+v\+Faces}\label{classps_1_1elastic_1_1VolMesh_a466ed1e2d8ede1b420b48494e8394efa}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a12f235278685485ee19a1961bd84ee71}{}vector$<$ \hyperlink{classps_1_1elastic_1_1EDGE}{E\+D\+G\+E} $>$ {\bfseries m\+\_\+v\+Edges}\label{classps_1_1elastic_1_1VolMesh_a12f235278685485ee19a1961bd84ee71}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ac8c81f57ae9d68ab8beddf23b80f86d3}{}vector$<$ \hyperlink{classps_1_1elastic_1_1NODE}{N\+O\+D\+E} $>$ {\bfseries m\+\_\+v\+Nodes}\label{classps_1_1elastic_1_1VolMesh_ac8c81f57ae9d68ab8beddf23b80f86d3}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a5af6bf59ecdd483513388224a5480810}{}vector$<$ U32 $>$ {\bfseries m\+\_\+pending\+To\+Delete\+Cells}\label{classps_1_1elastic_1_1VolMesh_a5af6bf59ecdd483513388224a5480810}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ab2bfe4c4e3a0cf2d0a344f3a11fd9563}{}vector$<$ vector$<$ U32 $>$ $>$ {\bfseries m\+\_\+incident\+\_\+edges\+\_\+per\+\_\+node}\label{classps_1_1elastic_1_1VolMesh_ab2bfe4c4e3a0cf2d0a344f3a11fd9563}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a4ab9053ced0be3f2e70b5c624f98d8b1}{}vector$<$ vector$<$ U32 $>$ $>$ {\bfseries m\+\_\+incident\+\_\+faces\+\_\+per\+\_\+edge}\label{classps_1_1elastic_1_1VolMesh_a4ab9053ced0be3f2e70b5c624f98d8b1}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_ac4455d0c44dcb0fbf2fdaa9ba0a3191b}{}vector$<$ vector$<$ U32 $>$ $>$ {\bfseries m\+\_\+incident\+\_\+cells\+\_\+per\+\_\+face}\label{classps_1_1elastic_1_1VolMesh_ac4455d0c44dcb0fbf2fdaa9ba0a3191b}
+
+\item 
+\hypertarget{classps_1_1elastic_1_1VolMesh_a7c30bc54535806626884d53291dc7c15}{}std\+::map$<$ \hyperlink{classps_1_1elastic_1_1EdgeKey}{Edge\+Key}, U32 $>$ {\bfseries m\+\_\+map\+Edges\+Index}\label{classps_1_1elastic_1_1VolMesh_a7c30bc54535806626884d53291dc7c15}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classps_1_1elastic_1_1VolMesh_a842ed44f9368421b32524b057cee2b58}{}\index{ps\+::elastic\+::\+Vol\+Mesh@{ps\+::elastic\+::\+Vol\+Mesh}!cut\+\_\+edge@{cut\+\_\+edge}}
+\index{cut\+\_\+edge@{cut\+\_\+edge}!ps\+::elastic\+::\+Vol\+Mesh@{ps\+::elastic\+::\+Vol\+Mesh}}
+\subsubsection[{cut\+\_\+edge(int idx\+Edge, double distance, U32 $\ast$pout\+Index\+N\+P0=\+N\+U\+L\+L, U32 $\ast$pout\+Index\+N\+P1=\+N\+U\+L\+L)}]{\setlength{\rightskip}{0pt plus 5cm}bool ps\+::elastic\+::\+Vol\+Mesh\+::cut\+\_\+edge (
+\begin{DoxyParamCaption}
+\item[{int}]{idx\+Edge, }
+\item[{double}]{distance, }
+\item[{U32 $\ast$}]{pout\+Index\+N\+P0 = {\ttfamily NULL}, }
+\item[{U32 $\ast$}]{pout\+Index\+N\+P1 = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}\label{classps_1_1elastic_1_1VolMesh_a842ed44f9368421b32524b057cee2b58}
+cuts an edge completely. Two new nodes are created at the point of cut with no hedges between them. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/elastic/volmesh.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/elastic/volmesh.\+cpp\end{DoxyCompactItemize}

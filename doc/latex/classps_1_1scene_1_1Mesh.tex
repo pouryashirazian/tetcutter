@@ -1,0 +1,69 @@
+\hypertarget{classps_1_1scene_1_1Mesh}{}\section{ps\+:\+:scene\+:\+:Mesh Class Reference}
+\label{classps_1_1scene_1_1Mesh}\index{ps\+::scene\+::\+Mesh@{ps\+::scene\+::\+Mesh}}
+Inheritance diagram for ps\+:\+:scene\+:\+:Mesh\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classps_1_1scene_1_1Mesh}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classps_1_1scene_1_1Mesh_a7d1542f47f2eca93df5ec0d8b0464820}{}{\bfseries Mesh} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&str\+File\+Path)\label{classps_1_1scene_1_1Mesh_a7d1542f47f2eca93df5ec0d8b0464820}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Mesh_a02a7f043091f436683eced98557b7941}{}bool {\bfseries read} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&str\+File\+Path)\label{classps_1_1scene_1_1Mesh_a02a7f043091f436683eced98557b7941}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Mesh_a07e0c38041091f0ec048a3e97afa7f98}{}bool {\bfseries store} (const \hyperlink{classps_1_1base_1_1CAString}{Ansi\+Str} \&str\+File\+Path)\label{classps_1_1scene_1_1Mesh_a07e0c38041091f0ec048a3e97afa7f98}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Mesh_a85a3e2b850980c2bf6464cd52abe9034}{}void {\bfseries add\+Node} (\hyperlink{classps_1_1scene_1_1MeshNode}{Mesh\+Node} $\ast$lp\+Mesh\+Node)\label{classps_1_1scene_1_1Mesh_a85a3e2b850980c2bf6464cd52abe9034}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Mesh_a17dce90c56ead670f4bafe8734b84dbe}{}\hyperlink{classps_1_1scene_1_1MeshNode}{Mesh\+Node} $\ast$ {\bfseries get\+Node} (int idx) const \label{classps_1_1scene_1_1Mesh_a17dce90c56ead670f4bafe8734b84dbe}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Mesh_ab1a9ef3f67468e41acaf72740e40f6c5}{}\hyperlink{classps_1_1scene_1_1MeshNode}{Mesh\+Node} $\ast$ {\bfseries get\+Node} (const string \&name) const \label{classps_1_1scene_1_1Mesh_ab1a9ef3f67468e41acaf72740e40f6c5}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Mesh_acc814ba6fc47832d2b112ab733883f57}{}U32 {\bfseries count\+Nodes} () const \label{classps_1_1scene_1_1Mesh_acc814ba6fc47832d2b112ab733883f57}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Mesh_a27f2b76dbc292767eebf2b81eb030f4e}{}void {\bfseries add\+Mesh\+Material} (\hyperlink{classps_1_1scene_1_1MeshMaterial}{Mesh\+Material} $\ast$lp\+Material)\label{classps_1_1scene_1_1Mesh_a27f2b76dbc292767eebf2b81eb030f4e}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Mesh_a3a5836d198af9ba40ecce0c3cd06dcf8}{}\hyperlink{classps_1_1scene_1_1MeshMaterial}{Mesh\+Material} $\ast$ {\bfseries get\+Material} (int idx) const \label{classps_1_1scene_1_1Mesh_a3a5836d198af9ba40ecce0c3cd06dcf8}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Mesh_a8bd41c6aabd0e6531ba339010604a6ae}{}\hyperlink{classps_1_1scene_1_1MeshMaterial}{Mesh\+Material} $\ast$ {\bfseries get\+Material} (const string \&str\+Name) const \label{classps_1_1scene_1_1Mesh_a8bd41c6aabd0e6531ba339010604a6ae}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Mesh_a0748028365d38a4d568f9d303ec1b611}{}U32 {\bfseries count\+Materials} () const \label{classps_1_1scene_1_1Mesh_a0748028365d38a4d568f9d303ec1b611}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Mesh_a7a288493f2f3acedeeaa1397a5b65699}{}\hyperlink{classps_1_1base_1_1AABB}{A\+A\+B\+B} {\bfseries compute\+Bounding\+Box} () const \label{classps_1_1scene_1_1Mesh_a7a288493f2f3acedeeaa1397a5b65699}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Mesh_af0140faaabe04e1f5692012b79444826}{}void {\bfseries compute\+Missing\+Normals} ()\label{classps_1_1scene_1_1Mesh_af0140faaabe04e1f5692012b79444826}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Mesh_afd0ddc2e64ded35b9d368016b9ccdbd8}{}void {\bfseries move} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&d)\label{classps_1_1scene_1_1Mesh_afd0ddc2e64ded35b9d368016b9ccdbd8}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Mesh_a4ae686c746bd2897fcf201d7865b3935}{}void {\bfseries scale} (const \hyperlink{classps_1_1base_1_1Vec3}{vec3f} \&s)\label{classps_1_1scene_1_1Mesh_a4ae686c746bd2897fcf201d7865b3935}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Mesh_a2c8a6bd2de6f9addcbe6e9dcf21d5abe}{}void {\bfseries rotate} (const \hyperlink{classps_1_1base_1_1Quaternion}{quat} \&q)\label{classps_1_1scene_1_1Mesh_a2c8a6bd2de6f9addcbe6e9dcf21d5abe}
+
+\item 
+\hypertarget{classps_1_1scene_1_1Mesh_ab7a98aaafffd3fd27d209150b2375aee}{}void {\bfseries fit\+To\+B\+Box} (const \hyperlink{classps_1_1base_1_1AABB}{A\+A\+B\+B} \&box)\label{classps_1_1scene_1_1Mesh_ab7a98aaafffd3fd27d209150b2375aee}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/scene/surfacemesh.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/scene/surfacemesh.\+cpp\end{DoxyCompactItemize}

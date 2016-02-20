@@ -1,0 +1,52 @@
+\hypertarget{structtbb_1_1internal_1_1task__proxy}{}\section{tbb\+:\+:internal\+:\+:task\+\_\+proxy Struct Reference}
+\label{structtbb_1_1internal_1_1task__proxy}\index{tbb\+::internal\+::task\+\_\+proxy@{tbb\+::internal\+::task\+\_\+proxy}}
+Inheritance diagram for tbb\+:\+:internal\+:\+:task\+\_\+proxy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{structtbb_1_1internal_1_1task__proxy}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structtbb_1_1internal_1_1task__proxy_a3a144ac1ce1252f4b4da060d5d3f5ded}{}{\footnotesize template$<$intptr\+\_\+t from\+\_\+bit$>$ }\\task $\ast$ \hyperlink{structtbb_1_1internal_1_1task__proxy_a3a144ac1ce1252f4b4da060d5d3f5ded}{extract\+\_\+task} ()\label{structtbb_1_1internal_1_1task__proxy_a3a144ac1ce1252f4b4da060d5d3f5ded}
+
+\begin{DoxyCompactList}\small\item\em Returns a pointer to the encapsulated task or N\+U\+L\+L, and frees proxy if necessary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structtbb_1_1internal_1_1task__proxy_a364254f54e3817ee490eab693b9ee916}{}static bool \hyperlink{structtbb_1_1internal_1_1task__proxy_a364254f54e3817ee490eab693b9ee916}{is\+\_\+shared} (intptr\+\_\+t tat)\label{structtbb_1_1internal_1_1task__proxy_a364254f54e3817ee490eab693b9ee916}
+
+\begin{DoxyCompactList}\small\item\em True if the proxy is stored both in its sender\textquotesingle{}s pool and in the destination mailbox. \end{DoxyCompactList}\item 
+\hypertarget{structtbb_1_1internal_1_1task__proxy_a692bc943f855fd765269bcb65695b283}{}static task $\ast$ \hyperlink{structtbb_1_1internal_1_1task__proxy_a692bc943f855fd765269bcb65695b283}{task\+\_\+ptr} (intptr\+\_\+t tat)\label{structtbb_1_1internal_1_1task__proxy_a692bc943f855fd765269bcb65695b283}
+
+\begin{DoxyCompactList}\small\item\em Returns a pointer to the encapsulated task or N\+U\+L\+L. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structtbb_1_1internal_1_1task__proxy_abedfdfcd6048685cf9aa032ca2380adf}{}intptr\+\_\+t {\bfseries task\+\_\+and\+\_\+tag}\label{structtbb_1_1internal_1_1task__proxy_abedfdfcd6048685cf9aa032ca2380adf}
+
+\item 
+\hypertarget{structtbb_1_1internal_1_1task__proxy_aff8d45ec3c435258ec855186b978dd00}{}\hyperlink{structtbb_1_1internal_1_1task__proxy}{task\+\_\+proxy} $\ast$\+\_\+\+\_\+\+T\+B\+B\+\_\+atomic \hyperlink{structtbb_1_1internal_1_1task__proxy_aff8d45ec3c435258ec855186b978dd00}{next\+\_\+in\+\_\+mailbox}\label{structtbb_1_1internal_1_1task__proxy_aff8d45ec3c435258ec855186b978dd00}
+
+\begin{DoxyCompactList}\small\item\em Pointer to next \hyperlink{structtbb_1_1internal_1_1task__proxy}{task\+\_\+proxy} in a mailbox. \end{DoxyCompactList}\item 
+\hypertarget{structtbb_1_1internal_1_1task__proxy_a32d3a7685efa9cf073409277295091a8}{}\hyperlink{classtbb_1_1internal_1_1mail__outbox}{mail\+\_\+outbox} $\ast$ \hyperlink{structtbb_1_1internal_1_1task__proxy_a32d3a7685efa9cf073409277295091a8}{outbox}\label{structtbb_1_1internal_1_1task__proxy_a32d3a7685efa9cf073409277295091a8}
+
+\begin{DoxyCompactList}\small\item\em Mailbox to which this was mailed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structtbb_1_1internal_1_1task__proxy_a6339e879ab7b6576df404a749f603c51}{}static const intptr\+\_\+t {\bfseries pool\+\_\+bit} = 1$<$$<$0\label{structtbb_1_1internal_1_1task__proxy_a6339e879ab7b6576df404a749f603c51}
+
+\item 
+\hypertarget{structtbb_1_1internal_1_1task__proxy_a7b7339255177d3817844a39271e20484}{}static const intptr\+\_\+t {\bfseries mailbox\+\_\+bit} = 1$<$$<$1\label{structtbb_1_1internal_1_1task__proxy_a7b7339255177d3817844a39271e20484}
+
+\item 
+\hypertarget{structtbb_1_1internal_1_1task__proxy_af6bc227aa29feead34c16e8012d634e0}{}static const intptr\+\_\+t {\bfseries location\+\_\+mask} = pool\+\_\+bit $\vert$ mailbox\+\_\+bit\label{structtbb_1_1internal_1_1task__proxy_af6bc227aa29feead34c16e8012d634e0}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/mailbox.\+h\end{DoxyCompactItemize}

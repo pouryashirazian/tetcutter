@@ -1,0 +1,67 @@
+\hypertarget{DefaultAlloc_8cpp}{}\section{/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/test/\+Small\+Obj/\+Default\+Alloc.cpp File Reference}
+\label{DefaultAlloc_8cpp}\index{/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/test/\+Small\+Obj/\+Default\+Alloc.\+cpp@{/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/loki/test/\+Small\+Obj/\+Default\+Alloc.\+cpp}}
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$new$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classEmptyThing}{Empty\+Thing}
+\item 
+class \hyperlink{classBadBee}{Bad\+Bee}
+\item 
+class \hyperlink{classBee}{Bee}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \hyperlink{DefaultAlloc_8cpp_ae5dd463e2395f11bbd65fcf8f516ab66}{Get\+Compiler\+Name} (void)
+\item 
+\hypertarget{DefaultAlloc_8cpp_a4149bc77d34bd7f0b6694ada82b63781}{}void {\bfseries Output\+Compiler\+Type} (void)\label{DefaultAlloc_8cpp_a4149bc77d34bd7f0b6694ada82b63781}
+
+\item 
+\hypertarget{DefaultAlloc_8cpp_ad0b83fd26d46e59899677fb1ae8e33c3}{}void {\bfseries Run\+Tests} (void)\label{DefaultAlloc_8cpp_ad0b83fd26d46e59899677fb1ae8e33c3}
+
+\item 
+\hypertarget{DefaultAlloc_8cpp_ad7b7136340d61ae1539f51167758af3b}{}int {\bfseries main} (unsigned int argc, const char $\ast$const argv\mbox{[}$\,$\mbox{]})\label{DefaultAlloc_8cpp_ad7b7136340d61ae1539f51167758af3b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Tests compiler compliance when using the new and delete operators.
+
+\begin{DoxyAuthor}{Author}
+Rich Sposato (original author)
+\end{DoxyAuthor}
+\begin{DoxyParagraph}{Purpose of Program}
+This program tests how well C++ compilers comply with the I\+S\+O C++ Standard in implementing new, new \mbox{[}\mbox{]}, delete, and delete \mbox{[}\mbox{]} operators. The program should identify each known way in which a C++ compiler can fail to comply. It provides versions of each new, new\mbox{[}\mbox{]}, delete, and delete \mbox{[}\mbox{]} operators that classes typically overload. These functions have the same signatures as those in the \hyperlink{namespaceLoki}{Loki} project, and the same as those enumerated in section 18 of the I\+S\+O C++ Standard.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Running the Program}
+If the programs fails to compile, or crashes when executed, the compiler does not comply with the I\+S\+O C++ Standard. As the program runs, it should\+:
+\begin{DoxyItemize}
+\item identify your compiler,
+\item execute each version of the new, new\mbox{[}\mbox{]}, delete, and delete \mbox{[}\mbox{]} operators,
+\item determine if compiler provides correct behavior when exceptions are thrown,
+\item determine if correct operators were called for each appropriate situation,
+\item and determine if the correct parameters were provided to each function.
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{License}
+This file is released under the M\+I\+T License -\/ like the rest of \hyperlink{namespaceLoki}{Loki}. You may use it and modify it as you wish -\/ except that the entire set of documentation commentary at the top of this file shall remain intact.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Connection to Loki}
+This file is provided as part of the \hyperlink{namespaceLoki}{Loki} project -\/ but does not depend upon any other files in \hyperlink{namespaceLoki}{Loki}. It was made for \hyperlink{namespaceLoki}{Loki} by Rich Sposato to determine which compilers can safely use \hyperlink{namespaceLoki}{Loki}\textquotesingle{}s Small-\/\+Object Allocator. During his work on \hyperlink{namespaceLoki}{Loki}, Rich noticed that some compilers did not provide the correct values to the allocation / deallocation operators, or worse, called the wrong operator. Rather than make several variations of allocator functions to work around areas of non-\/compliance, Rich decided to write a program that exposes which compilers do not comply with the I\+S\+O C++ Standard. It is recommended that you execute this program before incorporating \hyperlink{namespaceLoki}{Loki}\textquotesingle{}s Small-\/\+Object Allocator from your source code. Hence, this program is a \char`\"{}crash test dummy\char`\"{} for how well your compiler can handle \hyperlink{namespaceLoki}{Loki}. 
+\end{DoxyParagraph}
+
+
+\subsection{Function Documentation}
+\hypertarget{DefaultAlloc_8cpp_ae5dd463e2395f11bbd65fcf8f516ab66}{}\index{Default\+Alloc.\+cpp@{Default\+Alloc.\+cpp}!Get\+Compiler\+Name@{Get\+Compiler\+Name}}
+\index{Get\+Compiler\+Name@{Get\+Compiler\+Name}!Default\+Alloc.\+cpp@{Default\+Alloc.\+cpp}}
+\subsubsection[{Get\+Compiler\+Name(void)}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ Get\+Compiler\+Name (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{DefaultAlloc_8cpp_ae5dd463e2395f11bbd65fcf8f516ab66}
+\begin{DoxyNote}{Note}
+This list of predefined compiler version macros comes from \href{http://predef.sourceforge.net/precomp.html}{\tt http\+://predef.\+sourceforge.\+net/precomp.\+html} Feel free to update this function to add specific version numbers or add other compilers.
+\end{DoxyNote}

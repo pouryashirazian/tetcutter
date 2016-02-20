@@ -1,0 +1,88 @@
+\hypertarget{structtbb_1_1internal_1_1micro__queue}{}\section{tbb\+:\+:internal\+:\+:micro\+\_\+queue Struct Reference}
+\label{structtbb_1_1internal_1_1micro__queue}\index{tbb\+::internal\+::micro\+\_\+queue@{tbb\+::internal\+::micro\+\_\+queue}}
+
+
+\hyperlink{structA}{A} queue using simple locking.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classtbb_1_1internal_1_1micro__queue_1_1pop__finalizer}{pop\+\_\+finalizer}
+\item 
+class \hyperlink{classtbb_1_1internal_1_1micro__queue_1_1push__finalizer}{push\+\_\+finalizer}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structtbb_1_1internal_1_1micro__queue_afa7239963be1c09c06dcbd0bfdfa622a}{}typedef concurrent\+\_\+queue\+\_\+base\+::page {\bfseries page}\label{structtbb_1_1internal_1_1micro__queue_afa7239963be1c09c06dcbd0bfdfa622a}
+
+\item 
+\hypertarget{structtbb_1_1internal_1_1micro__queue_ae100df0e4b20fb2cec1ea0e5ab50cad4}{}typedef size\+\_\+t {\bfseries ticket}\label{structtbb_1_1internal_1_1micro__queue_ae100df0e4b20fb2cec1ea0e5ab50cad4}
+
+\item 
+\hypertarget{structtbb_1_1internal_1_1micro__queue_afa7239963be1c09c06dcbd0bfdfa622a}{}typedef concurrent\+\_\+queue\+\_\+base\+::page {\bfseries page}\label{structtbb_1_1internal_1_1micro__queue_afa7239963be1c09c06dcbd0bfdfa622a}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structtbb_1_1internal_1_1micro__queue_a59ecd3b2aaf7e0f9d6f4847e0db87088}{}void {\bfseries push} (const void $\ast$item, ticket k, concurrent\+\_\+queue\+\_\+base \&base)\label{structtbb_1_1internal_1_1micro__queue_a59ecd3b2aaf7e0f9d6f4847e0db87088}
+
+\item 
+\hypertarget{structtbb_1_1internal_1_1micro__queue_acf53d0cdfd439273c8d3d52b860abe3f}{}bool {\bfseries pop} (void $\ast$dst, ticket k, concurrent\+\_\+queue\+\_\+base \&base)\label{structtbb_1_1internal_1_1micro__queue_acf53d0cdfd439273c8d3d52b860abe3f}
+
+\item 
+\hypertarget{structtbb_1_1internal_1_1micro__queue_a7fe11e7da2dc9af4a9e37e208c1d0308}{}void {\bfseries push} (const void $\ast$item, ticket k, concurrent\+\_\+queue\+\_\+base \&base, concurrent\+\_\+queue\+\_\+base\+::copy\+\_\+specifics op\+\_\+type)\label{structtbb_1_1internal_1_1micro__queue_a7fe11e7da2dc9af4a9e37e208c1d0308}
+
+\item 
+\hypertarget{structtbb_1_1internal_1_1micro__queue_abf8b2f9f05a9152a8c53ec6f9551d0d0}{}void {\bfseries abort\+\_\+push} (ticket k, concurrent\+\_\+queue\+\_\+base \&base)\label{structtbb_1_1internal_1_1micro__queue_abf8b2f9f05a9152a8c53ec6f9551d0d0}
+
+\item 
+\hypertarget{structtbb_1_1internal_1_1micro__queue_acf53d0cdfd439273c8d3d52b860abe3f}{}bool {\bfseries pop} (void $\ast$dst, ticket k, concurrent\+\_\+queue\+\_\+base \&base)\label{structtbb_1_1internal_1_1micro__queue_acf53d0cdfd439273c8d3d52b860abe3f}
+
+\item 
+\hypertarget{structtbb_1_1internal_1_1micro__queue_a7cce1248bacd9b29b296868bdd6b72dc}{}\hyperlink{structtbb_1_1internal_1_1micro__queue}{micro\+\_\+queue} \& {\bfseries assign} (const \hyperlink{structtbb_1_1internal_1_1micro__queue}{micro\+\_\+queue} \&src, concurrent\+\_\+queue\+\_\+base \&base, concurrent\+\_\+queue\+\_\+base\+::copy\+\_\+specifics op\+\_\+type)\label{structtbb_1_1internal_1_1micro__queue_a7cce1248bacd9b29b296868bdd6b72dc}
+
+\item 
+\hypertarget{structtbb_1_1internal_1_1micro__queue_ac452eec7729e4ea11f227ce2f8793179}{}page $\ast$ {\bfseries make\+\_\+copy} (concurrent\+\_\+queue\+\_\+base \&base, const page $\ast$src\+\_\+page, size\+\_\+t begin\+\_\+in\+\_\+page, size\+\_\+t end\+\_\+in\+\_\+page, ticket \&g\+\_\+index, concurrent\+\_\+queue\+\_\+base\+::copy\+\_\+specifics op\+\_\+type)\label{structtbb_1_1internal_1_1micro__queue_ac452eec7729e4ea11f227ce2f8793179}
+
+\item 
+\hypertarget{structtbb_1_1internal_1_1micro__queue_a6f97a68520f2c6a7cf67d03c476ca4ef}{}void {\bfseries make\+\_\+invalid} (ticket k)\label{structtbb_1_1internal_1_1micro__queue_a6f97a68520f2c6a7cf67d03c476ca4ef}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structtbb_1_1internal_1_1micro__queue_ad6580c7faceb740b233e47405df8910b}{}\hyperlink{structtbb_1_1atomic}{atomic}$<$ page $\ast$ $>$ {\bfseries head\+\_\+page}\label{structtbb_1_1internal_1_1micro__queue_ad6580c7faceb740b233e47405df8910b}
+
+\item 
+\hypertarget{structtbb_1_1internal_1_1micro__queue_a32f14855b18a76f43d479c58e5b30dcf}{}\hyperlink{structtbb_1_1atomic}{atomic}$<$ ticket $>$ {\bfseries head\+\_\+counter}\label{structtbb_1_1internal_1_1micro__queue_a32f14855b18a76f43d479c58e5b30dcf}
+
+\item 
+\hypertarget{structtbb_1_1internal_1_1micro__queue_a3acb62aca16960a5f47de9d1d463e305}{}\hyperlink{structtbb_1_1atomic}{atomic}$<$ page $\ast$ $>$ {\bfseries tail\+\_\+page}\label{structtbb_1_1internal_1_1micro__queue_a3acb62aca16960a5f47de9d1d463e305}
+
+\item 
+\hypertarget{structtbb_1_1internal_1_1micro__queue_a321f673cd95d39318a4b565ebff85ddf}{}\hyperlink{structtbb_1_1atomic}{atomic}$<$ ticket $>$ {\bfseries tail\+\_\+counter}\label{structtbb_1_1internal_1_1micro__queue_a321f673cd95d39318a4b565ebff85ddf}
+
+\item 
+\hypertarget{structtbb_1_1internal_1_1micro__queue_ad18d15543690c01325113fdd9585c14e}{}\hyperlink{classtbb_1_1spin__mutex}{spin\+\_\+mutex} {\bfseries page\+\_\+mutex}\label{structtbb_1_1internal_1_1micro__queue_ad18d15543690c01325113fdd9585c14e}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structtbb_1_1internal_1_1micro__queue_ab8fc76921acfa4faa75fe3af5d54cb08}{}class {\bfseries micro\+\_\+queue\+\_\+pop\+\_\+finalizer}\label{structtbb_1_1internal_1_1micro__queue_ab8fc76921acfa4faa75fe3af5d54cb08}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{structA}{A} queue using simple locking. 
+
+For efficiency, this class has no constructor. The caller is expected to zero-\/initialize it. 
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/old/concurrent\+\_\+queue\+\_\+v2.\+cpp\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/concurrent\+\_\+queue.\+cpp\end{DoxyCompactItemize}

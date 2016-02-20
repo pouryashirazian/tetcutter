@@ -1,0 +1,58 @@
+\hypertarget{classtbb_1_1internal_1_1custom__scheduler}{}\section{tbb\+:\+:internal\+:\+:custom\+\_\+scheduler$<$ Scheduler\+Traits $>$ Class Template Reference}
+\label{classtbb_1_1internal_1_1custom__scheduler}\index{tbb\+::internal\+::custom\+\_\+scheduler$<$ Scheduler\+Traits $>$@{tbb\+::internal\+::custom\+\_\+scheduler$<$ Scheduler\+Traits $>$}}
+
+
+\hyperlink{structA}{A} scheduler with a customized evaluation loop.  
+
+
+
+
+{\ttfamily \#include $<$custom\+\_\+scheduler.\+h$>$}
+
+Inheritance diagram for tbb\+:\+:internal\+:\+:custom\+\_\+scheduler$<$ Scheduler\+Traits $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classtbb_1_1internal_1_1custom__scheduler}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+task $\ast$ \hyperlink{classtbb_1_1internal_1_1custom__scheduler_a71b54b3854eb6961a7b09678450dd470}{receive\+\_\+or\+\_\+steal\+\_\+task} (\+\_\+\+\_\+\+T\+B\+B\+\_\+atomic reference\+\_\+count \&completion\+\_\+ref\+\_\+count)
+\begin{DoxyCompactList}\small\item\em Try getting a task from the mailbox or stealing from another scheduler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1custom__scheduler_ac1c24932c3bb2ec60955de5d2798a3c4}{}static \hyperlink{classtbb_1_1internal_1_1generic__scheduler}{generic\+\_\+scheduler} $\ast$ {\bfseries allocate\+\_\+scheduler} (\hyperlink{classtbb_1_1internal_1_1arena}{arena} $\ast$a, size\+\_\+t index)\label{classtbb_1_1internal_1_1custom__scheduler_ac1c24932c3bb2ec60955de5d2798a3c4}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Scheduler\+Traits$>$class tbb\+::internal\+::custom\+\_\+scheduler$<$ Scheduler\+Traits $>$}
+
+\hyperlink{structA}{A} scheduler with a customized evaluation loop. 
+
+The customization can use Scheduler\+Traits to make decisions without needing a run-\/time check. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classtbb_1_1internal_1_1custom__scheduler_a71b54b3854eb6961a7b09678450dd470}{}\index{tbb\+::internal\+::custom\+\_\+scheduler@{tbb\+::internal\+::custom\+\_\+scheduler}!receive\+\_\+or\+\_\+steal\+\_\+task@{receive\+\_\+or\+\_\+steal\+\_\+task}}
+\index{receive\+\_\+or\+\_\+steal\+\_\+task@{receive\+\_\+or\+\_\+steal\+\_\+task}!tbb\+::internal\+::custom\+\_\+scheduler@{tbb\+::internal\+::custom\+\_\+scheduler}}
+\subsubsection[{receive\+\_\+or\+\_\+steal\+\_\+task(\+\_\+\+\_\+\+T\+B\+B\+\_\+atomic reference\+\_\+count \&completion\+\_\+ref\+\_\+count)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Scheduler\+Traits $>$ task $\ast$ {\bf tbb\+::internal\+::custom\+\_\+scheduler}$<$ Scheduler\+Traits $>$\+::receive\+\_\+or\+\_\+steal\+\_\+task (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+\_\+\+T\+B\+B\+\_\+atomic reference\+\_\+count \&}]{completion\+\_\+ref\+\_\+count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classtbb_1_1internal_1_1custom__scheduler_a71b54b3854eb6961a7b09678450dd470}
+
+
+Try getting a task from the mailbox or stealing from another scheduler. 
+
+Returns the stolen task or N\+U\+L\+L if all attempts fail. 
+
+Implements \hyperlink{classtbb_1_1internal_1_1generic__scheduler_a11895552b22a769d2cd40b9e7c090d9b}{tbb\+::internal\+::generic\+\_\+scheduler}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/custom\+\_\+scheduler.\+h\end{DoxyCompactItemize}

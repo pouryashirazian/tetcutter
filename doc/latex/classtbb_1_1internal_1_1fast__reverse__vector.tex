@@ -1,0 +1,72 @@
+\hypertarget{classtbb_1_1internal_1_1fast__reverse__vector}{}\section{tbb\+:\+:internal\+:\+:fast\+\_\+reverse\+\_\+vector$<$ T, max\+\_\+segments $>$ Class Template Reference}
+\label{classtbb_1_1internal_1_1fast__reverse__vector}\index{tbb\+::internal\+::fast\+\_\+reverse\+\_\+vector$<$ T, max\+\_\+segments $>$@{tbb\+::internal\+::fast\+\_\+reverse\+\_\+vector$<$ T, max\+\_\+segments $>$}}
+
+
+Vector that grows without reallocations, and stores items in the reverse order.  
+
+
+
+
+{\ttfamily \#include $<$scheduler\+\_\+utility.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1fast__reverse__vector_a4276f414f22746ffb4178fefd0537cfa}{}{\bfseries fast\+\_\+reverse\+\_\+vector} (T $\ast$initial\+\_\+segment, size\+\_\+t segment\+\_\+size)\label{classtbb_1_1internal_1_1fast__reverse__vector_a4276f414f22746ffb4178fefd0537cfa}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1fast__reverse__vector_aa8613832b1bd5dab7186d19ad6d6e751}{}size\+\_\+t {\bfseries size} () const \label{classtbb_1_1internal_1_1fast__reverse__vector_aa8613832b1bd5dab7186d19ad6d6e751}
+
+\item 
+\hypertarget{classtbb_1_1internal_1_1fast__reverse__vector_ae533cd1ab5be44deaa0ee7ad7ece6f4b}{}void {\bfseries push\+\_\+back} (const T \&val)\label{classtbb_1_1internal_1_1fast__reverse__vector_ae533cd1ab5be44deaa0ee7ad7ece6f4b}
+
+\item 
+void \hyperlink{classtbb_1_1internal_1_1fast__reverse__vector_a48d1c96d94c3dad0c130eaab3ac80049}{copy\+\_\+memory} (T $\ast$dst) const 
+\begin{DoxyCompactList}\small\item\em Copies the contents of the vector into the dst array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1internal_1_1fast__reverse__vector_ab9897f3ce81f20cf99dff112b1938ced}{}T $\ast$ \hyperlink{classtbb_1_1internal_1_1fast__reverse__vector_ab9897f3ce81f20cf99dff112b1938ced}{m\+\_\+cur\+\_\+segment}\label{classtbb_1_1internal_1_1fast__reverse__vector_ab9897f3ce81f20cf99dff112b1938ced}
+
+\begin{DoxyCompactList}\small\item\em The current (not completely filled) segment. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1fast__reverse__vector_a7c6128f417a2909e3ecf1cc95fd8f320}{}size\+\_\+t \hyperlink{classtbb_1_1internal_1_1fast__reverse__vector_a7c6128f417a2909e3ecf1cc95fd8f320}{m\+\_\+cur\+\_\+segment\+\_\+size}\label{classtbb_1_1internal_1_1fast__reverse__vector_a7c6128f417a2909e3ecf1cc95fd8f320}
+
+\begin{DoxyCompactList}\small\item\em Capacity of m\+\_\+cur\+\_\+segment. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1fast__reverse__vector_a0af5dd83f99b08e51d285daa5cc40abd}{}size\+\_\+t \hyperlink{classtbb_1_1internal_1_1fast__reverse__vector_a0af5dd83f99b08e51d285daa5cc40abd}{m\+\_\+pos}\label{classtbb_1_1internal_1_1fast__reverse__vector_a0af5dd83f99b08e51d285daa5cc40abd}
+
+\begin{DoxyCompactList}\small\item\em Insertion position in m\+\_\+cur\+\_\+segment. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1fast__reverse__vector_a6d31f5464b691bd89594fe0c39859835}{}T $\ast$ \hyperlink{classtbb_1_1internal_1_1fast__reverse__vector_a6d31f5464b691bd89594fe0c39859835}{m\+\_\+segments} \mbox{[}max\+\_\+segments\mbox{]}\label{classtbb_1_1internal_1_1fast__reverse__vector_a6d31f5464b691bd89594fe0c39859835}
+
+\begin{DoxyCompactList}\small\item\em Array of segments (has fixed size specified by the second template parameter) \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1fast__reverse__vector_afd83fe490bf888185e32b9dc09c32308}{}size\+\_\+t \hyperlink{classtbb_1_1internal_1_1fast__reverse__vector_afd83fe490bf888185e32b9dc09c32308}{m\+\_\+num\+\_\+segments}\label{classtbb_1_1internal_1_1fast__reverse__vector_afd83fe490bf888185e32b9dc09c32308}
+
+\begin{DoxyCompactList}\small\item\em Number of segments (the size of m\+\_\+segments) \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1internal_1_1fast__reverse__vector_ad24304dddf2f9e5ea39dfb0631f9caeb}{}size\+\_\+t \hyperlink{classtbb_1_1internal_1_1fast__reverse__vector_ad24304dddf2f9e5ea39dfb0631f9caeb}{m\+\_\+size}\label{classtbb_1_1internal_1_1fast__reverse__vector_ad24304dddf2f9e5ea39dfb0631f9caeb}
+
+\begin{DoxyCompactList}\small\item\em Number of items in the segments in m\+\_\+segments. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T, size\+\_\+t max\+\_\+segments = 16$>$class tbb\+::internal\+::fast\+\_\+reverse\+\_\+vector$<$ T, max\+\_\+segments $>$}
+
+Vector that grows without reallocations, and stores items in the reverse order. 
+
+Requires to initialize its first segment with a preallocated memory chunk (usually it is static array or an array allocated on the stack). The second template parameter specifies maximal number of segments. Each next segment is twice as large as the previous one. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classtbb_1_1internal_1_1fast__reverse__vector_a48d1c96d94c3dad0c130eaab3ac80049}{}\index{tbb\+::internal\+::fast\+\_\+reverse\+\_\+vector@{tbb\+::internal\+::fast\+\_\+reverse\+\_\+vector}!copy\+\_\+memory@{copy\+\_\+memory}}
+\index{copy\+\_\+memory@{copy\+\_\+memory}!tbb\+::internal\+::fast\+\_\+reverse\+\_\+vector@{tbb\+::internal\+::fast\+\_\+reverse\+\_\+vector}}
+\subsubsection[{copy\+\_\+memory(\+T $\ast$dst) const }]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\+\_\+t max\+\_\+segments = 16$>$ void {\bf tbb\+::internal\+::fast\+\_\+reverse\+\_\+vector}$<$ T, max\+\_\+segments $>$\+::copy\+\_\+memory (
+\begin{DoxyParamCaption}
+\item[{T $\ast$}]{dst}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classtbb_1_1internal_1_1fast__reverse__vector_a48d1c96d94c3dad0c130eaab3ac80049}
+
+
+Copies the contents of the vector into the dst array. 
+
+Can only be used when T is a P\+O\+D type, as copying does not invoke copy constructors. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/scheduler\+\_\+utility.\+h\end{DoxyCompactItemize}

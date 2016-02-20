@@ -1,0 +1,90 @@
+\hypertarget{classrml_1_1internal_1_1Backend}{}\section{rml\+:\+:internal\+:\+:Backend Class Reference}
+\label{classrml_1_1internal_1_1Backend}\index{rml\+::internal\+::\+Backend@{rml\+::internal\+::\+Backend}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structrml_1_1internal_1_1Backend_1_1Bin}{Bin}
+\item 
+class \hyperlink{classrml_1_1internal_1_1Backend_1_1IndexedBins}{Indexed\+Bins}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrml_1_1internal_1_1Backend_aeb50ef58dc33e0245249fa626a59b462}{}enum \{ {\bfseries N\+O\+\_\+\+B\+I\+N} = -\/1, 
+{\bfseries H\+U\+G\+E\+\_\+\+B\+I\+N} = free\+Bins\+Num-\/1
+ \}\label{classrml_1_1internal_1_1Backend_aeb50ef58dc33e0245249fa626a59b462}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1Backend_abd34c3204f7354f33022b3aca371ac45}{}typedef \hyperlink{classrml_1_1internal_1_1BitMaskMin}{Bit\+Mask\+Min}$<$ Backend\+::free\+Bins\+Num $>$ {\bfseries Bit\+Mask\+Bins}\label{classrml_1_1internal_1_1Backend_abd34c3204f7354f33022b3aca371ac45}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrml_1_1internal_1_1Backend_a165dbdb10e5b3cb7ba607d608cc89ebf}{}void {\bfseries verify} ()\label{classrml_1_1internal_1_1Backend_a165dbdb10e5b3cb7ba607d608cc89ebf}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1Backend_a66650899df29e04f098f34dc66a12f25}{}bool {\bfseries bootstrap} (\hyperlink{structrml_1_1internal_1_1ExtMemoryPool}{Ext\+Memory\+Pool} $\ast$ext\+Memory\+Pool)\label{classrml_1_1internal_1_1Backend_a66650899df29e04f098f34dc66a12f25}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1Backend_ac08d1da332ea0eff2ff531cc0b082b90}{}void {\bfseries reset} ()\label{classrml_1_1internal_1_1Backend_ac08d1da332ea0eff2ff531cc0b082b90}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1Backend_a62ab2bf2685173c29ec2779e0f410482}{}bool {\bfseries destroy} ()\label{classrml_1_1internal_1_1Backend_a62ab2bf2685173c29ec2779e0f410482}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1Backend_a6d947d4892bfecd23f011d89f97cb883}{}bool {\bfseries clean} ()\label{classrml_1_1internal_1_1Backend_a6d947d4892bfecd23f011d89f97cb883}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1Backend_a303d60718dc6032c450ee4bc01f5f934}{}\hyperlink{classrml_1_1internal_1_1BlockI}{Block\+I} $\ast$ {\bfseries get\+Slab\+Block} (int num)\label{classrml_1_1internal_1_1Backend_a303d60718dc6032c450ee4bc01f5f934}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1Backend_a320ac9ed134822e8af21190561bed85e}{}void {\bfseries put\+Slab\+Block} (\hyperlink{classrml_1_1internal_1_1BlockI}{Block\+I} $\ast$block)\label{classrml_1_1internal_1_1Backend_a320ac9ed134822e8af21190561bed85e}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1Backend_ab1f1296fdb1f641d5c1d9bb7e1ddcfd7}{}void $\ast$ {\bfseries get\+Back\+Ref\+Space} (size\+\_\+t size, bool $\ast$raw\+Mem\+Used)\label{classrml_1_1internal_1_1Backend_ab1f1296fdb1f641d5c1d9bb7e1ddcfd7}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1Backend_aea0c24168ec12311166cfe8d596601d2}{}void {\bfseries put\+Back\+Ref\+Space} (void $\ast$b, size\+\_\+t size, bool raw\+Mem\+Used)\label{classrml_1_1internal_1_1Backend_aea0c24168ec12311166cfe8d596601d2}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1Backend_a5689332d3e49d110391e2081c03027b6}{}bool {\bfseries in\+User\+Pool} () const \label{classrml_1_1internal_1_1Backend_a5689332d3e49d110391e2081c03027b6}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1Backend_a1f5acf305c3d2985141a51fa5fb7c111}{}\hyperlink{structrml_1_1internal_1_1LargeMemoryBlock}{Large\+Memory\+Block} $\ast$ {\bfseries get\+Large\+Block} (size\+\_\+t size)\label{classrml_1_1internal_1_1Backend_a1f5acf305c3d2985141a51fa5fb7c111}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1Backend_a737a839bc504ba985ca6d2b4578bd093}{}void {\bfseries return\+Large\+Object} (\hyperlink{structrml_1_1internal_1_1LargeMemoryBlock}{Large\+Memory\+Block} $\ast$lmb)\label{classrml_1_1internal_1_1Backend_a737a839bc504ba985ca6d2b4578bd093}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1Backend_a33e5d8efd232fd64c866c02bc06e3c97}{}void {\bfseries set\+Recommended\+Max\+Size} (size\+\_\+t soft\+Limit)\label{classrml_1_1internal_1_1Backend_a33e5d8efd232fd64c866c02bc06e3c97}
+
+\item 
+\hypertarget{classrml_1_1internal_1_1Backend_aa4915a88a282ee317a97b377d1abfc3f}{}size\+\_\+t {\bfseries get\+Max\+Binned\+Size} () const \label{classrml_1_1internal_1_1Backend_aa4915a88a282ee317a97b377d1abfc3f}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int {\bfseries free\+Bins\+Num}
+\item 
+\hypertarget{classrml_1_1internal_1_1Backend_a37fd2d10ce777e87cc7ddfe55249f0f6}{}static const int {\bfseries num\+Of\+Slab\+Alloc\+On\+Miss} = 2\label{classrml_1_1internal_1_1Backend_a37fd2d10ce777e87cc7ddfe55249f0f6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrml_1_1internal_1_1Backend_aa40317699d588c417d4bc3e6dbdd4cbd}{}\index{rml\+::internal\+::\+Backend@{rml\+::internal\+::\+Backend}!free\+Bins\+Num@{free\+Bins\+Num}}
+\index{free\+Bins\+Num@{free\+Bins\+Num}!rml\+::internal\+::\+Backend@{rml\+::internal\+::\+Backend}}
+\subsubsection[{free\+Bins\+Num}]{\setlength{\rightskip}{0pt plus 5cm}const int rml\+::internal\+::\+Backend\+::free\+Bins\+Num\hspace{0.3cm}{\ttfamily [static]}}\label{classrml_1_1internal_1_1Backend_aa40317699d588c417d4bc3e6dbdd4cbd}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+        (maxBinned\_HugePage-minBinnedSize)/LargeObjectCache::largeBlockCacheStep + 1
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbbmalloc/tbbmalloc\+\_\+internal.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbbmalloc/backend.\+cpp\end{DoxyCompactItemize}

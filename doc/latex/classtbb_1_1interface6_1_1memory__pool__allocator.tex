@@ -1,0 +1,109 @@
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator}{}\section{tbb\+:\+:interface6\+:\+:memory\+\_\+pool\+\_\+allocator$<$ T, P $>$ Class Template Reference}
+\label{classtbb_1_1interface6_1_1memory__pool__allocator}\index{tbb\+::interface6\+::memory\+\_\+pool\+\_\+allocator$<$ T, P $>$@{tbb\+::interface6\+::memory\+\_\+pool\+\_\+allocator$<$ T, P $>$}}
+
+
+Meets \char`\"{}allocator\char`\"{} requirements of I\+S\+O C++ Standard, Section 20.\+1.\+5.  
+
+
+
+
+{\ttfamily \#include $<$memory\+\_\+pool.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structtbb_1_1interface6_1_1memory__pool__allocator_1_1rebind}{rebind}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_a6202050e0edbded0b0534ea4be9547e0}{}typedef tbb\+::internal\+::allocator\+\_\+type$<$ T $>$\+::value\+\_\+type {\bfseries value\+\_\+type}\label{classtbb_1_1interface6_1_1memory__pool__allocator_a6202050e0edbded0b0534ea4be9547e0}
+
+\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_a07450f397df1af8096f31bfa8f2e1722}{}typedef value\+\_\+type $\ast$ {\bfseries pointer}\label{classtbb_1_1interface6_1_1memory__pool__allocator_a07450f397df1af8096f31bfa8f2e1722}
+
+\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_a972521ed466cc8140d386331a25e895a}{}typedef const value\+\_\+type $\ast$ {\bfseries const\+\_\+pointer}\label{classtbb_1_1interface6_1_1memory__pool__allocator_a972521ed466cc8140d386331a25e895a}
+
+\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_a83b91759effc3a452fc565ac3bb45613}{}typedef value\+\_\+type \& {\bfseries reference}\label{classtbb_1_1interface6_1_1memory__pool__allocator_a83b91759effc3a452fc565ac3bb45613}
+
+\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_a15abe537e2dad4132c956c08d9d0a27e}{}typedef const value\+\_\+type \& {\bfseries const\+\_\+reference}\label{classtbb_1_1interface6_1_1memory__pool__allocator_a15abe537e2dad4132c956c08d9d0a27e}
+
+\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_ac20767f3b7a8fcdc1aff0b0874245d3a}{}typedef size\+\_\+t {\bfseries size\+\_\+type}\label{classtbb_1_1interface6_1_1memory__pool__allocator_ac20767f3b7a8fcdc1aff0b0874245d3a}
+
+\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_a23267e855e2427b401b99ce4b547f83e}{}typedef ptrdiff\+\_\+t {\bfseries difference\+\_\+type}\label{classtbb_1_1interface6_1_1memory__pool__allocator_a23267e855e2427b401b99ce4b547f83e}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_a384be31e682a3b86b5b11e635232c9c5}{}{\bfseries memory\+\_\+pool\+\_\+allocator} (pool\+\_\+type \&pool)  throw ()\label{classtbb_1_1interface6_1_1memory__pool__allocator_a384be31e682a3b86b5b11e635232c9c5}
+
+\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_aa2b4cf16b566e40ddb196c371e5ae96e}{}{\bfseries memory\+\_\+pool\+\_\+allocator} (const \hyperlink{classtbb_1_1interface6_1_1memory__pool__allocator}{memory\+\_\+pool\+\_\+allocator} \&src)  throw ()\label{classtbb_1_1interface6_1_1memory__pool__allocator_aa2b4cf16b566e40ddb196c371e5ae96e}
+
+\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_ad32ad8245399fbdb38a0a41e912d86d9}{}{\footnotesize template$<$typename U $>$ }\\{\bfseries memory\+\_\+pool\+\_\+allocator} (const \hyperlink{classtbb_1_1interface6_1_1memory__pool__allocator}{memory\+\_\+pool\+\_\+allocator}$<$ U, P $>$ \&src)  throw ()\label{classtbb_1_1interface6_1_1memory__pool__allocator_ad32ad8245399fbdb38a0a41e912d86d9}
+
+\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_a55653a8c539901be6ca24a120a5d7b72}{}pointer {\bfseries address} (reference x) const \label{classtbb_1_1interface6_1_1memory__pool__allocator_a55653a8c539901be6ca24a120a5d7b72}
+
+\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_a8a3e4236f6e1266f126dac557906ce2c}{}const\+\_\+pointer {\bfseries address} (const\+\_\+reference x) const \label{classtbb_1_1interface6_1_1memory__pool__allocator_a8a3e4236f6e1266f126dac557906ce2c}
+
+\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_a10b9888883a3dbd66e87c4a7f874ef28}{}pointer \hyperlink{classtbb_1_1interface6_1_1memory__pool__allocator_a10b9888883a3dbd66e87c4a7f874ef28}{allocate} (size\+\_\+type n, const void $\ast$=0)\label{classtbb_1_1interface6_1_1memory__pool__allocator_a10b9888883a3dbd66e87c4a7f874ef28}
+
+\begin{DoxyCompactList}\small\item\em Allocate space for n objects. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_a9fcf288f2d653972d1bdc0c65abebed4}{}void \hyperlink{classtbb_1_1interface6_1_1memory__pool__allocator_a9fcf288f2d653972d1bdc0c65abebed4}{deallocate} (pointer p, size\+\_\+type)\label{classtbb_1_1interface6_1_1memory__pool__allocator_a9fcf288f2d653972d1bdc0c65abebed4}
+
+\begin{DoxyCompactList}\small\item\em Free previously allocated block of memory. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_a2bded8e3fb2cec32b48771e7a1bbb838}{}size\+\_\+type \hyperlink{classtbb_1_1interface6_1_1memory__pool__allocator_a2bded8e3fb2cec32b48771e7a1bbb838}{max\+\_\+size} () const   throw ()\label{classtbb_1_1interface6_1_1memory__pool__allocator_a2bded8e3fb2cec32b48771e7a1bbb838}
+
+\begin{DoxyCompactList}\small\item\em Largest value for which method allocate might succeed. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_affac76f7742c4d8ea6345e0aad82792a}{}void \hyperlink{classtbb_1_1interface6_1_1memory__pool__allocator_affac76f7742c4d8ea6345e0aad82792a}{construct} (pointer p, const value\+\_\+type \&value)\label{classtbb_1_1interface6_1_1memory__pool__allocator_affac76f7742c4d8ea6345e0aad82792a}
+
+\begin{DoxyCompactList}\small\item\em Copy-\/construct value at location pointed to by p. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_a2223b6469f88aadc432a4b3f88728d0f}{}void \hyperlink{classtbb_1_1interface6_1_1memory__pool__allocator_a2223b6469f88aadc432a4b3f88728d0f}{destroy} (pointer p)\label{classtbb_1_1interface6_1_1memory__pool__allocator_a2223b6469f88aadc432a4b3f88728d0f}
+
+\begin{DoxyCompactList}\small\item\em Destroy value at location pointed to by p. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_aecd858782faee0fb5fa707671cfc49aa}{}typedef P {\bfseries pool\+\_\+type}\label{classtbb_1_1interface6_1_1memory__pool__allocator_aecd858782faee0fb5fa707671cfc49aa}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_a0fbd737811d556f1d2898d3722e85f32}{}pool\+\_\+type $\ast$ {\bfseries my\+\_\+pool}\label{classtbb_1_1interface6_1_1memory__pool__allocator_a0fbd737811d556f1d2898d3722e85f32}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_a6c34ee2e5a57845f050b507cc516a005}{}{\footnotesize template$<$typename U , typename R $>$ }\\class {\bfseries memory\+\_\+pool\+\_\+allocator}\label{classtbb_1_1interface6_1_1memory__pool__allocator_a6c34ee2e5a57845f050b507cc516a005}
+
+\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_ac8c26a64f4e012f2a9cf6035cf029905}{}{\footnotesize template$<$typename V , typename U , typename R $>$ }\\bool {\bfseries operator==} (const \hyperlink{classtbb_1_1interface6_1_1memory__pool__allocator}{memory\+\_\+pool\+\_\+allocator}$<$ V, R $>$ \&a, const \hyperlink{classtbb_1_1interface6_1_1memory__pool__allocator}{memory\+\_\+pool\+\_\+allocator}$<$ U, R $>$ \&b)\label{classtbb_1_1interface6_1_1memory__pool__allocator_ac8c26a64f4e012f2a9cf6035cf029905}
+
+\item 
+\hypertarget{classtbb_1_1interface6_1_1memory__pool__allocator_a2f7230e5bc817e7512e18b5311b3371b}{}{\footnotesize template$<$typename V , typename U , typename R $>$ }\\bool {\bfseries operator!=} (const \hyperlink{classtbb_1_1interface6_1_1memory__pool__allocator}{memory\+\_\+pool\+\_\+allocator}$<$ V, R $>$ \&a, const \hyperlink{classtbb_1_1interface6_1_1memory__pool__allocator}{memory\+\_\+pool\+\_\+allocator}$<$ U, R $>$ \&b)\label{classtbb_1_1interface6_1_1memory__pool__allocator_a2f7230e5bc817e7512e18b5311b3371b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename P = internal\+::pool\+\_\+base$>$class tbb\+::interface6\+::memory\+\_\+pool\+\_\+allocator$<$ T, P $>$}
+
+Meets \char`\"{}allocator\char`\"{} requirements of I\+S\+O C++ Standard, Section 20.\+1.\+5. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/\hyperlink{memory__pool_8h}{memory\+\_\+pool.\+h}\end{DoxyCompactItemize}

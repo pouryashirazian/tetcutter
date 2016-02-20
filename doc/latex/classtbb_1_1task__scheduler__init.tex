@@ -1,0 +1,112 @@
+\hypertarget{classtbb_1_1task__scheduler__init}{}\section{tbb\+:\+:task\+\_\+scheduler\+\_\+init Class Reference}
+\label{classtbb_1_1task__scheduler__init}\index{tbb\+::task\+\_\+scheduler\+\_\+init@{tbb\+::task\+\_\+scheduler\+\_\+init}}
+
+
+Class delimiting the scope of task scheduler activity.  
+
+
+
+
+{\ttfamily \#include $<$task\+\_\+scheduler\+\_\+init.\+h$>$}
+
+Inheritance diagram for tbb\+:\+:task\+\_\+scheduler\+\_\+init\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classtbb_1_1task__scheduler__init}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D \hyperlink{classtbb_1_1task__scheduler__init_a22ca8b871fa96e8fed1d2336616662d9}{initialize} (int number\+\_\+of\+\_\+threads=\hyperlink{classtbb_1_1task__scheduler__init_a945886f5ef48300a8ebff2d077c166b1}{automatic})
+\begin{DoxyCompactList}\small\item\em Ensure that scheduler exists for this thread. \end{DoxyCompactList}\item 
+void \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D \hyperlink{classtbb_1_1task__scheduler__init_a786a7c6c49faa40101d5f4ca2209b1cb}{initialize} (int number\+\_\+of\+\_\+threads, stack\+\_\+size\+\_\+type thread\+\_\+stack\+\_\+size)
+\begin{DoxyCompactList}\small\item\em The overloaded method with stack size parameter. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1task__scheduler__init_afcd615b84c2f57d7ada13813a8443ecf}{}void \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D \hyperlink{classtbb_1_1task__scheduler__init_afcd615b84c2f57d7ada13813a8443ecf}{terminate} ()\label{classtbb_1_1task__scheduler__init_afcd615b84c2f57d7ada13813a8443ecf}
+
+\begin{DoxyCompactList}\small\item\em Inverse of method initialize. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1task__scheduler__init_a8b2657d9b7c39fede2d19507d0e94688}{}\hyperlink{classtbb_1_1task__scheduler__init_a8b2657d9b7c39fede2d19507d0e94688}{task\+\_\+scheduler\+\_\+init} (int number\+\_\+of\+\_\+threads=\hyperlink{classtbb_1_1task__scheduler__init_a945886f5ef48300a8ebff2d077c166b1}{automatic}, stack\+\_\+size\+\_\+type thread\+\_\+stack\+\_\+size=0)\label{classtbb_1_1task__scheduler__init_a8b2657d9b7c39fede2d19507d0e94688}
+
+\begin{DoxyCompactList}\small\item\em Shorthand for default constructor followed by call to initialize(number\+\_\+of\+\_\+threads). \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1task__scheduler__init_a20b121334ec39c1d91bd4fe9a51892b0}{}\hyperlink{classtbb_1_1task__scheduler__init_a20b121334ec39c1d91bd4fe9a51892b0}{$\sim$task\+\_\+scheduler\+\_\+init} ()\label{classtbb_1_1task__scheduler__init_a20b121334ec39c1d91bd4fe9a51892b0}
+
+\begin{DoxyCompactList}\small\item\em Destroy scheduler for this thread if thread has no other live task\+\_\+scheduler\+\_\+inits. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1task__scheduler__init_aed5505d7fed9d5493676aa15c176512c}{}bool \hyperlink{classtbb_1_1task__scheduler__init_aed5505d7fed9d5493676aa15c176512c}{is\+\_\+active} () const \label{classtbb_1_1task__scheduler__init_aed5505d7fed9d5493676aa15c176512c}
+
+\begin{DoxyCompactList}\small\item\em Returns true if scheduler is active (initialized); false otherwise. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \+\_\+\+\_\+\+T\+B\+B\+\_\+\+E\+X\+P\+O\+R\+T\+E\+D\+\_\+\+F\+U\+N\+C \hyperlink{classtbb_1_1task__scheduler__init_a7177e341a66163cbed948013dbe86c56}{default\+\_\+num\+\_\+threads} ()
+\begin{DoxyCompactList}\small\item\em Returns the number of threads T\+B\+B scheduler would create if initialized by default. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtbb_1_1task__scheduler__init_a945886f5ef48300a8ebff2d077c166b1}{}static const int \hyperlink{classtbb_1_1task__scheduler__init_a945886f5ef48300a8ebff2d077c166b1}{automatic} = -\/1\label{classtbb_1_1task__scheduler__init_a945886f5ef48300a8ebff2d077c166b1}
+
+\begin{DoxyCompactList}\small\item\em Typedef for number of threads that is automatic. \end{DoxyCompactList}\item 
+\hypertarget{classtbb_1_1task__scheduler__init_af0e49ff2f59a4e53c9c07897b57f084d}{}static const int \hyperlink{classtbb_1_1task__scheduler__init_af0e49ff2f59a4e53c9c07897b57f084d}{deferred} = -\/2\label{classtbb_1_1task__scheduler__init_af0e49ff2f59a4e53c9c07897b57f084d}
+
+\begin{DoxyCompactList}\small\item\em Argument to \hyperlink{classtbb_1_1task__scheduler__init_a22ca8b871fa96e8fed1d2336616662d9}{initialize()} or constructor that causes initialization to be deferred. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class delimiting the scope of task scheduler activity. 
+
+\hyperlink{structA}{A} thread can construct a \hyperlink{classtbb_1_1task__scheduler__init}{task\+\_\+scheduler\+\_\+init} object and keep it alive while it uses T\+B\+B\textquotesingle{}s tasking subsystem (including parallel algorithms).
+
+This class allows to customize properties of the T\+B\+B task pool to some extent. For example it can limit concurrency level of parallel work initiated by the given thread. It also can be used to specify stack size of the T\+B\+B worker threads, though this setting is not effective if the thread pool has already been created.
+
+If a parallel construct is used without \hyperlink{classtbb_1_1task__scheduler__init}{task\+\_\+scheduler\+\_\+init} object previously created, the scheduler will be initialized automatically with default settings, and will persist until this thread exits. Default concurrency level is defined as described in \hyperlink{classtbb_1_1task__scheduler__init_a22ca8b871fa96e8fed1d2336616662d9}{task\+\_\+scheduler\+\_\+init\+::initialize()}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classtbb_1_1task__scheduler__init_a7177e341a66163cbed948013dbe86c56}{}\index{tbb\+::task\+\_\+scheduler\+\_\+init@{tbb\+::task\+\_\+scheduler\+\_\+init}!default\+\_\+num\+\_\+threads@{default\+\_\+num\+\_\+threads}}
+\index{default\+\_\+num\+\_\+threads@{default\+\_\+num\+\_\+threads}!tbb\+::task\+\_\+scheduler\+\_\+init@{tbb\+::task\+\_\+scheduler\+\_\+init}}
+\subsubsection[{default\+\_\+num\+\_\+threads()}]{\setlength{\rightskip}{0pt plus 5cm}int tbb\+::task\+\_\+scheduler\+\_\+init\+::default\+\_\+num\+\_\+threads (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classtbb_1_1task__scheduler__init_a7177e341a66163cbed948013dbe86c56}
+
+
+Returns the number of threads T\+B\+B scheduler would create if initialized by default. 
+
+Result returned by this method does not depend on whether the scheduler has already been initialized.
+
+Because tbb 2.\+0 does not support blocking tasks yet, you may use this method to boost the number of threads in the tbb\textquotesingle{}s internal pool, if your tasks are doing I/\+O operations. The optimal number of additional threads depends on how much time your tasks spend in the blocked state.
+
+Before T\+B\+B 3.\+0 U4 this method returned the number of logical C\+P\+U in the system. Currently on Windows, Linux and Free\+B\+S\+D it returns the number of logical C\+P\+Us available to the current process in accordance with its affinity mask.
+
+N\+O\+T\+E\+: The return value of this method never changes after its first invocation. This means that changes in the process affinity mask that took place after this method was first invoked will not affect the number of worker threads in the T\+B\+B worker threads pool. \hypertarget{classtbb_1_1task__scheduler__init_a22ca8b871fa96e8fed1d2336616662d9}{}\index{tbb\+::task\+\_\+scheduler\+\_\+init@{tbb\+::task\+\_\+scheduler\+\_\+init}!initialize@{initialize}}
+\index{initialize@{initialize}!tbb\+::task\+\_\+scheduler\+\_\+init@{tbb\+::task\+\_\+scheduler\+\_\+init}}
+\subsubsection[{initialize(int number\+\_\+of\+\_\+threads=automatic)}]{\setlength{\rightskip}{0pt plus 5cm}void tbb\+::task\+\_\+scheduler\+\_\+init\+::initialize (
+\begin{DoxyParamCaption}
+\item[{int}]{number\+\_\+of\+\_\+threads = {\ttfamily {\bf automatic}}}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1task__scheduler__init_a22ca8b871fa96e8fed1d2336616662d9}
+
+
+Ensure that scheduler exists for this thread. 
+
+\hyperlink{structA}{A} value of -\/1 lets T\+B\+B decide on the number of threads, which is usually maximal hardware concurrency for this process, that is the number of logical C\+P\+Us on the machine (possibly limited by the processor affinity mask of this process (Windows) or of this thread (Linux, Free\+B\+S\+D). It is preferable option for production code because it helps to avoid nasty surprises when several T\+B\+B based components run side-\/by-\/side or in a nested fashion inside the same process.
+
+The number\+\_\+of\+\_\+threads is ignored if any other task\+\_\+scheduler\+\_\+inits currently exist. \hyperlink{structA}{A} thread may construct multiple task\+\_\+scheduler\+\_\+inits. Doing so does no harm because the underlying scheduler is reference counted.
+
+Left out-\/of-\/line for the sake of the backward binary compatibility \hypertarget{classtbb_1_1task__scheduler__init_a786a7c6c49faa40101d5f4ca2209b1cb}{}\index{tbb\+::task\+\_\+scheduler\+\_\+init@{tbb\+::task\+\_\+scheduler\+\_\+init}!initialize@{initialize}}
+\index{initialize@{initialize}!tbb\+::task\+\_\+scheduler\+\_\+init@{tbb\+::task\+\_\+scheduler\+\_\+init}}
+\subsubsection[{initialize(int number\+\_\+of\+\_\+threads, stack\+\_\+size\+\_\+type thread\+\_\+stack\+\_\+size)}]{\setlength{\rightskip}{0pt plus 5cm}void tbb\+::task\+\_\+scheduler\+\_\+init\+::initialize (
+\begin{DoxyParamCaption}
+\item[{int}]{number\+\_\+of\+\_\+threads, }
+\item[{stack\+\_\+size\+\_\+type}]{thread\+\_\+stack\+\_\+size}
+\end{DoxyParamCaption}
+)}\label{classtbb_1_1task__scheduler__init_a786a7c6c49faa40101d5f4ca2209b1cb}
+
+
+The overloaded method with stack size parameter. 
+
+Overloading is necessary to preserve A\+B\+I compatibility 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/include/tbb/task\+\_\+scheduler\+\_\+init.\+h\item 
+/\+Users/pourya/\+Desktop/platform/repos/tetcutter/src/3rdparty/tbb/src/tbb/governor.\+cpp\end{DoxyCompactItemize}
