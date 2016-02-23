@@ -4,3 +4,4 @@
 3. generate documentation as part of build
 4. add license header to all files
 5. support for fonts
+6. Freetype and FTGL for text rendering
