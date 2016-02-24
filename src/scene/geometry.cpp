@@ -801,7 +801,7 @@ void Geometry::addTetrahedra(vec3f v[4]) {
 void Geometry::addTetrahedra(const vector<float>& vertices, const vector<U32>& tets) {
     int idxStart = countVertices();
 
-    U32 ctVertices = vertices.size() / 3;
+    //U32 ctVertices = vertices.size() / 3;
     U32 ctTets = tets.size() / 4;
     addVertexAttribs(vertices, 3, gbtPosition);
 
@@ -840,7 +840,7 @@ bool Geometry::addRingStripAroundXAxis(int sectors,
 
     int idxStart = countVertices();
     float oneOverSector = 1.0f / static_cast<float>(sectors);
-    float halfThickness = 0.5 * thickness;
+    //float halfThickness = 0.5 * thickness;
 
     for(int i=0; i<sectors; i++) {
 

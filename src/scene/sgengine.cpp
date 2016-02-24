@@ -63,13 +63,6 @@ void SGEngine::cleanup() {
 }
 
 void SGEngine::init() {
-
-    //init
-    int argc = 1;
-    AnsiStr strPath = GetExePath();
-    char* argv = strPath.ptr();
-    //glutInit(&argc, &argv);
-
     //init opengl
     InitGL();
 }

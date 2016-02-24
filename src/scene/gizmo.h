@@ -139,9 +139,9 @@ public:
 	GizmoManager();
 	virtual ~GizmoManager();
 
-	void draw();
-	void timestep();
-    int intersect(const Ray& r);
+    void draw() override;
+    void timestep() override;
+    int intersect(const Ray& r) override;
 
     //Get
     GizmoType gizmoType() const {return m_gizmoType;}

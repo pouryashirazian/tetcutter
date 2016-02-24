@@ -29,7 +29,7 @@ public:
     void removeAllHeaders();
     bool updateHeaderLine(int id, const AnsiStr& strInfo);
     bool updateHeaderLine(const AnsiStr& title, const AnsiStr& strInfo);
-    bool isValidID(bool id) { return (id >=0 && id < m_vHeaders.size()); }
+    bool isValidID(int id) { return (id >=0 && id < (int)m_vHeaders.size()); }
 
 protected:
     //Info String
