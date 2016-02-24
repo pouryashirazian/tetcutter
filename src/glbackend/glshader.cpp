@@ -117,7 +117,7 @@ void GLShader::reportShaderCompileErrors(U32 uShaderName, const char* pshadertyp
 
     sprintf(pszMsg, "Failed to compile %s shader: ", pshadertype);
     strcat(pszMsg, pszInfoLog);
-    LogError(pszMsg);
+    vlogerror(pszMsg);
 
     SAFE_DELETE_ARRAY(pszMsg);
     SAFE_DELETE_ARRAY(pszInfoLog);

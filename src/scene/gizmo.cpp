@@ -487,7 +487,7 @@ void GizmoManager::setAxis(const Ray& r) {
     if(m_lpGizmoCurrent) {
         if(m_lpGizmoCurrent->setAxis(r)) {
             m_gizmoAxis = m_lpGizmoCurrent->axis();
-            LogInfoArg1("Set selected axis to: %d", m_gizmoAxis);
+            vloginfo("Set selected axis to: %d", m_gizmoAxis);
         }
 
         //Selection
@@ -531,7 +531,7 @@ void GizmoManager::mousePress(MouseButton button, MouseButtonState state, int x,
     m_button = button;
     m_buttonState = state;
     if(m_button == mbLeft && m_buttonState == mbsPressed && isVisible()) {
-        LogInfoArg2("Select gizmo axis using mouse coords: [%d, %d]", x, y);
+        vloginfo("Select gizmo axis using mouse coords: [%d, %d]", x, y);
         Ray r = TheEngine::Instance().screenToWorldRay(x, y);
         r.setStart(r.getStart() - this->transform()->getTranslate());
 
@@ -568,7 +568,7 @@ void GizmoManager::mouseMove(int x, int y) {
 
     //handle the case where the gizmo is not visible and we try to move
     if(!isVisible() && m_gizmoType != gtTranslate) {
-        LogInfo("Reset the gizmo to translate mode since it became invisible");
+        vloginfo("Reset the gizmo to translate mode since it became invisible");
         setType(gtTranslate);
     }
 
@@ -721,7 +721,7 @@ void GizmoManager::cmdRotate(const vec3f& axis, float degreeIncrement) {
 
 bool GizmoManager::readConfig(const AnsiStr& strFP) {
     if(!FileExists(strFP)) {
-        LogErrorArg1("File %s not found to read gizmo config.", strFP.cptr());
+        vlogerror("File %s not found to read gizmo config.", strFP.cptr());
         return false;
     }
 
@@ -776,7 +776,7 @@ void GizmoManager::setFocusedNode(SGNode* node) {
 int GizmoManager::registerClient(IGizmoListener* client) {
     for(U32 i=0; i<m_clients.size(); i++)
         if(m_clients[i] == client) {
-            LogError("Client already registered!");
+            vlogerror("Client already registered!");
             return -1;
         }
 

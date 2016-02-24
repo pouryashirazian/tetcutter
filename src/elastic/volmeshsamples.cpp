@@ -66,7 +66,7 @@ VolMesh* VolMeshSamples::CreateTwoTetra() {
 
 VolMesh* VolMeshSamples::CreateTruthCube(int nx, int ny, int nz, double cellsize) {
 	if(nx < 2 || ny < 2 || nz < 2) {
-		LogError("Invalid input param to create a truth cube");
+        vlogerror("Invalid input param to create a truth cube");
 		return NULL;
 	}
 
@@ -131,12 +131,12 @@ VolMesh* VolMeshSamples::CreateTruthCube(int nx, int ny, int nz, double cellsize
 
 VolMesh* VolMeshSamples::CreateEggShell(int hseg, int vseg, double radius, double shelltickness) {
 	if(hseg <= 0 || vseg <= 0) {
-		LogErrorArg2("Invalid eggshell segments param: %u, %u", hseg, vseg);
+        vlogerror("Invalid eggshell segments param: %u, %u", hseg, vseg);
 		return NULL;
 	}
 
 	if(shelltickness >= radius) {
-		LogErrorArg2("Invalid eggshell radius and thickness params: %.3f, %.3f", radius, shelltickness);
+        vlogerror("Invalid eggshell radius and thickness params: %.3f, %.3f", radius, shelltickness);
 		return NULL;
 	}
 

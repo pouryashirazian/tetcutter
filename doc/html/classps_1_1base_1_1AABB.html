@@ -96,12 +96,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">ps::base::AABB Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <a class="el" href="classps_1_1base_1_1AABB.html" title="The AABB class represent an axis-aligned bounding box for trivial occlusion tests. The internal structure only holds the lower and upper corners of the box. CSG operators are provided to handle hierarchical bounding volumes. ">AABB</a> class represent an axis-aligned bounding box for trivial occlusion tests. The internal structure only holds the lower and upper corners of the box. CSG operators are provided to handle hierarchical bounding volumes.  
+ <a href="classps_1_1base_1_1AABB.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="aabb_8h_source.html">aabb.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4abe0e2a95ad2c3b12457cc9b0f83239"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4abe0e2a95ad2c3b12457cc9b0f83239"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>AABB</b> (const <a class="el" href="classps_1_1base_1_1Vec3.html">vec3</a> &amp;lo, const <a class="el" href="classps_1_1base_1_1Vec3.html">vec3</a> &amp;hi)</td></tr>
-<tr class="separator:a4abe0e2a95ad2c3b12457cc9b0f83239"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78c7d9aba281e1d79af5ed9606ae67aa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classps_1_1base_1_1AABB.html#a78c7d9aba281e1d79af5ed9606ae67aa">AABB</a> (const <a class="el" href="classps_1_1base_1_1Vec3.html">vec3</a> &amp;lower, const <a class="el" href="classps_1_1base_1_1Vec3.html">vec3</a> &amp;upper)</td></tr>
+<tr class="memdesc:a78c7d9aba281e1d79af5ed9606ae67aa"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classps_1_1base_1_1AABB.html" title="The AABB class represent an axis-aligned bounding box for trivial occlusion tests. The internal structure only holds the lower and upper corners of the box. CSG operators are provided to handle hierarchical bounding volumes. ">AABB</a> constructor.  <a href="#a78c7d9aba281e1d79af5ed9606ae67aa">More...</a><br /></td></tr>
+<tr class="separator:a78c7d9aba281e1d79af5ed9606ae67aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c29d0908f8e0de2bb0c940abd1ad597"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c29d0908f8e0de2bb0c940abd1ad597"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set</b> (const <a class="el" href="classps_1_1base_1_1Vec3.html">vec3</a> &amp;lo, const <a class="el" href="classps_1_1base_1_1Vec3.html">vec3</a> &amp;hi)</td></tr>
 <tr class="separator:a3c29d0908f8e0de2bb0c940abd1ad597"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -129,8 +134,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>intersect</b> (const 
 <tr class="memitem:a6e0a8b1cd74335409764c0ad668e3672"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e0a8b1cd74335409764c0ad668e3672"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>translate</b> (const <a class="el" href="classps_1_1base_1_1Vec3.html">vec3</a> &amp;d)</td></tr>
 <tr class="separator:a6e0a8b1cd74335409764c0ad668e3672"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04e2a65274fe57893554ab750bcb6c42"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a04e2a65274fe57893554ab750bcb6c42"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>transform</b> (const <a class="el" href="classps_1_1base_1_1Matrix.html">mat44f</a> &amp;mtx)</td></tr>
+<tr class="memitem:a04e2a65274fe57893554ab750bcb6c42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classps_1_1base_1_1AABB.html#a04e2a65274fe57893554ab750bcb6c42">transform</a> (const <a class="el" href="classps_1_1base_1_1Matrix.html">mat44f</a> &amp;mtx)</td></tr>
+<tr class="memdesc:a04e2a65274fe57893554ab750bcb6c42"><td class="mdescLeft">&#160;</td><td class="mdescRight">transform the box using the supplied 4x4 transformation matrix  <a href="#a04e2a65274fe57893554ab750bcb6c42">More...</a><br /></td></tr>
 <tr class="separator:a04e2a65274fe57893554ab750bcb6c42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2cfeba4f0ea377a81d4836599faae23e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2cfeba4f0ea377a81d4836599faae23e"></a>
 <a class="el" href="classps_1_1base_1_1Vec3.html">vec3f</a>&#160;</td><td class="memItemRight" valign="bottom"><b>lower</b> () const </td></tr>
@@ -138,17 +143,17 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>transform</b> (const 
 <tr class="memitem:ae9b8e09364a05b36fc994cfd78186a25"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae9b8e09364a05b36fc994cfd78186a25"></a>
 <a class="el" href="classps_1_1base_1_1Vec3.html">vec3f</a>&#160;</td><td class="memItemRight" valign="bottom"><b>upper</b> () const </td></tr>
 <tr class="separator:ae9b8e09364a05b36fc994cfd78186a25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a178a579406abb3aa4461b376445a5b17"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a178a579406abb3aa4461b376445a5b17"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>expand</b> (float d)</td></tr>
+<tr class="memitem:a178a579406abb3aa4461b376445a5b17"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classps_1_1base_1_1AABB.html#a178a579406abb3aa4461b376445a5b17">expand</a> (float d)</td></tr>
+<tr class="memdesc:a178a579406abb3aa4461b376445a5b17"><td class="mdescLeft">&#160;</td><td class="mdescRight">expand expands the box d units along all major axes.  <a href="#a178a579406abb3aa4461b376445a5b17">More...</a><br /></td></tr>
 <tr class="separator:a178a579406abb3aa4461b376445a5b17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a343c4d7ff970f350511defb7b4beb0d5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a343c4d7ff970f350511defb7b4beb0d5"></a>
-<a class="el" href="classps_1_1base_1_1Vec3.html">vec3f</a>&#160;</td><td class="memItemRight" valign="bottom"><b>extent</b> () const </td></tr>
+<tr class="memitem:a343c4d7ff970f350511defb7b4beb0d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classps_1_1base_1_1Vec3.html">vec3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classps_1_1base_1_1AABB.html#a343c4d7ff970f350511defb7b4beb0d5">extent</a> () const </td></tr>
+<tr class="memdesc:a343c4d7ff970f350511defb7b4beb0d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">extent  <a href="#a343c4d7ff970f350511defb7b4beb0d5">More...</a><br /></td></tr>
 <tr class="separator:a343c4d7ff970f350511defb7b4beb0d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b3b4c49b9449c4bff38c48918cbda5e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b3b4c49b9449c4bff38c48918cbda5e"></a>
 <a class="el" href="classps_1_1base_1_1Vec3.html">vec3f</a>&#160;</td><td class="memItemRight" valign="bottom"><b>center</b> () const </td></tr>
 <tr class="separator:a3b3b4c49b9449c4bff38c48918cbda5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbda9a65280ca8e2a230b9803bccaf6f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afbda9a65280ca8e2a230b9803bccaf6f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>getVertices</b> (vector&lt; <a class="el" href="classps_1_1base_1_1Vec3.html">vec3f</a> &gt; &amp;vertices) const </td></tr>
+<tr class="memitem:afbda9a65280ca8e2a230b9803bccaf6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classps_1_1base_1_1AABB.html#afbda9a65280ca8e2a230b9803bccaf6f">getVertices</a> (vector&lt; <a class="el" href="classps_1_1base_1_1Vec3.html">vec3f</a> &gt; &amp;vertices) const </td></tr>
+<tr class="memdesc:afbda9a65280ca8e2a230b9803bccaf6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">getVertices returns a vector containing all the 8 vertices in the <a class="el" href="classps_1_1base_1_1AABB.html" title="The AABB class represent an axis-aligned bounding box for trivial occlusion tests. The internal structure only holds the lower and upper corners of the box. CSG operators are provided to handle hierarchical bounding volumes. ">AABB</a>. Each vertex is indexed according to the XYZ bits representation of an interger index where the msb denotes X and LSB Z.  <a href="#afbda9a65280ca8e2a230b9803bccaf6f">More...</a><br /></td></tr>
 <tr class="separator:afbda9a65280ca8e2a230b9803bccaf6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a004a216a39db123302c8bfb6a2bd19f9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a004a216a39db123302c8bfb6a2bd19f9"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> () const </td></tr>
@@ -157,6 +162,151 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> () const </
 <a class="el" href="classps_1_1base_1_1AABB.html">AABB</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classps_1_1base_1_1AABB.html">AABB</a> &amp;other)</td></tr>
 <tr class="separator:ad7fea866d8dac83fbf3080ec65bf2c9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <a class="el" href="classps_1_1base_1_1AABB.html" title="The AABB class represent an axis-aligned bounding box for trivial occlusion tests. The internal structure only holds the lower and upper corners of the box. CSG operators are provided to handle hierarchical bounding volumes. ">AABB</a> class represent an axis-aligned bounding box for trivial occlusion tests. The internal structure only holds the lower and upper corners of the box. CSG operators are provided to handle hierarchical bounding volumes. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a78c7d9aba281e1d79af5ed9606ae67aa"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ps::base::AABB::AABB </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classps_1_1base_1_1Vec3.html">vec3</a> &amp;&#160;</td>
+          <td class="paramname"><em>lower</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classps_1_1base_1_1Vec3.html">vec3</a> &amp;&#160;</td>
+          <td class="paramname"><em>upper</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classps_1_1base_1_1AABB.html" title="The AABB class represent an axis-aligned bounding box for trivial occlusion tests. The internal structure only holds the lower and upper corners of the box. CSG operators are provided to handle hierarchical bounding volumes. ">AABB</a> constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lower</td><td>the lower corner of the box </td></tr>
+    <tr><td class="paramname">upper</td><td>the upper corner of the box </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a178a579406abb3aa4461b376445a5b17"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AABB::expand </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>expand expands the box d units along all major axes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a343c4d7ff970f350511defb7b4beb0d5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classps_1_1base_1_1Vec3.html">vec3f</a> ps::base::AABB::extent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>extent </p>
+<dl class="section return"><dt>Returns</dt><dd>the extent of the box </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="afbda9a65280ca8e2a230b9803bccaf6f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AABB::getVertices </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; <a class="el" href="classps_1_1base_1_1Vec3.html">vec3f</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vertices</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getVertices returns a vector containing all the 8 vertices in the <a class="el" href="classps_1_1base_1_1AABB.html" title="The AABB class represent an axis-aligned bounding box for trivial occlusion tests. The internal structure only holds the lower and upper corners of the box. CSG operators are provided to handle hierarchical bounding volumes. ">AABB</a>. Each vertex is indexed according to the XYZ bits representation of an interger index where the msb denotes X and LSB Z. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vertices</td><td>output vector </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a04e2a65274fe57893554ab750bcb6c42"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AABB::transform </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classps_1_1base_1_1Matrix.html">mat44f</a> &amp;&#160;</td>
+          <td class="paramname"><em>mtx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>transform the box using the supplied 4x4 transformation matrix </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mtx</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/Users/pourya/Desktop/platform/repos/tetcutter/src/base/<a class="el" href="aabb_8h_source.html">aabb.h</a></li>
 <li>/Users/pourya/Desktop/platform/repos/tetcutter/src/base/aabb.cpp</li>
@@ -164,7 +314,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> () const </
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 19 2016 21:18:17 for tetcutter by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Feb 23 2016 22:17:13 for tetcutter by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>

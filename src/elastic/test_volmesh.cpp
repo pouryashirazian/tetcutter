@@ -27,7 +27,7 @@ bool TestVolMesh::tst_report_mesh_info(VolMesh* pmesh) {
 			pmesh->countEdges(), pmesh->countNodes());
 	pmesh->printInfo();
 	printf("============================mesh stats end=============================\n");
-	LogInfoArg1("PASS: %s", __FUNCTION__);
+    vloginfo("PASS: %s", __FUNCTION__);
 	return true;
 }
 
@@ -35,7 +35,7 @@ bool TestVolMesh::tst_correct_elements(VolMesh* pmesh) {
 	if(pmesh == NULL)
 		return false;
 
-	LogInfo("Begin test correct elements");
+    vloginfo("Begin test correct elements");
 
 	U32 ctErrors = 0;
 	for(U32 i = 0; i < pmesh->countCells(); i++) {
@@ -50,7 +50,7 @@ bool TestVolMesh::tst_correct_elements(VolMesh* pmesh) {
 		mapUniqueTest.clear();
 		for(U32 j=0; j < 4; j++) {
 			if(!pmesh->isNodeIndex(!cell.nodes[j])) {
-				LogErrorArg2("Invalid node index found for element %u, node %u", i, j);
+                vlogerror("Invalid node index found for element %u, node %u", i, j);
 				ctErrors++;
 			}
 
@@ -60,7 +60,7 @@ bool TestVolMesh::tst_correct_elements(VolMesh* pmesh) {
 			if(mapUniqueTest.find(cell.nodes[j]) == mapUniqueTest.end())
 				mapUniqueTest[ cell.nodes[j] ] = j;
 			else {
-				LogErrorArg2("Duplicate node found for element %u, at node %u", i, j);
+                vlogerror("Duplicate node found for element %u, at node %u", i, j);
 				ctErrors++;
 			}
 		}
@@ -70,7 +70,7 @@ bool TestVolMesh::tst_correct_elements(VolMesh* pmesh) {
 		for(U32 j = 0; j < 6; j++) {
 
 			if(!pmesh->isEdgeIndex(!cell.edges[j])) {
-				LogErrorArg2("Invalid edge index found for element %u, edge %u", i, j);
+                vlogerror("Invalid edge index found for element %u, edge %u", i, j);
 				ctErrors++;
 			}
 
@@ -85,19 +85,19 @@ bool TestVolMesh::tst_correct_elements(VolMesh* pmesh) {
 				if(mapUniqueTest.find(idxEdge) == mapUniqueTest.end())
 					mapUniqueTest[ idxEdge ] = j;
 				else {
-					LogErrorArg2("Duplicate edge found for element %u, at edge %u", i, idxEdge);
+                    vlogerror("Duplicate edge found for element %u, at edge %u", i, idxEdge);
 					ctErrors++;
 				}
 			}
 
 			//check that edge from and to nodes are in this element
 			if(mapElementNodes.find(edge.from) == mapElementNodes.end() ) {
-				LogErrorArg3("Invalid from node in element %u, edge %u, from %u", i, idxEdge, edge.from);
+                vlogerror("Invalid from node in element %u, edge %u, from %u", i, idxEdge, edge.from);
 				ctErrors++;
 			}
 
 			if(mapElementNodes.find(edge.to) == mapElementNodes.end()) {
-				LogErrorArg3("Invalid to node in element %u, edge %u, to %u", i, idxEdge, edge.to);
+                vlogerror("Invalid to node in element %u, edge %u, to %u", i, idxEdge, edge.to);
 				ctErrors++;
 			}
 		}
@@ -106,7 +106,7 @@ bool TestVolMesh::tst_correct_elements(VolMesh* pmesh) {
 		mapUniqueTest.clear();
 		for(U32 j=0; j < 4; j++) {
 			if(!pmesh->isFaceIndex(!cell.faces[j])) {
-				LogErrorArg2("Invalid face index found for element %u, face %u", i, cell.faces[j]);
+                vlogerror("Invalid face index found for element %u, face %u", i, cell.faces[j]);
 				ctErrors++;
 			}
 
@@ -115,7 +115,7 @@ bool TestVolMesh::tst_correct_elements(VolMesh* pmesh) {
 			for(U32 k=0; k < 3; k++) {
 				if(mapElementEdges.find( face.edges[k] ) == mapElementEdges.end()) {
 
-					LogErrorArg3("Invalid edge of a face found in: element %u, face %u, edge %u", i, cell.faces[j], face.edges[k]);
+                    vlogerror("Invalid edge of a face found in: element %u, face %u, edge %u", i, cell.faces[j], face.edges[k]);
 					ctErrors++;
 				}
 			}
@@ -124,18 +124,18 @@ bool TestVolMesh::tst_correct_elements(VolMesh* pmesh) {
 			if(mapUniqueTest.find(cell.faces[j]) == mapUniqueTest.end())
 				mapUniqueTest[ cell.faces[j] ] = j;
 			else {
-				LogErrorArg2("Duplicate face found for element %u, at face %u", i, cell.faces[j]);
+                vlogerror("Duplicate face found for element %u, at face %u", i, cell.faces[j]);
 				ctErrors++;
 			}
 		}
 
 	}
 
-	LogInfo("End test correct elements");
+    vloginfo("End test correct elements");
 	if(ctErrors == 0)
-		LogInfoArg1("PASS: %s", __FUNCTION__);
+        vloginfo("PASS: %s", __FUNCTION__);
 	else
-		LogInfoArg1("FAILED!: %s", __FUNCTION__);
+        vloginfo("FAILED!: %s", __FUNCTION__);
 	return (ctErrors == 0);
 }
 
@@ -256,9 +256,9 @@ bool TestVolMesh::tst_unused_mesh_fields(VolMesh* pmesh) {
 	printf("============================mesh field usage end============================\n");
 
 	if(ctErrors == 0)
-		LogInfoArg1("PASS: %s", __FUNCTION__);
+        vloginfo("PASS: %s", __FUNCTION__);
 	else
-		LogInfoArg1("FAILED!: %s", __FUNCTION__);
+        vloginfo("FAILED!: %s", __FUNCTION__);
 	return (ctErrors == 0);
 }
 

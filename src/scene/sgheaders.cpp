@@ -25,7 +25,7 @@ void SGHeaders::draw() {
 
 int SGHeaders::addHeaderLine(const AnsiStr& title, const AnsiStr& strInfo) {
 	if(m_hashHeaders.has(strInfo.cptr())) {
-		LogInfoArg1("Header: %s is already present.", title.cptr());
+        vlogwarn("Header: %s is already present.", title.cptr());
 		return -1;
 	}
 

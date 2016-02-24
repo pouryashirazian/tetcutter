@@ -270,7 +270,7 @@ bool VolMeshIO::fitmesh(VolMesh* vm, const AABB& toBox) {
 	vec3f s = vec3f::div(toBox.extent(), curBox.extent());
 	double minScaleFactor = MATHMIN(MATHMIN(s.x, s.y), s.z);
 	vec3d scale(minScaleFactor);
-	LogErrorArg1("Using minScaleFactor %f", minScaleFactor);
+    vlogerror("Using minScaleFactor %f", minScaleFactor);
 
 	vec3f t = toBox.lower() - curBox.lower();
 	vec3d translate(t.x, t.y, t.z);
@@ -321,7 +321,7 @@ bool VolMeshIO::convertMatlabTextToVega(const AnsiStr& strNodesFP,
 	//		elem: tetrahedral elements; the last column is the region ID,
 	//			1-scalp and skull layer, 2-CSF, 3-gray matter, 4-white matter
 	if(!FileExists(strNodesFP) || !FileExists(strCellsFP)) {
-		LogError("Invalid input file!");
+        vlogerror("Invalid input file!");
 		return false;
 	}
 
@@ -461,7 +461,7 @@ bool VolMeshIO::convertMatlabTextToVega(const AnsiStr& strNodesFP,
 
 		AnsiStr strFP = strRoot + AnsiStr(arrSegmentTitles[i].c_str()) + AnsiStr(".veg");
 		if(writeVega(pvm, strFP)) {
-			LogInfoArg2("Saved segment %s to %s", arrSegmentTitles[i].c_str(), strFP.cptr());
+            vlogerror("Saved segment %s to %s", arrSegmentTitles[i].c_str(), strFP.cptr());
 		}
 
 		SAFE_DELETE(pvm);

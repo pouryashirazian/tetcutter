@@ -174,12 +174,12 @@ void MeshNode::init() {
 bool MeshNode::readbackMeshV3T3(U32& ctVertices, vector<float>& vertices,
 									U32& ctTriangles, vector<U32>& elements) {
 	if(m_szUnitFace != 3) {
-		LogError("This is not a triangle mesh");
+        vlogerror("This is not a triangle mesh");
 		return false;
 	}
 
 	if(m_szUnitVertex != 3 && m_szUnitVertex != 4) {
-		LogError("Number of vertices is not 3 nor 4");
+        vlogerror("Number of vertices is not 3 nor 4");
 		return false;
 	}
 
@@ -542,12 +542,12 @@ void MeshNode::getVertexAttrib(U32& count, vector<float>& arrAttribs, GLBufferTy
 	break;
 
 	case(gbtCount): {
-		LogError("Invalid attribute for reading operation");
+        vlogerror("Invalid attribute for reading operation");
 	}
 	break;
 
 	case(gbtFaceIndex): {
-		LogError("Invalid attribute for reading operation");
+        vlogerror("Invalid attribute for reading operation");
 	}
 	break;
 
@@ -719,7 +719,7 @@ bool Mesh::read(const AnsiStr& strFilePath)
         computeMissingNormals();
     }
 	else
-		LogError("Invalid file format.");
+        vlogerror("Invalid file format.");
     return bres;
 }
 
@@ -793,7 +793,7 @@ bool Mesh::store(const AnsiStr& strFilePath) {
 			}
 		}
 		else
-			LogErrorArg1("Unsupported texcoords found in MeshGroup: %d", iNode);
+            vlogerror("Unsupported texcoords found in MeshGroup: %d", iNode);
 
 		//Faces
 		U32 ctFaces = 0;
@@ -942,7 +942,7 @@ bool Mesh::loadObj(const char* chrFileName)
 			if(ctFaces == 0)
 				faceUnit = ctWords - 1;
 			else if(faceUnit != ctWords -1)
-				LogErrorArg2("Irregular mesh file! Face %d has %d vertices!", ctFaces, ctWords-1);
+                vlogerror("Irregular mesh file! Face %d has %d vertices!", ctFaces, ctWords-1);
 
 			ctFaces++;
 		}
@@ -967,7 +967,7 @@ bool Mesh::loadObj(const char* chrFileName)
 
 	//Normals
 	if(arrAttribCount[gbtPosition] != arrAttribCount[gbtNormal]) {
-		LogErrorArg2("Number of normals not match vertices. V# %d, N# %d", arrAttribCount[gbtPosition], arrAttribCount[gbtNormal]);
+        vlogerror("Number of normals not match vertices. V# %d, N# %d", arrAttribCount[gbtPosition], arrAttribCount[gbtNormal]);
 		arrAttribCount[gbtNormal] = 0;
 	}
 

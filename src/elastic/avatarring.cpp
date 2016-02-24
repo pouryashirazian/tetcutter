@@ -179,7 +179,7 @@ void AvatarRing::onTranslate(const vec3f& delta, const vec3f& pos) {
 		if(m_isSweptQuadValid) {
 			//call the cut method if the tool has passed through the tissue
 			int res = m_lpTissue->cut(m_vSegmentsCur, m_vSweptQuads, true);
-			LogInfoArg1("Tissue cut. res = %d", res);
+            vloginfo("Tissue cut. res = %d", res);
 			if((res > 0) && (m_fOnCutFinished != NULL))
 				m_fOnCutFinished();
 

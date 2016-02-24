@@ -25,7 +25,7 @@ GLTexture::GLTexture(const AnsiStr& strFP, int texunit) {
     m_texunit = texunit;
     m_glTex = INVALID_GLBUFFER;
     if(!read(strFP)) {
-        LogErrorArg1("Texture creation failed for file: %s", strFP.cptr());
+        vlogerror("Texture creation failed for file: %s", strFP.cptr());
     }
 }
 
@@ -117,7 +117,7 @@ bool GLTexture::read_png(const AnsiStr& strFP) {
     U32 w, h;
     U32 error = lodepng::decode(data, w, h, strFP.cptr());
     if(error) {
-        LogErrorArg1("Unable to load png image from file: %s", strFP.cptr());
+        vlogerror("Unable to load png image from file: %s", strFP.cptr());
         return false;
     }
 

@@ -283,7 +283,7 @@ bool IniFile::readValue(const AnsiStr& section, const AnsiStr& variable, AnsiStr
     else
     {
         AnsiStr strFileTitle = ExtractFileName(m_strFileName);
-        LogErrorArg3("SettingsScript tried to read [file: %s; section: %s; variable: %s] which is not found.",
+        vlogerror("SettingsScript tried to read [file: %s; section: %s; variable: %s] which is not found.",
                      strFileTitle.cptr(),
                      section.cptr(),
                      variable.cptr());

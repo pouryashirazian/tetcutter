@@ -27,27 +27,14 @@ class EventLogger;
 //16 KiloBytes for the memory log
 #define PS_LOG_BUFFER_SIZE  8*PS_LOG_LINE_SIZE
 
-//Logging Info, Error or Warning
-#define LogInfo(message) psLog(ps::utils::EventLogger::etInfo, __FILE__, __LINE__, message)
-#define LogError(message) psLog(ps::utils::EventLogger::etError, __FILE__, __LINE__, message)
-#define LogWarning(message) psLog(ps::utils::EventLogger::etWarning, __FILE__, __LINE__, message)
-
-#define LogInfoArg1(message, arg1) psLog(ps::utils::EventLogger::etInfo, __FILE__, __LINE__, message, arg1)
-#define LogErrorArg1(message, arg1) psLog(ps::utils::EventLogger::etError, __FILE__, __LINE__, message, arg1)
-#define LogWarningArg1(message, arg1) psLog(ps::utils::EventLogger::etWarning, __FILE__, __LINE__, message, arg1)
-
-#define LogInfoArg2(message, arg1, arg2) psLog(ps::utils::EventLogger::etInfo, __FILE__, __LINE__, message, arg1, arg2)
-#define LogErrorArg2(message, arg1, arg2) psLog(ps::utils::EventLogger::etError, __FILE__, __LINE__, message, arg1, arg2)
-#define LogWarningArg2(message, arg1, arg2) psLog(ps::utils::EventLogger::etWarning, __FILE__, __LINE__, message, arg1, arg2)
-
-#define LogInfoArg3(message, arg1, arg2, arg3) psLog(ps::utils::EventLogger::etInfo, __FILE__, __LINE__, message, arg1, arg2, arg3)
-#define LogErrorArg3(message, arg1, arg2, arg3) psLog(ps::utils::EventLogger::etError, __FILE__, __LINE__, message, arg1, arg2, arg3)
-#define LogWarningArg3(message, arg1, arg2, arg3) psLog(ps::utils::EventLogger::etWarning, __FILE__, __LINE__, message, arg1, arg2, arg3)
+//define vargs funcs for logging
+#define vloginfo(desc, ...) ps::utils::psLog(ps::utils::EventLogger::etInfo, __FILE__, __LINE__, desc, ##__VA_ARGS__)
+#define vlogwarn(desc, ...) ps::utils::psLog(ps::utils::EventLogger::etWarning, __FILE__, __LINE__, desc, ##__VA_ARGS__)
+#define vlogerror(desc, ...) ps::utils::psLog(ps::utils::EventLogger::etError, __FILE__, __LINE__, desc, ##__VA_ARGS__)
 
 
 //Display Error Message
 typedef void (*FOnDisplay)(const char* message);
-
 
 
 /*!
@@ -55,83 +42,83 @@ typedef void (*FOnDisplay)(const char* message);
 */
 class EventLogger {
 public:
-	EventLogger();
+    EventLogger();
 
-	/*!
-	* Constructor for setting the log file path on disk and setting up the flags for 
-	* controlling how the log is written.
-	* @param lpFilePath the string of the file path
-	* @param flags that indicate how each log entry has to be written 
-	*/
-	EventLogger(const char* lpFilePath, int flags = 0);
-	~EventLogger();
+    /*!
+        * Constructor for setting the log file path on disk and setting up the flags for
+        * controlling how the log is written.
+        * @param lpFilePath the string of the file path
+        * @param flags that indicate how each log entry has to be written
+        */
+    EventLogger(const char* lpFilePath, int flags = 0);
+    ~EventLogger();
 
-	enum EVENTTYPE {etProfile, etInfo, etWarning, etError};
-
-	
-	//Internal Class for holding an instance of an event
-	struct Event{
-		EventLogger::EVENTTYPE etype;
-		AnsiStr strDesc;
-		AnsiStr strSource;
-		int value;
-	};
-
-	/*!
-	* Adds an event to the event log system
-	* @param e reference to the event variable
-	*/
-	void add(const Event& e);
-
-	/*!
-	* Adds an entry to the log system
-	* @param lpStrDesc Description for this event
-	* @param t type of this event
-	* @param lpSource the source of the event (Can be a File, File + Function Name)
-	* @param value can be line number or the error code
-	*/
-	void add(const char* lpStrDesc, 			  
-			 EVENTTYPE t = etInfo,
-			 const char* lpStrSource = NULL,
-			 int value = 0);
-
-	/*!
-	* @param flags to control the way log entries are being written to disk
-	*/
-	void setWriteFlags(int flags);
-
-	//Set output filepath
-	void setOutFilePath(const char* lpStrFilePath);
-
-	//Set error display callback
-	void setDisplayCallBack(FOnDisplay cb) {m_fOnDisplay = cb;}
+    enum EVENTTYPE {etProfile, etInfo, etWarning, etError};
 
 
-	//Flush the content of string buffer to disk
-	bool flush();
+    //Internal Class for holding an instance of an event
+    struct Event{
+        EventLogger::EVENTTYPE etype;
+        AnsiStr strDesc;
+        AnsiStr strSource;
+        int value;
+    };
+
+    /*!
+        * Adds an event to the event log system
+        * @param e reference to the event variable
+        */
+    void add(const Event& e);
+
+    /*!
+        * Adds an entry to the log system
+        * @param lpStrDesc Description for this event
+        * @param t type of this event
+        * @param lpSource the source of the event (Can be a File, File + Function Name)
+        * @param value can be line number or the error code
+        */
+    void add(const char* lpStrDesc,
+             EVENTTYPE t = etInfo,
+             const char* lpStrSource = NULL,
+             int value = 0);
+
+    /*!
+        * @param flags to control the way log entries are being written to disk
+        */
+    void setWriteFlags(int flags);
+
+    //Set output filepath
+    void setOutFilePath(const char* lpStrFilePath);
+
+    //Set error display callback
+    void setDisplayCallBack(FOnDisplay cb) {m_fOnDisplay = cb;}
+
+
+    //Flush the content of string buffer to disk
+    bool flush();
     
     AnsiStr rootPath() const {return m_strRootPath;}
     AnsiStr shortenPathBasedOnRoot(const AnsiStr& strPath) const;
 private:
 
-	void display(const char* chrMessage) const;
+    void display(const char* chrMessage) const;
 
-//Private Variables
+    //Private Variables
 private:
-	//On Display Error
-	FOnDisplay m_fOnDisplay;
-	
-	//Flags to control serialization
-	bool m_bWriteEventTypes;
-	bool m_bWriteTimeStamps;
-	bool m_bWriteSourceInfo;
-	bool m_bWriteToScreen;
-	bool m_bWriteToModal;
+    //On Display Error
+    FOnDisplay m_fOnDisplay;
 
-	U32 m_szBufferSize;
-	AnsiStr m_strFP;
+    //Flags to control serialization
+    bool m_bWriteEventTypes;
+    bool m_bWriteTimeStamps;
+    bool m_bWriteSourceInfo;
+    bool m_bWriteToScreen;
+    bool m_bWriteToModal;
+
+    U32 m_szBufferSize;
+    AnsiStr m_strFP;
     AnsiStr m_strRootPath;
-	std::vector<AnsiStr> m_lstLog;
+    std::vector<AnsiStr> m_lstLog;
 };
 
 typedef SingletonHolder<EventLogger, CreateUsingNew, PhoenixSingleton> TheEventLogger;

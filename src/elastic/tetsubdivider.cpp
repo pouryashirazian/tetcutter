@@ -262,7 +262,7 @@ int TetSubdivider::subdivide(VolMesh* pmesh, U32 idxCell,
 
 	TetSubdivider::CUTCASE cutcase = IdentifyCutCase(true, cutEdgeCode, cutNodeCode, ctCutEdges, ctCutNodes);
 	if(cutcase > cutB) {
-		LogErrorArg3("This case is not handled yet! cutEdgeCode = %u, ctCutEdges = %u, ctCutNodes = %u",
+        vlogerror("This case is not handled yet! cutEdgeCode = %u, ctCutEdges = %u, ctCutNodes = %u",
 					 cutEdgeCode, ctCutEdges, ctCutNodes);
 		return 0;
 	}
@@ -359,7 +359,7 @@ int TetSubdivider::subdivide(VolMesh* pmesh, U32 idxCell,
 				n[i] = vnodes[ g_elementTableCaseA[entry][e * 4 + i] ];
 
 			if(!pmesh->insert_cell(n)) {
-				LogErrorArg1("Failed to add element# %d", e);
+                vlogerror("Failed to add element# %d", e);
 			}
 		}
 	}
@@ -379,7 +379,7 @@ int TetSubdivider::subdivide(VolMesh* pmesh, U32 idxCell,
 				n[i] = vnodes[ g_elementTableCaseB[entry][e][i] ];
 
 			if(!pmesh->insert_cell(n)) {
-				LogErrorArg1("Failed to add element# %d", e);
+                vlogerror("Failed to add element# %d", e);
 			}
 		}
 	}

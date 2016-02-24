@@ -112,7 +112,7 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 
         //select vertex
         if (idxVertex >= 0) {
-            LogInfoArg1("Selected Vertex Index = %d ", idxVertex);
+            vloginfo("Selected Vertex Index = %d ", idxVertex);
             g_lpTissue->setNodeToShow(idxVertex);
         }
     }
@@ -122,7 +122,7 @@ static void mouse_motion_callback(GLFWwindow* window, double xpos, double ypos)
 {
     //double xpos, ypos;
     //glfwGetCursorPos(window, &xpos, &ypos);
-    //LogInfoArg2("xpos : %f, ypos: %f\n", xpos, ypos);
+    //vloginfoArg2("xpos : %f, ypos: %f\n", xpos, ypos);
     TheEngine::Instance().mouseMove(xpos, ypos);
     TheGizmoManager::Instance().mouseMove(xpos, ypos);
 }
@@ -163,7 +163,7 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
             g_current = 0;
             char cutcase[6] = {'A', 'B', 'C', 'D', 'E'};
 
-            LogInfoArg2("cut case = %c, current mesh node/face = %c", cutcase[g_cutCase], g_current);
+            vloginfo("cut case = %c, current mesh node/face = %c", cutcase[g_cutCase], g_current);
             runTestSubDivide(g_current);
             break;
         }
@@ -175,7 +175,7 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
             int axis = (int)TheGizmoManager::Instance().axis();
             axis = (axis + 1) % axisCount;
             TheGizmoManager::Instance().setAxis((GizmoAxis)axis);
-            LogInfoArg1("Change haptic axis to %d", TheGizmoManager::Instance().axis());
+            vloginfo("Change haptic axis to %d", TheGizmoManager::Instance().axis());
             break;
         }
 
@@ -209,53 +209,53 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
         case(GLFW_KEY_F7):
         {
             g_lpTissue->setFlagSplitMeshAfterCut(!g_lpTissue->getFlagSplitMeshAfterCut());
-            LogInfoArg1("Tissue splitting is set to: %d", g_lpTissue->getFlagSplitMeshAfterCut());
+            vloginfo("Tissue splitting is set to: %d", g_lpTissue->getFlagSplitMeshAfterCut());
             break;
         }
 
         case(GLFW_KEY_F8): {
             bool flag = !TheEngine::Instance().get("floor")->isVisible();
             TheEngine::Instance().get("floor")->setVisible(flag);
-            LogInfoArg1("Set floor to %s", flag ? "show" : "hide");
+            vloginfo("Set floor to %s", flag ? "show" : "hide");
             break;
         }
 
         case(GLFW_KEY_F9): {
             bool flag = !TheGizmoManager::Instance().isVisible();
             TheGizmoManager::Instance().setVisible(flag);
-            LogInfoArg1("Set gizmos to %s", flag ? "show" : "hide");
+            vloginfo("Set gizmos to %s", flag ? "show" : "hide");
 
             break;
         }
 
         case(GLFW_KEY_F10): {
             resetMesh();
-            LogInfo("reset mesh");
+            vloginfo("reset mesh");
 
             break;
         }
 
         case(GLFW_KEY_F11): {
             g_lpRing->grip();
-            LogInfo("Gripped apply on scalpel!");
+            vloginfo("Gripped apply on scalpel!");
             break;
         }
 
         case(GLFW_KEY_F12): {
-            LogInfo("Apply transform to mesh and then reset transform");
+            vloginfo("Apply transform to mesh and then reset transform");
             g_lpTissue->applyTransformToMeshThenResetTransform();
 
             if(FileExists(g_strFilePath)) {
                 bool res = VolMeshIO::writeVega(g_lpTissue, g_strFilePath);
                 if(res) {
-                    LogInfoArg1("Modified mesh is stored to: %s", g_strFilePath.cptr());
+                    vloginfo("Modified mesh is stored to: %s", g_strFilePath.cptr());
                 }
             }
             break;
         }
 
     default:
-        //LogInfo("No special key handled this so I forward it to normal keys");
+        //vloginfo("No special key handled this so I forward it to normal keys");
         double fx, fy;
         glfwGetCursorPos(window, &fx, &fy);
 
@@ -284,7 +284,7 @@ void normal_key(unsigned char key, int x, int y)
 
 	case('/'): {
 		g_lpTissue->setFlagDrawSweepSurf(!g_lpTissue->getFlagDrawSweepSurf());
-		LogInfoArg1("Draw sweep surf set to: %d", g_lpTissue->getFlagDrawSweepSurf());
+        vloginfo("Draw sweep surf set to: %d", g_lpTissue->getFlagDrawSweepSurf());
 	}
 	break;
 	case('a'): {
@@ -345,7 +345,7 @@ void normal_key(unsigned char key, int x, int y)
 	case('h'):{
         bool flag = !TheEngine::Instance().get("headers")->isVisible();
         TheEngine::Instance().get("headers")->setVisible(flag);
-		LogInfoArg1("Set headers draw to %s", flag ? "show" : "hide");
+        vloginfo("Set headers draw to %s", flag ? "show" : "hide");
 		break;
 	}
 
@@ -378,7 +378,7 @@ void normal_key(unsigned char key, int x, int y)
 	case('.'):{
 		if(g_lpTissue)
 			g_lpTissue->setFlagDrawWireFrame(!g_lpTissue->getFlagDrawWireFrame());
-		LogInfoArg1("Wireframe mode is %d", g_lpTissue->getFlagDrawWireFrame());
+        vloginfo("Wireframe mode is %d", g_lpTissue->getFlagDrawWireFrame());
 		break;
 	}
 
@@ -398,7 +398,7 @@ void normal_key(unsigned char key, int x, int y)
 	case('m'): {
         bool flag = !TheEngine::Instance().get("rendermask")->isVisible();
         TheEngine::Instance().get("rendermask")->setVisible(flag);
-		LogInfoArg1("Set rendermask to %s", flag ? "show" : "hide");
+        vloginfo("Set rendermask to %s", flag ? "show" : "hide");
 		break;
 	}
 	break;
@@ -428,13 +428,13 @@ void normal_key(unsigned char key, int x, int y)
 									  g_lpTissue->name().c_str(),
 									  g_lpTissue->countCompletedCuts());
 
-		LogInfoArg1("Attempt to store at %s. Make sure all the required directories are present!", strVegOutput.cptr());
+        vloginfo("Attempt to store at %s. Make sure all the required directories are present!", strVegOutput.cptr());
 		if(VolMeshIO::writeVega(g_lpTissue, strVegOutput))
-			LogInfoArg1("Stored the mesh at: %s", strVegOutput.cptr());
+            vloginfo("Stored the mesh at: %s", strVegOutput.cptr());
 
-		LogInfoArg1("Attempt to store at %s. Make sure all the required directories are present!", strObjOutput.cptr());
+        vloginfo("Attempt to store at %s. Make sure all the required directories are present!", strObjOutput.cptr());
 		if(VolMeshIO::writeObj(g_lpTissue, strObjOutput))
-			LogInfoArg1("Stored the mesh at: %s", strObjOutput.cptr());
+            vloginfo("Stored the mesh at: %s", strObjOutput.cptr());
 	}
 	break;
 
@@ -459,9 +459,9 @@ void closeApp() {
 void handleElementEvent(CELL element, U32 handle, VolMesh::TopologyEvent event) {
 
 	if(event == VolMesh::teAdded)
-		LogInfoArg1("A new element added at index: %d", handle);
+        vloginfo("A new element added at index: %d", handle);
 	else if(event == VolMesh::teRemoved)
-		LogInfoArg1("A new element added at index: %d", handle);
+        vloginfo("A new element added at index: %d", handle);
 }
 
 void resetMesh() {
@@ -474,14 +474,14 @@ void resetMesh() {
         temp = new VolMesh();
 		temp->setFlagFilterOutFlatCells(false);
         temp->setVerbose(g_parser.value_to_int("verbose"));
-		LogInfoArg1("Begin to read vega file from: %s", g_strFilePath.cptr());
+        vloginfo("Begin to read vega file from: %s", g_strFilePath.cptr());
         bool res = VolMeshIO::readVega(temp, g_strFilePath);
 		if(!res)
-			LogErrorArg1("Unable to load mesh from: %s", g_strFilePath.cptr());
+            vlogerror("Unable to load mesh from: %s", g_strFilePath.cptr());
 
 //		U32 ctRemoved = temp->removeZeroVolumeCells();
 //		if(ctRemoved > 0)
-//			LogInfoArg1("Managed to remove %u flat cells in the mesh", ctRemoved);
+//			vloginfo("Managed to remove %u flat cells in the mesh", ctRemoved);
 	}
 	else {
         AnsiStr strExample = AnsiStr(g_parser.value("example").c_str());
@@ -508,7 +508,7 @@ void resetMesh() {
 	}
 
 
-	LogInfo("Loaded mesh to temp");
+    vloginfo("Loaded mesh to temp");
 	g_lpTissue = new CuttableMesh(*temp);
 	g_lpTissue->setFlagSplitMeshAfterCut(true);
 	g_lpTissue->setFlagDrawNodes(true);
@@ -526,7 +526,7 @@ void resetMesh() {
 
 	//print stats
 	VolMeshStats::printAllStats(g_lpTissue);
-	LogInfo("Loaded mesh completed");
+    vloginfo("Loaded mesh completed");
 
 	//rotate mesh
 	//	vec3d translate(-2.03281307, -3.78926992, -1.11631393);
@@ -604,7 +604,7 @@ int main(int argc, char* argv[]) {
     AnsiStr strInput = AnsiStr(g_parser.value("input").c_str());
     g_strFilePath = ExtractFilePath(GetExePath()) + strInput;
 	if(FileExists(g_strFilePath))
-		LogInfoArg1("input file: %s.", g_strFilePath.cptr());
+        vloginfo("input file: %s.", g_strFilePath.cptr());
 	else
 		g_strFilePath = "";
 
@@ -727,7 +727,7 @@ int main(int argc, char* argv[]) {
 	csf->setFlagFilterOutFlatCells(false);
 	csf->setVerbose(g_parser.value<int>("verbose"));
 	AnsiStr strCSF = "/home/pourya/Desktop/platform/projects/tetcutter/data/meshes/veg/brain/csf.veg";
-	LogInfoArg1("Begin to read vega file from: %s", strCSF.cptr());
+    vloginfo("Begin to read vega file from: %s", strCSF.cptr());
     bool res = ps::MESH::VolMeshIO::readVega(csf.get(), strCSF);
 	if(res) {
 		CuttableMesh* cutcsf = new CuttableMesh(*csf);

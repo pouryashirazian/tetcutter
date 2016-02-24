@@ -56,7 +56,7 @@ void IAvatar::onStart() {
         TheEngine::Instance().headers()->updateHeaderLine("scalpel",
                 "scalpel: start cutting");
 
-        LogInfo("Start cutting");
+        vloginfo("Start cutting");
     }
 }
 
@@ -70,7 +70,7 @@ void IAvatar::onStop() {
         AnsiStr strMsg = printToAStr("scalpel: finished cut %u. disjoint parts#%u",
                                      (U32)m_lpTissue->countCompletedCuts(),
                                      ctParts);
-        LogInfo("Finished cutting");
+        vloginfo("Finished cutting");
 
         TheEngine::Instance().headers()->updateHeaderLine("scalpel", strMsg);
     }
@@ -82,7 +82,7 @@ void IAvatar::onReset() {
 /*
 void IAvatar::mousePress(ps::MouseButton button, MouseButtonState state, int x, int y) {
     if (button == MouseButton::mbRight) {
-		LogInfo("Right clicked cleared cut context!");
+        vloginfo("Right clicked cleared cut context!");
 		clearCutContext();
 		return;
 	}
@@ -97,7 +97,7 @@ void IAvatar::mousePress(ps::MouseButton button, MouseButtonState state, int x, 
             TheEngine::Instance().headers()->updateHeaderLine("scalpel",
 					"scalpel: start cutting");
 
-            LogInfo("Start cutting");
+            vloginfo("Start cutting");
 		}
 	} else {
 		//Up = Stop
@@ -110,7 +110,7 @@ void IAvatar::mousePress(ps::MouseButton button, MouseButtonState state, int x, 
 			AnsiStr strMsg = printToAStr("scalpel: finished cut %u. disjoint parts#%u",
 										 (U32)m_lpTissue->countCompletedCuts(),
 										 ctParts);
-            LogInfo("Finished cutting");
+            vloginfo("Finished cutting");
 
             TheEngine::Instance().headers()->updateHeaderLine("scalpel", strMsg);
 		}

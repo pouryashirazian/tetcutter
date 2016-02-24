@@ -405,21 +405,21 @@ bool VolMesh::insert_cell(const CELL& cell) {
 	//check the structure before adding it
 	for(int i=0; i<4; i++) {
 		if(!isFaceIndex(cell.faces[i])) {
-			LogErrorArg2("Unable to add element. Invalid face index found at: f[%d] = %u", i, cell.faces[i]);
+            vlogerror("Unable to add element. Invalid face index found at: f[%d] = %u", i, cell.faces[i]);
 			return false;
 		}
 	}
 
 	for(int i=0; i<4; i++) {
 		if(!isNodeIndex(cell.nodes[i])) {
-			LogErrorArg2("Unable to add element. Invalid node index found at: n[%d] = %u", i, cell.nodes[i]);
+            vlogerror("Unable to add element. Invalid node index found at: n[%d] = %u", i, cell.nodes[i]);
 			return false;
 		}
 	}
 
 	for(int i=0; i<6; i++) {
 		if(!isEdgeIndex(cell.edges[i])) {
-			LogErrorArg2("Unable to add element. Invalid edge index found at: edge[%d] = %u", i, cell.edges[i]);
+            vlogerror("Unable to add element. Invalid edge index found at: edge[%d] = %u", i, cell.edges[i]);
 			return false;
 		}
 	}
@@ -441,7 +441,7 @@ bool VolMesh::insert_cell(U32 nodes[4]) {
 	//Inserts a tetrahedra element to the halfedged mesh structure
 	for(int i=0; i<COUNT_CELL_NODES; i++) {
 		if(!isNodeIndex(nodes[i])) {
-			LogErrorArg1("Invalid node index passed in. %u", nodes[i]);
+            vlogerror("Invalid node index passed in. %u", nodes[i]);
 			return false;
 		}
 	}
@@ -542,7 +542,7 @@ bool VolMesh::insert_cell(U32 nodes[4]) {
 		if (it != m_mapEdgesIndex.end())
 			cell.edges[e] = it->second;
 		else {
-			LogErrorArg2("Setting element edges failed! Unable to find edge <%d, %d>",
+            vlogerror("Setting element edges failed! Unable to find edge <%d, %d>",
 						from, to);
 			return false;
 		}
@@ -1161,7 +1161,7 @@ U32 VolMesh::insert_face(U32 nodes[3]) {
 			face.edges[e] = it->second;
 		}
 		else {
-			LogErrorArg2("Setting face edges failed! Unable to find edge <%d, %d>",
+            vlogerror("Setting face edges failed! Unable to find edge <%d, %d>",
 						 from, to);
 
 			return BaseLink::INVALID;
@@ -1434,7 +1434,7 @@ void VolMesh::displace(U32 countDegreesOfFreedom, const double * u) {
 
 	U32 dof = countNodes() * 3;
 	if(countDegreesOfFreedom != dof) {
-		LogErrorArg2("Invalid displacement array supplied. Expected DoF: %u, GOT: %u", dof, countDegreesOfFreedom);
+        vlogerror("Invalid displacement array supplied. Expected DoF: %u, GOT: %u", dof, countDegreesOfFreedom);
 		return;
 	}
 
@@ -1447,12 +1447,12 @@ void VolMesh::displace(U32 countDegreesOfFreedom, const double * u) {
 
 bool VolMesh::insertEdgeIndexToMap(U32 from, U32 to, U32 idxEdge) {
 	if(from == to) {
-		LogErrorArg2("Can not register an edge with the same from and to nodes! [%u, %u]", from, to);
+        vlogerror("Can not register an edge with the same from and to nodes! [%u, %u]", from, to);
 		return false;
 	}
 
 	if(!isEdgeIndex(idxEdge)) {
-		LogErrorArg1("Can not register an invalid edge index: %u", idxEdge);
+        vlogerror("Can not register an invalid edge index: %u", idxEdge);
 		return false;
 	}
 
@@ -1743,7 +1743,7 @@ int VolMesh::getNodeIncidentNodes(U32 idxNode, vector<U32>& incidentNodes) const
 		else if(e.to == idxNode)
 			incidentNodes.push_back(e.from);
 		else {
-			LogErrorArg2("Invalid incident edge (%u) for node: %u", edges[i], idxNode);
+            vlogerror("Invalid incident edge (%u) for node: %u", edges[i], idxNode);
 		}
 	}
 

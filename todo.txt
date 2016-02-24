@@ -1,6 +1,5 @@
 
 1. change volmesh representation to use opaque handles instead of indices
-2. change logger to use veradic ops
 3. generate documentation as part of build
 4. add license header to all files
 5. support for fonts

@@ -105,18 +105,18 @@ bool CmdLineParser::addSwitch(const CmdSwitch& s) {
 	CmdSwitch cmd = s;
 
 	if(cmd.desc.length() == 0) {
-		LogError("No description provided!");
+        vlogerror("No description provided!");
 		return false;
 	}
 
 	//check input
 	if(cmd.key.find("--") != 0 || cmd.key.length() < 3) {
-		LogError("The input key is invalid. Please start with -- and keep a length >= 3");
+        vlogerror("The input key is invalid. Please start with -- and keep a length >= 3");
 		return false;
 	}
 
 	if(m_mapKeySwitch.find(cmd.key) != m_mapKeySwitch.end()) {
-        LogErrorArg1("This key %s is taken already!", cmd.key.c_str());
+        vlogerror("This key %s is taken already!", cmd.key.c_str());
 		return false;
 	}
 
@@ -131,7 +131,7 @@ bool CmdLineParser::addSwitch(const CmdSwitch& s) {
 		}
 
 		cmd.shortcut = temp;
-        LogInfoArg2("Automatic shortcut assigned %s to %s", temp.c_str(), cmd.key.c_str());
+        vloginfo("Automatic shortcut assigned %s to %s", temp.c_str(), cmd.key.c_str());
 	}
 
 	if(s.istoggle) {
@@ -177,7 +177,7 @@ bool CmdLineParser::setDefaultKey(const char* key) {
 		CmdSwitch* pcmd = m_mapKeySwitch[m_strDefaultKey];
 		if(pcmd != NULL) {
 			if(pcmd->istoggle) {
-				LogError("Boolean command line options can not be used as default keys");
+                vlogerror("Boolean command line options can not be used as default keys");
 				return false;
 			}
 		}
@@ -214,7 +214,7 @@ int CmdLineParser::parse(int argc, char* argv[]) {
 		//full-key
 		if(starts_with(token, string("--"))) {
 			if(m_mapKeySwitch.find(token) == m_mapKeySwitch.end()) {
-                LogErrorArg1("Unrecognized key passed %s", token.c_str());
+                vlogerror("Unrecognized key passed %s", token.c_str());
 				printHelp();
 				return -1;
 			}
@@ -225,7 +225,7 @@ int CmdLineParser::parse(int argc, char* argv[]) {
 		//shortcut
 		else if(starts_with(token, "-")) {
 			if(m_mapShortcutKeys.find(token) == m_mapShortcutKeys.end()) {
-                LogErrorArg1("Unrecognized shortcut key passed %s", token.c_str());
+                vlogerror("Unrecognized shortcut key passed %s", token.c_str());
 				printHelp();
 				return -1;
 			}
@@ -236,12 +236,12 @@ int CmdLineParser::parse(int argc, char* argv[]) {
 		//default key, the value for default key is the last argument
 		else if(isNextTokenKey == false && m_strDefaultKey.length() > 0 && i == argc - 2) {
 			if(m_mapKeySwitch.find(m_strDefaultKey) == m_mapKeySwitch.end()) {
-                LogErrorArg1("Unrecognized default key %s", m_strDefaultKey.c_str());
+                vlogerror("Unrecognized default key %s", m_strDefaultKey.c_str());
 				printHelp();
 				return -1;
 			}
 
-            LogInfoArg1("Using default key: %s", m_strDefaultKey.c_str());
+            vloginfo("Using default key: %s", m_strDefaultKey.c_str());
 			key = m_strDefaultKey;
 			iskey = true;
 		}
@@ -297,14 +297,14 @@ bool CmdLineParser::token_to_fullkeyname(const string& token, string& fullkey) {
 
 	if(ctDashes == 2) {
 		if(m_mapKeySwitch.find(token) == m_mapKeySwitch.end()) {
-            LogErrorArg1("Unrecognized key passed %s", token.c_str());
+            vlogerror("Unrecognized key passed %s", token.c_str());
 			return false;
 		}
 		fullkey = token;
 	}
 	else if(ctDashes == 1) {
 		if(m_mapShortcutKeys.find(token) == m_mapShortcutKeys.end()) {
-            LogErrorArg1("Unrecognized shortcut key passed %s", token.c_str());
+            vlogerror("Unrecognized shortcut key passed %s", token.c_str());
 			return false;
 		}
 
@@ -324,7 +324,7 @@ string CmdLineParser::value(const char* key) {
 	if(m_mapKeySwitch.find(strKey) != m_mapKeySwitch.end())
 		return m_mapKeySwitch[strKey]->value;
 	else {
-        LogWarningArg1("The input key %s is not recognized!", strKey.c_str());
+        vlogwarn("The input key %s is not recognized!", strKey.c_str());
 		return string("");
 	}
 }
@@ -352,7 +352,7 @@ bool CmdLineParser::isValid(const char* key) {
 	if(m_mapKeySwitch.find(strKey) != m_mapKeySwitch.end())
 		return m_mapKeySwitch[strKey]->isvalid;
 	else {
-        LogWarningArg1("The input key %s is not recognized!", strKey.c_str());
+        vlogwarn("The input key %s is not recognized!", strKey.c_str());
 		return false;
 	}
 

@@ -18,6 +18,7 @@
 
 using namespace std;
 using namespace ps::base;
+using namespace ps::utils;
 
 namespace ps {
 namespace elastic {
@@ -54,7 +55,7 @@ void CuttableMesh::setup() {
 
 	//Perform all tests
 	TestVolMesh::tst_all(this);
-	LogInfo("tests done!");
+    vloginfo("tests done!");
 
 	//Create Renderer
 	m_lpRender = new VolMeshRender();
@@ -214,7 +215,7 @@ int CuttableMesh::computeCutEdgesKernel(const vec3d sweptquad[4],
 			}
 			else {
 				mapCutEdges.erase(i);
-				LogErrorArg1("Edge %d has already been cut!", i);
+                vlogerror("Edge %d has already been cut!", i);
 			}
 		}
 	}
@@ -364,7 +365,7 @@ int CuttableMesh::cut(const vector<vec3d>& segments,
 
 				//check the edge
 				if(!isEdgeOfCell(edge, i)) {
-					LogErrorArg2("Edge %u does not belong to cell %u", edge, i);
+                    vlogerror("Edge %u does not belong to cell %u", edge, i);
 					return -2;
 				}
 
@@ -392,7 +393,7 @@ int CuttableMesh::cut(const vector<vec3d>& segments,
 			TetSubdivider::CUTCASE cc = m_lpSubD->IdentifyCutCase(true, cutEdgeCode, cutNodeCode);
 			char chrCutCase = m_lpSubD->toAlpha(cc);
 			if(chrCutCase != 'A' && chrCutCase != 'B') {
-				LogErrorArg3("This cut contains a cut case which is not handled yet. case: %c, cutEdgeCode: %x, cutNodeCode: %x",
+                vlogerror("This cut contains a cut case which is not handled yet. case: %c, cutEdgeCode: %x, cutNodeCode: %x",
 							 chrCutCase, cutEdgeCode, cutNodeCode);
 				return CUT_ERR_UNHANDLED_CUT_STATE;
 			}
@@ -409,14 +410,14 @@ int CuttableMesh::cut(const vector<vec3d>& segments,
 		return CUT_ERR_USER_CANCELLED_CUT;
 
 	//Now that cutedgecodes and cutnodecodes are computed then subdivide the element
-	LogInfoArg1("BEGIN CUTTING# %u", m_ctCompletedCuts+1);
+    vloginfo("BEGIN CUTTING# %u", m_ctCompletedCuts+1);
 
 	//cut all affected edges
 	for(CUTEDGEITER it = m_mapCutEdges.begin(); it != m_mapCutEdges.end(); it++) {
 		U32 idxNP0, idxNP1;
 
 		if(!this->cut_edge(it->first, it->second.t, &idxNP0, &idxNP1)) {
-			LogErrorArg2("Unable to cut edge %d, edgecutpoint t = %.3f.", it->first, it->second.t);
+            vlogerror("Unable to cut edge %d, edgecutpoint t = %.3f.", it->first, it->second.t);
 			return CUT_ERR_UNABLE_TO_CUT_EDGE;
 		}
 
@@ -470,7 +471,7 @@ int CuttableMesh::cut(const vector<vec3d>& segments,
 
 	//increment completed cuts
 	if(ctSubdividedTets > 0) {
-		LogInfoArg2("END CUTTING# %u: subdivided elements count: %u.", m_ctCompletedCuts + 1, ctSubdividedTets);
+        vloginfo("END CUTTING# %u: subdivided elements count: %u.", m_ctCompletedCuts + 1, ctSubdividedTets);
 		m_ctCompletedCuts ++;
 
 		//store sweep surf
@@ -478,7 +479,7 @@ int CuttableMesh::cut(const vector<vec3d>& segments,
 		m_quadstrips.insert(m_quadstrips.end(), quadstrips.begin(), quadstrips.end());
 	}
 	else {
-		LogWarningArg1("END CUTTING# %u: No elements are subdivided.", m_ctCompletedCuts + 1);
+        vlogwarn("END CUTTING# %u: No elements are subdivided.", m_ctCompletedCuts + 1);
 	}
 
 
@@ -655,7 +656,7 @@ int CuttableMesh::convertDisjointPartsToMeshes(vector<CuttableMesh*>& vOutNewMes
 		vector<U32> curpart = parts[i];
 
 		if(curpart.size() == 0) {
-			LogErrorArg1("splitted part %d is empty.", i);
+            vlogerror("splitted part %d is empty.", i);
 			continue;
 		}
 

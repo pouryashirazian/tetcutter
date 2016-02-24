@@ -29,13 +29,13 @@ bool ShaderManager::add(const char* name, const char* vShaderCode, const char* f
     if(aShader->isCompiled()) {
         if(ShaderManagerParent::add(aShader, name)) {
             if(gShaderCode != NULL)
-                LogInfoArg1("Added Vertex-Geometry-Fragment Shader from inline code. Name: %s.", name);
+                vloginfo("Added Vertex-Geometry-Fragment Shader from inline code. Name: %s.", name);
             else
-                LogInfoArg1("Added Vertex-Fragment Shader from inline code. Name: %s.", name);
+                vloginfo("Added Vertex-Fragment Shader from inline code. Name: %s.", name);
             return true;
         }
         else {
-            LogErrorArg1("Unable to add inline shader named: %s", name);
+            vlogerror("Unable to add inline shader named: %s", name);
             return false;
         }
     }
@@ -55,12 +55,12 @@ bool ShaderManager::addFromFile(const char* name,
     if(aShader->compileFromFile(strVShaderFP, strFShaderFP)) {
         if(ShaderManagerParent::add(aShader, strTitle.cptr())) {
             AnsiStr strArg = TheEventLogger::Instance().shortenPathBasedOnRoot(strVShaderFP);
-            LogInfoArg2("Added Vertex-Fragment Shader from file: %s, Name: %s.", strArg.cptr(), name);
+            vloginfo("Added Vertex-Fragment Shader from file: %s, Name: %s.", strArg.cptr(), name);
             return true;
         }
         else {
             SAFE_DELETE(aShader);
-            LogErrorArg1("Unable to add Vertex-Fragment Shader from file. Name: %s", name);
+            vlogerror("Unable to add Vertex-Fragment Shader from file. Name: %s", name);
             return false;
         }
     }
@@ -81,12 +81,12 @@ bool ShaderManager::addFromFile(const char* name,
     if(aShader->compileFromFile(strVShaderFP, strFShaderFP, strGShaderFP)) {
         if(ShaderManagerParent::add(aShader, strTitle.cptr())) {
             AnsiStr strArg = TheEventLogger::Instance().shortenPathBasedOnRoot(strVShaderFP);
-            LogInfoArg2("Added Vertex-Geometry-Fragment Shader from file: %s, Name: %s.", strArg.cptr(), name);
+            vloginfo("Added Vertex-Geometry-Fragment Shader from file: %s, Name: %s.", strArg.cptr(), name);
             return true;
         }
         else {
             SAFE_DELETE(aShader);
-            LogErrorArg1("Unable to add Vertex-Geometry-Fragment Shader from file. Name: %s", name);
+            vlogerror("Unable to add Vertex-Geometry-Fragment Shader from file. Name: %s", name);
             return false;
 
         }

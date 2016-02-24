@@ -294,7 +294,7 @@ Ray SGEngine::screenToWorldRay(int x, int y) {
 		vec3f dir = fw - nw;
 		r.set(nw, dir.normalized());
 	} else {
-		LogError("Unable to convert screen to world!");
+        vlogerror("Unable to convert screen to world!");
 	}
 
 	return r;
@@ -319,7 +319,7 @@ AnsiStr SGEngine::gpuInfo() {
 	int pos;
 	if(strVendorName.lfindstr("Intel", pos)) {
 			cout << "WARNING: Integrated GPU is being used!" << endl;
-			LogWarning("Non-Discrete GPU selected for rendering!");
+            vlogwarn("Non-Discrete GPU selected for rendering!");
 	}
 
 	return  AnsiStr("GPU: ") + strVendorName + ", " + strRenderer + ", " + strVersion;
@@ -345,7 +345,7 @@ void SGEngine::print(const char* switches) const {
 
 bool SGEngine::readConfig(const AnsiStr& strFP) {
 	if(!FileExists(strFP)) {
-		LogErrorArg1("File %s not found to read scene config.", strFP.cptr());
+        vlogerror("File %s not found to read scene config.", strFP.cptr());
 		return false;
 	}
 

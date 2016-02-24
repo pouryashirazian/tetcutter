@@ -136,12 +136,12 @@ void AvatarScalpel::clearCutContext() {
 
 void AvatarScalpel::onTranslate(const vec3f& delta, const vec3f& pos) {
     if(m_lpTissue == NULL) {
-        LogError("Tissue is not set for scalpel");
+        vlogerror("Tissue is not set for scalpel");
 		return;
     }
 
     if(!m_isToolActive) {
-        LogError("Scalpel tool is not active");
+        vlogerror("Scalpel tool is not active");
         return;
     }
 
@@ -160,7 +160,7 @@ void AvatarScalpel::onTranslate(const vec3f& delta, const vec3f& pos) {
 			m_vBladeSegments[1] = m_vCuttingPathEdge1.back();
 
 			int res = m_lpTissue->cut(m_vBladeSegments, m_vSweptQuad, true);
-			LogInfoArg1("Tissue cut. res = %d", res);
+            vloginfo("Tissue cut. res = %d", res);
 			if((res > 0) && (m_fOnCutFinished != NULL))
 				m_fOnCutFinished();
 

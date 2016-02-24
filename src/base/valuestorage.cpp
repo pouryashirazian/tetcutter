@@ -54,7 +54,7 @@ namespace ps {
                 fp << string(buffer);
             }
             catch(std::invalid_argument& e) {
-                LogErrorArg2("unable to store value named %s. details: %s", it->first.c_str(), e.what());
+                vlogerror("unable to store value named %s. details: %s", it->first.c_str(), e.what());
             }
         }
 
@@ -67,10 +67,10 @@ namespace ps {
     void ValueStorage::printAll() {
         for(ValueStorage::CONST_ITER it = this->cbegin(); it != this->cend(); it++) {
             try {
-                LogInfoArg2("Current Setting are: %s=%s", it->first.c_str(), it->second.toString().c_str());
+                vloginfo("Current Setting are: %s=%s", it->first.c_str(), it->second.toString().c_str());
             }
             catch(std::invalid_argument& e) {
-                LogErrorArg2("unable to store value named %s. details: %s", it->first.c_str(), e.what());
+                vlogerror("unable to store value named %s. details: %s", it->first.c_str(), e.what());
             }
         }
 
@@ -93,7 +93,7 @@ namespace ps {
                 
             }
             catch(std::invalid_argument& e) {
-                LogErrorArg2("unable to load value named %s. details: %s", it->first.c_str(), e.what());
+                vlogerror("unable to load value named %s. details: %s", it->first.c_str(), e.what());
             }
         }
 
@@ -110,7 +110,7 @@ namespace ps {
                 script->writeString(section, it->first.c_str(), AnsiStr(it->second.toString().c_str()));
             }
             catch(std::invalid_argument& e) {
-                LogErrorArg2("unable to store value named %s. details: %s", it->first.c_str(), e.what());
+                vlogerror("unable to store value named %s. details: %s", it->first.c_str(), e.what());
             }
         }
         

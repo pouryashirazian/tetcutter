@@ -115,7 +115,7 @@ void ProfileSession::startEvent(ProfileEvent* e) {
 
 ProfileEvent* ProfileSession::endEvent() {
 	if(m_stkCurrent.empty()) {
-		LogError("The Profiler stack is empty! Did you forget to end an event before starting a new one?");
+        vlogerror("The Profiler stack is empty! Did you forget to end an event before starting a new one?");
 		return NULL;
 	}
 
@@ -201,7 +201,7 @@ void Profiler::startSession() {
 void Profiler::endSession() {
 	m_session.end();
 	if((m_flags & pbInjectToLogger) != 0)
-		LogInfoArg1("Session ended: Stats: %s", m_session.toString().cptr());
+        vloginfo("Session ended: Stats: %s", m_session.toString().cptr());
 }
 
 

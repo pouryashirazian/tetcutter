@@ -391,7 +391,7 @@ bool Geometry::copyFrom(const Geometry& other) {
 
 bool Geometry::appendFrom(const Geometry& other) {
     if(!isCompatible(other)) {
-        LogError("The right mesh is not compatible with the left mesh to merge.");
+        vlogerror("The right mesh is not compatible with the left mesh to merge.");
         return false;
     }
 
@@ -536,7 +536,7 @@ bool Geometry::computeNormalsFromFaces()
 
 bool Geometry::addLine(const vec3f& start, const vec3f& end) {
     if(m_faceMode >= ftTriangles) {
-        LogError("The geometry is not setup for a line or point topology!");
+        vlogerror("The geometry is not setup for a line or point topology!");
         return false;
     }
 
@@ -547,7 +547,7 @@ bool Geometry::addLine(const vec3f& start, const vec3f& end) {
 
 bool Geometry::addLines(const vector<vec3f>& vertices) {
     if(m_faceMode >= ftTriangles) {
-        LogError("The geometry is not setup for a line or point topology!");
+        vlogerror("The geometry is not setup for a line or point topology!");
         return false;
     }
 
@@ -561,7 +561,7 @@ bool Geometry::addCircle2D(int sectors,
                            float radius,
                            const vec3f& o) {
     if(m_faceMode >= ftTriangles) {
-        LogError("The geometry is not setup for a line or point topology!");
+        vlogerror("The geometry is not setup for a line or point topology!");
         return false;
     }
 
@@ -586,7 +586,7 @@ bool Geometry::addCircle3D(int sectors,
                            float radius,
                            const vec3f& o) {
     if(m_faceMode != ftTriangles) {
-        LogError("The geometry is not setup for triangles topology!");
+        vlogerror("The geometry is not setup for triangles topology!");
         return false;
     }
 
