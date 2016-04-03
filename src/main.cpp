@@ -517,6 +517,7 @@ bool resetMesh() {
 	g_lpTissue->setFlagSplitMeshAfterCut(true);
 	g_lpTissue->setFlagDrawNodes(true);
 	g_lpTissue->setFlagDrawWireFrame(false);
+    g_lpTissue->setFlagDrawSweepSurf(ini.readBool("visible", "sweepsurf"));
 	g_lpTissue->setColor(Color::skin());
     g_lpTissue->setVerbose(g_parser.value_to_int("verbose") != 0);
 	g_lpTissue->syncRender();
@@ -657,11 +658,14 @@ int main(int argc, char* argv[]) {
 //	TheTexManager::Instance().add(strTextureRoot + "maskalpha.png");
 //	TheTexManager::Instance().add(strTextureRoot + "maskalphafilled.png");
 
+    vloginfo("Floor show is set to: [%d]", ini.readBool("visible", "floor"));
+
 	//Ground and Room
 	SGQuad* floor = new SGQuad(16.0f, 16.0f, TheTexManager::Instance().get("icefloor"));
 	floor->setName("floor");
 	floor->transform()->translate(vec3f(0, -0.1f, 0));
 	floor->transform()->rotate(vec3f(1.0f, 0.0f, 0.0f), 90.0f);
+    floor->setVisible(ini.readBool("visible", "floor"));
     TheEngine::Instance().add(floor);
 
 	//Create Scalpel
