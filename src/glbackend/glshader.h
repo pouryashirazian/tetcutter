@@ -2,9 +2,11 @@
 #ifndef GLSHADER_H
 #define GLSHADER_H
 
+#include <vector>
 #include "base/str.h"
 #include "base/vec.h"
-#include <vector>
+#include "glbindable.h"
+
 
 using namespace ps::base;
 #define GL_SUCCESS		   1
@@ -16,7 +18,7 @@ namespace ps {
     namespace opengl {
         
         //An OpenGL shader program
-        class GLShader
+        class GLShader : public GLBindable
         {
         public:
             GLShader();
@@ -95,10 +97,10 @@ namespace ps {
             bool saveBinaryProgram(const char* Filename, U32 &ProgramObjectID);
             
             //Program run
-            void start();
+            void bind();
             
             //Program stop
-            void stop();
+            void unbind();
             
         private:
             void reportShaderCompileErrors(U32 uShaderName, const char* pshadertype);

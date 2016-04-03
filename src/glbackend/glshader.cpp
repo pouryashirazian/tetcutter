@@ -208,7 +208,7 @@ int GLShader::compileCode(const char* vShaderCode, const char* vFragmentCode, co
     return true;
 }
 
-void GLShader::start()
+void GLShader::bind()
 {
     if(!isReadyToRun())
         return;
@@ -217,7 +217,7 @@ void GLShader::start()
     m_isRunning = true;
 }
 
-void GLShader::stop()
+void GLShader::unbind()
 {
     glUseProgram(0);
     m_isRunning = false;

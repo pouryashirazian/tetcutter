@@ -19,12 +19,12 @@ namespace ps {
         
         void SGEffect::bind() {
             if(m_lpShader)
-                m_lpShader->start();
+                m_lpShader->bind();
         }
 
         void SGEffect::unbind() {
             if(m_lpShader)
-                m_lpShader->stop();
+                m_lpShader->unbind();
         }
     }
 }

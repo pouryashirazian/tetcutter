@@ -28,6 +28,17 @@ if(NOT GLUT_FOUND)
 endif(NOT GLUT_FOUND)
 
 #########################################################
+# FIND FREETYPE
+#########################################################
+find_package(FREETYPE REQUIRED)
+include_directories(${FREETYPE_INCLUDE_DIRS})
+link_directories(${FREETYPE_LIBRARIES})
+add_definitions(${FREETYPE_DEFINITIONS})
+if(NOT FREETYPE_FOUND)
+    message(ERROR " FREETYPE not found!")
+endif(NOT FREETYPE_FOUND)
+
+#########################################################
 # FIND OPENGL
 #########################################################
 find_package(OpenGL REQUIRED)
@@ -65,4 +76,4 @@ ADD_DEFINITIONS(
 #########################################################
 add_library(glbackend ${GLBACKEND_SRC})
 
-target_link_libraries(glbackend base ${OPENGL_LIBRARIES}  ${GLEW_LIBRARY})
+target_link_libraries(glbackend base ${OPENGL_LIBRARIES}  ${GLEW_LIBRARY} ${FREETYPE_LIBRARIES})

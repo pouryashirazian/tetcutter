@@ -637,6 +637,7 @@ int main(int argc, char* argv[]) {
 	AnsiStr strRoot = ExtractOneLevelUp(ExtractFilePath(GetExePath()));
 	AnsiStr strShaderRoot = strRoot + "data/shaders/";
 	AnsiStr strTextureRoot = strRoot + "data/textures/";
+    AnsiStr strFontsRoot = strRoot + "data/fonts/";
 
 	//convert mesh
 // 	AnsiStr strNodesFP = strRoot + AnsiStr("data/meshes/matlab/nodes.txt");

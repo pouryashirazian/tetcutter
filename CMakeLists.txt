@@ -7,12 +7,18 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
 #project name
 project(tetcutter)
 
+##adding glfw
 add_subdirectory(src/3rdparty/glfw-3.1.2/)
+
+##adding freetype font library
+add_subdirectory(src/3rdparty/freetype-2.6.3/)
 ##############################################################################
 # Custom find modules
 ##############################################################################
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/CMake/Find/")
 set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} src/3rdparty/loki)
+
+
 
 #########################################################
 # FIND GLEW
@@ -72,7 +78,8 @@ add_subdirectory(src/elastic/)
 include_directories(src/
                     src/3rdparty
                     src/3rdparty/loki/include
-                    src/3rdparty/glfw-3.1.2/include)
+                    src/3rdparty/glfw-3.1.2/include
+                    src/3rdparty/freetype-2.6.3/include)
 
 #########################################################
 ## add source files
