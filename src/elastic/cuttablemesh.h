@@ -26,7 +26,7 @@ namespace elastic {
 #define CUT_ERR_UNABLE_TO_CUT_EDGE -4
 #define CUT_ERR_USER_CANCELLED_CUT -5
 
-#define DEFAULT_MESH_SPLIT_DIST 0.05
+#define DEFAULT_MESH_SPLIT_DIST 0.1
 
 class CuttableMesh : public VolMesh {
 public:

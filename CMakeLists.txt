@@ -100,4 +100,4 @@ ADD_DEFINITIONS(
 add_executable(tetcutter ${SRC})
 
 #glfw  ${GLUT_LIBRARY}
-target_link_libraries(tetcutter glfw base scene elastic glbackend ${GLFW_LIBRARIES} ${OPENGL_LIBRARIES}  ${GLEW_LIBRARY} ${TBB_LIBRARY})
+target_link_libraries(tetcutter glfw base scene elastic glbackend ${FREETYPE_LIBRARIES} ${GLFW_LIBRARIES} ${OPENGL_LIBRARIES}  ${GLEW_LIBRARY} ${TBB_LIBRARY})

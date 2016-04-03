@@ -725,11 +725,16 @@ bool GizmoManager::readConfig(const AnsiStr& strFP) {
         return false;
     }
 
-    IniFile* script = new IniFile(strFP, IniFile::fmRead);
-    vec3f s = script->readVec3f("gizmo", "scale");
-    vec4f r = script->readVec4f("gizmo", "rotate");
-    vec3f t = script->readVec3f("gizmo", "translate");
-    SAFE_DELETE(script);
+    IniFile script(strFP, IniFile::fmRead);
+    if(!script.hasSection("gizmo")) {
+        vlogerror("input ini file does not define gizmo");
+        return false;
+    }
+
+    vec3f s = script.readVec3f("gizmo", "scale");
+    vec4f r = script.readVec4f("gizmo", "rotate");
+    vec3f t = script.readVec3f("gizmo", "translate");
+
 
     //quat
     quat q(r);

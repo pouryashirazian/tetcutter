@@ -9,6 +9,7 @@
 #include "base/directory.h"
 #include "base/logger.h"
 #include "base/cmdlineparser.h"
+#include "base/inifile.h"
 
 #include "scene/sgengine.h"
 #include "scene/gizmo.h"
@@ -48,13 +49,13 @@ IAvatar* g_lpAvatar = NULL;
 
 CuttableMesh* g_lpTissue = NULL;
 CmdLineParser g_parser;
-AnsiStr g_strFilePath;
+AnsiStr g_strIniFilePath;
 U32 g_current = 3;
 U32 g_cutCase = 0;
 
 //funcs
 void closeApp();
-void resetMesh();
+bool resetMesh();
 void cutFinished();
 void runTestSubDivide(int current);
 void handleElementEvent(CELL element, U32 handle, VolMesh::TopologyEvent event);
@@ -241,18 +242,6 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
             break;
         }
 
-        case(GLFW_KEY_F12): {
-            vloginfo("Apply transform to mesh and then reset transform");
-            g_lpTissue->applyTransformToMeshThenResetTransform();
-
-            if(FileExists(g_strFilePath)) {
-                bool res = VolMeshIO::writeVega(g_lpTissue, g_strFilePath);
-                if(res) {
-                    vloginfo("Modified mesh is stored to: %s", g_strFilePath.cptr());
-                }
-            }
-            break;
-        }
 
     default:
         //vloginfo("No special key handled this so I forward it to normal keys");
@@ -448,8 +437,8 @@ void normal_key(unsigned char key, int x, int y)
 
 
 void closeApp() {
-	TheGizmoManager::Instance().writeConfig();
-    TheEngine::Instance().writeConfig();
+    TheGizmoManager::Instance().writeConfig(g_strIniFilePath);
+    TheEngine::Instance().writeConfig(g_strIniFilePath);
 
 	SAFE_DELETE(g_lpScalpel);
 	SAFE_DELETE(g_lpRing);
@@ -464,48 +453,63 @@ void handleElementEvent(CELL element, U32 handle, VolMesh::TopologyEvent event) 
         vloginfo("A new element added at index: %d", handle);
 }
 
-void resetMesh() {
+bool resetMesh() {
 	//remove it from scenegraph
     TheEngine::Instance().remove(g_lpTissue);
 	SAFE_DELETE(g_lpTissue);
 
-	VolMesh* temp = NULL;
-	if(FileExists(g_strFilePath)) {
-        temp = new VolMesh();
-		temp->setFlagFilterOutFlatCells(false);
-        temp->setVerbose(g_parser.value_to_int("verbose"));
-        vloginfo("Begin to read vega file from: %s", g_strFilePath.cptr());
-        bool res = VolMeshIO::readVega(temp, g_strFilePath);
-		if(!res)
-            vlogerror("Unable to load mesh from: %s", g_strFilePath.cptr());
+    if(!FileExists(g_strIniFilePath)) {
+        vlogerror("ini file not exists! [%s]", g_strIniFilePath.c_str());
+        return false;
+    }
 
-//		U32 ctRemoved = temp->removeZeroVolumeCells();
-//		if(ctRemoved > 0)
-//			vloginfo("Managed to remove %u flat cells in the mesh", ctRemoved);
-	}
-	else {
-        AnsiStr strExample = AnsiStr(g_parser.value("example").c_str());
-		int pos = -1;
-		if(strExample == "one")
+    vloginfo("reading model config from ini file: [%s]", g_strIniFilePath.c_str());
+    IniFile ini(g_strIniFilePath, IniFile::fmRead);
+    AnsiStr mdl_type = ini.readString("model", "type");
+    AnsiStr mdl_name = ini.readString("model", "name");
+
+    VolMesh* temp = NULL;
+
+    //loading internal model
+    if(mdl_type == "internal") {
+
+        int pos = -1;
+        if(mdl_name == "one")
             temp = VolMeshSamples::CreateOneTetra();
-		else if(strExample == "two")
+        else if(mdl_name == "two")
             temp = VolMeshSamples::CreateTwoTetra();
-		else if(strExample.lfindstr(AnsiStr("cube"), pos)) {
+        else if(mdl_name.lfindstr(AnsiStr("cube"), pos)) {
 
-			U32 nx, ny, nz = 0;
-			sscanf(strExample.cptr(), "cube_%u_%u_%u", &nx, &ny, &nz);
+            U32 nx, ny, nz = 0;
+            sscanf(mdl_name.cptr(), "cube_%u_%u_%u", &nx, &ny, &nz);
             temp = VolMeshSamples::CreateTruthCube(nx, ny, nz, 0.2);
-		}
-		else if(strExample.lfindstr(AnsiStr("eggshell"), pos)) {
+        }
+        else if(mdl_name.lfindstr(AnsiStr("eggshell"), pos)) {
 
-			U32 nx, ny;
-			//float radius, thickness;
-			sscanf(strExample.cptr(), "eggshell_%u_%u", &nx, &ny);
+            U32 nx, ny;
+            //float radius, thickness;
+            sscanf(mdl_name.cptr(), "eggshell_%u_%u", &nx, &ny);
             temp = VolMeshSamples::CreateEggShell(nx, ny);
-		}
-		else
+        }
+        else
             temp = VolMeshSamples::CreateOneTetra();
-	}
+    }
+    else if(mdl_type == "file") {
+        temp = new VolMesh();
+        temp->setFlagFilterOutFlatCells(false);
+        temp->setVerbose(g_parser.value_to_int("verbose"));
+
+        if(!FileExists(mdl_name)) {
+            AnsiStr data_root_path = ini.readString("system", "data");
+            mdl_name = data_root_path + "meshes/veg/" + mdl_name;
+            vloginfo("resolved model name to [%s]", mdl_name.cptr());
+        }
+
+        vloginfo("Begin to read vega file from: %s", mdl_name.cptr());
+        bool res = VolMeshIO::readVega(temp, mdl_name);
+        if(!res)
+            vlogerror("Unable to load mesh from: %s", mdl_name.cptr());
+    }
 
 
     vloginfo("Loaded mesh to temp");
@@ -526,14 +530,8 @@ void resetMesh() {
 
 	//print stats
 	VolMeshStats::printAllStats(g_lpTissue);
-    vloginfo("Loaded mesh completed");
 
-	//rotate mesh
-	//	vec3d translate(-2.03281307, -3.78926992, -1.11631393);
-	//	vec3d scale(0.018766);
-	//	VolMeshIO::fitmesh(g_lpTissue, scale, translate);
-	//TheGizmoManager::Instance().setFocusedNode(g_lpTissue);
-	//	TheGizmoManager::Instance().cmdRotate(vec3f(1,0,0), -90.0f);
+    vloginfo("mesh load completed");
 }
 
 void runTestSubDivide(int current) {
@@ -594,19 +592,19 @@ int main(int argc, char* argv[]) {
     g_parser.addSwitch("--ringscalpel", "-r", "If the switch presents then the ring scalpel will be used");
     g_parser.addSwitch("--verbose", "-v", "prints detailed description.");
     g_parser.addSwitch("--input", "-i", "[filepath] set input file in vega format", "internal");
-    g_parser.addSwitch("--example", "-e", "[one, two, cube, eggshell] set an internal example", "two");
-    g_parser.addSwitch("--gizmo", "-g", "loads a file to set gizmo location and orientation", "gizmo.ini");
+    //g_parser.addSwitch("--example", "-e", "[one, two, cube, eggshell] set an internal example", "two");
+    //g_parser.addSwitch("--gizmo", "-g", "loads a file to set gizmo location and orientation", "gizmo.ini");
 
 	if(g_parser.parse(argc, argv) < 0)
 		exit(0);
 
 	//file path
-    g_strFilePath = AnsiStr(g_parser.value("input").c_str());
-	if(FileExists(g_strFilePath))
-        vloginfo("input file: %s.", g_strFilePath.cptr());
+    g_strIniFilePath = AnsiStr(g_parser.value("input").c_str());
+    if(FileExists(g_strIniFilePath))
+        vloginfo("input file: %s.", g_strIniFilePath.cptr());
     else {
-        vlogerror("Unable to find input filepath: [%s]", g_strFilePath.cptr());
-		g_strFilePath = "";
+        vlogerror("Unable to find input filepath: [%s]", g_strIniFilePath.cptr());
+        exit(1);
     }
 
 
@@ -634,10 +632,12 @@ int main(int argc, char* argv[]) {
 	def_initgl();
 
 	//Build Shaders for drawing the mesh
-	AnsiStr strRoot = ExtractOneLevelUp(ExtractFilePath(GetExePath()));
-	AnsiStr strShaderRoot = strRoot + "data/shaders/";
-	AnsiStr strTextureRoot = strRoot + "data/textures/";
-    AnsiStr strFontsRoot = strRoot + "data/fonts/";
+    IniFile ini(g_strIniFilePath, IniFile::fmRead);
+
+    AnsiStr strRoot = ini.readString("system", "data");
+    AnsiStr strShaderRoot = strRoot + "shaders/";
+    AnsiStr strTextureRoot = strRoot + "textures/";
+    AnsiStr strFontsRoot = strRoot + "fonts/";
 
 	//convert mesh
 // 	AnsiStr strNodesFP = strRoot + AnsiStr("data/meshes/matlab/nodes.txt");
@@ -664,37 +664,6 @@ int main(int argc, char* argv[]) {
 	floor->transform()->rotate(vec3f(1.0f, 0.0f, 0.0f), 90.0f);
     TheEngine::Instance().add(floor);
 
-	/*
-	AnsiStr strGreyMatter = strRoot + "data/meshes/veg/brain/graymatter.veg";
-	AnsiStr strWhiteMatter = strRoot + "data/meshes/veg/brain/whitematter.veg";
-	{
-		VolMesh* temp = new VolMesh();
-		bool res = VolMeshIO::readVega(temp, strGreyMatter);
-		if(res) {
-			CuttableMesh* pmesh = new CuttableMesh(*temp);
-			pmesh->setColor(Color::grey());
-			pmesh->setName("graymatter");
-            TheEngine::Instance().add(pmesh);
-		}
-		SAFE_DELETE(temp);
-	}
-	{
-		VolMesh* temp = new VolMesh();
-		bool res = VolMeshIO::readVega(temp, strWhiteMatter);
-		if(res) {
-			CuttableMesh* pmesh = new CuttableMesh(*temp);
-			pmesh->setColor(Color::white());
-			pmesh->setName("whitematter");
-            TheEngine::Instance().add(pmesh);
-		}
-		SAFE_DELETE(temp);
-	}
-	*/
-
-
-    //TheEngine::Instance().addFloor(32, 32, 0.5f);
-    //TheEngine::Instance().addSceneBox(AABB(vec3f(-10, -10, -16), vec3f(10, 10, 16)));
-
 	//Create Scalpel
 	g_lpScalpel = new AvatarScalpel();
 	g_lpScalpel->setVisible(false);
@@ -719,37 +688,11 @@ int main(int argc, char* argv[]) {
 
 
 	//load gizmo manager file
-    AnsiStr strGizmoFP = AnsiStr(g_parser.value("gizmo").c_str());
-	TheGizmoManager::Instance().readConfig(strGizmoFP);
-    TheEngine::Instance().readConfig();
-
-	//add csf
-	/*
-    auto_ptr<VolMesh> csf(new ps::MESH::VolMesh());
-	csf->setFlagFilterOutFlatCells(false);
-	csf->setVerbose(g_parser.value<int>("verbose"));
-	AnsiStr strCSF = "/home/pourya/Desktop/platform/projects/tetcutter/data/meshes/veg/brain/csf.veg";
-    vloginfo("Begin to read vega file from: %s", strCSF.cptr());
-    bool res = ps::MESH::VolMeshIO::readVega(csf.get(), strCSF);
-	if(res) {
-		CuttableMesh* cutcsf = new CuttableMesh(*csf);
-		//cutcsf->setFlagDrawNodes(true);
-		cutcsf->setFlagDrawWireFrame(false);
-		cutcsf->setColor(Color::blue());
-		cutcsf->syncRender();
-
-        TheEngine::Instance().add(cutcsf);
-	}
-	*/
-
+    //TheGizmoManager::Instance().readConfig(g_strIniFilePath);
+    TheEngine::Instance().readConfig(g_strIniFilePath);
 
 	//reset cuttable mesh
-	resetMesh();
-
-//	SGRenderMask* renderMask = new SGRenderMask(TheTexManager::Instance().get("maskalpha"));
-//	renderMask->setName("rendermask");
-//	TheEngine::Instance().add(renderMask);
-
+    resetMesh();
 
     TheEngine::Instance().headers()->addHeaderLine("cell", "info");
     TheEngine::Instance().print();
