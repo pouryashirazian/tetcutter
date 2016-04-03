@@ -601,12 +601,13 @@ int main(int argc, char* argv[]) {
 		exit(0);
 
 	//file path
-    AnsiStr strInput = AnsiStr(g_parser.value("input").c_str());
-    g_strFilePath = ExtractFilePath(GetExePath()) + strInput;
+    g_strFilePath = AnsiStr(g_parser.value("input").c_str());
 	if(FileExists(g_strFilePath))
         vloginfo("input file: %s.", g_strFilePath.cptr());
-	else
+    else {
+        vlogerror("Unable to find input filepath: [%s]", g_strFilePath.cptr());
 		g_strFilePath = "";
+    }
 
 
     //GLFW LIB
