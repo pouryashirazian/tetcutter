@@ -698,11 +698,10 @@ int main(int argc, char* argv[]) {
 
 	g_lpAvatar->setTissue(g_lpTissue);
 	g_lpAvatar->setOnCutFinishedEventHandler(cutFinished);
-	TheGizmoManager::Instance().setFocusedNode(g_lpAvatar);
+	TheGizmoManager::Instance().setFocusedNode(g_lpAvatar);	
+    TheGizmoManager::Instance().readConfig(g_strIniFilePath);
 
-
-	//load gizmo manager file
-    //TheGizmoManager::Instance().readConfig(g_strIniFilePath);
+    //setup engine
     TheEngine::Instance().readConfig(g_strIniFilePath);
     TheEngine::Instance().headers()->addHeaderLine("cell", "info");
     TheEngine::Instance().print();

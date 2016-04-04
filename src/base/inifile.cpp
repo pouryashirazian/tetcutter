@@ -84,9 +84,19 @@ bool IniFile::writeFile()
         return false;
 
     AnsiStr strLine;
+    U32 ctSections = 0;
     for(int i=0; i < (int)m_content.size(); i++)
     {
         strLine = m_content[i];
+
+        //add an empty line if a new section
+        if(strLine[0] == '[') {
+            if(ctSections > 0)
+                ofs << '\n';
+            ctSections++;
+        }
+
+
         if(strLine.length() > 0)
         {
             ofs << strLine.cptr() << '\n';

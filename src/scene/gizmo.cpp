@@ -720,6 +720,8 @@ void GizmoManager::cmdRotate(const vec3f& axis, float degreeIncrement) {
 }
 
 bool GizmoManager::readConfig(const AnsiStr& strFP) {
+    this->transform().reset();
+
     if(!FileExists(strFP)) {
         vlogerror("File %s not found to read gizmo config.", strFP.cptr());
         return false;
@@ -727,7 +729,7 @@ bool GizmoManager::readConfig(const AnsiStr& strFP) {
 
     IniFile script(strFP, IniFile::fmRead);
     if(!script.hasSection("gizmo")) {
-        vlogerror("input ini file does not define gizmo");
+        vlogerror("input ini file does not define gizmo");        
         return false;
     }
 

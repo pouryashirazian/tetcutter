@@ -31,9 +31,8 @@ int SGNode::intersect(const Ray& r) {
 
 void SGNode::resetTransform() {
     if(m_spTransform == NULL)
-        m_spTransform = SmartPtrSGTransform(new SGTransform());
-    else
-        m_spTransform->reset();
+        m_spTransform = SmartPtrSGTransform(new SGTransform());    
+    m_spTransform->reset();
 }
 
 
