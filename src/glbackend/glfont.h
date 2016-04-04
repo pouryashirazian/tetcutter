@@ -35,6 +35,7 @@ namespace ps {
             bool setup(const string& font_name);
             void render_text(GLShader& shader, const string& text, float x, float y, float scale, const Color& color);
 
+            static string GetSysFontsDir();
         protected:
             std::unordered_map<char, Character> m_alphabet;
             U32 m_vao;

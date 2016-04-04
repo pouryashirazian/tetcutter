@@ -1,11 +1,13 @@
 #ifndef SGHEADERS_H_
 #define SGHEADERS_H_
 
+#include "sgnode.h"
 #include "base/str.h"
 #include "base/resourcemanager.h"
-#include "sgnode.h"
+#include "glbackend/glfont.h"
 
 using namespace ps;
+using namespace ps::opengl;
 
 namespace ps {
 namespace scene {
@@ -32,6 +34,8 @@ public:
     bool isValidID(int id) { return (id >=0 && id < (int)m_vHeaders.size()); }
 
 protected:
+
+
     //Info String
     std::vector<AnsiStr> m_vHeaders;
     FastAccessNamedResource<int, TypeValue, InsertRemoveNoop, Logging, false> m_hashHeaders;

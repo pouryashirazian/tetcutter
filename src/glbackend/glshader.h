@@ -103,7 +103,7 @@ namespace ps {
             void unbind();
             
         private:
-            void reportShaderCompileErrors(U32 uShaderName, const char* pshadertype);
+            void reportShaderCompileErrors(U32 uShaderName, const AnsiStr& shadertype, const AnsiStr& filepath);
             bool removeAllCppComments(AnsiStr& strCode);
             bool readShaderCode(const AnsiStr& strFilePath, AnsiStr& strCode);
             
@@ -111,6 +111,10 @@ namespace ps {
             U32   m_glShader;
             bool  m_isCompiled;
             bool  m_isRunning;
+
+            AnsiStr m_strVertexFP;
+            AnsiStr m_strFragmentFP;
+            AnsiStr m_strGeometryFP;
         };
         
     }

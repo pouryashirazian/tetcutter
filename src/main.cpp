@@ -612,8 +612,18 @@ int main(int argc, char* argv[]) {
     //GLFW LIB
     g_lpWindow = NULL;
     glfwSetErrorCallback(error_callback);
-    if (!glfwInit())
+    if (!glfwInit()) {
+        vlogerror("Failed to init glfw");
         exit(EXIT_FAILURE);
+    }
+
+    /*
+    glfwWindowHint(GLFW_SAMPLES, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    */
 
     g_lpWindow = glfwCreateWindow(DEFAULT_WIDTH, DEFAULT_HEIGHT, "tetcutter - Pourya Shirazian", NULL, NULL);
     if (!g_lpWindow)
@@ -694,12 +704,12 @@ int main(int argc, char* argv[]) {
 	//load gizmo manager file
     //TheGizmoManager::Instance().readConfig(g_strIniFilePath);
     TheEngine::Instance().readConfig(g_strIniFilePath);
+    TheEngine::Instance().headers()->addHeaderLine("cell", "info");
+    TheEngine::Instance().print();
 
 	//reset cuttable mesh
     resetMesh();
 
-    TheEngine::Instance().headers()->addHeaderLine("cell", "info");
-    TheEngine::Instance().print();
 
     //mainloop
     while (!glfwWindowShouldClose(g_lpWindow))

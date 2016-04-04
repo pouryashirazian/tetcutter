@@ -33,7 +33,9 @@ void GLShader::init()
     m_isCompiled = false;
     m_isRunning = false;
     m_glShader = 0;
-
+    m_strVertexFP = "inline";
+    m_strFragmentFP = "inline";
+    m_strGeometryFP = "inline";
 }
 
 int GLShader::getUniformLocation(const char *chrUniformName) {
@@ -68,8 +70,11 @@ int GLShader::compileFromFile(const AnsiStr& strVertexShaderFP, const AnsiStr& s
     if((strVertexShaderFP.length() == 0)||(strFragmentShaderFP.length() == 0))
         return ERR_SHADER_FILE_NOT_FOUND;
 
-    AnsiStr strVShaderCode;
+    AnsiStr strVShaderCode;    
     AnsiStr strFShaderCode;
+
+    m_strVertexFP = strVertexShaderFP;
+    m_strFragmentFP = strFragmentShaderFP;
 
     //Read both files
     bool bres = readShaderCode(strVertexShaderFP, strVShaderCode);
@@ -91,6 +96,11 @@ int	 GLShader::compileFromFile(const AnsiStr& strVertexShaderFP,
     AnsiStr strFShaderCode;
     AnsiStr strGShaderCode;
 
+    //file path
+    m_strVertexFP = strVertexShaderFP;
+    m_strFragmentFP = strFragmentShaderFP;
+    m_strGeometryFP = strGeometryShaderFP;
+
     //Read both files
     bool bres = readShaderCode(strVertexShaderFP, strVShaderCode);
     if(!bres) return ERR_SHADER_FILE_NOT_FOUND;
@@ -106,7 +116,7 @@ int	 GLShader::compileFromFile(const AnsiStr& strVertexShaderFP,
     return compileCode(strVShaderCode.cptr(), strFShaderCode.cptr(), isValidGShader ? strGShaderCode.cptr() : NULL);
 }
 
-void GLShader::reportShaderCompileErrors(U32 uShaderName, const char* pshadertype) {
+void GLShader::reportShaderCompileErrors(U32 uShaderName, const AnsiStr& shadertype, const AnsiStr& filepath) {
 
     int i32InfoLogLength, i32CharsWritten;
     glGetShaderiv(uShaderName, GL_INFO_LOG_LENGTH, &i32InfoLogLength);
@@ -115,7 +125,7 @@ void GLShader::reportShaderCompileErrors(U32 uShaderName, const char* pshadertyp
     glGetShaderInfoLog(uShaderName, i32InfoLogLength, &i32CharsWritten, pszInfoLog);
     char* pszMsg = new char[i32InfoLogLength+256];
 
-    sprintf(pszMsg, "Failed to compile %s shader: ", pshadertype);
+    sprintf(pszMsg, "Failed to compile [%s] shader: [%s]\n", shadertype.c_str(), filepath.c_str());
     strcat(pszMsg, pszInfoLog);
     vlogerror(pszMsg);
 
@@ -136,7 +146,7 @@ int GLShader::compileCode(const char* vShaderCode, const char* vFragmentCode, co
     //Check if compilation succeeded
     glGetShaderiv(uiVertexShader, GL_COMPILE_STATUS, &bShaderCompiled);
     if (!bShaderCompiled) {
-        reportShaderCompileErrors(uiVertexShader, "vertex");
+        reportShaderCompileErrors(uiVertexShader, "vertex", ExtractFileTitleOnly(m_strVertexFP));
         return false;
     }
 
@@ -148,7 +158,7 @@ int GLShader::compileCode(const char* vShaderCode, const char* vFragmentCode, co
     //Check if compilation succeeded
     glGetShaderiv(uiFragShader, GL_COMPILE_STATUS, &bShaderCompiled);
     if (!bShaderCompiled) {
-        reportShaderCompileErrors(uiFragShader, "fragment");
+        reportShaderCompileErrors(uiFragShader, "fragment", ExtractFileTitleOnly(m_strFragmentFP));
     }
 
     //Geometry Shader

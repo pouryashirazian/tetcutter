@@ -9,8 +9,10 @@
 #include <cstdio>
 #include "glscreen.h"
 #include "glselect.h"
+#include "base/Logger.h"
 
 using namespace std;
+using namespace ps::utils;
 
 namespace ps {
 namespace opengl {
@@ -117,6 +119,16 @@ void def_initgl() {
     
 	glClearColor(0.45f, 0.45f, 0.45f, 1.0f);
 	//glClearColor(1.0, 1.0, 1.0, 1.0);
+
+    //get gpu info
+    int major_version, minor_version;
+    glGetIntegerv(GL_MAJOR_VERSION, &major_version);
+    glGetIntegerv(GL_MINOR_VERSION, &minor_version);
+
+    vloginfo("GPU Vendor: [%s]", glGetString(GL_VENDOR));
+    vloginfo("GL_VERSION: [%s]", glGetString(GL_VERSION));
+    vloginfo("GL_RENDERER: [%s]", glGetString(GL_RENDERER));
+    vloginfo("GL_VERSION: [%d.%d]", major_version, minor_version);
     
 	//Compiling shaders
 	GLenum err = glewInit();

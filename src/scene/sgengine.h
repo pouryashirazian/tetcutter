@@ -123,6 +123,7 @@ protected:
 
 private:
     int m_keyModifier;
+    AnsiStr m_strRootFP;
 
     //SGBulletSoftRigidDynamics* m_lpWorld;
 	CopyStack<mat44f> m_stkProjection;

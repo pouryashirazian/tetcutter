@@ -26,6 +26,8 @@ using namespace ps::scene;
 
 
 SGEngine::SGEngine() {
+
+    m_strRootFP = "data/";
 	m_stkModelView.top().identity();
 	m_stkProjection.top().identity();
 
@@ -347,6 +349,8 @@ bool SGEngine::readConfig(const AnsiStr& strFP) {
 	m_camera.setTilt(script->readFloat("camera", "tilt"));
     m_camera.setZoomLevel(script->readFloat("camera", "zoom"));
 	m_camera.setPan(script->readVec2f("camera", "pan"));
+
+    m_strRootFP = script->readString("system", "data");
 
 	SAFE_DELETE(script);
 

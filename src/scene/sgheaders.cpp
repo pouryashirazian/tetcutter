@@ -5,8 +5,13 @@
 
 using namespace ps::scene;
 
+
 SGHeaders::SGHeaders():SGNode() {
 	setName("headers");
+
+    //setup glfont
+    //ps::opengl::GLFont* m_pglfont;
+    //m_pglfont = new GLFont();
 }
 
 SGHeaders::~SGHeaders() {
@@ -16,6 +21,8 @@ SGHeaders::~SGHeaders() {
 void SGHeaders::cleanup() {
 	m_vHeaders.resize(0);
 	m_hashHeaders.cleanup();
+
+   // SAFE_DELETE(m_pglfont);
 }
 
 void SGHeaders::draw() {

@@ -3,17 +3,15 @@
 
 
 #include <vector>
-#include "glfont.h"
 #include "glselect.h"
 #include "gltypes.h"
 #include "base/logger.h"
-#include "base/directory.h"
-#include "lodepng.h"
+#include "glfont.h"
 
+
+using namespace  std;
 using namespace ps;
 using namespace ps::utils;
-using namespace ps::dir;
-using namespace  std;
 
 
 namespace ps {
@@ -22,7 +20,8 @@ namespace opengl {
 
 
 GLFont::GLFont() {
-    assert(this->setup("Calibri.ttf"));
+    string strFontFP = GetSysFontsDir() + "Verdana.ttf";
+    assert(this->setup(strFontFP));
 }
 
 GLFont::GLFont(const string& strFontPath) {
@@ -31,6 +30,18 @@ GLFont::GLFont(const string& strFontPath) {
 
 GLFont::~GLFont() {
 
+}
+
+string GLFont::GetSysFontsDir() {
+#ifdef PS_OS_MAC
+    return string("/Library/Fonts/");
+#elif defined(PS_OS_LINUX)
+    return string("/usr/local/share/fonts/");
+#elif defined(PS_OS_WINDOWS)
+    return string("%WINDIR%\fonts\");
+#else
+    return string("");
+#endif
 }
 
 bool GLFont::setup(const string &font_name) {
@@ -44,7 +55,7 @@ bool GLFont::setup(const string &font_name) {
 
     // Load font as face
     FT_Face face;
-    if (FT_New_Face(ft, "fonts/arial.ttf", 0, &face)) {
+    if (FT_New_Face(ft, font_name.c_str(), 0, &face)) {
         vlogerror("FREETYPE: Failed to load font");
         return false;
     }

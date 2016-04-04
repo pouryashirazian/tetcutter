@@ -30,7 +30,7 @@ endif(NOT GLUT_FOUND)
 ## other include files
 #########################################################
 include_directories(..
-									  ../3rdparty/loki/include)
+                    ../3rdparty/loki/include)
 
 #########################################################
 ## add source files
