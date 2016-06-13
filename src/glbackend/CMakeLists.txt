@@ -61,6 +61,7 @@ include_directories(..
 #########################################################
 
 file(GLOB GLBACKEND_SRC
+         *.h
 	 *.cpp
          ../3rdparty/lodepng/lodepng.h
          ../3rdparty/lodepng/lodepng.cpp
